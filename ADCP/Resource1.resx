@@ -1,0 +1,1116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="String1" xml:space="preserve">
+    <value>顶部流量:</value>
+  </data>
+  <data name="String10" xml:space="preserve">
+    <value>通讯口名称不能为空</value>
+  </data>
+  <data name="String11" xml:space="preserve">
+    <value>串口配置不正确！</value>
+  </data>
+  <data name="String12" xml:space="preserve">
+    <value>GPS罗经串口配置不正确！</value>
+  </data>
+  <data name="String13" xml:space="preserve">
+    <value>串口冲突，请重设！</value>
+  </data>
+  <data name="String14" xml:space="preserve">
+    <value>提示：下一步请选择《测流控制》页，然后依次选择“连接仪器”和“开始测量”。</value>
+  </data>
+  <data name="String15" xml:space="preserve">
+    <value>目前处于回放模式，请先切换至跟踪显示模式，再配置！</value>
+  </data>
+  <data name="String16" xml:space="preserve">
+    <value>串口通讯出现故障！</value>
+  </data>
+  <data name="String17" xml:space="preserve">
+    <value>请先连接串口！</value>
+  </data>
+  <data name="String18" xml:space="preserve">
+    <value>系统正在进行工程测量，是否要保存工程文件？</value>
+  </data>
+  <data name="String19" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="String2" xml:space="preserve">
+    <value>底部流量:</value>
+  </data>
+  <data name="String20" xml:space="preserve">
+    <value>操作失败，回放所必需的文件丢失！</value>
+  </data>
+  <data name="String21" xml:space="preserve">
+    <value>工程名：</value>
+  </data>
+  <data name="String22" xml:space="preserve">
+    <value>创建时间：</value>
+  </data>
+  <data name="String23" xml:space="preserve">
+    <value>文件路径：</value>
+  </data>
+  <data name="String24" xml:space="preserve">
+    <value>是否放弃当前回放，开始新的项目回放？</value>
+  </data>
+  <data name="String25" xml:space="preserve">
+    <value>无法打开原始数据，请检查原始数据文件是否有效！</value>
+  </data>
+  <data name="String26" xml:space="preserve">
+    <value>载入回放数据错误，请检查文件格式是否正确！</value>
+  </data>
+  <data name="String27" xml:space="preserve">
+    <value>回放文件终端，请退出或改变回放起点。</value>
+  </data>
+  <data name="String28" xml:space="preserve">
+    <value>尚未创建工程... ...</value>
+  </data>
+  <data name="String29" xml:space="preserve">
+    <value>未接受任何数据... ...</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>实测流量:</value>
+  </data>
+  <data name="String30" xml:space="preserve">
+    <value>无GPS数据... ...</value>
+  </data>
+  <data name="String31" xml:space="preserve">
+    <value>连接仪器</value>
+  </data>
+  <data name="String32" xml:space="preserve">
+    <value>开始发射</value>
+  </data>
+  <data name="String33" xml:space="preserve">
+    <value>幂函数</value>
+  </data>
+  <data name="String34" xml:space="preserve">
+    <value>三角形</value>
+  </data>
+  <data name="String35" xml:space="preserve">
+    <value>系统正在进行工程回放，是否要结束回放？</value>
+  </data>
+  <data name="String36" xml:space="preserve">
+    <value>确定要退出测量？</value>
+  </data>
+  <data name="String37" xml:space="preserve">
+    <value>选用GPS罗经时必须同时选定GPS！</value>
+  </data>
+  <data name="String38" xml:space="preserve">
+    <value>修改失败，输入配置参数据有误，请检查！</value>
+  </data>
+  <data name="String39" xml:space="preserve">
+    <value>配置文件丢失，请重新选择。</value>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>岸边流量:</value>
+  </data>
+  <data name="String40" xml:space="preserve">
+    <value>断开仪器</value>
+  </data>
+  <data name="String41" xml:space="preserve">
+    <value>没有创建工程，请先点击“新建工程”按钮以创建系的工程。</value>
+  </data>
+  <data name="String42" xml:space="preserve">
+    <value>GPS连接失败！</value>
+  </data>
+  <data name="String43" xml:space="preserve">
+    <value>正在接受数据... ...</value>
+  </data>
+  <data name="String44" xml:space="preserve">
+    <value>暂停发射</value>
+  </data>
+  <data name="String45" xml:space="preserve">
+    <value>串口通讯出现故障,无法连接仪器串口！</value>
+  </data>
+  <data name="String46" xml:space="preserve">
+    <value>串口通讯出现故障，无法断开串口连接！</value>
+  </data>
+  <data name="String47" xml:space="preserve">
+    <value>请先连接仪器！</value>
+  </data>
+  <data name="String48" xml:space="preserve">
+    <value>回波强度[单位:count] (20 counts≈1 db)</value>
+  </data>
+  <data name="String49" xml:space="preserve">
+    <value>第</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>解除暂停</value>
+  </data>
+  <data name="String50" xml:space="preserve">
+    <value>层</value>
+  </data>
+  <data name="String51" xml:space="preserve">
+    <value>水流速剖面图[m/s](参考：大地)</value>
+  </data>
+  <data name="String52" xml:space="preserve">
+    <value>东</value>
+  </data>
+  <data name="String53" xml:space="preserve">
+    <value>北</value>
+  </data>
+  <data name="String54" xml:space="preserve">
+    <value>北分量剖面图[m/s](参考：大地)</value>
+  </data>
+  <data name="String55" xml:space="preserve">
+    <value>东分量剖面图[m/s](参考：大地)</value>
+  </data>
+  <data name="String56" xml:space="preserve">
+    <value>相关性</value>
+  </data>
+  <data name="String57" xml:space="preserve">
+    <value>深度流速线（绿色）</value>
+  </data>
+  <data name="String58" xml:space="preserve">
+    <value>当前点/总点数：</value>
+  </data>
+  <data name="String59" xml:space="preserve">
+    <value>当前点：</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>找不到文件</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>请重新启动.</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>参数输入不正确！</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>最大流速不能为0！</value>
+  </data>
+  <data name="str_About" xml:space="preserve">
+    <value>关于...</value>
+  </data>
+  <data name="str_aboutText1" xml:space="preserve">
+    <value>泛际测流大师软件 V4.0  2013-05</value>
+  </data>
+  <data name="str_aboutText2" xml:space="preserve">
+    <value>版权(C)2013-2018 上海泛际科学仪器有限公司</value>
+  </data>
+  <data name="str_aboutText3" xml:space="preserve">
+    <value>上海泛际科学仪器有限公司(Pan-Comm)是一家集研究开发、生产、销售及客户服务的高科技海洋仪器专业公司。公司集电子信息、计算机软件、仪器仪表等高端技术产业于一身，是“三高一无”科技企业。Pan-Comm并与国内外多家科研单位，高等院校和世界一流海洋仪器生产厂商合作，共同努力发展我国的海洋开发事业。</value>
+  </data>
+  <data name="str_aboutText4" xml:space="preserve">
+    <value>地址：上海市漕河泾开发区松江高科园莘砖公路518弄11号楼701室</value>
+  </data>
+  <data name="str_aboutText5" xml:space="preserve">
+    <value>版权所有。</value>
+  </data>
+  <data name="str_errorGPS" xml:space="preserve">
+    <value>Error! 线程已断，无法接受GPS数据。</value>
+  </data>
+  <data name="str_Help" xml:space="preserve">
+    <value>帮助...</value>
+  </data>
+  <data name="str_HelpText1" xml:space="preserve">
+    <value>请参看 《RTI ADCP/DVL 用户手册》 及 </value>
+  </data>
+  <data name="str_HelpText2" xml:space="preserve">
+    <value>《测流大师（DP-Pro）软件应用指南》</value>
+  </data>
+  <data name="str_noteDVL1" xml:space="preserve">
+    <value>提示：DVL 测量：</value>
+  </data>
+  <data name="str_noteDVL2" xml:space="preserve">
+    <value>您没有该功能的使用权限！</value>
+  </data>
+  <data name="str_noteRight1" xml:space="preserve">
+    <value>提示：您没有该功能的使用权限！</value>
+  </data>
+  <data name="str_noteRight2" xml:space="preserve">
+    <value>请联系上海泛际科学仪器有限公司</value>
+  </data>
+  <data name="str_noteWave1" xml:space="preserve">
+    <value>提示：波浪测量：</value>
+  </data>
+  <data name="str_Tel" xml:space="preserve">
+    <value>电话： +86 21 34060911</value>
+  </data>
+  <data name="str_unuse1" xml:space="preserve">
+    <value>无效结果:</value>
+  </data>
+  <data name="str_use1" xml:space="preserve">
+    <value>有效结果:</value>
+  </data>
+  <data name="String60" xml:space="preserve">
+    <value>已记录点数：</value>
+  </data>
+  <data name="String61" xml:space="preserve">
+    <value>回放速度：</value>
+  </data>
+  <data name="String62" xml:space="preserve">
+    <value>自动调节</value>
+  </data>
+  <data name="String63" xml:space="preserve">
+    <value>改变显示方向，请重新启动测量或回放。</value>
+  </data>
+  <data name="String64" xml:space="preserve">
+    <value>请选择文件路径!</value>
+  </data>
+  <data name="String65" xml:space="preserve">
+    <value>设置文件已存在。用新文件覆盖？</value>
+  </data>
+  <data name="String66" xml:space="preserve">
+    <value>矩形</value>
+  </data>
+  <data name="String67" xml:space="preserve">
+    <value>河流测量停止</value>
+  </data>
+  <data name="String68" xml:space="preserve">
+    <value>河流测量开始</value>
+  </data>
+  <data name="String69" xml:space="preserve">
+    <value>停止测流</value>
+  </data>
+  <data name="String70" xml:space="preserve">
+    <value>开始测流</value>
+  </data>
+  <data name="String71" xml:space="preserve">
+    <value>本次工程名：</value>
+  </data>
+  <data name="String72" xml:space="preserve">
+    <value>下一步请选择《通讯》页，设置 ADCP串口 和 GPS串口。</value>
+  </data>
+  <data name="String73" xml:space="preserve">
+    <value>程序执行错误! 请退出程序重新开始。</value>
+  </data>
+  <data name="String74" xml:space="preserve">
+    <value>工程测量：请检查各串行口情况；</value>
+  </data>
+  <data name="String75" xml:space="preserve">
+    <value>回放数据可能丢失，其他原始数据保留。</value>
+  </data>
+  <data name="String76" xml:space="preserve">
+    <value>请输入非负实数</value>
+  </data>
+  <data name="String77" xml:space="preserve">
+    <value>请输入非负整数</value>
+  </data>
+  <data name="String78" xml:space="preserve">
+    <value>每个文件存储样本数不能为0！</value>
+  </data>
+  <data name="String79" xml:space="preserve">
+    <value>层厚不能为0！</value>
+  </data>
+  <data name="String80" xml:space="preserve">
+    <value>请输入-180到180间的实数！</value>
+  </data>
+  <data name="String81" xml:space="preserve">
+    <value>请输入0-100间的实数！</value>
+  </data>
+  <data name="String82" xml:space="preserve">
+    <value>请输入1-200间的整数！</value>
+  </data>
+  <data name="String83" xml:space="preserve">
+    <value>请输入0-10000间的整数！</value>
+  </data>
+  <data name="String84" xml:space="preserve">
+    <value>请输入0-10间的实数！</value>
+  </data>
+  <data name="String85" xml:space="preserve">
+    <value>请输入5-10000间的实数！</value>
+  </data>
+  <data name="String86" xml:space="preserve">
+    <value />
+  </data>
+  <data name="String87" xml:space="preserve">
+    <value>(空名称)</value>
+  </data>
+  <data name="String88" xml:space="preserve">
+    <value>是否停止当前回放，开始新的工程？</value>
+  </data>
+  <data name="String89" xml:space="preserve">
+    <value>是否开始新的工程？</value>
+  </data>
+  <data name="String90" xml:space="preserve">
+    <value>工程正在进行中，是否放弃当前工程，开始新的回放？</value>
+  </data>
+  <data name="String91" xml:space="preserve">
+    <value>文件缺失，不能继续回放！</value>
+  </data>
+  <data name="String92" xml:space="preserve">
+    <value>流量信息</value>
+  </data>
+  <data name="String100" xml:space="preserve">
+    <value>船速</value>
+  </data>
+  <data name="String101" xml:space="preserve">
+    <value>船向</value>
+  </data>
+  <data name="String102" xml:space="preserve">
+    <value>流速</value>
+  </data>
+  <data name="String103" xml:space="preserve">
+    <value>流向</value>
+  </data>
+  <data name="String104" xml:space="preserve">
+    <value>航迹长度</value>
+  </data>
+  <data name="String105" xml:space="preserve">
+    <value>直线距离</value>
+  </data>
+  <data name="String106" xml:space="preserve">
+    <value>直线方向</value>
+  </data>
+  <data name="String107" xml:space="preserve">
+    <value>河宽</value>
+  </data>
+  <data name="String108" xml:space="preserve">
+    <value>总面积</value>
+  </data>
+  <data name="String109" xml:space="preserve">
+    <value>平均流速</value>
+  </data>
+  <data name="String110" xml:space="preserve">
+    <value>平均流向</value>
+  </data>
+  <data name="String111" xml:space="preserve">
+    <value>其他信息</value>
+  </data>
+  <data name="String112" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="String113" xml:space="preserve">
+    <value>测量时间</value>
+  </data>
+  <data name="String114" xml:space="preserve">
+    <value>测量总数</value>
+  </data>
+  <data name="String115" xml:space="preserve">
+    <value>当前水深</value>
+  </data>
+  <data name="String116" xml:space="preserve">
+    <value>经度</value>
+  </data>
+  <data name="String117" xml:space="preserve">
+    <value>纬度</value>
+  </data>
+  <data name="String118" xml:space="preserve">
+    <value>艏向</value>
+  </data>
+  <data name="String119" xml:space="preserve">
+    <value>纵倾</value>
+  </data>
+  <data name="String120" xml:space="preserve">
+    <value>横摇</value>
+  </data>
+  <data name="String121" xml:space="preserve">
+    <value>真北</value>
+  </data>
+  <data name="String122" xml:space="preserve">
+    <value>全部显示</value>
+  </data>
+  <data name="String123" xml:space="preserve">
+    <value>部分显示/</value>
+  </data>
+  <data name="String124" xml:space="preserve">
+    <value>浅水</value>
+  </data>
+  <data name="String125" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="String126" xml:space="preserve">
+    <value>深水</value>
+  </data>
+  <data name="String127" xml:space="preserve">
+    <value>专家模式</value>
+  </data>
+  <data name="String128" xml:space="preserve">
+    <value>用户模式</value>
+  </data>
+  <data name="String93" xml:space="preserve">
+    <value>顶部流量</value>
+  </data>
+  <data name="String94" xml:space="preserve">
+    <value>实测流量</value>
+  </data>
+  <data name="String95" xml:space="preserve">
+    <value>底部流量</value>
+  </data>
+  <data name="String96" xml:space="preserve">
+    <value>左岸流量</value>
+  </data>
+  <data name="String97" xml:space="preserve">
+    <value>右岸流量</value>
+  </data>
+  <data name="String98" xml:space="preserve">
+    <value>总流量</value>
+  </data>
+  <data name="String99" xml:space="preserve">
+    <value>导航信息</value>
+  </data>
+  <data name="String129" xml:space="preserve">
+    <value>层数</value>
+  </data>
+  <data name="String130" xml:space="preserve">
+    <value>请先确保已安装Microsoft Office Excel 2007或以上版本！</value>
+  </data>
+  <data name="String131" xml:space="preserve">
+    <value>请先输入测站基本信息！</value>
+  </data>
+  <data name="String132" xml:space="preserve">
+    <value>表B-</value>
+  </data>
+  <data name="String133" xml:space="preserve">
+    <value>站声学多普勒流速仪测量测验记载表</value>
+  </data>
+  <data name="String134" xml:space="preserve">
+    <value>日期:</value>
+  </data>
+  <data name="String135" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="String136" xml:space="preserve">
+    <value>月</value>
+  </data>
+  <data name="String137" xml:space="preserve">
+    <value>日</value>
+  </data>
+  <data name="String138" xml:space="preserve">
+    <value>天气：</value>
+  </data>
+  <data name="String139" xml:space="preserve">
+    <value>风力风向：</value>
+  </data>
+  <data name="String140" xml:space="preserve">
+    <value>测量测次：</value>
+  </data>
+  <data name="String141" xml:space="preserve">
+    <value>测船：</value>
+  </data>
+  <data name="String142" xml:space="preserve">
+    <value>计算机名：</value>
+  </data>
+  <data name="String143" xml:space="preserve">
+    <value>开始时间：</value>
+  </data>
+  <data name="String144" xml:space="preserve">
+    <value>结束时间：</value>
+  </data>
+  <data name="String145" xml:space="preserve">
+    <value>平均时间：</value>
+  </data>
+  <data name="String146" xml:space="preserve">
+    <value>测速仪型号：</value>
+  </data>
+  <data name="String147" xml:space="preserve">
+    <value>固件版本：</value>
+  </data>
+  <data name="String148" xml:space="preserve">
+    <value>软件版本：</value>
+  </data>
+  <data name="String149" xml:space="preserve">
+    <value>数据文件路径：</value>
+  </data>
+  <data name="String150" xml:space="preserve">
+    <value>配置文件名称：Config.cfg</value>
+  </data>
+  <data name="String151" xml:space="preserve">
+    <value>GPS型号：</value>
+  </data>
+  <data name="String152" xml:space="preserve">
+    <value>罗经型号：</value>
+  </data>
+  <data name="String153" xml:space="preserve">
+    <value>测深仪型号：</value>
+  </data>
+  <data name="String154" xml:space="preserve">
+    <value>探头入水深:</value>
+  </data>
+  <data name="String155" xml:space="preserve">
+    <value>设置的盲区：</value>
+  </data>
+  <data name="String156" xml:space="preserve">
+    <value>深度单元尺寸:</value>
+  </data>
+  <data name="String157" xml:space="preserve">
+    <value>深度单元数：</value>
+  </data>
+  <data name="String158" xml:space="preserve">
+    <value>含盐度：</value>
+  </data>
+  <data name="String159" xml:space="preserve">
+    <value>水跟踪脉冲数：</value>
+  </data>
+  <data name="String160" xml:space="preserve">
+    <value>底跟踪脉冲数：</value>
+  </data>
+  <data name="String161" xml:space="preserve">
+    <value>幂指数b:</value>
+  </data>
+  <data name="String162" xml:space="preserve">
+    <value>测回</value>
+  </data>
+  <data name="String163" xml:space="preserve">
+    <value>航向</value>
+  </data>
+  <data name="String164" xml:space="preserve">
+    <value>水边距离</value>
+  </data>
+  <data name="String165" xml:space="preserve">
+    <value>数据文件名</value>
+  </data>
+  <data name="String166" xml:space="preserve">
+    <value>半测回流量</value>
+  </data>
+  <data name="String167" xml:space="preserve">
+    <value>测回平均流量</value>
+  </data>
+  <data name="String168" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="String169" xml:space="preserve">
+    <value>右岸-左岸</value>
+  </data>
+  <data name="String170" xml:space="preserve">
+    <value>左岸-右岸</value>
+  </data>
+  <data name="String171" xml:space="preserve">
+    <value>测    验    结    果</value>
+  </data>
+  <data name="String172" xml:space="preserve">
+    <value>测验项目</value>
+  </data>
+  <data name="String173" xml:space="preserve">
+    <value>测回</value>
+  </data>
+  <data name="String174" xml:space="preserve">
+    <value>测次平均</value>
+  </data>
+  <data name="String175" xml:space="preserve">
+    <value>往测</value>
+  </data>
+  <data name="String176" xml:space="preserve">
+    <value>返测</value>
+  </data>
+  <data name="String177" xml:space="preserve">
+    <value>断面流量</value>
+  </data>
+  <data name="String178" xml:space="preserve">
+    <value>断面面积</value>
+  </data>
+  <data name="String179" xml:space="preserve">
+    <value>平均流速</value>
+  </data>
+  <data name="String180" xml:space="preserve">
+    <value>最大流速</value>
+  </data>
+  <data name="String181" xml:space="preserve">
+    <value>平均水深</value>
+  </data>
+  <data name="String182" xml:space="preserve">
+    <value>最大水深</value>
+  </data>
+  <data name="String183" xml:space="preserve">
+    <value>水面宽</value>
+  </data>
+  <data name="String184" xml:space="preserve">
+    <value>开始水位：</value>
+  </data>
+  <data name="String185" xml:space="preserve">
+    <value>结束水位：</value>
+  </data>
+  <data name="String186" xml:space="preserve">
+    <value>平均水位：</value>
+  </data>
+  <data name="String187" xml:space="preserve">
+    <value>相应水位：</value>
+  </data>
+  <data name="String188" xml:space="preserve">
+    <value>操作记录：</value>
+  </data>
+  <data name="String189" xml:space="preserve">
+    <value>现场审查：</value>
+  </data>
+  <data name="String190" xml:space="preserve">
+    <value>审定：</value>
+  </data>
+  <data name="String191" xml:space="preserve">
+    <value>楷体</value>
+  </data>
+  <data name="String192" xml:space="preserve">
+    <value>保存:</value>
+  </data>
+  <data name="String193" xml:space="preserve">
+    <value>用户模式：建议一般用户使用！</value>
+  </data>
+  <data name="String194" xml:space="preserve">
+    <value>专家模式：根据详细的命令设置配置！</value>
+  </data>
+  <data name="String195" xml:space="preserve">
+    <value>当底跟踪的信噪比小于设置的门限值时，认为该值不好。默认门限值浅水为15，深水为5</value>
+  </data>
+  <data name="String196" xml:space="preserve">
+    <value>当底跟踪的相关性值小于设置的门限值时，认为该值不好，且该值不用于计算平均值。默认门限值为0.9</value>
+  </data>
+  <data name="String197" xml:space="preserve">
+    <value>当水剖面的相关性小于设置的门限值是，认为该值不好，且该值不用于bin平均。默认门限值为0.4</value>
+  </data>
+  <data name="String198" xml:space="preserve">
+    <value>测流地理坐标良好率是指在该单元层中的发射的呯数与实际可用的呯数的比值</value>
+  </data>
+  <data name="String199" xml:space="preserve">
+    <value>测流波束坐标良好率</value>
+  </data>
+  <data name="String200" xml:space="preserve">
+    <value>地球坐标系下的流速</value>
+  </data>
+  <data name="String201" xml:space="preserve">
+    <value>仪器坐标系下的流速</value>
+  </data>
+  <data name="String202" xml:space="preserve">
+    <value>波束方向上的流速</value>
+  </data>
+  <data name="String203" xml:space="preserve">
+    <value>地球坐标系下的底跟踪速度</value>
+  </data>
+  <data name="String204" xml:space="preserve">
+    <value>仪器坐标系下的底跟踪速度</value>
+  </data>
+  <data name="String205" xml:space="preserve">
+    <value>波束方向的底跟踪速度</value>
+  </data>
+  <data name="String206" xml:space="preserve">
+    <value>地球坐标系的水剖面ping的良好率</value>
+  </data>
+  <data name="String207" xml:space="preserve">
+    <value>波束方向上的水剖面ping的良好率</value>
+  </data>
+  <data name="String208" xml:space="preserve">
+    <value>地球坐标系下的底跟踪ping的良好率</value>
+  </data>
+  <data name="String209" xml:space="preserve">
+    <value>仪器坐标系下的底跟踪ping的良好率</value>
+  </data>
+  <data name="String210" xml:space="preserve">
+    <value>波束方向上的底跟踪ping的良好率</value>
+  </data>
+  <data name="String211" xml:space="preserve">
+    <value>水剖面相关性，默认的相关性阈值为0.4。当某个单元层的相关性值小于设定的阈值，则认为该数据不可用，予以剔除。</value>
+  </data>
+  <data name="String212" xml:space="preserve">
+    <value>底跟踪相关性，默认的底跟踪相关性阈值为0.9。当某一ping的相关性小于设定的阈值，则认为该数据不可用，予以剔除。</value>
+  </data>
+  <data name="String213" xml:space="preserve">
+    <value>水剖面回波强度</value>
+  </data>
+  <data name="String214" xml:space="preserve">
+    <value>底跟踪回波强度</value>
+  </data>
+  <data name="String215" xml:space="preserve">
+    <value>(m/s)</value>
+  </data>
+  <data name="String216" xml:space="preserve">
+    <value>(度)</value>
+  </data>
+  <data name="String217" xml:space="preserve">
+    <value>该页面用于配置流量测量参数。</value>
+  </data>
+  <data name="String218" xml:space="preserve">
+    <value>当用户设置完成所有配置参数后，请点击工具栏上的“开始”按钮（或点击快捷键“F5”），启动流量测量。</value>
+  </data>
+  <data name="String219" xml:space="preserve">
+    <value>用户可根据实际情况修改流量测量参数。</value>
+  </data>
+  <data name="String220" xml:space="preserve">
+    <value>流速剖面图 - 参考:</value>
+  </data>
+  <data name="String221" xml:space="preserve">
+    <value>三角形 (斜坡)</value>
+  </data>
+  <data name="String222" xml:space="preserve">
+    <value>矩形 (垂直)</value>
+  </data>
+  <data name="String223" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="String224" xml:space="preserve">
+    <value>常数</value>
+  </data>
+  <data name="String225" xml:space="preserve">
+    <value>三点外延</value>
+  </data>
+  <data name="String226" xml:space="preserve">
+    <value>左岸</value>
+  </data>
+  <data name="String227" xml:space="preserve">
+    <value>右岸</value>
+  </data>
+  <data name="String228" xml:space="preserve">
+    <value>软件计算</value>
+  </data>
+  <data name="String229" xml:space="preserve">
+    <value>仪器获取</value>
+  </data>
+  <data name="String230" xml:space="preserve">
+    <value>内置罗盘</value>
+  </data>
+  <data name="String231" xml:space="preserve">
+    <value>外接罗盘</value>
+  </data>
+  <data name="String232" xml:space="preserve">
+    <value>底跟踪</value>
+  </data>
+  <data name="String233" xml:space="preserve">
+    <value>无参考</value>
+  </data>
+  <data name="String234" xml:space="preserve">
+    <value>用户模式</value>
+  </data>
+  <data name="String235" xml:space="preserve">
+    <value>专家模式</value>
+  </data>
+  <data name="String236" xml:space="preserve">
+    <value>公制</value>
+  </data>
+  <data name="String237" xml:space="preserve">
+    <value>英制</value>
+  </data>
+  <data name="String238" xml:space="preserve">
+    <value>水深</value>
+  </data>
+  <data name="String239" xml:space="preserve">
+    <value>测量</value>
+  </data>
+  <data name="String240" xml:space="preserve">
+    <value>回放</value>
+  </data>
+  <data name="String241" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="String242" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="String243" xml:space="preserve">
+    <value>美国亚奇科技公司</value>
+  </data>
+  <data name="String244" xml:space="preserve">
+    <value>上海泛际科学仪器有限公司</value>
+  </data>
+  <data name="String245" xml:space="preserve">
+    <value>该程序正在运行，请勿重复运行！</value>
+  </data>
+  <data name="String246" xml:space="preserve">
+    <value>用户手册</value>
+  </data>
+  <data name="String247" xml:space="preserve">
+    <value>RTI网站</value>
+  </data>
+  <data name="String248" xml:space="preserve">
+    <value>泛际网站</value>
+  </data>
+  <data name="String249" xml:space="preserve">
+    <value>泛际测流大师软件</value>
+  </data>
+  <data name="String250" xml:space="preserve">
+    <value>版本:</value>
+  </data>
+  <data name="String251" xml:space="preserve">
+    <value>上海泛际科学仪器有限公司</value>
+  </data>
+  <data name="String252" xml:space="preserve">
+    <value>版权所有@</value>
+  </data>
+  <data name="String253" xml:space="preserve">
+    <value>平均值</value>
+  </data>
+  <data name="String254" xml:space="preserve">
+    <value>标准差</value>
+  </data>
+  <data name="String255" xml:space="preserve">
+    <value>误差</value>
+  </data>
+  <data name="String256" xml:space="preserve">
+    <value>开始岸边测量，请点击这里！（或按快捷键“F5”）</value>
+  </data>
+  <data name="String257" xml:space="preserve">
+    <value>开始走航测量，请点击这里！（或按快捷键“F5”）</value>
+  </data>
+  <data name="String258" xml:space="preserve">
+    <value>开始发射呯，请点击这里！（或按快捷键“F5”）</value>
+  </data>
+  <data name="String259" xml:space="preserve">
+    <value>停止发射呯，请点击这里！（或按快捷键“F6”）</value>
+  </data>
+  <data name="String260" xml:space="preserve">
+    <value>文件名</value>
+  </data>
+  <data name="String261" xml:space="preserve">
+    <value>起始日期</value>
+  </data>
+  <data name="String262" xml:space="preserve">
+    <value>起始时间</value>
+  </data>
+  <data name="String263" xml:space="preserve">
+    <value>正在发射呯</value>
+  </data>
+  <data name="String264" xml:space="preserve">
+    <value>正在测量起始岸</value>
+  </data>
+  <data name="String265" xml:space="preserve">
+    <value>正在走航</value>
+  </data>
+  <data name="String266" xml:space="preserve">
+    <value>正在测量结束岸</value>
+  </data>
+  <data name="String267" xml:space="preserve">
+    <value>停止发射呯</value>
+  </data>
+  <data name="String268" xml:space="preserve">
+    <value>数据组号</value>
+  </data>
+  <data name="String269" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="String270" xml:space="preserve">
+    <value>(度)</value>
+  </data>
+  <data name="String271" xml:space="preserve">
+    <value>船速/流速</value>
+  </data>
+  <data name="String272" xml:space="preserve">
+    <value>航迹距离</value>
+  </data>
+  <data name="String273" xml:space="preserve">
+    <value>下一个</value>
+  </data>
+  <data name="String274" xml:space="preserve">
+    <value>显示汇总信息</value>
+  </data>
+  <data name="String275" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="String276" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="String277" xml:space="preserve">
+    <value>开始测量</value>
+  </data>
+  <data name="String278" xml:space="preserve">
+    <value>开始岸边</value>
+  </data>
+  <data name="String279" xml:space="preserve">
+    <value>走航</value>
+  </data>
+  <data name="String280" xml:space="preserve">
+    <value>结束岸边</value>
+  </data>
+  <data name="String281" xml:space="preserve">
+    <value>结束测量</value>
+  </data>
+  <data name="String282" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="String283" xml:space="preserve">
+    <value>请先查看测量模式(第四步：系统设置)！</value>
+  </data>
+  <data name="String284" xml:space="preserve">
+    <value>上海泛际</value>
+  </data>
+  <data name="String285" xml:space="preserve">
+    <value>未找到下一个可读文件！</value>
+  </data>
+  <data name="String286" xml:space="preserve">
+    <value>串口被占用</value>
+  </data>
+  <data name="String287" xml:space="preserve">
+    <value>极浅水</value>
+  </data>
+  <data name="String288" xml:space="preserve">
+    <value>系统罗盘未工作。</value>
+  </data>
+  <data name="String289" xml:space="preserve">
+    <value>总大小：</value>
+  </data>
+  <data name="String290" xml:space="preserve">
+    <value>已用空间：</value>
+  </data>
+  <data name="String291" xml:space="preserve">
+    <value>未找到SD卡。</value>
+  </data>
+  <data name="String292" xml:space="preserve">
+    <value>系统电量为：</value>
+  </data>
+  <data name="String293" xml:space="preserve">
+    <value>水温为：</value>
+  </data>
+  <data name="String294" xml:space="preserve">
+    <value>未检测到温度传感器。</value>
+  </data>
+  <data name="String295" xml:space="preserve">
+    <value>系统测试</value>
+  </data>
+  <data name="String296" xml:space="preserve">
+    <value>通讯故障</value>
+  </data>
+  <data name="String297" xml:space="preserve">
+    <value>请检查ADCP通讯线路或电源供电是否正常</value>
+  </data>
+  <data name="String298" xml:space="preserve">
+    <value>请检查GPS通讯线路或电源供电是否正常</value>
+  </data>
+  <data name="String299" xml:space="preserve">
+    <value>正在下载...</value>
+  </data>
+  <data name="String300" xml:space="preserve">
+    <value>下载完成</value>
+  </data>
+  <data name="String301" xml:space="preserve">
+    <value>下载失败</value>
+  </data>
+  <data name="String302" xml:space="preserve">
+    <value>发送DSDIR命令失败</value>
+  </data>
+  <data name="String303" xml:space="preserve">
+    <value>网址：</value>
+  </data>
+  <data name="String304" xml:space="preserve">
+    <value>无法找到软件狗！</value>
+  </data>
+  <data name="String305" xml:space="preserve">
+    <value>采用默认配置</value>
+  </data>
+  <data name="String306" xml:space="preserve">
+    <value>开始数据采集，请点击这里！（或按快捷键“F5”）</value>
+  </data>
+  <data name="String307" xml:space="preserve">
+    <value>停止数据采集，请点击这里！（或按快捷键“F6”）</value>
+  </data>
+  <data name="String308" xml:space="preserve">
+    <value>正在数据采集</value>
+  </data>
+  <data name="String309" xml:space="preserve">
+    <value>停止数据采集</value>
+  </data>
+  <data name="String310" xml:space="preserve">
+    <value>流量报表输出完成！</value>
+  </data>
+  <data name="String311" xml:space="preserve">
+    <value>流量报表输出失败！</value>
+  </data>
+  <data name="String312" xml:space="preserve">
+    <value>流量报表输出失败，缺少流量数据！</value>
+  </data>
+  <data name="String313" xml:space="preserve">
+    <value>航迹图</value>
+  </data>
+  <data name="String314" xml:space="preserve">
+    <value>船速参考</value>
+  </data>
+</root>

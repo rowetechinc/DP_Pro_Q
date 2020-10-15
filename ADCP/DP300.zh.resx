@@ -1,0 +1,2167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="textBoxHelpTips.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, -2</value>
+  </data>
+  <data name="textBoxHelpTips.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 704</value>
+  </data>
+  <data name="panel34.Location" type="System.Drawing.Point, System.Drawing">
+    <value>825, 1</value>
+  </data>
+  <data name="panel34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 702</value>
+  </data>
+  <data name="linkLabelUpdateFirmware.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="linkLabelUpdateFirmware.Text" xml:space="preserve">
+    <value>固件升级</value>
+  </data>
+  <data name="linkLabelBeamCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="linkLabelBeamCheck.Text" xml:space="preserve">
+    <value>检测波束</value>
+  </data>
+  <data name="linkLabelDownload.Text" xml:space="preserve">
+    <value>数据下载</value>
+  </data>
+  <data name="linkLabelHeadingOffset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
+  </data>
+  <data name="linkLabelHeadingOffset.Text" xml:space="preserve">
+    <value>获取艏向偏角</value>
+  </data>
+  <data name="linkLabelEdgeSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
+  </data>
+  <data name="linkLabelEdgeSetting.Text" xml:space="preserve">
+    <value>更改岸边设置</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 124</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 85</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 12</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>幂函数系数</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>底部估算方式</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>顶部估算方式</value>
+  </data>
+  <data name="label249.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label249.Text" xml:space="preserve">
+    <value>右岸距离</value>
+  </data>
+  <data name="label255.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label255.Text" xml:space="preserve">
+    <value>左岸类型</value>
+  </data>
+  <data name="label257.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label257.Text" xml:space="preserve">
+    <value>左岸距离</value>
+  </data>
+  <data name="label258.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label258.Text" xml:space="preserve">
+    <value>起始岸边</value>
+  </data>
+  <data name="label262.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label262.Text" xml:space="preserve">
+    <value>右岸类型</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labelStep5.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelStep5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 19</value>
+  </data>
+  <data name="labelStep5.Text" xml:space="preserve">
+    <value>第五步： 岸边设置</value>
+  </data>
+  <data name="linkLabelSystemConf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 14</value>
+  </data>
+  <data name="linkLabelSystemConf.Text" xml:space="preserve">
+    <value>更改系统配置</value>
+  </data>
+  <data name="linkLabelUnit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 14</value>
+  </data>
+  <data name="linkLabelUnit.Text" xml:space="preserve">
+    <value>更改单位</value>
+  </data>
+  <data name="labelUnit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="labelUnit.Text" xml:space="preserve">
+    <value>公制</value>
+  </data>
+  <data name="label256.Text" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="labelStep1.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelStep1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 19</value>
+  </data>
+  <data name="labelStep1.Text" xml:space="preserve">
+    <value>第一步： 单位</value>
+  </data>
+  <data name="linkLabelSystemTest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="linkLabelSystemTest.Text" xml:space="preserve">
+    <value>系统测试</value>
+  </data>
+  <data name="linkLabelSystemSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
+  </data>
+  <data name="linkLabelSystemSetting.Text" xml:space="preserve">
+    <value>更改系统设置</value>
+  </data>
+  <data name="labelStep6.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelStep6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 19</value>
+  </data>
+  <data name="labelStep6.Text" xml:space="preserve">
+    <value>第六步： 其他设置</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 12</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>航向偏角(±180°)</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 12</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>盐度(ppt)</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 69</value>
+  </data>
+  <data name="labelHeadingRef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="labelHeadingRef.Text" xml:space="preserve">
+    <value>内置罗盘</value>
+  </data>
+  <data name="labelVesselRef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="labelVesselRef.Text" xml:space="preserve">
+    <value>底跟踪</value>
+  </data>
+  <data name="label250.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label250.Text" xml:space="preserve">
+    <value>测量模式</value>
+  </data>
+  <data name="label251.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label251.Text" xml:space="preserve">
+    <value>艏向参考</value>
+  </data>
+  <data name="label252.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label252.Text" xml:space="preserve">
+    <value>船速参考</value>
+  </data>
+  <data name="label254.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="label254.Text" xml:space="preserve">
+    <value>换能器入水深度</value>
+  </data>
+  <data name="labelStep4.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelStep4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 19</value>
+  </data>
+  <data name="labelStep4.Text" xml:space="preserve">
+    <value>第四步： 系统设置</value>
+  </data>
+  <data name="linkLabelSiteInfor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 14</value>
+  </data>
+  <data name="linkLabelSiteInfor.Text" xml:space="preserve">
+    <value>更改测站信息</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>仪器编号</value>
+  </data>
+  <data name="label259.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label259.Text" xml:space="preserve">
+    <value>仪器类型</value>
+  </data>
+  <data name="label260.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label260.Text" xml:space="preserve">
+    <value>固件版本</value>
+  </data>
+  <data name="label261.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="label261.Text" xml:space="preserve">
+    <value>串口号</value>
+  </data>
+  <data name="linkLabelSettingTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="linkLabelSettingTime.Text" xml:space="preserve">
+    <value>时间设置</value>
+  </data>
+  <data name="linkLabelCompassCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="linkLabelCompassCalibration.Text" xml:space="preserve">
+    <value>罗盘校准</value>
+  </data>
+  <data name="linkLabelGPSConf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 12</value>
+  </data>
+  <data name="linkLabelGPSConf.Text" xml:space="preserve">
+    <value>GPS设置</value>
+  </data>
+  <data name="labelStep3.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelStep3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 19</value>
+  </data>
+  <data name="labelStep3.Text" xml:space="preserve">
+    <value>第三步： 系统配置</value>
+  </data>
+  <data name="label267.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label267.Text" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="label268.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label268.Text" xml:space="preserve">
+    <value>测量编号</value>
+  </data>
+  <data name="label269.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 12</value>
+  </data>
+  <data name="label269.Text" xml:space="preserve">
+    <value>测站编号</value>
+  </data>
+  <data name="label270.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 12</value>
+  </data>
+  <data name="label270.Text" xml:space="preserve">
+    <value>站名</value>
+  </data>
+  <data name="labelStep2.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelStep2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 19</value>
+  </data>
+  <data name="labelStep2.Text" xml:space="preserve">
+    <value>第二步：测站信息</value>
+  </data>
+  <data name="panel23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>801, 726</value>
+  </data>
+  <data name="panel17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>823, 703</value>
+  </data>
+  <data name="tabPageSmartPage.Text" xml:space="preserve">
+    <value>配置</value>
+  </data>
+  <data name="btnSpeedFast.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7d3d3d3d3d3d3d3u3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3d3d7t3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7u3d3d3d3d3d3d3e7t3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3e7u3d3d3d3d3d3d3u7t3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u3
+        d3d3d3d3d3d7u7t3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7t3d3d3d3d3d3
+        e7u7d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7t3d3d3d3d3d3u7u7d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7t3d3d3d3d3d7u7u7d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3e7u7u7d3d3d3d3d3u7u7u3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7u7u3d3d3d3d3e7u7u7t3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u3d3
+        d3d3d3u7u7u7t3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u3d3d3d3d7u7u7
+        u7t3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7u7u7t3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7t3d3d3d3u7u7u7u7d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3e7u7u7u7u7d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7
+        u7u7u7d3d3d7u7u7u7u7u3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u7u7d3d3
+        e7u7u7u7u7u3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7u7d3d3u7u7u7u7u7
+        u3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u7u7u3d3e7u7u7u7u7u7t3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7u7d3d3u7u7u7u7u7u3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7
+        t3d3d3u7u7u7u7u7d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7u3d3d3d7u7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3e7u7u7u7d3d3d3d3u7u7u7u3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7
+        u7t3d3d3d3d7u7u7u7d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u3d3d3d3d3
+        e7u7u7t3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7t3d3d3d3d3u7u7u7d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u3d3d3d3d3d7u7u7t3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3e7u7u3d3d3d3d3d3u7u7t3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3u7u7d3d3d3d3d3d7u7u3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7t3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7d3d3d3
+        d3d3d3u7u3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7t3d3d3d3d3d3d7u7d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u3d3d3d3d3d3d3e7t3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7d3d3d3d3d3d3d3u3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3d3d7t3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP////////////////////////////////////////////////////////////////8A
+        AAD/////////////////////////////////////////////////////////////////8AAA////////
+        //////////////////////////////////////////////////////////AAAP//////////////////
+        ///////////////////////////////////////////////wAAA=
+</value>
+  </data>
+  <data name="btnSpeedFast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>742, 439</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel18.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="listView_Summary.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="FileName.Text" xml:space="preserve">
+    <value>文件名</value>
+  </data>
+  <data name="StartDate.Text" xml:space="preserve">
+    <value>开始日期</value>
+  </data>
+  <data name="StartTime.Text" xml:space="preserve">
+    <value>开始时间</value>
+  </data>
+  <data name="Duration.Text" xml:space="preserve">
+    <value>总测量时间</value>
+  </data>
+  <data name="Duration.Width" type="System.Int32, mscorlib">
+    <value>69</value>
+  </data>
+  <data name="RiverWidth.Text" xml:space="preserve">
+    <value>河宽</value>
+  </data>
+  <data name="Area.Text" xml:space="preserve">
+    <value>总面积</value>
+  </data>
+  <data name="TotalQ.Text" xml:space="preserve">
+    <value>总流量</value>
+  </data>
+  <data name="MeanVelocity.Text" xml:space="preserve">
+    <value>平均流速</value>
+  </data>
+  <data name="MeanCourse.Text" xml:space="preserve">
+    <value>平均流向</value>
+  </data>
+  <data name="DistanceMG.Text" xml:space="preserve">
+    <value>直线距离</value>
+  </data>
+  <data name="CourseMG.Text" xml:space="preserve">
+    <value>直线方向</value>
+  </data>
+  <data name="TotalLength.Text" xml:space="preserve">
+    <value>总长度</value>
+  </data>
+  <data name="TopQ.Text" xml:space="preserve">
+    <value>顶部流量</value>
+  </data>
+  <data name="BottomQ.Text" xml:space="preserve">
+    <value>底部流量</value>
+  </data>
+  <data name="LeftQ.Text" xml:space="preserve">
+    <value>左岸流量</value>
+  </data>
+  <data name="RightQ.Text" xml:space="preserve">
+    <value>右岸流量</value>
+  </data>
+  <data name="MiddleQ.Text" xml:space="preserve">
+    <value>实测流量</value>
+  </data>
+  <data name="listView_Summary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>638, 151</value>
+  </data>
+  <data name="tabPage_Summary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 163</value>
+  </data>
+  <data name="tabPage_Summary.Text" xml:space="preserve">
+    <value>信息汇总</value>
+  </data>
+  <data name="tabPage_BoatSpeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 163</value>
+  </data>
+  <data name="tabPage_WaterDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 163</value>
+  </data>
+  <data name="tabPage_BoatWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 163</value>
+  </data>
+  <data name="tabPage_Pitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 163</value>
+  </data>
+  <data name="tabPage_Pitch.Text" xml:space="preserve">
+    <value>纵倾</value>
+  </data>
+  <data name="tabPage_Roll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>637, 163</value>
+  </data>
+  <data name="tabPage_Roll.Text" xml:space="preserve">
+    <value>横摇</value>
+  </data>
+  <data name="tabControl11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>645, 189</value>
+  </data>
+  <data name="panel18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>649, 223</value>
+  </data>
+  <data name="btnSpeedSlow.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d7
+        d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3
+        d3d7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d7t3d3d3d3d3d3d3e7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3u7d3d3d3d3d3d3d7u3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3e7u3d3d3d3d3d3d3u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d7u7t3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3e7u7d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d7u7u3d3d3d3d3d3e7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3u7u7t3d3d3
+        d3d3d7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3u7u7u3d3d3d3d3d7u7u7t3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3e7u7u7t3d3d3d3d3u7u7u7d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3e7u7u7u3d3d3d3d3u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d7u7u7u7t3d3d3d3e7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3u7u7u7u7
+        d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3d7u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7u3d3d3d7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3e7u7u7u7u7t3d3d3u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3u7u7u7
+        u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d7u7u7u7u7u7t3d3e7
+        u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3u7u7u7u7u7u7d3d7u7u7u7u7u7u3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d7u7u7u7u7u7t3d3e7u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d7u7u7u7u7u3d3d3e7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7
+        d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3d3u7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3e7u7u7u7t3d3d3d3u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3u7u7u7u7d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3u7u7u7u3d3d3d3d7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3u7u7u7t3d3d3d3d7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d7
+        u7u7u3d3d3d3d3e7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d7u7u7t3d3d3
+        d3d3e7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3e7u7u3d3d3d3d3d3u7u7t3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3e7u7t3d3d3d3d3d3u7u7d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3e7u7d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3u7u3d3d3d3d3d3d7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3u7t3d3d3d3d3d3d7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3u7
+        d3d3d3d3d3d3d7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3
+        d3d7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d7t3d3d3d3d3d3d3e7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP////////////////////////////////////////////////////////////////8A
+        AAD/////////////////////////////////////////////////////////////////8AAA////////
+        //////////////////////////////////////////////////////////AAAP//////////////////
+        ///////////////////////////////////////////////wAAA=
+</value>
+  </data>
+  <data name="btnSpeedSlow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>686, 439</value>
+  </data>
+  <data name="columnHeader43.Width" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="columnHeader44.Width" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="listView_Others.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 10.5pt</value>
+  </data>
+  <data name="listView_Others.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 388</value>
+  </data>
+  <data name="listView_Others.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 283</value>
+  </data>
+  <data name="columnHeader41.Width" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="columnHeader42.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="columnHeader42.Width" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="listView_Navigation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 10.5pt</value>
+  </data>
+  <data name="listView_Navigation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 186</value>
+  </data>
+  <data name="listView_Navigation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 203</value>
+  </data>
+  <data name="lV_MeasuredQ.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="columnHeaderName.Width" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="columnHeaderData.Width" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="lV_MeasuredQ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>宋体, 10.5pt</value>
+  </data>
+  <data name="lV_MeasuredQ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 0</value>
+  </data>
+  <data name="lV_MeasuredQ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 186</value>
+  </data>
+  <data name="label208.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 150</value>
+  </data>
+  <data name="label209.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 163</value>
+  </data>
+  <data name="label210.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 125</value>
+  </data>
+  <data name="label211.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 102</value>
+  </data>
+  <data name="groupBox39.Location" type="System.Drawing.Point, System.Drawing">
+    <value>57, 61</value>
+  </data>
+  <data name="groupBox39.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 10</value>
+  </data>
+  <data name="groupBox32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 135</value>
+  </data>
+  <data name="groupBox32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 15</value>
+  </data>
+  <data name="tabPage43.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 708</value>
+  </data>
+  <data name="radioButtonRealTime_WA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 20</value>
+  </data>
+  <data name="radioButtonHistory_WA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 42</value>
+  </data>
+  <data name="groupBox19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 542</value>
+  </data>
+  <data name="groupBox19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 64</value>
+  </data>
+  <data name="radioButtonWhole_WA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="radioButtonPart_WA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 42</value>
+  </data>
+  <data name="groupBox18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>92, 542</value>
+  </data>
+  <data name="groupBox18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 64</value>
+  </data>
+  <data name="label113.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 477</value>
+  </data>
+  <data name="checkBox_WA_b3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 518</value>
+  </data>
+  <data name="checkBox_WA_b2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 518</value>
+  </data>
+  <data name="checkBox_WA_b1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>85, 496</value>
+  </data>
+  <data name="checkBox_WA_b0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 496</value>
+  </data>
+  <data name="pictureBox_W_A.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 0</value>
+  </data>
+  <data name="pictureBox_W_A.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 294</value>
+  </data>
+  <data name="panel_W_A.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-2, 0</value>
+  </data>
+  <data name="panel_W_A.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 294</value>
+  </data>
+  <data name="vScrollBar_W_A.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-104, 0</value>
+  </data>
+  <data name="vScrollBar_W_A.Size" type="System.Drawing.Size, System.Drawing">
+    <value>19, 169</value>
+  </data>
+  <data name="vScrollBar_W_A.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panel22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="panel22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 449</value>
+  </data>
+  <data name="tabPage32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 677</value>
+  </data>
+  <data name="radioButtonRealTime_WC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 20</value>
+  </data>
+  <data name="radioButtonHistory_WC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 42</value>
+  </data>
+  <data name="groupBox29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 549</value>
+  </data>
+  <data name="groupBox29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 64</value>
+  </data>
+  <data name="radioButtonWhole_WC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 20</value>
+  </data>
+  <data name="radioButtonPart_WC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 42</value>
+  </data>
+  <data name="groupBox30.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 549</value>
+  </data>
+  <data name="groupBox30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 64</value>
+  </data>
+  <data name="checkBox_WC_b3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 525</value>
+  </data>
+  <data name="label120.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 484</value>
+  </data>
+  <data name="checkBox_WC_b0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 503</value>
+  </data>
+  <data name="pictureBox_W_C.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 0</value>
+  </data>
+  <data name="pictureBox_W_C.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 294</value>
+  </data>
+  <data name="panel_W_C.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 294</value>
+  </data>
+  <data name="vScrollBar_W_C.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-103, 0</value>
+  </data>
+  <data name="vScrollBar_W_C.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 169</value>
+  </data>
+  <data name="vScrollBar_W_C.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panel24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="panel24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 449</value>
+  </data>
+  <data name="checkBox_WC_b2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 525</value>
+  </data>
+  <data name="checkBox_WC_b1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 503</value>
+  </data>
+  <data name="tabPage35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 677</value>
+  </data>
+  <data name="tabControl_FuTu_WP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 702</value>
+  </data>
+  <data name="tabPage_WP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 708</value>
+  </data>
+  <data name="tabControlFuTu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="tabControlFuTu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 733</value>
+  </data>
+  <data name="panel20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>786, 1</value>
+  </data>
+  <data name="panel20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 736</value>
+  </data>
+  <data name="TimeLable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>413, 2</value>
+  </data>
+  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 15</value>
+  </data>
+  <data name="ProcessBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 1</value>
+  </data>
+  <data name="ProcessBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 15</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 440</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>545, 22</value>
+  </data>
+  <data name="btnScaleDecrease.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAldEVYdGRhdGU6
+        Y3JlYXRlADIwMTUtMDctMjVUMjE6NDk6MzErMDg6MDBI0w9NAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDEx
+        LTEwLTMxVDE0OjU2OjI5KzA4OjAwt29PRAAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44Ljgt
+        MTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAABh0
+        RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABd0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQA
+        MzYvmTztAAAAFnRFWHRUaHVtYjo6SW1hZ2U6OldpZHRoADM21zb8YAAAABl0RVh0VGh1bWI6Ok1pbWV0
+        eXBlAGltYWdlL3BuZz+yVk4AAAAXdEVYdFRodW1iOjpNVGltZQAxMzIwMDQ0MTg5wJhUXQAAABN0RVh0
+        VGh1bWI6OlNpemUAMS4xMUtCQvG9zmQAAABYdEVYdFRodW1iOjpVUkkAZmlsZTovLy9ob21lL3d3d3Jv
+        b3Qvd3d3LmVhc3lpY29uLm5ldC9jZG4taW1nLmVhc3lpY29uLmNuL3NyYy81Njc3LzU2NzczMy5wbmeZ
+        6q4AAAAAqUlEQVRYR+2VUQqAIBBEPUMQdP+vfjtY0A3MCaSEYgxs3WCEhWDBfb0mDTHG4KlcwUCMgFg8
+        ZEiGmAHWV4ZkiBlgfd8ZCp3W1VphqBNPyVDQnURDepxTranSFdy0sCf2xoxj1RhaGkPcvRRmVAGNBjAZ
+        ELOoockbEKBdfTIA5VBvH9jCnq9DbXoCPP5l7Fi36Pu+OiwMsBkyJEPMAOsrQzLEDLC+MvQ7QzvBqY/g
+        IR8SXwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnScaleIncrease.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAQoAAAEKCAYAAADqyxvJAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAldEVYdGRhdGU6
+        Y3JlYXRlADIwMTUtMTAtMTNUMDA6MDg6NTArMDg6MDBkeoqHAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE1
+        LTEwLTEzVDAwOjA4OjUwKzA4OjAwFScyOwAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44Ljgt
+        MTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAAFl0
+        RVh0c3ZnOmNvbW1lbnQAIEdlbmVyYXRvcjogU2tldGNoIEJldGEgMy4zLjIgKDEyMDQxKSAtIGh0dHA6
+        Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCDY+YpbAAAADnRFWHRzdmc6dGl0bGUAcGx1c6Oo
+        RKUAAAAYdEVYdFRodW1iOjpEb2N1bWVudDo6UGFnZXMAMaf/uy8AAAAYdEVYdFRodW1iOjpJbWFnZTo6
+        SGVpZ2h0ADM3M6pduCMAAAAXdEVYdFRodW1iOjpJbWFnZTo6V2lkdGgAMzczOazofgAAABl0RVh0VGh1
+        bWI6Ok1pbWV0eXBlAGltYWdlL3BuZz+yVk4AAAAXdEVYdFRodW1iOjpNVGltZQAxNDQ0NjY2MTMwCmEN
+        mQAAABJ0RVh0VGh1bWI6OlNpemUAMy4zS0JCCSNp+gAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hv
+        bWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExODc3LzEx
+        ODc3MDgucG5n0vbGcgAAEAJJREFUeF7tnV2sFtUVhvn/kyKERhG1SDAqCMYLjQaJBKqtSklQTIjB0AtL
+        64VpNaIhbY0B1GqixjZeGBr1Am1p0MRq/UkUpdpEbMVWLdE01FAbpFDagm0FAaHvW7+vQe2J55y9Z75v
+        1n4mecPxeGbPrGet/c6emT0zAwawQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAA
+        BCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEI
+        QAACEIAABCAAAQhAAAIQgAAEIACBhhMYov0fLg1ueBzsPgQgkImAzWCcNE06X1os3Ss9I90mXS7NlE6W
+        xkgDM22XZiAAgS4m4JHCJOli6XrpDmmdtFU6IB2UDkmHW//6vz+UNktrpFuka6TZ0gRpaBfHyq5BAAJ9
+        JHCS/v5W6QVpk7Rd+qhlCDaFvmi//v5d6RXpWek70vg+7g9/DgEIdBEBjyDmS79LMIbPMxGPRJ6QzpU4
+        Nemi5LMrEOgNgeP1R/dI2/o4Yvg8Y+jp//9B21kmje3NzvE3EIBAZwkM0+bnSc9XOIroySz+rW3+TDpH
+        4q5JZ+uArUOgRwIeRaySdtc0iujJMP6s7V8tHU2uIACB7iHguw9fkTZIeztsEm3z2KP9eFw6g9FF9xQK
+        e1IuAQ/xl0o7u8QgPj3K8K3VC8tND5FDoDsIzNFu+HZlfy9C1rHey9o/z99ggQAEOkDA8xce63KTsBF5
+        zsZdkm/XskAAAjUSGKRt3SR5HkMdo4LUbfjUyFPCWSAAgRoJeBr11oaYRNtkNmp/p9TIiE1BoGgCExW9
+        H9xKPcrXvb6fI/mRNKLo7BE8BGog4FOO70rth7fq7uyp29utfV9UAyc2AYGiCcxV9J7QlNphO7m+74Kc
+        WnQWCR4CFRLwzMvnGm4SbYNarThGVsiKpiFQLIElityPeXdyNJBr27sUx9nFZpLAIVARAT/s5bkIuTpq
+        p9vxC3H8EhwWCEAgIwFPrvLtxU538JzbX5uRD01BAAIiMFnycD1nR+10Wy8onlFkFwIQyEdglpryE5md
+        7tw5t/+64jklHyJaggAErhUCn9fn7KidbuvviucyUgsBCOQh4HdRPhLMJNomtTwPIlqBAARGC8GGoEZx
+        p+LyR4dYIACBRAKnaf03ghrFU4rrmEQ+rA4BCIiAn42IdiGzfeqxQ7HNIMsQgEA6AZ/Hd/rCY1Xb9/s0
+        /JYuFghAIJGA36xdVUftdLv+bOHCRD6sDgEIiIC/+dnpDl3V9m0UvPmKModABgIYRQaINAGB6AQwiugZ
+        Jj4IZCCAUWSASBMQiE4Ao4ieYeKDQAYCGEUGiDQBgegEMIroGSY+CGQggFFkgEgTEIhOAKOInmHig0AG
+        AhhFBog0AYHoBDCK6BkmPghkIIBRZIBIExCITgCjiJ5h4oNABgIYRQaINAGB6AQwiugZJj4IZCCAUWSA
+        SBMQiE4Ao4ieYeKDQAYCGEUGiDQBgegEMIroGSY+CGQggFFkgEgTEIhOAKOInmHig0AGAhhFBog0AYHo
+        BDCK6BkmPghkIIBRZIBIExCITgCjiJ5h4oNABgIYRQaINAGB6AQwiugZJj4IZCCAUWSASBMQiE4Ao4ie
+        YeKDQAYCGEUGiDQBgegEMIroGSY+CGQggFFkgEgTEIhOAKOInmHig0AGAhhFBog0AYHoBDCK6BkmPghk
+        IIBRZIBIExCITgCjiJ5h4oNABgIYRQaINAGB6AQwiugZJj4IZCCAUWSASBMQiE4Ao4ieYeKDQAYCGEUG
+        iDQBgegEMIroGSY+CGQggFFkgEgTEIhOAKOInmHig0AGAhhFBog0AYHoBDCK6BkmPghkIIBRZIBIExCI
+        TgCjiJ5h4oNABgIYRQaINAGB6AQwiugZJj4IZCCAUWSASBMQiE4Ao4ieYeKDQAYCK9TG4aA6oLgWZGBE
+        ExD4DIGB+s1o6TRpkbRcWiX5yBtNNon1QU3C5veR9HDg/K1UbDdI86XJ0kj6czUEhqnZ8S3Is/TvtdIj
+        0gbpDWlP4E4UdRRRYlw7VaebpOelNdJV0lnSidI4aUg13Sd+q8crxCXSXdJGaZf0vvQhxhD2NKQUAzmk
+        Gt7bOsjt0L8eMXrksVAaG79r54lwsJqZ24K3D1PAFAqqgX8q1oekaZJPr1l6IDBRv/+e9G5BxVHKUZQ4
+        e3dB2tdsfEr9DWkMTvFJAh5FzJaewSAYQVAD/60Bn2KvlmZgFh8T+KJ0U2sU4XM3jjwwoAY+roGD0mbp
+        SumoUg3DV3nnSI+33JPiwCCogf9fA76z9+PW6KKoaxe+5bm0NYqgODAIaqB3NfAb9ZlLShpZfFXB+rYQ
+        BQIDaqBvNeC5GNNLMAvPj9iASWCS1EC/a+ABsfPM5LDLcEXmqdb7KZJ+FwlH4L4dgSPy2t26wBnWKOYp
+        sn9gEpgENZBcA1vE8PSITuFTDs9zj+jwxERe664BT8y6Two1Kct3Oe6RmCdBh6q7Q0Xe3gfqU9+KNKrw
+        I7bvMZpgNEUNZK+BN6OcgpykQH5LgWQvkMhHSmLr28jzJxFOQW5VED6fIvkwoAaqqQG/fmFxk09BfDuU
+        C5jVFAedDq5H1sBtTTaKSdp5zySjqGFADVRbA2vVz8Y21Swu1o5vxygwSmqg8hp4R4ynNtUorqdAKi8Q
+        jtTVHqmbwtdvM/c7ZRu3+HHYOzAKjIIaqKUG/O6KKxrnEtphv1l4HUVSS5E05ajHflY7+rlb/a1xb/P2
+        C0K3YhQYBTVQWw28JtaN+27I+dppnzdxFIEBNVBPDbyl/jaqaacfngDi8yaKBAbUQD010Dij8HnSvZgE
+        JkkN1FoDjTMKz8jk1fv1HEU4WsO5XQONMwp/p8NTSnmsnCLGyOqrgcYZha+n+DuKXKOor0jokLBupFHM
+        lFHwQWGKFwOrrwYaaRQnyyj8lSMKBQbUQD018JL624im3R71u/zWYBQYJTVQSw34euAKaVDTjML761fz
+        czSBATVQfQ34euClTTQJ7/M1Em+3qr5I6Igw9ixoXxds5DJbe/0nRhWMqqiBymvAL9n1dcFGLhO0169Q
+        JJUXCSMKRhQPqp819jODQ7Xzz2IUGAU1UHkNrGzkUOKInf62fmY+BUc8Rj3V1cAO9bGvNd0oxiuAJzii
+        VH5EoSNW1xG7ma3vdtwu+Wt8jV/OVQRvYxaYBTWQvQZeFNMTGu8QrQD8/sxl0j4KJXuhdPPRjn2rdpTj
+        z3TOi2IS7TiO1g/+9gDFAwNqIL0G9qsveUJjiFOOT5vdOfoF8yrSi4SOBsNfqi9NjDaaaMfjeehXS/5W
+        IsUOA2qgfzWwTf3ngqgmceQpyM8xCoySGuhXDfguxy2S5yiFX85QhDyC3r+jCUfhsrk9qb5zXHiHaAXo
+        V+VdKG3kqNKvowpmUZ5Z+OLlo9KZpZhEO07fMv2S5K8b/QXDwDCogR5rYIvY3Ch58mKxi9/Yfbn0a4lH
+        0ss7UjI66jnnfnT8aek8yQdWFhGYIv1Q2sORhdEFNTDAdzY8SfFY3OGzBPy+v0XSyxQKZlFoDfgByl9I
+        c6VGvtauTmM7VRtbLe2SePKU05Hopyd+3+VeyU+B3iz5PS4svSRwlP7ubMmv0/PU7w3S69LfCj3SRO8s
+        JcXna3HbpVel9dL90tel6VLIKdm97PNZ/sxfaT5FukxaLt0pPdVyYV/08USUiHJs0S/yOm9Rc+i4rK3S
+        OsmPhF8nXSRNknwxn6VCAv4Q8jHSDGmO5C+T+e5JJDmmBdLDUtQjrk3i+5LfIB0pd+1YnL9Z0lRpnOQ5
+        RCwQqIRA5M8e+GjrUSILBCCQSMBz+yOPKHz0ZYEABBIJYBSJAFkdAiUQwChKyDIxQiCRAEaRCJDVIVAC
+        AYyihCwTIwQSCWAUiQBZHQIlEMAoSsgyMUIgkQBGkQiQ1SFQAgGMooQsEyMEEglgFIkAWR0CJRDAKErI
+        MjFCIJEARpEIkNUhUAIBjKKELBMjBBIJYBSJAFkdAiUQwChKyDIxQiCRAEaRCJDVIVACAYyihCwTIwQS
+        CWAUiQBZHQIlEMAoSsgyMUIgkQBGkQiQ1SFQAgGMooQsEyMEEglgFIkAWR0CJRDAKErIMjFCIJEARpEI
+        kNUhUAIBjKKELBMjBBIJYBSJAFkdAiUQwChKyDIxQiCRAEaRCJDVIVACAYyihCwTIwQSCWAUiQBZHQIl
+        EMAoSsgyMUIgkQBGkQiQ1SFQAgGMooQsEyMEEglgFIkAWR0CJRDAKErIMjFCIJEARpEIkNUhUAIBjKKE
+        LBMjBBIJYBSJAFkdAiUQwChKyDIxQiCRAEaRCJDVIVACAYyihCwTIwQSCWAUiQBZHQIlEMAoSsgyMUIg
+        kQBGkQiQ1SFQAgGMooQsEyMEEglgFIkAWR0CJRDAKErIMjFCIJEARpEIkNUhUAIBjKKELBMjBBIJYBSJ
+        AFkdAiUQwChKyDIxQiCRAEaRCJDVIVACAYyihCwTIwQSCazU+oeD6oDiWpDIh9UhAAERuCGoSdj89kuz
+        yDIEIJBOYL6a2BnULLYqrqnpiGgBAhCYLASbghrFOsU1jhRDAALpBEaqifVBjeIHimtgOiJagAAETGBN
+        UKO4jvRCAAL5CFylpvYGM4vtiueifIhoCQIQOEsIdgczilcVzyRSCwEI5CNwopraEcwonlM8w/MhoiUI
+        QMB3BqJd0LyftEIAAnkJDFFzkWZo+nrLkryIaA0CEDCBhdK/gpx++DRqOmmFAATyE/Dpx0MBjMLTtm+W
+        huZHRIsQgIAJnC692XCzeFL7P4F0QgAC1RJYqub3NdQstmm/v1wtHlqHAARM4AvSaulQw8zCj5Qvk5iy
+        TR1DoCYCM7SdzQ0ziqe1v8fWxIfNQAACLQJX6t/3G2IWf9R+nkfmIACB+gmMap2CdPvbr3yX40ZOOeov
+        ELYIgTYBz0XwMxPdbBaPav/GkzIIQKCzBC7R5rvxxTYeSfhW6JmdxcPWIQCBNgHPr3hA2t0lowvfBvXb
+        w5kvQY1CoMsI+LbpYmmL5FuRnTgd8XZflC6QhnUZH3YHAhA4gsA0/Xyf9EHNZvGetrdKOo5sQAACzSAw
+        Rrv5Ten3UtUTs3wt4lfSPIn3SzSjPthLCPyPwCD95GsXP5Wqmm/xV7V9u3QC3CEAgWYTaF+78Buv10rv
+        SL6WcLAPow2PSvz3Xs8PpT0o+f0YHkVwLaLZ9cHeQ+ATBDzCGCv5gzv+OtcV0t3Sa9JbPeht/f4laYV0
+        qTRTmiKNlnhmgwKDQCEE/OYsfzfEszx70gj9v8GF8CBMCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQ
+        gAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAA
+        AQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCIQ+A8q8NGIWbO8FgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="panelGPSTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>745, 153</value>
+  </data>
+  <data name="label188.Location" type="System.Drawing.Point, System.Drawing">
+    <value>492, 375</value>
+  </data>
+  <data name="label188.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label187.Location" type="System.Drawing.Point, System.Drawing">
+    <value>518, 390</value>
+  </data>
+  <data name="label187.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label122.Location" type="System.Drawing.Point, System.Drawing">
+    <value>630, 388</value>
+  </data>
+  <data name="label122.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelShipSpeed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 404</value>
+  </data>
+  <data name="labelShipSpeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 12</value>
+  </data>
+  <data name="labelShipSpeed.Text" xml:space="preserve">
+    <value>船速(节):</value>
+  </data>
+  <data name="labelShipSpeed.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label118.Location" type="System.Drawing.Point, System.Drawing">
+    <value>49, 374</value>
+  </data>
+  <data name="label118.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>250, 374</value>
+  </data>
+  <data name="label12.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelMainPanelFigure.Location" type="System.Drawing.Point, System.Drawing">
+    <value>255, 5</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 374</value>
+  </data>
+  <data name="label15.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label93.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 45</value>
+  </data>
+  <data name="trackBarMaxV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 44</value>
+  </data>
+  <data name="trackBarMaxV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="InfoPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 17</value>
+  </data>
+  <data name="InfoPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 27</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 4</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 12</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>水流速</value>
+  </data>
+  <data name="labelMavV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 4</value>
+  </data>
+  <data name="label91.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 44</value>
+  </data>
+  <data name="panel16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 170</value>
+  </data>
+  <data name="labelNorthSouth.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelEastWest.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelShipSpeedText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 402</value>
+  </data>
+  <data name="labelShipSpeedText.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="MainPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 32</value>
+  </data>
+  <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>744, 233</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>250, 390</value>
+  </data>
+  <data name="label2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>384, 390</value>
+  </data>
+  <data name="label17.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelReceiveTime.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelCellsNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 388</value>
+  </data>
+  <data name="labelCellsNum.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelEsambleNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>323, 390</value>
+  </data>
+  <data name="labelEsambleNum.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label11.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panel21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="panel21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>756, 420</value>
+  </data>
+  <data name="panelFlowPix.Size" type="System.Drawing.Size, System.Drawing">
+    <value>780, 434</value>
+  </data>
+  <data name="HPRpictureBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 126</value>
+  </data>
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk0WCAAAAAAAAHYAAAAoAAAAPQAAAD0AAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD/////////
+        //////////AA//8AAJAAD/////////////////AA////////////AAAAAAAAkAAAAAAA////////////
+        8AD//////////w8AAAAAAACQAAAAAAAP///////////wAP/////////wAAAAAAAAAJAAAAAAAAD/////
+        //////AA/////////wAKAAAKqqqqmqqqqgAAAAD/////////8AD////////wCgAAAAqqqqqaqqqqAAAK
+        AAD////////wAP///////wAAAAAACqqqqpqqqqoAAAAAAA////////AA///////wAAAAAAAKqqqqmqqq
+        qgAAAAAAAP//////8AD//////wAAAAAAAAqqqqqaqqqqAAAAAAAAD//////wAP/////wAAAAAAAACqqq
+        qpqqqqoAAAAAAAAA//////AA/////wAAAAAAAAAKqqqqmqqqqgAAAAAAAAAP////8AD////wAAAAAAAA
+        AAqqqqqaqqqqAAAAAAAAAAD////wAP///wAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAA////AA///wAAAA
+        AAAAAAAKqqqqmqqqqgAAAAAAAAAAAP//8AD///AAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAA///wAP//
+        AAAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAAAP//AA//8AAAAAAAAAAAAKqqqqmqqqqgAAAAAAAAAAAA//
+        8AD/8AAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAP/wAP/wAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAA
+        AAAA//AA/wAAAAAAAAAAAAAKqqqqmqqqqgAAAAAAAAAAAAAP8AD/AAAAAAAAAAAAAAqqqqqaqqqqAAAA
+        AAAAAAAAAA/wAP8AAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAAAAD/AA8AAAAAAAAAAAAAAKqqqqmqqq
+        qgAAAAAAAAAAAAAA8ADwAAAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAADwAPAAAAAAAAAAAAAACqqq
+        qpqqqqoAAAAAAAAAAAAAAPAA8AAAAAAAAAAAAAAKqqqqmqqqqgAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA
+        AAqqqqqaqqqqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAKqqqqmqqqqgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAAAAAIiI
+        iIiIiIiIiAAACIiIiJiIiIgAAAiIiIiIiIiIiIAAAAAAAAAAAAAAAAAKqqqqmqqqqgAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAKqqqqmqqqqgAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAqqqqqaqqqqAAAA
+        AAAAAAAAAADwAPAAAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAAAAAPAA8AAAAAAAAAAAAAAKqqqqmqqq
+        qgAAAAAAAAAAAAAA8ADwAAAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAADwAP8AAAAAAAAAAAAACqqq
+        qpqqqqoAAAAAAAAAAAAAD/AA/wAAAAAAAAAAAACqqqqqmqqqqgAAAAAAAAAAAAAP8AD/AAAAAAAAAAAA
+        AKqqqqqaqqqgoAAAAAAAAAAAAA/wAP/wAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAAAA//AA//AAAAAA
+        AAAAAAAKqqqqmqqqqgAAAAAAAAAAAAD/8AD//wAAAAAAAAAAAACqqqqaqqqgAAAAAAAAAAAAD//wAP//
+        AAAAAAAAAAAAAKqqqpqqqqAAAAAAAAAAAAAP//AA///wAAAAAAAAAAAACqqqmqqqAAAAAAAAAAAAAP//
+        8AD///AAAAAAAAAAAAAKqqqaqqoAAAAAAAAAAAAA///wAP///wAAAAAAAAAAAACqqpqqoAAAAAAAAAAA
+        AA////AA////8AAAAAAAAAAAAKqqmqqgAAAAAAAAAAAA////8AD/////AAAAAAAAAAAACqqaqgAAAAAA
+        AAAAAA/////wAP/////wAAAAAAAAAAAKqpqqAAAAAAAAAAAA//////AA//////8AAAAAAAAAAACqmqAA
+        AAAAAAAAAA//////8AD///////AAAAAAAAAAAKqaoAAAAAAAAAAA///////wAP///////wAAAAAAAAAA
+        CpoAAAAAAAAAAA////////AA////////8AAAAAAAAAAKmgAAAAAAAAAA////////8AD/////////8AAA
+        AAAAAACQAAAAAAAAAP/////////wAP//////////8AAAAAAAAJAAAAAAAAD///////////AA////////
+        ////8AAAAAAAkAAAAAAA////////////8AD//////////////wAAAACQAAAAD//////////////wAP//
+        //////////////8AAJAAD/////////////////AA
+</value>
+  </data>
+  <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk0WCAAAAAAAAHYAAAAoAAAAPQAAAD0AAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD/////////
+        //////////////8AAJAAD/////////////////AA//////////////8AAAAAkAAAAA//////////////
+        8AD////////////wAAAAAACQAAAAAAD////////////wAP//////////8AAAAAAAAJAAAAAAAAD/////
+        //////AA//////////AAAAAAAAAAkAAAAAAAAAD/////////8AD////////wAAAAAAAAAACQAAAAAAAA
+        AAD////////wAP///////wAAAAAAAAAAAJAAAAAAAAAAAA////////AA///////wAAAAAAAAAAAAkAAA
+        AAAAAAAAAP//////8AD//////wAAAAAAAAAAAACQAAAAAAAAAAAAD//////wAP/////wAAAAAAAAAAAA
+        AJAAAAAAAAAAAAAA//////AA/////wAAAAAAAAAAAAAAkAAAAAAAAAAAAAAP////8AD////wAAAAAAAA
+        AAAAAACQAAAAAAAAAAAAAAD////wAP///wAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAA////AA///wAAAA
+        AAAAAAAAAAAAkAAAAAAAAAAAAAAAAP//8AD///AAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAA///wAP//
+        AAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAP//AA//8AAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAA//
+        8AD/8AAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAP/wAP/wAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAA
+        AAAA//AA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AD/AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAA/wAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAA8AAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAA8ADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwAPAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKqqqqqqqqqqqpqqqqqqqqqqqqqqqqqgAAAAAAAAAAAK
+        qqqqqqqqqqqqmqqqqqqqqqqqqqqqqqAAAAAAAAAAAKqqqqqqqqqqqqqaqqqqqqqqqqqqqqqqoAAAAIiI
+        iIiIiIiIiIiIiIiIiJiIiIiIiIiIiIiIiIiIiIAAAAAAAKqqqqqqqqqqqqqqmqqqqqqqqqqqqqqqqqAA
+        AAAAAAAKqqqqqqqqqqqqqqqaqqqqqqqqqqqqqqqqoAAAAAAACqqqqqqqqqqqqqqqqpqqqqqqqqqqqqqq
+        qqqgAPAAAACqqqqqqqqqqqqqqqqqmqqqqqqqqqqqqqqqqqAA8ADwCqqqqqqqqqqqqqqqqqqaqqqqqqqq
+        qqqqqqqqoADwAPCqqqqqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqgAPAA8AAAAAAAAAAAAAAAAAAAkAAA
+        AAAAAAAAAAAAAAAA8ADwAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAADwAP8AAAAAAAAAAAAAAAAA
+        AJAAAAAAAAAAAAAAAAAAD/AA/wAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAAAP8AD/AAAAAAAAAAAA
+        AAAAAACQAAAAAAAAAAAAAAAAAA/wAP/wAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAA//AA//AAAAAA
+        AAAAAAAAAAAAkAAAAAAAAAAAAAAAAAD/8AD//wAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAD//wAP//
+        AAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAP//AA///wAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAP//
+        8AD///AAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAA///wAP///wAAAAAAAAAAAAAAAJAAAAAAAAAAAAAA
+        AA////AA////8AAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA////8AD/////AAAAAAAAAAAAAACQAAAAAAAA
+        AAAAAA/////wAP/////wAAAAAAAAAAAAAJAAAAAAAAAAAAAA//////AA//////8AAAAAAAAAAAAAkAAA
+        AAAAAAAAAA//////8AD///////AAAAAAAAAAAACQAAAAAAAAAAAA///////wAP///////wAAAAAAAAAA
+        AJAAAAAAAAAAAA////////AA////////8AAAAAAAAAAAkAAAAAAAAAAA////////8AD/////////8AAA
+        AAAAAACQAAAAAAAAAP/////////wAP//////////8AAAAAAAAJAAAAAAAAD///////////AA////////
+        ////8AAAAAAAkAAAAAAA////////////8AD//////////////wAAAACQAAAAD//////////////wAP//
+        //////////////8AAJAAD/////////////////AA
+</value>
+  </data>
+  <data name="pictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk0WCAAAAAAAAHYAAAAoAAAAPQAAAD0AAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD/////////
+        //////////////8AAJAAD/////////////////AA//////////////8AAAAAkAAAAA//////////////
+        8AD////////////wAAAAAACQAAAAAAD////////////wAP//////////8AAAAAAAAJAAAAAAAAD/////
+        //////AA//////////AAAAAAAAAAkAAAAAAAAAD/////////8AD////////wAAAAAAAAAACQAAAAAAAA
+        AAD////////wAP///////wAAAAAAAAAAAJAAAAAAAAAAAA////////AA///////wAAAAAAAAAAAAkAAA
+        AAAAAAAAAP//////8AD//////wAAAAAAAAAAAACQAAAAAAAAAAAAD//////wAP/////wAAAAAAAAAAAA
+        AJAAAAAAAAAAAAAA//////AA/////wAAAAAAAAAAAAAAkAAAAAAAAAAAAAAP////8AD////wAAAAAAAA
+        AAAAAACQAAAAAAAAAAAAAAD////wAP///wAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAA////AA///wAAAA
+        AAAAAAAAAAAAkAAAAAAAAAAAAAAAAP//8AD///AAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAA///wAP//
+        AAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAP//AA//8AAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAA//
+        8AD/8AAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAP/wAP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAA//AA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AD/AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAA/wAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/AA8AAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAA8ADwAAAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAADwAPAAAAAAAAAAAAAAqqqq
+        qpqqqqqgAAAAAAAAAAAAAPAA8AAAAAAAAAAAAAqqqqqqmqqqqqoAAAAAAAAAAAAA8AAAAAAAAAAAAAAA
+        CqqqqqqaqqqqqgAAAAAAAAAAAAAAAAAAAAAAAAAAAACqqqqqqpqqqqqqoAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAKqqqqqqmqqqqqqgAAAAAAAAAAAAAAAAAAAAAAAAAAAKqqqqqqqaqqqqqqoAAAAAAAAAAAAAAIiI
+        iIiIiIiIiIiIiIiIiJiIiIiIiIiIiIiIiIiIiIAAAAAAAAAAAAAAqqqqqqqqmqqqqqqqoAAAAAAAAAAA
+        AAAAAAAAAAAAAAqqqqqqqqqaqqqqqqqqAAAAAAAAAAAAAAAAAAAAAAAACqqqqqqqqpqqqqqqqqoAAAAA
+        AAAAAAAAAAAAAAAAAACqqqqqqqqqmqqqqqqqqqAAAAAAAAAAAADwAAAAAAAAAKqqqqqqqqqaqqqqqqqq
+        oAAAAAAAAADwAPAAAAAAAAAKqqqqqqqqqpqqqqqqqqqqAAAAAAAAAPAA8AAAAAAAAAAAAAAAAAAAkAAA
+        AAAAAAAAAAAAAAAA8ADwAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAADwAP8AAAAAAAAAAAAAAAAA
+        AJAAAAAAAAAAAAAAAAAAD/AA/wAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAAAP8AD/AAAAAAAAAAAA
+        AAAAAACQAAAAAAAAAAAAAAAAAA/wAP/wAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAA//AA//AAAAAA
+        AAAAAAAAAAAAkAAAAAAAAAAAAAAAAAD/8AD//wAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAD//wAP//
+        AAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAP//AA///wAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAP//
+        8AD///AAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAA///wAP///wAAAAAAAAAAAAAAAJAAAAAAAAAAAAAA
+        AA////AA////8AAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA////8AD/////AAAAAAAAAAAAAACQAAAAAAAA
+        AAAAAA/////wAP/////wAAAAAAAAAAAAAJAAAAAAAAAAAAAA//////AA//////8AAAAAAAAAAAAAkAAA
+        AAAAAAAAAA//////8AD///////AAAAAAAAAAAACQAAAAAAAAAAAA///////wAP///////wAAAAAAAAAA
+        AJAAAAAAAAAAAA////////AA////////8AAAAAAAAAAAkAAAAAAAAAAA////////8AD/////////8AAA
+        AAAAAACQAAAAAAAAAP/////////wAP//////////8AAAAAAAAJAAAAAAAAD///////////AA////////
+        ////8AAAAAAAkAAAAAAA////////////8AD//////////////wAAAACQAAAAD//////////////wAP//
+        //////////////8AAJAAD/////////////////AA
+</value>
+  </data>
+  <data name="HPRDisplayerPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 130</value>
+  </data>
+  <data name="buttonTrackFF.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH0A/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB9AP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7d3d3d3d3d3d3d3u3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3d3d7t3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d7u3d3d3d3d3d3d3e7t3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3e7u3d3d3d3d3d3d3u7t3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u3
+        d3d3d3d3d3d7u7t3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d7u7t3d3d3d3d3d3
+        e7u7d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7u7t3d3d3d3d3d3u7u7d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u7t3d3d3d3d3d7u7u7d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3e7u7u7d3d3d3d3d3u7u7u3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d7u7u7u3d3d3d3d3e7u7u7t3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7u7u7u3d3
+        d3d3d3u7u7u7t3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u7u7u3d3d3d3d7u7u7
+        u7t3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7u7u7t3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7u7u7u7t3d3d3d3u7u7u7u7d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3e7u7u7u7u7d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u7
+        u7u7u7d3d3d7u7u7u7u7u3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d7u7u7u7u7u7d3d3
+        e7u7u7u7u7u3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7u7u7u7u7u7d3d3u7u7u7u7u7
+        u3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d7u7u7u7u7u7u3d3e7u7u7u7u7u7t3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3e7u7u7u7u7u7d3d3u7u7u7u7u7u3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7u7u7u7u7
+        t3d3d3u7u7u7u7u7d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u7u7u7u3d3d3d7u7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u7u7u7d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3e7u7u7u7d3d3d3d3u7u7u7u3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u7
+        u7t3d3d3d3d7u7u7u7d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d7u7u7u3d3d3d3d3
+        e7u7u7t3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7u7u7t3d3d3d3d3u7u7u7d3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u7u3d3d3d3d3d7u7u7t3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3e7u7u3d3d3d3d3d3u7u7t3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3u7u7d3d3d3d3d3d7u7u3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d7u7t3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7u7d3d3d3
+        d3d3d3u7u3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3u7t3d3d3d3d3d3d7u7d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d7u3d3d3d3d3d3d3e7t3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7d3d3d3d3d3d3d3u3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3d3d7t3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP////////////////////////////////////////////////////////////////8A
+        fQD/////////////////////////////////////////////////////////////////8H0A////////
+        //////////////////////////////////////////////////////////B9AP//////////////////
+        ///////////////////////////////////////////////wfQA=
+</value>
+  </data>
+  <data name="buttonTrackRR.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH0A/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB9AP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d7
+        d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3
+        d3d7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d7t3d3d3d3d3d3d3e7d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3u7d3d3d3d3d3d3d7u3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3e7u3d3d3d3d3d3d3u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3d3d3d7u7t3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3d3d3e7u7d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3
+        d7u7u3d3d3d3d3d3e7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3u7u7t3d3d3
+        d3d3d7u7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3u7u7u3d3d3d3d3d7u7u7t3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3e7u7u7t3d3d3d3d3u7u7u7d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3e7u7u7u3d3d3d3d3u7u7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d7u7u7u7t3d3d3d3e7u7u7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3u7u7u7u7
+        d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3d7u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7u7u7u7u7d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3u7u7u7u7u3d3d3d7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3e7u7u7u7u7t3d3d3u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3u7u7u7
+        u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d7u7u7u7u7u7t3d3e7
+        u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3u7u7u7u7u7u7d3d7u7u7u7u7u7u3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d7u7u7u7u7u7t3d3e7u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d7u7u7u7u7u3d3d3e7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3e7u7u7u7u7
+        d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3d3u7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3e7u7u7u7t3d3d3d3u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3u7u7u7u7d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3u7u7u7u3d3d3d3d7u7u7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3d3u7u7u7t3d3d3d3d7u7u7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d7
+        u7u7u3d3d3d3d3e7u7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d7u7u7t3d3d3
+        d3d3e7u7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3e7u7u3d3d3d3d3d3u7u7t3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3e7u7t3d3d3d3d3d3u7u7d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3d3d3e7u7d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3d3d3u7u3d3d3d3d3d3d7u7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3u7t3d3d3d3d3d3d7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3u7
+        d3d3d3d3d3d3d7u3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3
+        d3d7t3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d7t3d3d3d3d3d3d3e7d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP////////////////////////////////////////////////////////////////8A
+        fQD/////////////////////////////////////////////////////////////////8H0A////////
+        //////////////////////////////////////////////////////////B9AP//////////////////
+        ///////////////////////////////////////////////wfQA=
+</value>
+  </data>
+  <data name="buttonTrackStop.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH0A/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB9AP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3mZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d5mZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3cZmZmZmZ
+        mZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZ
+        mZd3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3GZ
+        mZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZ
+        mZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3cZmZmZmZ
+        mZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZ
+        mZd3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3GZ
+        mZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZ
+        mZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3cREREREREREREREREREREXd3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3F3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP////////////////////////////////////////////////////////////////8A
+        fQD/////////////////////////////////////////////////////////////////8H0A////////
+        //////////////////////////////////////////////////////////B9AP//////////////////
+        ///////////////////////////////////////////////wfQA=
+</value>
+  </data>
+  <data name="buttonTrackPause.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH0A/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB9AP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7
+        u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3
+        u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d7u7u7u7u7
+        d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7
+        u7u3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7
+        u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3
+        u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d7u7u7u7u7
+        d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7
+        u7u3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7
+        u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3
+        u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP////////////////////////////////////////////////////////////////8A
+        fQD/////////////////////////////////////////////////////////////////8H0A////////
+        //////////////////////////////////////////////////////////B9AP//////////////////
+        ///////////////////////////////////////////////wfQA=
+</value>
+  </data>
+  <data name="buttonTrackForward.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH0A/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB9AP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfQD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3u7d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d7u7u7t3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3e7u7u7u3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3u7u7u7u3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3e7u7u7u7u7
+        t3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d7u7u7u7u7u7u7u7u7u3e7u7u7t3d3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3u7u7u7u7u7u7u7u7u7t3e7u7u7u3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d7u7u7u7u7u7u7u7u7u7d3d7u7u7u7d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3e7u7u7u7u7u7u7u7u7u3d3d3u7u7u7d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3u7u7u7u7u7u7u7u7u7d3d3d3u7u7u7t3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d7u7t3d3d3
+        d3d3d3d3d3d3d3d3e7u7u7u3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3
+        d3d3d3d7u7u7u3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3d3d3d7u7
+        u7u7d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d7u7t3d3d3d3d3d3d3d3d3d3d3d3d3u7u7u7d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3d3d3d3d3e7u7u3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3d3d3d3e7u7u7t3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d7u7t3d3d3d3d3d3d3d3d3d3d3d3e7u7u7u3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3e7u7
+        d3d3d3d3d3d3d3d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3u7u3d3d3d3d3d3
+        d3d3d3d3d3d7u7u7u7d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d7u7u7u7u7u7u7u7u7u7d3d3d7
+        u7u7u7d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3e7u7u7u7u7u7u7u7u7u3d3d3u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3u7u7u7u7u7u7u7u7u7t3d3u7u7u7t3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d7u7u7u7u7u7u7u7u7u7d3u7u7u7t3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d7u7u7u7u7u7u7u7u7u3u7u7u7t3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d7u7u7u7u7u3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3u7u7
+        u7u3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d7u7u7u7d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3e7u7u7d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        fQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3e7t3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAB9AP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAfQD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAH0A//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAB9AP////////////////////////////////////////////////////////////////8A
+        fQD/////////////////////////////////////////////////////////////////8H0A////////
+        //////////////////////////////////////////////////////////B9AP//////////////////
+        ///////////////////////////////////////////////wfQA=
+</value>
+  </data>
+  <data name="groupBox17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-2, 394</value>
+  </data>
+  <data name="groupBox17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 128</value>
+  </data>
+  <data name="DebugMSGtextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 201</value>
+  </data>
+  <data name="Debugpanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-2, 143</value>
+  </data>
+  <data name="Debugpanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 254</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-5, 523</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 150</value>
+  </data>
+  <data name="GPSdepthgroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-5, 669</value>
+  </data>
+  <data name="GPSdepthgroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>259, 69</value>
+  </data>
+  <data name="MousePositiongroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-2, 200</value>
+  </data>
+  <data name="MousePositiongroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 19</value>
+  </data>
+  <data name="ControlTimelabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 118</value>
+  </data>
+  <data name="ControlVXVYlabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 92</value>
+  </data>
+  <data name="ControlXYlabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>102, 62</value>
+  </data>
+  <data name="ControlLatLonglabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 43</value>
+  </data>
+  <data name="label136.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 93</value>
+  </data>
+  <data name="label135.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 65</value>
+  </data>
+  <data name="CurrentPositiongroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-2, -2</value>
+  </data>
+  <data name="CurrentPositiongroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 147</value>
+  </data>
+  <data name="GPScontrolPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>764, 0</value>
+  </data>
+  <data name="GPScontrolPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 757</value>
+  </data>
+  <data name="GPSdisplayPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="GPSdepthPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 593</value>
+  </data>
+  <data name="GPSdepthPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>765, 156</value>
+  </data>
+  <data name="pictureBox5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="GPSdisplayPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="GPSdisplayPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1276, 1011</value>
+  </data>
+  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="label110.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 12</value>
+  </data>
+  <data name="label110.Text" xml:space="preserve">
+    <value>呯数(请求):</value>
+  </data>
+  <data name="label98.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 12</value>
+  </data>
+  <data name="label98.Text" xml:space="preserve">
+    <value>纵倾 Pitch(°):</value>
+  </data>
+  <data name="label92.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="label92.Text" xml:space="preserve">
+    <value>首呯时间(sec):</value>
+  </data>
+  <data name="label100.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 12</value>
+  </data>
+  <data name="label100.Text" xml:space="preserve">
+    <value>艏向 Heading(°):</value>
+  </data>
+  <data name="label102.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="label102.Text" xml:space="preserve">
+    <value>横摇 Roll(°):</value>
+  </data>
+  <data name="label108.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 12</value>
+  </data>
+  <data name="label108.Text" xml:space="preserve">
+    <value>呯数(实际):</value>
+  </data>
+  <data name="label94.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="label94.Text" xml:space="preserve">
+    <value>末呯时间(sec):</value>
+  </data>
+  <data name="label82.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 34</value>
+  </data>
+  <data name="label82.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 12</value>
+  </data>
+  <data name="label82.Text" xml:space="preserve">
+    <value>单元尺寸(m):</value>
+  </data>
+  <data name="label104.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 12</value>
+  </data>
+  <data name="label104.Text" xml:space="preserve">
+    <value>单元层数:</value>
+  </data>
+  <data name="tabPage16.Text" xml:space="preserve">
+    <value>水跟踪</value>
+  </data>
+  <data name="label140.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 12</value>
+  </data>
+  <data name="label140.Text" xml:space="preserve">
+    <value>纵倾 Pitch(°):</value>
+  </data>
+  <data name="label141.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="label141.Text" xml:space="preserve">
+    <value>首呯时间(sec):</value>
+  </data>
+  <data name="label142.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 12</value>
+  </data>
+  <data name="label142.Text" xml:space="preserve">
+    <value>艏向 Heading(°):</value>
+  </data>
+  <data name="label143.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="label143.Text" xml:space="preserve">
+    <value>横摇 Roll(°):</value>
+  </data>
+  <data name="label146.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 12</value>
+  </data>
+  <data name="label146.Text" xml:space="preserve">
+    <value>呯数(实际):</value>
+  </data>
+  <data name="label151.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 12</value>
+  </data>
+  <data name="label151.Text" xml:space="preserve">
+    <value>末呯时间(sec):</value>
+  </data>
+  <data name="panel6.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="labelBE_Vq.Location" type="System.Drawing.Point, System.Drawing">
+    <value>423, 14</value>
+  </data>
+  <data name="label77.Location" type="System.Drawing.Point, System.Drawing">
+    <value>394, 14</value>
+  </data>
+  <data name="labelBE_Vz.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 14</value>
+  </data>
+  <data name="label73.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 14</value>
+  </data>
+  <data name="label75.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 14</value>
+  </data>
+  <data name="labelBE_Vy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 14</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>798, 41</value>
+  </data>
+  <data name="labelBI_Vq.Location" type="System.Drawing.Point, System.Drawing">
+    <value>424, 14</value>
+  </data>
+  <data name="label74.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 14</value>
+  </data>
+  <data name="labelBI_Vz.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 14</value>
+  </data>
+  <data name="label79.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 14</value>
+  </data>
+  <data name="label80.Location" type="System.Drawing.Point, System.Drawing">
+    <value>257, 14</value>
+  </data>
+  <data name="labelBI_Vy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 14</value>
+  </data>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>798, 41</value>
+  </data>
+  <data name="labelBB3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>469, 14</value>
+  </data>
+  <data name="label84.Location" type="System.Drawing.Point, System.Drawing">
+    <value>422, 14</value>
+  </data>
+  <data name="labelBB2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>327, 14</value>
+  </data>
+  <data name="label87.Location" type="System.Drawing.Point, System.Drawing">
+    <value>140, 14</value>
+  </data>
+  <data name="label88.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 14</value>
+  </data>
+  <data name="labelBB1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 14</value>
+  </data>
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>798, 41</value>
+  </data>
+  <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>806, 66</value>
+  </data>
+  <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>803, 93</value>
+  </data>
+  <data name="Wbin_NO_column.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="Wbin_NO_column.Width" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="Vx_column.Width" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="Vy_column.Width" type="System.Int32, mscorlib">
+    <value>84</value>
+  </data>
+  <data name="Vz_column.Width" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="Vq_column.Width" type="System.Int32, mscorlib">
+    <value>72</value>
+  </data>
+  <data name="EarthWaterlistView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 2</value>
+  </data>
+  <data name="EarthWaterlistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 190</value>
+  </data>
+  <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>381, 195</value>
+  </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="InstrmtWaterlistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 191</value>
+  </data>
+  <data name="tabPage6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>381, 195</value>
+  </data>
+  <data name="bin_Num_column.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BeamWaterlistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 191</value>
+  </data>
+  <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>381, 195</value>
+  </data>
+  <data name="tabControl3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>389, 221</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>397, 248</value>
+  </data>
+  <data name="columnHeader11.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="columnHeader11.Width" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="columnHeader12.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="columnHeader13.Width" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="columnHeader14.Width" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="columnHeader15.Width" type="System.Int32, mscorlib">
+    <value>114</value>
+  </data>
+  <data name="EarthGdPnglistView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 1</value>
+  </data>
+  <data name="EarthGdPnglistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>391, 190</value>
+  </data>
+  <data name="tabPage11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>395, 195</value>
+  </data>
+  <data name="columnHeader26.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="columnHeader26.Width" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="columnHeader27.Width" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="columnHeader28.Width" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="columnHeader29.Width" type="System.Int32, mscorlib">
+    <value>71</value>
+  </data>
+  <data name="BeamGdPnglistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>391, 191</value>
+  </data>
+  <data name="tabPage13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>395, 195</value>
+  </data>
+  <data name="columnHeader21.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="columnHeader21.Width" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="columnHeader22.Width" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="columnHeader23.Width" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="columnHeader24.Width" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="BEGdPngListview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>391, 191</value>
+  </data>
+  <data name="tabPage12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>395, 195</value>
+  </data>
+  <data name="columnHeader31.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BIGPnglistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>391, 191</value>
+  </data>
+  <data name="tabPage14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>395, 195</value>
+  </data>
+  <data name="columnHeader36.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BBGPnglistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>391, 191</value>
+  </data>
+  <data name="tabPage15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>395, 195</value>
+  </data>
+  <data name="tabControl7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 24</value>
+  </data>
+  <data name="tabControl7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>403, 221</value>
+  </data>
+  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>776, 102</value>
+  </data>
+  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 248</value>
+  </data>
+  <data name="Correlation_NO_column.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="Correlation_NO_column.Width" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="beam0_Correlation_column.Width" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
+  <data name="beam1_Correlation_column.Width" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="beam2_Correlation_column.Width" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="beam3_Correlation_column.Width" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="WaterCorrelationlistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>380, 191</value>
+  </data>
+  <data name="tabPage7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 195</value>
+  </data>
+  <data name="tabPage7.Text" xml:space="preserve">
+    <value>水跟踪</value>
+  </data>
+  <data name="columnHeader6.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="columnHeader6.Width" type="System.Int32, mscorlib">
+    <value>49</value>
+  </data>
+  <data name="columnHeader7.Width" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="columnHeader8.Width" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="columnHeader9.Width" type="System.Int32, mscorlib">
+    <value>73</value>
+  </data>
+  <data name="columnHeader10.Width" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="BtmCorrelationlistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>380, 191</value>
+  </data>
+  <data name="tabPage8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 195</value>
+  </data>
+  <data name="tabControl5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 221</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>397, 245</value>
+  </data>
+  <data name="Amplitude_NO_column.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="Amplitude_NO_column.Width" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="beam0_Amplitude_column.Width" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="beam1_Amplitude_column.Width" type="System.Int32, mscorlib">
+    <value>93</value>
+  </data>
+  <data name="beam2_Amplitude_column.Width" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="beam3_Amplitude_column.Width" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="WaterAmplitudelistView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 2</value>
+  </data>
+  <data name="WaterAmplitudelistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>391, 191</value>
+  </data>
+  <data name="tabPage9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>393, 195</value>
+  </data>
+  <data name="tabPage9.Text" xml:space="preserve">
+    <value>水跟踪</value>
+  </data>
+  <data name="columnHeader16.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BtmAmplitudelistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>389, 191</value>
+  </data>
+  <data name="tabPage10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>393, 195</value>
+  </data>
+  <data name="tabControl6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>401, 221</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>776, 351</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>409, 245</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>DP300_窗口</value>
+  </data>
+</root>

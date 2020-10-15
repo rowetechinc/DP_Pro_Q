@@ -1,0 +1,3871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tabControl4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="textBoxHelpTips.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 696</value>
+  </data>
+  <data name="panel34.Location" type="System.Drawing.Point, System.Drawing">
+    <value>824, 1</value>
+  </data>
+  <data name="panel34.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 696</value>
+  </data>
+  <data name="radioBtnInternalGPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 21</value>
+  </data>
+  <data name="radioBtnExternalGPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 21</value>
+  </data>
+  <data name="checkBoxGetHeadingOffset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 21</value>
+  </data>
+  <data name="linkLabelUpdateFirmware.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 12pt</value>
+  </data>
+  <data name="linkLabelUpdateFirmware.Location" type="System.Drawing.Point, System.Drawing">
+    <value>400, 653</value>
+  </data>
+  <data name="linkLabelUpdateFirmware.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 23</value>
+  </data>
+  <data name="linkLabelBeamCheck.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 12pt</value>
+  </data>
+  <data name="linkLabelBeamCheck.Location" type="System.Drawing.Point, System.Drawing">
+    <value>234, 653</value>
+  </data>
+  <data name="linkLabelBeamCheck.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 23</value>
+  </data>
+  <data name="linkLabelDownload.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 12pt</value>
+  </data>
+  <data name="linkLabelDownload.Location" type="System.Drawing.Point, System.Drawing">
+    <value>612, 653</value>
+  </data>
+  <data name="linkLabelDownload.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 23</value>
+  </data>
+  <data name="linkLabelHeadingOffset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>715, 653</value>
+  </data>
+  <data name="linkLabelHeadingOffset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="linkLabelEdgeSetting.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 12pt</value>
+  </data>
+  <data name="linkLabelEdgeSetting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 524</value>
+  </data>
+  <data name="linkLabelEdgeSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 23</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 120</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 16</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 79</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 16</value>
+  </data>
+  <data name="labelPowerCurveCoeff.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelPowerCurveCoeff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 42</value>
+  </data>
+  <data name="labelPowerCurveCoeff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 43</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 16</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Power Curve Coefference:</value>
+  </data>
+  <data name="labelBottomEstimate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelBottomEstimate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 20</value>
+  </data>
+  <data name="labelBottomEstimate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelRightRef.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelRightRef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelLeftRef.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelLeftRef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelTopEstimate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelTopEstimate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 3</value>
+  </data>
+  <data name="labelTopEstimate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelRightDis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelRightDis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 122</value>
+  </data>
+  <data name="labelRightDis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 22</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 16</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Bottom Estimate Method:</value>
+  </data>
+  <data name="labelLeftType.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelLeftType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 104</value>
+  </data>
+  <data name="labelLeftType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelLeftDis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelLeftDis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 83</value>
+  </data>
+  <data name="labelLeftDis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 2</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 16</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Top Estimate Method:</value>
+  </data>
+  <data name="labelStartEdge.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelStartEdge.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 63</value>
+  </data>
+  <data name="labelStartEdge.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelRightType.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelRightType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 141</value>
+  </data>
+  <data name="labelRightType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="label249.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label249.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 120</value>
+  </data>
+  <data name="label249.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 16</value>
+  </data>
+  <data name="label255.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label255.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 101</value>
+  </data>
+  <data name="label255.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 16</value>
+  </data>
+  <data name="label257.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label257.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 79</value>
+  </data>
+  <data name="label257.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 16</value>
+  </data>
+  <data name="label258.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label258.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 61</value>
+  </data>
+  <data name="label258.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 16</value>
+  </data>
+  <data name="label262.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label262.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 140</value>
+  </data>
+  <data name="label262.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 16</value>
+  </data>
+  <data name="panel32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>348, 458</value>
+  </data>
+  <data name="panel32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>426, 162</value>
+  </data>
+  <data name="labelStep5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 14.25pt, style=Bold</value>
+  </data>
+  <data name="labelStep5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, -3</value>
+  </data>
+  <data name="labelStep5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 27</value>
+  </data>
+  <data name="panel33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 434</value>
+  </data>
+  <data name="linkLabelSystemConf.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 12pt</value>
+  </data>
+  <data name="linkLabelSystemConf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 205</value>
+  </data>
+  <data name="linkLabelSystemConf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 23</value>
+  </data>
+  <data name="linkLabelUnit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 12pt</value>
+  </data>
+  <data name="linkLabelUnit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 30</value>
+  </data>
+  <data name="linkLabelUnit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 23</value>
+  </data>
+  <data name="labelUnit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelUnit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 3</value>
+  </data>
+  <data name="labelUnit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="label256.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label256.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 0</value>
+  </data>
+  <data name="label256.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 16</value>
+  </data>
+  <data name="panel30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>426, 24</value>
+  </data>
+  <data name="labelStep1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 14.25pt, style=Bold</value>
+  </data>
+  <data name="labelStep1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, -4</value>
+  </data>
+  <data name="labelStep1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 27</value>
+  </data>
+  <data name="linkLabelSystemTest.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 12pt</value>
+  </data>
+  <data name="linkLabelSystemTest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 653</value>
+  </data>
+  <data name="linkLabelSystemTest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 23</value>
+  </data>
+  <data name="linkLabelSystemSetting.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 12pt</value>
+  </data>
+  <data name="linkLabelSystemSetting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 332</value>
+  </data>
+  <data name="linkLabelSystemSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 23</value>
+  </data>
+  <data name="labelStep6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 14.25pt, style=Bold</value>
+  </data>
+  <data name="labelStep6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, -3</value>
+  </data>
+  <data name="labelStep6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 27</value>
+  </data>
+  <data name="panel25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 621</value>
+  </data>
+  <data name="label_Headingoffset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label_Headingoffset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 16</value>
+  </data>
+  <data name="labelSalinity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelSalinity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 16</value>
+  </data>
+  <data name="labelHeadingOffset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelHeadingOffset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 67</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 16</value>
+  </data>
+  <data name="labelMeasMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelMeasMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 45</value>
+  </data>
+  <data name="labelMeasMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelHeadingRef.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelHeadingRef.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 24</value>
+  </data>
+  <data name="labelHeadingRef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 16</value>
+  </data>
+  <data name="labelVesselRef.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelVesselRef.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 3</value>
+  </data>
+  <data name="labelVesselRef.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 16</value>
+  </data>
+  <data name="labelTransducerDepth.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelTransducerDepth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 65</value>
+  </data>
+  <data name="labelTransducerDepth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="label250.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label250.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 47</value>
+  </data>
+  <data name="label250.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 16</value>
+  </data>
+  <data name="label251.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label251.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 26</value>
+  </data>
+  <data name="label251.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 16</value>
+  </data>
+  <data name="label252.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label252.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 5</value>
+  </data>
+  <data name="label252.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 16</value>
+  </data>
+  <data name="label254.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label254.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 67</value>
+  </data>
+  <data name="label254.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 16</value>
+  </data>
+  <data name="panel26.Location" type="System.Drawing.Point, System.Drawing">
+    <value>348, 312</value>
+  </data>
+  <data name="panel26.Size" type="System.Drawing.Size, System.Drawing">
+    <value>426, 121</value>
+  </data>
+  <data name="labelStep4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 14.25pt, style=Bold</value>
+  </data>
+  <data name="labelStep4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, -4</value>
+  </data>
+  <data name="labelStep4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 27</value>
+  </data>
+  <data name="panel27.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 288</value>
+  </data>
+  <data name="linkLabelSiteInfor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 12pt</value>
+  </data>
+  <data name="linkLabelSiteInfor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 102</value>
+  </data>
+  <data name="linkLabelSiteInfor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 23</value>
+  </data>
+  <data name="labelInstrumentSN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 16</value>
+  </data>
+  <data name="labelSystemNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelSystemNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 38</value>
+  </data>
+  <data name="labelSystemNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelFirmWare.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelFirmWare.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 18</value>
+  </data>
+  <data name="labelFirmWare.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelSN.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelSN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 1</value>
+  </data>
+  <data name="labelSN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="label259.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label259.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 37</value>
+  </data>
+  <data name="label259.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 16</value>
+  </data>
+  <data name="label260.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label260.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 18</value>
+  </data>
+  <data name="label260.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 16</value>
+  </data>
+  <data name="label261.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label261.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 1</value>
+  </data>
+  <data name="label261.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 16</value>
+  </data>
+  <data name="linkLabelSettingTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="linkLabelSettingTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 58</value>
+  </data>
+  <data name="linkLabelSettingTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 16</value>
+  </data>
+  <data name="linkLabelCompassCalibration.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="linkLabelCompassCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 78</value>
+  </data>
+  <data name="linkLabelCompassCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 16</value>
+  </data>
+  <data name="linkLabelGPSConf.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="linkLabelGPSConf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 58</value>
+  </data>
+  <data name="linkLabelGPSConf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 16</value>
+  </data>
+  <data name="panel28.Location" type="System.Drawing.Point, System.Drawing">
+    <value>348, 186</value>
+  </data>
+  <data name="panel28.Size" type="System.Drawing.Size, System.Drawing">
+    <value>426, 99</value>
+  </data>
+  <data name="labelStep3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 14.25pt, style=Bold</value>
+  </data>
+  <data name="labelStep3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, -3</value>
+  </data>
+  <data name="labelStep3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>316, 27</value>
+  </data>
+  <data name="panelStep2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 160</value>
+  </data>
+  <data name="labelSiteComments.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelSiteComments.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 60</value>
+  </data>
+  <data name="labelSiteComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelMeasNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelMeasNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 39</value>
+  </data>
+  <data name="labelMeasNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelStationNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelStationNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 19</value>
+  </data>
+  <data name="labelStationNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="labelSiteName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="labelSiteName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 2</value>
+  </data>
+  <data name="labelSiteName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 16</value>
+  </data>
+  <data name="label267.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label267.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 54</value>
+  </data>
+  <data name="label267.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 16</value>
+  </data>
+  <data name="label268.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label268.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 36</value>
+  </data>
+  <data name="label268.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 16</value>
+  </data>
+  <data name="label269.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label269.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 18</value>
+  </data>
+  <data name="label269.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 16</value>
+  </data>
+  <data name="label270.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10.5pt, style=Bold</value>
+  </data>
+  <data name="label270.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 1</value>
+  </data>
+  <data name="label270.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 16</value>
+  </data>
+  <data name="panel29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>348, 82</value>
+  </data>
+  <data name="panel29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>426, 75</value>
+  </data>
+  <data name="labelStep2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Black, 14.25pt, style=Bold</value>
+  </data>
+  <data name="labelStep2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, -3</value>
+  </data>
+  <data name="labelStep2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 27</value>
+  </data>
+  <data name="panelStep1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 56</value>
+  </data>
+  <data name="panel23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>820, 699</value>
+  </data>
+  <data name="tabPageSmartPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="tabPageSmartPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1016, 702</value>
+  </data>
+  <data name="btnSpeedFast.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7d3d3d3d3d3d3d3u3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3d3d7t3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7u3d3d3d3d3d3d3e7t3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3e7u3d3d3d3d3d3d3u7t3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u3
+        d3d3d3d3d3d7u7t3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7t3d3d3d3d3d3
+        e7u7d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7t3d3d3d3d3d3u7u7d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7t3d3d3d3d3d7u7u7d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3e7u7u7d3d3d3d3d3u7u7u3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7u7u3d3d3d3d3e7u7u7t3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u3d3
+        d3d3d3u7u7u7t3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u3d3d3d3d7u7u7
+        u7t3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7u7u7t3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7t3d3d3d3u7u7u7u7d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3e7u7u7u7u7d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7
+        u7u7u7d3d3d7u7u7u7u7u3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u7u7d3d3
+        e7u7u7u7u7u3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7u7d3d3u7u7u7u7u7
+        u3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u7u7u3d3e7u7u7u7u7u7t3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7u7d3d3u7u7u7u7u7u3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7
+        t3d3d3u7u7u7u7u7d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7u3d3d3d7u7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3e7u7u7u7d3d3d3d3u7u7u7u3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7
+        u7t3d3d3d3d7u7u7u7d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u3d3d3d3d3
+        e7u7u7t3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7t3d3d3d3d3u7u7u7d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u3d3d3d3d3d7u7u7t3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3e7u7u3d3d3d3d3d3u7u7t3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3u7u7d3d3d3d3d3d7u7u3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7t3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7d3d3d3
+        d3d3d3u7u3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7t3d3d3d3d3d3d7u7d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u3d3d3d3d3d3d3e7t3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7d3d3d3d3d3d3d3u3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3d3d7t3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP////////////////////////////////////////////////////////////////8A
+        AAD/////////////////////////////////////////////////////////////////8AAA////////
+        //////////////////////////////////////////////////////////AAAP//////////////////
+        ///////////////////////////////////////////////wAAA=
+</value>
+  </data>
+  <data name="btnSpeedFast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>778, 438</value>
+  </data>
+  <data name="panel18.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="listView_Summary.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="listView_Summary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>660, 136</value>
+  </data>
+  <data name="tabPage_Summary.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage_Summary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>662, 135</value>
+  </data>
+  <data name="tabPage_BoatSpeed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage_BoatSpeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>662, 135</value>
+  </data>
+  <data name="tabPage_BoatSpeed.Text" xml:space="preserve">
+    <value>Vessel Speed</value>
+  </data>
+  <data name="tabPage_WaterDirection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage_WaterDirection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>662, 135</value>
+  </data>
+  <data name="tabPage_WaterDirection.Text" xml:space="preserve">
+    <value>Water Course</value>
+  </data>
+  <data name="tabPage_BoatWater.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage_BoatWater.Size" type="System.Drawing.Size, System.Drawing">
+    <value>662, 135</value>
+  </data>
+  <data name="tabPage_BoatWater.Text" xml:space="preserve">
+    <value>Vessel／Water Speed</value>
+  </data>
+  <data name="tabPage_Pitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage_Pitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>662, 135</value>
+  </data>
+  <data name="tabPage_Roll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage_Roll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>662, 135</value>
+  </data>
+  <data name="tabControl11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, -2</value>
+  </data>
+  <data name="tabControl11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>670, 165</value>
+  </data>
+  <data name="panel18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 464</value>
+  </data>
+  <data name="panel18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 170</value>
+  </data>
+  <data name="btnSpeedSlow.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d7
+        d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3
+        d3d7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d7t3d3d3d3d3d3d3e7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3u7d3d3d3d3d3d3d7u3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3e7u3d3d3d3d3d3d3u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d7u7t3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3e7u7d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d7u7u3d3d3d3d3d3e7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3u7u7t3d3d3
+        d3d3d7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3u7u7u3d3d3d3d3d7u7u7t3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3e7u7u7t3d3d3d3d3u7u7u7d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3e7u7u7u3d3d3d3d3u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d7u7u7u7t3d3d3d3e7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3u7u7u7u7
+        d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3d7u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7u3d3d3d7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3e7u7u7u7u7t3d3d3u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3u7u7u7
+        u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d7u7u7u7u7u7t3d3e7
+        u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3u7u7u7u7u7u7d3d7u7u7u7u7u7u3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d7u7u7u7u7u7t3d3e7u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d7u7u7u7u7u3d3d3e7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7
+        d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3d3u7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3e7u7u7u7t3d3d3d3u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3u7u7u7u7d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3u7u7u7u3d3d3d3d7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3u7u7u7t3d3d3d3d7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d7
+        u7u7u3d3d3d3d3e7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d7u7u7t3d3d3
+        d3d3e7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3e7u7u3d3d3d3d3d3u7u7t3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3e7u7t3d3d3d3d3d3u7u7d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3e7u7d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3u7u3d3d3d3d3d3d7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3u7t3d3d3d3d3d3d7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3u7
+        d3d3d3d3d3d3d7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3
+        d3d7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d7t3d3d3d3d3d3d3e7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP////////////////////////////////////////////////////////////////8A
+        AAD/////////////////////////////////////////////////////////////////8AAA////////
+        //////////////////////////////////////////////////////////AAAP//////////////////
+        ///////////////////////////////////////////////wAAA=
+</value>
+  </data>
+  <data name="btnSpeedSlow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>734, 438</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="columnHeader43.Width" type="System.Int32, mscorlib">
+    <value>95</value>
+  </data>
+  <data name="columnHeader44.Width" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="listView_Others.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 418</value>
+  </data>
+  <data name="listView_Others.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 248</value>
+  </data>
+  <data name="columnHeader41.Width" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="columnHeader42.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="columnHeader42.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="listView_Navigation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 170</value>
+  </data>
+  <data name="listView_Navigation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 250</value>
+  </data>
+  <data name="lV_MeasuredQ.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="columnHeaderName.Text" xml:space="preserve">
+    <value>公司地址</value>
+  </data>
+  <data name="columnHeaderName.Width" type="System.Int32, mscorlib">
+    <value>110</value>
+  </data>
+  <data name="columnHeaderData.Width" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="lV_MeasuredQ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 0</value>
+  </data>
+  <data name="lV_MeasuredQ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 145</value>
+  </data>
+  <data name="label208.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 17</value>
+  </data>
+  <data name="label208.Text" xml:space="preserve">
+    <value>River Width(m)</value>
+  </data>
+  <data name="label209.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 17</value>
+  </data>
+  <data name="label209.Text" xml:space="preserve">
+    <value>Total Area(m2)</value>
+  </data>
+  <data name="label210.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 270</value>
+  </data>
+  <data name="label210.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 17</value>
+  </data>
+  <data name="label210.Text" xml:space="preserve">
+    <value>Mean Course(°)</value>
+  </data>
+  <data name="label211.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 17</value>
+  </data>
+  <data name="label211.Text" xml:space="preserve">
+    <value>Mean Speed(m/s)</value>
+  </data>
+  <data name="label_AccNorth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 270</value>
+  </data>
+  <data name="label_AccEast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 247</value>
+  </data>
+  <data name="label214.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="label214.Text" xml:space="preserve">
+    <value>Course MG(°)</value>
+  </data>
+  <data name="label213.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 17</value>
+  </data>
+  <data name="label213.Text" xml:space="preserve">
+    <value>Distance MG(m)</value>
+  </data>
+  <data name="label212.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 17</value>
+  </data>
+  <data name="label212.Text" xml:space="preserve">
+    <value>Length(m)</value>
+  </data>
+  <data name="label207.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 17</value>
+  </data>
+  <data name="label207.Text" xml:space="preserve">
+    <value>Water Direction(°)</value>
+  </data>
+  <data name="label206.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 17</value>
+  </data>
+  <data name="label206.Text" xml:space="preserve">
+    <value>Water Speed(m/s)</value>
+  </data>
+  <data name="label205.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 17</value>
+  </data>
+  <data name="label205.Text" xml:space="preserve">
+    <value>Boat Course(°)</value>
+  </data>
+  <data name="label204.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 17</value>
+  </data>
+  <data name="label204.Text" xml:space="preserve">
+    <value>Boat Speed(m/s)</value>
+  </data>
+  <data name="groupBox39.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 435</value>
+  </data>
+  <data name="groupBox39.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 37</value>
+  </data>
+  <data name="groupBox39.Text" xml:space="preserve">
+    <value>Navigation Information</value>
+  </data>
+  <data name="label189.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 17</value>
+  </data>
+  <data name="label189.Text" xml:space="preserve">
+    <value>Total Q</value>
+  </data>
+  <data name="label194.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 17</value>
+  </data>
+  <data name="label194.Text" xml:space="preserve">
+    <value>Right Bank Q</value>
+  </data>
+  <data name="label193.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="label193.Text" xml:space="preserve">
+    <value>Left Bank Q</value>
+  </data>
+  <data name="label192.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 17</value>
+  </data>
+  <data name="label192.Text" xml:space="preserve">
+    <value>Bottom Q</value>
+  </data>
+  <data name="label191.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 17</value>
+  </data>
+  <data name="label191.Text" xml:space="preserve">
+    <value>Middle Q</value>
+  </data>
+  <data name="label190.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 17</value>
+  </data>
+  <data name="label190.Text" xml:space="preserve">
+    <value>Top Q</value>
+  </data>
+  <data name="groupBox32.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 10.5pt</value>
+  </data>
+  <data name="groupBox32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 233</value>
+  </data>
+  <data name="groupBox32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 19</value>
+  </data>
+  <data name="groupBox32.Text" xml:space="preserve">
+    <value>Discharge Information(m3/s)</value>
+  </data>
+  <data name="tabPage43.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 666</value>
+  </data>
+  <data name="tabPage43.Text" xml:space="preserve">
+    <value>Measured Q</value>
+  </data>
+  <data name="radioButtonRealTime_WA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 20</value>
+  </data>
+  <data name="radioButtonRealTime_WA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 21</value>
+  </data>
+  <data name="radioButtonRealTime_WA.Text" xml:space="preserve">
+    <value>RealTime</value>
+  </data>
+  <data name="radioButtonHistory_WA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="radioButtonHistory_WA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 21</value>
+  </data>
+  <data name="radioButtonHistory_WA.Text" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="groupBox19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 536</value>
+  </data>
+  <data name="groupBox19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 64</value>
+  </data>
+  <data name="groupBox19.Text" xml:space="preserve">
+    <value>Log Mode</value>
+  </data>
+  <data name="radioButtonWhole_WA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 20</value>
+  </data>
+  <data name="radioButtonWhole_WA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 21</value>
+  </data>
+  <data name="radioButtonWhole_WA.Text" xml:space="preserve">
+    <value>Combinate</value>
+  </data>
+  <data name="radioButtonPart_WA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="radioButtonPart_WA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 21</value>
+  </data>
+  <data name="radioButtonPart_WA.Text" xml:space="preserve">
+    <value>Separate</value>
+  </data>
+  <data name="groupBox18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 536</value>
+  </data>
+  <data name="groupBox18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 64</value>
+  </data>
+  <data name="groupBox18.Text" xml:space="preserve">
+    <value>Display Mode</value>
+  </data>
+  <data name="label113.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 472</value>
+  </data>
+  <data name="label113.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 17</value>
+  </data>
+  <data name="label113.Text" xml:space="preserve">
+    <value>Display Beam:</value>
+  </data>
+  <data name="checkBox_WA_b3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 511</value>
+  </data>
+  <data name="checkBox_WA_b3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="checkBox_WA_b2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 511</value>
+  </data>
+  <data name="checkBox_WA_b2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="checkBox_WA_b1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 489</value>
+  </data>
+  <data name="checkBox_WA_b1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="checkBox_WA_b0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 489</value>
+  </data>
+  <data name="checkBox_WA_b0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="pictureBox_W_A.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 0</value>
+  </data>
+  <data name="pictureBox_W_A.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 259</value>
+  </data>
+  <data name="panel_W_A.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 259</value>
+  </data>
+  <data name="vScrollBar_W_A.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-210, 0</value>
+  </data>
+  <data name="vScrollBar_W_A.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 47</value>
+  </data>
+  <data name="vScrollBar_W_A.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panel22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 15</value>
+  </data>
+  <data name="panel22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>183, 451</value>
+  </data>
+  <data name="tabPage32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 641</value>
+  </data>
+  <data name="tabPage32.Text" xml:space="preserve">
+    <value>Echo Intensity</value>
+  </data>
+  <data name="radioButtonRealTime_WC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 20</value>
+  </data>
+  <data name="radioButtonRealTime_WC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 21</value>
+  </data>
+  <data name="radioButtonRealTime_WC.Text" xml:space="preserve">
+    <value>RealTime</value>
+  </data>
+  <data name="radioButtonHistory_WC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="radioButtonHistory_WC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 21</value>
+  </data>
+  <data name="radioButtonHistory_WC.Text" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="groupBox29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-1, 542</value>
+  </data>
+  <data name="groupBox29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 64</value>
+  </data>
+  <data name="groupBox29.Text" xml:space="preserve">
+    <value>Log Mode</value>
+  </data>
+  <data name="radioButtonWhole_WC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 20</value>
+  </data>
+  <data name="radioButtonWhole_WC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 21</value>
+  </data>
+  <data name="radioButtonWhole_WC.Text" xml:space="preserve">
+    <value>Combinate</value>
+  </data>
+  <data name="radioButtonPart_WC.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="radioButtonPart_WC.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 21</value>
+  </data>
+  <data name="radioButtonPart_WC.Text" xml:space="preserve">
+    <value>Separate</value>
+  </data>
+  <data name="groupBox30.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 542</value>
+  </data>
+  <data name="groupBox30.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 64</value>
+  </data>
+  <data name="groupBox30.Text" xml:space="preserve">
+    <value>Display Mode</value>
+  </data>
+  <data name="checkBox_WC_b3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 519</value>
+  </data>
+  <data name="checkBox_WC_b3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="label120.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 480</value>
+  </data>
+  <data name="label120.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 17</value>
+  </data>
+  <data name="label120.Text" xml:space="preserve">
+    <value>Display Beam:</value>
+  </data>
+  <data name="checkBox_WC_b0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 497</value>
+  </data>
+  <data name="checkBox_WC_b0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="pictureBox_W_C.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 0</value>
+  </data>
+  <data name="pictureBox_W_C.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 259</value>
+  </data>
+  <data name="panel_W_C.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 259</value>
+  </data>
+  <data name="vScrollBar_W_C.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-270, 0</value>
+  </data>
+  <data name="vScrollBar_W_C.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 43</value>
+  </data>
+  <data name="vScrollBar_W_C.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panel24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 15</value>
+  </data>
+  <data name="panel24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 451</value>
+  </data>
+  <data name="checkBox_WC_b2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 519</value>
+  </data>
+  <data name="checkBox_WC_b2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="checkBox_WC_b1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 497</value>
+  </data>
+  <data name="checkBox_WC_b1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 21</value>
+  </data>
+  <data name="tabPage35.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 641</value>
+  </data>
+  <data name="tabPage35.Text" xml:space="preserve">
+    <value>Correlation</value>
+  </data>
+  <data name="tabControl_FuTu_WP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 666</value>
+  </data>
+  <data name="tabPage_WP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 666</value>
+  </data>
+  <data name="tabPage_WP.Text" xml:space="preserve">
+    <value>Q Parameter</value>
+  </data>
+  <data name="tabControlFuTu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="tabControlFuTu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 691</value>
+  </data>
+  <data name="panel20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>816, 1</value>
+  </data>
+  <data name="panel20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 694</value>
+  </data>
+  <data name="panel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="TimeLable.Location" type="System.Drawing.Point, System.Drawing">
+    <value>488, 2</value>
+  </data>
+  <data name="TimeLable.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 17</value>
+  </data>
+  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 15</value>
+  </data>
+  <data name="ProcessBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>454, 15</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>137, 438</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>591, 23</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 17</value>
+  </data>
+  <data name="btnScaleDecrease.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAldEVYdGRhdGU6
+        Y3JlYXRlADIwMTUtMDctMjVUMjE6NDk6MzErMDg6MDBI0w9NAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDEx
+        LTEwLTMxVDE0OjU2OjI5KzA4OjAwt29PRAAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44Ljgt
+        MTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAABh0
+        RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABd0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQA
+        MzYvmTztAAAAFnRFWHRUaHVtYjo6SW1hZ2U6OldpZHRoADM21zb8YAAAABl0RVh0VGh1bWI6Ok1pbWV0
+        eXBlAGltYWdlL3BuZz+yVk4AAAAXdEVYdFRodW1iOjpNVGltZQAxMzIwMDQ0MTg5wJhUXQAAABN0RVh0
+        VGh1bWI6OlNpemUAMS4xMUtCQvG9zmQAAABYdEVYdFRodW1iOjpVUkkAZmlsZTovLy9ob21lL3d3d3Jv
+        b3Qvd3d3LmVhc3lpY29uLm5ldC9jZG4taW1nLmVhc3lpY29uLmNuL3NyYy81Njc3LzU2NzczMy5wbmeZ
+        6q4AAAAAqUlEQVRYR+2VUQqAIBBEPUMQdP+vfjtY0A3MCaSEYgxs3WCEhWDBfb0mDTHG4KlcwUCMgFg8
+        ZEiGmAHWV4ZkiBlgfd8ZCp3W1VphqBNPyVDQnURDepxTranSFdy0sCf2xoxj1RhaGkPcvRRmVAGNBjAZ
+        ELOoockbEKBdfTIA5VBvH9jCnq9DbXoCPP5l7Fi36Pu+OiwMsBkyJEPMAOsrQzLEDLC+MvQ7QzvBqY/g
+        IR8SXwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnScaleIncrease.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAQoAAAEKCAYAAADqyxvJAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAldEVYdGRhdGU6
+        Y3JlYXRlADIwMTUtMTAtMTNUMDA6MDg6NTArMDg6MDBkeoqHAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE1
+        LTEwLTEzVDAwOjA4OjUwKzA4OjAwFScyOwAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44Ljgt
+        MTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAAFl0
+        RVh0c3ZnOmNvbW1lbnQAIEdlbmVyYXRvcjogU2tldGNoIEJldGEgMy4zLjIgKDEyMDQxKSAtIGh0dHA6
+        Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCDY+YpbAAAADnRFWHRzdmc6dGl0bGUAcGx1c6Oo
+        RKUAAAAYdEVYdFRodW1iOjpEb2N1bWVudDo6UGFnZXMAMaf/uy8AAAAYdEVYdFRodW1iOjpJbWFnZTo6
+        SGVpZ2h0ADM3M6pduCMAAAAXdEVYdFRodW1iOjpJbWFnZTo6V2lkdGgAMzczOazofgAAABl0RVh0VGh1
+        bWI6Ok1pbWV0eXBlAGltYWdlL3BuZz+yVk4AAAAXdEVYdFRodW1iOjpNVGltZQAxNDQ0NjY2MTMwCmEN
+        mQAAABJ0RVh0VGh1bWI6OlNpemUAMy4zS0JCCSNp+gAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hv
+        bWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExODc3LzEx
+        ODc3MDgucG5n0vbGcgAAEAJJREFUeF7tnV2sFtUVhvn/kyKERhG1SDAqCMYLjQaJBKqtSklQTIjB0AtL
+        64VpNaIhbY0B1GqixjZeGBr1Am1p0MRq/UkUpdpEbMVWLdE01FAbpFDagm0FAaHvW7+vQe2J55y9Z75v
+        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
+</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 17</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Velocity Length</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 179</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 17</value>
+  </data>
+  <data name="panelGPSTrack.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 221</value>
+  </data>
+  <data name="panelGPSTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>762, 184</value>
+  </data>
+  <data name="label188.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 10.5pt</value>
+  </data>
+  <data name="label188.Location" type="System.Drawing.Point, System.Drawing">
+    <value>530, 377</value>
+  </data>
+  <data name="label188.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 17</value>
+  </data>
+  <data name="label188.Text" xml:space="preserve">
+    <value>Current Depth(m):</value>
+  </data>
+  <data name="label188.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label187.Location" type="System.Drawing.Point, System.Drawing">
+    <value>515, 391</value>
+  </data>
+  <data name="label187.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 17</value>
+  </data>
+  <data name="label187.Text" xml:space="preserve">
+    <value>FS Dir.(Deg):</value>
+  </data>
+  <data name="label187.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label122.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9pt</value>
+  </data>
+  <data name="label122.Location" type="System.Drawing.Point, System.Drawing">
+    <value>609, 391</value>
+  </data>
+  <data name="label122.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 16</value>
+  </data>
+  <data name="label122.Text" xml:space="preserve">
+    <value>Current FS(m/s):</value>
+  </data>
+  <data name="label122.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelShipSpeed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>394, 409</value>
+  </data>
+  <data name="labelShipSpeed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 17</value>
+  </data>
+  <data name="labelShipSpeed.Text" xml:space="preserve">
+    <value>Ship Speed(kts):</value>
+  </data>
+  <data name="labelShipSpeed.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label118.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 376</value>
+  </data>
+  <data name="label118.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
+  </data>
+  <data name="label118.Text" xml:space="preserve">
+    <value>Ensemble Time:</value>
+  </data>
+  <data name="label118.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>246, 376</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 17</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Total Time:</value>
+  </data>
+  <data name="label12.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="labelMainPanelFigure.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 10.5pt</value>
+  </data>
+  <data name="labelMainPanelFigure.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 0</value>
+  </data>
+  <data name="labelMainPanelFigure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 17</value>
+  </data>
+  <data name="labelMainPanelFigure.Text" xml:space="preserve">
+    <value>Flow Speed Profile Chart [m/s](Ref: Bottom Track)</value>
+  </data>
+  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>396, 377</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 17</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Total Ensemble:</value>
+  </data>
+  <data name="label15.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label93.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="label93.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 49</value>
+  </data>
+  <data name="label93.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 17</value>
+  </data>
+  <data name="trackBarMaxV.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="trackBarMaxV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 51</value>
+  </data>
+  <data name="trackBarMaxV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 14</value>
+  </data>
+  <data name="InfoPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 18</value>
+  </data>
+  <data name="InfoPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 32</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, -1</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
+  </data>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Flow Speed</value>
+  </data>
+  <data name="labelMavV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 0</value>
+  </data>
+  <data name="labelMavV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 17</value>
+  </data>
+  <data name="label91.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="label91.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 46</value>
+  </data>
+  <data name="label91.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="panel16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 114</value>
+  </data>
+  <data name="panel16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 69</value>
+  </data>
+  <data name="labelNorthSouth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 335</value>
+  </data>
+  <data name="labelNorthSouth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelEastWest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>360, 335</value>
+  </data>
+  <data name="labelEastWest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelShipSpeedText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>489, 331</value>
+  </data>
+  <data name="labelShipSpeedText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelShipSpeedText.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="MainPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 26</value>
+  </data>
+  <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>763, 199</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>246, 394</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 17</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Cursor Number:</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>396, 394</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 17</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Cursor Bin:</value>
+  </data>
+  <data name="labelReceiveTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 394</value>
+  </data>
+  <data name="labelReceiveTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelCellsNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>489, 394</value>
+  </data>
+  <data name="labelCellsNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelEsambleNum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>331, 394</value>
+  </data>
+  <data name="labelEsambleNum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 394</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 17</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Cursor Time:</value>
+  </data>
+  <data name="label11.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="panel21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>774, 417</value>
+  </data>
+  <data name="HPRpictureBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 126</value>
+  </data>
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk0WCAAAAAAAAHYAAAAoAAAAPQAAAD0AAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD/////////
+        //////////AA//8AAJAAD/////////////////Ar////////////AAAAAAAAkAAAAAAA////////////
+        8Cv//////////w8AAAAAAACQAAAAAAAP///////////wK//////////wAAAAAAAAAJAAAAAAAAD/////
+        //////Ar/////////wAKAAAKqqqqmqqqqgAAAAD/////////8Cv////////wCgAAAAqqqqqaqqqqAAAK
+        AAD////////wK////////wAAAAAACqqqqpqqqqoAAAAAAA////////Ar///////wAAAAAAAKqqqqmqqq
+        qgAAAAAAAP//////8Cv//////wAAAAAAAAqqqqqaqqqqAAAAAAAAD//////wK//////wAAAAAAAACqqq
+        qpqqqqoAAAAAAAAA//////Ar/////wAAAAAAAAAKqqqqmqqqqgAAAAAAAAAP////8Cv////wAAAAAAAA
+        AAqqqqqaqqqqAAAAAAAAAAD////wK////wAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAA////Ar///wAAAA
+        AAAAAAAKqqqqmqqqqgAAAAAAAAAAAP//8Cv///AAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAA///wK///
+        AAAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAAAP//Ar//8AAAAAAAAAAAAKqqqqmqqqqgAAAAAAAAAAAA//
+        8Cv/8AAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAP/wK//wAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAA
+        AAAA//Ar/wAAAAAAAAAAAAAKqqqqmqqqqgAAAAAAAAAAAAAP8Cv/AAAAAAAAAAAAAAqqqqqaqqqqAAAA
+        AAAAAAAAAA/wK/8AAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAAAAD/Ar8AAAAAAAAAAAAAAKqqqqmqqq
+        qgAAAAAAAAAAAAAA8CvwAAAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAADwK/AAAAAAAAAAAAAACqqq
+        qpqqqqoAAAAAAAAAAAAAAPAr8AAAAAAAAAAAAAAKqqqqmqqqqgAAAAAAAAAAAAAA8CsAAAAAAAAAAAAA
+        AAqqqqqaqqqqAAAAAAAAAAAAAAAAKwAAAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAAAAAAArAAAAAAAA
+        AAAAAAAKqqqqmqqqqgAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAAAAK4iI
+        iIiIiIiIiAAACIiIiJiIiIgAAAiIiIiIiIiIiIArAAAAAAAAAAAAAAAKqqqqmqqqqgAAAAAAAAAAAAAA
+        ACsAAAAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAAAAKwAAAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAA
+        AAAAAAArAAAAAAAAAAAAAAAKqqqqmqqqqgAAAAAAAAAAAAAAACvwAAAAAAAAAAAAAAqqqqqaqqqqAAAA
+        AAAAAAAAAADwK/AAAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAAAAAPAr8AAAAAAAAAAAAAAKqqqqmqqq
+        qgAAAAAAAAAAAAAA8CvwAAAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAADwK/8AAAAAAAAAAAAACqqq
+        qpqqqqoAAAAAAAAAAAAAD/Ar/wAAAAAAAAAAAACqqqqqmqqqqgAAAAAAAAAAAAAP8Cv/AAAAAAAAAAAA
+        AKqqqqqaqqqgoAAAAAAAAAAAAA/wK//wAAAAAAAAAAAACqqqqpqqqqoAAAAAAAAAAAAA//Ar//AAAAAA
+        AAAAAAAKqqqqmqqqqgAAAAAAAAAAAAD/8Cv//wAAAAAAAAAAAACqqqqaqqqgAAAAAAAAAAAAD//wK///
+        AAAAAAAAAAAAAKqqqpqqqqAAAAAAAAAAAAAP//Ar///wAAAAAAAAAAAACqqqmqqqAAAAAAAAAAAAAP//
+        8Cv///AAAAAAAAAAAAAKqqqaqqoAAAAAAAAAAAAA///wK////wAAAAAAAAAAAACqqpqqoAAAAAAAAAAA
+        AA////Ar////8AAAAAAAAAAAAKqqmqqgAAAAAAAAAAAA////8Cv/////AAAAAAAAAAAACqqaqgAAAAAA
+        AAAAAA/////wK//////wAAAAAAAAAAAKqpqqAAAAAAAAAAAA//////Ar//////8AAAAAAAAAAACqmqAA
+        AAAAAAAAAA//////8Cv///////AAAAAAAAAAAKqaoAAAAAAAAAAA///////wK////////wAAAAAAAAAA
+        CpoAAAAAAAAAAA////////Ar////////8AAAAAAAAAAKmgAAAAAAAAAA////////8Cv/////////8AAA
+        AAAAAACQAAAAAAAAAP/////////wK///////////8AAAAAAAAJAAAAAAAAD///////////Ar////////
+        ////8AAAAAAAkAAAAAAA////////////8Cv//////////////wAAAACQAAAAD//////////////wK///
+        //////////////8AAJAAD/////////////////Ar
+</value>
+  </data>
+  <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk0WCAAAAAAAAHYAAAAoAAAAPQAAAD0AAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD/////////
+        //////////////8AAJAAD/////////////////Ar//////////////8AAAAAkAAAAA//////////////
+        8Cv////////////wAAAAAACQAAAAAAD////////////wK///////////8AAAAAAAAJAAAAAAAAD/////
+        //////Ar//////////AAAAAAAAAAkAAAAAAAAAD/////////8Cv////////wAAAAAAAAAACQAAAAAAAA
+        AAD////////wK////////wAAAAAAAAAAAJAAAAAAAAAAAA////////Ar///////wAAAAAAAAAAAAkAAA
+        AAAAAAAAAP//////8Cv//////wAAAAAAAAAAAACQAAAAAAAAAAAAD//////wK//////wAAAAAAAAAAAA
+        AJAAAAAAAAAAAAAA//////Ar/////wAAAAAAAAAAAAAAkAAAAAAAAAAAAAAP////8Cv////wAAAAAAAA
+        AAAAAACQAAAAAAAAAAAAAAD////wK////wAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAA////Ar///wAAAA
+        AAAAAAAAAAAAkAAAAAAAAAAAAAAAAP//8Cv///AAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAA///wK///
+        AAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAP//Ar//8AAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAA//
+        8Cv/8AAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAP/wK//wAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAA
+        AAAA//Ar/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8Cv/AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAA/wK/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAr8AAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAA8CvwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwK/AAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAr8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAKwAAAAAAAKqqqqqqqqqqqpqqqqqqqqqqqqqqqqqgAAArAAAAAAAK
+        qqqqqqqqqqqqmqqqqqqqqqqqqqqqqqAAACsAAAAAAKqqqqqqqqqqqqqaqqqqqqqqqqqqqqqqoAAAK4iI
+        iIiIiIiIiIiIiIiIiJiIiIiIiIiIiIiIiIiIiIArAAAAAKqqqqqqqqqqqqqqmqqqqqqqqqqqqqqqqqAA
+        ACsAAAAKqqqqqqqqqqqqqqqaqqqqqqqqqqqqqqqqoAAAKwAACqqqqqqqqqqqqqqqqpqqqqqqqqqqqqqq
+        qqqgAPArAACqqqqqqqqqqqqqqqqqmqqqqqqqqqqqqqqqqqAA8CvwCqqqqqqqqqqqqqqqqqqaqqqqqqqq
+        qqqqqqqqoADwK/CqqqqqqqqqqqqqqqqqqpqqqqqqqqqqqqqqqqqgAPAr8AAAAAAAAAAAAAAAAAAAkAAA
+        AAAAAAAAAAAAAAAA8CvwAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAADwK/8AAAAAAAAAAAAAAAAA
+        AJAAAAAAAAAAAAAAAAAAD/Ar/wAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAAAP8Cv/AAAAAAAAAAAA
+        AAAAAACQAAAAAAAAAAAAAAAAAA/wK//wAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAA//Ar//AAAAAA
+        AAAAAAAAAAAAkAAAAAAAAAAAAAAAAAD/8Cv//wAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAD//wK///
+        AAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAP//Ar///wAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAP//
+        8Cv///AAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAA///wK////wAAAAAAAAAAAAAAAJAAAAAAAAAAAAAA
+        AA////Ar////8AAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA////8Cv/////AAAAAAAAAAAAAACQAAAAAAAA
+        AAAAAA/////wK//////wAAAAAAAAAAAAAJAAAAAAAAAAAAAA//////Ar//////8AAAAAAAAAAAAAkAAA
+        AAAAAAAAAA//////8Cv///////AAAAAAAAAAAACQAAAAAAAAAAAA///////wK////////wAAAAAAAAAA
+        AJAAAAAAAAAAAA////////Ar////////8AAAAAAAAAAAkAAAAAAAAAAA////////8Cv/////////8AAA
+        AAAAAACQAAAAAAAAAP/////////wK///////////8AAAAAAAAJAAAAAAAAD///////////Ar////////
+        ////8AAAAAAAkAAAAAAA////////////8Cv//////////////wAAAACQAAAAD//////////////wK///
+        //////////////8AAJAAD/////////////////Ar
+</value>
+  </data>
+  <data name="pictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk0WCAAAAAAAAHYAAAAoAAAAPQAAAD0AAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD/////////
+        //////////////8AAJAAD/////////////////Ar//////////////8AAAAAkAAAAA//////////////
+        8Cv////////////wAAAAAACQAAAAAAD////////////wK///////////8AAAAAAAAJAAAAAAAAD/////
+        //////Ar//////////AAAAAAAAAAkAAAAAAAAAD/////////8Cv////////wAAAAAAAAAACQAAAAAAAA
+        AAD////////wK////////wAAAAAAAAAAAJAAAAAAAAAAAA////////Ar///////wAAAAAAAAAAAAkAAA
+        AAAAAAAAAP//////8Cv//////wAAAAAAAAAAAACQAAAAAAAAAAAAD//////wK//////wAAAAAAAAAAAA
+        AJAAAAAAAAAAAAAA//////Ar/////wAAAAAAAAAAAAAAkAAAAAAAAAAAAAAP////8Cv////wAAAAAAAA
+        AAAAAACQAAAAAAAAAAAAAAD////wK////wAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAA////Ar///wAAAA
+        AAAAAAAAAAAAkAAAAAAAAAAAAAAAAP//8Cv///AAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAA///wK///
+        AAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAP//Ar//8AAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAA//
+        8Cv/8AAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAP/wK//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAA//Ar/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8Cv/AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAA/wK/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/Ar8AAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAA8CvwAAAAAAAAAAAAAAqqqqqaqqqqAAAAAAAAAAAAAADwK/AAAAAAAAAAAAAAqqqq
+        qpqqqqqgAAAAAAAAAAAAAPAr8AAAAAAAAAAAAAqqqqqqmqqqqqoAAAAAAAAAAAAA8CsAAAAAAAAAAAAA
+        CqqqqqqaqqqqqgAAAAAAAAAAAAAAKwAAAAAAAAAAAACqqqqqqpqqqqqqoAAAAAAAAAAAAAArAAAAAAAA
+        AAAAAKqqqqqqmqqqqqqgAAAAAAAAAAAAACsAAAAAAAAAAAAKqqqqqqqaqqqqqqoAAAAAAAAAAAAAK4iI
+        iIiIiIiIiIiIiIiIiJiIiIiIiIiIiIiIiIiIiIArAAAAAAAAAAAAqqqqqqqqmqqqqqqqoAAAAAAAAAAA
+        ACsAAAAAAAAAAAqqqqqqqqqaqqqqqqqqAAAAAAAAAAAAKwAAAAAAAAAACqqqqqqqqpqqqqqqqqoAAAAA
+        AAAAAAArAAAAAAAAAACqqqqqqqqqmqqqqqqqqqAAAAAAAAAAACvwAAAAAAAAAKqqqqqqqqqaqqqqqqqq
+        oAAAAAAAAADwK/AAAAAAAAAKqqqqqqqqqpqqqqqqqqqqAAAAAAAAAPAr8AAAAAAAAAAAAAAAAAAAkAAA
+        AAAAAAAAAAAAAAAA8CvwAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAADwK/8AAAAAAAAAAAAAAAAA
+        AJAAAAAAAAAAAAAAAAAAD/Ar/wAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAAAP8Cv/AAAAAAAAAAAA
+        AAAAAACQAAAAAAAAAAAAAAAAAA/wK//wAAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAA//Ar//AAAAAA
+        AAAAAAAAAAAAkAAAAAAAAAAAAAAAAAD/8Cv//wAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAD//wK///
+        AAAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAAAP//Ar///wAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAAP//
+        8Cv///AAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAA///wK////wAAAAAAAAAAAAAAAJAAAAAAAAAAAAAA
+        AA////Ar////8AAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA////8Cv/////AAAAAAAAAAAAAACQAAAAAAAA
+        AAAAAA/////wK//////wAAAAAAAAAAAAAJAAAAAAAAAAAAAA//////Ar//////8AAAAAAAAAAAAAkAAA
+        AAAAAAAAAA//////8Cv///////AAAAAAAAAAAACQAAAAAAAAAAAA///////wK////////wAAAAAAAAAA
+        AJAAAAAAAAAAAA////////Ar////////8AAAAAAAAAAAkAAAAAAAAAAA////////8Cv/////////8AAA
+        AAAAAACQAAAAAAAAAP/////////wK///////////8AAAAAAAAJAAAAAAAAD///////////Ar////////
+        ////8AAAAAAAkAAAAAAA////////////8Cv//////////////wAAAACQAAAAD//////////////wK///
+        //////////////8AAJAAD/////////////////Ar
+</value>
+  </data>
+  <data name="HPRDisplayerPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 130</value>
+  </data>
+  <data name="DP300Displayer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="DP300Displayer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1016, 702</value>
+  </data>
+  <data name="DP300Displayer.Text" xml:space="preserve">
+    <value>Q Control</value>
+  </data>
+  <data name="progressBarGPSTrack.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 92</value>
+  </data>
+  <data name="progressBarGPSTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 17</value>
+  </data>
+  <data name="buttonTrackFF.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7d3d3d3d3d3d3d3u3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3d3d7t3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7u3d3d3d3d3d3d3e7t3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3e7u3d3d3d3d3d3d3u7t3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u3
+        d3d3d3d3d3d7u7t3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7t3d3d3d3d3d3
+        e7u7d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7t3d3d3d3d3d3u7u7d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7t3d3d3d3d3d7u7u7d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3e7u7u7d3d3d3d3d3u7u7u3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7u7u3d3d3d3d3e7u7u7t3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u3d3
+        d3d3d3u7u7u7t3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u3d3d3d3d7u7u7
+        u7t3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7u7u7t3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7t3d3d3d3u7u7u7u7d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3e7u7u7u7u7d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7
+        u7u7u7d3d3d7u7u7u7u7u3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u7u7d3d3
+        e7u7u7u7u7u3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7u7d3d3u7u7u7u7u7
+        u3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u7u7u3d3e7u7u7u7u7u7t3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7u7d3d3u7u7u7u7u7u3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7
+        t3d3d3u7u7u7u7u7d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7u3d3d3d7u7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3e7u7u7u7d3d3d3d3u7u7u7u3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7
+        u7t3d3d3d3d7u7u7u7d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7u3d3d3d3d3
+        e7u7u7t3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7t3d3d3d3d3u7u7u7d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u3d3d3d3d3d7u7u7t3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3e7u7u3d3d3d3d3d3u7u7t3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3u7u7d3d3d3d3d3d7u7u3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7t3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7d3d3d3
+        d3d3d3u7u3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3u7t3d3d3d3d3d3d7u7d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d7u3d3d3d3d3d3d3e7t3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7d3d3d3d3d3d3d3u3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3d3d7t3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP////////////////////////////////////////////////////////////////8A
+        AAD/////////////////////////////////////////////////////////////////8AAA////////
+        //////////////////////////////////////////////////////////AAAP//////////////////
+        ///////////////////////////////////////////////wAAA=
+</value>
+  </data>
+  <data name="buttonTrackFF.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 102</value>
+  </data>
+  <data name="buttonTrackRR.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d7
+        d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3
+        d3d7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d7t3d3d3d3d3d3d3e7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3u7d3d3d3d3d3d3d7u3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3e7u3d3d3d3d3d3d3u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d7u7t3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3e7u7d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d7u7u3d3d3d3d3d3e7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3u7u7t3d3d3
+        d3d3d7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3u7u7u3d3d3d3d3d7u7u7t3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3e7u7u7t3d3d3d3d3u7u7u7d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3e7u7u7u3d3d3d3d3u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d7u7u7u7t3d3d3d3e7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3u7u7u7u7
+        d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d7u7u7u7u3d3d3d3e7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3d7u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3u7u7u7u7u3d3d3d7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3e7u7u7u7u7t3d3d3u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3u7u7u7
+        u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d7u7u7u7u7u7t3d3e7
+        u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3u7u7u7u7u7u7d3d7u7u7u7u7u7u3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3u7u7u7u7u7u3d3d7u7u7u7u7u7t3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d7u7u7u7u7u7t3d3e7u7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d7u7u7u7u7u7d3d3e7u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d7u7u7u7u7u3d3d3e7u7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d7u7u7u7u7t3d3d3e7u7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3e7u7u7u7u7
+        d3d3d3u7u7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3d3u7u7
+        u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3e7u7u7u7t3d3d3d3u7u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3u7u7u7u7d3d3d3d7u7u7u7u3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3u7u7u7u3d3d3d3d7u7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3u7u7u7t3d3d3d3d7u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3u7u7u7d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d7
+        u7u7u3d3d3d3d3e7u7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d7u7u7t3d3d3
+        d3d3e7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d7u7u7d3d3d3d3d3e7u7u3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3e7u7u3d3d3d3d3d3u7u7t3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3e7u7t3d3d3d3d3d3u7u7d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3e7u7d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3u7u3d3d3d3d3d3d7u7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3u7t3d3d3d3d3d3d7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3u7
+        d3d3d3d3d3d3d7u3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3u3d3d3d3d3d3
+        d3d7t3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d7t3d3d3d3d3d3d3e7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d7d3d3d3d3d3d3d3e3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP////////////////////////////////////////////////////////////////8A
+        AAD/////////////////////////////////////////////////////////////////8AAA////////
+        //////////////////////////////////////////////////////////AAAP//////////////////
+        ///////////////////////////////////////////////wAAA=
+</value>
+  </data>
+  <data name="buttonTrackRR.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 102</value>
+  </data>
+  <data name="buttonTrackStop.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3mZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d5mZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3cZmZmZmZ
+        mZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZ
+        mZd3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3GZ
+        mZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZ
+        mZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3cZmZmZmZ
+        mZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZ
+        mZd3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3GZmZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZmZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3cZmZmZmZmZmZmZmZmZmZl3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3GZ
+        mZmZmZmZmZmZmZmZmZd3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3dxmZmZmZmZmZmZ
+        mZmZmZmXd3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3cREREREREREREREREREREXd3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3F3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP////////////////////////////////////////////////////////////////8A
+        AAD/////////////////////////////////////////////////////////////////8AAA////////
+        //////////////////////////////////////////////////////////AAAP//////////////////
+        ///////////////////////////////////////////////wAAA=
+</value>
+  </data>
+  <data name="buttonTrackStop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>151, 102</value>
+  </data>
+  <data name="buttonTrackPause.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7
+        u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3
+        u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d7u7u7u7u7
+        d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7
+        u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7
+        u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3
+        u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d7u7u7u7u7
+        d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7
+        u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7
+        u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3
+        u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3e7u7u7u7u3d3d3e7u7u7u7u3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3u7u7u7u7t3d3d3u7u7u7u7t3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d7u7u7u7u7d3d3d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP////////////////////////////////////////////////////////////////8A
+        AAD/////////////////////////////////////////////////////////////////8AAA////////
+        //////////////////////////////////////////////////////////AAAP//////////////////
+        ///////////////////////////////////////////////wAAA=
+</value>
+  </data>
+  <data name="buttonTrackPause.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 102</value>
+  </data>
+  <data name="buttonTrackForward.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk2uDgAAAAAAAHYAAAAoAAAAZAAAAEYAAAABAAQAAAAAAAAAAADEDgAAxA4AABAAAAAQAAAAAAAA/wAA
+        gP8AgAD/AICA/4AAAP+AAID/gIAA/4CAgP/AwMD/AAD//wD/AP8A/////wAA//8A/////wD//////wAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3u7d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d7u7u7t3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3e7u7u7u3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3u7u7u7u3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d7u7u7u7u7d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3e7u7u7u7u7
+        t3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d7u7u7u7u7u7u7u7u7u3e7u7u7t3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3u7u7u7u7u7u7u7u7u7t3e7u7u7u3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d7u7u7u7u7u7u7u7u7u7d3d7u7u7u7d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3e7u7u7u7u7u7u7u7u7u3d3d3u7u7u7d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3u7u7u7u7u7u7u7u7u7d3d3d3u7u7u7t3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d7u7t3d3d3
+        d3d3d3d3d3d3d3d3e7u7u7u3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3
+        d3d3d3d7u7u7u3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3d3d3d7u7
+        u7u7d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d7u7t3d3d3d3d3d3d3d3d3d3d3d3d3u7u7u7d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3d3d3d3d3e7u7u3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3u7u3d3d3d3d3d3d3d3d3d3d3d3d3e7u7u7t3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d7u7t3d3d3d3d3d3d3d3d3d3d3d3e7u7u7u3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3e7u7
+        d3d3d3d3d3d3d3d3d3d3d3d7u7u7u3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3u7u3d3d3d3d3d3
+        d3d3d3d3d3d7u7u7u7d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d7u7u7u7u7u7u7u7u7u7d3d3d7
+        u7u7u7d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3e7u7u7u7u7u7u7u7u7u3d3d3u7u7u7d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3u7u7u7u7u7u7u7u7u7t3d3u7u7u7t3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d7u7u7u7u7u7u7u7u7u7d3u7u7u7t3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d7u7u7u7u7u7u7u7u7u3u7u7u7t3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d7u7u7u7u7u3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3e7u7u7u7u3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3u7u7
+        u7u3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d7u7u7u7d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3e7u7u7d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3e7u7d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAA
+        AAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3e7t3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3dwAAAAAP/3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3d3d3d3d3d3cAAAAAD/93d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3d3d3d3d3d3d3AAAAAA//d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3
+        d3d3d3dwAAAAAP////////////////////////////////////////////////////////////////8A
+        AAD/////////////////////////////////////////////////////////////////8AAA////////
+        //////////////////////////////////////////////////////////AAAP//////////////////
+        ///////////////////////////////////////////////wAAA=
+</value>
+  </data>
+  <data name="buttonTrackForward.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 102</value>
+  </data>
+  <data name="label162.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 58</value>
+  </data>
+  <data name="label162.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 16</value>
+  </data>
+  <data name="label162.Text" xml:space="preserve">
+    <value>Show Interval</value>
+  </data>
+  <data name="label161.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="label161.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 16</value>
+  </data>
+  <data name="label161.Text" xml:space="preserve">
+    <value>Show Length</value>
+  </data>
+  <data name="AverageScalelabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 25</value>
+  </data>
+  <data name="AverageScalelabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 16</value>
+  </data>
+  <data name="hScrollBarAverageScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>89, 25</value>
+  </data>
+  <data name="AveragePointslabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 58</value>
+  </data>
+  <data name="AveragePointslabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 16</value>
+  </data>
+  <data name="hScrollBarAveragePoints.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 58</value>
+  </data>
+  <data name="groupBox17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="groupBox17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 376</value>
+  </data>
+  <data name="groupBox17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 130</value>
+  </data>
+  <data name="groupBox17.Text" xml:space="preserve">
+    <value>Average Flow Vector</value>
+  </data>
+  <data name="label160.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="label160.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 16</value>
+  </data>
+  <data name="label160.Text" xml:space="preserve">
+    <value>Project Information</value>
+  </data>
+  <data name="Debugpanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 146</value>
+  </data>
+  <data name="Debugpanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 229</value>
+  </data>
+  <data name="radioButtonBtmTrack.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="radioButtonBtmTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 20</value>
+  </data>
+  <data name="radioButtonBtmTrack.Text" xml:space="preserve">
+    <value>Bottom Tracking</value>
+  </data>
+  <data name="buttonStartPoint.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonStartPoint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 96</value>
+  </data>
+  <data name="buttonStartPoint.Text" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="labelStartPoint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 102</value>
+  </data>
+  <data name="label147.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 102</value>
+  </data>
+  <data name="label147.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 16</value>
+  </data>
+  <data name="label147.Text" xml:space="preserve">
+    <value>The Start Point</value>
+  </data>
+  <data name="radioButtonLatLong.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="radioButtonLatLong.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 20</value>
+  </data>
+  <data name="radioButtonLatLong.Text" xml:space="preserve">
+    <value>Geograhical Coordinates</value>
+  </data>
+  <data name="GPSAutoSizecheckBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="GPSAutoSizecheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>149, 70</value>
+  </data>
+  <data name="GPSAutoSizecheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 20</value>
+  </data>
+  <data name="GPSAutoSizecheckBox.Text" xml:space="preserve">
+    <value>Auto Size</value>
+  </data>
+  <data name="radioButtonMotoke.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="radioButtonMotoke.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 20</value>
+  </data>
+  <data name="radioButtonMotoke.Text" xml:space="preserve">
+    <value>UTM Grid System</value>
+  </data>
+  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 503</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 129</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Geomatic System Projection </value>
+  </data>
+  <data name="LabelPositionYText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>169, 12</value>
+  </data>
+  <data name="LabelPositionYText.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LabelPostionXText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="LabelPostionXText.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="LabelPostionY.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="LabelPostionY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 15</value>
+  </data>
+  <data name="LabelPostionY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 16</value>
+  </data>
+  <data name="LabelPostionY.Text" xml:space="preserve">
+    <value>Y Axis:</value>
+  </data>
+  <data name="LabelPostionY.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="PositionLableX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="PositionLableX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 16</value>
+  </data>
+  <data name="PositionLableX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 16</value>
+  </data>
+  <data name="PositionLableX.Text" xml:space="preserve">
+    <value>X Axis:</value>
+  </data>
+  <data name="PositionLableX.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="GPSdepthgroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 633</value>
+  </data>
+  <data name="label159.Location" type="System.Drawing.Point, System.Drawing">
+    <value>133, 78</value>
+  </data>
+  <data name="label159.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 16</value>
+  </data>
+  <data name="label159.Text" xml:space="preserve">
+    <value>Distance To Start</value>
+  </data>
+  <data name="MouseTimelabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 78</value>
+  </data>
+  <data name="MouseTimelabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 16</value>
+  </data>
+  <data name="MouseVXVYlabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 61</value>
+  </data>
+  <data name="label139.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9pt</value>
+  </data>
+  <data name="label139.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 43</value>
+  </data>
+  <data name="label139.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 16</value>
+  </data>
+  <data name="label139.Text" xml:space="preserve">
+    <value>UTM Grid System:</value>
+  </data>
+  <data name="MouseXYlabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>91, 43</value>
+  </data>
+  <data name="MouseXYlabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 16</value>
+  </data>
+  <data name="MouseLatLonglabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 23</value>
+  </data>
+  <data name="MouseLatLonglabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 16</value>
+  </data>
+  <data name="label157.Location" type="System.Drawing.Point, System.Drawing">
+    <value>187, 61</value>
+  </data>
+  <data name="label157.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 16</value>
+  </data>
+  <data name="label145.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 78</value>
+  </data>
+  <data name="label145.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 16</value>
+  </data>
+  <data name="label145.Text" xml:space="preserve">
+    <value>Time:</value>
+  </data>
+  <data name="label144.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 61</value>
+  </data>
+  <data name="label144.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 16</value>
+  </data>
+  <data name="label144.Text" xml:space="preserve">
+    <value>VX,VY:</value>
+  </data>
+  <data name="label138.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9pt</value>
+  </data>
+  <data name="label138.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 16</value>
+  </data>
+  <data name="label138.Text" xml:space="preserve">
+    <value>Geographical Coordinates:</value>
+  </data>
+  <data name="MousePositiongroupBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="MousePositiongroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 183</value>
+  </data>
+  <data name="MousePositiongroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 17</value>
+  </data>
+  <data name="MousePositiongroupBox.Text" xml:space="preserve">
+    <value>Cursor Position</value>
+  </data>
+  <data name="label156.Size" type="System.Drawing.Size, System.Drawing">
+    <value>11, 16</value>
+  </data>
+  <data name="ControlTimelabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 120</value>
+  </data>
+  <data name="ControlVXVYlabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>91, 95</value>
+  </data>
+  <data name="ControlXYlabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 68</value>
+  </data>
+  <data name="ControlLatLonglabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>26, 46</value>
+  </data>
+  <data name="label153.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 16</value>
+  </data>
+  <data name="label137.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 120</value>
+  </data>
+  <data name="label137.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 16</value>
+  </data>
+  <data name="label137.Text" xml:space="preserve">
+    <value>Time:</value>
+  </data>
+  <data name="label136.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 95</value>
+  </data>
+  <data name="label136.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 16</value>
+  </data>
+  <data name="label136.Text" xml:space="preserve">
+    <value>VX,VY:</value>
+  </data>
+  <data name="label135.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9pt</value>
+  </data>
+  <data name="label135.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 68</value>
+  </data>
+  <data name="label135.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 16</value>
+  </data>
+  <data name="label135.Text" xml:space="preserve">
+    <value>UTM Grid System:</value>
+  </data>
+  <data name="label132.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9pt</value>
+  </data>
+  <data name="label132.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 26</value>
+  </data>
+  <data name="label132.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 16</value>
+  </data>
+  <data name="label132.Text" xml:space="preserve">
+    <value>Geographical Coordinate:</value>
+  </data>
+  <data name="CurrentPositiongroupBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 9.75pt</value>
+  </data>
+  <data name="CurrentPositiongroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1</value>
+  </data>
+  <data name="CurrentPositiongroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 152</value>
+  </data>
+  <data name="CurrentPositiongroupBox.Text" xml:space="preserve">
+    <value>Current Postion</value>
+  </data>
+  <data name="GPScontrolPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 701</value>
+  </data>
+  <data name="GPSdisplayPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="GPSdepthPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 512</value>
+  </data>
+  <data name="GPSdepthPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1035, 593</value>
+  </data>
+  <data name="pictureBox5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="GPSdisplayPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="GPSdisplayPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1288, 1131</value>
+  </data>
+  <data name="tabPageTrack.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="tabPageTrack.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1016, 702</value>
+  </data>
+  <data name="tabPageTrack.Text" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
+  <data name="labelComments.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Cambria, 10.5pt</value>
+  </data>
+  <data name="labelComments.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 16</value>
+  </data>
+  <data name="label243.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Cambria, 12pt</value>
+  </data>
+  <data name="label243.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 19</value>
+  </data>
+  <data name="label243.Text" xml:space="preserve">
+    <value>comments</value>
+  </data>
+  <data name="panel19.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 524</value>
+  </data>
+  <data name="panel19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 114</value>
+  </data>
+  <data name="label134.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="label134.Text" xml:space="preserve">
+    <value>Project Information</value>
+  </data>
+  <data name="label60.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 17</value>
+  </data>
+  <data name="label60.Text" xml:space="preserve">
+    <value>Time:</value>
+  </data>
+  <data name="labelTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label76.Location" type="System.Drawing.Point, System.Drawing">
+    <value>154, 17</value>
+  </data>
+  <data name="label76.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 17</value>
+  </data>
+  <data name="label76.Text" xml:space="preserve">
+    <value>Ensemble Number:</value>
+  </data>
+  <data name="labelNo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelWPRoll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelWPPitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelWPHeading.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label110.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 17</value>
+  </data>
+  <data name="label110.Text" xml:space="preserve">
+    <value>Pings(request):</value>
+  </data>
+  <data name="labelLastPingT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 55</value>
+  </data>
+  <data name="labelLastPingT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label98.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 17</value>
+  </data>
+  <data name="label98.Text" xml:space="preserve">
+    <value>Pitch(°):</value>
+  </data>
+  <data name="label92.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 17</value>
+  </data>
+  <data name="label92.Text" xml:space="preserve">
+    <value>First Ping Time(s):</value>
+  </data>
+  <data name="label100.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="label100.Text" xml:space="preserve">
+    <value>Heading(°):</value>
+  </data>
+  <data name="label102.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 17</value>
+  </data>
+  <data name="label102.Text" xml:space="preserve">
+    <value>Roll(°):</value>
+  </data>
+  <data name="label108.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 13</value>
+  </data>
+  <data name="label108.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="label108.Text" xml:space="preserve">
+    <value>Pings(real):</value>
+  </data>
+  <data name="labelPingsA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelPingsD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 13</value>
+  </data>
+  <data name="labelPingsD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelFrtPingT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 34</value>
+  </data>
+  <data name="labelFrtPingT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label94.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="label94.Text" xml:space="preserve">
+    <value>Last Ping Time(s):</value>
+  </data>
+  <data name="panel11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 226</value>
+  </data>
+  <data name="label62.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 17</value>
+  </data>
+  <data name="label62.Text" xml:space="preserve">
+    <value>Water Temperature(℃):</value>
+  </data>
+  <data name="labelWPSalinity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 92</value>
+  </data>
+  <data name="labelWPSalinity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label78.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 31</value>
+  </data>
+  <data name="label78.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 17</value>
+  </data>
+  <data name="label78.Text" xml:space="preserve">
+    <value>System Temperature(℃):</value>
+  </data>
+  <data name="labelSysTmp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 31</value>
+  </data>
+  <data name="labelSysTmp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label112.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 14</value>
+  </data>
+  <data name="label112.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 17</value>
+  </data>
+  <data name="label112.Text" xml:space="preserve">
+    <value>Measured Q Status:</value>
+  </data>
+  <data name="labelWPStutas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 14</value>
+  </data>
+  <data name="labelWPStutas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label69.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 92</value>
+  </data>
+  <data name="label69.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="label69.Text" xml:space="preserve">
+    <value>Sound Velocity(m/s):</value>
+  </data>
+  <data name="label96.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 17</value>
+  </data>
+  <data name="label96.Text" xml:space="preserve">
+    <value>Pressure(Pa):</value>
+  </data>
+  <data name="labelWPSSpd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>273, 92</value>
+  </data>
+  <data name="labelWPSSpd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelWPPressure.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 72</value>
+  </data>
+  <data name="labelWPPressure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label65.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="label65.Text" xml:space="preserve">
+    <value>Salinity(ppt):</value>
+  </data>
+  <data name="labelWPTmp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 52</value>
+  </data>
+  <data name="labelWPTmp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="panel10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 126</value>
+  </data>
+  <data name="labelTransDepth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 34</value>
+  </data>
+  <data name="labelTransDepth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label115.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 17</value>
+  </data>
+  <data name="label115.Text" xml:space="preserve">
+    <value>Transducer Depth(m):</value>
+  </data>
+  <data name="labelFrtBinRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>213, 55</value>
+  </data>
+  <data name="labelFrtBinRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label106.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 17</value>
+  </data>
+  <data name="label106.Text" xml:space="preserve">
+    <value>Beam Number:</value>
+  </data>
+  <data name="labelBinSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelWPBins.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelWPBeams.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 13</value>
+  </data>
+  <data name="labelWPBeams.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label82.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 34</value>
+  </data>
+  <data name="label82.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 17</value>
+  </data>
+  <data name="label82.Text" xml:space="preserve">
+    <value>Bin Size(m):</value>
+  </data>
+  <data name="label90.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 17</value>
+  </data>
+  <data name="label90.Text" xml:space="preserve">
+    <value>Range of First Bin from transducer(m):</value>
+  </data>
+  <data name="label104.Location" type="System.Drawing.Point, System.Drawing">
+    <value>196, 13</value>
+  </data>
+  <data name="label104.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 17</value>
+  </data>
+  <data name="label104.Text" xml:space="preserve">
+    <value>Bin Number:</value>
+  </data>
+  <data name="panel9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 137</value>
+  </data>
+  <data name="tabPage16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 414</value>
+  </data>
+  <data name="tabPage16.Text" xml:space="preserve">
+    <value>Water Tracking</value>
+  </data>
+  <data name="labelBTLastPingT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 47</value>
+  </data>
+  <data name="labelBTLastPingT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label140.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 87</value>
+  </data>
+  <data name="label140.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 17</value>
+  </data>
+  <data name="label140.Text" xml:space="preserve">
+    <value>Pitch(°):</value>
+  </data>
+  <data name="label141.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 27</value>
+  </data>
+  <data name="label141.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 17</value>
+  </data>
+  <data name="label141.Text" xml:space="preserve">
+    <value>First Ping Time(s):</value>
+  </data>
+  <data name="label142.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 67</value>
+  </data>
+  <data name="label142.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="label142.Text" xml:space="preserve">
+    <value>Heading(°):</value>
+  </data>
+  <data name="label143.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 106</value>
+  </data>
+  <data name="label143.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 17</value>
+  </data>
+  <data name="label143.Text" xml:space="preserve">
+    <value>Roll(°):</value>
+  </data>
+  <data name="labelBTHeading.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 67</value>
+  </data>
+  <data name="labelBTHeading.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelBTPitch.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 87</value>
+  </data>
+  <data name="labelBTPitch.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label146.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 6</value>
+  </data>
+  <data name="label146.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="label146.Text" xml:space="preserve">
+    <value>Pings(real):</value>
+  </data>
+  <data name="labelBTRoll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 106</value>
+  </data>
+  <data name="labelBTRoll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelBTPings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 6</value>
+  </data>
+  <data name="labelBTPings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelBTFstPingT.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 27</value>
+  </data>
+  <data name="labelBTFstPingT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label151.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 47</value>
+  </data>
+  <data name="label151.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="label151.Text" xml:space="preserve">
+    <value>Last Ping Time(s):</value>
+  </data>
+  <data name="panel12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 270</value>
+  </data>
+  <data name="panel12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 138</value>
+  </data>
+  <data name="label61.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 28</value>
+  </data>
+  <data name="label61.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 17</value>
+  </data>
+  <data name="label61.Text" xml:space="preserve">
+    <value>System Temperature(℃):</value>
+  </data>
+  <data name="labelBTSysTmp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 28</value>
+  </data>
+  <data name="labelBTSysTmp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label116.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 8</value>
+  </data>
+  <data name="label116.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 17</value>
+  </data>
+  <data name="label116.Text" xml:space="preserve">
+    <value>Bottom tracking status:</value>
+  </data>
+  <data name="labelBTStutas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 8</value>
+  </data>
+  <data name="labelBTStutas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label152.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 48</value>
+  </data>
+  <data name="label152.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 17</value>
+  </data>
+  <data name="label152.Text" xml:space="preserve">
+    <value>Water Temperature(℃):</value>
+  </data>
+  <data name="labelBTSalinity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>269, 67</value>
+  </data>
+  <data name="labelBTSalinity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label154.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 88</value>
+  </data>
+  <data name="label154.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="label154.Text" xml:space="preserve">
+    <value>Sound Velocity(m/s):</value>
+  </data>
+  <data name="label155.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 68</value>
+  </data>
+  <data name="label155.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 17</value>
+  </data>
+  <data name="label155.Text" xml:space="preserve">
+    <value>Pressure(Pa):</value>
+  </data>
+  <data name="labelBTSoundSpd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 88</value>
+  </data>
+  <data name="labelBTSoundSpd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelBTPressure.Location" type="System.Drawing.Point, System.Drawing">
+    <value>135, 68</value>
+  </data>
+  <data name="labelBTPressure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label158.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 67</value>
+  </data>
+  <data name="label158.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="label158.Text" xml:space="preserve">
+    <value>Salinity(ppt):</value>
+  </data>
+  <data name="labelBTWaterTmp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 48</value>
+  </data>
+  <data name="labelBTWaterTmp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="panel13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 110</value>
+  </data>
+  <data name="labelSNRB3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 122</value>
+  </data>
+  <data name="labelSNRB3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label127.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 122</value>
+  </data>
+  <data name="label127.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="label127.Text" xml:space="preserve">
+    <value>Beam3:</value>
+  </data>
+  <data name="labelSNRB2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 122</value>
+  </data>
+  <data name="labelSNRB2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label129.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 122</value>
+  </data>
+  <data name="label129.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="label129.Text" xml:space="preserve">
+    <value>Beam2:</value>
+  </data>
+  <data name="labelSNRB1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 104</value>
+  </data>
+  <data name="labelSNRB1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label131.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 104</value>
+  </data>
+  <data name="label131.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="label131.Text" xml:space="preserve">
+    <value>Beam1:</value>
+  </data>
+  <data name="labelSNRB0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 104</value>
+  </data>
+  <data name="labelSNRB0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label133.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 104</value>
+  </data>
+  <data name="label133.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="label133.Text" xml:space="preserve">
+    <value>Beam0:</value>
+  </data>
+  <data name="label125.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 85</value>
+  </data>
+  <data name="label125.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 17</value>
+  </data>
+  <data name="label125.Text" xml:space="preserve">
+    <value>Signal Noise Ratio(counts)</value>
+  </data>
+  <data name="label124.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 25</value>
+  </data>
+  <data name="label124.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 17</value>
+  </data>
+  <data name="label124.Text" xml:space="preserve">
+    <value>Vertical Distance(m)</value>
+  </data>
+  <data name="labelVRB3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>230, 62</value>
+  </data>
+  <data name="labelVRB3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label123.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 62</value>
+  </data>
+  <data name="label123.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="label123.Text" xml:space="preserve">
+    <value>Beam3:</value>
+  </data>
+  <data name="labelVRB2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>70, 62</value>
+  </data>
+  <data name="labelVRB2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label121.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 62</value>
+  </data>
+  <data name="label121.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="label121.Text" xml:space="preserve">
+    <value>Beam2:</value>
+  </data>
+  <data name="labelVRB1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>230, 44</value>
+  </data>
+  <data name="labelVRB1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label119.Location" type="System.Drawing.Point, System.Drawing">
+    <value>184, 44</value>
+  </data>
+  <data name="label119.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="label119.Text" xml:space="preserve">
+    <value>Beam1:</value>
+  </data>
+  <data name="labelVRB0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>70, 44</value>
+  </data>
+  <data name="labelVRB0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label67.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 44</value>
+  </data>
+  <data name="label67.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="label67.Text" xml:space="preserve">
+    <value>Beam0:</value>
+  </data>
+  <data name="labelBTDepth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>308, 6</value>
+  </data>
+  <data name="labelBTDepth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 17</value>
+  </data>
+  <data name="label86.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 6</value>
+  </data>
+  <data name="label86.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 17</value>
+  </data>
+  <data name="label86.Text" xml:space="preserve">
+    <value>Bottom tracking Depth(m):</value>
+  </data>
+  <data name="label163.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 6</value>
+  </data>
+  <data name="label163.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 17</value>
+  </data>
+  <data name="label163.Text" xml:space="preserve">
+    <value>Beam Number:</value>
+  </data>
+  <data name="labelBTBeams.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 6</value>
+  </data>
+  <data name="labelBTBeams.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="panel14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 121</value>
+  </data>
+  <data name="panel14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 145</value>
+  </data>
+  <data name="tabPage17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>344, 414</value>
+  </data>
+  <data name="tabPage17.Text" xml:space="preserve">
+    <value>Bottom Tracking</value>
+  </data>
+  <data name="tabControl8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>352, 444</value>
+  </data>
+  <data name="panel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>362, 708</value>
+  </data>
+  <data name="labelBE_Vq.Location" type="System.Drawing.Point, System.Drawing">
+    <value>390, 14</value>
+  </data>
+  <data name="labelBE_Vq.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label71.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 17</value>
+  </data>
+  <data name="label77.Location" type="System.Drawing.Point, System.Drawing">
+    <value>361, 14</value>
+  </data>
+  <data name="label77.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 17</value>
+  </data>
+  <data name="labelBE_Vx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelBE_Vz.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 14</value>
+  </data>
+  <data name="labelBE_Vz.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label73.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 14</value>
+  </data>
+  <data name="label73.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 17</value>
+  </data>
+  <data name="label75.Location" type="System.Drawing.Point, System.Drawing">
+    <value>237, 14</value>
+  </data>
+  <data name="label75.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 17</value>
+  </data>
+  <data name="labelBE_Vy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 14</value>
+  </data>
+  <data name="labelBE_Vy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>795, 41</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Earth Coordinate System(ENU)</value>
+  </data>
+  <data name="labelBI_Vq.Location" type="System.Drawing.Point, System.Drawing">
+    <value>418, 14</value>
+  </data>
+  <data name="labelBI_Vq.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label72.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 17</value>
+  </data>
+  <data name="label74.Location" type="System.Drawing.Point, System.Drawing">
+    <value>389, 14</value>
+  </data>
+  <data name="label74.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 17</value>
+  </data>
+  <data name="labelBI_Vx.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelBI_Vz.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 14</value>
+  </data>
+  <data name="labelBI_Vz.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label79.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 14</value>
+  </data>
+  <data name="label79.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 17</value>
+  </data>
+  <data name="label80.Location" type="System.Drawing.Point, System.Drawing">
+    <value>257, 14</value>
+  </data>
+  <data name="label80.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 17</value>
+  </data>
+  <data name="labelBI_Vy.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 14</value>
+  </data>
+  <data name="labelBI_Vy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>795, 41</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Instrument Coordinate System(XYZ)</value>
+  </data>
+  <data name="labelBB3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 14</value>
+  </data>
+  <data name="labelBB3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label83.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="label84.Location" type="System.Drawing.Point, System.Drawing">
+    <value>404, 14</value>
+  </data>
+  <data name="label84.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="labelBB0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="labelBB2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>307, 14</value>
+  </data>
+  <data name="labelBB2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="label87.Location" type="System.Drawing.Point, System.Drawing">
+    <value>134, 14</value>
+  </data>
+  <data name="label87.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="label88.Location" type="System.Drawing.Point, System.Drawing">
+    <value>267, 14</value>
+  </data>
+  <data name="label88.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="labelBB1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 14</value>
+  </data>
+  <data name="labelBB1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 17</value>
+  </data>
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>795, 41</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Beam Direction</value>
+  </data>
+  <data name="tabControl2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 10.5pt</value>
+  </data>
+  <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>803, 66</value>
+  </data>
+  <data name="label56.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 17</value>
+  </data>
+  <data name="label56.Text" xml:space="preserve">
+    <value>Bottom Tracking Speed(m/s)</value>
+  </data>
+  <data name="panel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>809, 93</value>
+  </data>
+  <data name="Wbin_NO_column.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="Wbin_NO_column.Width" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="Vx_column.Width" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="Vy_column.Width" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="Vz_column.Width" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="Vq_column.Width" type="System.Int32, mscorlib">
+    <value>88</value>
+  </data>
+  <data name="EarthWaterlistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 232</value>
+  </data>
+  <data name="tabPage4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 237</value>
+  </data>
+  <data name="tabPage4.Text" xml:space="preserve">
+    <value>Earth(ENU)</value>
+  </data>
+  <data name="columnHeader1.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="InstrmtWaterlistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 380</value>
+  </data>
+  <data name="tabPage6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 237</value>
+  </data>
+  <data name="tabPage6.Text" xml:space="preserve">
+    <value>Instrument(XYZ)</value>
+  </data>
+  <data name="bin_Num_column.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BeamWaterlistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 380</value>
+  </data>
+  <data name="tabPage5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 237</value>
+  </data>
+  <data name="tabPage5.Text" xml:space="preserve">
+    <value>Beam</value>
+  </data>
+  <data name="tabControl3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>404, 267</value>
+  </data>
+  <data name="label55.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 17</value>
+  </data>
+  <data name="label55.Text" xml:space="preserve">
+    <value>Flow Speed(m/s)</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 293</value>
+  </data>
+  <data name="columnHeader11.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="columnHeader11.Width" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="columnHeader12.Width" type="System.Int32, mscorlib">
+    <value>92</value>
+  </data>
+  <data name="columnHeader13.Width" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="columnHeader14.Width" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
+  <data name="EarthGdPnglistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 232</value>
+  </data>
+  <data name="tabPage11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 237</value>
+  </data>
+  <data name="tabPage11.Text" xml:space="preserve">
+    <value>Measured Q(Earth)</value>
+  </data>
+  <data name="columnHeader26.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BeamGdPnglistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 380</value>
+  </data>
+  <data name="tabPage13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 237</value>
+  </data>
+  <data name="tabPage13.Text" xml:space="preserve">
+    <value>Measured Q(Beam)</value>
+  </data>
+  <data name="columnHeader21.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BEGdPngListview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 380</value>
+  </data>
+  <data name="tabPage12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 237</value>
+  </data>
+  <data name="tabPage12.Text" xml:space="preserve">
+    <value>Bottom(Earth)</value>
+  </data>
+  <data name="columnHeader31.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BIGPnglistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 380</value>
+  </data>
+  <data name="tabPage14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 237</value>
+  </data>
+  <data name="tabPage14.Text" xml:space="preserve">
+    <value>Bottom(Instrument)</value>
+  </data>
+  <data name="columnHeader36.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BBGPnglistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 380</value>
+  </data>
+  <data name="tabPage15.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 237</value>
+  </data>
+  <data name="tabPage15.Text" xml:space="preserve">
+    <value>Bottom(Beam)</value>
+  </data>
+  <data name="tabControl7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>385, 267</value>
+  </data>
+  <data name="label59.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 17</value>
+  </data>
+  <data name="label59.Text" xml:space="preserve">
+    <value>Percent(Good Pings Numbers)</value>
+  </data>
+  <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>789, 104</value>
+  </data>
+  <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>386, 293</value>
+  </data>
+  <data name="Correlation_NO_column.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="Correlation_NO_column.Width" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="beam0_Correlation_column.Width" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
+  <data name="beam1_Correlation_column.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="beam2_Correlation_column.Width" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="beam3_Correlation_column.Width" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="WaterCorrelationlistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>388, 188</value>
+  </data>
+  <data name="tabPage7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 196</value>
+  </data>
+  <data name="tabPage7.Text" xml:space="preserve">
+    <value>Water Tracking</value>
+  </data>
+  <data name="columnHeader6.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BtmCorrelationlistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>388, 339</value>
+  </data>
+  <data name="tabPage8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 196</value>
+  </data>
+  <data name="tabPage8.Text" xml:space="preserve">
+    <value>Bottom Tracking</value>
+  </data>
+  <data name="tabControl5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 22</value>
+  </data>
+  <data name="tabControl5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>400, 226</value>
+  </data>
+  <data name="label58.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 17</value>
+  </data>
+  <data name="label58.Text" xml:space="preserve">
+    <value>Correlation(0.5 = 50%)</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>373, 401</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>415, 248</value>
+  </data>
+  <data name="Amplitude_NO_column.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="Amplitude_NO_column.Width" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="beam0_Amplitude_column.Width" type="System.Int32, mscorlib">
+    <value>74</value>
+  </data>
+  <data name="beam1_Amplitude_column.Width" type="System.Int32, mscorlib">
+    <value>72</value>
+  </data>
+  <data name="WaterAmplitudelistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>369, 185</value>
+  </data>
+  <data name="tabPage9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 193</value>
+  </data>
+  <data name="tabPage9.Text" xml:space="preserve">
+    <value>Water Tracking</value>
+  </data>
+  <data name="columnHeader16.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="BtmAmplitudelistView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>373, 336</value>
+  </data>
+  <data name="tabPage10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPage10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 193</value>
+  </data>
+  <data name="tabPage10.Text" xml:space="preserve">
+    <value>Bottom Tracking</value>
+  </data>
+  <data name="tabControl6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 26</value>
+  </data>
+  <data name="tabControl6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>385, 223</value>
+  </data>
+  <data name="label57.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 17</value>
+  </data>
+  <data name="label57.Text" xml:space="preserve">
+    <value>Intensity(20 counts ≈ 1dB)</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>789, 401</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 249</value>
+  </data>
+  <data name="tabPageData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="tabPageData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1016, 702</value>
+  </data>
+  <data name="tabPageData.Text" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="tabPageSerialTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 21</value>
+  </data>
+  <data name="tabPageSerialTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1016, 702</value>
+  </data>
+  <data name="tabPageSerialTime.Text" xml:space="preserve">
+    <value>Time Series</value>
+  </data>
+  <data name="tabControl4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="tabControl4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 10.5pt</value>
+  </data>
+  <data name="tabControl4.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>60, 17</value>
+  </data>
+  <data name="tabControl4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1024, 727</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+</root>
