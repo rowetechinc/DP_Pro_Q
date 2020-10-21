@@ -72,26 +72,26 @@
   <ItemGroup>
     <Reference Include="BL_2_xy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Pancomm\BL_2_xy.dll</HintPath>
+      <HintPath>..\pancomm_packages\Pancomm\BL_2_xy.dll</HintPath>
     </Reference>
     <Reference Include="DownLoad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Pancomm\DownLoad.dll</HintPath>
+      <HintPath>..\pancomm_packages\Pancomm\DownLoad.dll</HintPath>
     </Reference>
     <Reference Include="JDL.UILib, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\JDL.UILib\JDL.UILib.dll</HintPath>
+      <HintPath>..\pancomm_packages\JDL.UILib\JDL.UILib.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="PickAndDecode, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Pancomm\PickAndDecode.dll</HintPath>
+      <HintPath>..\pancomm_packages\Pancomm\PickAndDecode.dll</HintPath>
     </Reference>
     <Reference Include="Position_Transform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Pancomm\Position_Transform.dll</HintPath>
+      <HintPath>..\pancomm_packages\Pancomm\Position_Transform.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
