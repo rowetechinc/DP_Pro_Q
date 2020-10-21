@@ -1,27 +1,39 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADCP", "ADCP\ADCP.csproj", "{B848FCE0-E48D-4B26-824E-FA524776370A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calcflow", "Calcflow\Calcflow\Calcflow.csproj", "{0141CF44-F4AF-44B3-B1F5-922F5BB9C0DC}"
+EndProject
 Global
-	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 2
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = ADCP\\ADCP.csproj
-		SccLocalPath1 = .
-		SccProjectFilePathRelativizedFromConnection1 = ADCP\\
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B848FCE0-E48D-4B26-824E-FA524776370A}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{B848FCE0-E48D-4B26-824E-FA524776370A}.Debug|x86.ActiveCfg = Debug|x86
 		{B848FCE0-E48D-4B26-824E-FA524776370A}.Debug|x86.Build.0 = Debug|x86
+		{B848FCE0-E48D-4B26-824E-FA524776370A}.Release|Any CPU.ActiveCfg = Release|x86
 		{B848FCE0-E48D-4B26-824E-FA524776370A}.Release|x86.ActiveCfg = Release|x86
 		{B848FCE0-E48D-4B26-824E-FA524776370A}.Release|x86.Build.0 = Release|x86
+		{0141CF44-F4AF-44B3-B1F5-922F5BB9C0DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0141CF44-F4AF-44B3-B1F5-922F5BB9C0DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0141CF44-F4AF-44B3-B1F5-922F5BB9C0DC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0141CF44-F4AF-44B3-B1F5-922F5BB9C0DC}.Debug|x86.Build.0 = Debug|Any CPU
+		{0141CF44-F4AF-44B3-B1F5-922F5BB9C0DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0141CF44-F4AF-44B3-B1F5-922F5BB9C0DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0141CF44-F4AF-44B3-B1F5-922F5BB9C0DC}.Release|x86.ActiveCfg = Release|Any CPU
+		{0141CF44-F4AF-44B3-B1F5-922F5BB9C0DC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E6E5D56-0DBD-4F74-B993-91232BD60B63}
 	EndGlobalSection
 EndGlobal

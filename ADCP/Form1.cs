@@ -329,7 +329,7 @@ namespace ADCP
             try
             {
                 bSurveyMode = false;  //LPJ 2016-12-14
-                CLockKeyDog unlockKeydog = new CLockKeyDog();
+                //CLockKeyDog unlockKeydog = new CLockKeyDog();
                 //if (unlockKeydog.UnLockKeyDog(202))
                 {
                     DP300_Windows dp300_wnd = new DP300_Windows(); //LPJ 2013-5-23
