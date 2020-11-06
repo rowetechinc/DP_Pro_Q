@@ -46,7 +46,6 @@
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.numericUpDownStartBankPara);
             this.groupBox1.Controls.Add(this.comboBoxStartBankStyle);
@@ -55,24 +54,24 @@
             this.groupBox1.Controls.Add(this.radioBtnLeftBank);
             this.groupBox1.Controls.Add(this.textBoxDistance);
             this.groupBox1.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
-            //this.label3.ImageKey = global::ADCP.Resource1_en.String86;
             this.label3.Name = "label3";
             // 
             // numericUpDownStartBankPara
             // 
-            resources.ApplyResources(this.numericUpDownStartBankPara, "numericUpDownStartBankPara");
             this.numericUpDownStartBankPara.DecimalPlaces = 2;
             this.numericUpDownStartBankPara.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
+            resources.ApplyResources(this.numericUpDownStartBankPara, "numericUpDownStartBankPara");
             this.numericUpDownStartBankPara.Maximum = new decimal(new int[] {
             1,
             0,
@@ -93,25 +92,23 @@
             // 
             // comboBoxStartBankStyle
             // 
-            resources.ApplyResources(this.comboBoxStartBankStyle, "comboBoxStartBankStyle");
             this.comboBoxStartBankStyle.FormattingEnabled = true;
             this.comboBoxStartBankStyle.Items.AddRange(new object[] {
             resources.GetString("comboBoxStartBankStyle.Items"),
             resources.GetString("comboBoxStartBankStyle.Items1"),
             resources.GetString("comboBoxStartBankStyle.Items2")});
+            resources.ApplyResources(this.comboBoxStartBankStyle, "comboBoxStartBankStyle");
             this.comboBoxStartBankStyle.Name = "comboBoxStartBankStyle";
             this.comboBoxStartBankStyle.SelectedIndexChanged += new System.EventHandler(this.comboBoxStartBankStyle_SelectedIndexChanged);
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
-            //this.label2.ImageKey = global::ADCP.Resource1_en.String86;
             this.label2.Name = "label2";
             // 
             // radioBtnRightBank
             // 
             resources.ApplyResources(this.radioBtnRightBank, "radioBtnRightBank");
-            //this.radioBtnRightBank.ImageKey = global::ADCP.Resource1_en.String86;
             this.radioBtnRightBank.Name = "radioBtnRightBank";
             this.radioBtnRightBank.UseVisualStyleBackColor = true;
             // 
@@ -119,7 +116,6 @@
             // 
             resources.ApplyResources(this.radioBtnLeftBank, "radioBtnLeftBank");
             this.radioBtnLeftBank.Checked = true;
-            //this.radioBtnLeftBank.ImageKey = global::ADCP.Resource1_en.String86;
             this.radioBtnLeftBank.Name = "radioBtnLeftBank";
             this.radioBtnLeftBank.TabStop = true;
             this.radioBtnLeftBank.UseVisualStyleBackColor = true;
@@ -134,13 +130,11 @@
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
-            //this.label1.ImageKey = global::ADCP.Resource1_en.String86;
             this.label1.Name = "label1";
             // 
             // btnOK
             // 
             resources.ApplyResources(this.btnOK, "btnOK");
-            //this.btnOK.ImageKey = global::ADCP.Resource1_en.String86;
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -148,7 +142,6 @@
             // btnCancle
             // 
             resources.ApplyResources(this.btnCancle, "btnCancle");
-            //this.btnCancle.ImageKey = global::ADCP.Resource1_en.String86;
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.UseVisualStyleBackColor = true;
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);

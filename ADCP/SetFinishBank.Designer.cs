@@ -45,7 +45,6 @@
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
-            //this.label1.ImageKey = global::ADCP.Resource1.String86;
             this.label1.Name = "label1";
             // 
             // textBoxDistance
@@ -58,7 +57,6 @@
             // btnOK
             // 
             resources.ApplyResources(this.btnOK, "btnOK");
-            //this.btnOK.ImageKey = global::ADCP.Resource1String86;
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -66,20 +64,19 @@
             // btnCancle
             // 
             resources.ApplyResources(this.btnCancle, "btnCancle");
-            //this.btnCancle.ImageKey = global::ADCP.Resource1_en.String86;
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.UseVisualStyleBackColor = true;
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
             // numericUpDownFinishBankPara
             // 
-            resources.ApplyResources(this.numericUpDownFinishBankPara, "numericUpDownFinishBankPara");
             this.numericUpDownFinishBankPara.DecimalPlaces = 2;
             this.numericUpDownFinishBankPara.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
+            resources.ApplyResources(this.numericUpDownFinishBankPara, "numericUpDownFinishBankPara");
             this.numericUpDownFinishBankPara.Maximum = new decimal(new int[] {
             1,
             0,
@@ -100,37 +97,35 @@
             // 
             // comboBoxFinishBankStyle
             // 
-            resources.ApplyResources(this.comboBoxFinishBankStyle, "comboBoxFinishBankStyle");
             this.comboBoxFinishBankStyle.FormattingEnabled = true;
             this.comboBoxFinishBankStyle.Items.AddRange(new object[] {
             resources.GetString("comboBoxFinishBankStyle.Items"),
             resources.GetString("comboBoxFinishBankStyle.Items1"),
             resources.GetString("comboBoxFinishBankStyle.Items2")});
+            resources.ApplyResources(this.comboBoxFinishBankStyle, "comboBoxFinishBankStyle");
             this.comboBoxFinishBankStyle.Name = "comboBoxFinishBankStyle";
             this.comboBoxFinishBankStyle.SelectedIndexChanged += new System.EventHandler(this.comboBoxFinishBankStyle_SelectedIndexChanged);
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
-            //this.label2.ImageKey = global::ADCP.Resource1_en.String86;
             this.label2.Name = "label2";
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.numericUpDownFinishBankPara);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.comboBoxFinishBankStyle);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxDistance);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
-            //this.label3.ImageKey = global::ADCP.Resource1_en.String86;
             this.label3.Name = "label3";
             // 
             // SetFinishBank

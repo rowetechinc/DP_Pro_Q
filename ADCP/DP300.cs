@@ -13772,9 +13772,9 @@ namespace ADCP
                 {
                     //try
                     //{
-                        sendAdvancedCommand(frmsystemSet.systemSet.Advancedstruct);
-                        WaterAvgNum = frmsystemSet.systemSet.Advancedstruct.WPWaterAvgNum;
-                        iEnsembleInterval = frmsystemSet.systemSet.Advancedstruct.EsmbIntervalHH * 3600 + frmsystemSet.systemSet.Advancedstruct.EsmbIntervalMM * 60 + frmsystemSet.systemSet.Advancedstruct.EsmbIntervalSShh;
+                    sendAdvancedCommand(frmsystemSet.systemSet.Advancedstruct);
+                    WaterAvgNum = frmsystemSet.systemSet.Advancedstruct.WPWaterAvgNum;
+                    iEnsembleInterval = frmsystemSet.systemSet.Advancedstruct.EsmbIntervalHH * 3600 + frmsystemSet.systemSet.Advancedstruct.EsmbIntervalMM * 60 + frmsystemSet.systemSet.Advancedstruct.EsmbIntervalSShh;
                     //}
                     //catch //LPJ 2013-10-17
                     //{
@@ -13784,16 +13784,26 @@ namespace ADCP
                 }
                 else
                 {
-                    //try
-                    //{
+                    if (labelMeasMode.Text == "Auto")
+                    {
+                        sp.Write("MODERIVER" + '\r');
+                        Thread.Sleep(150);
+                        iEnsembleInterval = 1;
+                        WaterAvgNum = 1;
+                    }
+                    else
+                    {
+                        //try
+                        //{
                         SendStandardCommand(frmsystemSet.systemSet.iStandardMode);
                         iEnsembleInterval = 1;
-                    //}
-                    //catch //LPJ 2013-10-17
-                    //{
-                    //    SendStandardCommand(iStandardMode);
-                    //}
-                    WaterAvgNum = 2;
+                        //}
+                        //catch //LPJ 2013-10-17
+                        //{
+                        //    SendStandardCommand(iStandardMode);
+                        //}
+                        WaterAvgNum = 2;
+                    }
                 }
                 if (labelHeadingRef.Text == Resource1.String230) //LPJ 2013-7-30 当用户选择内置罗盘
                 {
@@ -13919,21 +13929,31 @@ namespace ADCP
                 btnSpeedFast.Visible = false; //LPJ 2013-7-12
                 btnSpeedSlow.Visible = false; //LPJ 2013-7-12
 
-             
+
                 //LPJ 2013-6-20 当点击“start”时，先判断labelMeasMode是哪种，如果是用户模式，则采用固定的值，如果是专家，则采用advanced中的值
-                if (labelMeasMode.Text == Resource1.String235) //当为高级模式时
+                if (labelMeasMode.Text == "Advanced")//Resource1.String235) //当为高级模式时
                 {
                     sendAdvancedCommand(frmsystemSet.systemSet.Advancedstruct);
                     WaterAvgNum = frmsystemSet.systemSet.Advancedstruct.WPWaterAvgNum;
                     iEnsembleInterval = frmsystemSet.systemSet.Advancedstruct.EsmbIntervalHH * 3600 + frmsystemSet.systemSet.Advancedstruct.EsmbIntervalMM * 60 + frmsystemSet.systemSet.Advancedstruct.EsmbIntervalSShh;
-                   
+
                 }
                 else
                 {
-                    SendStandardCommand(frmsystemSet.systemSet.iStandardMode);
-                    iEnsembleInterval = 1;
-                   
-                    WaterAvgNum = 2;
+                    if (labelMeasMode.Text == "Auto") //当为高级模式时
+                    {
+                        sp.Write("MODERIVER" + '\r');
+                        Thread.Sleep(150);
+                        iEnsembleInterval = 1;
+                        WaterAvgNum = 1;
+                    }
+                    else
+                    {
+                        SendStandardCommand(frmsystemSet.systemSet.iStandardMode);
+                        iEnsembleInterval = 1;
+
+                        WaterAvgNum = 2;
+                    }
                 }
                 if (labelHeadingRef.Text == Resource1.String230) //LPJ 2013-7-30 当用户选择内置罗盘
                 {
@@ -17956,6 +17976,8 @@ namespace ADCP
                     labelLeftRef.Text = setStartBank.dStartPara.ToString();
                     labelLeftDis.Text = setStartBank.strStartDistance;
 
+                    labelLeftRef.Top = labelLeftType.Top;
+
                     bStartLeftEdge = true;
                 }
                 else
@@ -17974,6 +17996,8 @@ namespace ADCP
                         labelRightType.Text = Resource1.String223;
                     labelRightRef.Text = setStartBank.dStartPara.ToString();
                     labelRightDis.Text = setStartBank.strStartDistance;
+
+                    labelRightRef.Top = labelRightType.Top;
 
                     bStartLeftEdge = false;
                 }
@@ -18045,6 +18069,8 @@ namespace ADCP
                         labelRightType.Text = Resource1.String223;
                     labelRightRef.Text = setFinishBank.dFinishPara.ToString();
                     labelRightDis.Text = setFinishBank.strFinishDistance;
+
+                    labelRightRef.Top = labelRightType.Top;
                 }
                 else
                 {
@@ -19323,7 +19349,7 @@ namespace ADCP
 
         private SerialPort defaultSP;  //LPJ 2013-5-20
         private Queue defaultQueue;    //LPJ 2013-5-20
-        FormConnect connect;           //LPJ 2013-5-20
+        //FormConnect connect;           //LPJ 2013-5-20
         private bool detected;         //LPJ 2013-5-20
         public DefaultCfg defCfg;      //LPJ 2013-5-20
         private Units projectUnit = new Units(); //LPJ 2013-5-28 定义一个对象，用于设置单位
@@ -19397,216 +19423,15 @@ namespace ADCP
             progressBar1.Value = 0;
             progressBar1.Visible = true;
 
-            sp.Write("CDEFAULT" + '\r');
+            sp.Write("MODERIVER" + '\r');
             Thread.Sleep(150);
 
             try
-            {
-                sp.Write("CPROFILE" + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CEI " + "00" + ":" + "00" + ":" + "01.00" + '\r');//时间步长
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CWPON 1" + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                //sp.Write("CWPBB 1," + "0.042" + '\r'); //宽带
-                sp.Write("CWPBB 1" + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CWPAP " + "0" + "," + "0" + "," + "0" + "," + "0" + "," + "0" + '\r'); //LPJ 2013-1-31 CWPAP
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CWPST " + "0.25" + "," + "1.0" + "," + "1.0" + '\r'); //LPJ 2016-12-15
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                if (labelSystemNumber.Text.Contains("1200"))  //LPJ 2013-8-1
-                {
-                    BlankSize = 0.2f;
-                    WaterAvgNum = 2;
-                    TimeBtwnPings = 0.1f;
-                    BTblankSize = 0.25f; //LPJ 2013-8-1
-
-                    switch (iflag) //LPJ 2013-6-22
-                    {
-                        case 0: //极浅水模式，水深小于1.5m
-                            {
-                                cellSize = 0.1f;
-                                cells = 30;
-                                BlankSize = 0.1f;
-                                WaterAvgNum = 1;
-
-                                sp.Write("CWPBP 30,0.02" + '\r');
-                                Thread.Sleep(150);
-
-                                break;
-                            }
-                        case 1://用户模式 / 浅水,水深小于2m
-                            {
-                                cellSize = 0.2f;         //单元尺寸
-                                cells = 40;          //层数
-                                break;
-                            }
-                        case 2:
-                            {
-                                cellSize = 0.5f;         //单元尺寸
-                                cells = 40;          //层数
-                                break;
-                            }
-                        case 3:
-                            {
-                                cellSize = 1.0f;         //单元尺寸
-                                cells = 40;          //层数
-                                break;
-                            }
-                        default:
-                            break;
-
-                    }
-                }
-                else if (labelSystemNumber.Text.Contains("600")) //LPJ 2013-8-1
-                {
-                    BlankSize = 0.4f;
-                    WaterAvgNum = 2;
-                    TimeBtwnPings = 0.2f;
-                    BTblankSize = 0.5f; //LPJ 2013-8-1
-
-                    switch (iflag) //LPJ 2013-6-22
-                    {
-                        case 0://用户模式 / 浅水,水深小于10m
-                            {
-                                cellSize = 0.5f;         //单元尺寸
-                                cells = 40;          //层数
-                                break;
-                            }
-                        case 1:
-                            {
-                                cellSize = 1.0f;         //单元尺寸
-                                cells = 40;          //层数
-                                break;
-                            }
-                        case 2:
-                            {
-                                cellSize = 2;         //单元尺寸
-                                cells = 40;          //层数
-                                break;
-                            }
-                        default:
-                            break;
-
-                    }
-                }
-                else if (labelSystemNumber.Text.Contains("300")) //LPJ 2013-8-1
-                {
-                    BlankSize = 0.6f;
-                    WaterAvgNum = 2;
-                    TimeBtwnPings = 0.3f;
-                    BTblankSize = 0.8f; //LPJ 2013-8-1
-
-                    switch (iflag) //LPJ 2013-6-22
-                    {
-                        case 0://用户模式 / 浅水,水深小于30m
-                            {
-                                cellSize = 1.0f;         //单元尺寸
-                                cells = 40;          //层数
-                                break;
-                            }
-                        case 1:
-                            {
-                                cellSize = 2.0f;         //单元尺寸
-                                cells = 40;          //层数
-                                break;
-                            }
-                        case 2:
-                            {
-                                cellSize = 4.0f;         //单元尺寸
-                                cells = 40;          //层数
-                                break;
-                            }
-                        default:
-                            break;
-                    }
-                }
-
-              
-                sp.Write("CWPBL " + BlankSize.ToString() + '\r'); //盲区
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CWPBS " + cellSize.ToString() + '\r');  //单元尺寸
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CWPBN " + cells.ToString() + '\r'); //层数
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CWPP " + WaterAvgNum.ToString() + '\r'); //呯数
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CWPTBP " + TimeBtwnPings.ToString() + '\r'); //呯间隔
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CWPX " + "0" + '\r');//脉冲
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CBTON 1" + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                //sp.Write("CBTBB 1," + "0.0" + "," + "30.0" + '\r'); //LPJ 2012-10-19 add
-                sp.Write("CBTBB 1" +  '\r'); //LPJ 2012-10-19 add
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CBTST " + "0.9" + "," + "1.0" + "," + "1.0" + '\r');  //LPJ 2012-10-19 add
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                //sp.Write("CBTT " + "15.0" + "," + "25.0" + "," + "5.0" + "," + "2.0" + '\r');  //LPJ 2012-10-19 add
-                //displayprocessbar(4, progressBar1);
-                //Thread.Sleep(150);
-
-                //sp.Write("CBTBL " + "0.25" + '\r'); //底跟踪盲区     0.25  0.5  0.8
-                sp.Write("CBTBL" + BTblankSize.ToString() + '\r'); //LPJ 2013-8-1
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                //sp.Write("CBTMX " + "50.0" + '\r'); //底跟踪深度
-                //displayprocessbar(4, progressBar1);
-                //Thread.Sleep(150);
-
-                sp.Write("CBTTBP " + "0.5" + '\r'); //底跟踪间隔
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CWTON 0" + '\r'); //水参考关闭
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                //sp.Write("CWSSC" + "1" + "," + "1" + "," + "0" + "," + "2" + '\r'); //水温，声速等
-                //displayprocessbar(4, progressBar1);
-                //Thread.Sleep(150);
-
-                //sp.Write("CWS " + labelSalinity.Text + '\r');  ////Modified: this is the way to find salinity value, 2011-7-21, ToString("0.00")is the format
-                //displayprocessbar(4, progressBar1); //盐度
-                //Thread.Sleep(150);
-
+            {   
                 sp.Write("CWT " + "15.0" + '\r'); //水温
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                //if (labelUnit.Text == Resource1.String237) //LPJ 2013-7-1 当单位为英制时
                 if (!bEnglish2Metric)
                 {
                     sp.Write("CTD " + projectUnit.FeetToMeter(double.Parse(labelTransducerDepth.Text),1).ToString() + '\r');
@@ -19615,17 +19440,12 @@ namespace ADCP
                 {
                     sp.Write("CTD " + labelTransducerDepth.Text + '\r');//LPJ 2013-6-21 换能器深度
                 }
-                //sp.Write("CTD " + labelTransducerDepth.Text + '\r');//LPJ 2013-6-21 换能器深度
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
                 sp.Write("CWSS " + "1500.0" + '\r');//声速
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
-
-                //sp.Write("CHO " + label_Headingoffset.Text + '\r'); //艏向偏角
-                //displayprocessbar(4, progressBar1);
-                //Thread.Sleep(150);
 
                 sp.Write("CSAVE" + '\r');
                 Thread.Sleep(150);
@@ -19643,9 +19463,6 @@ namespace ADCP
 
         private bool ConnectPort(string cmd)  //LPJ 2013-5-21 连接串口
         {
-            //connect = new FormConnect(cmd);
-            //connect.Show();
-
             detected = AutoDetect();
 
             if (detected) //串口检测在单独的线程上进行
@@ -19845,7 +19662,7 @@ namespace ADCP
 
                             //LPJ 2013-8-1 获取仪器型号
                             #region 
-                            defaultSP.Write("CSHOW" + '\r');
+                            defaultSP.Write("BREAK" + '\r');
                             Thread.Sleep(1000);
 
                             if (defaultQueue.Count > 0)
@@ -19864,15 +19681,17 @@ namespace ADCP
                                 }
 
                                 //判读串口读取的内容，如果是ADCP发送BREAK返回的内容，则可得出该串口连接正常
-                                if (strpack.Contains("System Configuration"))
+                                if (strpack.Contains("Rowe Technologies Inc"))
                                 {
                                     packet = strpack.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                                     for (int i = 0; i < packet.Count(); i++)
                                     {
-                                        if (packet[i].Contains("System Configuration"))
+                                        if (packet[i].Contains("RIVER"))
                                         {
-                                            string[] snPacket = packet[i].Split(' ');
-                                            labelSystemNumber.Text = snPacket[0]; //仪器类型
+                                            //string[] snPacket = packet[i-1].Split(' ');
+                                            //labelSystemNumber.Text = snPacket[0]; //仪器类型
+                                            string snPacket = packet[i + 1];
+                                            labelSystemNumber.Text = snPacket; //仪器类型
                                         }
 
                                         //if (packet[i].Contains("SN"))  //LPJ 2016-12-14 显示仪器SN号
@@ -22275,29 +22094,36 @@ namespace ADCP
             }
             else
             {
-                systSet.iMeasMode = 0;
-                try
+                if (labelMeasMode.Text == "Auto")
                 {
-                    systSet.iStandardMode = frmsystemSet.systemSet.iStandardMode; //LPJ 2013-8-2
+                    systSet.iMeasMode = 2;
                 }
-                catch
+                else
                 {
                     systSet.iStandardMode = 0;
-                }
-
-                try
-                {
-                    systSet.Advancedstruct = frmsystemSet.systemSet.Advancedstruct; //LPJ 2013-8-5
-                }
-                catch
-                {
                     try
                     {
-                        systSet.Advancedstruct = advancedConf; //LPJ 2016-12-14
+                        systSet.iStandardMode = frmsystemSet.systemSet.iStandardMode; //LPJ 2013-8-2
                     }
                     catch
                     {
-                        systSet.Advancedstruct = null; //LPJ 2013-10-30
+                        systSet.iStandardMode = 0;
+                    }
+
+                    try
+                    {
+                        systSet.Advancedstruct = frmsystemSet.systemSet.Advancedstruct; //LPJ 2013-8-5
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            systSet.Advancedstruct = advancedConf; //LPJ 2016-12-14
+                        }
+                        catch
+                        {
+                            systSet.Advancedstruct = null; //LPJ 2013-10-30
+                        }
                     }
                 }
             }
@@ -22368,7 +22194,8 @@ namespace ADCP
             frmsystemSet = new FrmSystemSetting(systSet, iSystemNumber,playBackMode,sp); //LPJ 2013-11-20 在回放模式下只能修改船速参考和换能器深度
             if (!playBackMode)
                 sp.Close();//LPJ 2016-4-8 当弹出设置系统对话框时，暂时关闭串口通讯
-
+            
+            frmsystemSet.BringToFront();
             if (DialogResult.OK == frmsystemSet.ShowDialog())
             {
                 //switch (frmsystemSet.systemSet.iFlowRef) //LPJ 2013-7-24 cancel
@@ -22454,6 +22281,11 @@ namespace ADCP
                             labelMeasMode.Text = Resource1.String235;
                             break;
                         }
+                    case 2:
+                        {
+                            labelMeasMode.Text = "Auto";
+                            break;
+                        }
                     default:
                         break;
                 }
@@ -22466,8 +22298,18 @@ namespace ADCP
             }
 
             if (!playBackMode)
-                sp.Open(); //LPJ 2016-4-8 当关闭设置系统对话框时，打开串口通讯
-
+            {
+                try
+                {
+                    //if(!sp.IsOpen)
+                    sp.Close();
+                        sp.Open(); //LPJ 2016-4-8 当关闭设置系统对话框时，打开串口通讯
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             if (playBackMode)
             {
                 if ((iLastHeadingRef != frmsystemSet.systemSet.iHeadingRef) || (Math.Abs(fHeadingOffset - fLastHeadingOffset) >= 0.00000001))//LPJ 2016-8-16 当回放模式时，艏向参考更改时，更新数据 //LPJ 2017-5-15 当艏向偏差更改了，更新数据
@@ -22656,6 +22498,9 @@ namespace ADCP
                 }
                 labelLeftRef.Text = frmedgeSet.edgeSet.dLeftRef.ToString(); //LPJ 2013-11-19
                 labelRightDis.Text = frmedgeSet.edgeSet.dRightDis.ToString();
+
+                labelLeftRef.Top = labelLeftType.Top;
+
                 switch (frmedgeSet.edgeSet.iRightType)
                 {
                     case 0:
@@ -22677,6 +22522,7 @@ namespace ADCP
                         break;
                 }
                 labelRightRef.Text = frmedgeSet.edgeSet.dRightRef.ToString(); //LPJ 2013-11-19
+                labelRightRef.Top = labelRightType.Top;
 
                 //LPJ 2013-6-24 refresh Summary List
                 if (playBackMode)
@@ -22751,19 +22597,20 @@ namespace ADCP
 
             //File.AppendAllText(fileName, "HeadingReference " + labelHeadingRef.Text+"\r\n");
             if (labelMeasMode.Text == Resource1.String234)
-            //File.AppendAllText(fileName, "MeasurementMode 0"  + "\r\n");
             {
-                //try
-                //{
-                    File.AppendAllText(fileName, "MeasurementMode 0 " + frmsystemSet.systemSet.iStandardMode.ToString() + "\r\n"); //LPJ 2013-8-2
-                //}
-                //catch
-                //{
-                //    File.AppendAllText(fileName, "MeasurementMode 0 " + iStandardMode.ToString() + "\r\n"); //LPJ 2013-10-17
-                //}
+                File.AppendAllText(fileName, "MeasurementMode 0 " + frmsystemSet.systemSet.iStandardMode.ToString() + "\r\n"); //LPJ 2013-8-2
             }
             else
-                File.AppendAllText(fileName, "MeasurementMode 1" + "\r\n");
+            {
+                if (labelMeasMode.Text == "Auto")
+                {
+                    File.AppendAllText(fileName, "MeasurementMode 2" + "\r\n");
+                }
+                else
+                {
+                    File.AppendAllText(fileName, "MeasurementMode 1" + "\r\n");
+                }
+            }
             //File.AppendAllText(fileName, "MeasurementMode " + labelMeasMode.Text + "\r\n"); //为专家模式的变量专门设置一个结构体，当选择专家模式时，将该变量写入文件
             File.AppendAllText(fileName, "HeadingOffset " + label_Headingoffset.Text + "\r\n"); //LPJ 2014-6-16
             File.AppendAllText(fileName, "Salinity " + labelSalinity.Text + "\r\n"); //LPJ 2014-6-16
@@ -23608,33 +23455,19 @@ namespace ADCP
                                     if (int.Parse(cmdPart[1]) == 0)
                                     {
                                         labelMeasMode.Text = Resource1.String234;
-                                        //try
-                                        //{
-                                        //    iStandardMode = int.Parse(cmdPart[2]);
-                                        //}
-                                        //catch
-                                        //{
-                                        //    iStandardMode = 1;
-                                        //}
-
-                                        //frmsystemSet.systemSet.iMeasMode = 0; //LPJ 2013-8-2
-                                        //try //LPJ 2013-8-2
-                                        //{
-                                        //    frmsystemSet.systemSet.iStandardMode = int.Parse(cmdPart[2]);
-                                        //}
-                                        //catch
-                                        //{
-                                        //    frmsystemSet.systemSet.iStandardMode = 0;
-                                        //}
                                     }
                                     else
                                     {
-                                        labelMeasMode.Text = Resource1.String235;
-                                        //frmsystemSet.systemSet.iMeasMode = 1; //LPJ 2013-8-2
+                                        if (int.Parse(cmdPart[1]) == 1)
+                                        {
+                                            labelMeasMode.Text = Resource1.String235;
+                                        }
+                                        else
+                                        {
+                                            labelMeasMode.Text = "Auto";
+                                        }
                                     }
                                     break;
-                                    //labelMeasMode.Text = cmdPart[1];
-                                    //break;
                                 }
                             case "TopMode":
                                 {
@@ -23692,6 +23525,7 @@ namespace ADCP
                             case "LeftBankCoff":
                                 {
                                     labelLeftRef.Text = cmdPart[1];
+                                    labelLeftRef.Top = labelLeftType.Top;
                                     break;
                                 }
                             case "LeftBankPings":
@@ -23717,6 +23551,7 @@ namespace ADCP
                             case "RightBankCoff":
                                 {
                                     labelRightRef.Text = cmdPart[1];
+                                    labelRightRef.Top = labelRightType.Top;
                                     break;
                                 }
                             case "RightBankPings":
@@ -24059,6 +23894,7 @@ namespace ADCP
                 labelFirmWare.Location = new Point(204, 22);
                 labelInstrumentSN.Location = new Point(204, 40);
                 labelSystemNumber.Location = new Point(204, 59);
+                //labelSystemNumber.Location = new Point(label259.Left + label259.Width, 59);
                 linkLabelSettingTime.Location = new Point(204, 79);
             }
             else
@@ -24074,6 +23910,7 @@ namespace ADCP
                 labelFirmWare.Location = new Point(204, 30);
                 labelInstrumentSN.Location = new Point(204, 55);
                 labelSystemNumber.Location = new Point(204, 80);
+                //labelSystemNumber.Location = new Point(label259.Left + label259.Width, 80);
                 linkLabelSettingTime.Location = new Point(204, 100);
             }
 
@@ -24744,6 +24581,8 @@ namespace ADCP
         private bool bBottomTrack = true;  //LPJ 2016-10-21
         private bool bGPSVTGTrack = false;
         private bool bGPSGGATrack = false;
+
+        
         private void BTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BTToolStripMenuItem.Checked = !bBottomTrack;

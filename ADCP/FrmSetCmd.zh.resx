@@ -123,4 +123,13 @@
   <data name="label4.ImageKey" xml:space="preserve">
     <value>(无)</value>
   </data>
+  <data name="comboBoxADCP_Baudrate.Items6" xml:space="preserve">
+    <value>230400</value>
+  </data>
+  <data name="comboBoxADCP_Baudrate.Items7" xml:space="preserve">
+    <value>460800</value>
+  </data>
+  <data name="comboBoxADCP_Baudrate.Items8" xml:space="preserve">
+    <value>921600</value>
+  </data>
 </root>

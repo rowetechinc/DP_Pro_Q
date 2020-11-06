@@ -119,9 +119,12 @@ namespace ADCP
                         cmd = sr.ReadLine();
                     }
                 }
-                catch (System.Exception e)
+                catch //(System.Exception e)
                 {
-                    Language = "Chinese";
+                    //Language = "Chinese";
+
+                    Language = "English";
+
                     //DefCfgInf.ADCP_SerialPort = "COM1";
                     //DefCfgInf.ADCP_Baudrate = "115200";
                     //DefCfgInf.FileName = "Project Name";
@@ -133,7 +136,7 @@ namespace ADCP
                     //DefCfgInf.ShowProfiler = "0";
                     //DefCfgInf.Unit = "Metric";
                     //DefCfgInf.WaterSpeedRef = "Software";
-                 
+
                 }
             }
             else

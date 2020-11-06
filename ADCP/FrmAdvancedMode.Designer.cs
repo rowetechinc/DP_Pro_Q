@@ -185,6 +185,7 @@
             this.btnDefault = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.water_profiling.SuspendLayout();
             this.groupBox22.SuspendLayout();
@@ -221,16 +222,13 @@
             // 
             // water_profiling
             // 
-            resources.ApplyResources(this.water_profiling, "water_profiling");
             this.water_profiling.BackColor = System.Drawing.Color.WhiteSmoke;
             this.water_profiling.Controls.Add(this.groupBox22);
-            this.water_profiling.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.water_profiling, "water_profiling");
             this.water_profiling.Name = "water_profiling";
-            this.water_profiling.ToolTipText = global::ADCP.Resource1.String86;
             // 
             // groupBox22
             // 
-            resources.ApplyResources(this.groupBox22, "groupBox22");
             this.groupBox22.Controls.Add(this.groupBox1);
             this.groupBox22.Controls.Add(this.groupBox43);
             this.groupBox22.Controls.Add(this.groupBox40);
@@ -238,16 +236,17 @@
             this.groupBox22.Controls.Add(this.groupBox7);
             this.groupBox22.Controls.Add(this.groupBox6);
             this.groupBox22.Controls.Add(this.waterBinCfg);
+            resources.ApplyResources(this.groupBox22, "groupBox22");
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.TabStop = false;
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.textBox_CWPBP_Time);
             this.groupBox1.Controls.Add(this.textBox_CWPBP_Pings);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label19);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -266,18 +265,15 @@
             // label20
             // 
             resources.ApplyResources(this.label20, "label20");
-            this.label20.ImageKey = global::ADCP.Resource1.String86;
             this.label20.Name = "label20";
             // 
             // label19
             // 
             resources.ApplyResources(this.label19, "label19");
-            this.label19.ImageKey = global::ADCP.Resource1.String86;
             this.label19.Name = "label19";
             // 
             // groupBox43
             // 
-            resources.ApplyResources(this.groupBox43, "groupBox43");
             this.groupBox43.Controls.Add(this.textBox_CWPAP2);
             this.groupBox43.Controls.Add(this.textBox_CWPAP3);
             this.groupBox43.Controls.Add(this.textBox_CWPAP4);
@@ -288,6 +284,7 @@
             this.groupBox43.Controls.Add(this.label229);
             this.groupBox43.Controls.Add(this.label228);
             this.groupBox43.Controls.Add(this.txtBox_CWPAP1);
+            resources.ApplyResources(this.groupBox43, "groupBox43");
             this.groupBox43.Name = "groupBox43";
             this.groupBox43.TabStop = false;
             // 
@@ -353,7 +350,6 @@
             // 
             // groupBox40
             // 
-            resources.ApplyResources(this.groupBox40, "groupBox40");
             this.groupBox40.Controls.Add(this.label6);
             this.groupBox40.Controls.Add(this.label5);
             this.groupBox40.Controls.Add(this.WPST_VVelocity_TextBox);
@@ -362,19 +358,18 @@
             this.groupBox40.Controls.Add(this.label220);
             this.groupBox40.Controls.Add(this.label219);
             this.groupBox40.Controls.Add(this.label218);
+            resources.ApplyResources(this.groupBox40, "groupBox40");
             this.groupBox40.Name = "groupBox40";
             this.groupBox40.TabStop = false;
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
-            this.label6.ImageKey = global::ADCP.Resource1.String86;
             this.label6.Name = "label6";
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
-            this.label5.ImageKey = global::ADCP.Resource1.String86;
             this.label5.Name = "label5";
             // 
             // WPST_VVelocity_TextBox
@@ -415,9 +410,9 @@
             // 
             // groupBox5
             // 
-            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Controls.Add(this.WaterPingClose);
             this.groupBox5.Controls.Add(this.WaterPingOpen);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
@@ -437,11 +432,11 @@
             // 
             // groupBox7
             // 
-            resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Controls.Add(this.label30);
             this.groupBox7.Controls.Add(this.textTimeBtwnPings);
             this.groupBox7.Controls.Add(this.textWaterAvgNum);
             this.groupBox7.Controls.Add(this.label33);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
             // 
@@ -471,7 +466,6 @@
             // 
             // groupBox6
             // 
-            resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.CWPBB_Mode6);
             this.groupBox6.Controls.Add(this.Broadband_Ambiguity_Mode);
@@ -482,13 +476,13 @@
             this.groupBox6.Controls.Add(this.nonPulse_Mode);
             this.groupBox6.Controls.Add(this.Narrowband_Mode);
             this.groupBox6.Controls.Add(this.Broadband_Mode);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
-            this.label4.ImageKey = global::ADCP.Resource1.String86;
             this.label4.Name = "label4";
             // 
             // CWPBB_Mode6
@@ -556,7 +550,6 @@
             // 
             // waterBinCfg
             // 
-            resources.ApplyResources(this.waterBinCfg, "waterBinCfg");
             this.waterBinCfg.Controls.Add(this.label3);
             this.waterBinCfg.Controls.Add(this.label2);
             this.waterBinCfg.Controls.Add(this.label1);
@@ -568,25 +561,23 @@
             this.waterBinCfg.Controls.Add(this.label27);
             this.waterBinCfg.Controls.Add(this.textBlankSize);
             this.waterBinCfg.Controls.Add(this.label26);
+            resources.ApplyResources(this.waterBinCfg, "waterBinCfg");
             this.waterBinCfg.Name = "waterBinCfg";
             this.waterBinCfg.TabStop = false;
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
-            this.label3.ImageKey = global::ADCP.Resource1.String86;
             this.label3.Name = "label3";
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
-            this.label2.ImageKey = global::ADCP.Resource1.String86;
             this.label2.Name = "label2";
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
-            this.label1.ImageKey = global::ADCP.Resource1.String86;
             this.label1.Name = "label1";
             // 
             // textBinNum
@@ -639,16 +630,13 @@
             // 
             // ensemble
             // 
-            resources.ApplyResources(this.ensemble, "ensemble");
             this.ensemble.Controls.Add(this.groupBox23);
-            this.ensemble.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.ensemble, "ensemble");
             this.ensemble.Name = "ensemble";
-            this.ensemble.ToolTipText = global::ADCP.Resource1.String86;
             this.ensemble.UseVisualStyleBackColor = true;
             // 
             // groupBox23
             // 
-            resources.ApplyResources(this.groupBox23, "groupBox23");
             this.groupBox23.Controls.Add(this.txt_BurstInterval_n);
             this.groupBox23.Controls.Add(this.label238);
             this.groupBox23.Controls.Add(this.label233);
@@ -667,6 +655,7 @@
             this.groupBox23.Controls.Add(this.textEsmbIntervalMM);
             this.groupBox23.Controls.Add(this.label38);
             this.groupBox23.Controls.Add(this.textEsmbIntervalHH);
+            resources.ApplyResources(this.groupBox23, "groupBox23");
             this.groupBox23.Name = "groupBox23";
             this.groupBox23.TabStop = false;
             // 
@@ -776,27 +765,24 @@
             // 
             // bottom_tracking
             // 
-            resources.ApplyResources(this.bottom_tracking, "bottom_tracking");
             this.bottom_tracking.Controls.Add(this.groupBox24);
-            this.bottom_tracking.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.bottom_tracking, "bottom_tracking");
             this.bottom_tracking.Name = "bottom_tracking";
-            this.bottom_tracking.ToolTipText = global::ADCP.Resource1.String86;
             this.bottom_tracking.UseVisualStyleBackColor = true;
             // 
             // groupBox24
             // 
-            resources.ApplyResources(this.groupBox24, "groupBox24");
             this.groupBox24.Controls.Add(this.groupBox42);
             this.groupBox24.Controls.Add(this.groupBox41);
             this.groupBox24.Controls.Add(this.groupBox11);
             this.groupBox24.Controls.Add(this.groupBox9);
             this.groupBox24.Controls.Add(this.groupBox10);
+            resources.ApplyResources(this.groupBox24, "groupBox24");
             this.groupBox24.Name = "groupBox24";
             this.groupBox24.TabStop = false;
             // 
             // groupBox42
             // 
-            resources.ApplyResources(this.groupBox42, "groupBox42");
             this.groupBox42.Controls.Add(this.label14);
             this.groupBox42.Controls.Add(this.label13);
             this.groupBox42.Controls.Add(this.BTT_Depthlow2high_text);
@@ -807,19 +793,18 @@
             this.groupBox42.Controls.Add(this.label226);
             this.groupBox42.Controls.Add(this.label225);
             this.groupBox42.Controls.Add(this.label224);
+            resources.ApplyResources(this.groupBox42, "groupBox42");
             this.groupBox42.Name = "groupBox42";
             this.groupBox42.TabStop = false;
             // 
             // label14
             // 
             resources.ApplyResources(this.label14, "label14");
-            this.label14.ImageKey = global::ADCP.Resource1.String86;
             this.label14.Name = "label14";
             // 
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
-            this.label13.ImageKey = global::ADCP.Resource1.String86;
             this.label13.Name = "label13";
             // 
             // BTT_Depthlow2high_text
@@ -872,7 +857,6 @@
             // 
             // groupBox41
             // 
-            resources.ApplyResources(this.groupBox41, "groupBox41");
             this.groupBox41.Controls.Add(this.label10);
             this.groupBox41.Controls.Add(this.label9);
             this.groupBox41.Controls.Add(this.BTST_V_text);
@@ -881,19 +865,18 @@
             this.groupBox41.Controls.Add(this.label223);
             this.groupBox41.Controls.Add(this.label222);
             this.groupBox41.Controls.Add(this.label221);
+            resources.ApplyResources(this.groupBox41, "groupBox41");
             this.groupBox41.Name = "groupBox41";
             this.groupBox41.TabStop = false;
             // 
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
-            this.label10.ImageKey = global::ADCP.Resource1.String86;
             this.label10.Name = "label10";
             // 
             // label9
             // 
             resources.ApplyResources(this.label9, "label9");
-            this.label9.ImageKey = global::ADCP.Resource1.String86;
             this.label9.Name = "label9";
             // 
             // BTST_V_text
@@ -934,9 +917,9 @@
             // 
             // groupBox11
             // 
-            resources.ApplyResources(this.groupBox11, "groupBox11");
             this.groupBox11.Controls.Add(this.radioBtmTrkClose);
             this.groupBox11.Controls.Add(this.radioBtmTrkOpen);
+            resources.ApplyResources(this.groupBox11, "groupBox11");
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.TabStop = false;
             // 
@@ -956,7 +939,6 @@
             // 
             // groupBox9
             // 
-            resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Controls.Add(this.label8);
             this.groupBox9.Controls.Add(this.label7);
             this.groupBox9.Controls.Add(this.textBtmTrkInterval);
@@ -965,19 +947,18 @@
             this.groupBox9.Controls.Add(this.label50);
             this.groupBox9.Controls.Add(this.textBtmTrkBlank);
             this.groupBox9.Controls.Add(this.label51);
+            resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.TabStop = false;
             // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
-            this.label8.ImageKey = global::ADCP.Resource1.String86;
             this.label8.Name = "label8";
             // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
-            this.label7.ImageKey = global::ADCP.Resource1.String86;
             this.label7.Name = "label7";
             // 
             // textBtmTrkInterval
@@ -1018,7 +999,6 @@
             // 
             // groupBox10
             // 
-            resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Controls.Add(this.label12);
             this.groupBox10.Controls.Add(this.label11);
             this.groupBox10.Controls.Add(this.CBTBB7);
@@ -1033,19 +1013,18 @@
             this.groupBox10.Controls.Add(this.nonPulseTransmit_Mode);
             this.groupBox10.Controls.Add(this.radioBTNarrowBand);
             this.groupBox10.Controls.Add(this.radioBTBroadBand);
+            resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.TabStop = false;
             // 
             // label12
             // 
             resources.ApplyResources(this.label12, "label12");
-            this.label12.ImageKey = global::ADCP.Resource1.String86;
             this.label12.Name = "label12";
             // 
             // label11
             // 
             resources.ApplyResources(this.label11, "label11");
-            this.label11.ImageKey = global::ADCP.Resource1.String86;
             this.label11.Name = "label11";
             // 
             // CBTBB7
@@ -1130,20 +1109,17 @@
             // 
             // environmental
             // 
-            resources.ApplyResources(this.environmental, "environmental");
             this.environmental.Controls.Add(this.groupBox44);
             this.environmental.Controls.Add(this.label17);
             this.environmental.Controls.Add(this.groupBox26);
             this.environmental.Controls.Add(this.textTransducerDepth);
             this.environmental.Controls.Add(this.label47);
-            this.environmental.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.environmental, "environmental");
             this.environmental.Name = "environmental";
-            this.environmental.ToolTipText = global::ADCP.Resource1.String86;
             this.environmental.UseVisualStyleBackColor = true;
             // 
             // groupBox44
             // 
-            resources.ApplyResources(this.groupBox44, "groupBox44");
             this.groupBox44.Controls.Add(this.comboBox_SpeedOfSound);
             this.groupBox44.Controls.Add(this.comboBox_Salinity);
             this.groupBox44.Controls.Add(this.comboBox_TransducerDepth);
@@ -1152,51 +1128,48 @@
             this.groupBox44.Controls.Add(this.label240);
             this.groupBox44.Controls.Add(this.label241);
             this.groupBox44.Controls.Add(this.label242);
+            resources.ApplyResources(this.groupBox44, "groupBox44");
             this.groupBox44.Name = "groupBox44";
             this.groupBox44.TabStop = false;
             // 
             // comboBox_SpeedOfSound
             // 
-            resources.ApplyResources(this.comboBox_SpeedOfSound, "comboBox_SpeedOfSound");
-            this.comboBox_SpeedOfSound.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_SpeedOfSound.FormattingEnabled = true;
             this.comboBox_SpeedOfSound.Items.AddRange(new object[] {
             resources.GetString("comboBox_SpeedOfSound.Items"),
             resources.GetString("comboBox_SpeedOfSound.Items1"),
             resources.GetString("comboBox_SpeedOfSound.Items2")});
+            resources.ApplyResources(this.comboBox_SpeedOfSound, "comboBox_SpeedOfSound");
             this.comboBox_SpeedOfSound.Name = "comboBox_SpeedOfSound";
             // 
             // comboBox_Salinity
             // 
-            resources.ApplyResources(this.comboBox_Salinity, "comboBox_Salinity");
-            this.comboBox_Salinity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Salinity.FormattingEnabled = true;
             this.comboBox_Salinity.Items.AddRange(new object[] {
             resources.GetString("comboBox_Salinity.Items"),
             resources.GetString("comboBox_Salinity.Items1"),
             resources.GetString("comboBox_Salinity.Items2")});
+            resources.ApplyResources(this.comboBox_Salinity, "comboBox_Salinity");
             this.comboBox_Salinity.Name = "comboBox_Salinity";
             // 
             // comboBox_TransducerDepth
             // 
-            resources.ApplyResources(this.comboBox_TransducerDepth, "comboBox_TransducerDepth");
-            this.comboBox_TransducerDepth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_TransducerDepth.FormattingEnabled = true;
             this.comboBox_TransducerDepth.Items.AddRange(new object[] {
             resources.GetString("comboBox_TransducerDepth.Items"),
             resources.GetString("comboBox_TransducerDepth.Items1"),
             resources.GetString("comboBox_TransducerDepth.Items2")});
+            resources.ApplyResources(this.comboBox_TransducerDepth, "comboBox_TransducerDepth");
             this.comboBox_TransducerDepth.Name = "comboBox_TransducerDepth";
             // 
             // comboBox_waterTemperature
             // 
-            resources.ApplyResources(this.comboBox_waterTemperature, "comboBox_waterTemperature");
-            this.comboBox_waterTemperature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_waterTemperature.FormattingEnabled = true;
             this.comboBox_waterTemperature.Items.AddRange(new object[] {
             resources.GetString("comboBox_waterTemperature.Items"),
             resources.GetString("comboBox_waterTemperature.Items1"),
             resources.GetString("comboBox_waterTemperature.Items2")});
+            resources.ApplyResources(this.comboBox_waterTemperature, "comboBox_waterTemperature");
             this.comboBox_waterTemperature.Name = "comboBox_waterTemperature";
             // 
             // label239
@@ -1222,12 +1195,11 @@
             // label17
             // 
             resources.ApplyResources(this.label17, "label17");
-            this.label17.ImageKey = global::ADCP.Resource1.String86;
             this.label17.Name = "label17";
             // 
             // groupBox26
             // 
-            resources.ApplyResources(this.groupBox26, "groupBox26");
+            this.groupBox26.Controls.Add(this.label15);
             this.groupBox26.Controls.Add(this.label18);
             this.groupBox26.Controls.Add(this.label43);
             this.groupBox26.Controls.Add(this.textHeadingOffset);
@@ -1237,13 +1209,13 @@
             this.groupBox26.Controls.Add(this.textWaterTemperature);
             this.groupBox26.Controls.Add(this.label52);
             this.groupBox26.Controls.Add(this.textWaterSalinity);
+            resources.ApplyResources(this.groupBox26, "groupBox26");
             this.groupBox26.Name = "groupBox26";
             this.groupBox26.TabStop = false;
             // 
             // label18
             // 
             resources.ApplyResources(this.label18, "label18");
-            this.label18.ImageKey = global::ADCP.Resource1.String86;
             this.label18.Name = "label18";
             // 
             // label43
@@ -1310,7 +1282,6 @@
             // 
             resources.ApplyResources(this.btnOK, "btnOK");
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.ImageKey = global::ADCP.Resource1.String86;
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -1319,14 +1290,12 @@
             // 
             resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.ImageKey = global::ADCP.Resource1.String86;
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnDefault
             // 
             resources.ApplyResources(this.btnDefault, "btnDefault");
-            this.btnDefault.ImageKey = global::ADCP.Resource1.String86;
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.UseVisualStyleBackColor = true;
             this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
@@ -1334,7 +1303,6 @@
             // btnLoad
             // 
             resources.ApplyResources(this.btnLoad, "btnLoad");
-            this.btnLoad.ImageKey = global::ADCP.Resource1.String86;
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
@@ -1342,10 +1310,14 @@
             // btnExport
             // 
             resources.ApplyResources(this.btnExport, "btnExport");
-            this.btnExport.ImageKey = global::ADCP.Resource1.String86;
             this.btnExport.Name = "btnExport";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
             // 
             // FrmAdvancedMode
             // 
@@ -1561,5 +1533,6 @@
         private System.Windows.Forms.TextBox textBox_CWPBP_Pings;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label15;
     }
 }

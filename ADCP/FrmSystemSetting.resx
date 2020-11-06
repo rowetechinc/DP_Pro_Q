@@ -123,10 +123,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 19</value>
+    <value>12, 21</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 12</value>
+    <value>125, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -150,10 +150,10 @@
     <value>True</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 48</value>
+    <value>12, 52</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 12</value>
+    <value>100, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -177,10 +177,10 @@
     <value>True</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 196</value>
+    <value>12, 212</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 12</value>
+    <value>93, 13</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -204,10 +204,10 @@
     <value>True</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 231</value>
+    <value>12, 250</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 12</value>
+    <value>101, 13</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -240,10 +240,10 @@
     <value>GPS GGA</value>
   </data>
   <data name="comboBoxVesselSpeedRef.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 16</value>
+    <value>150, 17</value>
   </data>
   <data name="comboBoxVesselSpeedRef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 20</value>
+    <value>145, 21</value>
   </data>
   <data name="comboBoxVesselSpeedRef.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -267,10 +267,10 @@
     <value>External Compass</value>
   </data>
   <data name="comboBoxHeadingRef.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 45</value>
+    <value>150, 49</value>
   </data>
   <data name="comboBoxHeadingRef.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 20</value>
+    <value>145, 21</value>
   </data>
   <data name="comboBoxHeadingRef.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -293,11 +293,14 @@
   <data name="comboBoxMeasMode.Items1" xml:space="preserve">
     <value>Advanced</value>
   </data>
+  <data name="comboBoxMeasMode.Items2" xml:space="preserve">
+    <value>Auto</value>
+  </data>
   <data name="comboBoxMeasMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 228</value>
+    <value>150, 247</value>
   </data>
   <data name="comboBoxMeasMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 20</value>
+    <value>145, 21</value>
   </data>
   <data name="comboBoxMeasMode.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -315,10 +318,10 @@
     <value>16</value>
   </data>
   <data name="textBoxTransducerDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 193</value>
+    <value>150, 209</value>
   </data>
   <data name="textBoxTransducerDepth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 21</value>
+    <value>145, 20</value>
   </data>
   <data name="textBoxTransducerDepth.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -339,10 +342,10 @@
     <value>15</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>44, 295</value>
+    <value>44, 320</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>75, 25</value>
   </data>
   <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -363,10 +366,10 @@
     <value>14</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 295</value>
+    <value>173, 320</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>75, 25</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -399,10 +402,10 @@
     <value>Deep    (Depth &lt; 30)</value>
   </data>
   <data name="comboBoxStandardMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 258</value>
+    <value>150, 280</value>
   </data>
   <data name="comboBoxStandardMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 20</value>
+    <value>145, 21</value>
   </data>
   <data name="comboBoxStandardMode.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -426,10 +429,10 @@
     <value>True</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 196</value>
+    <value>116, 212</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 12</value>
+    <value>21, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -453,10 +456,10 @@
     <value>True</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 265</value>
+    <value>118, 287</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 12</value>
+    <value>0, 13</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -494,11 +497,14 @@
   <data name="comboBox_RS232.Items5" xml:space="preserve">
     <value>115200</value>
   </data>
+  <data name="comboBox_RS232.Items6" xml:space="preserve">
+    <value>230400</value>
+  </data>
   <data name="comboBox_RS232.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 77</value>
+    <value>150, 83</value>
   </data>
   <data name="comboBox_RS232.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 20</value>
+    <value>145, 21</value>
   </data>
   <data name="comboBox_RS232.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -536,11 +542,20 @@
   <data name="comboBox_RS485.Items5" xml:space="preserve">
     <value>115200</value>
   </data>
+  <data name="comboBox_RS485.Items6" xml:space="preserve">
+    <value>230400</value>
+  </data>
+  <data name="comboBox_RS485.Items7" xml:space="preserve">
+    <value>460800</value>
+  </data>
+  <data name="comboBox_RS485.Items8" xml:space="preserve">
+    <value>921600</value>
+  </data>
   <data name="comboBox_RS485.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 105</value>
+    <value>150, 114</value>
   </data>
   <data name="comboBox_RS485.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 20</value>
+    <value>145, 21</value>
   </data>
   <data name="comboBox_RS485.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -565,10 +580,10 @@
     <value>NoControl</value>
   </data>
   <data name="label_RS232.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 80</value>
+    <value>104, 87</value>
   </data>
   <data name="label_RS232.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 12</value>
+    <value>40, 13</value>
   </data>
   <data name="label_RS232.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -595,10 +610,10 @@
     <value>NoControl</value>
   </data>
   <data name="label_RS485.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 108</value>
+    <value>104, 117</value>
   </data>
   <data name="label_RS485.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 12</value>
+    <value>40, 13</value>
   </data>
   <data name="label_RS485.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -622,10 +637,10 @@
     <value>True</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 93</value>
+    <value>13, 101</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 12</value>
+    <value>55, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -649,10 +664,10 @@
     <value>True</value>
   </data>
   <data name="linkLabelCheckAdvanced.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 261</value>
+    <value>12, 283</value>
   </data>
   <data name="linkLabelCheckAdvanced.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 12</value>
+    <value>89, 13</value>
   </data>
   <data name="linkLabelCheckAdvanced.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -679,10 +694,10 @@
     <value>True</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 137</value>
+    <value>14, 148</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 12</value>
+    <value>61, 13</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -706,10 +721,10 @@
     <value>True</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 163</value>
+    <value>13, 177</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 12</value>
+    <value>112, 13</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -730,10 +745,10 @@
     <value>2</value>
   </data>
   <data name="textBoxSalinity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 132</value>
+    <value>150, 143</value>
   </data>
   <data name="textBoxSalinity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 21</value>
+    <value>145, 20</value>
   </data>
   <data name="textBoxSalinity.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -751,10 +766,10 @@
     <value>1</value>
   </data>
   <data name="textBoxHeadingOffset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 160</value>
+    <value>150, 173</value>
   </data>
   <data name="textBoxHeadingOffset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 21</value>
+    <value>145, 20</value>
   </data>
   <data name="textBoxHeadingOffset.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -775,10 +790,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>307, 335</value>
+    <value>307, 363</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>FrmSystemSetting</value>

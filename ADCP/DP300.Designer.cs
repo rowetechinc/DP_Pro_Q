@@ -660,12 +660,12 @@
             // 
             // tabControl4
             // 
-            resources.ApplyResources(this.tabControl4, "tabControl4");
             this.tabControl4.Controls.Add(this.tabPageSmartPage);
             this.tabControl4.Controls.Add(this.DP300Displayer);
             this.tabControl4.Controls.Add(this.tabPageTrack);
             this.tabControl4.Controls.Add(this.tabPageData);
             this.tabControl4.Controls.Add(this.tabPageSerialTime);
+            resources.ApplyResources(this.tabControl4, "tabControl4");
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
             this.tabControl4.SelectedIndexChanged += new System.EventHandler(this.tabControl4_SelectedIndexChanged);
@@ -673,24 +673,22 @@
             // 
             // tabPageSmartPage
             // 
-            resources.ApplyResources(this.tabPageSmartPage, "tabPageSmartPage");
             this.tabPageSmartPage.Controls.Add(this.panel34);
             this.tabPageSmartPage.Controls.Add(this.panel17);
-            this.tabPageSmartPage.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPageSmartPage, "tabPageSmartPage");
             this.tabPageSmartPage.Name = "tabPageSmartPage";
-            this.tabPageSmartPage.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPageSmartPage.UseVisualStyleBackColor = true;
             // 
             // panel34
             // 
-            resources.ApplyResources(this.panel34, "panel34");
             this.panel34.Controls.Add(this.textBoxHelpTips);
+            resources.ApplyResources(this.panel34, "panel34");
             this.panel34.Name = "panel34";
             // 
             // textBoxHelpTips
             // 
-            resources.ApplyResources(this.textBoxHelpTips, "textBoxHelpTips");
             this.textBoxHelpTips.BackColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.textBoxHelpTips, "textBoxHelpTips");
             this.textBoxHelpTips.Name = "textBoxHelpTips";
             this.textBoxHelpTips.ReadOnly = true;
             // 
@@ -702,7 +700,6 @@
             // 
             // panel23
             // 
-            resources.ApplyResources(this.panel23, "panel23");
             this.panel23.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel23.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel23.Controls.Add(this.groupBox1);
@@ -728,20 +725,20 @@
             this.panel23.Controls.Add(this.panelStep2);
             this.panel23.Controls.Add(this.panel29);
             this.panel23.Controls.Add(this.panelStep1);
+            resources.ApplyResources(this.panel23, "panel23");
             this.panel23.Name = "panel23";
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.radioBtnInternalGPS);
             this.groupBox1.Controls.Add(this.radioBtnExternalGPS);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
             // radioBtnInternalGPS
             // 
             resources.ApplyResources(this.radioBtnInternalGPS, "radioBtnInternalGPS");
-            this.radioBtnInternalGPS.ImageKey = global::ADCP.Resource1.String86;
             this.radioBtnInternalGPS.Name = "radioBtnInternalGPS";
             this.radioBtnInternalGPS.UseVisualStyleBackColor = true;
             // 
@@ -749,7 +746,6 @@
             // 
             resources.ApplyResources(this.radioBtnExternalGPS, "radioBtnExternalGPS");
             this.radioBtnExternalGPS.Checked = true;
-            this.radioBtnExternalGPS.ImageKey = global::ADCP.Resource1.String86;
             this.radioBtnExternalGPS.Name = "radioBtnExternalGPS";
             this.radioBtnExternalGPS.TabStop = true;
             this.radioBtnExternalGPS.UseVisualStyleBackColor = true;
@@ -757,15 +753,13 @@
             // checkBoxGetHeadingOffset
             // 
             resources.ApplyResources(this.checkBoxGetHeadingOffset, "checkBoxGetHeadingOffset");
-            this.checkBoxGetHeadingOffset.ImageKey = global::ADCP.Resource1.String86;
             this.checkBoxGetHeadingOffset.Name = "checkBoxGetHeadingOffset";
             this.checkBoxGetHeadingOffset.UseVisualStyleBackColor = true;
             // 
             // linkLabelUpdateFirmware
             // 
-            resources.ApplyResources(this.linkLabelUpdateFirmware, "linkLabelUpdateFirmware");
             this.linkLabelUpdateFirmware.ActiveLinkColor = System.Drawing.Color.Green;
-            this.linkLabelUpdateFirmware.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.linkLabelUpdateFirmware, "linkLabelUpdateFirmware");
             this.linkLabelUpdateFirmware.Name = "linkLabelUpdateFirmware";
             this.linkLabelUpdateFirmware.TabStop = true;
             this.linkLabelUpdateFirmware.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUpdateFirmware_LinkClicked);
@@ -773,7 +767,6 @@
             // linkLabelBeamCheck
             // 
             resources.ApplyResources(this.linkLabelBeamCheck, "linkLabelBeamCheck");
-            this.linkLabelBeamCheck.ImageKey = global::ADCP.Resource1.String86;
             this.linkLabelBeamCheck.Name = "linkLabelBeamCheck";
             this.linkLabelBeamCheck.TabStop = true;
             this.linkLabelBeamCheck.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelBeamCheck_LinkClicked);
@@ -781,7 +774,6 @@
             // linkLabelDownload
             // 
             resources.ApplyResources(this.linkLabelDownload, "linkLabelDownload");
-            this.linkLabelDownload.ImageKey = global::ADCP.Resource1.String86;
             this.linkLabelDownload.Name = "linkLabelDownload";
             this.linkLabelDownload.TabStop = true;
             this.linkLabelDownload.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDownload_LinkClicked);
@@ -789,23 +781,20 @@
             // linkLabelHeadingOffset
             // 
             resources.ApplyResources(this.linkLabelHeadingOffset, "linkLabelHeadingOffset");
-            this.linkLabelHeadingOffset.ImageKey = global::ADCP.Resource1.String86;
             this.linkLabelHeadingOffset.Name = "linkLabelHeadingOffset";
             this.linkLabelHeadingOffset.TabStop = true;
             this.linkLabelHeadingOffset.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHeadingOffset_LinkClicked);
             // 
             // linkLabelEdgeSetting
             // 
-            resources.ApplyResources(this.linkLabelEdgeSetting, "linkLabelEdgeSetting");
             this.linkLabelEdgeSetting.ActiveLinkColor = System.Drawing.Color.Green;
-            this.linkLabelEdgeSetting.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.linkLabelEdgeSetting, "linkLabelEdgeSetting");
             this.linkLabelEdgeSetting.Name = "linkLabelEdgeSetting";
             this.linkLabelEdgeSetting.TabStop = true;
             this.linkLabelEdgeSetting.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelEdgeSetting_LinkClicked);
             // 
             // panel32
             // 
-            resources.ApplyResources(this.panel32, "panel32");
             this.panel32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel32.Controls.Add(this.label9);
             this.panel32.Controls.Add(this.label5);
@@ -827,133 +816,114 @@
             this.panel32.Controls.Add(this.label257);
             this.panel32.Controls.Add(this.label258);
             this.panel32.Controls.Add(this.label262);
+            resources.ApplyResources(this.panel32, "panel32");
             this.panel32.Name = "panel32";
             // 
             // label9
             // 
             resources.ApplyResources(this.label9, "label9");
-            this.label9.ImageKey = global::ADCP.Resource1.String86;
             this.label9.Name = "label9";
             // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
-            this.label5.ImageKey = global::ADCP.Resource1.String86;
             this.label5.Name = "label5";
             // 
             // labelPowerCurveCoeff
             // 
             resources.ApplyResources(this.labelPowerCurveCoeff, "labelPowerCurveCoeff");
-            this.labelPowerCurveCoeff.ImageKey = global::ADCP.Resource1.String86;
             this.labelPowerCurveCoeff.Name = "labelPowerCurveCoeff";
             // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
-            this.label7.ImageKey = global::ADCP.Resource1.String86;
             this.label7.Name = "label7";
             // 
             // labelBottomEstimate
             // 
             resources.ApplyResources(this.labelBottomEstimate, "labelBottomEstimate");
-            this.labelBottomEstimate.ImageKey = global::ADCP.Resource1.String86;
             this.labelBottomEstimate.Name = "labelBottomEstimate";
             // 
             // labelRightRef
             // 
             resources.ApplyResources(this.labelRightRef, "labelRightRef");
-            this.labelRightRef.ImageKey = global::ADCP.Resource1.String86;
             this.labelRightRef.Name = "labelRightRef";
             // 
             // labelLeftRef
             // 
             resources.ApplyResources(this.labelLeftRef, "labelLeftRef");
-            this.labelLeftRef.ImageKey = global::ADCP.Resource1.String86;
             this.labelLeftRef.Name = "labelLeftRef";
             // 
             // labelTopEstimate
             // 
             resources.ApplyResources(this.labelTopEstimate, "labelTopEstimate");
-            this.labelTopEstimate.ImageKey = global::ADCP.Resource1.String86;
             this.labelTopEstimate.Name = "labelTopEstimate";
             // 
             // labelRightDis
             // 
             resources.ApplyResources(this.labelRightDis, "labelRightDis");
-            this.labelRightDis.ImageKey = global::ADCP.Resource1.String86;
             this.labelRightDis.Name = "labelRightDis";
             // 
             // label6
             // 
             resources.ApplyResources(this.label6, "label6");
-            this.label6.ImageKey = global::ADCP.Resource1.String86;
             this.label6.Name = "label6";
             // 
             // labelLeftType
             // 
             resources.ApplyResources(this.labelLeftType, "labelLeftType");
-            this.labelLeftType.ImageKey = global::ADCP.Resource1.String86;
             this.labelLeftType.Name = "labelLeftType";
             // 
             // labelLeftDis
             // 
             resources.ApplyResources(this.labelLeftDis, "labelLeftDis");
-            this.labelLeftDis.ImageKey = global::ADCP.Resource1.String86;
             this.labelLeftDis.Name = "labelLeftDis";
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
-            this.label1.ImageKey = global::ADCP.Resource1.String86;
             this.label1.Name = "label1";
             // 
             // labelStartEdge
             // 
             resources.ApplyResources(this.labelStartEdge, "labelStartEdge");
-            this.labelStartEdge.ImageKey = global::ADCP.Resource1.String86;
             this.labelStartEdge.Name = "labelStartEdge";
             // 
             // labelRightType
             // 
             resources.ApplyResources(this.labelRightType, "labelRightType");
-            this.labelRightType.ImageKey = global::ADCP.Resource1.String86;
             this.labelRightType.Name = "labelRightType";
             // 
             // label249
             // 
             resources.ApplyResources(this.label249, "label249");
-            this.label249.ImageKey = global::ADCP.Resource1.String86;
             this.label249.Name = "label249";
             // 
             // label255
             // 
             resources.ApplyResources(this.label255, "label255");
-            this.label255.ImageKey = global::ADCP.Resource1.String86;
             this.label255.Name = "label255";
             // 
             // label257
             // 
             resources.ApplyResources(this.label257, "label257");
-            this.label257.ImageKey = global::ADCP.Resource1.String86;
             this.label257.Name = "label257";
             // 
             // label258
             // 
             resources.ApplyResources(this.label258, "label258");
-            this.label258.ImageKey = global::ADCP.Resource1.String86;
             this.label258.Name = "label258";
             // 
             // label262
             // 
             resources.ApplyResources(this.label262, "label262");
-            this.label262.ImageKey = global::ADCP.Resource1.String86;
             this.label262.Name = "label262";
             // 
             // panel33
             // 
-            resources.ApplyResources(this.panel33, "panel33");
             this.panel33.BackColor = System.Drawing.Color.LightSlateGray;
             this.panel33.Controls.Add(this.labelStep5);
+            resources.ApplyResources(this.panel33, "panel33");
             this.panel33.Name = "panel33";
             // 
             // labelStep5
@@ -961,52 +931,47 @@
             resources.ApplyResources(this.labelStep5, "labelStep5");
             this.labelStep5.BackColor = System.Drawing.Color.LightSlateGray;
             this.labelStep5.ForeColor = System.Drawing.Color.Yellow;
-            this.labelStep5.ImageKey = global::ADCP.Resource1.String86;
             this.labelStep5.Name = "labelStep5";
             // 
             // linkLabelSystemConf
             // 
-            resources.ApplyResources(this.linkLabelSystemConf, "linkLabelSystemConf");
             this.linkLabelSystemConf.ActiveLinkColor = System.Drawing.Color.Green;
-            this.linkLabelSystemConf.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.linkLabelSystemConf, "linkLabelSystemConf");
             this.linkLabelSystemConf.Name = "linkLabelSystemConf";
             this.linkLabelSystemConf.TabStop = true;
             this.linkLabelSystemConf.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSystemConf_LinkClicked);
             // 
             // linkLabelUnit
             // 
-            resources.ApplyResources(this.linkLabelUnit, "linkLabelUnit");
             this.linkLabelUnit.ActiveLinkColor = System.Drawing.Color.Green;
-            this.linkLabelUnit.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.linkLabelUnit, "linkLabelUnit");
             this.linkLabelUnit.Name = "linkLabelUnit";
             this.linkLabelUnit.TabStop = true;
             this.linkLabelUnit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUnit_LinkClicked);
             // 
             // panel30
             // 
-            resources.ApplyResources(this.panel30, "panel30");
             this.panel30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel30.Controls.Add(this.labelUnit);
             this.panel30.Controls.Add(this.label256);
+            resources.ApplyResources(this.panel30, "panel30");
             this.panel30.Name = "panel30";
             // 
             // labelUnit
             // 
             resources.ApplyResources(this.labelUnit, "labelUnit");
-            this.labelUnit.ImageKey = global::ADCP.Resource1.String86;
             this.labelUnit.Name = "labelUnit";
             // 
             // label256
             // 
             resources.ApplyResources(this.label256, "label256");
-            this.label256.ImageKey = global::ADCP.Resource1.String86;
             this.label256.Name = "label256";
             // 
             // panel31
             // 
-            resources.ApplyResources(this.panel31, "panel31");
             this.panel31.BackColor = System.Drawing.Color.LightSlateGray;
             this.panel31.Controls.Add(this.labelStep1);
+            resources.ApplyResources(this.panel31, "panel31");
             this.panel31.Name = "panel31";
             // 
             // labelStep1
@@ -1014,32 +979,29 @@
             resources.ApplyResources(this.labelStep1, "labelStep1");
             this.labelStep1.BackColor = System.Drawing.Color.LightSlateGray;
             this.labelStep1.ForeColor = System.Drawing.Color.Yellow;
-            this.labelStep1.ImageKey = global::ADCP.Resource1.String86;
             this.labelStep1.Name = "labelStep1";
             // 
             // linkLabelSystemTest
             // 
-            resources.ApplyResources(this.linkLabelSystemTest, "linkLabelSystemTest");
             this.linkLabelSystemTest.ActiveLinkColor = System.Drawing.Color.Green;
-            this.linkLabelSystemTest.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.linkLabelSystemTest, "linkLabelSystemTest");
             this.linkLabelSystemTest.Name = "linkLabelSystemTest";
             this.linkLabelSystemTest.TabStop = true;
             this.linkLabelSystemTest.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSystemTest_LinkClicked);
             // 
             // linkLabelSystemSetting
             // 
-            resources.ApplyResources(this.linkLabelSystemSetting, "linkLabelSystemSetting");
             this.linkLabelSystemSetting.ActiveLinkColor = System.Drawing.Color.Green;
-            this.linkLabelSystemSetting.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.linkLabelSystemSetting, "linkLabelSystemSetting");
             this.linkLabelSystemSetting.Name = "linkLabelSystemSetting";
             this.linkLabelSystemSetting.TabStop = true;
             this.linkLabelSystemSetting.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSystemSetting_LinkClicked);
             // 
             // panel25
             // 
-            resources.ApplyResources(this.panel25, "panel25");
             this.panel25.BackColor = System.Drawing.Color.LightSlateGray;
             this.panel25.Controls.Add(this.labelStep6);
+            resources.ApplyResources(this.panel25, "panel25");
             this.panel25.Name = "panel25";
             // 
             // labelStep6
@@ -1047,12 +1009,10 @@
             resources.ApplyResources(this.labelStep6, "labelStep6");
             this.labelStep6.BackColor = System.Drawing.Color.LightSlateGray;
             this.labelStep6.ForeColor = System.Drawing.Color.Yellow;
-            this.labelStep6.ImageKey = global::ADCP.Resource1.String86;
             this.labelStep6.Name = "labelStep6";
             // 
             // panel26
             // 
-            resources.ApplyResources(this.panel26, "panel26");
             this.panel26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel26.Controls.Add(this.label_Headingoffset);
             this.panel26.Controls.Add(this.label16);
@@ -1068,97 +1028,84 @@
             this.panel26.Controls.Add(this.label251);
             this.panel26.Controls.Add(this.label252);
             this.panel26.Controls.Add(this.label254);
+            resources.ApplyResources(this.panel26, "panel26");
             this.panel26.Name = "panel26";
             // 
             // label_Headingoffset
             // 
             resources.ApplyResources(this.label_Headingoffset, "label_Headingoffset");
-            this.label_Headingoffset.ImageKey = global::ADCP.Resource1.String86;
             this.label_Headingoffset.Name = "label_Headingoffset";
             // 
             // label16
             // 
             resources.ApplyResources(this.label16, "label16");
-            this.label16.ImageKey = global::ADCP.Resource1.String86;
             this.label16.Name = "label16";
             // 
             // labelSalinity
             // 
             resources.ApplyResources(this.labelSalinity, "labelSalinity");
-            this.labelSalinity.ImageKey = global::ADCP.Resource1.String86;
             this.labelSalinity.Name = "labelSalinity";
             // 
             // label10
             // 
             resources.ApplyResources(this.label10, "label10");
-            this.label10.ImageKey = global::ADCP.Resource1.String86;
             this.label10.Name = "label10";
             // 
             // labelHeadingOffset
             // 
             resources.ApplyResources(this.labelHeadingOffset, "labelHeadingOffset");
-            this.labelHeadingOffset.ImageKey = global::ADCP.Resource1.String86;
             this.labelHeadingOffset.Name = "labelHeadingOffset";
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
-            this.label4.ImageKey = global::ADCP.Resource1.String86;
             this.label4.Name = "label4";
             // 
             // labelMeasMode
             // 
             resources.ApplyResources(this.labelMeasMode, "labelMeasMode");
-            this.labelMeasMode.ImageKey = global::ADCP.Resource1.String86;
             this.labelMeasMode.Name = "labelMeasMode";
             // 
             // labelHeadingRef
             // 
             resources.ApplyResources(this.labelHeadingRef, "labelHeadingRef");
-            this.labelHeadingRef.ImageKey = global::ADCP.Resource1.String86;
             this.labelHeadingRef.Name = "labelHeadingRef";
             // 
             // labelVesselRef
             // 
             resources.ApplyResources(this.labelVesselRef, "labelVesselRef");
-            this.labelVesselRef.ImageKey = global::ADCP.Resource1.String86;
             this.labelVesselRef.Name = "labelVesselRef";
             // 
             // labelTransducerDepth
             // 
             resources.ApplyResources(this.labelTransducerDepth, "labelTransducerDepth");
-            this.labelTransducerDepth.ImageKey = global::ADCP.Resource1.String86;
             this.labelTransducerDepth.Name = "labelTransducerDepth";
             // 
             // label250
             // 
             resources.ApplyResources(this.label250, "label250");
-            this.label250.ImageKey = global::ADCP.Resource1.String86;
             this.label250.Name = "label250";
             // 
             // label251
             // 
             resources.ApplyResources(this.label251, "label251");
-            this.label251.ImageKey = global::ADCP.Resource1.String86;
             this.label251.Name = "label251";
             // 
             // label252
             // 
             resources.ApplyResources(this.label252, "label252");
-            this.label252.ImageKey = global::ADCP.Resource1.String86;
             this.label252.Name = "label252";
             // 
             // label254
             // 
             resources.ApplyResources(this.label254, "label254");
-            this.label254.ImageKey = global::ADCP.Resource1.String86;
             this.label254.Name = "label254";
             // 
             // panel27
             // 
-            resources.ApplyResources(this.panel27, "panel27");
             this.panel27.BackColor = System.Drawing.Color.LightSlateGray;
             this.panel27.Controls.Add(this.labelStep4);
+            resources.ApplyResources(this.panel27, "panel27");
             this.panel27.Name = "panel27";
             // 
             // labelStep4
@@ -1166,21 +1113,18 @@
             resources.ApplyResources(this.labelStep4, "labelStep4");
             this.labelStep4.BackColor = System.Drawing.Color.LightSlateGray;
             this.labelStep4.ForeColor = System.Drawing.Color.Yellow;
-            this.labelStep4.ImageKey = global::ADCP.Resource1.String86;
             this.labelStep4.Name = "labelStep4";
             // 
             // linkLabelSiteInfor
             // 
-            resources.ApplyResources(this.linkLabelSiteInfor, "linkLabelSiteInfor");
             this.linkLabelSiteInfor.ActiveLinkColor = System.Drawing.Color.Green;
-            this.linkLabelSiteInfor.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.linkLabelSiteInfor, "linkLabelSiteInfor");
             this.linkLabelSiteInfor.Name = "linkLabelSiteInfor";
             this.linkLabelSiteInfor.TabStop = true;
             this.linkLabelSiteInfor.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSiteInfor_LinkClicked);
             // 
             // panel28
             // 
-            resources.ApplyResources(this.panel28, "panel28");
             this.panel28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel28.Controls.Add(this.labelInstrumentSN);
             this.panel28.Controls.Add(this.label18);
@@ -1193,88 +1137,78 @@
             this.panel28.Controls.Add(this.linkLabelSettingTime);
             this.panel28.Controls.Add(this.linkLabelCompassCalibration);
             this.panel28.Controls.Add(this.linkLabelGPSConf);
+            resources.ApplyResources(this.panel28, "panel28");
             this.panel28.Name = "panel28";
             // 
             // labelInstrumentSN
             // 
             resources.ApplyResources(this.labelInstrumentSN, "labelInstrumentSN");
-            this.labelInstrumentSN.ImageKey = global::ADCP.Resource1.String86;
             this.labelInstrumentSN.Name = "labelInstrumentSN";
             // 
             // label18
             // 
             resources.ApplyResources(this.label18, "label18");
-            this.label18.ImageKey = global::ADCP.Resource1.String86;
             this.label18.Name = "label18";
             // 
             // labelSystemNumber
             // 
             resources.ApplyResources(this.labelSystemNumber, "labelSystemNumber");
-            this.labelSystemNumber.ImageKey = global::ADCP.Resource1.String86;
             this.labelSystemNumber.Name = "labelSystemNumber";
             // 
             // labelFirmWare
             // 
             resources.ApplyResources(this.labelFirmWare, "labelFirmWare");
-            this.labelFirmWare.ImageKey = global::ADCP.Resource1.String86;
             this.labelFirmWare.Name = "labelFirmWare";
             // 
             // labelSN
             // 
             resources.ApplyResources(this.labelSN, "labelSN");
-            this.labelSN.ImageKey = global::ADCP.Resource1.String86;
             this.labelSN.Name = "labelSN";
             // 
             // label259
             // 
             resources.ApplyResources(this.label259, "label259");
-            this.label259.ImageKey = global::ADCP.Resource1.String86;
             this.label259.Name = "label259";
             // 
             // label260
             // 
             resources.ApplyResources(this.label260, "label260");
-            this.label260.ImageKey = global::ADCP.Resource1.String86;
             this.label260.Name = "label260";
             // 
             // label261
             // 
             resources.ApplyResources(this.label261, "label261");
-            this.label261.ImageKey = global::ADCP.Resource1.String86;
             this.label261.Name = "label261";
             // 
             // linkLabelSettingTime
             // 
-            resources.ApplyResources(this.linkLabelSettingTime, "linkLabelSettingTime");
             this.linkLabelSettingTime.ActiveLinkColor = System.Drawing.Color.Green;
-            this.linkLabelSettingTime.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.linkLabelSettingTime, "linkLabelSettingTime");
             this.linkLabelSettingTime.Name = "linkLabelSettingTime";
             this.linkLabelSettingTime.TabStop = true;
             this.linkLabelSettingTime.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSettingTime_LinkClicked);
             // 
             // linkLabelCompassCalibration
             // 
-            resources.ApplyResources(this.linkLabelCompassCalibration, "linkLabelCompassCalibration");
             this.linkLabelCompassCalibration.ActiveLinkColor = System.Drawing.Color.Green;
-            this.linkLabelCompassCalibration.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.linkLabelCompassCalibration, "linkLabelCompassCalibration");
             this.linkLabelCompassCalibration.Name = "linkLabelCompassCalibration";
             this.linkLabelCompassCalibration.TabStop = true;
             this.linkLabelCompassCalibration.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCompassCalibration_LinkClicked);
             // 
             // linkLabelGPSConf
             // 
-            resources.ApplyResources(this.linkLabelGPSConf, "linkLabelGPSConf");
             this.linkLabelGPSConf.ActiveLinkColor = System.Drawing.Color.Green;
-            this.linkLabelGPSConf.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.linkLabelGPSConf, "linkLabelGPSConf");
             this.linkLabelGPSConf.Name = "linkLabelGPSConf";
             this.linkLabelGPSConf.TabStop = true;
             this.linkLabelGPSConf.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGPSConf_LinkClicked);
             // 
             // panelStep2
             // 
-            resources.ApplyResources(this.panelStep2, "panelStep2");
             this.panelStep2.BackColor = System.Drawing.Color.LightSlateGray;
             this.panelStep2.Controls.Add(this.labelStep3);
+            resources.ApplyResources(this.panelStep2, "panelStep2");
             this.panelStep2.Name = "panelStep2";
             // 
             // labelStep3
@@ -1282,12 +1216,10 @@
             resources.ApplyResources(this.labelStep3, "labelStep3");
             this.labelStep3.BackColor = System.Drawing.Color.LightSlateGray;
             this.labelStep3.ForeColor = System.Drawing.Color.Yellow;
-            this.labelStep3.ImageKey = global::ADCP.Resource1.String86;
             this.labelStep3.Name = "labelStep3";
             // 
             // panel29
             // 
-            resources.ApplyResources(this.panel29, "panel29");
             this.panel29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel29.Controls.Add(this.labelSiteComments);
             this.panel29.Controls.Add(this.labelMeasNumber);
@@ -1297,61 +1229,54 @@
             this.panel29.Controls.Add(this.label268);
             this.panel29.Controls.Add(this.label269);
             this.panel29.Controls.Add(this.label270);
+            resources.ApplyResources(this.panel29, "panel29");
             this.panel29.Name = "panel29";
             // 
             // labelSiteComments
             // 
             resources.ApplyResources(this.labelSiteComments, "labelSiteComments");
-            this.labelSiteComments.ImageKey = global::ADCP.Resource1.String86;
             this.labelSiteComments.Name = "labelSiteComments";
             // 
             // labelMeasNumber
             // 
             resources.ApplyResources(this.labelMeasNumber, "labelMeasNumber");
-            this.labelMeasNumber.ImageKey = global::ADCP.Resource1.String86;
             this.labelMeasNumber.Name = "labelMeasNumber";
             // 
             // labelStationNumber
             // 
             resources.ApplyResources(this.labelStationNumber, "labelStationNumber");
-            this.labelStationNumber.ImageKey = global::ADCP.Resource1.String86;
             this.labelStationNumber.Name = "labelStationNumber";
             // 
             // labelSiteName
             // 
             resources.ApplyResources(this.labelSiteName, "labelSiteName");
-            this.labelSiteName.ImageKey = global::ADCP.Resource1.String86;
             this.labelSiteName.Name = "labelSiteName";
             // 
             // label267
             // 
             resources.ApplyResources(this.label267, "label267");
-            this.label267.ImageKey = global::ADCP.Resource1.String86;
             this.label267.Name = "label267";
             // 
             // label268
             // 
             resources.ApplyResources(this.label268, "label268");
-            this.label268.ImageKey = global::ADCP.Resource1.String86;
             this.label268.Name = "label268";
             // 
             // label269
             // 
             resources.ApplyResources(this.label269, "label269");
-            this.label269.ImageKey = global::ADCP.Resource1.String86;
             this.label269.Name = "label269";
             // 
             // label270
             // 
             resources.ApplyResources(this.label270, "label270");
-            this.label270.ImageKey = global::ADCP.Resource1.String86;
             this.label270.Name = "label270";
             // 
             // panelStep1
             // 
-            resources.ApplyResources(this.panelStep1, "panelStep1");
             this.panelStep1.BackColor = System.Drawing.Color.LightSlateGray;
             this.panelStep1.Controls.Add(this.labelStep2);
+            resources.ApplyResources(this.panelStep1, "panelStep1");
             this.panelStep1.Name = "panelStep1";
             // 
             // labelStep2
@@ -1359,12 +1284,10 @@
             resources.ApplyResources(this.labelStep2, "labelStep2");
             this.labelStep2.BackColor = System.Drawing.Color.LightSlateGray;
             this.labelStep2.ForeColor = System.Drawing.Color.Yellow;
-            this.labelStep2.ImageKey = global::ADCP.Resource1.String86;
             this.labelStep2.Name = "labelStep2";
             // 
             // DP300Displayer
             // 
-            resources.ApplyResources(this.DP300Displayer, "DP300Displayer");
             this.DP300Displayer.BackColor = System.Drawing.SystemColors.Control;
             this.DP300Displayer.Controls.Add(this.btnSpeedFast);
             this.DP300Displayer.Controls.Add(this.panel18);
@@ -1373,50 +1296,45 @@
             this.DP300Displayer.Controls.Add(this.panel1);
             this.DP300Displayer.Controls.Add(this.panelFlowPix);
             this.DP300Displayer.Controls.Add(this.HPRDisplayerPanel);
-            this.DP300Displayer.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.DP300Displayer, "DP300Displayer");
             this.DP300Displayer.Name = "DP300Displayer";
-            this.DP300Displayer.ToolTipText = global::ADCP.Resource1.String86;
             // 
             // btnSpeedFast
             // 
             resources.ApplyResources(this.btnSpeedFast, "btnSpeedFast");
-            this.btnSpeedFast.ImageKey = global::ADCP.Resource1.String86;
             this.btnSpeedFast.Name = "btnSpeedFast";
             this.btnSpeedFast.UseVisualStyleBackColor = true;
             this.btnSpeedFast.Click += new System.EventHandler(this.btnSpeedFast_Click);
             // 
             // panel18
             // 
-            resources.ApplyResources(this.panel18, "panel18");
             this.panel18.BackColor = System.Drawing.SystemColors.Control;
             this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel18.Controls.Add(this.tabControl11);
+            resources.ApplyResources(this.panel18, "panel18");
             this.panel18.Name = "panel18";
             // 
             // tabControl11
             // 
-            resources.ApplyResources(this.tabControl11, "tabControl11");
             this.tabControl11.Controls.Add(this.tabPage_Summary);
             this.tabControl11.Controls.Add(this.tabPage_BoatSpeed);
             this.tabControl11.Controls.Add(this.tabPage_WaterDirection);
             this.tabControl11.Controls.Add(this.tabPage_BoatWater);
             this.tabControl11.Controls.Add(this.tabPage_Pitch);
             this.tabControl11.Controls.Add(this.tabPage_Roll);
+            resources.ApplyResources(this.tabControl11, "tabControl11");
             this.tabControl11.Name = "tabControl11";
             this.tabControl11.SelectedIndex = 0;
             // 
             // tabPage_Summary
             // 
-            resources.ApplyResources(this.tabPage_Summary, "tabPage_Summary");
             this.tabPage_Summary.Controls.Add(this.listView_Summary);
-            this.tabPage_Summary.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage_Summary, "tabPage_Summary");
             this.tabPage_Summary.Name = "tabPage_Summary";
-            this.tabPage_Summary.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage_Summary.UseVisualStyleBackColor = true;
             // 
             // listView_Summary
             // 
-            resources.ApplyResources(this.listView_Summary, "listView_Summary");
             this.listView_Summary.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.FileName,
             this.StartDate,
@@ -1436,6 +1354,8 @@
             this.RightQ,
             this.MiddleQ});
             this.listView_Summary.FullRowSelect = true;
+            this.listView_Summary.HideSelection = false;
+            resources.ApplyResources(this.listView_Summary, "listView_Summary");
             this.listView_Summary.Name = "listView_Summary";
             this.listView_Summary.ShowItemToolTips = true;
             this.listView_Summary.UseCompatibleStateImageBehavior = false;
@@ -1512,52 +1432,41 @@
             // tabPage_BoatSpeed
             // 
             resources.ApplyResources(this.tabPage_BoatSpeed, "tabPage_BoatSpeed");
-            this.tabPage_BoatSpeed.ImageKey = global::ADCP.Resource1.String86;
             this.tabPage_BoatSpeed.Name = "tabPage_BoatSpeed";
-            this.tabPage_BoatSpeed.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage_BoatSpeed.UseVisualStyleBackColor = true;
             this.tabPage_BoatSpeed.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPage_BoatSpeed_Paint);
             // 
             // tabPage_WaterDirection
             // 
             resources.ApplyResources(this.tabPage_WaterDirection, "tabPage_WaterDirection");
-            this.tabPage_WaterDirection.ImageKey = global::ADCP.Resource1.String86;
             this.tabPage_WaterDirection.Name = "tabPage_WaterDirection";
-            this.tabPage_WaterDirection.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage_WaterDirection.UseVisualStyleBackColor = true;
             this.tabPage_WaterDirection.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPage_WaterDirection_Paint);
             // 
             // tabPage_BoatWater
             // 
             resources.ApplyResources(this.tabPage_BoatWater, "tabPage_BoatWater");
-            this.tabPage_BoatWater.ImageKey = global::ADCP.Resource1.String86;
             this.tabPage_BoatWater.Name = "tabPage_BoatWater";
-            this.tabPage_BoatWater.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage_BoatWater.UseVisualStyleBackColor = true;
             this.tabPage_BoatWater.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPage_BoatWater_Paint);
             // 
             // tabPage_Pitch
             // 
             resources.ApplyResources(this.tabPage_Pitch, "tabPage_Pitch");
-            this.tabPage_Pitch.ImageKey = global::ADCP.Resource1.String86;
             this.tabPage_Pitch.Name = "tabPage_Pitch";
-            this.tabPage_Pitch.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage_Pitch.UseVisualStyleBackColor = true;
             this.tabPage_Pitch.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPage_Pitch_Paint);
             // 
             // tabPage_Roll
             // 
             resources.ApplyResources(this.tabPage_Roll, "tabPage_Roll");
-            this.tabPage_Roll.ImageKey = global::ADCP.Resource1.String86;
             this.tabPage_Roll.Name = "tabPage_Roll";
-            this.tabPage_Roll.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage_Roll.UseVisualStyleBackColor = true;
             this.tabPage_Roll.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPage_Roll_Paint);
             // 
             // btnSpeedSlow
             // 
             resources.ApplyResources(this.btnSpeedSlow, "btnSpeedSlow");
-            this.btnSpeedSlow.ImageKey = global::ADCP.Resource1.String86;
             this.btnSpeedSlow.Name = "btnSpeedSlow";
             this.btnSpeedSlow.UseVisualStyleBackColor = true;
             this.btnSpeedSlow.Click += new System.EventHandler(this.btnSpeedFlow_Click);
@@ -1578,7 +1487,6 @@
             // 
             // tabPage43
             // 
-            resources.ApplyResources(this.tabPage43, "tabPage43");
             this.tabPage43.Controls.Add(this.listView_Others);
             this.tabPage43.Controls.Add(this.listView_Navigation);
             this.tabPage43.Controls.Add(this.lV_MeasuredQ);
@@ -1588,19 +1496,19 @@
             this.tabPage43.Controls.Add(this.label211);
             this.tabPage43.Controls.Add(this.groupBox39);
             this.tabPage43.Controls.Add(this.groupBox32);
-            this.tabPage43.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage43, "tabPage43");
             this.tabPage43.Name = "tabPage43";
-            this.tabPage43.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage43.UseVisualStyleBackColor = true;
             // 
             // listView_Others
             // 
-            resources.ApplyResources(this.listView_Others, "listView_Others");
             this.listView_Others.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader43,
             this.columnHeader44});
             this.listView_Others.FullRowSelect = true;
             this.listView_Others.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listView_Others.HideSelection = false;
+            resources.ApplyResources(this.listView_Others, "listView_Others");
             this.listView_Others.Name = "listView_Others";
             this.listView_Others.ShowItemToolTips = true;
             this.listView_Others.UseCompatibleStateImageBehavior = false;
@@ -1616,12 +1524,13 @@
             // 
             // listView_Navigation
             // 
-            resources.ApplyResources(this.listView_Navigation, "listView_Navigation");
             this.listView_Navigation.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader41,
             this.columnHeader42});
             this.listView_Navigation.FullRowSelect = true;
             this.listView_Navigation.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listView_Navigation.HideSelection = false;
+            resources.ApplyResources(this.listView_Navigation, "listView_Navigation");
             this.listView_Navigation.Name = "listView_Navigation";
             this.listView_Navigation.ShowItemToolTips = true;
             this.listView_Navigation.UseCompatibleStateImageBehavior = false;
@@ -1637,13 +1546,13 @@
             // 
             // lV_MeasuredQ
             // 
-            resources.ApplyResources(this.lV_MeasuredQ, "lV_MeasuredQ");
             this.lV_MeasuredQ.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderName,
             this.columnHeaderData});
             this.lV_MeasuredQ.FullRowSelect = true;
             this.lV_MeasuredQ.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lV_MeasuredQ.HideSelection = false;
+            resources.ApplyResources(this.lV_MeasuredQ, "lV_MeasuredQ");
             this.lV_MeasuredQ.Name = "lV_MeasuredQ";
             this.lV_MeasuredQ.ShowItemToolTips = true;
             this.lV_MeasuredQ.UseCompatibleStateImageBehavior = false;
@@ -1661,30 +1570,25 @@
             // label208
             // 
             resources.ApplyResources(this.label208, "label208");
-            this.label208.ImageKey = global::ADCP.Resource1.String86;
             this.label208.Name = "label208";
             // 
             // label209
             // 
             resources.ApplyResources(this.label209, "label209");
-            this.label209.ImageKey = global::ADCP.Resource1.String86;
             this.label209.Name = "label209";
             // 
             // label210
             // 
             resources.ApplyResources(this.label210, "label210");
-            this.label210.ImageKey = global::ADCP.Resource1.String86;
             this.label210.Name = "label210";
             // 
             // label211
             // 
             resources.ApplyResources(this.label211, "label211");
-            this.label211.ImageKey = global::ADCP.Resource1.String86;
             this.label211.Name = "label211";
             // 
             // groupBox39
             // 
-            resources.ApplyResources(this.groupBox39, "groupBox39");
             this.groupBox39.Controls.Add(this.label_AccNorth);
             this.groupBox39.Controls.Add(this.label_AccEast);
             this.groupBox39.Controls.Add(this.label214);
@@ -1694,133 +1598,116 @@
             this.groupBox39.Controls.Add(this.label206);
             this.groupBox39.Controls.Add(this.label205);
             this.groupBox39.Controls.Add(this.label204);
+            resources.ApplyResources(this.groupBox39, "groupBox39");
             this.groupBox39.Name = "groupBox39";
             this.groupBox39.TabStop = false;
             // 
             // label_AccNorth
             // 
-            resources.ApplyResources(this.label_AccNorth, "label_AccNorth");
             this.label_AccNorth.ForeColor = System.Drawing.Color.Teal;
-            this.label_AccNorth.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.label_AccNorth, "label_AccNorth");
             this.label_AccNorth.Name = "label_AccNorth";
             // 
             // label_AccEast
             // 
-            resources.ApplyResources(this.label_AccEast, "label_AccEast");
             this.label_AccEast.ForeColor = System.Drawing.Color.Teal;
-            this.label_AccEast.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.label_AccEast, "label_AccEast");
             this.label_AccEast.Name = "label_AccEast";
             // 
             // label214
             // 
             resources.ApplyResources(this.label214, "label214");
-            this.label214.ImageKey = global::ADCP.Resource1.String86;
             this.label214.Name = "label214";
             // 
             // label213
             // 
             resources.ApplyResources(this.label213, "label213");
-            this.label213.ImageKey = global::ADCP.Resource1.String86;
             this.label213.Name = "label213";
             // 
             // label212
             // 
             resources.ApplyResources(this.label212, "label212");
-            this.label212.ImageKey = global::ADCP.Resource1.String86;
             this.label212.Name = "label212";
             // 
             // label207
             // 
             resources.ApplyResources(this.label207, "label207");
-            this.label207.ImageKey = global::ADCP.Resource1.String86;
             this.label207.Name = "label207";
             // 
             // label206
             // 
             resources.ApplyResources(this.label206, "label206");
-            this.label206.ImageKey = global::ADCP.Resource1.String86;
             this.label206.Name = "label206";
             // 
             // label205
             // 
             resources.ApplyResources(this.label205, "label205");
-            this.label205.ImageKey = global::ADCP.Resource1.String86;
             this.label205.Name = "label205";
             // 
             // label204
             // 
             resources.ApplyResources(this.label204, "label204");
-            this.label204.ImageKey = global::ADCP.Resource1.String86;
             this.label204.Name = "label204";
             // 
             // groupBox32
             // 
-            resources.ApplyResources(this.groupBox32, "groupBox32");
             this.groupBox32.Controls.Add(this.label189);
             this.groupBox32.Controls.Add(this.label194);
             this.groupBox32.Controls.Add(this.label193);
             this.groupBox32.Controls.Add(this.label192);
             this.groupBox32.Controls.Add(this.label191);
             this.groupBox32.Controls.Add(this.label190);
+            resources.ApplyResources(this.groupBox32, "groupBox32");
             this.groupBox32.Name = "groupBox32";
             this.groupBox32.TabStop = false;
             // 
             // label189
             // 
             resources.ApplyResources(this.label189, "label189");
-            this.label189.ImageKey = global::ADCP.Resource1.String86;
             this.label189.Name = "label189";
             // 
             // label194
             // 
             resources.ApplyResources(this.label194, "label194");
-            this.label194.ImageKey = global::ADCP.Resource1.String86;
             this.label194.Name = "label194";
             // 
             // label193
             // 
             resources.ApplyResources(this.label193, "label193");
-            this.label193.ImageKey = global::ADCP.Resource1.String86;
             this.label193.Name = "label193";
             // 
             // label192
             // 
             resources.ApplyResources(this.label192, "label192");
-            this.label192.ImageKey = global::ADCP.Resource1.String86;
             this.label192.Name = "label192";
             // 
             // label191
             // 
             resources.ApplyResources(this.label191, "label191");
-            this.label191.ImageKey = global::ADCP.Resource1.String86;
             this.label191.Name = "label191";
             // 
             // label190
             // 
             resources.ApplyResources(this.label190, "label190");
-            this.label190.ImageKey = global::ADCP.Resource1.String86;
             this.label190.Name = "label190";
             // 
             // tabPage_WP
             // 
-            resources.ApplyResources(this.tabPage_WP, "tabPage_WP");
             this.tabPage_WP.Controls.Add(this.tabControl_FuTu_WP);
-            this.tabPage_WP.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage_WP, "tabPage_WP");
             this.tabPage_WP.Name = "tabPage_WP";
-            this.tabPage_WP.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage_WP.UseVisualStyleBackColor = true;
             // 
             // tabControl_FuTu_WP
             // 
-            resources.ApplyResources(this.tabControl_FuTu_WP, "tabControl_FuTu_WP");
             this.tabControl_FuTu_WP.Controls.Add(this.tabPage32);
             this.tabControl_FuTu_WP.Controls.Add(this.tabPage35);
+            resources.ApplyResources(this.tabControl_FuTu_WP, "tabControl_FuTu_WP");
             this.tabControl_FuTu_WP.Name = "tabControl_FuTu_WP";
             this.tabControl_FuTu_WP.SelectedIndex = 0;
             // 
             // tabPage32
             // 
-            resources.ApplyResources(this.tabPage32, "tabPage32");
             this.tabPage32.Controls.Add(this.groupBox19);
             this.tabPage32.Controls.Add(this.groupBox18);
             this.tabPage32.Controls.Add(this.label113);
@@ -1829,17 +1716,16 @@
             this.tabPage32.Controls.Add(this.checkBox_WA_b1);
             this.tabPage32.Controls.Add(this.checkBox_WA_b0);
             this.tabPage32.Controls.Add(this.panel22);
-            this.tabPage32.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage32, "tabPage32");
             this.tabPage32.Name = "tabPage32";
-            this.tabPage32.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage32.UseVisualStyleBackColor = true;
             this.tabPage32.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPage32_Paint);
             // 
             // groupBox19
             // 
-            resources.ApplyResources(this.groupBox19, "groupBox19");
             this.groupBox19.Controls.Add(this.radioButtonRealTime_WA);
             this.groupBox19.Controls.Add(this.radioButtonHistory_WA);
+            resources.ApplyResources(this.groupBox19, "groupBox19");
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.TabStop = false;
             // 
@@ -1847,7 +1733,6 @@
             // 
             resources.ApplyResources(this.radioButtonRealTime_WA, "radioButtonRealTime_WA");
             this.radioButtonRealTime_WA.Checked = true;
-            this.radioButtonRealTime_WA.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonRealTime_WA.Name = "radioButtonRealTime_WA";
             this.radioButtonRealTime_WA.TabStop = true;
             this.radioButtonRealTime_WA.UseVisualStyleBackColor = true;
@@ -1856,16 +1741,15 @@
             // radioButtonHistory_WA
             // 
             resources.ApplyResources(this.radioButtonHistory_WA, "radioButtonHistory_WA");
-            this.radioButtonHistory_WA.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonHistory_WA.Name = "radioButtonHistory_WA";
             this.radioButtonHistory_WA.UseVisualStyleBackColor = true;
             this.radioButtonHistory_WA.CheckedChanged += new System.EventHandler(this.radioButtonHistory_WA_CheckedChanged);
             // 
             // groupBox18
             // 
-            resources.ApplyResources(this.groupBox18, "groupBox18");
             this.groupBox18.Controls.Add(this.radioButtonWhole_WA);
             this.groupBox18.Controls.Add(this.radioButtonPart_WA);
+            resources.ApplyResources(this.groupBox18, "groupBox18");
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.TabStop = false;
             // 
@@ -1873,7 +1757,6 @@
             // 
             resources.ApplyResources(this.radioButtonWhole_WA, "radioButtonWhole_WA");
             this.radioButtonWhole_WA.Checked = true;
-            this.radioButtonWhole_WA.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonWhole_WA.Name = "radioButtonWhole_WA";
             this.radioButtonWhole_WA.TabStop = true;
             this.radioButtonWhole_WA.UseVisualStyleBackColor = true;
@@ -1882,7 +1765,6 @@
             // radioButtonPart_WA
             // 
             resources.ApplyResources(this.radioButtonPart_WA, "radioButtonPart_WA");
-            this.radioButtonPart_WA.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonPart_WA.Name = "radioButtonPart_WA";
             this.radioButtonPart_WA.UseVisualStyleBackColor = true;
             this.radioButtonPart_WA.CheckedChanged += new System.EventHandler(this.radioButtonPart_WA_CheckedChanged);
@@ -1891,7 +1773,6 @@
             // 
             resources.ApplyResources(this.label113, "label113");
             this.label113.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label113.ImageKey = global::ADCP.Resource1.String86;
             this.label113.Name = "label113";
             // 
             // checkBox_WA_b3
@@ -1900,7 +1781,6 @@
             this.checkBox_WA_b3.Checked = true;
             this.checkBox_WA_b3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_WA_b3.ForeColor = System.Drawing.Color.Magenta;
-            this.checkBox_WA_b3.ImageKey = global::ADCP.Resource1.String86;
             this.checkBox_WA_b3.Name = "checkBox_WA_b3";
             this.checkBox_WA_b3.UseVisualStyleBackColor = true;
             // 
@@ -1910,7 +1790,6 @@
             this.checkBox_WA_b2.Checked = true;
             this.checkBox_WA_b2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_WA_b2.ForeColor = System.Drawing.Color.Blue;
-            this.checkBox_WA_b2.ImageKey = global::ADCP.Resource1.String86;
             this.checkBox_WA_b2.Name = "checkBox_WA_b2";
             this.checkBox_WA_b2.UseVisualStyleBackColor = true;
             // 
@@ -1920,7 +1799,6 @@
             this.checkBox_WA_b1.Checked = true;
             this.checkBox_WA_b1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_WA_b1.ForeColor = System.Drawing.Color.LimeGreen;
-            this.checkBox_WA_b1.ImageKey = global::ADCP.Resource1.String86;
             this.checkBox_WA_b1.Name = "checkBox_WA_b1";
             this.checkBox_WA_b1.UseVisualStyleBackColor = true;
             // 
@@ -1930,7 +1808,6 @@
             this.checkBox_WA_b0.Checked = true;
             this.checkBox_WA_b0.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_WA_b0.ForeColor = System.Drawing.Color.Red;
-            this.checkBox_WA_b0.ImageKey = global::ADCP.Resource1.String86;
             this.checkBox_WA_b0.Name = "checkBox_WA_b0";
             this.checkBox_WA_b0.UseVisualStyleBackColor = true;
             // 
@@ -1969,7 +1846,6 @@
             // 
             // tabPage35
             // 
-            resources.ApplyResources(this.tabPage35, "tabPage35");
             this.tabPage35.Controls.Add(this.groupBox29);
             this.tabPage35.Controls.Add(this.groupBox30);
             this.tabPage35.Controls.Add(this.checkBox_WC_b3);
@@ -1978,17 +1854,16 @@
             this.tabPage35.Controls.Add(this.panel24);
             this.tabPage35.Controls.Add(this.checkBox_WC_b2);
             this.tabPage35.Controls.Add(this.checkBox_WC_b1);
-            this.tabPage35.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage35, "tabPage35");
             this.tabPage35.Name = "tabPage35";
-            this.tabPage35.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage35.UseVisualStyleBackColor = true;
             this.tabPage35.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPage35_Paint);
             // 
             // groupBox29
             // 
-            resources.ApplyResources(this.groupBox29, "groupBox29");
             this.groupBox29.Controls.Add(this.radioButtonRealTime_WC);
             this.groupBox29.Controls.Add(this.radioButtonHistory_WC);
+            resources.ApplyResources(this.groupBox29, "groupBox29");
             this.groupBox29.Name = "groupBox29";
             this.groupBox29.TabStop = false;
             // 
@@ -1996,7 +1871,6 @@
             // 
             resources.ApplyResources(this.radioButtonRealTime_WC, "radioButtonRealTime_WC");
             this.radioButtonRealTime_WC.Checked = true;
-            this.radioButtonRealTime_WC.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonRealTime_WC.Name = "radioButtonRealTime_WC";
             this.radioButtonRealTime_WC.TabStop = true;
             this.radioButtonRealTime_WC.UseVisualStyleBackColor = true;
@@ -2005,16 +1879,15 @@
             // radioButtonHistory_WC
             // 
             resources.ApplyResources(this.radioButtonHistory_WC, "radioButtonHistory_WC");
-            this.radioButtonHistory_WC.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonHistory_WC.Name = "radioButtonHistory_WC";
             this.radioButtonHistory_WC.UseVisualStyleBackColor = true;
             this.radioButtonHistory_WC.CheckedChanged += new System.EventHandler(this.radioButtonHistory_WC_CheckedChanged);
             // 
             // groupBox30
             // 
-            resources.ApplyResources(this.groupBox30, "groupBox30");
             this.groupBox30.Controls.Add(this.radioButtonWhole_WC);
             this.groupBox30.Controls.Add(this.radioButtonPart_WC);
+            resources.ApplyResources(this.groupBox30, "groupBox30");
             this.groupBox30.Name = "groupBox30";
             this.groupBox30.TabStop = false;
             // 
@@ -2022,7 +1895,6 @@
             // 
             resources.ApplyResources(this.radioButtonWhole_WC, "radioButtonWhole_WC");
             this.radioButtonWhole_WC.Checked = true;
-            this.radioButtonWhole_WC.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonWhole_WC.Name = "radioButtonWhole_WC";
             this.radioButtonWhole_WC.TabStop = true;
             this.radioButtonWhole_WC.UseVisualStyleBackColor = true;
@@ -2031,7 +1903,6 @@
             // radioButtonPart_WC
             // 
             resources.ApplyResources(this.radioButtonPart_WC, "radioButtonPart_WC");
-            this.radioButtonPart_WC.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonPart_WC.Name = "radioButtonPart_WC";
             this.radioButtonPart_WC.UseVisualStyleBackColor = true;
             this.radioButtonPart_WC.CheckedChanged += new System.EventHandler(this.radioButtonPart_WC_CheckedChanged);
@@ -2042,7 +1913,6 @@
             this.checkBox_WC_b3.Checked = true;
             this.checkBox_WC_b3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_WC_b3.ForeColor = System.Drawing.Color.Magenta;
-            this.checkBox_WC_b3.ImageKey = global::ADCP.Resource1.String86;
             this.checkBox_WC_b3.Name = "checkBox_WC_b3";
             this.checkBox_WC_b3.UseVisualStyleBackColor = true;
             // 
@@ -2050,7 +1920,6 @@
             // 
             resources.ApplyResources(this.label120, "label120");
             this.label120.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label120.ImageKey = global::ADCP.Resource1.String86;
             this.label120.Name = "label120";
             // 
             // checkBox_WC_b0
@@ -2059,7 +1928,6 @@
             this.checkBox_WC_b0.Checked = true;
             this.checkBox_WC_b0.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_WC_b0.ForeColor = System.Drawing.Color.Red;
-            this.checkBox_WC_b0.ImageKey = global::ADCP.Resource1.String86;
             this.checkBox_WC_b0.Name = "checkBox_WC_b0";
             this.checkBox_WC_b0.UseVisualStyleBackColor = true;
             // 
@@ -2102,7 +1970,6 @@
             this.checkBox_WC_b2.Checked = true;
             this.checkBox_WC_b2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_WC_b2.ForeColor = System.Drawing.Color.Blue;
-            this.checkBox_WC_b2.ImageKey = global::ADCP.Resource1.String86;
             this.checkBox_WC_b2.Name = "checkBox_WC_b2";
             this.checkBox_WC_b2.UseVisualStyleBackColor = true;
             // 
@@ -2112,28 +1979,26 @@
             this.checkBox_WC_b1.Checked = true;
             this.checkBox_WC_b1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_WC_b1.ForeColor = System.Drawing.Color.LimeGreen;
-            this.checkBox_WC_b1.ImageKey = global::ADCP.Resource1.String86;
             this.checkBox_WC_b1.Name = "checkBox_WC_b1";
             this.checkBox_WC_b1.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.buttonPause);
             this.panel1.Controls.Add(this.TimeLable);
             this.panel1.Controls.Add(this.ProcessBar);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // buttonPause
             // 
-            resources.ApplyResources(this.buttonPause, "buttonPause");
             this.buttonPause.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonPause.FlatAppearance.BorderSize = 0;
             this.buttonPause.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.buttonPause.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.buttonPause, "buttonPause");
             this.buttonPause.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonPause.ImageKey = global::ADCP.Resource1.String86;
             this.buttonPause.Name = "buttonPause";
             this.buttonPause.UseVisualStyleBackColor = true;
             this.buttonPause.Click += new System.EventHandler(this.buttonPause_Click);
@@ -2142,7 +2007,6 @@
             // 
             resources.ApplyResources(this.TimeLable, "TimeLable");
             this.TimeLable.ForeColor = System.Drawing.Color.Black;
-            this.TimeLable.ImageKey = global::ADCP.Resource1.String86;
             this.TimeLable.Name = "TimeLable";
             // 
             // ProcessBar
@@ -2165,15 +2029,14 @@
             // 
             // panelFlowPix
             // 
-            resources.ApplyResources(this.panelFlowPix, "panelFlowPix");
             this.panelFlowPix.BackColor = System.Drawing.Color.White;
             this.panelFlowPix.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelFlowPix.Controls.Add(this.panel21);
+            resources.ApplyResources(this.panelFlowPix, "panelFlowPix");
             this.panelFlowPix.Name = "panelFlowPix";
             // 
             // panel21
             // 
-            resources.ApplyResources(this.panel21, "panel21");
             this.panel21.BackColor = System.Drawing.Color.Transparent;
             this.panel21.Controls.Add(this.label3);
             this.panel21.Controls.Add(this.panelGPSTrack);
@@ -2192,12 +2055,12 @@
             this.panel21.Controls.Add(this.labelCellsNum);
             this.panel21.Controls.Add(this.labelEsambleNum);
             this.panel21.Controls.Add(this.label11);
+            resources.ApplyResources(this.panel21, "panel21");
             this.panel21.Name = "panel21";
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
-            this.label3.ImageKey = global::ADCP.Resource1.String86;
             this.label3.Name = "label3";
             // 
             // panelGPSTrack
@@ -2215,46 +2078,45 @@
             // 
             // contextMenuStrip1
             // 
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BTToolStripMenuItem,
             this.GPSVTGToolStripMenuItem,
             this.GPSGGAToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             // 
             // BTToolStripMenuItem
             // 
-            resources.ApplyResources(this.BTToolStripMenuItem, "BTToolStripMenuItem");
             this.BTToolStripMenuItem.Checked = true;
             this.BTToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.BTToolStripMenuItem.Name = "BTToolStripMenuItem";
+            resources.ApplyResources(this.BTToolStripMenuItem, "BTToolStripMenuItem");
             this.BTToolStripMenuItem.Click += new System.EventHandler(this.BTToolStripMenuItem_Click);
             // 
             // GPSVTGToolStripMenuItem
             // 
-            resources.ApplyResources(this.GPSVTGToolStripMenuItem, "GPSVTGToolStripMenuItem");
             this.GPSVTGToolStripMenuItem.Name = "GPSVTGToolStripMenuItem";
+            resources.ApplyResources(this.GPSVTGToolStripMenuItem, "GPSVTGToolStripMenuItem");
             this.GPSVTGToolStripMenuItem.Click += new System.EventHandler(this.GPSVTGToolStripMenuItem_Click);
             // 
             // GPSGGAToolStripMenuItem
             // 
-            resources.ApplyResources(this.GPSGGAToolStripMenuItem, "GPSGGAToolStripMenuItem");
             this.GPSGGAToolStripMenuItem.Name = "GPSGGAToolStripMenuItem";
+            resources.ApplyResources(this.GPSGGAToolStripMenuItem, "GPSGGAToolStripMenuItem");
             this.GPSGGAToolStripMenuItem.Click += new System.EventHandler(this.GPSGGAToolStripMenuItem_Click);
             // 
             // panel15
             // 
-            resources.ApplyResources(this.panel15, "panel15");
             this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel15.Controls.Add(this.btnScaleDecrease);
             this.panel15.Controls.Add(this.btnScaleIncrease);
             this.panel15.Controls.Add(this.label14);
+            resources.ApplyResources(this.panel15, "panel15");
             this.panel15.Name = "panel15";
             // 
             // btnScaleDecrease
             // 
             resources.ApplyResources(this.btnScaleDecrease, "btnScaleDecrease");
-            this.btnScaleDecrease.ImageKey = global::ADCP.Resource1.String86;
             this.btnScaleDecrease.Name = "btnScaleDecrease";
             this.btnScaleDecrease.UseVisualStyleBackColor = true;
             this.btnScaleDecrease.Click += new System.EventHandler(this.btnScaleDecrease_Click);
@@ -2262,7 +2124,6 @@
             // btnScaleIncrease
             // 
             resources.ApplyResources(this.btnScaleIncrease, "btnScaleIncrease");
-            this.btnScaleIncrease.ImageKey = global::ADCP.Resource1.String86;
             this.btnScaleIncrease.Name = "btnScaleIncrease";
             this.btnScaleIncrease.UseVisualStyleBackColor = true;
             this.btnScaleIncrease.Click += new System.EventHandler(this.btnScaleIncrease_Click);
@@ -2270,70 +2131,60 @@
             // label14
             // 
             resources.ApplyResources(this.label14, "label14");
-            this.label14.ImageKey = global::ADCP.Resource1.String86;
             this.label14.Name = "label14";
             // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
             this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.ImageKey = global::ADCP.Resource1.String86;
             this.label8.Name = "label8";
             // 
             // label188
             // 
-            resources.ApplyResources(this.label188, "label188");
             this.label188.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label188.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.label188, "label188");
             this.label188.Name = "label188";
             // 
             // label187
             // 
-            resources.ApplyResources(this.label187, "label187");
             this.label187.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label187.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.label187, "label187");
             this.label187.Name = "label187";
             // 
             // label122
             // 
-            resources.ApplyResources(this.label122, "label122");
             this.label122.BackColor = System.Drawing.Color.Transparent;
             this.label122.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label122.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.label122, "label122");
             this.label122.Name = "label122";
             // 
             // labelShipSpeed
             // 
             resources.ApplyResources(this.labelShipSpeed, "labelShipSpeed");
-            this.labelShipSpeed.ImageKey = global::ADCP.Resource1.String86;
             this.labelShipSpeed.Name = "labelShipSpeed";
             // 
             // label118
             // 
             resources.ApplyResources(this.label118, "label118");
-            this.label118.ImageKey = global::ADCP.Resource1.String86;
             this.label118.Name = "label118";
             // 
             // label12
             // 
-            resources.ApplyResources(this.label12, "label12");
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
             // 
             // labelMainPanelFigure
             // 
             resources.ApplyResources(this.labelMainPanelFigure, "labelMainPanelFigure");
-            this.labelMainPanelFigure.ImageKey = global::ADCP.Resource1.String86;
             this.labelMainPanelFigure.Name = "labelMainPanelFigure";
             // 
             // label15
             // 
-            resources.ApplyResources(this.label15, "label15");
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
             // 
             // MainPanel
@@ -2353,7 +2204,6 @@
             // 
             // panel16
             // 
-            resources.ApplyResources(this.panel16, "panel16");
             this.panel16.BackColor = System.Drawing.Color.White;
             this.panel16.Controls.Add(this.label93);
             this.panel16.Controls.Add(this.trackBarMaxV);
@@ -2361,6 +2211,7 @@
             this.panel16.Controls.Add(this.label13);
             this.panel16.Controls.Add(this.labelMavV);
             this.panel16.Controls.Add(this.label91);
+            resources.ApplyResources(this.panel16, "panel16");
             this.panel16.Name = "panel16";
             this.panel16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown_Clicked);
             this.panel16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMove_Clicked);
@@ -2369,7 +2220,6 @@
             // label93
             // 
             resources.ApplyResources(this.label93, "label93");
-            this.label93.ImageKey = global::ADCP.Resource1.String86;
             this.label93.Name = "label93";
             this.label93.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown_Clicked);
             this.label93.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMove_Clicked);
@@ -2387,8 +2237,8 @@
             // 
             // InfoPanel
             // 
-            resources.ApplyResources(this.InfoPanel, "InfoPanel");
             this.InfoPanel.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.InfoPanel, "InfoPanel");
             this.InfoPanel.Name = "InfoPanel";
             this.InfoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.InfoPanel_Paint);
             this.InfoPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown_Clicked);
@@ -2398,7 +2248,6 @@
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
-            this.label13.ImageKey = global::ADCP.Resource1.String86;
             this.label13.Name = "label13";
             this.label13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown_Clicked);
             this.label13.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMove_Clicked);
@@ -2407,7 +2256,6 @@
             // labelMavV
             // 
             resources.ApplyResources(this.labelMavV, "labelMavV");
-            this.labelMavV.ImageKey = global::ADCP.Resource1.String86;
             this.labelMavV.Name = "labelMavV";
             this.labelMavV.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown_Clicked);
             this.labelMavV.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMove_Clicked);
@@ -2416,7 +2264,6 @@
             // label91
             // 
             resources.ApplyResources(this.label91, "label91");
-            this.label91.ImageKey = global::ADCP.Resource1.String86;
             this.label91.Name = "label91";
             this.label91.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown_Clicked);
             this.label91.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMove_Clicked);
@@ -2425,84 +2272,75 @@
             // labelNorthSouth
             // 
             resources.ApplyResources(this.labelNorthSouth, "labelNorthSouth");
-            this.labelNorthSouth.ImageKey = global::ADCP.Resource1.String86;
             this.labelNorthSouth.Name = "labelNorthSouth";
             // 
             // labelEastWest
             // 
             resources.ApplyResources(this.labelEastWest, "labelEastWest");
-            this.labelEastWest.ImageKey = global::ADCP.Resource1.String86;
             this.labelEastWest.Name = "labelEastWest";
             // 
             // labelShipSpeedText
             // 
             resources.ApplyResources(this.labelShipSpeedText, "labelShipSpeedText");
-            this.labelShipSpeedText.ImageKey = global::ADCP.Resource1.String86;
             this.labelShipSpeedText.Name = "labelShipSpeedText";
             // 
             // label2
             // 
-            resources.ApplyResources(this.label2, "label2");
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
             // label17
             // 
-            resources.ApplyResources(this.label17, "label17");
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.label17, "label17");
             this.label17.Name = "label17";
             // 
             // labelReceiveTime
             // 
-            resources.ApplyResources(this.labelReceiveTime, "labelReceiveTime");
             this.labelReceiveTime.BackColor = System.Drawing.Color.Transparent;
             this.labelReceiveTime.ForeColor = System.Drawing.Color.Black;
-            this.labelReceiveTime.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.labelReceiveTime, "labelReceiveTime");
             this.labelReceiveTime.Name = "labelReceiveTime";
             // 
             // labelCellsNum
             // 
-            resources.ApplyResources(this.labelCellsNum, "labelCellsNum");
             this.labelCellsNum.BackColor = System.Drawing.Color.Transparent;
             this.labelCellsNum.ForeColor = System.Drawing.Color.Black;
-            this.labelCellsNum.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.labelCellsNum, "labelCellsNum");
             this.labelCellsNum.Name = "labelCellsNum";
             // 
             // labelEsambleNum
             // 
-            resources.ApplyResources(this.labelEsambleNum, "labelEsambleNum");
             this.labelEsambleNum.BackColor = System.Drawing.Color.Transparent;
             this.labelEsambleNum.ForeColor = System.Drawing.Color.Black;
-            this.labelEsambleNum.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.labelEsambleNum, "labelEsambleNum");
             this.labelEsambleNum.Name = "labelEsambleNum";
             // 
             // label11
             // 
-            resources.ApplyResources(this.label11, "label11");
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
             // HPRDisplayerPanel
             // 
-            resources.ApplyResources(this.HPRDisplayerPanel, "HPRDisplayerPanel");
             this.HPRDisplayerPanel.BackColor = System.Drawing.Color.Transparent;
             this.HPRDisplayerPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.HPRDisplayerPanel.Controls.Add(this.HPRpictureBox);
             this.HPRDisplayerPanel.Controls.Add(this.pictureBox2);
             this.HPRDisplayerPanel.Controls.Add(this.pictureBox3);
             this.HPRDisplayerPanel.Controls.Add(this.pictureBox4);
+            resources.ApplyResources(this.HPRDisplayerPanel, "HPRDisplayerPanel");
             this.HPRDisplayerPanel.Name = "HPRDisplayerPanel";
             // 
             // HPRpictureBox
             // 
-            resources.ApplyResources(this.HPRpictureBox, "HPRpictureBox");
             this.HPRpictureBox.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.HPRpictureBox, "HPRpictureBox");
             this.HPRpictureBox.Name = "HPRpictureBox";
             this.HPRpictureBox.TabStop = false;
             this.HPRpictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.HPRpictureBox_Paint);
@@ -2527,12 +2365,10 @@
             // 
             // tabPageTrack
             // 
-            resources.ApplyResources(this.tabPageTrack, "tabPageTrack");
             this.tabPageTrack.Controls.Add(this.GPScontrolPanel);
             this.tabPageTrack.Controls.Add(this.GPSdisplayPanel);
-            this.tabPageTrack.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPageTrack, "tabPageTrack");
             this.tabPageTrack.Name = "tabPageTrack";
-            this.tabPageTrack.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPageTrack.UseVisualStyleBackColor = true;
             // 
             // GPScontrolPanel
@@ -2550,7 +2386,6 @@
             // 
             // groupBox17
             // 
-            resources.ApplyResources(this.groupBox17, "groupBox17");
             this.groupBox17.BackColor = System.Drawing.Color.Gainsboro;
             this.groupBox17.Controls.Add(this.progressBarGPSTrack);
             this.groupBox17.Controls.Add(this.buttonTrackFF);
@@ -2564,21 +2399,21 @@
             this.groupBox17.Controls.Add(this.hScrollBarAverageScale);
             this.groupBox17.Controls.Add(this.AveragePointslabel);
             this.groupBox17.Controls.Add(this.hScrollBarAveragePoints);
+            resources.ApplyResources(this.groupBox17, "groupBox17");
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.TabStop = false;
             this.groupBox17.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox17_Paint);
             // 
             // progressBarGPSTrack
             // 
-            resources.ApplyResources(this.progressBarGPSTrack, "progressBarGPSTrack");
             this.progressBarGPSTrack.BackColor = System.Drawing.Color.DarkGreen;
+            resources.ApplyResources(this.progressBarGPSTrack, "progressBarGPSTrack");
             this.progressBarGPSTrack.Name = "progressBarGPSTrack";
             this.progressBarGPSTrack.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // buttonTrackFF
             // 
             resources.ApplyResources(this.buttonTrackFF, "buttonTrackFF");
-            this.buttonTrackFF.ImageKey = global::ADCP.Resource1.String86;
             this.buttonTrackFF.Name = "buttonTrackFF";
             this.buttonTrackFF.UseVisualStyleBackColor = false;
             this.buttonTrackFF.Click += new System.EventHandler(this.buttonTrackFF_Click);
@@ -2586,37 +2421,33 @@
             // buttonTrackRR
             // 
             resources.ApplyResources(this.buttonTrackRR, "buttonTrackRR");
-            this.buttonTrackRR.ImageKey = global::ADCP.Resource1.String86;
             this.buttonTrackRR.Name = "buttonTrackRR";
             this.buttonTrackRR.UseVisualStyleBackColor = false;
             this.buttonTrackRR.Click += new System.EventHandler(this.buttonTrackRR_Click);
             // 
             // buttonTrackStop
             // 
-            resources.ApplyResources(this.buttonTrackStop, "buttonTrackStop");
             this.buttonTrackStop.BackColor = System.Drawing.Color.Bisque;
+            resources.ApplyResources(this.buttonTrackStop, "buttonTrackStop");
             this.buttonTrackStop.ForeColor = System.Drawing.Color.Red;
-            this.buttonTrackStop.ImageKey = global::ADCP.Resource1.String86;
             this.buttonTrackStop.Name = "buttonTrackStop";
             this.buttonTrackStop.UseVisualStyleBackColor = false;
             this.buttonTrackStop.Click += new System.EventHandler(this.buttonTrackStop_Click);
             // 
             // buttonTrackPause
             // 
-            resources.ApplyResources(this.buttonTrackPause, "buttonTrackPause");
             this.buttonTrackPause.BackColor = System.Drawing.Color.Bisque;
+            resources.ApplyResources(this.buttonTrackPause, "buttonTrackPause");
             this.buttonTrackPause.ForeColor = System.Drawing.Color.Red;
-            this.buttonTrackPause.ImageKey = global::ADCP.Resource1.String86;
             this.buttonTrackPause.Name = "buttonTrackPause";
             this.buttonTrackPause.UseVisualStyleBackColor = false;
             this.buttonTrackPause.Click += new System.EventHandler(this.buttonTrackPause_Click);
             // 
             // buttonTrackForward
             // 
-            resources.ApplyResources(this.buttonTrackForward, "buttonTrackForward");
             this.buttonTrackForward.BackColor = System.Drawing.Color.Bisque;
+            resources.ApplyResources(this.buttonTrackForward, "buttonTrackForward");
             this.buttonTrackForward.ForeColor = System.Drawing.Color.Red;
-            this.buttonTrackForward.ImageKey = global::ADCP.Resource1.String86;
             this.buttonTrackForward.Name = "buttonTrackForward";
             this.buttonTrackForward.UseVisualStyleBackColor = false;
             this.buttonTrackForward.Click += new System.EventHandler(this.buttonTrackForward_Click);
@@ -2625,19 +2456,16 @@
             // label162
             // 
             resources.ApplyResources(this.label162, "label162");
-            this.label162.ImageKey = global::ADCP.Resource1.String86;
             this.label162.Name = "label162";
             // 
             // label161
             // 
             resources.ApplyResources(this.label161, "label161");
-            this.label161.ImageKey = global::ADCP.Resource1.String86;
             this.label161.Name = "label161";
             // 
             // AverageScalelabel
             // 
             resources.ApplyResources(this.AverageScalelabel, "AverageScalelabel");
-            this.AverageScalelabel.ImageKey = global::ADCP.Resource1.String86;
             this.AverageScalelabel.Name = "AverageScalelabel";
             // 
             // hScrollBarAverageScale
@@ -2650,7 +2478,6 @@
             // AveragePointslabel
             // 
             resources.ApplyResources(this.AveragePointslabel, "AveragePointslabel");
-            this.AveragePointslabel.ImageKey = global::ADCP.Resource1.String86;
             this.AveragePointslabel.Name = "AveragePointslabel";
             // 
             // hScrollBarAveragePoints
@@ -2661,16 +2488,15 @@
             // 
             // Debugpanel
             // 
-            resources.ApplyResources(this.Debugpanel, "Debugpanel");
             this.Debugpanel.BackColor = System.Drawing.Color.LightGray;
             this.Debugpanel.Controls.Add(this.label160);
             this.Debugpanel.Controls.Add(this.DebugMSGtextBox);
+            resources.ApplyResources(this.Debugpanel, "Debugpanel");
             this.Debugpanel.Name = "Debugpanel";
             // 
             // label160
             // 
             resources.ApplyResources(this.label160, "label160");
-            this.label160.ImageKey = global::ADCP.Resource1.String86;
             this.label160.Name = "label160";
             // 
             // DebugMSGtextBox
@@ -2681,7 +2507,6 @@
             // 
             // groupBox4
             // 
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.BackColor = System.Drawing.Color.Gainsboro;
             this.groupBox4.Controls.Add(this.radioButtonBtmTrack);
             this.groupBox4.Controls.Add(this.buttonStartPoint);
@@ -2690,6 +2515,7 @@
             this.groupBox4.Controls.Add(this.radioButtonLatLong);
             this.groupBox4.Controls.Add(this.GPSAutoSizecheckBox);
             this.groupBox4.Controls.Add(this.radioButtonMotoke);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
@@ -2697,7 +2523,6 @@
             // 
             resources.ApplyResources(this.radioButtonBtmTrack, "radioButtonBtmTrack");
             this.radioButtonBtmTrack.Checked = true;
-            this.radioButtonBtmTrack.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonBtmTrack.Name = "radioButtonBtmTrack";
             this.radioButtonBtmTrack.TabStop = true;
             this.radioButtonBtmTrack.UseVisualStyleBackColor = true;
@@ -2705,10 +2530,9 @@
             // 
             // buttonStartPoint
             // 
-            resources.ApplyResources(this.buttonStartPoint, "buttonStartPoint");
             this.buttonStartPoint.BackColor = System.Drawing.Color.DimGray;
+            resources.ApplyResources(this.buttonStartPoint, "buttonStartPoint");
             this.buttonStartPoint.ForeColor = System.Drawing.Color.White;
-            this.buttonStartPoint.ImageKey = global::ADCP.Resource1.String86;
             this.buttonStartPoint.Name = "buttonStartPoint";
             this.buttonStartPoint.UseVisualStyleBackColor = false;
             this.buttonStartPoint.Click += new System.EventHandler(this.button2_Click);
@@ -2717,19 +2541,16 @@
             // 
             resources.ApplyResources(this.labelStartPoint, "labelStartPoint");
             this.labelStartPoint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelStartPoint.ImageKey = global::ADCP.Resource1.String86;
             this.labelStartPoint.Name = "labelStartPoint";
             // 
             // label147
             // 
             resources.ApplyResources(this.label147, "label147");
-            this.label147.ImageKey = global::ADCP.Resource1.String86;
             this.label147.Name = "label147";
             // 
             // radioButtonLatLong
             // 
             resources.ApplyResources(this.radioButtonLatLong, "radioButtonLatLong");
-            this.radioButtonLatLong.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonLatLong.Name = "radioButtonLatLong";
             this.radioButtonLatLong.UseVisualStyleBackColor = true;
             this.radioButtonLatLong.CheckedChanged += new System.EventHandler(this.radioButtonLatLong_CheckedChanged);
@@ -2737,7 +2558,6 @@
             // GPSAutoSizecheckBox
             // 
             resources.ApplyResources(this.GPSAutoSizecheckBox, "GPSAutoSizecheckBox");
-            this.GPSAutoSizecheckBox.ImageKey = global::ADCP.Resource1.String86;
             this.GPSAutoSizecheckBox.Name = "GPSAutoSizecheckBox";
             this.GPSAutoSizecheckBox.UseVisualStyleBackColor = true;
             this.GPSAutoSizecheckBox.CheckedChanged += new System.EventHandler(this.GPSAutoSizecheckBox_CheckedChanged);
@@ -2745,7 +2565,6 @@
             // radioButtonMotoke
             // 
             resources.ApplyResources(this.radioButtonMotoke, "radioButtonMotoke");
-            this.radioButtonMotoke.ImageKey = global::ADCP.Resource1.String86;
             this.radioButtonMotoke.Name = "radioButtonMotoke";
             this.radioButtonMotoke.UseVisualStyleBackColor = true;
             this.radioButtonMotoke.CheckedChanged += new System.EventHandler(this.radioButtonMotoke_CheckedChanged);
@@ -2765,31 +2584,26 @@
             // 
             resources.ApplyResources(this.LabelPositionYText, "LabelPositionYText");
             this.LabelPositionYText.ForeColor = System.Drawing.Color.Red;
-            this.LabelPositionYText.ImageKey = global::ADCP.Resource1.String86;
             this.LabelPositionYText.Name = "LabelPositionYText";
             // 
             // LabelPostionXText
             // 
             resources.ApplyResources(this.LabelPostionXText, "LabelPostionXText");
             this.LabelPostionXText.ForeColor = System.Drawing.Color.Red;
-            this.LabelPostionXText.ImageKey = global::ADCP.Resource1.String86;
             this.LabelPostionXText.Name = "LabelPostionXText";
             // 
             // LabelPostionY
             // 
             resources.ApplyResources(this.LabelPostionY, "LabelPostionY");
-            this.LabelPostionY.ImageKey = global::ADCP.Resource1.String86;
             this.LabelPostionY.Name = "LabelPostionY";
             // 
             // PositionLableX
             // 
             resources.ApplyResources(this.PositionLableX, "PositionLableX");
-            this.PositionLableX.ImageKey = global::ADCP.Resource1.String86;
             this.PositionLableX.Name = "PositionLableX";
             // 
             // MousePositiongroupBox
             // 
-            resources.ApplyResources(this.MousePositiongroupBox, "MousePositiongroupBox");
             this.MousePositiongroupBox.BackColor = System.Drawing.Color.Gainsboro;
             this.MousePositiongroupBox.Controls.Add(this.label159);
             this.MousePositiongroupBox.Controls.Add(this.MouseTimelabel);
@@ -2801,72 +2615,62 @@
             this.MousePositiongroupBox.Controls.Add(this.label145);
             this.MousePositiongroupBox.Controls.Add(this.label144);
             this.MousePositiongroupBox.Controls.Add(this.label138);
+            resources.ApplyResources(this.MousePositiongroupBox, "MousePositiongroupBox");
             this.MousePositiongroupBox.Name = "MousePositiongroupBox";
             this.MousePositiongroupBox.TabStop = false;
             // 
             // label159
             // 
             resources.ApplyResources(this.label159, "label159");
-            this.label159.ImageKey = global::ADCP.Resource1.String86;
             this.label159.Name = "label159";
             // 
             // MouseTimelabel
             // 
             resources.ApplyResources(this.MouseTimelabel, "MouseTimelabel");
-            this.MouseTimelabel.ImageKey = global::ADCP.Resource1.String86;
             this.MouseTimelabel.Name = "MouseTimelabel";
             // 
             // MouseVXVYlabel
             // 
             resources.ApplyResources(this.MouseVXVYlabel, "MouseVXVYlabel");
-            this.MouseVXVYlabel.ImageKey = global::ADCP.Resource1.String86;
             this.MouseVXVYlabel.Name = "MouseVXVYlabel";
             // 
             // label139
             // 
             resources.ApplyResources(this.label139, "label139");
-            this.label139.ImageKey = global::ADCP.Resource1.String86;
             this.label139.Name = "label139";
             // 
             // MouseXYlabel
             // 
             resources.ApplyResources(this.MouseXYlabel, "MouseXYlabel");
-            this.MouseXYlabel.ImageKey = global::ADCP.Resource1.String86;
             this.MouseXYlabel.Name = "MouseXYlabel";
             // 
             // MouseLatLonglabel
             // 
             resources.ApplyResources(this.MouseLatLonglabel, "MouseLatLonglabel");
-            this.MouseLatLonglabel.ImageKey = global::ADCP.Resource1.String86;
             this.MouseLatLonglabel.Name = "MouseLatLonglabel";
             // 
             // label157
             // 
             resources.ApplyResources(this.label157, "label157");
-            this.label157.ImageKey = global::ADCP.Resource1.String86;
             this.label157.Name = "label157";
             // 
             // label145
             // 
             resources.ApplyResources(this.label145, "label145");
-            this.label145.ImageKey = global::ADCP.Resource1.String86;
             this.label145.Name = "label145";
             // 
             // label144
             // 
             resources.ApplyResources(this.label144, "label144");
-            this.label144.ImageKey = global::ADCP.Resource1.String86;
             this.label144.Name = "label144";
             // 
             // label138
             // 
             resources.ApplyResources(this.label138, "label138");
-            this.label138.ImageKey = global::ADCP.Resource1.String86;
             this.label138.Name = "label138";
             // 
             // CurrentPositiongroupBox
             // 
-            resources.ApplyResources(this.CurrentPositiongroupBox, "CurrentPositiongroupBox");
             this.CurrentPositiongroupBox.BackColor = System.Drawing.Color.Gainsboro;
             this.CurrentPositiongroupBox.Controls.Add(this.label156);
             this.CurrentPositiongroupBox.Controls.Add(this.ControlTimelabel);
@@ -2878,77 +2682,68 @@
             this.CurrentPositiongroupBox.Controls.Add(this.label136);
             this.CurrentPositiongroupBox.Controls.Add(this.label135);
             this.CurrentPositiongroupBox.Controls.Add(this.label132);
+            resources.ApplyResources(this.CurrentPositiongroupBox, "CurrentPositiongroupBox");
             this.CurrentPositiongroupBox.Name = "CurrentPositiongroupBox";
             this.CurrentPositiongroupBox.TabStop = false;
             // 
             // label156
             // 
             resources.ApplyResources(this.label156, "label156");
-            this.label156.ImageKey = global::ADCP.Resource1.String86;
             this.label156.Name = "label156";
             // 
             // ControlTimelabel
             // 
             resources.ApplyResources(this.ControlTimelabel, "ControlTimelabel");
             this.ControlTimelabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.ControlTimelabel.ImageKey = global::ADCP.Resource1.String86;
             this.ControlTimelabel.Name = "ControlTimelabel";
             // 
             // ControlVXVYlabel
             // 
             resources.ApplyResources(this.ControlVXVYlabel, "ControlVXVYlabel");
             this.ControlVXVYlabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.ControlVXVYlabel.ImageKey = global::ADCP.Resource1.String86;
             this.ControlVXVYlabel.Name = "ControlVXVYlabel";
             // 
             // ControlXYlabel
             // 
             resources.ApplyResources(this.ControlXYlabel, "ControlXYlabel");
             this.ControlXYlabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.ControlXYlabel.ImageKey = global::ADCP.Resource1.String86;
             this.ControlXYlabel.Name = "ControlXYlabel";
             // 
             // ControlLatLonglabel
             // 
             resources.ApplyResources(this.ControlLatLonglabel, "ControlLatLonglabel");
             this.ControlLatLonglabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.ControlLatLonglabel.ImageKey = global::ADCP.Resource1.String86;
             this.ControlLatLonglabel.Name = "ControlLatLonglabel";
             // 
             // label153
             // 
             resources.ApplyResources(this.label153, "label153");
-            this.label153.ImageKey = global::ADCP.Resource1.String86;
             this.label153.Name = "label153";
             // 
             // label137
             // 
             resources.ApplyResources(this.label137, "label137");
-            this.label137.ImageKey = global::ADCP.Resource1.String86;
             this.label137.Name = "label137";
             // 
             // label136
             // 
             resources.ApplyResources(this.label136, "label136");
-            this.label136.ImageKey = global::ADCP.Resource1.String86;
             this.label136.Name = "label136";
             // 
             // label135
             // 
             resources.ApplyResources(this.label135, "label135");
-            this.label135.ImageKey = global::ADCP.Resource1.String86;
             this.label135.Name = "label135";
             // 
             // label132
             // 
             resources.ApplyResources(this.label132, "label132");
-            this.label132.ImageKey = global::ADCP.Resource1.String86;
             this.label132.Name = "label132";
             // 
             // GPSdisplayPanel
             // 
-            resources.ApplyResources(this.GPSdisplayPanel, "GPSdisplayPanel");
             this.GPSdisplayPanel.AllowDrop = true;
+            resources.ApplyResources(this.GPSdisplayPanel, "GPSdisplayPanel");
             this.GPSdisplayPanel.BackColor = System.Drawing.Color.LightCyan;
             this.GPSdisplayPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.GPSdisplayPanel.Controls.Add(this.GPSdepthPanel);
@@ -2982,16 +2777,14 @@
             // 
             // tabPageData
             // 
-            resources.ApplyResources(this.tabPageData, "tabPageData");
             this.tabPageData.Controls.Add(this.panel7);
             this.tabPageData.Controls.Add(this.panel6);
             this.tabPageData.Controls.Add(this.panel2);
             this.tabPageData.Controls.Add(this.panel5);
             this.tabPageData.Controls.Add(this.panel4);
             this.tabPageData.Controls.Add(this.panel3);
-            this.tabPageData.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPageData, "tabPageData");
             this.tabPageData.Name = "tabPageData";
-            this.tabPageData.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPageData.UseVisualStyleBackColor = true;
             // 
             // panel7
@@ -3006,96 +2799,86 @@
             // 
             // panel19
             // 
-            resources.ApplyResources(this.panel19, "panel19");
             this.panel19.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel19.Controls.Add(this.textBox1);
             this.panel19.Controls.Add(this.labelComments);
             this.panel19.Controls.Add(this.label243);
+            resources.ApplyResources(this.panel19, "panel19");
             this.panel19.Name = "panel19";
             // 
             // textBox1
             // 
-            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
             // 
             // labelComments
             // 
             resources.ApplyResources(this.labelComments, "labelComments");
-            this.labelComments.ImageKey = global::ADCP.Resource1.String86;
             this.labelComments.Name = "labelComments";
             // 
             // label243
             // 
             resources.ApplyResources(this.label243, "label243");
-            this.label243.ImageKey = global::ADCP.Resource1.String86;
             this.label243.Name = "label243";
             // 
             // label134
             // 
             resources.ApplyResources(this.label134, "label134");
             this.label134.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label134.ImageKey = global::ADCP.Resource1.String86;
             this.label134.Name = "label134";
             // 
             // panel8
             // 
-            resources.ApplyResources(this.panel8, "panel8");
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel8.Controls.Add(this.label60);
             this.panel8.Controls.Add(this.labelTime);
             this.panel8.Controls.Add(this.label76);
             this.panel8.Controls.Add(this.labelNo);
+            resources.ApplyResources(this.panel8, "panel8");
             this.panel8.Name = "panel8";
             // 
             // label60
             // 
             resources.ApplyResources(this.label60, "label60");
             this.label60.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label60.ImageKey = global::ADCP.Resource1.String86;
             this.label60.Name = "label60";
             // 
             // labelTime
             // 
             resources.ApplyResources(this.labelTime, "labelTime");
-            this.labelTime.ImageKey = global::ADCP.Resource1.String86;
             this.labelTime.Name = "labelTime";
             // 
             // label76
             // 
             resources.ApplyResources(this.label76, "label76");
             this.label76.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label76.ImageKey = global::ADCP.Resource1.String86;
             this.label76.Name = "label76";
             // 
             // labelNo
             // 
             resources.ApplyResources(this.labelNo, "labelNo");
-            this.labelNo.ImageKey = global::ADCP.Resource1.String86;
             this.labelNo.Name = "labelNo";
             // 
             // tabControl8
             // 
-            resources.ApplyResources(this.tabControl8, "tabControl8");
             this.tabControl8.Controls.Add(this.tabPage16);
             this.tabControl8.Controls.Add(this.tabPage17);
+            resources.ApplyResources(this.tabControl8, "tabControl8");
             this.tabControl8.Name = "tabControl8";
             this.tabControl8.SelectedIndex = 0;
             // 
             // tabPage16
             // 
-            resources.ApplyResources(this.tabPage16, "tabPage16");
             this.tabPage16.Controls.Add(this.panel11);
             this.tabPage16.Controls.Add(this.panel10);
             this.tabPage16.Controls.Add(this.panel9);
-            this.tabPage16.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage16, "tabPage16");
             this.tabPage16.Name = "tabPage16";
-            this.tabPage16.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage16.UseVisualStyleBackColor = true;
             // 
             // panel11
             // 
-            resources.ApplyResources(this.panel11, "panel11");
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel11.Controls.Add(this.labelWPRoll);
             this.panel11.Controls.Add(this.labelWPPitch);
@@ -3111,106 +2894,92 @@
             this.panel11.Controls.Add(this.labelPingsD);
             this.panel11.Controls.Add(this.labelFrtPingT);
             this.panel11.Controls.Add(this.label94);
+            resources.ApplyResources(this.panel11, "panel11");
             this.panel11.Name = "panel11";
             // 
             // labelWPRoll
             // 
             resources.ApplyResources(this.labelWPRoll, "labelWPRoll");
-            this.labelWPRoll.ImageKey = global::ADCP.Resource1.String86;
             this.labelWPRoll.Name = "labelWPRoll";
             // 
             // labelWPPitch
             // 
             resources.ApplyResources(this.labelWPPitch, "labelWPPitch");
-            this.labelWPPitch.ImageKey = global::ADCP.Resource1.String86;
             this.labelWPPitch.Name = "labelWPPitch";
             // 
             // labelWPHeading
             // 
             resources.ApplyResources(this.labelWPHeading, "labelWPHeading");
-            this.labelWPHeading.ImageKey = global::ADCP.Resource1.String86;
             this.labelWPHeading.Name = "labelWPHeading";
             // 
             // label110
             // 
             resources.ApplyResources(this.label110, "label110");
             this.label110.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label110.ImageKey = global::ADCP.Resource1.String86;
             this.label110.Name = "label110";
             // 
             // labelLastPingT
             // 
             resources.ApplyResources(this.labelLastPingT, "labelLastPingT");
             this.labelLastPingT.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelLastPingT.ImageKey = global::ADCP.Resource1.String86;
             this.labelLastPingT.Name = "labelLastPingT";
             // 
             // label98
             // 
             resources.ApplyResources(this.label98, "label98");
             this.label98.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label98.ImageKey = global::ADCP.Resource1.String86;
             this.label98.Name = "label98";
             // 
             // label92
             // 
             resources.ApplyResources(this.label92, "label92");
             this.label92.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label92.ImageKey = global::ADCP.Resource1.String86;
             this.label92.Name = "label92";
             // 
             // label100
             // 
             resources.ApplyResources(this.label100, "label100");
             this.label100.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label100.ImageKey = global::ADCP.Resource1.String86;
             this.label100.Name = "label100";
             // 
             // label102
             // 
             resources.ApplyResources(this.label102, "label102");
             this.label102.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label102.ImageKey = global::ADCP.Resource1.String86;
             this.label102.Name = "label102";
             // 
             // label108
             // 
             resources.ApplyResources(this.label108, "label108");
             this.label108.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label108.ImageKey = global::ADCP.Resource1.String86;
             this.label108.Name = "label108";
             // 
             // labelPingsA
             // 
             resources.ApplyResources(this.labelPingsA, "labelPingsA");
             this.labelPingsA.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelPingsA.ImageKey = global::ADCP.Resource1.String86;
             this.labelPingsA.Name = "labelPingsA";
             // 
             // labelPingsD
             // 
             resources.ApplyResources(this.labelPingsD, "labelPingsD");
             this.labelPingsD.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelPingsD.ImageKey = global::ADCP.Resource1.String86;
             this.labelPingsD.Name = "labelPingsD";
             // 
             // labelFrtPingT
             // 
             resources.ApplyResources(this.labelFrtPingT, "labelFrtPingT");
             this.labelFrtPingT.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelFrtPingT.ImageKey = global::ADCP.Resource1.String86;
             this.labelFrtPingT.Name = "labelFrtPingT";
             // 
             // label94
             // 
             resources.ApplyResources(this.label94, "label94");
             this.label94.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label94.ImageKey = global::ADCP.Resource1.String86;
             this.label94.Name = "label94";
             // 
             // panel10
             // 
-            resources.ApplyResources(this.panel10, "panel10");
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel10.Controls.Add(this.label62);
             this.panel10.Controls.Add(this.labelWPSalinity);
@@ -3224,89 +2993,77 @@
             this.panel10.Controls.Add(this.labelWPPressure);
             this.panel10.Controls.Add(this.label65);
             this.panel10.Controls.Add(this.labelWPTmp);
+            resources.ApplyResources(this.panel10, "panel10");
             this.panel10.Name = "panel10";
             // 
             // label62
             // 
             resources.ApplyResources(this.label62, "label62");
             this.label62.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label62.ImageKey = global::ADCP.Resource1.String86;
             this.label62.Name = "label62";
             // 
             // labelWPSalinity
             // 
             resources.ApplyResources(this.labelWPSalinity, "labelWPSalinity");
-            this.labelWPSalinity.ImageKey = global::ADCP.Resource1.String86;
             this.labelWPSalinity.Name = "labelWPSalinity";
             // 
             // label78
             // 
             resources.ApplyResources(this.label78, "label78");
             this.label78.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label78.ImageKey = global::ADCP.Resource1.String86;
             this.label78.Name = "label78";
             // 
             // labelSysTmp
             // 
             resources.ApplyResources(this.labelSysTmp, "labelSysTmp");
-            this.labelSysTmp.ImageKey = global::ADCP.Resource1.String86;
             this.labelSysTmp.Name = "labelSysTmp";
             // 
             // label112
             // 
             resources.ApplyResources(this.label112, "label112");
             this.label112.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label112.ImageKey = global::ADCP.Resource1.String86;
             this.label112.Name = "label112";
             // 
             // labelWPStutas
             // 
             resources.ApplyResources(this.labelWPStutas, "labelWPStutas");
-            this.labelWPStutas.ImageKey = global::ADCP.Resource1.String86;
             this.labelWPStutas.Name = "labelWPStutas";
             // 
             // label69
             // 
             resources.ApplyResources(this.label69, "label69");
             this.label69.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label69.ImageKey = global::ADCP.Resource1.String86;
             this.label69.Name = "label69";
             // 
             // label96
             // 
             resources.ApplyResources(this.label96, "label96");
             this.label96.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label96.ImageKey = global::ADCP.Resource1.String86;
             this.label96.Name = "label96";
             // 
             // labelWPSSpd
             // 
             resources.ApplyResources(this.labelWPSSpd, "labelWPSSpd");
-            this.labelWPSSpd.ImageKey = global::ADCP.Resource1.String86;
             this.labelWPSSpd.Name = "labelWPSSpd";
             // 
             // labelWPPressure
             // 
             resources.ApplyResources(this.labelWPPressure, "labelWPPressure");
-            this.labelWPPressure.ImageKey = global::ADCP.Resource1.String86;
             this.labelWPPressure.Name = "labelWPPressure";
             // 
             // label65
             // 
             resources.ApplyResources(this.label65, "label65");
             this.label65.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label65.ImageKey = global::ADCP.Resource1.String86;
             this.label65.Name = "label65";
             // 
             // labelWPTmp
             // 
             resources.ApplyResources(this.labelWPTmp, "labelWPTmp");
-            this.labelWPTmp.ImageKey = global::ADCP.Resource1.String86;
             this.labelWPTmp.Name = "labelWPTmp";
             // 
             // panel9
             // 
-            resources.ApplyResources(this.panel9, "panel9");
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel9.Controls.Add(this.labelTransDepth);
             this.panel9.Controls.Add(this.label115);
@@ -3318,88 +3075,76 @@
             this.panel9.Controls.Add(this.label82);
             this.panel9.Controls.Add(this.label90);
             this.panel9.Controls.Add(this.label104);
+            resources.ApplyResources(this.panel9, "panel9");
             this.panel9.Name = "panel9";
             // 
             // labelTransDepth
             // 
             resources.ApplyResources(this.labelTransDepth, "labelTransDepth");
             this.labelTransDepth.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTransDepth.ImageKey = global::ADCP.Resource1.String86;
             this.labelTransDepth.Name = "labelTransDepth";
             // 
             // label115
             // 
             resources.ApplyResources(this.label115, "label115");
             this.label115.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label115.ImageKey = global::ADCP.Resource1.String86;
             this.label115.Name = "label115";
             // 
             // labelFrtBinRange
             // 
             resources.ApplyResources(this.labelFrtBinRange, "labelFrtBinRange");
-            this.labelFrtBinRange.ImageKey = global::ADCP.Resource1.String86;
             this.labelFrtBinRange.Name = "labelFrtBinRange";
             // 
             // label106
             // 
             resources.ApplyResources(this.label106, "label106");
             this.label106.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label106.ImageKey = global::ADCP.Resource1.String86;
             this.label106.Name = "label106";
             // 
             // labelBinSize
             // 
             resources.ApplyResources(this.labelBinSize, "labelBinSize");
-            this.labelBinSize.ImageKey = global::ADCP.Resource1.String86;
             this.labelBinSize.Name = "labelBinSize";
             // 
             // labelWPBins
             // 
             resources.ApplyResources(this.labelWPBins, "labelWPBins");
-            this.labelWPBins.ImageKey = global::ADCP.Resource1.String86;
             this.labelWPBins.Name = "labelWPBins";
             // 
             // labelWPBeams
             // 
             resources.ApplyResources(this.labelWPBeams, "labelWPBeams");
-            this.labelWPBeams.ImageKey = global::ADCP.Resource1.String86;
             this.labelWPBeams.Name = "labelWPBeams";
             // 
             // label82
             // 
             resources.ApplyResources(this.label82, "label82");
             this.label82.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label82.ImageKey = global::ADCP.Resource1.String86;
             this.label82.Name = "label82";
             // 
             // label90
             // 
             resources.ApplyResources(this.label90, "label90");
             this.label90.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label90.ImageKey = global::ADCP.Resource1.String86;
             this.label90.Name = "label90";
             // 
             // label104
             // 
             resources.ApplyResources(this.label104, "label104");
             this.label104.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label104.ImageKey = global::ADCP.Resource1.String86;
             this.label104.Name = "label104";
             // 
             // tabPage17
             // 
-            resources.ApplyResources(this.tabPage17, "tabPage17");
             this.tabPage17.Controls.Add(this.panel12);
             this.tabPage17.Controls.Add(this.panel13);
             this.tabPage17.Controls.Add(this.panel14);
-            this.tabPage17.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage17, "tabPage17");
             this.tabPage17.Name = "tabPage17";
-            this.tabPage17.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage17.UseVisualStyleBackColor = true;
             // 
             // panel12
             // 
-            resources.ApplyResources(this.panel12, "panel12");
             this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel12.Controls.Add(this.labelBTLastPingT);
             this.panel12.Controls.Add(this.label140);
@@ -3413,95 +3158,83 @@
             this.panel12.Controls.Add(this.labelBTPings);
             this.panel12.Controls.Add(this.labelBTFstPingT);
             this.panel12.Controls.Add(this.label151);
+            resources.ApplyResources(this.panel12, "panel12");
             this.panel12.Name = "panel12";
             // 
             // labelBTLastPingT
             // 
             resources.ApplyResources(this.labelBTLastPingT, "labelBTLastPingT");
             this.labelBTLastPingT.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelBTLastPingT.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTLastPingT.Name = "labelBTLastPingT";
             // 
             // label140
             // 
             resources.ApplyResources(this.label140, "label140");
             this.label140.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label140.ImageKey = global::ADCP.Resource1.String86;
             this.label140.Name = "label140";
             // 
             // label141
             // 
             resources.ApplyResources(this.label141, "label141");
             this.label141.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label141.ImageKey = global::ADCP.Resource1.String86;
             this.label141.Name = "label141";
             // 
             // label142
             // 
             resources.ApplyResources(this.label142, "label142");
             this.label142.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label142.ImageKey = global::ADCP.Resource1.String86;
             this.label142.Name = "label142";
             // 
             // label143
             // 
             resources.ApplyResources(this.label143, "label143");
             this.label143.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label143.ImageKey = global::ADCP.Resource1.String86;
             this.label143.Name = "label143";
             // 
             // labelBTHeading
             // 
             resources.ApplyResources(this.labelBTHeading, "labelBTHeading");
             this.labelBTHeading.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelBTHeading.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTHeading.Name = "labelBTHeading";
             // 
             // labelBTPitch
             // 
             resources.ApplyResources(this.labelBTPitch, "labelBTPitch");
             this.labelBTPitch.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelBTPitch.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTPitch.Name = "labelBTPitch";
             // 
             // label146
             // 
             resources.ApplyResources(this.label146, "label146");
             this.label146.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label146.ImageKey = global::ADCP.Resource1.String86;
             this.label146.Name = "label146";
             // 
             // labelBTRoll
             // 
             resources.ApplyResources(this.labelBTRoll, "labelBTRoll");
             this.labelBTRoll.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelBTRoll.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTRoll.Name = "labelBTRoll";
             // 
             // labelBTPings
             // 
             resources.ApplyResources(this.labelBTPings, "labelBTPings");
             this.labelBTPings.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelBTPings.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTPings.Name = "labelBTPings";
             // 
             // labelBTFstPingT
             // 
             resources.ApplyResources(this.labelBTFstPingT, "labelBTFstPingT");
             this.labelBTFstPingT.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelBTFstPingT.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTFstPingT.Name = "labelBTFstPingT";
             // 
             // label151
             // 
             resources.ApplyResources(this.label151, "label151");
             this.label151.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label151.ImageKey = global::ADCP.Resource1.String86;
             this.label151.Name = "label151";
             // 
             // panel13
             // 
-            resources.ApplyResources(this.panel13, "panel13");
             this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel13.Controls.Add(this.label61);
             this.panel13.Controls.Add(this.labelBTSysTmp);
@@ -3515,89 +3248,77 @@
             this.panel13.Controls.Add(this.labelBTPressure);
             this.panel13.Controls.Add(this.label158);
             this.panel13.Controls.Add(this.labelBTWaterTmp);
+            resources.ApplyResources(this.panel13, "panel13");
             this.panel13.Name = "panel13";
             // 
             // label61
             // 
             resources.ApplyResources(this.label61, "label61");
             this.label61.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label61.ImageKey = global::ADCP.Resource1.String86;
             this.label61.Name = "label61";
             // 
             // labelBTSysTmp
             // 
             resources.ApplyResources(this.labelBTSysTmp, "labelBTSysTmp");
-            this.labelBTSysTmp.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTSysTmp.Name = "labelBTSysTmp";
             // 
             // label116
             // 
             resources.ApplyResources(this.label116, "label116");
             this.label116.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label116.ImageKey = global::ADCP.Resource1.String86;
             this.label116.Name = "label116";
             // 
             // labelBTStutas
             // 
             resources.ApplyResources(this.labelBTStutas, "labelBTStutas");
-            this.labelBTStutas.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTStutas.Name = "labelBTStutas";
             // 
             // label152
             // 
             resources.ApplyResources(this.label152, "label152");
             this.label152.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label152.ImageKey = global::ADCP.Resource1.String86;
             this.label152.Name = "label152";
             // 
             // labelBTSalinity
             // 
             resources.ApplyResources(this.labelBTSalinity, "labelBTSalinity");
-            this.labelBTSalinity.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTSalinity.Name = "labelBTSalinity";
             // 
             // label154
             // 
             resources.ApplyResources(this.label154, "label154");
             this.label154.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label154.ImageKey = global::ADCP.Resource1.String86;
             this.label154.Name = "label154";
             // 
             // label155
             // 
             resources.ApplyResources(this.label155, "label155");
             this.label155.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label155.ImageKey = global::ADCP.Resource1.String86;
             this.label155.Name = "label155";
             // 
             // labelBTSoundSpd
             // 
             resources.ApplyResources(this.labelBTSoundSpd, "labelBTSoundSpd");
-            this.labelBTSoundSpd.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTSoundSpd.Name = "labelBTSoundSpd";
             // 
             // labelBTPressure
             // 
             resources.ApplyResources(this.labelBTPressure, "labelBTPressure");
-            this.labelBTPressure.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTPressure.Name = "labelBTPressure";
             // 
             // label158
             // 
             resources.ApplyResources(this.label158, "label158");
             this.label158.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label158.ImageKey = global::ADCP.Resource1.String86;
             this.label158.Name = "label158";
             // 
             // labelBTWaterTmp
             // 
             resources.ApplyResources(this.labelBTWaterTmp, "labelBTWaterTmp");
-            this.labelBTWaterTmp.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTWaterTmp.Name = "labelBTWaterTmp";
             // 
             // panel14
             // 
-            resources.ApplyResources(this.panel14, "panel14");
             this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel14.Controls.Add(this.labelSNRB3);
             this.panel14.Controls.Add(this.label127);
@@ -3621,166 +3342,145 @@
             this.panel14.Controls.Add(this.label86);
             this.panel14.Controls.Add(this.label163);
             this.panel14.Controls.Add(this.labelBTBeams);
+            resources.ApplyResources(this.panel14, "panel14");
             this.panel14.Name = "panel14";
             // 
             // labelSNRB3
             // 
             resources.ApplyResources(this.labelSNRB3, "labelSNRB3");
-            this.labelSNRB3.ImageKey = global::ADCP.Resource1.String86;
             this.labelSNRB3.Name = "labelSNRB3";
             // 
             // label127
             // 
             resources.ApplyResources(this.label127, "label127");
             this.label127.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label127.ImageKey = global::ADCP.Resource1.String86;
             this.label127.Name = "label127";
             // 
             // labelSNRB2
             // 
             resources.ApplyResources(this.labelSNRB2, "labelSNRB2");
-            this.labelSNRB2.ImageKey = global::ADCP.Resource1.String86;
             this.labelSNRB2.Name = "labelSNRB2";
             // 
             // label129
             // 
             resources.ApplyResources(this.label129, "label129");
             this.label129.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label129.ImageKey = global::ADCP.Resource1.String86;
             this.label129.Name = "label129";
             // 
             // labelSNRB1
             // 
             resources.ApplyResources(this.labelSNRB1, "labelSNRB1");
-            this.labelSNRB1.ImageKey = global::ADCP.Resource1.String86;
             this.labelSNRB1.Name = "labelSNRB1";
             // 
             // label131
             // 
             resources.ApplyResources(this.label131, "label131");
             this.label131.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label131.ImageKey = global::ADCP.Resource1.String86;
             this.label131.Name = "label131";
             // 
             // labelSNRB0
             // 
             resources.ApplyResources(this.labelSNRB0, "labelSNRB0");
-            this.labelSNRB0.ImageKey = global::ADCP.Resource1.String86;
             this.labelSNRB0.Name = "labelSNRB0";
             // 
             // label133
             // 
             resources.ApplyResources(this.label133, "label133");
             this.label133.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label133.ImageKey = global::ADCP.Resource1.String86;
             this.label133.Name = "label133";
             // 
             // label125
             // 
             resources.ApplyResources(this.label125, "label125");
             this.label125.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label125.ImageKey = global::ADCP.Resource1.String86;
             this.label125.Name = "label125";
             // 
             // label124
             // 
             resources.ApplyResources(this.label124, "label124");
             this.label124.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label124.ImageKey = global::ADCP.Resource1.String86;
             this.label124.Name = "label124";
             // 
             // labelVRB3
             // 
             resources.ApplyResources(this.labelVRB3, "labelVRB3");
-            this.labelVRB3.ImageKey = global::ADCP.Resource1.String86;
             this.labelVRB3.Name = "labelVRB3";
             // 
             // label123
             // 
             resources.ApplyResources(this.label123, "label123");
             this.label123.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label123.ImageKey = global::ADCP.Resource1.String86;
             this.label123.Name = "label123";
             // 
             // labelVRB2
             // 
             resources.ApplyResources(this.labelVRB2, "labelVRB2");
-            this.labelVRB2.ImageKey = global::ADCP.Resource1.String86;
             this.labelVRB2.Name = "labelVRB2";
             // 
             // label121
             // 
             resources.ApplyResources(this.label121, "label121");
             this.label121.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label121.ImageKey = global::ADCP.Resource1.String86;
             this.label121.Name = "label121";
             // 
             // labelVRB1
             // 
             resources.ApplyResources(this.labelVRB1, "labelVRB1");
-            this.labelVRB1.ImageKey = global::ADCP.Resource1.String86;
             this.labelVRB1.Name = "labelVRB1";
             // 
             // label119
             // 
             resources.ApplyResources(this.label119, "label119");
             this.label119.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label119.ImageKey = global::ADCP.Resource1.String86;
             this.label119.Name = "label119";
             // 
             // labelVRB0
             // 
             resources.ApplyResources(this.labelVRB0, "labelVRB0");
-            this.labelVRB0.ImageKey = global::ADCP.Resource1.String86;
             this.labelVRB0.Name = "labelVRB0";
             // 
             // label67
             // 
             resources.ApplyResources(this.label67, "label67");
             this.label67.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label67.ImageKey = global::ADCP.Resource1.String86;
             this.label67.Name = "label67";
             // 
             // labelBTDepth
             // 
             resources.ApplyResources(this.labelBTDepth, "labelBTDepth");
             this.labelBTDepth.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelBTDepth.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTDepth.Name = "labelBTDepth";
             // 
             // label86
             // 
             resources.ApplyResources(this.label86, "label86");
             this.label86.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label86.ImageKey = global::ADCP.Resource1.String86;
             this.label86.Name = "label86";
             // 
             // label163
             // 
             resources.ApplyResources(this.label163, "label163");
             this.label163.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label163.ImageKey = global::ADCP.Resource1.String86;
             this.label163.Name = "label163";
             // 
             // labelBTBeams
             // 
             resources.ApplyResources(this.labelBTBeams, "labelBTBeams");
-            this.labelBTBeams.ImageKey = global::ADCP.Resource1.String86;
             this.labelBTBeams.Name = "labelBTBeams";
             // 
             // panel6
             // 
-            resources.ApplyResources(this.panel6, "panel6");
             this.panel6.Controls.Add(this.tabControl2);
             this.panel6.Controls.Add(this.label56);
+            resources.ApplyResources(this.panel6, "panel6");
             this.panel6.Name = "panel6";
             // 
             // tabControl2
             // 
-            resources.ApplyResources(this.tabControl2, "tabControl2");
             this.tabControl2.Controls.Add(this.tabPage1);
             this.tabControl2.Controls.Add(this.tabPage2);
             this.tabControl2.Controls.Add(this.tabPage3);
+            resources.ApplyResources(this.tabControl2, "tabControl2");
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             // 
@@ -3795,58 +3495,48 @@
             this.tabPage1.Controls.Add(this.label73);
             this.tabPage1.Controls.Add(this.label75);
             this.tabPage1.Controls.Add(this.labelBE_Vy);
-            this.tabPage1.ImageKey = global::ADCP.Resource1.String86;
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabPage1_MouseMove);
             // 
             // labelBE_Vq
             // 
             resources.ApplyResources(this.labelBE_Vq, "labelBE_Vq");
-            this.labelBE_Vq.ImageKey = global::ADCP.Resource1.String86;
             this.labelBE_Vq.Name = "labelBE_Vq";
             // 
             // label71
             // 
             resources.ApplyResources(this.label71, "label71");
-            this.label71.ImageKey = global::ADCP.Resource1.String86;
             this.label71.Name = "label71";
             // 
             // label77
             // 
             resources.ApplyResources(this.label77, "label77");
-            this.label77.ImageKey = global::ADCP.Resource1.String86;
             this.label77.Name = "label77";
             // 
             // labelBE_Vx
             // 
             resources.ApplyResources(this.labelBE_Vx, "labelBE_Vx");
-            this.labelBE_Vx.ImageKey = global::ADCP.Resource1.String86;
             this.labelBE_Vx.Name = "labelBE_Vx";
             // 
             // labelBE_Vz
             // 
             resources.ApplyResources(this.labelBE_Vz, "labelBE_Vz");
-            this.labelBE_Vz.ImageKey = global::ADCP.Resource1.String86;
             this.labelBE_Vz.Name = "labelBE_Vz";
             // 
             // label73
             // 
             resources.ApplyResources(this.label73, "label73");
-            this.label73.ImageKey = global::ADCP.Resource1.String86;
             this.label73.Name = "label73";
             // 
             // label75
             // 
             resources.ApplyResources(this.label75, "label75");
-            this.label75.ImageKey = global::ADCP.Resource1.String86;
             this.label75.Name = "label75";
             // 
             // labelBE_Vy
             // 
             resources.ApplyResources(this.labelBE_Vy, "labelBE_Vy");
-            this.labelBE_Vy.ImageKey = global::ADCP.Resource1.String86;
             this.labelBE_Vy.Name = "labelBE_Vy";
             // 
             // tabPage2
@@ -3860,58 +3550,48 @@
             this.tabPage2.Controls.Add(this.label79);
             this.tabPage2.Controls.Add(this.label80);
             this.tabPage2.Controls.Add(this.labelBI_Vy);
-            this.tabPage2.ImageKey = global::ADCP.Resource1.String86;
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabPage2_MouseMove);
             // 
             // labelBI_Vq
             // 
             resources.ApplyResources(this.labelBI_Vq, "labelBI_Vq");
-            this.labelBI_Vq.ImageKey = global::ADCP.Resource1.String86;
             this.labelBI_Vq.Name = "labelBI_Vq";
             // 
             // label72
             // 
             resources.ApplyResources(this.label72, "label72");
-            this.label72.ImageKey = global::ADCP.Resource1.String86;
             this.label72.Name = "label72";
             // 
             // label74
             // 
             resources.ApplyResources(this.label74, "label74");
-            this.label74.ImageKey = global::ADCP.Resource1.String86;
             this.label74.Name = "label74";
             // 
             // labelBI_Vx
             // 
             resources.ApplyResources(this.labelBI_Vx, "labelBI_Vx");
-            this.labelBI_Vx.ImageKey = global::ADCP.Resource1.String86;
             this.labelBI_Vx.Name = "labelBI_Vx";
             // 
             // labelBI_Vz
             // 
             resources.ApplyResources(this.labelBI_Vz, "labelBI_Vz");
-            this.labelBI_Vz.ImageKey = global::ADCP.Resource1.String86;
             this.labelBI_Vz.Name = "labelBI_Vz";
             // 
             // label79
             // 
             resources.ApplyResources(this.label79, "label79");
-            this.label79.ImageKey = global::ADCP.Resource1.String86;
             this.label79.Name = "label79";
             // 
             // label80
             // 
             resources.ApplyResources(this.label80, "label80");
-            this.label80.ImageKey = global::ADCP.Resource1.String86;
             this.label80.Name = "label80";
             // 
             // labelBI_Vy
             // 
             resources.ApplyResources(this.labelBI_Vy, "labelBI_Vy");
-            this.labelBI_Vy.ImageKey = global::ADCP.Resource1.String86;
             this.labelBI_Vy.Name = "labelBI_Vy";
             // 
             // tabPage3
@@ -3925,90 +3605,77 @@
             this.tabPage3.Controls.Add(this.label87);
             this.tabPage3.Controls.Add(this.label88);
             this.tabPage3.Controls.Add(this.labelBB1);
-            this.tabPage3.ImageKey = global::ADCP.Resource1.String86;
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tabPage3_MouseMove);
             // 
             // labelBB3
             // 
             resources.ApplyResources(this.labelBB3, "labelBB3");
-            this.labelBB3.ImageKey = global::ADCP.Resource1.String86;
             this.labelBB3.Name = "labelBB3";
             // 
             // label83
             // 
             resources.ApplyResources(this.label83, "label83");
-            this.label83.ImageKey = global::ADCP.Resource1.String86;
             this.label83.Name = "label83";
             // 
             // label84
             // 
             resources.ApplyResources(this.label84, "label84");
-            this.label84.ImageKey = global::ADCP.Resource1.String86;
             this.label84.Name = "label84";
             // 
             // labelBB0
             // 
             resources.ApplyResources(this.labelBB0, "labelBB0");
-            this.labelBB0.ImageKey = global::ADCP.Resource1.String86;
             this.labelBB0.Name = "labelBB0";
             // 
             // labelBB2
             // 
             resources.ApplyResources(this.labelBB2, "labelBB2");
-            this.labelBB2.ImageKey = global::ADCP.Resource1.String86;
             this.labelBB2.Name = "labelBB2";
             // 
             // label87
             // 
             resources.ApplyResources(this.label87, "label87");
-            this.label87.ImageKey = global::ADCP.Resource1.String86;
             this.label87.Name = "label87";
             // 
             // label88
             // 
             resources.ApplyResources(this.label88, "label88");
-            this.label88.ImageKey = global::ADCP.Resource1.String86;
             this.label88.Name = "label88";
             // 
             // labelBB1
             // 
             resources.ApplyResources(this.labelBB1, "labelBB1");
-            this.labelBB1.ImageKey = global::ADCP.Resource1.String86;
             this.labelBB1.Name = "labelBB1";
             // 
             // label56
             // 
             resources.ApplyResources(this.label56, "label56");
             this.label56.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label56.ImageKey = global::ADCP.Resource1.String86;
             this.label56.Name = "label56";
             // 
             // panel2
             // 
-            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Controls.Add(this.tabControl3);
             this.panel2.Controls.Add(this.label55);
+            resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
             // tabControl3
             // 
-            resources.ApplyResources(this.tabControl3, "tabControl3");
             this.tabControl3.Controls.Add(this.tabPage4);
             this.tabControl3.Controls.Add(this.tabPage6);
             this.tabControl3.Controls.Add(this.tabPage5);
+            resources.ApplyResources(this.tabControl3, "tabControl3");
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
             // 
             // tabPage4
             // 
-            resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Controls.Add(this.EarthWaterlistView);
-            this.tabPage4.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // EarthWaterlistView
@@ -4021,6 +3688,7 @@
             this.Vz_column,
             this.Vq_column});
             this.EarthWaterlistView.GridLines = true;
+            this.EarthWaterlistView.HideSelection = false;
             this.EarthWaterlistView.Name = "EarthWaterlistView";
             this.EarthWaterlistView.UseCompatibleStateImageBehavior = false;
             this.EarthWaterlistView.View = System.Windows.Forms.View.Details;
@@ -4048,11 +3716,9 @@
             // 
             // tabPage6
             // 
-            resources.ApplyResources(this.tabPage6, "tabPage6");
             this.tabPage6.Controls.Add(this.InstrmtWaterlistView);
-            this.tabPage6.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage6, "tabPage6");
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // InstrmtWaterlistView
@@ -4065,6 +3731,7 @@
             this.columnHeader4,
             this.columnHeader5});
             this.InstrmtWaterlistView.GridLines = true;
+            this.InstrmtWaterlistView.HideSelection = false;
             this.InstrmtWaterlistView.Name = "InstrmtWaterlistView";
             this.InstrmtWaterlistView.UseCompatibleStateImageBehavior = false;
             this.InstrmtWaterlistView.View = System.Windows.Forms.View.Details;
@@ -4092,11 +3759,9 @@
             // 
             // tabPage5
             // 
-            resources.ApplyResources(this.tabPage5, "tabPage5");
             this.tabPage5.Controls.Add(this.BeamWaterlistView);
-            this.tabPage5.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage5, "tabPage5");
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // BeamWaterlistView
@@ -4109,6 +3774,7 @@
             this.beam2_column,
             this.beam3_column});
             this.BeamWaterlistView.GridLines = true;
+            this.BeamWaterlistView.HideSelection = false;
             this.BeamWaterlistView.Name = "BeamWaterlistView";
             this.BeamWaterlistView.UseCompatibleStateImageBehavior = false;
             this.BeamWaterlistView.View = System.Windows.Forms.View.Details;
@@ -4138,34 +3804,31 @@
             // 
             resources.ApplyResources(this.label55, "label55");
             this.label55.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label55.ImageKey = global::ADCP.Resource1.String86;
             this.label55.Name = "label55";
             // 
             // panel5
             // 
-            resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Controls.Add(this.tabControl7);
             this.panel5.Controls.Add(this.label59);
+            resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Name = "panel5";
             // 
             // tabControl7
             // 
-            resources.ApplyResources(this.tabControl7, "tabControl7");
             this.tabControl7.Controls.Add(this.tabPage11);
             this.tabControl7.Controls.Add(this.tabPage13);
             this.tabControl7.Controls.Add(this.tabPage12);
             this.tabControl7.Controls.Add(this.tabPage14);
             this.tabControl7.Controls.Add(this.tabPage15);
+            resources.ApplyResources(this.tabControl7, "tabControl7");
             this.tabControl7.Name = "tabControl7";
             this.tabControl7.SelectedIndex = 0;
             // 
             // tabPage11
             // 
-            resources.ApplyResources(this.tabPage11, "tabPage11");
             this.tabPage11.Controls.Add(this.EarthGdPnglistView);
-            this.tabPage11.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage11, "tabPage11");
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
             // EarthGdPnglistView
@@ -4178,6 +3841,7 @@
             this.columnHeader14,
             this.columnHeader15});
             this.EarthGdPnglistView.GridLines = true;
+            this.EarthGdPnglistView.HideSelection = false;
             this.EarthGdPnglistView.Name = "EarthGdPnglistView";
             this.EarthGdPnglistView.UseCompatibleStateImageBehavior = false;
             this.EarthGdPnglistView.View = System.Windows.Forms.View.Details;
@@ -4205,11 +3869,9 @@
             // 
             // tabPage13
             // 
-            resources.ApplyResources(this.tabPage13, "tabPage13");
             this.tabPage13.Controls.Add(this.BeamGdPnglistView);
-            this.tabPage13.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage13, "tabPage13");
             this.tabPage13.Name = "tabPage13";
-            this.tabPage13.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage13.UseVisualStyleBackColor = true;
             // 
             // BeamGdPnglistView
@@ -4222,6 +3884,7 @@
             this.columnHeader29,
             this.columnHeader30});
             this.BeamGdPnglistView.GridLines = true;
+            this.BeamGdPnglistView.HideSelection = false;
             this.BeamGdPnglistView.Name = "BeamGdPnglistView";
             this.BeamGdPnglistView.UseCompatibleStateImageBehavior = false;
             this.BeamGdPnglistView.View = System.Windows.Forms.View.Details;
@@ -4249,11 +3912,9 @@
             // 
             // tabPage12
             // 
-            resources.ApplyResources(this.tabPage12, "tabPage12");
             this.tabPage12.Controls.Add(this.BEGdPngListview);
-            this.tabPage12.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage12, "tabPage12");
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage12.UseVisualStyleBackColor = true;
             // 
             // BEGdPngListview
@@ -4266,6 +3927,7 @@
             this.columnHeader24,
             this.columnHeader25});
             this.BEGdPngListview.GridLines = true;
+            this.BEGdPngListview.HideSelection = false;
             this.BEGdPngListview.Name = "BEGdPngListview";
             this.BEGdPngListview.UseCompatibleStateImageBehavior = false;
             this.BEGdPngListview.View = System.Windows.Forms.View.Details;
@@ -4293,11 +3955,9 @@
             // 
             // tabPage14
             // 
-            resources.ApplyResources(this.tabPage14, "tabPage14");
             this.tabPage14.Controls.Add(this.BIGPnglistView);
-            this.tabPage14.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage14, "tabPage14");
             this.tabPage14.Name = "tabPage14";
-            this.tabPage14.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage14.UseVisualStyleBackColor = true;
             // 
             // BIGPnglistView
@@ -4310,6 +3970,7 @@
             this.columnHeader34,
             this.columnHeader35});
             this.BIGPnglistView.GridLines = true;
+            this.BIGPnglistView.HideSelection = false;
             this.BIGPnglistView.Name = "BIGPnglistView";
             this.BIGPnglistView.UseCompatibleStateImageBehavior = false;
             this.BIGPnglistView.View = System.Windows.Forms.View.Details;
@@ -4337,11 +3998,9 @@
             // 
             // tabPage15
             // 
-            resources.ApplyResources(this.tabPage15, "tabPage15");
             this.tabPage15.Controls.Add(this.BBGPnglistView);
-            this.tabPage15.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage15, "tabPage15");
             this.tabPage15.Name = "tabPage15";
-            this.tabPage15.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage15.UseVisualStyleBackColor = true;
             // 
             // BBGPnglistView
@@ -4354,6 +4013,7 @@
             this.columnHeader39,
             this.columnHeader40});
             this.BBGPnglistView.GridLines = true;
+            this.BBGPnglistView.HideSelection = false;
             this.BBGPnglistView.Name = "BBGPnglistView";
             this.BBGPnglistView.UseCompatibleStateImageBehavior = false;
             this.BBGPnglistView.View = System.Windows.Forms.View.Details;
@@ -4383,31 +4043,28 @@
             // 
             resources.ApplyResources(this.label59, "label59");
             this.label59.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label59.ImageKey = global::ADCP.Resource1.String86;
             this.label59.Name = "label59";
             // 
             // panel4
             // 
-            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Controls.Add(this.tabControl5);
             this.panel4.Controls.Add(this.label58);
+            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
             // tabControl5
             // 
-            resources.ApplyResources(this.tabControl5, "tabControl5");
             this.tabControl5.Controls.Add(this.tabPage7);
             this.tabControl5.Controls.Add(this.tabPage8);
+            resources.ApplyResources(this.tabControl5, "tabControl5");
             this.tabControl5.Name = "tabControl5";
             this.tabControl5.SelectedIndex = 0;
             // 
             // tabPage7
             // 
-            resources.ApplyResources(this.tabPage7, "tabPage7");
             this.tabPage7.Controls.Add(this.WaterCorrelationlistView);
-            this.tabPage7.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage7, "tabPage7");
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // WaterCorrelationlistView
@@ -4420,6 +4077,7 @@
             this.beam2_Correlation_column,
             this.beam3_Correlation_column});
             this.WaterCorrelationlistView.GridLines = true;
+            this.WaterCorrelationlistView.HideSelection = false;
             this.WaterCorrelationlistView.Name = "WaterCorrelationlistView";
             this.WaterCorrelationlistView.UseCompatibleStateImageBehavior = false;
             this.WaterCorrelationlistView.View = System.Windows.Forms.View.Details;
@@ -4447,11 +4105,9 @@
             // 
             // tabPage8
             // 
-            resources.ApplyResources(this.tabPage8, "tabPage8");
             this.tabPage8.Controls.Add(this.BtmCorrelationlistView);
-            this.tabPage8.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage8, "tabPage8");
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // BtmCorrelationlistView
@@ -4464,6 +4120,7 @@
             this.columnHeader9,
             this.columnHeader10});
             this.BtmCorrelationlistView.GridLines = true;
+            this.BtmCorrelationlistView.HideSelection = false;
             this.BtmCorrelationlistView.Name = "BtmCorrelationlistView";
             this.BtmCorrelationlistView.UseCompatibleStateImageBehavior = false;
             this.BtmCorrelationlistView.View = System.Windows.Forms.View.Details;
@@ -4493,31 +4150,28 @@
             // 
             resources.ApplyResources(this.label58, "label58");
             this.label58.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label58.ImageKey = global::ADCP.Resource1.String86;
             this.label58.Name = "label58";
             // 
             // panel3
             // 
-            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Controls.Add(this.tabControl6);
             this.panel3.Controls.Add(this.label57);
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             // 
             // tabControl6
             // 
-            resources.ApplyResources(this.tabControl6, "tabControl6");
             this.tabControl6.Controls.Add(this.tabPage9);
             this.tabControl6.Controls.Add(this.tabPage10);
+            resources.ApplyResources(this.tabControl6, "tabControl6");
             this.tabControl6.Name = "tabControl6";
             this.tabControl6.SelectedIndex = 0;
             // 
             // tabPage9
             // 
-            resources.ApplyResources(this.tabPage9, "tabPage9");
             this.tabPage9.Controls.Add(this.WaterAmplitudelistView);
-            this.tabPage9.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage9, "tabPage9");
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
             // WaterAmplitudelistView
@@ -4530,6 +4184,7 @@
             this.beam2_Amplitude_column,
             this.beam3_Amplitude_column});
             this.WaterAmplitudelistView.GridLines = true;
+            this.WaterAmplitudelistView.HideSelection = false;
             this.WaterAmplitudelistView.Name = "WaterAmplitudelistView";
             this.WaterAmplitudelistView.UseCompatibleStateImageBehavior = false;
             this.WaterAmplitudelistView.View = System.Windows.Forms.View.Details;
@@ -4557,11 +4212,9 @@
             // 
             // tabPage10
             // 
-            resources.ApplyResources(this.tabPage10, "tabPage10");
             this.tabPage10.Controls.Add(this.BtmAmplitudelistView);
-            this.tabPage10.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPage10, "tabPage10");
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
             // BtmAmplitudelistView
@@ -4574,6 +4227,7 @@
             this.columnHeader19,
             this.columnHeader20});
             this.BtmAmplitudelistView.GridLines = true;
+            this.BtmAmplitudelistView.HideSelection = false;
             this.BtmAmplitudelistView.Name = "BtmAmplitudelistView";
             this.BtmAmplitudelistView.UseCompatibleStateImageBehavior = false;
             this.BtmAmplitudelistView.View = System.Windows.Forms.View.Details;
@@ -4603,18 +4257,15 @@
             // 
             resources.ApplyResources(this.label57, "label57");
             this.label57.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label57.ImageKey = global::ADCP.Resource1.String86;
             this.label57.Name = "label57";
             // 
             // tabPageSerialTime
             // 
-            resources.ApplyResources(this.tabPageSerialTime, "tabPageSerialTime");
             this.tabPageSerialTime.BackColor = System.Drawing.Color.White;
             this.tabPageSerialTime.Controls.Add(this.panelSerialTime);
             this.tabPageSerialTime.ForeColor = System.Drawing.Color.White;
-            this.tabPageSerialTime.ImageKey = global::ADCP.Resource1.String86;
+            resources.ApplyResources(this.tabPageSerialTime, "tabPageSerialTime");
             this.tabPageSerialTime.Name = "tabPageSerialTime";
-            this.tabPageSerialTime.ToolTipText = global::ADCP.Resource1.String86;
             this.tabPageSerialTime.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPageSerialTime_Paint);
             // 
             // panelSerialTime
@@ -4622,11 +4273,6 @@
             resources.ApplyResources(this.panelSerialTime, "panelSerialTime");
             this.panelSerialTime.Name = "panelSerialTime";
             this.panelSerialTime.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSerialTime_Paint);
-            // 
-            // folderBrowserDialog1
-            // 
-            this.folderBrowserDialog1.Description = global::ADCP.Resource1.String86;
-            this.folderBrowserDialog1.SelectedPath = global::ADCP.Resource1.String86;
             // 
             // DP300_Windows
             // 

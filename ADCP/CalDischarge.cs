@@ -404,7 +404,7 @@ namespace ADCP
                 dLeftShoreArea = CalculateShoreArea(dLeftShoreAvgDepth, dLeftShoreWidth, dLeftShoreCoff);
 
             }
-            catch (System.Exception ex)
+            catch //(System.Exception ex)
             {
 
             }

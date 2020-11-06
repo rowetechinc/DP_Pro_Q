@@ -104,7 +104,8 @@
             this.comboBoxMeasMode.FormattingEnabled = true;
             this.comboBoxMeasMode.Items.AddRange(new object[] {
             resources.GetString("comboBoxMeasMode.Items"),
-            resources.GetString("comboBoxMeasMode.Items1")});
+            resources.GetString("comboBoxMeasMode.Items1"),
+            resources.GetString("comboBoxMeasMode.Items2")});
             resources.ApplyResources(this.comboBoxMeasMode, "comboBoxMeasMode");
             this.comboBoxMeasMode.Name = "comboBoxMeasMode";
             this.comboBoxMeasMode.SelectedIndexChanged += new System.EventHandler(this.comboBoxMeasMode_SelectedIndexChanged);
@@ -164,7 +165,8 @@
             resources.GetString("comboBox_RS232.Items2"),
             resources.GetString("comboBox_RS232.Items3"),
             resources.GetString("comboBox_RS232.Items4"),
-            resources.GetString("comboBox_RS232.Items5")});
+            resources.GetString("comboBox_RS232.Items5"),
+            resources.GetString("comboBox_RS232.Items6")});
             this.comboBox_RS232.Name = "comboBox_RS232";
             // 
             // comboBox_RS485
@@ -178,7 +180,10 @@
             resources.GetString("comboBox_RS485.Items2"),
             resources.GetString("comboBox_RS485.Items3"),
             resources.GetString("comboBox_RS485.Items4"),
-            resources.GetString("comboBox_RS485.Items5")});
+            resources.GetString("comboBox_RS485.Items5"),
+            resources.GetString("comboBox_RS485.Items6"),
+            resources.GetString("comboBox_RS485.Items7"),
+            resources.GetString("comboBox_RS485.Items8")});
             this.comboBox_RS485.Name = "comboBox_RS485";
             // 
             // label_RS232

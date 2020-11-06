@@ -219,7 +219,7 @@
     <value>195, 16</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
-    <value>Power Curve Coefference:</value>
+    <value>Power Curve Coefficient:</value>
   </data>
   <data name="labelBottomEstimate.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 10.5pt, style=Bold</value>

@@ -74,7 +74,10 @@
             resources.GetString("comboBoxADCP_Baudrate.Items2"),
             resources.GetString("comboBoxADCP_Baudrate.Items3"),
             resources.GetString("comboBoxADCP_Baudrate.Items4"),
-            resources.GetString("comboBoxADCP_Baudrate.Items5")});
+            resources.GetString("comboBoxADCP_Baudrate.Items5"),
+            resources.GetString("comboBoxADCP_Baudrate.Items6"),
+            resources.GetString("comboBoxADCP_Baudrate.Items7"),
+            resources.GetString("comboBoxADCP_Baudrate.Items8")});
             this.comboBoxADCP_Baudrate.Name = "comboBoxADCP_Baudrate";
             // 
             // btnCancel

@@ -459,7 +459,10 @@ namespace ADCP
             }
             else
             {
-                MessageBox.Show("请检查串口连接是否正确");
+                //SM>
+                //MessageBox.Show("请检查串口连接是否正确");//Please check if the serial port connection is correct
+                MessageBox.Show("Check serial port connection");
+                //<SM
             }
         }
         private void btnStop_Click(object sender, EventArgs e)

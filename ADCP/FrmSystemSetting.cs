@@ -37,6 +37,8 @@ namespace ADCP
 
             systemNumber = iSystemNumber; //LPJ 2013-10-9
 
+            //comboBox_RS485.Text = sp.BaudRate.ToString();//defaultSP.BaudRate;
+
             GetReference(systSet);
         }
 
@@ -158,7 +160,11 @@ namespace ADCP
 
             if (0 == comboBoxMeasMode.SelectedIndex)
                 systemSet.Advancedstruct = setAdvanced; //LPJ 2013-8-6
-           
+
+            //systemSet.iMeasMode
+            //labelMeasMode.Text = comboBoxStandardMode.Text;
+
+
         }
 
         public SystemSetting systemSet;
@@ -185,26 +191,29 @@ namespace ADCP
         {
             if (!bPlayBackMode)
             {
-                if (0 == comboBoxMeasMode.SelectedIndex)
+                switch (comboBoxMeasMode.SelectedIndex)
                 {
-                    comboBoxStandardMode.Visible = true;
-                }
-                else
-                {
-                    comboBoxStandardMode.Visible = false;
-
-                    FrmAdvancedMode frmadvancedMode = new FrmAdvancedMode(setAdvanced, bEnglish, 0,bPlayBackMode,sp);
-                    if (DialogResult.OK == frmadvancedMode.ShowDialog())
-                    {
-                        systemSet.Advancedstruct = frmadvancedMode.advancedConf;
-
-                    }
-                    else
-                    {
-                        systemSet.Advancedstruct = setAdvanced; //LPJ 2013-8-5 
-                        comboBoxMeasMode.SelectedIndex = 0;
+                    case 0:// == comboBoxMeasMode.SelectedIndex)
+                    case 2:
                         comboBoxStandardMode.Visible = true;
-                    }
+                        break;
+                    case 1:
+                        comboBoxStandardMode.Visible = false;
+
+                        FrmAdvancedMode frmadvancedMode = new FrmAdvancedMode(setAdvanced, bEnglish, 0, bPlayBackMode, sp);
+                        frmadvancedMode.BringToFront();
+                        if (DialogResult.OK == frmadvancedMode.ShowDialog())
+                        {
+                            systemSet.Advancedstruct = frmadvancedMode.advancedConf;
+
+                        }
+                        else
+                        {
+                            systemSet.Advancedstruct = setAdvanced; //LPJ 2013-8-5 
+                            comboBoxMeasMode.SelectedIndex = 0;
+                            comboBoxStandardMode.Visible = true;
+                        }
+                        break;                    
                 }
             }
             else

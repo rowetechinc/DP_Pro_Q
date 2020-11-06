@@ -121,12 +121,11 @@
   <data name="btnADCPconnect.Location" type="System.Drawing.Point, System.Drawing">
     <value>31, 87</value>
   </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>229, 124</value>
+  </data>
   <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
   </data>
   <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
     <value>btnCancel</value>
@@ -135,20 +134,27 @@
   <data name="comboxADCP_Port.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="comboxADCP_Port.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="btnADCPconnect.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="comboxADCP_Port.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 24</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FrmSetCmd</value>
+  <data name="comboBoxADCP_Baudrate.Items7" xml:space="preserve">
+    <value>460800</value>
   </data>
   <data name="comboxADCP_Port.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 17</value>
+  </data>
+  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 20</value>
+  </data>
+  <data name="comboBoxADCP_Baudrate.Items6" xml:space="preserve">
+    <value>230400</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -156,17 +162,11 @@
   <data name="comboBoxADCP_Baudrate.Items5" xml:space="preserve">
     <value>115200</value>
   </data>
-  <data name="&gt;&gt;btnADCPconnect.Name" xml:space="preserve">
-    <value>btnADCPconnect</value>
-  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>8, 16</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="comboxADCP_Port.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 24</value>
+  <data name="comboBoxADCP_Baudrate.Items3" xml:space="preserve">
+    <value>19200</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -174,23 +174,26 @@
   <data name="&gt;&gt;comboBoxADCP_Baudrate.Name" xml:space="preserve">
     <value>comboBoxADCP_Baudrate</value>
   </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="comboBoxADCP_Baudrate.Items1" xml:space="preserve">
     <value>4800</value>
   </data>
+  <data name="&gt;&gt;btnADCPconnect.Name" xml:space="preserve">
+    <value>btnADCPconnect</value>
+  </data>
   <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="comboBoxADCP_Baudrate.Items" xml:space="preserve">
-    <value>2400</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="btnADCPconnect.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 25</value>
+  </data>
+  <data name="comboBoxADCP_Baudrate.Items" xml:space="preserve">
+    <value>2400</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -201,23 +204,26 @@
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
   </data>
-  <data name="btnCancel.Text" xml:space="preserve">
-    <value>取消</value>
-  </data>
   <data name="&gt;&gt;btnADCPconnect.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+    <value>SimSun, 12pt</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>波特率：</value>
   </data>
-  <data name="comboBoxADCP_Baudrate.Items3" xml:space="preserve">
-    <value>19200</value>
+  <data name="&gt;&gt;comboBoxADCP_Baudrate.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnADCPconnect.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -229,10 +235,13 @@
     <value>91, 24</value>
   </data>
   <data name="btnADCPconnect.Font" type="System.Drawing.Font, System.Drawing">
-    <value>宋体, 12pt</value>
+    <value>SimSun, 12pt</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="comboBoxADCP_Baudrate.Items8" xml:space="preserve">
+    <value>921600</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -258,17 +267,11 @@
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
   </data>
   <data name="&gt;&gt;comboxADCP_Port.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="comboBoxADCP_Baudrate.Items2" xml:space="preserve">
-    <value>9600</value>
   </data>
   <data name="comboBoxADCP_Baudrate.Items4" xml:space="preserve">
     <value>38400</value>
@@ -303,6 +306,9 @@
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 16</value>
   </data>
+  <data name="comboBoxADCP_Baudrate.Items2" xml:space="preserve">
+    <value>9600</value>
+  </data>
   <data name="comboBoxADCP_Baudrate.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
@@ -312,17 +318,20 @@
   <data name="&gt;&gt;comboBoxADCP_Baudrate.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>229, 124</value>
+  <data name="btnADCPconnect.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
-  <data name="&gt;&gt;comboBoxADCP_Baudrate.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>取消</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 20</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmSetCmd</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
