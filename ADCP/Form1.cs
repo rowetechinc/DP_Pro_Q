@@ -439,7 +439,7 @@ namespace ADCP
                 //}
 
             }
-            catch (Exception ex) //LPJ 2013-6-11
+            catch //(Exception ex) //LPJ 2013-6-11
             {
                 MessageBox.Show(Resource1.String20);
             }
@@ -513,7 +513,6 @@ namespace ADCP
                 this.tabControl1.SelectedIndex = dPageNumbers - 1; //LPJ 2013-6-7
                 dp300_playback.Add(dp300_wnd); //LPJ 2013-7-1
             }
-
         }
 
         private void toolStripBtnSetting_Click(object sender, EventArgs e)
@@ -737,7 +736,7 @@ namespace ADCP
                     }
                 }
             }
-            catch (Exception ee)
+            catch //(Exception ee)
             {
                 //MessageBox.Show(ee.Message);
             }
@@ -855,7 +854,7 @@ namespace ADCP
                     }
                 }
             }
-            catch (Exception ee)
+            catch //(Exception ee)
             {
                 //MessageBox.Show(ee.Message);
             }
@@ -1171,7 +1170,7 @@ namespace ADCP
                     // Set the BackColor of the MdiClient control.
                     ctlMDI.BackColor = this.BackColor;
                 }
-                catch (InvalidCastException exc)
+                catch //(InvalidCastException exc)
                 {
                     // Catch and ignore the error if casting failed.
                 }

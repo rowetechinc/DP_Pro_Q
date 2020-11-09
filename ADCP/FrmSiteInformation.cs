@@ -76,7 +76,7 @@ namespace ADCP
             //comboBoxControlCode3.SelectedIndex = site.ControlCode3;
         }
 
-        public SiteInformation siteInfo;
+        public static SiteInformation siteInfo;
         public struct SiteInformation
         {
             public string siteName;

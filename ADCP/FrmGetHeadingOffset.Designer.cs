@@ -32,9 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGetHeadingOffset));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.comboBox_RS232 = new System.Windows.Forms.ComboBox();
-            this.comboBox_RS485 = new System.Windows.Forms.ComboBox();
             this.label_RS232 = new System.Windows.Forms.Label();
-            this.label_RS485 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.textBoxHeadingOffset = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -58,33 +56,15 @@
             resources.GetString("comboBox_RS232.Items2"),
             resources.GetString("comboBox_RS232.Items3"),
             resources.GetString("comboBox_RS232.Items4"),
-            resources.GetString("comboBox_RS232.Items5")});
+            resources.GetString("comboBox_RS232.Items5"),
+            resources.GetString("comboBox_RS232.Items6")});
             resources.ApplyResources(this.comboBox_RS232, "comboBox_RS232");
             this.comboBox_RS232.Name = "comboBox_RS232";
-            // 
-            // comboBox_RS485
-            // 
-            this.comboBox_RS485.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_RS485.FormattingEnabled = true;
-            this.comboBox_RS485.Items.AddRange(new object[] {
-            resources.GetString("comboBox_RS485.Items"),
-            resources.GetString("comboBox_RS485.Items1"),
-            resources.GetString("comboBox_RS485.Items2"),
-            resources.GetString("comboBox_RS485.Items3"),
-            resources.GetString("comboBox_RS485.Items4"),
-            resources.GetString("comboBox_RS485.Items5")});
-            resources.ApplyResources(this.comboBox_RS485, "comboBox_RS485");
-            this.comboBox_RS485.Name = "comboBox_RS485";
             // 
             // label_RS232
             // 
             resources.ApplyResources(this.label_RS232, "label_RS232");
             this.label_RS232.Name = "label_RS232";
-            // 
-            // label_RS485
-            // 
-            resources.ApplyResources(this.label_RS485, "label_RS485");
-            this.label_RS485.Name = "label_RS485";
             // 
             // btnStart
             // 
@@ -142,9 +122,7 @@
             this.Controls.Add(this.textBoxHeadingOffset);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.comboBox_RS232);
-            this.Controls.Add(this.comboBox_RS485);
             this.Controls.Add(this.label_RS232);
-            this.Controls.Add(this.label_RS485);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmGetHeadingOffset";
@@ -158,9 +136,7 @@
 
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ComboBox comboBox_RS232;
-        private System.Windows.Forms.ComboBox comboBox_RS485;
         private System.Windows.Forms.Label label_RS232;
-        private System.Windows.Forms.Label label_RS485;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.TextBox textBoxHeadingOffset;
         private System.Windows.Forms.Button btnCancel;

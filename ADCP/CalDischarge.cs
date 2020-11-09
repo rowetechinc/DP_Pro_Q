@@ -468,7 +468,7 @@ namespace ADCP
                 double dRightShoreCoff = conf.RightBankPara; //LPJ 2012-7-9 //LPJ 2013-4-12
                 dRightShoreArea = CalculateShoreArea(dRightShoreAvgDepth, dRightShoreWidth, dRightShoreCoff);
             }
-            catch (System.Exception ex)
+            catch //(System.Exception ex)
             {
 
             }

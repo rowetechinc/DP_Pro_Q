@@ -20,7 +20,7 @@ namespace ADCP
         public bool bSetFinishBank; //判断是否采用新输入的岸边参数
         public String strFinishDistance;
         public int iFinishStyle;
-        public decimal dFinishPara;
+        public static decimal dFinishPara;
 
         private void btnOK_Click(object sender, EventArgs e)
         {

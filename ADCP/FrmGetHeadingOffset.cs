@@ -41,19 +41,11 @@ namespace ADCP
                     return false;
                 }
 
-                if (comboBox_RS485.Text != "" || comboBox_RS485.Text != null)
-                {
-                    return false;
-                }
-
                 //发送“CHS 2”命令
                 sp.Write("CHS 2" + '\r');
                 Thread.Sleep(150);
 
                 sp.Write("C232B " + comboBox_RS232.Text + '\r');
-                Thread.Sleep(150);
-             
-                sp.Write("C485B " + comboBox_RS485.Text + '\r');
                 Thread.Sleep(150);
 
                 sp.Write("START" + '\r');

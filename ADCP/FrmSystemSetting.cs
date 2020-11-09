@@ -12,7 +12,7 @@ namespace ADCP
 {
     public partial class FrmSystemSetting : Form
     {
-        public FrmSystemSetting(SystemSetting systSet, int iSystemNumber, bool bPlayback, SerialPort _sp)
+        public FrmSystemSetting(SystemSetting systSet, bool bPlayback, SerialPort _sp)
         {
             InitializeComponent();
 
@@ -24,237 +24,148 @@ namespace ADCP
             {
                 //comboBoxHeadingRef.Enabled = false; //LPJ2016-8-16 回放时，艏向参考可更改
                 comboBoxMeasMode.Enabled = false;
-                comboBoxStandardMode.Enabled = false;
-                textBoxHeadingOffset.Enabled = false; //LPJ 2014-6-16
-                textBoxSalinity.Enabled = false; //LPJ 2014-6-16
+                //comboBoxStandardMode.Enabled = false;
+                textHeadingOffset.Enabled = false; //LPJ 2014-6-16
+                textWaterSalinity.Enabled = false; //LPJ 2014-6-16
 
                 comboBox_RS232.Enabled = false;
-                comboBox_RS485.Enabled = false;
             }
 
             comboBox_RS232.SelectedIndex = 5;
-            comboBox_RS485.SelectedIndex = 5;
-
-            systemNumber = iSystemNumber; //LPJ 2013-10-9
-
-            //comboBox_RS485.Text = sp.BaudRate.ToString();//defaultSP.BaudRate;
 
             GetReference(systSet);
         }
-
         private SerialPort sp; //LPJ 2016-5-19
 
-        private int systemNumber = 0;
-        private bool bPlayBackMode = false; //标记是否为回放模式
+        
+        private bool bPlayBackMode = false; //标记是否为回放模式 //Whether the mark is in playback mode
 
         private bool bEnglish = false;
         private void GetReference(SystemSetting systSet)
         {
-            setAdvanced = systSet.Advancedstruct;
             bEnglish = systSet.bEnglishUnit;
-
-            //comboBoxFlowRef.SelectedIndex = systSet.iFlowRef; //LPJ 2013-7-24 cancel
+            
             comboBoxHeadingRef.SelectedIndex = systSet.iHeadingRef;
-            comboBoxMeasMode.SelectedIndex = systSet.iMeasMode;
-            comboBoxVesselSpeedRef.SelectedIndex = systSet.iVesselRef;
-            textBoxSalinity.Text = systSet.dSalinity.ToString(); //LPJ 2014-6-16
-            textBoxHeadingOffset.Text = systSet.dHeadingOffset.ToString(); //LPJ 2014-6-16
+            comboBoxVesselSpeedRef.SelectedIndex = systSet.iSpeedRef;
+            textWaterSalinity.Text = systSet.dSalinity.ToString(); //LPJ 2014-6-16
+            textHeadingOffset.Text = systSet.dHeadingOffset.ToString(); //LPJ 2014-6-16
             textBoxTransducerDepth.Text = systSet.dTransducerDepth.ToString();
-            comboBoxStandardMode.SelectedIndex = systSet.iStandardMode;
+            
       
             if (systSet.bEnglishUnit)
             {
                 label6.Text = "(ft)";
-
-                if (1200 == systSet.iInstrumentTypes) //LPJ 2013-8-1
-                {
-                    comboBoxStandardMode.Items[0] = Resource1.String287 + "(" + Resource1.String238 + " < 4.8ft)";
-                    comboBoxStandardMode.Items[1] = Resource1.String124 + "(" + Resource1.String238 + " < 16ft)";
-                    comboBoxStandardMode.Items[2] = Resource1.String125 + "(" + Resource1.String238 + " < 32ft)";
-                    comboBoxStandardMode.Items[3] = Resource1.String126 + "(" + Resource1.String238 + " < 98ft)";
-                }
-                else if (600 == systSet.iInstrumentTypes) //LPJ 2013-8-1
-                {
-                    comboBoxStandardMode.Items[0] = Resource1.String124 + "(" + Resource1.String238 + " < 32ft)";
-                    comboBoxStandardMode.Items[1] = Resource1.String125 + "(" + Resource1.String238 + " < 98ft)";
-                    comboBoxStandardMode.Items[2] = Resource1.String126 + "(" + Resource1.String238 + " < 164ft)";
-                    comboBoxStandardMode.Items[3] = "";
-                }
-                else if (300 == systSet.iInstrumentTypes) //LPJ 2013-8-1
-                {
-                    comboBoxStandardMode.Items[0] = Resource1.String124 + "(" + Resource1.String238 + " < 64ft)";
-                    comboBoxStandardMode.Items[1] = Resource1.String125 + "(" + Resource1.String238 + " < 164ft)";
-                    comboBoxStandardMode.Items[2] = Resource1.String126 + "(" + Resource1.String238 + " < 320ft)";
-                    comboBoxStandardMode.Items[3] = "";
-                }
-                else //针对不属于300、600、1200 的仪器
-                {
-                    comboBoxStandardMode.Items[0] = Resource1.String124 + "(" + Resource1.String238 + " < 164ft)";
-                    comboBoxStandardMode.Items[1] = Resource1.String125 + "(" + Resource1.String238 + " < 320ft)";
-                    comboBoxStandardMode.Items[2] = Resource1.String126 + "(" + Resource1.String238 + " < 640ft)";
-                    comboBoxStandardMode.Items[3] = "";
-                }
+                label16.Text = "(ft)";
             }
             else
             {
                 label6.Text = "(m)";
-
-                if (1200 == systSet.iInstrumentTypes) //LPJ 2013-8-1
-                {
-                    comboBoxStandardMode.Items[0] = Resource1.String287 + "(" + Resource1.String238 + " < 1.5m)";
-                    comboBoxStandardMode.Items[1] = Resource1.String124 + "(" + Resource1.String238 + " < 5m)";
-                    comboBoxStandardMode.Items[2] = Resource1.String125 + "(" + Resource1.String238 + " < 10m)";
-                    comboBoxStandardMode.Items[3] = Resource1.String126 + "(" + Resource1.String238 + " < 30m)";
-                }
-                else if (600 == systSet.iInstrumentTypes) //LPJ 2013-8-1
-                {
-                    comboBoxStandardMode.Items[0] = Resource1.String124 + "(" + Resource1.String238 + " < 10m)";
-                    comboBoxStandardMode.Items[1] = Resource1.String125 + "(" + Resource1.String238 + " < 30m)";
-                    comboBoxStandardMode.Items[2] = Resource1.String126 + "(" + Resource1.String238 + " < 50m)";
-                    comboBoxStandardMode.Items[3] ="";
-                }
-                else if (300 == systSet.iInstrumentTypes) //LPJ 2013-8-1
-                {
-                    comboBoxStandardMode.Items[0] = Resource1.String124 + "(" + Resource1.String238 + " < 20m)";
-                    comboBoxStandardMode.Items[1] = Resource1.String125 + "(" + Resource1.String238 + " < 50m)";
-                    comboBoxStandardMode.Items[2] = Resource1.String126 + "(" + Resource1.String238 + " < 100m)";
-                    comboBoxStandardMode.Items[3] = "";
-                }
-                else //针对不属于300、600、1200 的仪器
-                {
-                    comboBoxStandardMode.Items[0] = Resource1.String124 + "(" + Resource1.String238 + " < 50m)";
-                    comboBoxStandardMode.Items[1] = Resource1.String125 + "(" + Resource1.String238 + " < 100m)";
-                    comboBoxStandardMode.Items[2] = Resource1.String126 + "(" + Resource1.String238 + " < 200m)";
-                    comboBoxStandardMode.Items[3] ="";
-                }
+                label16.Text = "(m)";
             }
         }
-
-        private CAdvancedCfg.AdvancedConfiguration setAdvanced = new CAdvancedCfg.AdvancedConfiguration();
         private void btnOK_Click(object sender, EventArgs e)
         {
             //systemSet.iFlowRef = comboBoxFlowRef.SelectedIndex;
             systemSet.iHeadingRef = comboBoxHeadingRef.SelectedIndex;
-            systemSet.iMeasMode = comboBoxMeasMode.SelectedIndex;
-
+            systemSet.dHeadingOffset = double.Parse(textHeadingOffset.Text);
             systemSet.strRS232 = comboBox_RS232.Text;
-            systemSet.strRS485 = comboBox_RS485.Text;
 
-            systemSet.iVesselRef = comboBoxVesselSpeedRef.SelectedIndex;
+            systemSet.iSpeedRef = comboBoxVesselSpeedRef.SelectedIndex;
 
-            //if (1 == systemSet.iVesselRef) //LPJ 2013-9-13
-            //{
-            //    if (textBoxHeadingOffset.Text != "")
-            //        systemSet.dHeadingOffset = double.Parse(textBoxHeadingOffset.Text); //LPJ 2013-9-13
-            //    else
-            //        systemSet.dHeadingOffset = 0; //LPJ 2013-9-13
-            //}
-            //else
-            //    systemSet.dHeadingOffset = 0; //LPJ 2013-9-13
+            //Bottom Tracking
+            //GPS VTG
+            //No Reference
+            //GPS GGA
 
-            systemSet.dSalinity = double.Parse(textBoxSalinity.Text); //LPJ 2014-6-16
-            systemSet.dHeadingOffset = double.Parse(textBoxHeadingOffset.Text); //LPJ 2014-6-16
+            systemSet.dSalinity = double.Parse(textWaterSalinity.Text); //LPJ 2014-6-16
+            
 
             systemSet.dTransducerDepth = double.Parse(textBoxTransducerDepth.Text);
-            systemSet.iStandardMode = comboBoxStandardMode.SelectedIndex;
 
-            if (0 == comboBoxMeasMode.SelectedIndex)
-                systemSet.Advancedstruct = setAdvanced; //LPJ 2013-8-6
+            systemSet.dSpeedOfSound = double.Parse(textSoundSpeed.Text);
 
-            //systemSet.iMeasMode
-            //labelMeasMode.Text = comboBoxStandardMode.Text;
 
 
         }
 
-        public SystemSetting systemSet;
+        public static SystemSetting systemSet;
         public struct SystemSetting
         {
             //public int iFlowRef;
-            public int iVesselRef;
-            //public double dHeadingOffset; //LPJ 2013-9-13
+            public int iSpeedRef;
+            
             public int iHeadingRef;
+            public string strRS232;
+
+            public double dSalinity;
+            public double dWaterTemperature;
+            public double dSpeedOfSound;
             public double dTransducerDepth;
-            public double dSalinity; //LPJ 2014-6-16
-            public double dHeadingOffset; //LPJ 2014-6-16
-            public int iMeasMode;
-            public int iStandardMode; //用户模式
-            public bool bEnglishUnit; //LPJ 2013-7-1 单位设置
-            public int iInstrumentTypes; //LPJ 2013-8-1 设置不同的仪器类型
-            public CAdvancedCfg.AdvancedConfiguration Advancedstruct; //专家模式
 
-            public string strRS232; //LPJ 2013-7-30 当用户选择外接罗盘时，串口波特率
-            public string strRS485;//LPJ 2013-7-30 当用户选择外接罗盘时，串口波特率
-        }
+            public double dMaxMeasurmentDepth;
+            public double dHeadingOffset;
 
-        private void comboBoxMeasMode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!bPlayBackMode)
-            {
-                switch (comboBoxMeasMode.SelectedIndex)
-                {
-                    case 0:// == comboBoxMeasMode.SelectedIndex)
-                    case 2:
-                        comboBoxStandardMode.Visible = true;
-                        break;
-                    case 1:
-                        comboBoxStandardMode.Visible = false;
-
-                        FrmAdvancedMode frmadvancedMode = new FrmAdvancedMode(setAdvanced, bEnglish, 0, bPlayBackMode, sp);
-                        frmadvancedMode.BringToFront();
-                        if (DialogResult.OK == frmadvancedMode.ShowDialog())
-                        {
-                            systemSet.Advancedstruct = frmadvancedMode.advancedConf;
-
-                        }
-                        else
-                        {
-                            systemSet.Advancedstruct = setAdvanced; //LPJ 2013-8-5 
-                            comboBoxMeasMode.SelectedIndex = 0;
-                            comboBoxStandardMode.Visible = true;
-                        }
-                        break;                    
-                }
-            }
-            else
-            {
-                if (1 == comboBoxMeasMode.SelectedIndex)
-                {
-                    linkLabelCheckAdvanced.Visible = true;
-                    linkLabelCheckAdvanced.Enabled = true;
-                }
-                else
-                {
-                    linkLabelCheckAdvanced.Visible = false;
-                    linkLabelCheckAdvanced.Enabled = false;
-                }
-            }
+            public bool bEnglishUnit;
+            public int iInstrumentTypes;
         }
  
         ClassValidateInPut validateInput = new ClassValidateInPut();
-        private void textBox_TextChanged(object sender, EventArgs e)
+
+        private void TheTextChanged(object sender, EventArgs e)
         {
             btnOK.Enabled = true;
+            //
             if (!validateInput.ValidateUserInput(textBoxTransducerDepth.Text, 10))
             {
                 ToolTip tooltip1 = new ToolTip();
                 tooltip1.Show(Resource1.String76, textBoxTransducerDepth);
                 btnOK.Enabled = false;
+                textBoxTransducerDepth.BackColor = Color.Red;
             }
-           
-            if (!validateInput.ValidateUserInput(textBoxSalinity.Text, 10))
+            else
+            {
+                textBoxTransducerDepth.BackColor = Color.White;
+                systemSet.dTransducerDepth = double.Parse(textBoxTransducerDepth.Text);
+            }
+            //
+            if (!validateInput.ValidateUserInput(textWaterSalinity.Text, 10))
             {
                 ToolTip tooltip1 = new ToolTip();
-                tooltip1.Show(Resource1.String76, textBoxSalinity);
+                tooltip1.Show(Resource1.String76, textWaterSalinity);
                 btnOK.Enabled = false;
+                textWaterSalinity.BackColor = Color.Red;
             }
+            else
+            {
+                textWaterSalinity.BackColor = Color.White;
+                systemSet.dSalinity = double.Parse(textWaterSalinity.Text);
+            }
+            //
+            if (!validateInput.ValidateUserInput(textHeadingOffset.Text, 7))
+            {
+                ToolTip tooltip1 = new ToolTip();
+                tooltip1.Show(Resource1.String80, textHeadingOffset);
+                btnOK.Enabled = false;
+                textHeadingOffset.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textHeadingOffset.Text) > 180 || double.Parse(textHeadingOffset.Text) < -180)
+                {
+                    ToolTip tooltip1 = new ToolTip();
+                    tooltip1.Show(Resource1.String80, textHeadingOffset);
+                    btnOK.Enabled = false;
+                    textHeadingOffset.BackColor = Color.Red;
+                }
+                else
+                {
+                    textHeadingOffset.BackColor = Color.White;
+                    systemSet.dHeadingOffset = double.Parse(textHeadingOffset.Text);
+                }
+            }
+            //
+
         }
-
-        //private void textBoxTransducerDepth_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    e.Handled = validateInput.ValidateCharInput(e.KeyChar, ((TextBox)sender).Text);
-
-        //}
 
         private void comboBoxHeadingRef_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -262,15 +173,12 @@ namespace ADCP
             {
                 comboBox_RS232.Enabled = false;
                 label_RS232.Enabled = false;
-                label_RS485.Enabled = false;
-                comboBox_RS485.Enabled = false;
-
                 if (1 == comboBoxVesselSpeedRef.SelectedIndex || 3 == comboBoxVesselSpeedRef.SelectedIndex)
                 {
-                    textBoxHeadingOffset.Enabled = true;
+                    textHeadingOffset.Enabled = true;
                 }
                 else
-                    textBoxHeadingOffset.Enabled = false;
+                    textHeadingOffset.Enabled = false;
             }
             else
             {
@@ -278,109 +186,63 @@ namespace ADCP
                 {
                     comboBox_RS232.Enabled = false;
                     label_RS232.Enabled = false;
-                    label_RS485.Enabled = false;
-                    comboBox_RS485.Enabled = false;
                 }
                 else
                 {
                     comboBox_RS232.Enabled = true;
                     label_RS232.Enabled = true;
-                    label_RS485.Enabled = true;
-                    comboBox_RS485.Enabled = true;
                 }
-                textBoxHeadingOffset.Enabled = true;
+                textHeadingOffset.Enabled = true;
             }
         }
-
         private void comboBoxVesselSpeedRef_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (1 == comboBoxVesselSpeedRef.SelectedIndex || 3 == comboBoxVesselSpeedRef.SelectedIndex)
             {
-                textBoxHeadingOffset.Enabled = true;
+                textHeadingOffset.Enabled = true;
             }
             else
             {
                 if (1 == comboBoxHeadingRef.SelectedIndex)
-                    textBoxHeadingOffset.Enabled = true;
+                    textHeadingOffset.Enabled = true;
                 else
-                    textBoxHeadingOffset.Enabled = false;
+                    textHeadingOffset.Enabled = false;
             }
 
         }
-
-        private void textBoxHeadingOffset_TextChanged(object sender, EventArgs e)
+        
+        private void textWaterSalinity_TextChanged(object sender, EventArgs e)
         {
-            if (!validateInput.ValidateUserInput(textBoxHeadingOffset.Text, 7))
-            {
-                ToolTip tooltip1 = new ToolTip();
-                tooltip1.Show(Resource1.String80, textBoxHeadingOffset);
-                btnOK.Enabled = false;
-            }
-            else
-            {
-                if (double.Parse(textBoxHeadingOffset.Text) > 180 || double.Parse(textBoxHeadingOffset.Text) < -180)
-                {
-                    ToolTip tooltip1 = new ToolTip();
-                    tooltip1.Show(Resource1.String80, textBoxHeadingOffset);
-                    btnOK.Enabled = false;
-                }
-                else
-                    btnOK.Enabled = true;
-            }
+            TheTextChanged(sender, e);
         }
-
-        private void textBoxHeadingOffset_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxTransducerDepth_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = validateInput.ValidateFloatInput(e.KeyChar, ((TextBox)sender).Text);
-
+            TheTextChanged(sender, e);
         }
 
-        /// <summary>
-        /// 在回放模式下，查看专家配置参数
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void labelCheckAdvanced_Click(object sender, EventArgs e)
+        private void comboBox_RS232_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                FrmAdvancedMode frmadvancedMode = new FrmAdvancedMode(setAdvanced, bEnglish, 0, bPlayBackMode,sp);
-                frmadvancedMode.ShowDialog();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            TheTextChanged(sender, e);
         }
 
-        /// <summary>
-        /// 在回放模式下，查看专家配置参数
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void linkLabelCheckAdvanced_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void textWaterTemperature_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                FrmAdvancedMode frmadvancedMode = new FrmAdvancedMode(setAdvanced, bEnglish, 0, bPlayBackMode,sp);
-                frmadvancedMode.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            TheTextChanged(sender, e);
         }
 
-        private void textBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void textSoundSpeed_TextChanged(object sender, EventArgs e)
         {
-            e.Handled = validateInput.ValidateCharInput(e.KeyChar, ((TextBox)sender).Text);
+            TheTextChanged(sender, e);
         }
 
-        private void textBoxSalinity_TextChanged(object sender, EventArgs e)
+        private void textBoxMaxDepth_TextChanged(object sender, EventArgs e)
         {
-
+            TheTextChanged(sender, e);
         }
 
-
+        private void textHeadingOffset_TextChanged(object sender, EventArgs e)
+        {
+            TheTextChanged(sender, e);
+        }
     }
 }

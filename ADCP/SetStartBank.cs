@@ -22,7 +22,7 @@ namespace ADCP
         public bool bStartLeftBank;
         public String strStartDistance;
         public int iStartStyle;  //起始岸类型
-        public decimal dStartPara;   //起始岸参数
+        public static decimal dStartPara;   //起始岸参数
 
 
         private void btnOK_Click(object sender, EventArgs e)

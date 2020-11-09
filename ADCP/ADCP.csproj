@@ -114,11 +114,9 @@
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
     <Compile Include="CAdcpCommands.cs" />
-    <Compile Include="CAdvancedCfg.cs" />
     <Compile Include="CalDischarge.cs" />
     <Compile Include="CDecodeEnsemble.cs" />
     <Compile Include="CDecodeGPS.cs" />
-    <Compile Include="CDefault.cs" />
     <Compile Include="CEffectiveNumber.cs" />
     <Compile Include="CGetHeadingOffset.cs" />
     <Compile Include="ClassDrawSerialTime.cs" />
@@ -140,12 +138,6 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmAdvancedMode.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmAdvancedMode.Designer.cs">
-      <DependentUpon>FrmAdvancedMode.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmBeamCheck.cs">
       <SubType>Form</SubType>
@@ -358,15 +350,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormConnect.en.resx">
       <DependentUpon>FormConnect.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmAdvancedMode.en.resx">
-      <DependentUpon>FrmAdvancedMode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmAdvancedMode.resx">
-      <DependentUpon>FrmAdvancedMode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmAdvancedMode.zh.resx">
-      <DependentUpon>FrmAdvancedMode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBeamCheck.resx">
       <DependentUpon>FrmBeamCheck.cs</DependentUpon>

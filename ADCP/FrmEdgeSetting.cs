@@ -70,7 +70,7 @@ namespace ADCP
             textBoxRightDis.Text = edgeSetting.dRightDis.ToString();
         }
 
-        public EdgeSetting edgeSet;
+        public static EdgeSetting edgeSet;
         public struct EdgeSetting
         {
             public bool bEnglishUnit; //LPJ 2013-7-1
@@ -131,7 +131,7 @@ namespace ADCP
                     btnOK.Enabled = false;
                 }
             }
-            catch(Exception ee)
+            catch//(Exception ee)
             {
             }
         }

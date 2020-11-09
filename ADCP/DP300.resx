@@ -155,6 +155,25 @@
   <data name="panel17.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="radioBtnInternalGPS.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="radioBtnInternalGPS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioBtnInternalGPS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 14</value>
+  </data>
+  <data name="radioBtnInternalGPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 17</value>
+  </data>
+  <data name="radioBtnInternalGPS.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="radioBtnInternalGPS.Text" xml:space="preserve">
+    <value>Internal GPS</value>
+  </data>
   <data name="&gt;&gt;radioBtnInternalGPS.Name" xml:space="preserve">
     <value>radioBtnInternalGPS</value>
   </data>
@@ -166,6 +185,24 @@
   </data>
   <data name="&gt;&gt;radioBtnInternalGPS.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="radioBtnExternalGPS.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioBtnExternalGPS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioBtnExternalGPS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 14</value>
+  </data>
+  <data name="radioBtnExternalGPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 17</value>
+  </data>
+  <data name="radioBtnExternalGPS.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="radioBtnExternalGPS.Text" xml:space="preserve">
+    <value>External GPS</value>
   </data>
   <data name="&gt;&gt;radioBtnExternalGPS.Name" xml:space="preserve">
     <value>radioBtnExternalGPS</value>
@@ -206,7 +243,6 @@
   <data name="checkBoxGetHeadingOffset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxGetHeadingOffset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -214,13 +250,13 @@
     <value>58, 776</value>
   </data>
   <data name="checkBoxGetHeadingOffset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 17</value>
+    <value>117, 17</value>
   </data>
   <data name="checkBoxGetHeadingOffset.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
   </data>
   <data name="checkBoxGetHeadingOffset.Text" xml:space="preserve">
-    <value>仪器校准</value>
+    <value>Get Heading Offset</value>
   </data>
   <data name="checkBoxGetHeadingOffset.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1179,24 +1215,6 @@
   <data name="&gt;&gt;linkLabelSiteInfor.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <data name="labelInstrumentSN.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelInstrumentSN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelInstrumentSN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 43</value>
-  </data>
-  <data name="labelInstrumentSN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 13</value>
-  </data>
-  <data name="labelInstrumentSN.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="labelInstrumentSN.Text" xml:space="preserve">
-    <value>SN</value>
-  </data>
   <data name="&gt;&gt;labelInstrumentSN.Name" xml:space="preserve">
     <value>labelInstrumentSN</value>
   </data>
@@ -1208,21 +1226,6 @@
   </data>
   <data name="&gt;&gt;labelInstrumentSN.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 43</value>
-  </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 13</value>
-  </data>
-  <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Instrument SN</value>
   </data>
   <data name="&gt;&gt;label18.Name" xml:space="preserve">
     <value>label18</value>
@@ -1236,24 +1239,6 @@
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="labelSystemNumber.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelSystemNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelSystemNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 64</value>
-  </data>
-  <data name="labelSystemNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 13</value>
-  </data>
-  <data name="labelSystemNumber.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="labelSystemNumber.Text" xml:space="preserve">
-    <value>SystemNumber</value>
-  </data>
   <data name="&gt;&gt;labelSystemNumber.Name" xml:space="preserve">
     <value>labelSystemNumber</value>
   </data>
@@ -1265,24 +1250,6 @@
   </data>
   <data name="&gt;&gt;labelSystemNumber.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="labelFirmWare.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelFirmWare.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelFirmWare.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 24</value>
-  </data>
-  <data name="labelFirmWare.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 13</value>
-  </data>
-  <data name="labelFirmWare.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="labelFirmWare.Text" xml:space="preserve">
-    <value>Firmware</value>
   </data>
   <data name="&gt;&gt;labelFirmWare.Name" xml:space="preserve">
     <value>labelFirmWare</value>
@@ -1296,24 +1263,6 @@
   <data name="&gt;&gt;labelFirmWare.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="labelSN.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelSN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelSN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>204, 5</value>
-  </data>
-  <data name="labelSN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>21, 13</value>
-  </data>
-  <data name="labelSN.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="labelSN.Text" xml:space="preserve">
-    <value>SP</value>
-  </data>
   <data name="&gt;&gt;labelSN.Name" xml:space="preserve">
     <value>labelSN</value>
   </data>
@@ -1325,24 +1274,6 @@
   </data>
   <data name="&gt;&gt;labelSN.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="label259.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label259.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label259.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 64</value>
-  </data>
-  <data name="label259.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 13</value>
-  </data>
-  <data name="label259.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label259.Text" xml:space="preserve">
-    <value>Instrument Types</value>
   </data>
   <data name="&gt;&gt;label259.Name" xml:space="preserve">
     <value>label259</value>
@@ -1356,24 +1287,6 @@
   <data name="&gt;&gt;label259.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="label260.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label260.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label260.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 24</value>
-  </data>
-  <data name="label260.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 13</value>
-  </data>
-  <data name="label260.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label260.Text" xml:space="preserve">
-    <value>Firmware Version</value>
-  </data>
   <data name="&gt;&gt;label260.Name" xml:space="preserve">
     <value>label260</value>
   </data>
@@ -1385,24 +1298,6 @@
   </data>
   <data name="&gt;&gt;label260.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="label261.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label261.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label261.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 5</value>
-  </data>
-  <data name="label261.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
-  <data name="label261.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label261.Text" xml:space="preserve">
-    <value>Serial Port</value>
   </data>
   <data name="&gt;&gt;label261.Name" xml:space="preserve">
     <value>label261</value>
@@ -1416,24 +1311,6 @@
   <data name="&gt;&gt;label261.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="linkLabelSettingTime.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="linkLabelSettingTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkLabelSettingTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 86</value>
-  </data>
-  <data name="linkLabelSettingTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 13</value>
-  </data>
-  <data name="linkLabelSettingTime.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="linkLabelSettingTime.Text" xml:space="preserve">
-    <value>Set time</value>
-  </data>
   <data name="&gt;&gt;linkLabelSettingTime.Name" xml:space="preserve">
     <value>linkLabelSettingTime</value>
   </data>
@@ -1446,27 +1323,6 @@
   <data name="&gt;&gt;linkLabelSettingTime.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="linkLabelCompassCalibration.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="linkLabelCompassCalibration.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="linkLabelCompassCalibration.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkLabelCompassCalibration.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 106</value>
-  </data>
-  <data name="linkLabelCompassCalibration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 13</value>
-  </data>
-  <data name="linkLabelCompassCalibration.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="linkLabelCompassCalibration.Text" xml:space="preserve">
-    <value>Compass calibration</value>
-  </data>
   <data name="&gt;&gt;linkLabelCompassCalibration.Name" xml:space="preserve">
     <value>linkLabelCompassCalibration</value>
   </data>
@@ -1478,24 +1334,6 @@
   </data>
   <data name="&gt;&gt;linkLabelCompassCalibration.ZOrder" xml:space="preserve">
     <value>9</value>
-  </data>
-  <data name="linkLabelGPSConf.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="linkLabelGPSConf.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkLabelGPSConf.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 86</value>
-  </data>
-  <data name="linkLabelGPSConf.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 13</value>
-  </data>
-  <data name="linkLabelGPSConf.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="linkLabelGPSConf.Text" xml:space="preserve">
-    <value>GPS Configuration</value>
   </data>
   <data name="&gt;&gt;linkLabelGPSConf.Name" xml:space="preserve">
     <value>linkLabelGPSConf</value>
@@ -1876,7 +1714,7 @@
     <value>0</value>
   </data>
   <data name="DP300Displayer.Text" xml:space="preserve">
-    <value>测流控制</value>
+    <value>Q Control</value>
   </data>
   <data name="&gt;&gt;DP300Displayer.Name" xml:space="preserve">
     <value>DP300Displayer</value>
@@ -1924,7 +1762,7 @@
     <value>6</value>
   </data>
   <data name="tabPageTrack.Text" xml:space="preserve">
-    <value>航迹</value>
+    <value>Navigation</value>
   </data>
   <data name="&gt;&gt;tabPageTrack.Name" xml:space="preserve">
     <value>tabPageTrack</value>
@@ -2020,7 +1858,7 @@
     <value>2</value>
   </data>
   <data name="tabPageData.Text" xml:space="preserve">
-    <value>数据</value>
+    <value>Data</value>
   </data>
   <data name="&gt;&gt;tabPageData.Name" xml:space="preserve">
     <value>tabPageData</value>
@@ -2056,7 +1894,7 @@
     <value>10</value>
   </data>
   <data name="tabPageSerialTime.Text" xml:space="preserve">
-    <value>时间序列</value>
+    <value>Time Series</value>
   </data>
   <data name="&gt;&gt;tabPageSerialTime.Name" xml:space="preserve">
     <value>tabPageSerialTime</value>
@@ -2123,66 +1961,6 @@
   </data>
   <data name="&gt;&gt;textBoxHelpTips.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="radioBtnInternalGPS.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioBtnInternalGPS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioBtnInternalGPS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 14</value>
-  </data>
-  <data name="radioBtnInternalGPS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 17</value>
-  </data>
-  <data name="radioBtnInternalGPS.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="radioBtnInternalGPS.Text" xml:space="preserve">
-    <value>内接GPS</value>
-  </data>
-  <data name="&gt;&gt;radioBtnInternalGPS.Name" xml:space="preserve">
-    <value>radioBtnInternalGPS</value>
-  </data>
-  <data name="&gt;&gt;radioBtnInternalGPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioBtnInternalGPS.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;radioBtnInternalGPS.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radioBtnExternalGPS.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioBtnExternalGPS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioBtnExternalGPS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 14</value>
-  </data>
-  <data name="radioBtnExternalGPS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 17</value>
-  </data>
-  <data name="radioBtnExternalGPS.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="radioBtnExternalGPS.Text" xml:space="preserve">
-    <value>外接GPS</value>
-  </data>
-  <data name="&gt;&gt;radioBtnExternalGPS.Name" xml:space="preserve">
-    <value>radioBtnExternalGPS</value>
-  </data>
-  <data name="&gt;&gt;radioBtnExternalGPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioBtnExternalGPS.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;radioBtnExternalGPS.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3383,6 +3161,336 @@
   </data>
   <data name="&gt;&gt;labelStep4.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="labelInstrumentSN.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelInstrumentSN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelInstrumentSN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 43</value>
+  </data>
+  <data name="labelInstrumentSN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 13</value>
+  </data>
+  <data name="labelInstrumentSN.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="labelInstrumentSN.Text" xml:space="preserve">
+    <value>SN</value>
+  </data>
+  <data name="&gt;&gt;labelInstrumentSN.Name" xml:space="preserve">
+    <value>labelInstrumentSN</value>
+  </data>
+  <data name="&gt;&gt;labelInstrumentSN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelInstrumentSN.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;labelInstrumentSN.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label18.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 43</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 13</value>
+  </data>
+  <data name="label18.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Instrument SN</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelSystemNumber.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelSystemNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelSystemNumber.Location" type="System.Drawing.Point, System.Drawing">
+    <value>200, 64</value>
+  </data>
+  <data name="labelSystemNumber.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 13</value>
+  </data>
+  <data name="labelSystemNumber.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="labelSystemNumber.Text" xml:space="preserve">
+    <value>SystemNumber</value>
+  </data>
+  <data name="&gt;&gt;labelSystemNumber.Name" xml:space="preserve">
+    <value>labelSystemNumber</value>
+  </data>
+  <data name="&gt;&gt;labelSystemNumber.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSystemNumber.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;labelSystemNumber.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="labelFirmWare.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelFirmWare.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelFirmWare.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 24</value>
+  </data>
+  <data name="labelFirmWare.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="labelFirmWare.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="labelFirmWare.Text" xml:space="preserve">
+    <value>Firmware</value>
+  </data>
+  <data name="&gt;&gt;labelFirmWare.Name" xml:space="preserve">
+    <value>labelFirmWare</value>
+  </data>
+  <data name="&gt;&gt;labelFirmWare.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelFirmWare.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;labelFirmWare.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelSN.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelSN.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelSN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>204, 5</value>
+  </data>
+  <data name="labelSN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 13</value>
+  </data>
+  <data name="labelSN.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="labelSN.Text" xml:space="preserve">
+    <value>SP</value>
+  </data>
+  <data name="&gt;&gt;labelSN.Name" xml:space="preserve">
+    <value>labelSN</value>
+  </data>
+  <data name="&gt;&gt;labelSN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelSN.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;labelSN.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label259.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label259.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label259.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 64</value>
+  </data>
+  <data name="label259.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 13</value>
+  </data>
+  <data name="label259.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label259.Text" xml:space="preserve">
+    <value>Instrument Types</value>
+  </data>
+  <data name="&gt;&gt;label259.Name" xml:space="preserve">
+    <value>label259</value>
+  </data>
+  <data name="&gt;&gt;label259.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label259.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;label259.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label260.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label260.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label260.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 24</value>
+  </data>
+  <data name="label260.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 13</value>
+  </data>
+  <data name="label260.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label260.Text" xml:space="preserve">
+    <value>Firmware Version</value>
+  </data>
+  <data name="&gt;&gt;label260.Name" xml:space="preserve">
+    <value>label260</value>
+  </data>
+  <data name="&gt;&gt;label260.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label260.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;label260.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label261.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label261.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label261.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 5</value>
+  </data>
+  <data name="label261.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="label261.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label261.Text" xml:space="preserve">
+    <value>Serial Port</value>
+  </data>
+  <data name="&gt;&gt;label261.Name" xml:space="preserve">
+    <value>label261</value>
+  </data>
+  <data name="&gt;&gt;label261.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label261.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;label261.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="linkLabelSettingTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="linkLabelSettingTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkLabelSettingTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>202, 86</value>
+  </data>
+  <data name="linkLabelSettingTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 13</value>
+  </data>
+  <data name="linkLabelSettingTime.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="linkLabelSettingTime.Text" xml:space="preserve">
+    <value>Set time</value>
+  </data>
+  <data name="&gt;&gt;linkLabelSettingTime.Name" xml:space="preserve">
+    <value>linkLabelSettingTime</value>
+  </data>
+  <data name="&gt;&gt;linkLabelSettingTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLabelSettingTime.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;linkLabelSettingTime.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="linkLabelCompassCalibration.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="linkLabelCompassCalibration.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="linkLabelCompassCalibration.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkLabelCompassCalibration.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 106</value>
+  </data>
+  <data name="linkLabelCompassCalibration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 13</value>
+  </data>
+  <data name="linkLabelCompassCalibration.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="linkLabelCompassCalibration.Text" xml:space="preserve">
+    <value>Compass calibration</value>
+  </data>
+  <data name="&gt;&gt;linkLabelCompassCalibration.Name" xml:space="preserve">
+    <value>linkLabelCompassCalibration</value>
+  </data>
+  <data name="&gt;&gt;linkLabelCompassCalibration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLabelCompassCalibration.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;linkLabelCompassCalibration.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="linkLabelGPSConf.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="linkLabelGPSConf.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkLabelGPSConf.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 86</value>
+  </data>
+  <data name="linkLabelGPSConf.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
+  </data>
+  <data name="linkLabelGPSConf.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="linkLabelGPSConf.Text" xml:space="preserve">
+    <value>GPS Configuration</value>
+  </data>
+  <data name="&gt;&gt;linkLabelGPSConf.Name" xml:space="preserve">
+    <value>linkLabelGPSConf</value>
+  </data>
+  <data name="&gt;&gt;linkLabelGPSConf.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLabelGPSConf.Parent" xml:space="preserve">
+    <value>panel28</value>
+  </data>
+  <data name="&gt;&gt;linkLabelGPSConf.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="labelStep3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5907,7 +6015,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 212</value>
+    <value>5, 204</value>
   </data>
   <data name="pictureBox_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5931,7 +6039,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 213</value>
+    <value>29, 205</value>
   </data>
   <data name="panel_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -5955,7 +6063,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_A.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-311, 0</value>
+    <value>-319, 0</value>
   </data>
   <data name="vScrollBar_W_A.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -6477,7 +6585,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 271</value>
+    <value>7, 263</value>
   </data>
   <data name="pictureBox_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6501,7 +6609,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 277</value>
+    <value>29, 269</value>
   </data>
   <data name="panel_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -6528,7 +6636,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_C.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-366, 0</value>
+    <value>-374, 0</value>
   </data>
   <data name="vScrollBar_W_C.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -11085,10 +11193,10 @@
     <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="GPSdepthPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 492</value>
+    <value>0, 484</value>
   </data>
   <data name="GPSdepthPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>652, 171</value>
+    <value>644, 171</value>
   </data>
   <data name="GPSdepthPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
