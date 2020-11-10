@@ -12,98 +12,89 @@ namespace ADCP
 {
     public partial class FrmSystemSetting : Form
     {
-        public FrmSystemSetting(SystemSetting systSet, bool bPlayback, SerialPort _sp)
+        public FrmSystemSetting(SerialPort _sp)
         {
             InitializeComponent();
-
-            bPlayBackMode = bPlayback; //LPJ 2014-2-19
-
-            sp = _sp; //LPJ 2016-4-8
-
-            if (bPlayback)  //LPJ 2013-11-20 当回放模式时，只能修改船速参考和换能器深度
-            {
-                //comboBoxHeadingRef.Enabled = false; //LPJ2016-8-16 回放时，艏向参考可更改
-                comboBoxMeasMode.Enabled = false;
-                //comboBoxStandardMode.Enabled = false;
-                textHeadingOffset.Enabled = false; //LPJ 2014-6-16
-                textWaterSalinity.Enabled = false; //LPJ 2014-6-16
-
-                comboBox_RS232.Enabled = false;
-            }
-
-            comboBox_RS232.SelectedIndex = 5;
-
-            GetReference(systSet);
+            sp = _sp;
+            GetReference();
         }
-        private SerialPort sp; //LPJ 2016-5-19
-
-        
-        private bool bPlayBackMode = false; //标记是否为回放模式 //Whether the mark is in playback mode
+        private SerialPort sp;
+        public static SystemSetting systSet;
 
         private bool bEnglish = false;
-        private void GetReference(SystemSetting systSet)
+        private void GetReference()
         {
+            CheckText();
+
             bEnglish = systSet.bEnglishUnit;
-            
-            comboBoxHeadingRef.SelectedIndex = systSet.iHeadingRef;
-            comboBoxVesselSpeedRef.SelectedIndex = systSet.iSpeedRef;
-            textWaterSalinity.Text = systSet.dSalinity.ToString(); //LPJ 2014-6-16
-            textHeadingOffset.Text = systSet.dHeadingOffset.ToString(); //LPJ 2014-6-16
-            textBoxTransducerDepth.Text = systSet.dTransducerDepth.ToString();
             
       
             if (systSet.bEnglishUnit)
             {
                 label6.Text = "(ft)";
                 label16.Text = "(ft)";
+                label22.Text = "(ft)";
+                label23.Text = "(ft)";
+                label18.Text = "(ft/s)";
             }
             else
             {
                 label6.Text = "(m)";
                 label16.Text = "(m)";
+                label22.Text = "(m)";
+                label23.Text = "(m)";
+                label18.Text = "(m/s)";
             }
         }
         private void btnOK_Click(object sender, EventArgs e)
-        {
+        {   
             //systemSet.iFlowRef = comboBoxFlowRef.SelectedIndex;
-            systemSet.iHeadingRef = comboBoxHeadingRef.SelectedIndex;
-            systemSet.dHeadingOffset = double.Parse(textHeadingOffset.Text);
-            systemSet.strRS232 = comboBox_RS232.Text;
-
-            systemSet.iSpeedRef = comboBoxVesselSpeedRef.SelectedIndex;
-
-            //Bottom Tracking
-            //GPS VTG
-            //No Reference
-            //GPS GGA
-
-            systemSet.dSalinity = double.Parse(textWaterSalinity.Text); //LPJ 2014-6-16
-            
-
-            systemSet.dTransducerDepth = double.Parse(textBoxTransducerDepth.Text);
-
-            systemSet.dSpeedOfSound = double.Parse(textSoundSpeed.Text);
-
-
-
+            /*
+            systSet.iHeadingRef = comboBoxHeadingRef.SelectedIndex;
+            systSet.strRS232 = comboBox_RS232.Text;
+            systSet.iSpeedRef = comboBoxVesselSpeedRef.SelectedIndex;
+            systSet.iMeasurmentMode = comboBoxMeasMode.SelectedIndex;
+            systSet.iVerticalBeam = comboBoxVerticalBeam.SelectedIndex;
+            systSet.iAutoBinSize= comboBoxAutoBinSize.SelectedIndex;
+            systSet.iWaterTemperatureSource= comboBox_waterTemperature.SelectedIndex;
+            systSet.iTransducerDepthSource = comboBox_TransducerDepth.SelectedIndex;
+            systSet.iSalinitySource = comboBox_Salinity.SelectedIndex;
+            systSet.iSpeedOfSoundSource = comboBox_SpeedOfSound.SelectedIndex;
+            */
         }
 
-        public static SystemSetting systemSet;
+        
         public struct SystemSetting
         {
             //public int iFlowRef;
             public int iSpeedRef;
-            
             public int iHeadingRef;
             public string strRS232;
+
+            public int iMeasurmentMode;
+            public int iVerticalBeam;
+            public int iAutoBinSize;
+            public int iAutoLag;
+            public int iWaterTemperatureSource;
+            public int iTransducerDepthSource;
+            public int iSalinitySource;
+            public int iSpeedOfSoundSource;
+
+            public int iBins;
+
+            public double dAveragingInterval;
+            public double dMaxMeasurementDepth;
+            public double dWpSwitchDepth;
+            public double dBtSwitchDepth;
+            public double dTransducerDepth;
+            public double dBtCorrelationThreshold;
+            public double dHeadingOffset;
+
+            public double dBtSNR;
 
             public double dSalinity;
             public double dWaterTemperature;
             public double dSpeedOfSound;
-            public double dTransducerDepth;
-
-            public double dMaxMeasurmentDepth;
-            public double dHeadingOffset;
 
             public bool bEnglishUnit;
             public int iInstrumentTypes;
@@ -111,40 +102,209 @@ namespace ADCP
  
         ClassValidateInPut validateInput = new ClassValidateInPut();
 
-        private void TheTextChanged(object sender, EventArgs e)
+        
+        public void CheckText()
         {
             btnOK.Enabled = true;
-            //
-            if (!validateInput.ValidateUserInput(textBoxTransducerDepth.Text, 10))
+
+            if (!validateInput.ValidateUserInput(textWaterSalinity.Text, 7))
             {
-                ToolTip tooltip1 = new ToolTip();
-                tooltip1.Show(Resource1.String76, textBoxTransducerDepth);
-                btnOK.Enabled = false;
-                textBoxTransducerDepth.BackColor = Color.Red;
-            }
-            else
-            {
-                textBoxTransducerDepth.BackColor = Color.White;
-                systemSet.dTransducerDepth = double.Parse(textBoxTransducerDepth.Text);
-            }
-            //
-            if (!validateInput.ValidateUserInput(textWaterSalinity.Text, 10))
-            {
-                ToolTip tooltip1 = new ToolTip();
-                tooltip1.Show(Resource1.String76, textWaterSalinity);
+                //ToolTip tooltip1 = new ToolTip();
+                //tooltip1.Show(Resource1.String80, textHeadingOffset);
                 btnOK.Enabled = false;
                 textWaterSalinity.BackColor = Color.Red;
             }
             else
             {
-                textWaterSalinity.BackColor = Color.White;
-                systemSet.dSalinity = double.Parse(textWaterSalinity.Text);
+                if ((double.Parse(textWaterSalinity.Text) >= 0) && (double.Parse(textWaterSalinity.Text) < 45))
+                {
+                    textWaterSalinity.BackColor = Color.White;
+                    systSet.dSalinity = double.Parse(textWaterSalinity.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textWaterSalinity.BackColor = Color.Red;
+                }
+            }
+            //
+            if (!validateInput.ValidateUserInput(textBoxTransducerDepth.Text, 10))
+            {
+                //ToolTip tooltip1 = new ToolTip();
+                //tooltip1.Show(Resource1.String76, textBoxTransducerDepth);
+                btnOK.Enabled = false;
+                textBoxTransducerDepth.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textBoxTransducerDepth.Text) > 0 && double.Parse(textBoxTransducerDepth.Text) < 100)
+                {
+                    textBoxTransducerDepth.BackColor = Color.White;
+                    systSet.dTransducerDepth = double.Parse(textBoxTransducerDepth.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textBoxTransducerDepth.BackColor = Color.Red;
+                }
+            }
+            //
+            if (!validateInput.ValidateUserInput(textWaterTemperature.Text, 7))
+            {
+                btnOK.Enabled = false;
+                textWaterTemperature.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textWaterTemperature.Text) > -10 && double.Parse(textWaterTemperature.Text) < 60)
+                {
+                    textWaterTemperature.BackColor = Color.White;
+                    systSet.dWaterTemperature = double.Parse(textWaterTemperature.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textWaterTemperature.BackColor = Color.Red;
+                }
+            }
+            //
+            if (!validateInput.ValidateUserInput(textSoundSpeed.Text, 7))
+            {
+                btnOK.Enabled = false;
+                textSoundSpeed.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textSoundSpeed.Text) > 1400 && double.Parse(textSoundSpeed.Text) < 1600)
+                {
+                    textSoundSpeed.BackColor = Color.White;
+                    systSet.dSpeedOfSound = double.Parse(textSoundSpeed.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textSoundSpeed.BackColor = Color.Red;
+                }
+            }
+            //
+            if (!validateInput.ValidateUserInput(textBoxMaxDepth.Text, 7))
+            {
+                btnOK.Enabled = false;
+                textBoxMaxDepth.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textBoxMaxDepth.Text) >= 2 && double.Parse(textBoxMaxDepth.Text) < 100)
+                {
+                    textBoxMaxDepth.BackColor = Color.White;
+                    systSet.dMaxMeasurementDepth = double.Parse(textBoxMaxDepth.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textBoxMaxDepth.BackColor = Color.Red;
+                }
+            }
+            //
+            if (!validateInput.ValidateUserInput(textBoxNumberOfBins.Text, 7))
+            {
+                btnOK.Enabled = false;
+                textBoxNumberOfBins.BackColor = Color.Red;
+            }
+            else
+            {
+                if (int.Parse(textBoxNumberOfBins.Text) > 1 && int.Parse(textBoxNumberOfBins.Text) < 257)
+                {
+                    textBoxNumberOfBins.BackColor = Color.White;
+                    systSet.iBins = int.Parse(textBoxNumberOfBins.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textBoxNumberOfBins.BackColor = Color.Red;
+                }
+            }
+            //
+            if (!validateInput.ValidateUserInput(textBoxWPaveragingInterval.Text, 7))
+            {
+                btnOK.Enabled = false;
+                textBoxWPaveragingInterval.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textBoxWPaveragingInterval.Text) > 0 && double.Parse(textBoxWPaveragingInterval.Text) <= 0.5)
+                {
+                    textBoxWPaveragingInterval.BackColor = Color.White;
+                    systSet.dAveragingInterval = double.Parse(textBoxWPaveragingInterval.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textBoxWPaveragingInterval.BackColor = Color.Red;
+                }
+            }
+            //
+            if (!validateInput.ValidateUserInput(textBoxWPswitchDepth.Text, 7))
+            {
+                btnOK.Enabled = false;
+                textBoxWPswitchDepth.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textBoxWPswitchDepth.Text) >= 2 && double.Parse(textBoxWPswitchDepth.Text) <= 20)
+                {
+                    textBoxWPswitchDepth.BackColor = Color.White;
+                    systSet.dWpSwitchDepth = double.Parse(textBoxWPswitchDepth.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textBoxWPswitchDepth.BackColor = Color.Red;
+                }
+            }
+            //
+            if (!validateInput.ValidateUserInput(textBoxBTswitchDepth.Text, 7))
+            {
+                btnOK.Enabled = false;
+                textBoxBTswitchDepth.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textBoxBTswitchDepth.Text) >= 2 && double.Parse(textBoxBTswitchDepth.Text) <= 50)
+                {
+                    textBoxBTswitchDepth.BackColor = Color.White;
+                    systSet.dBtSwitchDepth = double.Parse(textBoxBTswitchDepth.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textBoxBTswitchDepth.BackColor = Color.Red;
+                }
+            }
+            //
+            if (!validateInput.ValidateUserInput(BTST_Correlation_text.Text, 7))
+            {
+                btnOK.Enabled = false;
+                BTST_Correlation_text.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(BTST_Correlation_text.Text) >= 0.0 && double.Parse(BTST_Correlation_text.Text) <= 1.0)
+                {
+                    BTST_Correlation_text.BackColor = Color.White;
+                    systSet.dBtCorrelationThreshold = double.Parse(BTST_Correlation_text.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    BTST_Correlation_text.BackColor = Color.Red;
+                }
             }
             //
             if (!validateInput.ValidateUserInput(textHeadingOffset.Text, 7))
             {
-                ToolTip tooltip1 = new ToolTip();
-                tooltip1.Show(Resource1.String80, textHeadingOffset);
+                //ToolTip tooltip1 = new ToolTip();
+                //tooltip1.Show(Resource1.String80, textHeadingOffset);
                 btnOK.Enabled = false;
                 textHeadingOffset.BackColor = Color.Red;
             }
@@ -152,23 +312,59 @@ namespace ADCP
             {
                 if (double.Parse(textHeadingOffset.Text) > 180 || double.Parse(textHeadingOffset.Text) < -180)
                 {
-                    ToolTip tooltip1 = new ToolTip();
-                    tooltip1.Show(Resource1.String80, textHeadingOffset);
+                    //ToolTip tooltip1 = new ToolTip();
+                    //tooltip1.Show(Resource1.String80, textHeadingOffset);
                     btnOK.Enabled = false;
                     textHeadingOffset.BackColor = Color.Red;
                 }
                 else
                 {
                     textHeadingOffset.BackColor = Color.White;
-                    systemSet.dHeadingOffset = double.Parse(textHeadingOffset.Text);
+                    systSet.dHeadingOffset = double.Parse(textHeadingOffset.Text);
                 }
             }
             //
+            if (!validateInput.ValidateUserInput(textBoxBTSNR.Text, 7))
+            {
+                btnOK.Enabled = false;
+                textBoxBTSNR.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textBoxBTSNR.Text) >= 0 && double.Parse(textBoxBTSNR.Text) < 100)
+                {
+                    textBoxBTSNR.BackColor = Color.White;
+                    systSet.dBtSNR = double.Parse(textHeadingOffset.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textBoxBTSNR.BackColor = Color.Red;
+                }
+            }
 
+            if (btnOK.Enabled)
+            {
+                systSet.iHeadingRef = comboBoxHeadingRef.SelectedIndex;
+                systSet.strRS232 = comboBox_RS232.Text;
+                systSet.iSpeedRef = comboBoxVesselSpeedRef.SelectedIndex;
+                systSet.iMeasurmentMode = comboBoxMeasMode.SelectedIndex;
+                systSet.iVerticalBeam = comboBoxVerticalBeam.SelectedIndex;
+                systSet.iAutoBinSize = comboBoxAutoBinSize.SelectedIndex;
+                systSet.iAutoLag = comboBoxAutoLag.SelectedIndex;
+                systSet.iWaterTemperatureSource = comboBox_waterTemperature.SelectedIndex;
+                systSet.iTransducerDepthSource = comboBox_TransducerDepth.SelectedIndex;
+                systSet.iSalinitySource = comboBox_Salinity.SelectedIndex;
+                systSet.iSpeedOfSoundSource = comboBox_SpeedOfSound.SelectedIndex;
+            }
         }
-
+        public void TheTextChanged(object sender, EventArgs e)
+        {
+            CheckText();
+        }
         private void comboBoxHeadingRef_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /*
             if (0 == comboBoxHeadingRef.SelectedIndex)
             {
                 comboBox_RS232.Enabled = false;
@@ -194,9 +390,11 @@ namespace ADCP
                 }
                 textHeadingOffset.Enabled = true;
             }
+            */
         }
         private void comboBoxVesselSpeedRef_SelectedIndexChanged(object sender, EventArgs e)
         {
+            /*
             if (1 == comboBoxVesselSpeedRef.SelectedIndex || 3 == comboBoxVesselSpeedRef.SelectedIndex)
             {
                 textHeadingOffset.Enabled = true;
@@ -208,9 +406,24 @@ namespace ADCP
                 else
                     textHeadingOffset.Enabled = false;
             }
-
+            */
         }
-        
+        private void comboBox_RS232_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TheTextChanged(sender, e);
+        }
+        private void comboBoxMeasMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TheTextChanged(sender, e);
+        }
+        private void comboBoxVerticalBeam_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TheTextChanged(sender, e);
+        }
+        private void comboBoxAutoBinSize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TheTextChanged(sender, e);
+        }
         private void textWaterSalinity_TextChanged(object sender, EventArgs e)
         {
             TheTextChanged(sender, e);
@@ -219,30 +432,61 @@ namespace ADCP
         {
             TheTextChanged(sender, e);
         }
-
-        private void comboBox_RS232_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TheTextChanged(sender, e);
-        }
-
         private void textWaterTemperature_TextChanged(object sender, EventArgs e)
         {
             TheTextChanged(sender, e);
         }
-
         private void textSoundSpeed_TextChanged(object sender, EventArgs e)
         {
             TheTextChanged(sender, e);
         }
-
         private void textBoxMaxDepth_TextChanged(object sender, EventArgs e)
         {
             TheTextChanged(sender, e);
         }
-
         private void textHeadingOffset_TextChanged(object sender, EventArgs e)
         {
             TheTextChanged(sender, e);
+        }
+        private void textBoxNumberOfBins_TextChanged(object sender, EventArgs e)
+        {
+            TheTextChanged(sender, e);
+        }
+        private void textBoxWPaveragingInterval_TextChanged(object sender, EventArgs e)
+        {
+            TheTextChanged(sender, e);
+        }
+        private void textBoxWPswitchDepth_TextChanged(object sender, EventArgs e)
+        {
+            TheTextChanged(sender, e);
+        }
+        private void textBoxBTswitchDepth_TextChanged(object sender, EventArgs e)
+        {
+            TheTextChanged(sender, e);
+        }
+        private void BTST_Correlation_text_TextChanged(object sender, EventArgs e)
+        {
+            TheTextChanged(sender, e);
+        }
+        private void comboBox_waterTemperature_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TheTextChanged(sender, e);
+        }
+        private void comboBox_TransducerDepth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TheTextChanged(sender, e);
+        }
+        private void comboBox_Salinity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TheTextChanged(sender, e);
+        }
+        private void comboBox_SpeedOfSound_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //TheTextChanged(sender, e);
+        }
+        private void comboBoxAutoLag_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

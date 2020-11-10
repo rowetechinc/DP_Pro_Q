@@ -1931,45 +1931,6 @@ namespace ADCP
                     waterVel[i].VZ += Bv.VZ;
                 }
             }
-
-            /*
-            //LPJ 2013-5-29 艏向采用外部罗经的heading时 --start
-            //if ("External" == defCfg.DefCfgInf.HeadingRef)
-            if (Resource1.String231 == labelHeadingRef.Text)
-            {
-                Velocity Bv_instrument;
-                Bv_instrument.VX = Arr.B_Instrument[0];
-                Bv_instrument.VY = Arr.B_Instrument[1];
-                Bv_instrument.VZ = Arr.B_Instrument[2];
-                GPS_HDTdecode(GPS_HDTbuffer);
-                Bv = CalXYZ2ENU(Bv_instrument, float.Parse(GPS_HDT), Arr.B_Pitch, Arr.B_Roll);
-
-                for (int i = 0; i < n; i++) //艏向采用仪器heading
-                {
-                    Velocity Vinstrument;
-                    Vinstrument.VX = Arr.Instrument[0, i];
-                    Vinstrument.VY = Arr.Instrument[1, i];
-                    Vinstrument.VZ = Arr.Instrument[2, i];
-                    waterVel[i] = CalXYZ2ENU(Vinstrument, float.Parse(GPS_HDT), Arr.A_Pitch, Arr.A_Roll);
-
-                    //JZH 2012-03-21 绝对速度
-                    if (waterVel[i].VX <= 80.0 && waterVel[i].VY <= 80.0 && waterVel[i].VZ <= 80.0)
-                    {
-                        waterVel[i].VX += Bv.VX;  //JZH 2012-03-21 获取绝对速度
-                        waterVel[i].VY += Bv.VY;
-                        waterVel[i].VZ += Bv.VZ;
-                    }
-                }
-            }
-            //LPJ 2013-5-29 艏向采用GPS的heading时 --end
-             */
-
-            //for (int j = 0; j < n; j++)
-            //{
-            //    velWater[j].VX = waterVel[j].VX;
-            //    velWater[j].VY = waterVel[j].VY;
-            //    velWater[j].VZ = waterVel[j].VZ;
-            //}
             velWater = waterVel; //LPJ 2013-7-3
         }
       
@@ -7436,175 +7397,6 @@ namespace ADCP
                 TrackPanelPaint();
 
                 #endregion
-
-                #region cancel old load data
-                /*
-                //获取数据路径及信息文件名
-                PathStr = strNextPath;
-                CurrentPlaybackDirectory = PathStr;
-                int x = PathStr.LastIndexOf("\\");
-                string str = PathStr.Substring(0, x);
-
-                //LPJ 2012-06-13 显示文件路径
-                this.Text = PathStr;
-
-                if (!File.Exists(PathStr + "\\info.infm"))//寻找回放信息文件，如果失败。。。
-                {
-                    MessageBox.Show(Resource1.String20);
-                }
-                else//如果成功。。。
-                {
-                    //改变显示模式（由实时转变为回放），改变按钮颜色
-                    playBackMode = true;
-
-                    labelStep1.Visible = false; //LPJ 2013-6-24
-                    labelStep2.Visible = false;
-                    labelStep3.Visible = false;
-                    labelStep4.Visible = false;
-                    labelStep5.Visible = false;
-                    labelStep6.Visible = false;
-
-                    textBoxHelpTips.Text = Resource1.String19 + "\r\n\r\n" + Resource1.String219;
-
-                    string newPath = CurrentPlaybackDirectory;   //defined at playback_clicked, Modified 2011-8-2
-
-                    int xx = newPath.LastIndexOf("\\");
-                    //Modified 2011-8-29 Try to see if the playback GPS file exits
-                    string newPath1 = newPath.Substring(0, xx);
-                    string playbackGPSdataPath_1 = "", playbackGPSdataPath_2 = "";
-                    playbackGPSdataPath_1 = newPath1 + "\\GPS" + "\\" + Version_1_CurrentGPSFileName;
-                    playbackGPSdataPath_2 = newPath1 + "\\GPS" + "\\" + Version_2_CurrentGPSFileName;
-
-                    playbackGPSdataPath = playbackGPSdataPath_2;
-                    Version_2_CurrentGPSFileName = "GPSdata" + CurrentGPSFileNumber.ToString("000000") + ".txt";
-
-                    if (!File.Exists(playbackGPSdataPath))//寻找回放信息文件，如果失败。。。
-                    {
-                        playbackGPSdataPath = playbackGPSdataPath_2;
-                    }
-
-                    //读取信息文件的参数设置
-                    Dinfo = new DirectoryInfo(PathStr);
-                    BinDataFileNum = (Dinfo.GetFiles("*.dat")).Length;
-                    StreamReader sr = new StreamReader(PathStr + "\\info.infm");
-                    try
-                    {
-                        MaxVelocityByCostommer = float.Parse(sr.ReadLine());
-                        EnsembleNumOfAllFiles = int.Parse(sr.ReadLine());
-                        //EnsembleNumOfAllFiles Modified 2011-8-3, use this number to stop playback  HHHHHHHHHHH
-                        TimeLable.Text = EnsembleNumOfAllFiles.ToString(); //Modified 2011-11-3
-                    }
-                    catch (System.Exception ee)
-                    {
-                        MessageBox.Show(ee.Message);
-                    }
-                    try  //JZH 2012-06-17 测试发现当左右岸距离输入小数时程序出错！！！！！！
-                    {
-                        GetFileToSmartPage(str + "\\SysCfg\\Config.cfg"); //LPJ 2013-6-21 读取配置文件到smartPage
-
-                        //LPJ 2014-2-19 读取回放文件中的高级配置
-                        CAdvancedCfg cAdcfg = new CAdvancedCfg();
-                        cAdcfg.GetFileToAdvancedMode(str + "\\SysCfg\\Config.cfg", ref advancedConf);
-
-                    }
-                    catch (System.Exception eee)
-                    {
-                        MessageBox.Show(eee.Message);
-                    }
-                    if (labelMeasMode.Text != Resource1.String235 && labelMeasMode.Text != "") //LPJ 2013-6-22
-                    {
-                        WaterAvgNum = 2;
-                    }
-
-                    if (!bEnglish2Metric)
-                    {
-                        try
-                        {
-                            insDep = (float)(projectUnit.FeetToMeter(double.Parse(labelTransducerDepth.Text), 1));
-                        }
-                        catch
-                        {
-                            insDep = (float)(projectUnit.FeetToMeter(0.1, 1));
-                        }
-                        cellSize = (float)(projectUnit.FeetToMeter(cellSize, 1));
-                        cells = (long)(projectUnit.FeetToMeter(cells, 1));
-                    }
-                    else
-                    {
-                        try
-                        {
-                            insDep = float.Parse(labelTransducerDepth.Text);
-                        }
-                        catch
-                        {
-                            insDep = 0.1f;
-                        }
-                    }
-
-                    int i = str.LastIndexOf("\\");
-                    string pjtName = str.Substring(i + 1);
-
-                    tabControl4.SelectedIndex = 1; //LPJ 2013-8-5 回放数据时自动切换到测流页
-
-                    ////创建并启动回放线程
-                    DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000 * (float)2.25); //Modified 2011-7-12 Try to display total time
-                    PlayBackTimer = new System.Timers.Timer();
-                    PlayBackTimer.Elapsed += new System.Timers.ElapsedEventHandler(PlayBackCenter);
-                    PlayBackTimeLenth = 1000; //Modified 2011-7-14
-
-                    PlayBackTimer.Interval = PlayBackTimeLenth;
-                    PlayBack = new PlayBackDelegate(RefreshPanels);//委托指针指向 SetPosion 函数
-
-
-                    ////Modified 2011-8-3 try to read the length of GSP file HHHHHHHHHHHHHHHH
-                    string str1 = PathStr.Substring(0, x);
-                    string strGPS = str1;
-                    StreamReader srr;
-                    strGPS += "\\GPS";       //Modified  add for open GPSdata file
-
-                    strGPS += ("\\" + Version_2_CurrentGPSFileName);
-                    srr = new StreamReader(strGPS);
-
-                    int MaxCount = 2000000;
-                    char[] buffer1 = new char[MaxCount];
-                    int count = srr.Read(buffer1, 0, MaxCount);
-                    GPSFileCount = count / 173; //GPS one ping length 
-
-                    if (count > MaxCount)
-                    {
-                        MaxCount *= 10;
-                        StreamReader srr2 = new StreamReader(strGPS);
-                        count = srr.Read(buffer1, 0, MaxCount);
-                        GPSFileCount = count / 173; //GPS one ping length 
-                    }
-
-                    LoadAllData(); //LPJ 2013-7-2 一次载入所有回放数据
-
-                    ProcessBar.Refresh();
-                    //PlayBackTimer.Start();   //LPJ 2013-9-18 回放时先显示整个测量结果，然后点击“回放”按钮开始回放 --start
-
-                    BinDataEnsembleNum = EnsembleNumOfAllFiles;
-                    current_TotalTimelabel = (NumToTime(((float)EnsemblesInfoToStore.RecivedTime[EnsemblesInfoToStore.RecivedTime.Count - 1] - ((float)EnsemblesInfoToStore.RecivedTime[0])) * 1000)).ToString();
-                    current_DataTime = (string)EnsemblesInfoToStore.RecivedDataTime[BinDataEnsembleNum - 1];  //JZH 2012-02-18 显示当前数据组时间
-                    current_EsambleTotaleNum = BinDataEnsembleNum.ToString();
-
-                    //WriteToDataPage(RTIdata[BinDataEnsembleNum - 1]);
-                    this.BeginInvoke(WriteToDataPageEvent, RTIdata[BinDataEnsembleNum - 1]); //LPJ 2014-3-11
-                    arrAmplitude = RTIdata[BinDataEnsembleNum - 1].Amplitude;
-                    arrCorrelation = RTIdata[BinDataEnsembleNum - 1].Correlation;
-                    pictureBox_W_A.Refresh();
-                    pictureBox_W_C.Refresh();
-
-                    this.BeginInvoke(CalDischargeRefresh); //将流量计算在单独的线程中完成 
-                    this.BeginInvoke(RefreshDishargePanel); //刷新流量计算的显示
-                    this.BeginInvoke(RefreshNavigation);
-                    this.BeginInvoke(RefreshOthers);
-                    MainPanelPaint();
-
-                    //LPJ 2013-9-18 回放时先显示整个测量结果，然后点击“回放”按钮开始回放 --end
-                }
-                 * */
-                #endregion
             }
             catch
             {
@@ -8211,133 +8003,7 @@ namespace ADCP
                     }
 
                     #endregion
-                    #region cancel
-                  /*
-                    folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop;//创建选择文件夹窗口
-                    if (PathStr != null) //LPJ 2013-1-15
-                    {
-                        folderBrowserDialog1.SelectedPath = PathStr;
-                    }
-                    else
-                    {
-                        folderBrowserDialog1.SelectedPath = Environment.CurrentDirectory; //LPJ 2013-1-14
-                    }
-
-                    if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)//选取路径后。。。
-                    {
-                        //获取数据路径及信息文件名
-                        PathStr = folderBrowserDialog1.SelectedPath;
-                        int x = PathStr.LastIndexOf("\\");
-                        string str = PathStr.Substring(0, x + 1);
-
-                        //LPJ 2012-06-13 显示文件路径
-                        this.Text = PathStr;
-
-                        if (!File.Exists(PathStr + "\\info.infm"))//寻找回放信息文件，如果失败。。。
-                        {
-                            //MessageBox.Show("操作失败，回放所必需的文件丢失！"); //LPJ 2012-4-20
-                            MessageBox.Show(Resource1.String20);
-                        }
-                        else//如果成功。。。
-                        {
-                            labelStep1.Visible = false; //LPJ 2013-6-24
-                            labelStep2.Visible = false;
-                            labelStep3.Visible = false;
-                            labelStep4.Visible = false;
-                            labelStep5.Visible = false;
-                            labelStep6.Visible = false;
-                            textBoxHelpTips.Text = Resource1.String19 + "\r\n\r\n" + Resource1.String219;
-
-                            //改变显示模式（由实时转变为回放），改变按钮颜色
-                            playBackMode = true;
-                            //PalyBackBtn.ForeColor = Color.Blue;
-                            //RealDisPlay.ForeColor = Color.White;
-
-                            //读取信息文件的参数设置
-                            Dinfo = new DirectoryInfo(PathStr);
-                            BinDataFileNum = (Dinfo.GetFiles("*.dat")).Length;
-                            StreamReader sr = new StreamReader(PathStr + "\\info.infm");
-                            MaxVelocityByCostommer = float.Parse(sr.ReadLine());
-                            EnsembleNumOfAllFiles = int.Parse(sr.ReadLine());
-                            try  //JZH 2012-06-17 测试发现当左右岸距离输入小数时程序出错!!!!!!!
-                            {
-                                //readCfg(str + "\\SysCfg");
-                                GetFileToSmartPage(str + "\\SysCfg\\Config.cfg"); //LPJ 2013-6-21 读取配置文件到smartPage
-
-                                //LPJ 2014-2-19 读取回放文件中的高级配置
-                                CAdvancedCfg cAdcfg=new CAdvancedCfg();
-                                cAdcfg.GetFileToAdvancedMode(str + "\\SysCfg\\Config.cfg",ref advancedConf);
-                              
-                            }
-                            catch (System.Exception eee)
-                            {
-                                MessageBox.Show(eee.Message);
-                            }
-                            //cellSize = float.Parse(textBinSize.Text);
-                            //cells = float.Parse(textBinNum.Text);
-                            if (labelMeasMode.Text != Resource1.String235 && labelMeasMode.Text != "") //LPJ 2013-6-22
-                            {
-                                WaterAvgNum = 2;
-                            }
-
-                            //if (labelUnit.Text == Resource1.String237) //LPJ 2013-7-1
-                            if (!bEnglish2Metric)
-                            {
-                                insDep = (float)(projectUnit.FeetToMeter(double.Parse(labelTransducerDepth.Text), 1));
-                                cellSize = (float)(projectUnit.FeetToMeter(cellSize, 1));
-                                cells = (long)(projectUnit.FeetToMeter(cells, 1));
-                            }
-                            else
-                            {
-                                insDep = float.Parse(labelTransducerDepth.Text);
-                            }
-                            //insDep = float.Parse(labelTransducerDepth.Text);
-
-                            tabControl4.SelectedIndex = 1; //LPJ 2013-8-5 回放数据时自动切换到测流页
-                         //   ResizeControls(); //LPJ 2013-8-5 
-                            ////创建并启动回放线程
-                            DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000);
-                            PlayBackTimer = new System.Timers.Timer();
-                            PlayBackTimer.Elapsed += new System.Timers.ElapsedEventHandler(PlayBackCenter);
-                            PlayBackTimeLenth = 1000; //Modified 2011-7-14
-                            //this.hScrollBarPlaybackSpeed.Value = 50; //Modified 2011-7-14
-                            PlayBackTimer.Interval = PlayBackTimeLenth;
-                            PlayBack = new PlayBackDelegate(RefreshPanels);//委托指针指向 SetPosion 函数
-
-                            LoadAllData(); //LPJ 2013-7-2 一次载入所有回放数据
-
-                            ProcessBar.Refresh();
-                           
-                            //PlayBackTimer.Start();   //LPJ 2013-9-18 回放时先显示整个测量结果，然后点击“回放”按钮开始回放 --start
-
-                            BinDataEnsembleNum = EnsembleNumOfAllFiles;
-                            current_TotalTimelabel = (NumToTime(((float)EnsemblesInfoToStore.RecivedTime[EnsemblesInfoToStore.RecivedTime.Count - 1] - ((float)EnsemblesInfoToStore.RecivedTime[0])) * 1000)).ToString();
-                            current_DataTime = (string)EnsemblesInfoToStore.RecivedDataTime[BinDataEnsembleNum - 1];  //JZH 2012-02-18 显示当前数据组时间
-                            current_EsambleTotaleNum = BinDataEnsembleNum.ToString();
-
-                            //WriteToDataPage(RTIdata[BinDataEnsembleNum - 1]);
-                            this.BeginInvoke(WriteToDataPageEvent, RTIdata[BinDataEnsembleNum - 1]); //LPJ 2014-3-11
-                            arrAmplitude = RTIdata[BinDataEnsembleNum - 1].Amplitude;
-                            arrCorrelation = RTIdata[BinDataEnsembleNum - 1].Correlation;
-                            pictureBox_W_A.Refresh();
-                            pictureBox_W_C.Refresh();
-
-                            this.BeginInvoke(CalDischargeRefresh); //将流量计算在单独的线程中完成 
-                            this.BeginInvoke(RefreshDishargePanel); //刷新流量计算的显示
-                            this.BeginInvoke(RefreshNavigation);
-                            this.BeginInvoke(RefreshOthers);
-                            MainPanelPaint();
-
-                            //LPJ 2013-9-18 回放时先显示整个测量结果，然后点击“回放”按钮开始回放 --end
-                        }
-                    }
-                    else
-                    {
-                        //PalyBackBtn.ForeColor = Color.White;
-                        //RealDisPlay.ForeColor = Color.White;
-                    }
-                   * */
-                    #endregion
+                    
                 }
             }
             if (playBackMode)
@@ -12994,172 +12660,9 @@ namespace ADCP
         }
         
         FrmSystemSetting frmsystemSet;
-      /*  public bool btnStart() //LPJ 2013-5-21 开始发射
-        {
-            linkLabelEdgeSetting.Enabled = false; //LPJ 2013-6-24
-            linkLabelSiteInfor.Enabled = false;
-            linkLabelSystemConf.Enabled = false;
-            linkLabelSystemSetting.Enabled = false;
-            linkLabelUnit.Enabled = false;
-            linkLabelCompassCalibration.Enabled = false;
-            linkLabelGPSConf.Enabled = false;
-            linkLabelSettingTime.Enabled = false;
-            linkLabelSystemTest.Enabled = false;
-            linkLabelUpdateFirmware.Enabled = false;
-            linkLabelBeamCheck.Enabled = false; //LPJ 2014-6-20
-            linkLabelDownload.Enabled = false;
-
-            //btnGPSCalibration.Enabled = false; //LPJ 2013-11-15
-            linkLabelHeadingOffset.Enabled = false; //LPJ 2013-11-18
-
-            btnSpeedFast.Visible = false; //LPJ 2013-7-12
-            btnSpeedSlow.Visible = false; //LPJ 2013-7-12
-
-            //if(!sp.IsOpen)
-            //    sp.Open(); //LPJ 2013-7-12
-            //MouseWheelScale = 0.1f; //LPJ 2013-8-8 当采集数据时，每次新开始一个测回，令航迹图的比例尺归为最小。
-            MouseWheelScale = 1;
-
-            sp.DiscardInBuffer();
-            PacketPointer = 0;
-            MaxArray = 11;
-            BytesArray.Clear();
-            payloadLen = 0;
-            HasCheckedPayload = false;
-            HeaderFlag = false;
-            preNum = 0;
-            HeaderFlagNum = 0;
-            MaxWaterSpeed = 0; //LPJ 2013-8-6 
-            //LPJ 2012-10-11 点击开始测流后，清空EnsembleInfoToStore的数据，从现在开始绘制新的流量图---start
-            ClearEnsemblesInfoToStore();  //LPJ 2012-10-11
-            ClearEnsemblesGPSInfo();      //LPJ 2012-10-11
-            totalNum = 0;
-            InitDischargeParameter();
-            //fAccuEast = 0;
-            //fAccuNorth = 0;
-            //fAccuLength = 0;
-            //fGAccVx = 0;
-            //fGAccVy = 0;
-            fMeasArea = 0;
-            fMeasRiverWidth = 0;
-
-            dTopFlow = 0;
-            dMeasuredFlow = 0;
-            dBottomFlow = 0;
-            dLeftFlow = 0; //LPJ 2013-6-5 清除记录
-            dRightFlow = 0;
-
-            MeasTotalNum = 0;
-            GGAsaveCount = 0; //LPJ 2013-8-2 初始化GPS数据个数
-
-            ReceiveBufferString = ""; //LPJ 2014-7-4 清空
-            //LPJ 2012-10-11 点击开始测流后，清空EnsembleInfoToStore的数据，从现在开始绘制新的流量图---end
-
-            //sp.Write("STOP" + '\r');  //先发送Stop命令 //LPJ 2013-8-2 cancel
-            //Thread.Sleep(300);      //Break命令的标准持续时间为300ms
-
-            //LPJ 2013-6-20 当点击“start”时，先判断labelMeasMode是哪种，如果是用户模式，则采用固定的值，如果是专家，则采用advanced中的值
-               
-            SendStandardCommand();
-            iEnsembleInterval = 1;
-            WaterAvgNum = 2;
-                
-            
-            if (labelHeadingRef.Text == Resource1.String230) //LPJ 2013-7-30 当用户选择内置罗盘
-            {
-                sp.Write("CHS 1" + '\r');
-                Thread.Sleep(150);
-            }
-            else  //LPJ 2013-7-30 当用户选择外接罗盘
-            {
-                try
-                {
-                    sp.Write("CHS 2" + '\r');
-                    Thread.Sleep(150);
-
-                    //sp.Write("C232B " + frmsystemSet.systemSet.strRS232 + '\r');
-                    sp.Write("C232B " + FrmSystemSetting.systemSet.strRS232 + '\r');
-                    Thread.Sleep(150);
-
-                    //sp.Write("C485B " + frmsystemSet.systemSet.strRS485 + '\r');
-                    //Thread.Sleep(150);
-                }
-                catch
-                {
-                }
-            }
-            sp.Write("CWS " + labelSalinity.Text + '\r');  //LPJ 2014-6-16 盐度
-            Thread.Sleep(150);
-
-            sp.Write("CHO " + label_Headingoffset.Text + '\r'); //LPJ 2014-6-16 heading offset
-            Thread.Sleep(150);
-
-            
-            //发送机器时间给ADCP，以后ADCP固件升级成带CPU时钟后取消该命令
-            //DateTime dTime = System.DateTime.Now; //LPJ 2013-6-25 取消这里的发送时间，时间的设置在smartPage页中的setTime中已经设置了
-            //string sDateTime = dTime.Year.ToString() + "/" + dTime.Month.ToString("00") + "/" + dTime.Day.ToString("00") + " "
-            //                 + dTime.Hour.ToString("00") + ":" + dTime.Minute.ToString("00") + ":" + dTime.Second.ToString("00");
-            //sp.Write("STIME " + sDateTime + '\r');
-            //Thread.Sleep(2000);  //新版ADCP固件，如果在发送STIME后立即发送START命令，仪器将不能响应START命令
-
-            sp.Write("START" + '\r');
-            Thread.Sleep(150);
-
-            // if (GPScheckbox.Checked == true)
-            if (bGPSConnect) //LPJ 2013-6-21
-            {
-                try
-                {
-                    GPS_sp.Open();
-
-                    //LPJ 2014-7-1 警报定时器初始化
-                    iAlarmTime_GPS = 0;
-                    AlarmTimer_GPS = new System.Timers.Timer();
-                    AlarmTimer_GPS.Elapsed += new System.Timers.ElapsedEventHandler(AlarmTimer_GPS_Elapsed);
-                    AlarmTimer_GPS.Interval = 100;
-                    //AlarmTimer_GPS.Start();
-                }
-                catch (System.Exception ee)
-                {
-                    MessageBox.Show(Resource1.String42 + "/r/n" + ee.Message);
-                }
-                initialGPSData();
-            }
-
-            StartRecord = true;    //Modified 2011-8-3 used for clear info display   HHHHHHHHH
-
-            tabControl4.SelectedIndex = 1; //LPJ 2013-6-21
-            ResizeControls(); //LPJ 2013-8-5 
-
-            //初始化数据接收定时器
-            RealTimeProcessingTimer = new System.Timers.Timer();
-            RealTimeProcessingTimer.Elapsed += new System.Timers.ElapsedEventHandler(RealTimeProcessingTimer_Elapsed);
-            RealTimeProcessingTimer.Interval = iRealTimeInterval;
-            RealTimeProcessingTimer.Start();
-
-            //LPJ 2014-6-9 警报定时器初始化
-            iAlarmTime = 0;
-            AlarmTimer = new System.Timers.Timer();
-            AlarmTimer.Elapsed += new System.Timers.ElapsedEventHandler(AlarmTimer_Elapsed);
-            AlarmTimer.Interval = 100;
-            //AlarmTimer.Start();
-
-            //projectPause = false;
-
-            //frmMeasurement = new FrmMeasurement(1); //LPJ 2013-6-18 当点击start按钮后，在屏幕中央会弹出一个测量模式
-            //frmMeasurement.ShowDialog();
-            //if (frmMeasurement.bStartEdge) //LPJ 2013-6-18 当点击开始起始岸测量
-            //{
-            //    btnStartEdge();
-            //}
-              
-            return true;
-            
-        }
-    */
+   
         public bool OnStartPinging()
-        {
-            
+        {   
             linkLabelEdgeSetting.Enabled = false; //LPJ 2013-6-24
             linkLabelSiteInfor.Enabled = false;
             linkLabelSystemConf.Enabled = false;
@@ -13178,46 +12681,15 @@ namespace ADCP
 
             btnSpeedFast.Visible = false; //LPJ 2013-7-12
             btnSpeedSlow.Visible = false; //LPJ 2013-7-12
-            
+
+            frmsystemSet = new FrmSystemSetting(sp);
+
+
+
             SendStandardCommand();
             iEnsembleInterval = 1;
 
             WaterAvgNum = 2;
-            /*
-            if (labelHeadingRef.Text == Resource1.String230) //LPJ 2013-7-30 当用户选择内置罗盘
-            {
-                sp.Write("CHS 1" + '\r');
-                Thread.Sleep(150);
-            }
-            else  //LPJ 2013-7-30 当用户选择外接罗盘
-            {
-                try
-                {
-                    //sp.Write("CHS 2" + '\r');//LPJ 2016-8-10 当用户选择外接罗盘时，不发送该命令
-                    //Thread.Sleep(150);
-
-                    //sp.Write("C232B " + frmsystemSet.systemSet.strRS232 + '\r');
-                    sp.Write("C232B " + FrmSystemSetting.systemSet.strRS232 + '\r');
-                    Thread.Sleep(150);
-
-                    //sp.Write("C485B " + frmsystemSet.systemSet.strRS485 + '\r');
-                    //Thread.Sleep(150);
-                }
-                catch
-                {
-                }
-            }
-            sp.Write("CWS " + labelSalinity.Text + '\r');  //LPJ 2014-6-16 盐度
-            Thread.Sleep(150);
-
-            if (labelHeadingRef.Text == Resource1.String230 && labelVesselRef.Text == Resource1.String232) //LPJ 2016-8-12 当艏向参考内置罗盘，船速参考底跟踪的时候，该艏向偏差是改正系统的，否则是GPS的安装偏差
-            {
-                sp.Write("CHO " + label_Headingoffset.Text + '\r'); //LPJ 2014-6-16 heading offset
-                Thread.Sleep(150);
-            }
-
-            sp.Write("START" + '\r');
-            Thread.Sleep(150);*/
 
             // if (GPScheckbox.Checked == true)
             if (bGPSConnect) //LPJ 2013-6-21
@@ -16957,7 +16429,7 @@ namespace ADCP
         long cells = 0;
         float upBlank = 0;
         float insDep = 0;
-        float BlankSize = 0.2f; //LPJ 2013-6-21
+        float BlankSize = 0.0f;
         int WaterAvgNum = 2; //LPJ 2013-6-21
         //float TimeBtwnPings = 0.1f; //LPJ 2013-6-21
         //float BTblankSize = 0.25f; //LPJ 2013-8-1
@@ -18629,79 +18101,116 @@ namespace ADCP
             return true;
         }
         Configurations.Configuration conf = new Configurations.Configuration();
+
+        string CommandList;
         private void SendStandardCommand() //用户模式下发送命令
         {
-            //将单元层数
+            string CMD;
             progressBar1.Value = 0;
             progressBar1.Visible = true;
-
-            sp.Write("MODERIVER" + '\r');
-            Thread.Sleep(150);
+            CommandList = "";
 
             try
-            {   
-                sp.Write("CWT " + "15.0" + '\r'); //水温
+            {
+                CMD = "MODERIVER" + '\r';
+                CommandList += CMD;
+                sp.Write(CMD);//sets defaults
+                Thread.Sleep(150);
+               
+                sp.Write("CRSTEMP " + FrmSystemSetting.systSet.dWaterTemperature.ToString() + '\r'); //水温
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
                 if (!bEnglish2Metric)
                 {
-                    sp.Write("CTD " + projectUnit.FeetToMeter(double.Parse(labelTransducerDepth.Text),1).ToString() + '\r');
+                    sp.Write("CRSXDCRDEPTH " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dTransducerDepth, 1).ToString() + '\r');
                 }
                 else
                 {
-                    sp.Write("CTD " + labelTransducerDepth.Text + '\r');//LPJ 2013-6-21 换能器深度
+                    sp.Write("CRSXDCRDEPTH " + FrmSystemSetting.systSet.dTransducerDepth.ToString() + '\r');//LPJ 2013-6-21 换能器深度
                 }
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
                 
                 if (!bEnglish2Metric)
                 {
-                    sp.Write("CWSS " + projectUnit.FeetToMeter(FrmSystemSetting.systemSet.dSpeedOfSound, 1).ToString() + '\r');
+                    sp.Write("CWSS " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dSpeedOfSound, 1).ToString() + '\r');
                 }
                 else
                 {
-                    sp.Write("CWSS " + FrmSystemSetting.systemSet.dSpeedOfSound.ToString() + '\r');//声速
+                    sp.Write("CWSS " + FrmSystemSetting.systSet.dSpeedOfSound.ToString() + '\r');//声速
                 }
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
-
-                if (labelHeadingRef.Text == Resource1.String230) //LPJ 2013-7-30 当用户选择内置罗盘
-                {
-                    sp.Write("CHS 1" + '\r');
-                    Thread.Sleep(150);
-                }
-                else  //LPJ 2013-7-30 当用户选择外接罗盘
-                {
-                    try
-                    {
-                        //sp.Write("CHS 2" + '\r');//LPJ 2016-8-10 当用户选择外接罗盘时，不发送该命令
-                        //Thread.Sleep(150);
-
-                        //sp.Write("C232B " + frmsystemSet.systemSet.strRS232 + '\r');
-                        sp.Write("C232B " + FrmSystemSetting.systemSet.strRS232 + '\r');
-                        Thread.Sleep(150);
-
-                        //sp.Write("C485B " + frmsystemSet.systemSet.strRS485 + '\r');
-                        //Thread.Sleep(150);
-                    }
-                    catch
-                    {
-                    }
-                }
-                sp.Write("CWS " + labelSalinity.Text + '\r');  //LPJ 2014-6-16 盐度
+                
+                sp.Write("CHS " + FrmSystemSetting.systSet.iHeadingRef.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+                
+                sp.Write("CRSSALINITY " + FrmSystemSetting.systSet.dSalinity.ToString() + '\r');  //LPJ 2014-6-16 盐度
+                displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                if (labelHeadingRef.Text == Resource1.String230 && labelVesselRef.Text == Resource1.String232) //LPJ 2016-8-12 当艏向参考内置罗盘，船速参考底跟踪的时候，该艏向偏差是改正系统的，否则是GPS的安装偏差
-                {
-                    sp.Write("CHO " + label_Headingoffset.Text + '\r'); //LPJ 2014-6-16 heading offset
-                    Thread.Sleep(150);
-                }
+                sp.Write("CHO " + FrmSystemSetting.systSet.dHeadingOffset.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSMODE " + FrmSystemSetting.systSet.iMeasurmentMode.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSVB " + FrmSystemSetting.systSet.iVerticalBeam.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSAUTOBIN " + FrmSystemSetting.systSet.iAutoBinSize.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSAUTOLAG " + FrmSystemSetting.systSet.iAutoLag.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSWPBN " + FrmSystemSetting.systSet.iBins.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSWPAI " + FrmSystemSetting.systSet.dAveragingInterval.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSMAXDEPTH " + FrmSystemSetting.systSet.dMaxMeasurementDepth.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSWPSWITCH " + FrmSystemSetting.systSet.dWpSwitchDepth.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSBTSWITCH " + FrmSystemSetting.systSet.dBtSwitchDepth.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSBTSNR " + FrmSystemSetting.systSet.dBtSNR.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("CRSBTCOR " + FrmSystemSetting.systSet.dBtCorrelationThreshold.ToString() + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                sp.Write("C232B " + FrmSystemSetting.systSet.strRS232 + '\r');
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+                //sp.Write("C485B " + frmsystemSet.systemSet.strRS485 + '\r');
+                //Thread.Sleep(150);
 
                 sp.Write("CSAVE" + '\r');
+                displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
                 sp.Write("START" + '\r');
+                displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
                 progressBar1.Value = 100;
@@ -21232,6 +20741,8 @@ namespace ADCP
             //    InitAdvancedParameter();
             //}
 
+            
+
             if (labelHeadingRef.Text == Resource1.String230)
                 systSet.iHeadingRef = 0;
             else
@@ -21276,7 +20787,7 @@ namespace ADCP
 
             try
             {
-                systSet.dSpeedOfSound = FrmSystemSetting.systemSet.dSpeedOfSound;
+                systSet.dSpeedOfSound = FrmSystemSetting.systSet.dSpeedOfSound;
             }
             catch
             {
@@ -21289,18 +20800,15 @@ namespace ADCP
                 systSet.bEnglishUnit = false;
             
         
-            frmsystemSet = new FrmSystemSetting(systSet, playBackMode,sp); //LPJ 2013-11-20 在回放模式下只能修改船速参考和换能器深度
-            
+            frmsystemSet = new FrmSystemSetting(sp);
+
             if (!playBackMode)
                 sp.Close();
 
-
-            frmsystemSet.BringToFront();
-
-
             if (DialogResult.OK == frmsystemSet.ShowDialog())
-            
             {
+                frmsystemSet.BringToFront();
+
                 //switch (frmsystemSet.systemSet.iFlowRef) //LPJ 2013-7-24 cancel
                 //{
                 //    case 0:
@@ -21318,7 +20826,7 @@ namespace ADCP
                 //}
 
                 //switch (frmsystemSet.systemSet.iHeadingRef)
-                switch (FrmSystemSetting.systemSet.iHeadingRef)
+                switch (FrmSystemSetting.systSet.iHeadingRef)
                 {
                     case 0:
                         {
@@ -21330,17 +20838,17 @@ namespace ADCP
                             labelHeadingRef.Text = Resource1.String231;
                             break;
                         }
-                   
+
                     default:
                         break;
                 }
 
-                switch (FrmSystemSetting.systemSet.iSpeedRef)
+                switch (FrmSystemSetting.systSet.iSpeedRef)
                 {
                     case 0:
                         {
                             labelVesselRef.Text = Resource1.String232;
-                         
+
                             //labelHeadingOffset.Visible = false; //LPJ 2013-9-13
                             break;
                         }
@@ -21362,13 +20870,27 @@ namespace ADCP
                     default:
                         break;
                 }
-                
-                labelTransducerDepth.Text = FrmSystemSetting.systemSet.dTransducerDepth.ToString();
-                labelSalinity.Text = FrmSystemSetting.systemSet.dSalinity.ToString();
-                label_Headingoffset.Text = FrmSystemSetting.systemSet.dHeadingOffset.ToString(); //LPJ 2014-6-16
-                fHeadingOffset = FrmSystemSetting.systemSet.dHeadingOffset; //LPJ 2016-8-12
+                switch (FrmSystemSetting.systSet.iMeasurmentMode)
+                {
+                    case 0:
+                        labelMeasMode.Text = "NONE";
+                        break;
+                    case 1:
+                        labelMeasMode.Text = "Low Frequency";
+                        break;
+                    case 2:
+                        labelMeasMode.Text = "High Frequency";
+                        break;
+                    case 3:
+                        labelMeasMode.Text = "Auto Frequency";
+                        break;
+                }
+                labelTransducerDepth.Text = FrmSystemSetting.systSet.dTransducerDepth.ToString();
+                labelSalinity.Text = FrmSystemSetting.systSet.dSalinity.ToString();
+                label_Headingoffset.Text = FrmSystemSetting.systSet.dHeadingOffset.ToString(); //LPJ 2014-6-16
+                fHeadingOffset = FrmSystemSetting.systSet.dHeadingOffset; //LPJ 2016-8-12
 
-                iVesselSpeedRef = FrmSystemSetting.systemSet.iSpeedRef; //LPJ 2016-8-18 船速参考
+                iVesselSpeedRef = FrmSystemSetting.systSet.iSpeedRef; //LPJ 2016-8-18 船速参考
             }
 
             if (!playBackMode)
@@ -21386,7 +20908,7 @@ namespace ADCP
             }
             if (playBackMode)
             {
-                if ((iLastHeadingRef != FrmSystemSetting.systemSet.iHeadingRef) || (Math.Abs(fHeadingOffset - fLastHeadingOffset) >= 0.00000001))//LPJ 2016-8-16 当回放模式时，艏向参考更改时，更新数据 //LPJ 2017-5-15 当艏向偏差更改了，更新数据
+                if ((iLastHeadingRef != FrmSystemSetting.systSet.iHeadingRef) || (Math.Abs(fHeadingOffset - fLastHeadingOffset) >= 0.00000001))//LPJ 2016-8-16 当回放模式时，艏向参考更改时，更新数据 //LPJ 2017-5-15 当艏向偏差更改了，更新数据
                 {
                     RefreshHDT();
                 }
@@ -21751,289 +21273,8 @@ namespace ADCP
     
         private void WriteStandardModeToFile(string fileName) //主要用于将高级模式的参数写入last配置中，在回放文件中不用显示该配置
         {
-            File.AppendAllText(fileName, "CPROFILE" + "\r\n");
-            File.AppendAllText(fileName, "CWSSC 1,1,0,2" + "\r\n");
-            //File.AppendAllText(fileName, "CWS " + "0.00" + "\r\n");
-           
-            File.AppendAllText(fileName, "CWT " + "15.0" + "\r\n");
-            if (!bEnglish2Metric)
-                File.AppendAllText(fileName, "CTD " + projectUnit.FeetToMeter(double.Parse(labelTransducerDepth.Text), 1).ToString() + "\r\n");
-            else
-                File.AppendAllText(fileName, "CTD " + labelTransducerDepth.Text + "\r\n");
-
-            File.AppendAllText(fileName, "CWSS " + "1500.0" + "\r\n");
+            File.AppendAllText(fileName, "MODERIVER\r\n");
         }
-
-        /*
-        private void GetFileToAdvancedMode(string fileName,ref FrmAdvancedMode.AdvancedConfiguration advanced) // LPJ 2013-8-2 读取配置文件
-        {
-                StreamReader sr = new StreamReader(fileName);
-                string cmd = sr.ReadLine();
-                string[] cmdPart = new string[2];
-                while (cmd != null)
-                {
-                    cmdPart = cmd.Split(' ');
-                    switch (cmdPart[0])
-                    {
-                        case "CDVL":
-                            {
-                                advanced.ADCPMode = false;
-                                break;
-                            }
-                        case "CPROFILE":
-                            {
-                                advanced.ADCPMode = true;
-                                break;
-                            }
-                        case "CEI":
-                            {
-                                string[] str = cmdPart[1].Split(':');
-                                advanced.EsmbIntervalHH = int.Parse(str[0]);
-                                advanced.EsmbIntervalMM = int.Parse(str[1]);
-                                advanced.EsmbIntervalSShh = float.Parse(str[2]);
-                                break;
-                            }
-                        case "CBI": //LPJ 2013-1-31
-                            {
-                                string[] str = cmdPart[1].Split(',');
-                                string[] str1 = str[0].Split(':');
-                                advanced.BurstInterval_HH = int.Parse(str1[0]);
-                                advanced.BurstInterval_MM  = int.Parse(str1[1]);
-                                advanced.BurstInterval_SS  = float.Parse(str1[2]);
-
-                                advanced.BurstInterval_n = int.Parse(str[1]);  //LPJ 2013-2-4 由于之前的版本没有该值，显示为异常，因此，这里设为0，不再提取该值。
-                                //if (str[1] == "System.Windows.Forms.TextBox")
-                                //    txt_BurstInterval_n.Text = "0";
-                                if (!ValidateUserInput(advanced.BurstInterval_n.ToString(), 5))
-                                    advanced.BurstInterval_n= 0;
-
-                                break;
-                            }
-                        case "CWPON":
-                            {
-                                if ("0" == cmdPart[1])
-                                    advanced.WaterPingOpen = false;
-                                else if ("1" == cmdPart[1])
-                                    advanced.WaterPingOpen = true;
-                                break;
-                            }
-                        case "CWPBB":
-                            {
-                               
-                                //LPJ 2012-10-19 add --start
-
-                                string[] str = cmdPart[1].Split(',');
-                                advanced.WaterProfilerMode = int.Parse(str[0]);
-                              
-                                try
-                                {
-                                    advanced.WPLagLengthV =float.Parse( str[1]);
-                                }
-                                catch
-                                {
-                                    advanced.WPLagLengthV = 0.042f;
-                                }
-                                break;
-                                //LPJ 2012-10-19 add --end
-                            }
-                        case "CWPAP": //LPJ 2013-1-31
-                            {
-                                string[] str = cmdPart[1].Split(',');
-                                advanced.CWPAP1  = float.Parse(str[0]);
-                                advanced.CWPAP2 = float.Parse(str[1]);
-                                advanced.CWPAP3 = float.Parse(str[2]);
-                                advanced.CWPAP4  = float.Parse(str[3]);
-                                advanced.CWPAP5  = float.Parse(str[4]);
-                                break;
-                            }
-                        case "CWPST":  //LPJ 2012-10-19 add --start
-                            {
-                                string[] str = cmdPart[1].Split(',');
-                                advanced.WPST_Correlation  =float.Parse( str[0]);
-                                advanced.WPST_QVelocity  = float.Parse(str[1]);
-                                advanced.WPST_VVelocity  = float.Parse(str[2]);
-                                break;
-                            }         //LPJ 2012-10-19 add --end
-                        case "CWPBL":
-                            {
-                                advanced.WPBlankSize = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CWPBS":
-                            {
-                                advanced.WPBinSize = float.Parse(cmdPart[1]);
-                                break;
-                            }//////
-                        case "CWPX":
-                            {
-                                advanced.WPWaterXmt = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CWPBN":
-                            {
-                                advanced.WPBinNum = int.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CWPP":
-                            {
-                                advanced.WPWaterAvgNum = int.Parse(cmdPart[1]);
-                                break;
-                            }
-                        //case "CWPAI": //LPJ 2013-9-27 该命令已在I版本中取消
-                        //    {
-                        //        string[] str = cmdPart[1].Split(':');
-                        //        advanced.WaterAvgIntervalHH = int.Parse(str[0]);
-                        //        advanced.WaterAvgIntervalMM = int.Parse(str[1]);
-                        //        advanced.WaterAvgIntervalSShh = float.Parse(str[2]);
-                        //        break;
-                        //    }
-                        case "CWPTBP":
-                            {
-                                advanced.WPTimeBtwnPings =float.Parse( cmdPart[1]);
-                                break;
-                            }
-                        case "CBTON":
-                            {
-                                if ("0" == cmdPart[1])
-                                    advanced.BtmTrkOpen = false;
-                                else if ("1" == cmdPart[1])
-                                    advanced.BtmTrkOpen = true;
-                                break;
-                            }
-                        case "CBTBB":
-                            {
-                                //LPJ 2012-10-19 add --start
-                                string[] str = cmdPart[1].Split(',');
-                                advanced.BTMode = int.Parse(str[0]);
-
-                                try
-                                {
-                                    advanced.BTPulseLag = float.Parse(str[1]);
-                                    advanced.BTLongRangeDepth = float.Parse(str[2]);
-                                }
-                                catch
-                                {
-                                    advanced.BTPulseLag = 0.0f;
-                                    advanced.BTLongRangeDepth = 30.0f;
-                                }
-
-                                break;
-                                //LPJ 2012-10-19 add --end
-                            }
-                        case "CBTST":   //LPJ 2012-10-19 add --start
-                            {
-                                string[] str = cmdPart[1].Split(',');
-                                advanced.BTST_Correlation = float.Parse(str[0]);
-                                advanced.BTST_QV = float.Parse(str[1]);
-                                advanced.BTST_V = float.Parse(str[2]);  //LPJ 2012-10-19 add
-
-                                break;
-                            }
-                        case "CBTT":
-                            {
-                                string[] str = cmdPart[1].Split(',');
-                                advanced.BTT_SNRshallow = float.Parse(str[0]);
-                                advanced.BTT_Depthshallow2deep = float.Parse(str[1]);
-                                advanced.BTT_SNRdeep = float.Parse(str[2]);
-                                advanced.BTT_Depthlow2high = float.Parse(str[3]);  //LPJ 2012-10-19 add
-                                break;
-                            }    //LPJ 2012-10-19 add --end
-                        case "CBTBL":
-                            {
-                                advanced.BtmTrkBlank =float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CBTMX":
-                            {
-                                advanced.BtmTrkDepth = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CBTTBP":
-                            {
-                                advanced.BtmTrkInterval = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CWTON":
-                            {
-                                if ("0" == cmdPart[1])
-                                    advanced.WaterTrkOpen = false;
-                                else if ("1" == cmdPart[1])
-                                    advanced.WaterTrkOpen = true;
-                                break;
-                            }
-                        case "CWTBB":
-                            {
-                                advanced.WTMode=int.Parse(cmdPart[1]);
-                                break;
-                            }//////////////
-                        case "CWTBL":
-                            {
-                                advanced.WTBlankSize = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CWTBS":
-                            {
-                                advanced.WTBinSize = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CWTTBP":
-                            {
-                                advanced.WTInterval = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CWSSC"://LPJ 2013-1-31
-                            {
-                                string[] str = cmdPart[1].Split(',');
-
-                                advanced.CWSCCwaterTemperature = float.Parse(str[0]);
-                                advanced.CWSCCTransducerDepth = float.Parse(str[1]);
-                                advanced.CWSCCSalinity = float.Parse(str[2]);
-                                advanced.CWSCCSpeedOfSound = float.Parse(str[3]);
-                                break;
-                            }
-                        case "CWS":
-                            {
-                                advanced.WaterSalinity = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CWT":
-                            {
-                                advanced.WaterTemperature = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CTD":
-                            {
-                                advanced.TransducerDepth = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CWSS":
-                            {
-                                advanced.SoundSpeed = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "CHO":
-                            {
-                                advanced.HeadingOffset = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "C232B":
-                            {
-                                advanced.R232= float.Parse(cmdPart[1]);
-                                break;
-                            }
-                        case "C485B":
-                            {
-                                advanced.R485 = float.Parse(cmdPart[1]);
-                                break;
-                            }
-                    }
-                    cmd = sr.ReadLine();
-                }
-                sr.Close(); //LPJ 2013-8-5
-
-        }
-         */
-
         private bool GetFileToGPS(string fileName) //LPJ 2014-7-29 从GPS文件中提取坐标
         {
             CDecodeGPS decodeGPS = new CDecodeGPS();
@@ -22117,8 +21358,6 @@ namespace ADCP
                 return false;
             }
         }
-
-        //private int iStandardMode = 1; //LPJ 2013-10-17 该变量为标准模式中选择的类型
         private bool GetFileToSmartPage(string fileName)//LPJ 2013-6-20 读取配置文件，并更新smartPage页
         {
             if (File.Exists(fileName))
@@ -22379,20 +21618,20 @@ namespace ADCP
                                 }
                             case "MeasurementMode":
                                 {
-                                    if (int.Parse(cmdPart[1]) == 0)
+                                    switch(int.Parse(cmdPart[1]))
                                     {
-                                        labelMeasMode.Text = Resource1.String234;
-                                    }
-                                    else
-                                    {
-                                        if (int.Parse(cmdPart[1]) == 1)
-                                        {
-                                            labelMeasMode.Text = Resource1.String235;
-                                        }
-                                        else
-                                        {
-                                            labelMeasMode.Text = "Auto";
-                                        }
+                                        case 0:
+                                            labelMeasMode.Text = "OFF";
+                                            break;
+                                        case 1:
+                                            labelMeasMode.Text = "Low Frequency";
+                                            break;
+                                        case 2:
+                                            labelMeasMode.Text = "High Frequency";
+                                            break;
+                                        case 3:
+                                            labelMeasMode.Text = "Auto Frequency";
+                                            break;
                                     }
                                     break;
                                 }
@@ -22486,13 +21725,6 @@ namespace ADCP
                                     dRightShorePings = int.Parse(cmdPart[1]);
                                     break;
                                 }
-
-                            case "CWPBL": //LPJ 2013-9-29 读取盲区和盐度参数用于输出报告
-                                {
-                                    BlankSize = float.Parse(cmdPart[1]);
-                                    break;
-                                }
-
                             case "CWS":
                                 {
                                     fSalinity = float.Parse(cmdPart[1]);
@@ -22595,13 +21827,13 @@ namespace ADCP
                               */
             #endregion
 
-            labelVesselRef.Text = Resource1.String232;
+            labelVesselRef.Text = "Bottom Tracking";// Resource1.String232;
             labelHeadingRef.Text = Resource1.String230;
             fHeadingOffset = 0;
             labelSalinity.Text = "0";
             label_Headingoffset.Text = "0";
-            labelTransducerDepth.Text = "0.1";
-            labelMeasMode.Text = Resource1.String234;
+            labelTransducerDepth.Text = "0.0";
+            labelMeasMode.Text = "Auto Frequency";// Resource1.String234;
             labelTopEstimate.Text = Resource1.String33;
             labelBottomEstimate.Text = Resource1.String33;
             labelPowerCurveCoeff.Text = "0.1667";
@@ -22615,7 +21847,7 @@ namespace ADCP
             labelRightType.Text = Resource1.String221;
             labelRightRef.Text = "";
             dRightShorePings = 10;
-            BlankSize = 0.5f;
+            BlankSize = 0.0f;
             fSalinity = 0;
         }
 
