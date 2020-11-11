@@ -7,28 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.IO;
+using System.Threading;
+using System.Collections;
 
 namespace ADCP
 {
     public partial class FrmSystemSetting : Form
     {
-        public FrmSystemSetting(SerialPort _sp)
+        public FrmSystemSetting(SerialPort _sp, bool English)
         {
             InitializeComponent();
             sp = _sp;
+            systSet.bEnglishUnit = English;
             GetReference();
         }
         private SerialPort sp;
         public static SystemSetting systSet;
-
-        private bool bEnglish = false;
         private void GetReference()
-        {
+        {   
             CheckText();
 
-            bEnglish = systSet.bEnglishUnit;
-            
-      
             if (systSet.bEnglishUnit)
             {
                 label6.Text = "(ft)";
@@ -36,6 +35,14 @@ namespace ADCP
                 label22.Text = "(ft)";
                 label23.Text = "(ft)";
                 label18.Text = "(ft/s)";
+
+                //string str = projectUnit.FeetToMeter(FrmSystemSetting.systSet.dTransducerDepth, 1).ToString() + "\r\n";
+
+                //textBoxMaxDepth
+                //textBoxWPswitchDepth
+                //textBoxBTswitchDepth
+                //textBoxTransducerDepth
+                //textSoundSpeed
             }
             else
             {
@@ -98,6 +105,7 @@ namespace ADCP
 
             public bool bEnglishUnit;
             public int iInstrumentTypes;
+            
         }
  
         ClassValidateInPut validateInput = new ClassValidateInPut();
@@ -137,7 +145,7 @@ namespace ADCP
             }
             else
             {
-                if (double.Parse(textBoxTransducerDepth.Text) > 0 && double.Parse(textBoxTransducerDepth.Text) < 100)
+                if (double.Parse(textBoxTransducerDepth.Text) >= 0 && double.Parse(textBoxTransducerDepth.Text) < 100)
                 {
                     textBoxTransducerDepth.BackColor = Color.White;
                     systSet.dTransducerDepth = double.Parse(textBoxTransducerDepth.Text);
@@ -334,7 +342,7 @@ namespace ADCP
                 if (double.Parse(textBoxBTSNR.Text) >= 0 && double.Parse(textBoxBTSNR.Text) < 100)
                 {
                     textBoxBTSNR.BackColor = Color.White;
-                    systSet.dBtSNR = double.Parse(textHeadingOffset.Text);
+                    systSet.dBtSNR = double.Parse(textBoxBTSNR.Text);
                 }
                 else
                 {
@@ -343,7 +351,7 @@ namespace ADCP
                 }
             }
 
-            if (btnOK.Enabled)
+            //if (btnOK.Enabled)
             {
                 systSet.iHeadingRef = comboBoxHeadingRef.SelectedIndex;
                 systSet.strRS232 = comboBox_RS232.Text;
@@ -487,6 +495,322 @@ namespace ADCP
         private void comboBoxAutoLag_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+        //private SerialPort sp;  
+        private System.Collections.Queue defaultQueue;// = new System.Collections.Queue();
+
+        static object lockpack = new object();
+        private void SP_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            lock (lockpack)
+            {
+                byte[] packet = new byte[sp.BytesToRead];
+                sp.Read(packet, 0, packet.Length);
+                defaultQueue.Enqueue(packet);
+            }
+        }
+        private void buttonDownloadCommandSettings_Click(object sender, EventArgs e)
+        {
+            defaultQueue = new System.Collections.Queue();
+
+            //sp.PortName = "COM18";
+            //sp.BaudRate = 921600;
+
+            sp.Close();
+            sp.Open();
+
+            sp.DataReceived += new SerialDataReceivedEventHandler(SP_DataReceived);
+
+            string strpack = "";
+            bool OK = false;
+            if (sp.IsOpen)
+            {
+                sp.Write("CRSSHOW\r");
+                Thread.Sleep(1000);
+                
+                int thecount = 0;
+                int flag = 1;
+                while (flag < 2 && !OK)
+                {
+                    if (defaultQueue.Count > 0)
+                    {                        
+                        while (defaultQueue.Count > 0)
+                        {
+                            thecount++;
+                            ArrayList byteArray = new ArrayList();
+                            byteArray.AddRange((byte[])defaultQueue.Dequeue());
+                            byte[] pack = new byte[byteArray.Count];
+
+                            for (int i = 0; i < byteArray.Count; i++)
+                                pack[i] = (byte)byteArray[i];
+
+                            strpack += Encoding.Default.GetString(pack);
+                        }
+                        if (strpack.Contains("SN07"))
+                        {
+                            OK = true;
+                        }
+                    }
+                    flag++;
+                }
+            }
+            if (OK)
+            {
+                Int32 index = 0;
+                double dVal;
+                string[] separatingStrings = { "<<", "...", " ", "," };
+
+                var reader = new StringReader(strpack);
+                string cmd = reader.ReadLine();
+                string[] cmdPart = new string[2];
+                while (cmd != null)
+                {   
+                    try
+                    {
+                        if (cmd != "")
+                        {
+                            cmdPart = cmd.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                            switch (cmdPart[0])
+                            {
+                                case "CRSMODE":
+                                    try
+                                    {
+                                        index = Convert.ToInt32(cmdPart[1]);
+                                        comboBoxMeasMode.SelectedIndex = index;
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSVB":
+                                    try
+                                    {
+                                        index = Convert.ToInt32(cmdPart[1]);
+                                        comboBoxVerticalBeam.SelectedIndex = index;
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSAUTOBIN":
+                                    try
+                                    {
+                                        index = Convert.ToInt32(cmdPart[1]);
+                                        comboBoxAutoBinSize.SelectedIndex = index;
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSAUTOLAG":
+                                    try
+                                    {
+                                        index = Convert.ToInt32(cmdPart[1]);
+                                        comboBoxAutoLag.SelectedIndex = index;
+                                    }
+                                    catch { }
+                                    break;
+                                case "CWSSC":
+                                    try
+                                    {
+                                        index = Convert.ToInt32(cmdPart[1]);
+                                        comboBox_waterTemperature.SelectedIndex = index;
+                                        index = Convert.ToInt32(cmdPart[2]);
+                                        comboBox_TransducerDepth.SelectedIndex = index;
+                                        index = Convert.ToInt32(cmdPart[3]);
+                                        comboBox_Salinity.SelectedIndex = index;
+                                        index = Convert.ToInt32(cmdPart[4]);
+                                        comboBox_SpeedOfSound.SelectedIndex = index;
+                                    }
+                                    catch { }
+                                    break;
+
+                                case "CRSWPBN":
+                                    try
+                                    {
+                                        index = Convert.ToInt32(cmdPart[1]);
+                                        textBoxNumberOfBins.Text = index.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSWPAI":
+                                    try
+                                    {
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        textBoxWPaveragingInterval.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSMAXDEPTH":
+                                    try
+                                    {
+                                        //Units
+
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        if(systSet.bEnglishUnit)
+                                            dVal = projectUnit.MeterToFeet(dVal, 1);
+                                        textBoxMaxDepth.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSWPSWITCH":
+                                    try
+                                    {
+                                        //textBoxWPswitchDepth Units
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        textBoxWPswitchDepth.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSBTSWITCH":
+                                    try
+                                    {
+                                        //textBoxBTswitchDepth Units
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        textBoxBTswitchDepth.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSXDCRDEPTH":
+                                    try
+                                    {
+                                        //textBoxTransducerDepth Units
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        textBoxTransducerDepth.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSSALINITY":
+                                    try
+                                    {
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        textWaterSalinity.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSTEMP":
+                                    try
+                                    {
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        textWaterTemperature.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSBTSNR":
+                                    try
+                                    {
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        textBoxBTSNR.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CRSBTCOR":
+                                    try
+                                    {
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        BTST_Correlation_text.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CWSS":
+                                    try
+                                    {
+                                        //textSoundSpeed Units
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        textSoundSpeed.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                case "CHO":
+                                    try
+                                    {
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        textHeadingOffset.Text = dVal.ToString();
+                                    }
+                                    catch { }
+                                    break;
+                                    
+                            }
+                        }
+                        try
+                        {
+                            cmd = reader.ReadLine();
+                        }
+                        catch //(Exception ex)
+                        {
+                            //MessageBox.Show(ex.Message);
+                        }
+                    }
+                    catch //(Exception ex)
+                    {
+                        //MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            sp.DataReceived -= new SerialDataReceivedEventHandler(SP_DataReceived);
+            //sp.Close();
+        }
+
+        private void buttonReadCommandSettings_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonUploadCommandSettings_Click(object sender, EventArgs e)
+        {
+
+        }
+        private Units projectUnit = new Units();
+        private void buttonWriteCommandSettings_Click(object sender, EventArgs e)
+        {
+            
+            
+
+            string CMD = "CRSMODE " + FrmSystemSetting.systSet.iMeasurmentMode.ToString() + "\r\n";
+            CMD += "CRSVB " + FrmSystemSetting.systSet.iVerticalBeam.ToString() + "\r\n";
+            CMD += "CRSAUTOBIN " + FrmSystemSetting.systSet.iAutoBinSize.ToString() + "\r\n";
+            CMD += "CRSAUTOLAG " + FrmSystemSetting.systSet.iAutoLag.ToString() + "\r\n";
+            CMD += "CRSWPBN " + FrmSystemSetting.systSet.iBins.ToString() + "\r\n";
+            CMD += "CRSWPAI " + FrmSystemSetting.systSet.dAveragingInterval.ToString() + "\r\n";
+            CMD += "CRSMAXDEPTH " + FrmSystemSetting.systSet.dMaxMeasurementDepth.ToString() + "\r\n";
+            CMD += "CRSWPSWITCH " + FrmSystemSetting.systSet.dWpSwitchDepth.ToString() + "\r\n";
+            CMD += "CRSBTSWITCH " + FrmSystemSetting.systSet.dBtSwitchDepth.ToString() + "\r\n";
+            if (systSet.bEnglishUnit)
+            {
+                CMD += "CRSXDCRDEPTH " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dTransducerDepth, 1).ToString() + "\r\n";
+            }
+            else
+            {
+                CMD += "CRSXDCRDEPTH " + FrmSystemSetting.systSet.dTransducerDepth.ToString() + "\r\n";
+            }
+            CMD += "CWSSC " + FrmSystemSetting.systSet.iWaterTemperatureSource.ToString();
+            CMD += "," + FrmSystemSetting.systSet.iTransducerDepthSource.ToString();
+            CMD += "," + FrmSystemSetting.systSet.iSalinitySource.ToString();
+            CMD += "," + FrmSystemSetting.systSet.iSpeedOfSoundSource.ToString();
+            CMD += "\r\n";
+            if (systSet.bEnglishUnit)
+            {
+                CMD += "CWSS " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dSpeedOfSound, 1).ToString() + "\r\n";
+            }
+            else
+            {
+                CMD += "CWSS " + FrmSystemSetting.systSet.dSpeedOfSound.ToString() + "\r\n";
+            }
+            CMD += "CRSSALINITY " + FrmSystemSetting.systSet.dSalinity.ToString() + "\r\n";
+            CMD += "CRSTEMP " + FrmSystemSetting.systSet.dWaterTemperature.ToString() + "\r\n";
+            CMD += "CRSBTSNR " + FrmSystemSetting.systSet.dBtSNR.ToString() + "\r\n";
+            CMD += "CRSBTCOR " + FrmSystemSetting.systSet.dBtCorrelationThreshold.ToString() + "\r\n";
+            CMD += "CHO " + FrmSystemSetting.systSet.dHeadingOffset.ToString() + "\r\n";
+            CMD += "CHS " + FrmSystemSetting.systSet.iHeadingRef.ToString() + "\r\n";
+            CMD += "C232B " + FrmSystemSetting.systSet.strRS232 + "\r\n";
+
+            //string fileName = Directory.GetCurrentDirectory() + "\\CommandFiles" + "\\Commands.txt";
+            string fileName = Directory.GetCurrentDirectory() + "\\Commands.txt";
+            try
+            {
+                File.WriteAllText(fileName, CMD);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            //File.AppendAllText(fileName, "ADCP_BaudRate " + sp.BaudRate + "\r\n");
         }
     }
 }

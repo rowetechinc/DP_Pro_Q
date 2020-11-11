@@ -133,7 +133,7 @@
     <value>Vertical</value>
   </data>
   <data name="textBoxHelpTips.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 683</value>
+    <value>153, 305</value>
   </data>
   <data name="textBoxHelpTips.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -154,7 +154,7 @@
     <value>829, 5</value>
   </data>
   <data name="panel34.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 719</value>
+    <value>179, 334</value>
   </data>
   <data name="panel34.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -4179,7 +4179,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 200</value>
+    <value>0, 196</value>
   </data>
   <data name="pictureBox_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4203,7 +4203,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 201</value>
+    <value>29, 197</value>
   </data>
   <data name="panel_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4227,7 +4227,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_A.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-323, 0</value>
+    <value>-327, 0</value>
   </data>
   <data name="vScrollBar_W_A.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -4569,7 +4569,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>3, 259</value>
+    <value>0, 255</value>
   </data>
   <data name="pictureBox_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4593,7 +4593,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 265</value>
+    <value>29, 261</value>
   </data>
   <data name="panel_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4620,7 +4620,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_C.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-378, 0</value>
+    <value>-382, 0</value>
   </data>
   <data name="vScrollBar_W_C.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -8211,10 +8211,10 @@
     <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="GPSdepthPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 480</value>
+    <value>0, 476</value>
   </data>
   <data name="GPSdepthPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>640, 171</value>
+    <value>636, 171</value>
   </data>
   <data name="GPSdepthPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -13515,6 +13515,63 @@
   </data>
   <data name="&gt;&gt;tabPageSerialTime.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="textBoxCommandSet.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="textBoxCommandSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
+  </data>
+  <data name="textBoxCommandSet.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="textBoxCommandSet.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxCommandSet.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Both</value>
+  </data>
+  <data name="textBoxCommandSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1005, 805</value>
+  </data>
+  <data name="textBoxCommandSet.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;textBoxCommandSet.Name" xml:space="preserve">
+    <value>textBoxCommandSet</value>
+  </data>
+  <data name="&gt;&gt;textBoxCommandSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxCommandSet.Parent" xml:space="preserve">
+    <value>tabPageCommandSet</value>
+  </data>
+  <data name="&gt;&gt;textBoxCommandSet.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabPageCommandSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageCommandSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1016, 818</value>
+  </data>
+  <data name="tabPageCommandSet.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="tabPageCommandSet.Text" xml:space="preserve">
+    <value>Command Set</value>
+  </data>
+  <data name="&gt;&gt;tabPageCommandSet.Name" xml:space="preserve">
+    <value>tabPageCommandSet</value>
+  </data>
+  <data name="&gt;&gt;tabPageCommandSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageCommandSet.Parent" xml:space="preserve">
+    <value>tabControl4</value>
+  </data>
+  <data name="&gt;&gt;tabPageCommandSet.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="tabControl4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

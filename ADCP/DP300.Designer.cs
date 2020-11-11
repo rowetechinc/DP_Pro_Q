@@ -554,6 +554,8 @@
             this.tabPageSerialTime = new ADCP.DVL_Windows.NoPaintBackGroundTabPage();
             this.panelSerialTime = new ADCP.DVL_Windows.NoPaintBackGroundPanel();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.tabPageCommandSet = new System.Windows.Forms.TabPage();
+            this.textBoxCommandSet = new System.Windows.Forms.TextBox();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -656,6 +658,7 @@
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.tabPageSerialTime.SuspendLayout();
+            this.tabPageCommandSet.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl4
@@ -665,6 +668,7 @@
             this.tabControl4.Controls.Add(this.tabPageTrack);
             this.tabControl4.Controls.Add(this.tabPageData);
             this.tabControl4.Controls.Add(this.tabPageSerialTime);
+            this.tabControl4.Controls.Add(this.tabPageCommandSet);
             resources.ApplyResources(this.tabControl4, "tabControl4");
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
@@ -4274,6 +4278,18 @@
             this.panelSerialTime.Name = "panelSerialTime";
             this.panelSerialTime.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSerialTime_Paint);
             // 
+            // tabPageCommandSet
+            // 
+            this.tabPageCommandSet.Controls.Add(this.textBoxCommandSet);
+            resources.ApplyResources(this.tabPageCommandSet, "tabPageCommandSet");
+            this.tabPageCommandSet.Name = "tabPageCommandSet";
+            this.tabPageCommandSet.UseVisualStyleBackColor = true;
+            // 
+            // textBoxCommandSet
+            // 
+            resources.ApplyResources(this.textBoxCommandSet, "textBoxCommandSet");
+            this.textBoxCommandSet.Name = "textBoxCommandSet";
+            // 
             // DP300_Windows
             // 
             resources.ApplyResources(this, "$this");
@@ -4443,6 +4459,8 @@
             this.tabPage9.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.tabPageSerialTime.ResumeLayout(false);
+            this.tabPageCommandSet.ResumeLayout(false);
+            this.tabPageCommandSet.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -5011,6 +5029,8 @@
         private System.Windows.Forms.ToolStripMenuItem GPSGGAToolStripMenuItem;
         private System.Windows.Forms.Label labelInstrumentSN;
         private System.Windows.Forms.Label label18; //LPJ 2013-9-22
+        private System.Windows.Forms.TabPage tabPageCommandSet;
+        private System.Windows.Forms.TextBox textBoxCommandSet;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }

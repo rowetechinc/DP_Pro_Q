@@ -3834,708 +3834,8 @@ namespace ADCP
                             pictureBox_W_A.Refresh();
                             pictureBox_W_C.Refresh();
                             RiverQArrayClass = Arr;
-
-                            //if (tabControl4.SelectedIndex == 1) //LPJ 2013-7-3 当当前的页面为数据页时，显示数据
-                            //WriteToDataPage(Arr);
                             this.BeginInvoke(WriteToDataPageEvent, Arr); //LPJ 2014-3-11
-
-                            //if (bStartMeasQ == true) //LPJ 2012-5-3  //LPJ 2014-7-29
-                            //ArrayClassWriteToFile(Arr);    //保存Ensemble数据   
-
-                            #region 计算流量
-                            /*   LPJ 2016-8-24 cancel
-                            //LPJ 2013-7-1 start
-                            float fTransducerDepth, fLeftDis, fRightDis;
-                            //if (labelUnit.Text == Resource1.String237) //LPJ 2013-7-1
-                            if (!bEnglish2Metric)
-                            {
-                                try
-                                {
-                                    fTransducerDepth = (float)projectUnit.FeetToMeter(double.Parse(labelTransducerDepth.Text), 1);
-                                }
-                                catch
-                                {
-                                    fTransducerDepth = 0;
-                                }
-                                try
-                                {
-                                    fLeftDis = (float)projectUnit.FeetToMeter(double.Parse(labelLeftDis.Text), 1);
-                                }
-                                catch
-                                {
-                                    fLeftDis = 0;
-                                }
-                                try
-                                {
-                                    fRightDis = (float)projectUnit.FeetToMeter(double.Parse(labelRightDis.Text), 1);
-                                }
-                                catch
-                                {
-                                    fRightDis = 0;
-                                }
-                            }
-                            else
-                            {
-                                try
-                                {
-                                    fTransducerDepth = float.Parse(labelTransducerDepth.Text);
-                                }
-                                catch
-                                {
-                                    fTransducerDepth = 0;
-                                }
-                                try
-                                {
-                                    fLeftDis = float.Parse(labelLeftDis.Text);
-                                }
-                                catch
-                                {
-                                    fLeftDis = 0;
-                                }
-                                try
-                                {
-                                    fRightDis = float.Parse(labelRightDis.Text);
-                                }
-                                catch
-                                {
-                                    fRightDis = 0;
-                                }
-                            }//LPJ 2013-7-1 end
-
-                            //JZH 2012-01-15 计算流量   -------开始
-                            if (bStartMeasQ)
-                            {
-                                RTIdata.Add(Arr);   //添加元素
-                                //JZH 2012-04-18 流量测量局部变量
-                                double dCourseMGDir = 0.0;
-
-                                ////JZH 2012-04-09 流量计算初始化数据
-                                //List<ArrayClass> left = new List<ArrayClass>();
-                                //List<ArrayClass> right = new List<ArrayClass>();
-                                //int avgNum = (int)numericUpDownAvgNo.Value;
-
-                                #region 计算航迹数据及中部流量    //JZH 2012-04-09
-                                {
-                                    if (RTIdata.Count == 1)  //第一个数据
-                                    {
-                                        if (RTIdata[0].B_Earth[0] > 20 || RTIdata[0].B_Earth[1] > 20)
-                                        {
-                                            bFirstGoodEnsemble = false;
-
-                                        }
-                                        else  //JZH 2012-04-09 当第一个数据组有效时，初始化流量参数
-                                        {
-                                            dLastGoodEnsembleTime = RTIdata[RTIdata.Count - 1].A_FirstPingSeconds;
-                                            iPrevGoodEnsemble = 0;
-                                            bFirstGoodEnsemble = true;
-                                        }
-                                    }
-                                    else
-                                    {
-
-                                        if (RTIdata[RTIdata.Count - 1].B_Earth[0] < 20 && RTIdata[RTIdata.Count - 1].B_Earth[1] < 20)
-                                        {
-                                            if (bFirstGoodEnsemble == true)
-                                            {
-
-                                                float fEast = 0.5f * (RTIdata[iPrevGoodEnsemble].B_Earth[0] + RTIdata[RTIdata.Count - 1].B_Earth[0]) * (float)(RTIdata[RTIdata.Count - 1].A_FirstPingSeconds - dLastGoodEnsembleTime);
-                                                float fNorth = 0.5f * (RTIdata[iPrevGoodEnsemble].B_Earth[1] + RTIdata[RTIdata.Count - 1].B_Earth[1]) * (float)(RTIdata[RTIdata.Count - 1].A_FirstPingSeconds - dLastGoodEnsembleTime);
-                                                fAccuEast += fEast;
-                                                fAccuNorth += fNorth;
-                                                fAccuLength += (float)Math.Sqrt(fEast * fEast + fNorth * fNorth);
-                                                fAccuDisMG = (float)Math.Sqrt(fAccuEast * fAccuEast + fAccuNorth * fAccuNorth);
-                                                dCourMG = (float)Math.Atan2(fAccuEast, fAccuNorth);
-
-                                                iPrevGoodEnsemble = RTIdata.Count - 1;
-
-                                                //JZH 2012-04-18 计算平均流向
-                                                float fVx = 0;
-                                                float fVy = 0;
-                                                float fAveDepth = 0;
-                                                // CalculateAverageWaterSpeed(RTIdata.Count - 1, ref fVx, ref fVy, ref fAveDepth);   //LPJ 2012-10-11 这里的RTIdata.Count应该改为EnsemblesInfoToStore的总数,这是因为在该函数的定义中使用的是EnsemblesInfoToStore的数据来计算fVx、fVy的值
-                                                CalculateAverageWaterSpeedMeasured(RTIdata.Count - 1, ref fVx, ref fVy, ref fAveDepth); //LPJ 2012-10-11 修改了新的计算流速函数
-
-                                                #region cancel
-                                               
-                                            ////LPJ 2013-7-30 将计算船速、水流速放在这里 -start
-                                            //double fWaterSpeed = (float)System.Math.Sqrt((System.Math.Pow(fVx, 2) + System.Math.Pow(fVy, 2)));
-                                            //double fWaterDir = System.Math.Atan2(fVx, fVy);
-                                            //if (fWaterDir < 0)
-                                            //    fWaterDir = fWaterDir / Math.PI * 180 + 360;
-                                            //else
-                                            //    fWaterDir = fWaterDir / Math.PI * 180;
-                                           
-                                            //if (!bEnglish2Metric)
-                                            //{
-                                            //    current_Depth = projectUnit.MeterToFeet(fAveDepth, 1).ToString("000.00");
-                                            //    current_WaterSpeed = projectUnit.MeterToFeet(fWaterSpeed, 1).ToString("0.000");
-                                            //}
-                                            //else
-                                            //{
-                                            //    current_Depth = fAveDepth.ToString("000.00");
-                                            //    current_WaterSpeed = fWaterSpeed.ToString("0.000");
-                                            //}
-                                            //current_WaterDirection = fWaterDir.ToString("000.0");
-
-                                            ////LPJ 2013-7-30 将船速计算放在这里--start
-                                            //double fBoatSpeed = 0;
-                                            //fBoatSpeed = (double)(SaveEnsemblesInfo.BoatSpeed[RTIdata.Count - 1]);
-                                            //float fBoatVelX = 0;
-                                            //float fBoatVelY = 0;
-                                            //fBoatVelX = ((Velocity)SaveEnsemblesInfo.BoatVelocity[RTIdata.Count - 1]).VX;
-                                            //fBoatVelY = ((Velocity)SaveEnsemblesInfo.BoatVelocity[RTIdata.Count - 1]).VY;
-                                            //if (fBoatVelX <= 20 && fBoatVelY <= 20)
-                                            //{
-                                            //    double dBoatDir = (double)(SaveEnsemblesInfo.BoatDir[RTIdata.Count - 1]);
-                                            //    current_BoatDirection = dBoatDir.ToString("000.0");
-
-                                            //    if (!bEnglish2Metric)
-                                            //        current_BoatSpeed = projectUnit.MeterToFeet(fBoatSpeed, 1).ToString("0.000");
-                                            //    else
-                                            //        current_BoatSpeed = fBoatSpeed.ToString("0.000");
-                                            //}
-                                            //else
-                                            //{
-                                            //    current_BoatDirection = "Bad";
-                                            //    current_BoatSpeed = "Bad";
-                                            //}
-                                            ////LPJ 2013-7-30 将船速计算放在这里--end
-                                           
-                                            ////LPJ 2013-6-22 将计算船速、水流速放在这里 -end
-                                          
-                                                #endregion
-
-                                                fGAccVx += fVx;
-                                                fGAccVy += fVy;
-
-                                                //JZH 2012-04-18 计算面积投影角
-                                                dGMeanFlowDir = System.Math.Atan2(fGAccVx, fGAccVy);
-                                                double dProjectionDir = 0; //投影角度
-                                                //if (radioButtonRightToLeft.Checked)
-                                                if (labelStartEdge.Text == Resource1.String227) //LPJ 2013-6-21
-                                                    dProjectionDir = dGMeanFlowDir - Math.PI / 2.0;
-                                                else
-                                                    dProjectionDir = dGMeanFlowDir + Math.PI / 2.0;
-
-
-                                                //JZH 2012-04-16 计算截面面积
-                                                arrayListEastLength.Add(fEast);
-                                                arrayListNorthLength.Add(fNorth);
-                                                //arrayListBottomDepth.Add(EnsemblesInfoToStore.bottomDepth[RTIdata.Count - 1]); //LPJ 2012-10-12 修改，不使用EnsemblesInfoToStore，使用原始数据RTIdata
-                                                arrayListBottomDepth.Add(getAverageB_depth(RTIdata[RTIdata.Count - 1]));  //LPJ 2012-10-12 add
-
-                                                //float fRiverWidth = 0;  //JZH 2012-04-18 修改为全局变量
-                                                //float fArea = 0;
-                                                fMeasRiverWidth = 0;          //JZH 2012-04-18 初始化为零
-                                                fMeasArea = 0;
-
-
-                                                //JZH 2012-04-18 修改成主流方向投影
-                                                for (int m = 0; m < arrayListEastLength.Count; m++)
-                                                {
-                                                    fMeasArea += ((float)arrayListEastLength[m] * (float)Math.Sin(dProjectionDir) + (float)arrayListNorthLength[m] * (float)Math.Cos(dProjectionDir)) * ((float)arrayListBottomDepth[m] + fTransducerDepth); //LPJ 2013-7-1
-                                                    fMeasRiverWidth += (float)arrayListEastLength[m] * (float)Math.Sin(dProjectionDir) + (float)arrayListNorthLength[m] * (float)Math.Cos(dProjectionDir);
-                                                }
-
-                                                ////JZH 2012-04-18 取消航迹方向投影
-                                                //for (int m = 0; m < arrayListEastLength.Count; m++)
-                                                //{
-                                                //    fMeasArea += ((float)arrayListEastLength[m] * (float)Math.Sin(dCourMG) + (float)arrayListNorthLength[m] * (float)Math.Cos(dCourMG)) * (float)arrayListBottomDepth[m];
-                                                //    fMeasRiverWidth += (float)arrayListEastLength[m] * (float)Math.Sin(dCourMG) + (float)arrayListNorthLength[m] * (float)Math.Cos(dCourMG);
-                                                //}
-
-                                                //label_RiverWidth.Text = fMeasRiverWidth.ToString("0.0");  //JZH 2012-04-18 cancel
-                                                //label_Area.Text = fMeasArea.ToString("0.0");              //JZH 2012-04-18 cancel
-
-                                                //JZH 2012-04-09 计算中部流量
-                                                #region 计算中部流量
-                                                {
-                                                    CalculateEnsembleFlowParam param = new CalculateEnsembleFlowParam();
-                                                    param.RiverDischarge_dTime = RTIdata[RTIdata.Count - 1].A_FirstPingSeconds - dLastGoodEnsembleTime;
-
-                                                    if (labelTopEstimate.Text == Resource1.String33) //LPJ 2013-6-22
-                                                        param.RiverDischargeTopMode = TopFlowMode.PowerFunction;
-                                                    else if (labelTopEstimate.Text == Resource1.String224)
-                                                        param.RiverDischargeTopMode = TopFlowMode.Constants;
-                                                    else
-                                                        param.RiverDischargeTopMode = TopFlowMode.Slope;
-
-                                                    if (labelBottomEstimate.Text == Resource1.String33)
-                                                        param.RiverDischargeBottomMode = BottomFlowMode.PowerFunction;
-                                                    else
-                                                        param.RiverDischargeBottomMode = BottomFlowMode.Constants;
-
-                                                    param.RiverDischargeDraft = fTransducerDepth; //LPJ 2013-7-1
-
-                                                    //param.RiverDischargeExponent = (double)numericUpDownE.Value;    //指数
-                                                    try
-                                                    {
-                                                        param.RiverDischargeExponent = double.Parse(labelPowerCurveCoeff.Text); //LPJ 2013-6-22
-                                                    }
-                                                    catch
-                                                    {
-                                                        param.RiverDischargeExponent = 0.1667;
-                                                    }
-                                                    param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
-                                                    param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;
-                                                    param.RiverDischargeOrgData = RTIdata[RTIdata.Count - 1];
-
-                                                    float ve, vn; //LPJ 2013-7-31
-                                                    ve = RTIdata[RTIdata.Count - 1].B_Earth[0]; //LPJ 2013-7-31
-                                                    vn = RTIdata[RTIdata.Count - 1].B_Earth[1]; //LPJ 2013-7-31
-
-                                                    double dHeadingOffset = 0; //LPJ 2013-9-13
-                                                    if ("GPS VTG" == labelVesselRef.Text)
-                                                    {
-                                                        Velocity boatV_GPS = new Velocity();
-                                                        boatV_GPS = (Velocity)(EnsemblesInfoToStore.BoatV_GPS[RTIdata.Count - 1]);
-
-                                                        ve = boatV_GPS.VX;
-                                                        vn = boatV_GPS.VY;
-                                                        //LPJ 2013-11-14 当采用自动GPS校正功能后，dHeadingOffset值通过计算获得
-                                                        //try
-                                                        //{
-                                                        //    dHeadingOffset = double.Parse(labelHeadingOffset.Text) / 180 * Math.PI;
-                                                        //}
-                                                        //catch
-                                                        //{
-                                                        //    dHeadingOffset = 0;
-                                                        //}
-
-                                                        //if (labelHeadingRef.Text != Resource1.String231)
-                                                            dHeadingOffset = fHeadingOffset / 180 * Math.PI;  //LPJ 2013-11-15 直接采用校正所得参数，该值为弧度
-                                                    }
-                                                    else if ("GPS GGA" == labelVesselRef.Text)
-                                                    {
-                                                        Velocity boatV_GPS = new Velocity();
-                                                        boatV_GPS = (Velocity)(EnsemblesInfoToStore.BoatV_GPGGA[RTIdata.Count - 1]);
-
-                                                        ve = boatV_GPS.VX;
-                                                        vn = boatV_GPS.VY;
-
-                                                        //if (labelHeadingRef.Text != Resource1.String231)
-                                                            dHeadingOffset = fHeadingOffset / 180 * Math.PI; //LPJ 2013-11-15 直接采用校正所得参数，该值为弧度
-                                                    }
-                                                    else if (Resource1.String233 == labelVesselRef.Text)
-                                                    {
-                                                        ve = 0;
-                                                        vn = 0;
-                                                    }
-
-                                                    EnsembleFlowInfo flow = Calcflow.RiverDischargeCalculate.CalculateEnsembleFlow(param, ve, vn, dHeadingOffset); //LPJ  2013-7-31
-
-                                                    //EnsembleFlowInfo flow = Calcflow.RiverDischargeCalculate.CalculateEnsembleFlow(param);
-                                                    if (flow.Valid)
-                                                    {//有效的数据
-                                                        //JZH 2012-04-08  根据左右岸，判定流量正负
-                                                        //if (radioButtonLeftToRight.Checked)
-                                                        if (bStartLeftEdge)
-                                                        {
-                                                            dTopFlow += flow.TopFlow;
-                                                            dMeasuredFlow += flow.MeasuredFlow;
-                                                            dBottomFlow += flow.BottomFlow;
-                                                        }
-                                                        else
-                                                        {
-                                                            dTopFlow += flow.TopFlow * (-1.0);
-                                                            dMeasuredFlow += flow.MeasuredFlow * (-1.0);
-                                                            dBottomFlow += flow.BottomFlow * (-1.0);
-                                                        }
-
-                                                        //LPJ 2013-5-22 根据起始终止按钮，将数据进行分类 --start
-                                                        if (bStartEdge)
-                                                        {
-                                                            // if (radioButtonLeftToRight.Checked)
-                                                            if (bStartLeftEdge)
-                                                                leftBank.Add(RTIdata[RTIdata.Count - 1]);
-                                                            else
-                                                                rightBank.Add(RTIdata[RTIdata.Count - 1]);
-                                                        }
-                                                        else if (bEndEdge)
-                                                        {
-                                                            //if (radioButtonLeftToRight.Checked)
-                                                            if (bStartLeftEdge)
-                                                                rightBank.Add(RTIdata[RTIdata.Count - 1]);
-                                                            //if (radioButtonRightToLeft.Checked)
-                                                            else
-                                                                leftBank.Add(RTIdata[RTIdata.Count - 1]);
-                                                        }
-                                                        //LPJ 2013-5-22 根据起始终止按钮，将数据进行分类 --end
-
-                                                    }
-                                                    //label_TopDiacharge.Text = dTopFlow.ToString("0.000");  //JZH 2012-04-18 cancel
-                                                    //label_MiddleDischarge.Text = dMeasuredFlow.ToString("0.000");//JZH 2012-04-18 cancel
-                                                    //label_BottomeDischarge.Text = dBottomFlow.ToString("0.000");//JZH 2012-04-18 cancel
-                                                }
-                                                #endregion
-
-                                                dLastGoodEnsembleTime = RTIdata[RTIdata.Count - 1].A_FirstPingSeconds;
-                                            }
-                                            else
-                                            {
-                                                bFirstGoodEnsemble = true;
-                                                iPrevGoodEnsemble = RTIdata.Count - 1;
-                                                dLastGoodEnsembleTime = RTIdata[RTIdata.Count - 1].A_FirstPingSeconds;
-                                            }
-                                        }
-
-                                    }
-                                    //JZH 2012-04-11 添加导航面板数据刷新
-                                    //JZH 2012-04-13 添加局部变量用作保存方向
-
-                                    if (dCourMG < 0)
-                                        //   dCourMG = dCourMG / 3.14159 * 180 + 360;  //JZH 2012-04-13 不可以直接操作全局变量
-                                        dCourseMGDir = dCourMG / 3.14159 * 180 + 360;
-                                    else
-                                        //   dCourMG = dCourMG / 3.14159 * 180;        //JZH 2012-04-13 不可以直接操作全局变量
-                                        dCourseMGDir = dCourMG / 3.14159 * 180;
-                                    //label_CourseMG.Text = dCourMG.ToString("000.0");
-                                    current_CourseMG = dCourseMGDir.ToString("0.0"); //JZH 2012-04-13
-
-                                    //if ("English" == defCfg.DefCfgInf.Unit) //LPJ 2013-5-28 单位换算 --start
-                                    //if (Resource1.String237 == labelUnit.Text)
-                                    if (!bEnglish2Metric)
-                                    {
-                                        current_Length = (projectUnit.MeterToFeet(fAccuLength, 1)).ToString("0.000");
-                                        current_DistanceMG = (projectUnit.MeterToFeet(fAccuDisMG, 1)).ToString("0.000");
-                                        label_AccEast.Text = (projectUnit.MeterToFeet(fAccuEast, 1)).ToString("0.000");
-                                        label_AccNorth.Text = (projectUnit.MeterToFeet(fAccuNorth, 1)).ToString("0.000");
-                                    }
-                                    else
-                                    {
-                                        current_Length = fAccuLength.ToString("0.000");
-                                        current_DistanceMG = fAccuDisMG.ToString("0.000");
-                                        label_AccEast.Text = fAccuEast.ToString("0.000");
-                                        label_AccNorth.Text = fAccuNorth.ToString("0.000");
-                                    }
-                                    //LPJ 2013-5-28 单位换算 --end
-
-                                }
-
-                                #endregion
-
-
-                                //List<ArrayClass> left = new List<ArrayClass>();
-                                //List<ArrayClass> right = new List<ArrayClass>();
-                                //int avgNum = (int)numericUpDownAvgNo.Value;
-
-                                //double topFlow = 0;
-                                //double measuredFlow = 0;
-                                //double bottomFlow = 0;
-                                //double rightFlow = 0;
-                                //double leftFlow = 0;
-
-                                //double lastSecond = double.NaN;
-                                //for (int i = 0; i < RTIdata.Count; i++)
-                                //{
-                                #region 计算中部流量 JZH 2012-04-09 取消旧版方法
-                                {
-                                    //CalculateEnsembleFlowParam param = new CalculateEnsembleFlowParam();
-                                    //if (double.IsNaN(lastSecond))
-                                    //{
-                                    //    param.RiverDischarge_dTime = 0;
-                                    //}
-                                    //else
-                                    //{
-                                    //    param.RiverDischarge_dTime = RTIdata[i].A_FirstPingSeconds - lastSecond;
-                                    //}
-
-                                    //param.RiverDischargeBottomMode = comboBoxBottomMode.SelectedIndex == 0 ? BottomFlowMode.PowerFunction : BottomFlowMode.Constants;
-
-                                    //switch (comboBoxTopMode.SelectedIndex)
-                                    //{
-                                    //    case 0:
-                                    //        {
-                                    //            param.RiverDischargeTopMode = TopFlowMode.PowerFunction;
-                                    //            break;
-                                    //        }
-                                    //    case 1:
-                                    //        {
-                                    //            param.RiverDischargeTopMode = TopFlowMode.Constants;
-                                    //            break;
-                                    //        }
-                                    //    case 2:
-                                    //        {
-                                    //            param.RiverDischargeTopMode = TopFlowMode.Slope;
-                                    //            break;
-                                    //        }
-                                    //    default:
-                                    //        break;
-                                    //}
-
-
-                                    //param.RiverDischargeDraft = (double)numericUpDownDraft.Value;
-                                    //param.RiverDischargeExponent = (double)numericUpDownE.Value;    //指数
-                                    //param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
-                                    //param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;
-                                    //param.RiverDischargeOrgData = RTIdata[i];
-                                    //EnsembleFlowInfo flow = Calcflow.RiverDischargeCalculate.CalculateEnsembleFlow(param);
-                                    //if (flow.Valid)
-                                    //{//有效的数据
-                                    //    //JZH 2012-04-08  根据左右岸，判定流量正负
-                                    //    if (radioButtonLeftToRight.Checked)
-                                    //    {
-                                    //        topFlow += flow.TopFlow;
-                                    //        measuredFlow += flow.MeasuredFlow;
-                                    //        bottomFlow += flow.BottomFlow;
-                                    //    }
-                                    //    else
-                                    //    {
-                                    //        topFlow += flow.TopFlow * (-1.0);
-                                    //        measuredFlow += flow.MeasuredFlow * (-1.0);
-                                    //        bottomFlow += flow.BottomFlow * (-1.0);
-                                    //    }
-
-                                    //    lastSecond = RTIdata[i].A_FirstPingSeconds;
-
-                                    //    if (left.Count < avgNum)
-                                    //    {
-                                    //        left.Add(RTIdata[i]);
-                                    //    }
-                                    //    else
-                                    //    {
-                                    //        if (radioButtonRightToLeft.Checked)   //
-                                    //        {
-                                    //            if (left.Count > 0)
-                                    //                left.RemoveAt(0);
-                                    //            left.Add(RTIdata[i]);
-                                    //        }
-                                    //    }
-
-                                    //    if (right.Count < avgNum)
-                                    //    {
-                                    //        right.Add(RTIdata[i]);
-                                    //    }
-                                    //    else
-                                    //    {
-                                    //        if (radioButtonLeftToRight.Checked)
-                                    //        {
-                                    //            if (right.Count > 0)
-                                    //                right.RemoveAt(0);
-                                    //            right.Add(RTIdata[i]);
-                                    //        }
-                                    //    }
-
-                                    //}
-                                    //label_TopDiacharge.Text = topFlow.ToString("0.000");
-                                    //label_MiddleDischarge.Text = measuredFlow.ToString("0.000");
-                                    //label_BottomeDischarge.Text = bottomFlow.ToString("0.000");
-
-                                }
-                                #endregion
-                                //}
-                                #region 计算左岸流量
-                                try
-                                {
-                                    CalculateShoreFlowParam param = new CalculateShoreFlowParam();
-                                    //param.RiverDischarge_A = 0.35;     //岸边系数
-                                    param.RiverDischarge_A = double.Parse(labelLeftRef.Text);
-                                    //param.RiverDischargeDraft = 0.0;  //ADCP吃水
-
-
-                                    param.RiverDischargeDraft = fTransducerDepth; //LPJ 2013-7-1
-                                    param.RiverDischargeDistance = fLeftDis; //LPJ 2013-7-1
-
-                                    param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;        //ADCP参数
-                                    param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
-                                    param.RiverDischargeOrgData = leftBank.ToArray();
-                                    dLeftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
-                                    dLeftShorePings = leftBank.Count(); //LPJ 2013-5-29 左岸呯数
-
-                                    //JZH 2012-04-18 添加岸边流速方向角计算，用于判断岸边流量的正负值                
-                                    dGShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
-                                    if (dCourseMGDir >= 0 && dCourseMGDir <= 180)
-                                    {
-                                        if (dGShoreVelDir - dCourseMGDir >= 0 && dGShoreVelDir - dCourseMGDir <= 180)
-                                        {
-                                            dGShoreCoff = -1.0;
-                                        }
-                                        else
-                                        {
-                                            dGShoreCoff = 1.0;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (dGShoreVelDir - dCourseMGDir <= 0 && dGShoreVelDir - dCourseMGDir >= -180)
-                                        {
-                                            dGShoreCoff = 1.0;
-                                        }
-                                        else
-                                        {
-                                            dGShoreCoff = -1.0;
-                                        }
-                                    }
-
-                                    //JZH 2012-04-18 采用航迹方向与岸边流速夹角判定方法，确定左右岸流量正负
-                                    //if (radioButtonRightToLeft.Checked)
-                                    if (!bStartLeftEdge)
-                                    {
-                                        dLeftFlow = Math.Abs(dLeftFlow) * dGShoreCoff * (-1.0);
-                                    }
-                                    else
-                                    {
-                                        dLeftFlow = Math.Abs(dLeftFlow) * dGShoreCoff;
-                                    }
-
-                                    //JZH 2012-04-18 计算岸边平均水深
-                                    double dLeftShoreAvgDepth = 0.0;
-                                    dLeftShoreAvgDepth = CalculateAvgShoreDepth(leftBank) + fTransducerDepth; //LPJ 2013-7-1
-
-                                    //JZH 2012-04-18 计算岸边面积
-                                    double dLeftShoreWidth = fLeftDis; //LPJ 2013-7-1
-                                    double dLeftShoreCoff = double.Parse(labelLeftRef.Text);
-
-                                    dGLeftShoreArea = CalculateShoreArea(dLeftShoreAvgDepth, dLeftShoreWidth, dLeftShoreCoff);
-
-                                    ////JZH 2012-02-05 采用简易判定方法，确定左右岸流量正负  //JZH  2012-04-18 取消旧岸边流量计算方法
-                                    //if (radioButtonRightToLeft.Checked)
-                                    //{
-                                    //    dLeftFlow = Math.Abs(dLeftFlow) * (-1.0);
-                                    //}
-                                    //label_LeftBankDischarge.Text = dLeftFlow.ToString("0.000"); //JZH 2012-04-18 cancel
-                                }
-                                catch (System.Exception ex)
-                                {
-                                    //MessageBox.Show(ex.Message);
-                                }
-                                #endregion
-
-                                #region 计算右岸流量
-                                try
-                                {
-                                    CalculateShoreFlowParam param = new CalculateShoreFlowParam();
-                                    //param.RiverDischarge_A = 0.35;
-                                    param.RiverDischarge_A = double.Parse(labelRightRef.Text);
-
-                                    param.RiverDischargeDraft = fTransducerDepth; //LPJ 2013-7-1
-                                    param.RiverDischargeDistance = fRightDis;
-
-                                    param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;
-                                    param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
-                                    param.RiverDischargeOrgData = rightBank.ToArray();
-                                    dRightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
-
-                                    dRightShorePings = rightBank.Count(); //LPJ 2013-5-29 右岸呯数
-
-                                    //JZH 2012-04-18 添加岸边流速方向角计算，用于判断岸边流量的正负值                
-                                    dGShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
-                                    if (dCourseMGDir >= 0 && dCourseMGDir <= 180)
-                                    {
-                                        if (dGShoreVelDir - dCourseMGDir >= 0 && dGShoreVelDir - dCourseMGDir <= 180)
-                                        {
-                                            dGShoreCoff = -1.0;
-                                        }
-                                        else
-                                        {
-                                            dGShoreCoff = 1.0;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (dGShoreVelDir - dCourseMGDir <= 0 && dGShoreVelDir - dCourseMGDir >= -180)
-                                        {
-                                            dGShoreCoff = 1.0;
-                                        }
-                                        else
-                                        {
-                                            dGShoreCoff = -1.0;
-                                        }
-                                    }
-                                    //JZH 2012-04-18 采用航迹方向与岸边流速夹角判定方法，确定左右岸流量正负
-                                    //if (radioButtonRightToLeft.Checked)
-                                    if (!bStartLeftEdge)
-                                    {
-                                        dRightFlow = Math.Abs(dRightFlow) * dGShoreCoff * (-1.0);
-                                    }
-                                    else
-                                    {
-                                        dRightFlow = Math.Abs(dRightFlow) * dGShoreCoff;
-                                    }
-
-                                    //JZH 2012-04-18 计算岸边平均水深
-                                    double dRightShoreAvgDepth = 0.0;
-                                    dRightShoreAvgDepth = CalculateAvgShoreDepth(rightBank) + fTransducerDepth;  //JZH 2012-04-17 
-
-                                    //JZH 2012-04-18 计算岸边面积                                    
-                                    //double dRightShoreWidth = (double)numericUpDownLeftDist.Value;     //LPJ 2013-4-12 
-                                    //double dRightShoreCoff = (double)numericUpDownLeftBankPara.Value;  //LPJ 2013-4-12
-                                    double dRightShoreWidth = fRightDis;      //LPJ 2013-4-12
-                                    double dRightShoreCoff = double.Parse(labelRightRef.Text);   //LPJ 2013-4-12
-                                    dGRightShoreArea = CalculateShoreArea(dRightShoreAvgDepth, dRightShoreWidth, dRightShoreCoff);
-
-                                    ////JZH 2012-02-05 采用简易判定方法，确定左右岸流量正负  //JZH 2012-04-18
-                                    //if (radioButtonRightToLeft.Checked)
-                                    //{
-                                    //    dRightFlow = Math.Abs(dRightFlow) * (-1.0);
-                                    //}
-                                    //label_RightBankDischarge.Text = dRightFlow.ToString("0.000");  //JZH 2012-04-18 cancel
-                                }
-                                catch (System.Exception ex)
-                                {
-                                    //MessageBox.Show(ex.Message);
-                                }
-                                current_TotalQ = (dLeftFlow + dRightFlow + dTopFlow + dMeasuredFlow + dBottomFlow).ToString("0.000");
-                                #endregion
-                            }
-                            //JZH 2012-04-18 更新流量面板
-
-                            if (checkBoxGetHeadingOffset.Checked) //LPJ 2015-9-22 当用户选择获取艏向偏差，则计算该值，并将其显示
-                            {
-                                GetGPSHeadingOffset();
-                            }
-
-                            //JZH 2012-04-18 更新导航面板
-                            float fTotalWidth = Math.Abs(fMeasRiverWidth) + fLeftDis + fRightDis; //LPJ 2013-7-1
-                            double dTotalArea = 0;
-                            dTotalArea = Math.Abs(fMeasArea) + dGLeftShoreArea + dGRightShoreArea;  //总面积
-
-                            double dMeanTemp = 0;    //平均流向
-                            if (dGMeanFlowDir < 0)
-                                dMeanTemp = dGMeanFlowDir / Math.PI * 180 + 360;
-                            else
-                                dMeanTemp = dGMeanFlowDir / Math.PI * 180;
-                            current_MeanFlowDir = dMeanTemp.ToString("0.00");
-
-                            double dMeanFlowAverage = 0;  //平均流速
-                            if (dTotalArea == 0)
-                                dMeanFlowAverage = 0;
-                            else
-                                dMeanFlowAverage = Math.Abs(dLeftFlow + dRightFlow + dTopFlow + dMeasuredFlow + dBottomFlow) / dTotalArea;
-
-                            //JZH 2012-01-15 计算流量   -------结束
-
-                            //LPJ 2013-5-28 单位换算 --start
-                            //if (Resource1.String237 == labelUnit.Text)
-                            if (!bEnglish2Metric)
-                            {
-                                current_TopQ = (projectUnit.MeterToFeet(dTopFlow, 3)).ToString("0.00");
-                                current_MiddleQ = (projectUnit.MeterToFeet(dMeasuredFlow, 3)).ToString("0.00");
-                                current_BottomQ = (projectUnit.MeterToFeet(dBottomFlow, 3)).ToString("0.00");
-                                current_LeftQ = (projectUnit.MeterToFeet(dLeftFlow, 3)).ToString("0.00");
-                                current_RightQ = (projectUnit.MeterToFeet(dRightFlow, 3)).ToString("0.00");
-                                current_TotalQ = (projectUnit.MeterToFeet((dLeftFlow + dRightFlow + dTopFlow + dMeasuredFlow + dBottomFlow), 3)).ToString("0.000");
-
-                                current_RiverWidth = (projectUnit.MeterToFeet(fTotalWidth, 1)).ToString("0.00");  //河宽
-                                current_Area = (projectUnit.MeterToFeet(dTotalArea, 2)).ToString("0.00");          //总面积
-                                current_MeanFLowVel = (projectUnit.MeterToFeet(dMeanFlowAverage, 1)).ToString("0.00"); //平均流速
-                            }
-                            else
-                            {
-                                current_TopQ = dTopFlow.ToString("0.00");
-                                current_MiddleQ = dMeasuredFlow.ToString("0.00");
-                                current_BottomQ = dBottomFlow.ToString("0.00");
-                                current_LeftQ = dLeftFlow.ToString("0.00");
-                                current_RightQ = dRightFlow.ToString("0.00");
-                                current_TotalQ = (dLeftFlow + dRightFlow + dTopFlow + dMeasuredFlow + dBottomFlow).ToString("0.000");
-
-                                current_RiverWidth = fTotalWidth.ToString("0.00");  //河宽
-                                current_Area = dTotalArea.ToString("0.00");
-                                current_MeanFLowVel = dMeanFlowAverage.ToString("0.00");
-                            }
-                            //LPJ 2013-5-28 单位换算 --end
-                            * */
-                            #endregion
+                            
                             if (bStartMeasQ)
                             {
                                 RTIdata.Add(Arr);
@@ -10109,106 +9409,7 @@ namespace ADCP
                                         fVy = fAverageY_Null[i];
                                     }
 
-                                    #region cancel 2016-10-27
-                                    /*
-                                    //LPJ 2013-6-22 将计算船速、水流速放在这里 -start
-                                    //float fWaterSpeed = (float)System.Math.Sqrt((System.Math.Pow(fVx, 2) + System.Math.Pow(fVy, 2)));
-                                    double fWaterSpeed = (double)(EnsemblesInfoToStore.WaterSpeedSum[i]); //LPJ 2013-7-3
-
-                                    //double fWaterDir = System.Math.Atan2(fVx, fVy);
-                                    //if (fWaterDir < 0)
-                                    //    fWaterDir = fWaterDir / 3.14159 * 180 + 360;
-                                    //else
-                                    //    fWaterDir = fWaterDir / 3.14159 * 180;
-
-                                    double fWaterDir = (double)(EnsemblesInfoToStore.WaterDir[i]);
-
-                                    if ("GPS VTG" == labelVesselRef.Text) //LPJ 2013-7-31
-                                    {
-                                        fWaterSpeed = (double)EnsemblesInfoToStore.WaterSpeedSum_GPS[i];
-                                        fWaterDir = (double)(EnsemblesInfoToStore.WaterDir_GPS[i]);
-                                    }
-                                    else if ("GPS GGA" == labelVesselRef.Text) //LPJ 2013-7-31
-                                    {
-                                        fWaterSpeed = (double)EnsemblesInfoToStore.WaterSpeedSum_GPGGA[i];
-                                        fWaterDir = (double)(EnsemblesInfoToStore.WaterDir_GPGGA[i]);
-                                    }
-                                    else if (Resource1.String233 == labelVesselRef.Text)
-                                    {
-                                        fWaterSpeed = (double)EnsemblesInfoToStore.WaterSpeedSum_Null[i];
-                                        fWaterDir = (double)(EnsemblesInfoToStore.WaterDir_Null[i]);
-                                    }
-
-                                    //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
-                                    if (!bEnglish2Metric)
-                                    {
-                                        //labelWaterSpeed.Text = projectUnit.MeterToFeet(fWaterSpeed,1).ToString("0.000");
-                                        current_Depth = projectUnit.MeterToFeet(fAveDepth, 1).ToString("0.00");
-                                        current_WaterSpeed = projectUnit.MeterToFeet(fWaterSpeed, 1).ToString("0.000");
-                                    }
-                                    else
-                                    {
-                                        //labelWaterSpeed.Text = fWaterSpeed.ToString("0.000");
-                                        current_Depth = fAveDepth.ToString("0.00");
-                                        current_WaterSpeed = fWaterSpeed.ToString("0.000");
-                                    }
-
-                                    //labelWaterDirection.Text = fWaterDir.ToString("000.0");
-
-                                    //JZH 2012-03-23 更新导航面板数据
-
-                                    current_WaterDirection = fWaterDir.ToString("0.0");
-
-                                    double fBoatSpeed = 0; 
-                                    float fBoatVelX = 0;
-                                    float fBoatVelY = 0;
-
-                                    fBoatSpeed = (double)(EnsemblesInfoToStore.BoatSpeed[i]);
-
-                                
-                                    fBoatVelX = ((Velocity)EnsemblesInfoToStore.BoatVelocity[i]).VX;
-                                    fBoatVelY = ((Velocity)EnsemblesInfoToStore.BoatVelocity[i]).VY;
-                                    if (fBoatVelX <= 20 && fBoatVelY <= 20)
-                                    {
-                                        //double fBoatDir = System.Math.Atan2(fBoatVelX, fBoatVelY);
-                                        //if (fBoatDir < 0)
-                                        //    fBoatDir = fBoatDir / 3.14159 * 180 + 360;
-                                        //else
-                                        //    fBoatDir = fBoatDir / 3.14159 * 180;
-                                        //label_BoatDirection.Text = fBoatDir.ToString("000.0");
-                                        double fBoatDir = (double)(EnsemblesInfoToStore.BoatDir[i]);
-                                        current_BoatDirection = fBoatDir.ToString("0.0");
-
-                                        //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
-                                        if (!bEnglish2Metric)
-                                            current_BoatSpeed = projectUnit.MeterToFeet(fBoatSpeed, 1).ToString("0.000");
-                                        else
-                                            current_BoatSpeed = fBoatSpeed.ToString("0.000");
-                                    }
-                                    else
-                                    {
-                                        current_BoatDirection = "Bad";
-                                        current_BoatSpeed = "Bad";
-                                    }
-
-                                    if ("GPS VTG" == labelVesselRef.Text) //LPJ 2013-7-31
-                                    {
-                                        current_BoatDirection =((double) EnsemblesInfoToStore.BoatDir_GPS[i]).ToString("0.00");
-                                        current_BoatSpeed = ((double)EnsemblesInfoToStore.BoatSpeed_GPS[i]).ToString("0.000");
-                                    }
-                                    else if ("GPS GGA" == labelVesselRef.Text)
-                                    {
-                                        current_BoatDirection = ((double)EnsemblesInfoToStore.BoatDir_GPGGA[i]).ToString("0.00");
-                                        current_BoatSpeed = ((double)EnsemblesInfoToStore.BoatSpeed_GPGGA[i]).ToString("0.000");
-                                    }
-                                    else if (Resource1.String233 == labelVesselRef.Text)
-                                    {
-                                        current_BoatDirection = "0";
-                                        current_BoatSpeed = "0";
-                                    }
-                                    //LPJ 2013-6-22 将计算船速、水流速放在这里 -end
-                                    **/
-                                    #endregion
+                                    
 
                                     fAccVx += fVx;
                                     fAccVy += fVy;
@@ -12220,103 +11421,29 @@ namespace ADCP
             {
                 if (projectHasStarted)
                 {
-                    //DialogResult r = MessageBox.Show("系统正在进行工程测量，是否要保存工程文件？", "提示",
-                    //   MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk); //LPJ 2012-4-20
-                    //DialogResult r = MessageBox.Show(Resource1.String18, Resource1.String19,   //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                    //  MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);
-                    //if (DialogResult.Yes == r)    //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
+                    if (SaveEnsemblesInfo.ChangeNumSum <= restoreNum && SaveEnsemblesInfo.ChangeNumSum > 0)
                     {
-                        //if (EnsemblesInfoToStore.ChangeNumSum <= restoreNum && EnsemblesInfoToStore.ChangeNumSum > 0/*&& bStartMeasQ == true*/)
-                        //{
-                        //    fileNum++;
-                        //    SaveAsBinaryFormat(EnsemblesInfoToStore, fileNum); //保存playback 数据
-                        //}
-                        //LPJ 2012-05-04 开始测量后才可以保存数据
-                        if (SaveEnsemblesInfo.ChangeNumSum <= restoreNum && SaveEnsemblesInfo.ChangeNumSum > 0)
-                        {
-                            fileNum++;
-                            SaveAsBinaryFormat(SaveEnsemblesInfo, fileNum); //保存playback 数据
-                        }
-
-                        //Modified 2011-11-3 changed to write it every ping
-                        //File.AppendAllText(newPath + "\\PlaybackData\\" + "info.infm", totalNum.ToString());
-
-                        playBackMode = false;
-                        closeComm();
-                        InitialAllParam();
-                        //MainPanel.Refresh();
-                        //panelGPSTrack.Refresh(); //LPJ 2013-6-9
-                        this.BeginInvoke(MainPanel_Refresh); //LPJ 2013-7-2
-                        this.BeginInvoke(TrackPanel_Refresh);
-                        //if (RiverAuthority == true) RiverPanel.Refresh();   //Modified 2011-10-16  //JZH 2012-01-12
-
-                        btnSpeedFast.Visible = false; //LPJ 2013-7-12
-                        btnSpeedSlow.Visible = false; //LPJ 2013-7-12 
-
-                        ProcessBar.Refresh();
-                        HPRpictureBox.Refresh();
-
-                        //tabPage_BoatSpeed.Refresh(); //LPJ 2013-5-18
-                        //tabPage_WaterDirection.Refresh(); //LPJ 2013-5-18
-                        //tabPage_Pitch.Refresh(); //LPJ 2013-5-18
-                        //tabPage_Roll.Refresh();  //LPJ 2013-5-18
-                        //tabPage_BoatWater.Refresh();  //LPJ 2013-5-18
-
-                        //panelSerialTime.Refresh(); //LPJ 2013-9-22
-                        this.BeginInvoke(PaintRefreshEvent); //LPJ 2014-3-11
-
-                        //LPJ 2013-5-19 自动检测串口连接 --start
-                        CommandConnect();
-                        //this.Text = System.IO.Path.Combine(Directory.GetCurrentDirectory() + "\\dp300Data", defCfg.DefCfgInf.FileName);
-                        this.Text = System.IO.Path.Combine(Directory.GetCurrentDirectory() + "\\dp300Data", labelSiteName.Text);
-                    
-                        //LPJ 2013-5-19 自动检测串口连接 --end
-
-                       /* FormNewADCP_Project newProjectForm = new FormNewADCP_Project(this);
-                        if (DialogResult.OK == newProjectForm.ShowDialog())
-                        {
-                            newProjectForm.Close();
-                            hasCreatedProject = true;
-                        }
-                        else  //LPJ 2013-4-16
-                        {
-                            hasCreatedProject = false;
-                        }
-
-                        //LPJ 2012-06-13 显示文件路径
-                        this.Text = newProjectForm.filepath;*/
-
+                        fileNum++;
+                        SaveAsBinaryFormat(SaveEnsemblesInfo, fileNum); //保存playback 数据
                     }
-                    //else if (DialogResult.No == r)   //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                    //{
-                    //    try
-                    //    {
-                    //        Directory.Delete(newPath, true);
-                    //    }
-                    //    catch (System.Exception ee)
-                    //    {
-                    //        MessageBox.Show(ee.Message);
-                    //    }
 
-                    //    playBackMode = false;
-                    //    closeComm();
-                    //    InitialAllParam();
-                    //    MainPanel.Refresh();
-                    //    //if (RiverAuthority == true) RiverPanel.Refresh();   //Modified 2011-10-16  //JZH 2012-01-12
-                    //    VerticalPanel.Refresh();
-                    //    horizontalPanel.Refresh();
-                    //    ProcessBar.Refresh();
-                    //    HPRpictureBox.Refresh();
+                    playBackMode = false;
+                    closeComm();
+                    InitialAllParam();
 
-                    //    FormNewADCP_Project newProjectForm = new FormNewADCP_Project(this);
-                    //    if (DialogResult.OK == newProjectForm.ShowDialog())
-                    //        newProjectForm.Close();
-                    //    hasCreatedProject = true;
+                    this.BeginInvoke(MainPanel_Refresh); //LPJ 2013-7-2
+                    this.BeginInvoke(TrackPanel_Refresh);
 
-                    //    //LPJ 2012-06-13 显示文件路径
-                    //   this.Text = newProjectForm.filepath;
+                    btnSpeedFast.Visible = false; //LPJ 2013-7-12
+                    btnSpeedSlow.Visible = false; //LPJ 2013-7-12 
 
-                    //}    //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
+                    ProcessBar.Refresh();
+                    HPRpictureBox.Refresh();
+
+                    this.BeginInvoke(PaintRefreshEvent); //LPJ 2014-3-11
+                    
+                    CommandConnect();
+                    this.Text = System.IO.Path.Combine(Directory.GetCurrentDirectory() + "\\dp300Data", labelSiteName.Text);
                 }
                 else
                 {
@@ -12324,11 +11451,8 @@ namespace ADCP
 
                     closeComm();
                     InitialAllParam();
-                    //MainPanel.Refresh();
-                    //panelGPSTrack.Refresh(); //LPJ 2013-6-9
                     this.BeginInvoke(MainPanel_Refresh); //LPJ 2013-7-2
                     this.BeginInvoke(TrackPanel_Refresh);
-                    //if (RiverAuthority == true) RiverPanel.Refresh();   //Modified 2011-10-16 //JZH 2012-01-12
 
                     btnSpeedFast.Visible = false; //LPJ 2013-7-12
                     btnSpeedSlow.Visible = false; //LPJ 2013-7-12
@@ -12336,13 +11460,6 @@ namespace ADCP
                     ProcessBar.Refresh();
                     HPRpictureBox.Refresh();
 
-                    //tabPage_BoatSpeed.Refresh(); //LPJ 2013-5-18
-                    //tabPage_WaterDirection.Refresh(); //LPJ 2013-5-18
-                    //tabPage_Pitch.Refresh(); //LPJ 2013-5-18
-                    //tabPage_Roll.Refresh();  //LPJ 2013-5-18
-                    //tabPage_BoatWater.Refresh();  //LPJ 2013-5-18
-
-                    //panelSerialTime.Refresh(); //LPJ 2013-9-22
                     this.BeginInvoke(PaintRefreshEvent); //LPJ 2014-3-11
 
                     //LPJ 2013-5-19 自动检测串口连接 --start
@@ -12350,26 +11467,7 @@ namespace ADCP
                     {
                         return false;
                     }
-                    
-                    //this.Text = System.IO.Path.Combine(Directory.GetCurrentDirectory() + "\\dp300Data", defCfg.DefCfgInf.FileName);
                     this.Text = System.IO.Path.Combine(Directory.GetCurrentDirectory() + "\\dp300Data", labelSiteName.Text);
-                    
-                    //LPJ 2013-5-19 自动检测串口连接 --end
-
-                    /*  FormNewADCP_Project newProjectForm = new FormNewADCP_Project(this);
-                      if (DialogResult.OK == newProjectForm.ShowDialog())
-                      {
-                          newProjectForm.Close();
-                          hasCreatedProject = true;
-                      }
-                      else  //LPJ 2013-4-16
-                      {
-                          hasCreatedProject = false;
-                      }
-
-                      //LPJ 2012-06-13 显示文件路径
-                      this.Text = newProjectForm.filepath;*/
-
                 }
             }
             if (playBackMode)
@@ -12399,39 +11497,6 @@ namespace ADCP
                 {
                     if (projectHasStarted)
                     {
-                        //DialogResult r = MessageBox.Show("系统正在进行工程测量，是否要保存工程文件？", "提示",
-                        //MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);//LPJ 2012-4-20
-                        //DialogResult r = MessageBox.Show(Resource1.String18, Resource1.String19,  //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                        //                     MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
-                        //if (DialogResult.Yes == r)  //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                        {
-                            //if (EnsemblesInfoToStore.ChangeNumSum <= restoreNum && EnsemblesInfoToStore.ChangeNumSum > 0/*&& bStartMeasQ == true*/)
-                            //{
-                            //    fileNum++;
-                            //    SaveAsBinaryFormat(EnsemblesInfoToStore, fileNum);   //保存playback数据
-                            //}
-                            //LPJ 2012-05-04 开始测量后才可以保存数据
-                          
-                                //if (SaveEnsemblesInfo.ChangeNumSum <= restoreNum && SaveEnsemblesInfo.ChangeNumSum > 0)
-                                //{
-                                //    fileNum++;
-                                //    SaveAsBinaryFormat(SaveEnsemblesInfo, fileNum);   //保存playback数据
-                                //}
-                            
-                            //Modified 2011-11-3 changed to write it every ping
-                            //File.AppendAllText(newPath + "\\PlaybackData\\" + "info.infm", totalNum.ToString());
-                        }
-                        //else if (DialogResult.No == r) //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                        //{
-                        //    try
-                        //    {
-                        //        Directory.Delete(newPath, true);
-                        //    }
-                        //    catch (System.Exception ee)
-                        //    {
-                        //        MessageBox.Show(ee.Message);
-                        //    }
-                        //} //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
                     }
                 }
                 else
@@ -12682,16 +11747,14 @@ namespace ADCP
             btnSpeedFast.Visible = false; //LPJ 2013-7-12
             btnSpeedSlow.Visible = false; //LPJ 2013-7-12
 
-            frmsystemSet = new FrmSystemSetting(sp);
-
-
+            frmsystemSet = new FrmSystemSetting(sp, systSet.bEnglishUnit);
 
             SendStandardCommand();
+
             iEnsembleInterval = 1;
 
             WaterAvgNum = 2;
-
-            // if (GPScheckbox.Checked == true)
+            
             if (bGPSConnect) //LPJ 2013-6-21
             {
                 try
@@ -12723,7 +11786,6 @@ namespace ADCP
             RealTimeProcessingTimer.Start();
               
             return true;
-            
         }
     
         public void OnStartRecording()
@@ -12836,29 +11898,14 @@ namespace ADCP
         public void btnStop()
         {
             bEndEdge = false;
-           
-            //if (bStartMeasQ == true)  //LPJ 2014-7-29
-            ////LPJ 2012-9-24 当点击结束测量时，保存所有数据 --start
-            //{
-            //    if (SaveEnsemblesInfo.ChangeNumSum <= restoreNum && SaveEnsemblesInfo.ChangeNumSum > 0)
-            //    {
-            //        fileNum++;
-            //        SaveAsBinaryFormat(SaveEnsemblesInfo, fileNum); //保存playback 数据
-            //    }
-            //}
-            //LPJ 2012-9-24 当点击结束测量时，保存所有数据 --end
 
             if (iStartMeasQ > 0) //LPJ 2013-5-31 当测量后，才写入配置信息
-            //WriteAllSettingsToFiles(); //LPJ 2013-5-29 当结束测量后，再重新将配置信息写入文件，这里将更新左岸和右岸平均呯数
             {
-                //WriteSmartPageToFile(newPath + "\\SysCfg\\Config.cfg"); //LPJ 2013-6-20 当测量结束时，将smartPage页中的配置写入文件，并复制到Lastconf  
                 WriteSmartPageToFile(newPath + ".cfg");  //LPJ 2014-7-29
             }
 
             try
             {
-                //LPJ 2014-1-7 将配置信息保存到lastTimeCfg中
-                //WriteSmartPageToFile(Directory.GetCurrentDirectory() + "\\dp300Data" + "\\LastTimeCfg" + "\\Config.cfg");
                 WriteSmartPageToFile(Directory.GetCurrentDirectory() + "\\dp300Data" + "\\Config.cfg"); //LPJ 2014-7-29
             }
             catch
@@ -12874,7 +11921,6 @@ namespace ADCP
                     labelStartEdge.Text=Resource1.String226;
                 //LPJ 2013-8-8 在测量结束后，自动到另一个起始岸 ---end
             }
-
 
             StartRecord = false; //LPJ 2014-6-17
             sp.Write("STOP" + '\r');
@@ -18102,7 +17148,7 @@ namespace ADCP
         }
         Configurations.Configuration conf = new Configurations.Configuration();
 
-        string CommandList;
+        string CommandList = "";
         private void SendStandardCommand() //用户模式下发送命令
         {
             string CMD;
@@ -18113,107 +17159,165 @@ namespace ADCP
             try
             {
                 CMD = "MODERIVER" + '\r';
+                sp.Write(CMD);//set default
+                CommandList += CMD + '\n';
+                Thread.Sleep(150);
+
+                CMD = "CRSMODE " + FrmSystemSetting.systSet.iMeasurmentMode.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                CMD = "CRSVB " + FrmSystemSetting.systSet.iVerticalBeam.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                CMD = "CRSAUTOBIN " + FrmSystemSetting.systSet.iAutoBinSize.ToString() + '\r';
+                sp.Write(CMD);
                 CommandList += CMD;
-                sp.Write(CMD);//sets defaults
+                displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
-               
-                sp.Write("CRSTEMP " + FrmSystemSetting.systSet.dWaterTemperature.ToString() + '\r'); //水温
+
+                CMD = "CRSAUTOLAG " + FrmSystemSetting.systSet.iAutoLag.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                CMD = "CRSWPBN " + FrmSystemSetting.systSet.iBins.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                CMD = "CRSWPAI " + FrmSystemSetting.systSet.dAveragingInterval.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                CMD = "CRSMAXDEPTH " + FrmSystemSetting.systSet.dMaxMeasurementDepth.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                CMD = "CRSWPSWITCH " + FrmSystemSetting.systSet.dWpSwitchDepth.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                CMD = "CRSBTSWITCH " + FrmSystemSetting.systSet.dBtSwitchDepth.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
                 if (!bEnglish2Metric)
                 {
-                    sp.Write("CRSXDCRDEPTH " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dTransducerDepth, 1).ToString() + '\r');
+                    CMD = "CRSXDCRDEPTH " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dTransducerDepth, 1).ToString() + '\r';
                 }
                 else
                 {
-                    sp.Write("CRSXDCRDEPTH " + FrmSystemSetting.systSet.dTransducerDepth.ToString() + '\r');//LPJ 2013-6-21 换能器深度
+                    CMD = "CRSXDCRDEPTH " + FrmSystemSetting.systSet.dTransducerDepth.ToString() + '\r';
                 }
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
-                
+
+                CMD = "CWSSC " + FrmSystemSetting.systSet.iWaterTemperatureSource.ToString();
+                CMD += "," + FrmSystemSetting.systSet.iTransducerDepthSource.ToString();
+                CMD += "," + FrmSystemSetting.systSet.iSalinitySource.ToString();
+                CMD += "," + FrmSystemSetting.systSet.iSpeedOfSoundSource.ToString();
+                CMD += "\r";
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
                 if (!bEnglish2Metric)
                 {
-                    sp.Write("CWSS " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dSpeedOfSound, 1).ToString() + '\r');
+                    CMD = "CWSS " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dSpeedOfSound, 1).ToString() + '\r';
                 }
                 else
                 {
-                    sp.Write("CWSS " + FrmSystemSetting.systSet.dSpeedOfSound.ToString() + '\r');//声速
+                    CMD = "CWSS " + FrmSystemSetting.systSet.dSpeedOfSound.ToString() + '\r';
                 }
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-                
-                sp.Write("CHS " + FrmSystemSetting.systSet.iHeadingRef.ToString() + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-                
-                sp.Write("CRSSALINITY " + FrmSystemSetting.systSet.dSalinity.ToString() + '\r');  //LPJ 2014-6-16 盐度
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                sp.Write("CHO " + FrmSystemSetting.systSet.dHeadingOffset.ToString() + '\r');
+                CMD = "CRSSALINITY " + FrmSystemSetting.systSet.dSalinity.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                sp.Write("CRSMODE " + FrmSystemSetting.systSet.iMeasurmentMode.ToString() + '\r');
+                CMD = "CRSTEMP " + FrmSystemSetting.systSet.dWaterTemperature.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                sp.Write("CRSVB " + FrmSystemSetting.systSet.iVerticalBeam.ToString() + '\r');
+                CMD = "CRSBTSNR " + FrmSystemSetting.systSet.dBtSNR.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                sp.Write("CRSAUTOBIN " + FrmSystemSetting.systSet.iAutoBinSize.ToString() + '\r');
+                CMD = "CRSBTCOR " + FrmSystemSetting.systSet.dBtCorrelationThreshold.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                sp.Write("CRSAUTOLAG " + FrmSystemSetting.systSet.iAutoLag.ToString() + '\r');
+                CMD = "CHO " + FrmSystemSetting.systSet.dHeadingOffset.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                sp.Write("CRSWPBN " + FrmSystemSetting.systSet.iBins.ToString() + '\r');
+                CMD = "CHS " + FrmSystemSetting.systSet.iHeadingRef.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                sp.Write("CRSWPAI " + FrmSystemSetting.systSet.dAveragingInterval.ToString() + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CRSMAXDEPTH " + FrmSystemSetting.systSet.dMaxMeasurementDepth.ToString() + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CRSWPSWITCH " + FrmSystemSetting.systSet.dWpSwitchDepth.ToString() + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CRSBTSWITCH " + FrmSystemSetting.systSet.dBtSwitchDepth.ToString() + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CRSBTSNR " + FrmSystemSetting.systSet.dBtSNR.ToString() + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("CRSBTCOR " + FrmSystemSetting.systSet.dBtCorrelationThreshold.ToString() + '\r');
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
-
-                sp.Write("C232B " + FrmSystemSetting.systSet.strRS232 + '\r');
+                CMD = "C232B " + FrmSystemSetting.systSet.strRS232 + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
                 //sp.Write("C485B " + frmsystemSet.systemSet.strRS485 + '\r');
                 //Thread.Sleep(150);
 
-                sp.Write("CSAVE" + '\r');
+                CMD = "CSAVE\r";
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                sp.Write("START" + '\r');
+                CMD = "CSAVE RIVCONF\r";
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                CMD = "START\r";
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
                 progressBar1.Value = 100;
+
+                textBoxCommandSet.Text = CommandList;
             }
             catch (System.Exception e)
             {
@@ -18299,82 +17403,7 @@ namespace ADCP
                     //MessageBox.Show(ex.Message);
                     return false;
                 }
-                //defaultSP.Write("BREAK" + '\r');  //LPJ 2013-7-12 cancel
-                //Thread.Sleep(150); //LPJ 2013-7-12 cancel
-                #region cancel
-                /*
-                //LPJ 2013-7-12 先发送break -start
-                defaultSP.BreakState = true;
-                defaultSP.DiscardInBuffer();
-                Thread.Sleep(100);
-                defaultSP.BreakState = false;
-                //LPJ 2013-7-12 发送break -end
-
-                int flag;
-                flag = 1;
-                while (flag < 10) //LPJ 2013-6-5 当没有接收数据时，再重新发送一次BREAK
-                {
-                    //Thread.Sleep(50);
-                    if (defaultQueue.Count > 0)
-                    {
-                        string strpack = "";
-                        while (defaultQueue.Count > 0)
-                        {
-                            ArrayList byteArray = new ArrayList();
-                            byteArray.AddRange((byte[])defaultQueue.Dequeue());
-                            byte[] pack = new byte[byteArray.Count];
-
-                            for (int i = 0; i < byteArray.Count; i++)
-                                pack[i] = (byte)byteArray[i];
-
-                            strpack += Encoding.Default.GetString(pack);
-                        }
-
-                        //判读串口读取的内容，如果是ADCP发送BREAK返回的内容，则可得出该串口连接正常
-                        //if (strpack.CompareTo("BREAK") == 1)
-                        if (strpack.Contains("Rowe Technologies Inc") )
-                        {
-                            bConnect = true; //LPJ 2013-7-12
-                            labelSN.Text = defaultSP.PortName; //LPJ 2013-7-12 刷新串口号
-                            try
-                            {
-                                //在这里提取SN号和固件版本号
-                                string[] packet = strpack.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-                                for (int i = 0; i < packet.Count(); i++)
-                                {
-                                    if (packet[i].Contains("SN"))
-                                    {
-                                        string[] snPacket = packet[i].Split(':');
-                                        labelSystemNumber.Text = snPacket[1];
-
-                                        //packet[i-1]为仪器型号
-                                    }
-                                    else if (packet[i].Contains("FW"))
-                                    {
-                                        
-                                        string[] fwPacket = packet[i].Split(':');
-                                        labelFirmWare.Text = fwPacket[1];
-                                    }
-                                }
-                            }
-                            catch
-                            {
-                            }
-                            return true;
-                        }
-                        //else
-                        //{
-                        //    return false;
-                        //}
-                    }
-                    flag++;
-                }*/
-#endregion
-
-                //LPJ 2013-7-15 当采用无线电连接时，发送FMSHOW，检查连接是否正常 --start
-                //defaultSP.Write("STOP" + '\r');
-                //Thread.Sleep(150);
-                //defaultSP.DiscardInBuffer();
+                
                 defaultSP.Write("FMSHOW" + '\r');
                 Thread.Sleep(1000);
                 int flag = 1;
@@ -18497,21 +17526,14 @@ namespace ADCP
 
                             return true;
                         }
-                        //else
-                        //{
-                        //    return false;
-                        //}
                     }
                     flag++;
                 }
                 //LPJ 2013-7-15 当采用无线电连接时，发送FMSHOW，检查连接是否正常 --end
                 
                 return false;
-               
             }
-
         }
-
         private void defaultSP_DataReceived(object sender, SerialDataReceivedEventArgs e)  //LPJ 2013-5-20
         {
             lock (lockpack)
@@ -20640,6 +19662,8 @@ namespace ADCP
                 label3.Text = "(m)";
             }
 
+
+
             //LPJ 2013-6-24 refresh Summary List
 
             //LPJ 2014-3-14当回放时，该功能才可用
@@ -20726,22 +19750,7 @@ namespace ADCP
         FrmSystemSetting.SystemSetting systSet = new FrmSystemSetting.SystemSetting(); //从配置文件中读取参数，并将其写入smartPage中
         private void linkLabelSystemSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //if (labelFlowRef.Text == Resource1.String228) //LPJ 2013-7-24 将流量参考取消，因为没有作用
-            //    systSet.iFlowRef = 0;
-            //else
-            //    systSet.iFlowRef = 1;
-
-            //try
-            //{
-            //    string strPathName = Directory.GetCurrentDirectory();
-            //    GetFileToAdvancedMode(strPathName + "\\dp300Data\\LastTimeCfg\\Config.cfg", ref advancedConf);  //LPJ 2013-8-5 读取高级配置参数
-            //}
-            //catch
-            //{
-            //    InitAdvancedParameter();
-            //}
-
-            
+            sp.DataReceived -= new SerialDataReceivedEventHandler(sp_DataReceived);
 
             if (labelHeadingRef.Text == Resource1.String230)
                 systSet.iHeadingRef = 0;
@@ -20800,7 +19809,7 @@ namespace ADCP
                 systSet.bEnglishUnit = false;
             
         
-            frmsystemSet = new FrmSystemSetting(sp);
+            frmsystemSet = new FrmSystemSetting(sp, systSet.bEnglishUnit);
 
             if (!playBackMode)
                 sp.Close();
@@ -20808,24 +19817,6 @@ namespace ADCP
             if (DialogResult.OK == frmsystemSet.ShowDialog())
             {
                 frmsystemSet.BringToFront();
-
-                //switch (frmsystemSet.systemSet.iFlowRef) //LPJ 2013-7-24 cancel
-                //{
-                //    case 0:
-                //        {
-                //            labelFlowRef.Text = Resource1.String228;
-                //            break;
-                //        }
-                //    case 1:
-                //        {
-                //            labelFlowRef.Text = Resource1.String229;
-                //            break;
-                //        }
-                //    default:
-                //        break;
-                //}
-
-                //switch (frmsystemSet.systemSet.iHeadingRef)
                 switch (FrmSystemSetting.systSet.iHeadingRef)
                 {
                     case 0:
@@ -20842,14 +19833,11 @@ namespace ADCP
                     default:
                         break;
                 }
-
                 switch (FrmSystemSetting.systSet.iSpeedRef)
                 {
                     case 0:
                         {
                             labelVesselRef.Text = Resource1.String232;
-
-                            //labelHeadingOffset.Visible = false; //LPJ 2013-9-13
                             break;
                         }
                     case 1:
@@ -20892,14 +19880,15 @@ namespace ADCP
 
                 iVesselSpeedRef = FrmSystemSetting.systSet.iSpeedRef; //LPJ 2016-8-18 船速参考
             }
+            
+            sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
 
             if (!playBackMode)
             {
                 try
                 {
-                    //if(!sp.IsOpen)
                     sp.Close();
-                        sp.Open(); //LPJ 2016-4-8 当关闭设置系统对话框时，打开串口通讯
+                    sp.Open();
                 }
                 catch(Exception ex)
                 {
@@ -21273,7 +20262,7 @@ namespace ADCP
     
         private void WriteStandardModeToFile(string fileName) //主要用于将高级模式的参数写入last配置中，在回放文件中不用显示该配置
         {
-            File.AppendAllText(fileName, "MODERIVER\r\n");
+            File.AppendAllText(fileName, CommandList);
         }
         private bool GetFileToGPS(string fileName) //LPJ 2014-7-29 从GPS文件中提取坐标
         {
@@ -21582,8 +20571,6 @@ namespace ADCP
                                     else
                                         labelVesselRef.Text = Resource1.String233;
                                     break;
-                                    //labelVesselRef.Text = cmdPart[1];
-                                    //break;
                                 }
                             case "HeadingReference":
                                 {
@@ -21592,14 +20579,7 @@ namespace ADCP
                                     else
                                         labelHeadingRef.Text = Resource1.String231;
                                     break;
-                                    //labelHeadingRef.Text = cmdPart[1];
-                                    //break;
                                 }
-                            //case "GPSHeadingOffset": //LPJ 2013-11-15 从配置文件中读取GPS安装偏差角
-                            //    {
-                            //        fHeadingOffset = double.Parse(cmdPart[1]);
-                            //        break;
-                            //    }
                             case "Salinity":
                                 {
                                     labelSalinity.Text = cmdPart[1];
@@ -21616,25 +20596,7 @@ namespace ADCP
                                     labelTransducerDepth.Text = cmdPart[1];
                                     break;
                                 }
-                            case "MeasurementMode":
-                                {
-                                    switch(int.Parse(cmdPart[1]))
-                                    {
-                                        case 0:
-                                            labelMeasMode.Text = "OFF";
-                                            break;
-                                        case 1:
-                                            labelMeasMode.Text = "Low Frequency";
-                                            break;
-                                        case 2:
-                                            labelMeasMode.Text = "High Frequency";
-                                            break;
-                                        case 3:
-                                            labelMeasMode.Text = "Auto Frequency";
-                                            break;
-                                    }
-                                    break;
-                                }
+                            
                             case "TopMode":
                                 {
                                     if (int.Parse(cmdPart[1]) == 0)
@@ -21725,22 +20687,30 @@ namespace ADCP
                                     dRightShorePings = int.Parse(cmdPart[1]);
                                     break;
                                 }
-                            case "CWS":
+                            case "CRSMODE":
+                                {
+                                    switch (int.Parse(cmdPart[1]))
+                                    {
+                                        case 0:
+                                            labelMeasMode.Text = "OFF";
+                                            break;
+                                        case 1:
+                                            labelMeasMode.Text = "Low Frequency";
+                                            break;
+                                        case 2:
+                                            labelMeasMode.Text = "High Frequency";
+                                            break;
+                                        case 3:
+                                            labelMeasMode.Text = "Auto Frequency";
+                                            break;
+                                    }
+                                    break;
+                                }
+                            case "CRSSALINITY":
                                 {
                                     fSalinity = float.Parse(cmdPart[1]);
                                     break;
                                 }
-
-                            //case "CWPBS":    //LPJ 2013-10-17 获取单元尺寸的初始值
-                            //    {
-                            //        cellSize = float.Parse(cmdPart[1]);
-                            //        break;
-                            //    }
-                            //case "CWPBN":    //LPJ 2013-10-17 获取层数的初始值
-                            //    {
-                            //        cells = float.Parse(cmdPart[1]);
-                            //        break;
-                            //    }
 
                             default:
                                 break;

@@ -68,6 +68,11 @@
             this.textBoxMaxDepth = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox41 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxBTSNR = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBoxAutoLag = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -85,14 +90,15 @@
             this.comboBoxVerticalBeam = new System.Windows.Forms.ComboBox();
             this.BTST_Correlation_text = new System.Windows.Forms.TextBox();
             this.label221 = new System.Windows.Forms.Label();
-            this.comboBoxAutoLag = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBoxBTSNR = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.buttonDownloadCommandSettings = new System.Windows.Forms.Button();
+            this.buttonReadCommandSettings = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonWriteCommandSettings = new System.Windows.Forms.Button();
+            this.buttonUploadCommandSettings = new System.Windows.Forms.Button();
             this.groupBox44.SuspendLayout();
             this.groupBox41.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -361,6 +367,7 @@
             // 
             // groupBox41
             // 
+            this.groupBox41.Controls.Add(this.groupBox2);
             this.groupBox41.Controls.Add(this.label14);
             this.groupBox41.Controls.Add(this.label13);
             this.groupBox41.Controls.Add(this.textBoxBTSNR);
@@ -406,6 +413,39 @@
             resources.ApplyResources(this.groupBox41, "groupBox41");
             this.groupBox41.Name = "groupBox41";
             this.groupBox41.TabStop = false;
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            // 
+            // textBoxBTSNR
+            // 
+            resources.ApplyResources(this.textBoxBTSNR, "textBoxBTSNR");
+            this.textBoxBTSNR.Name = "textBoxBTSNR";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // comboBoxAutoLag
+            // 
+            this.comboBoxAutoLag.AutoCompleteCustomSource.AddRange(new string[] {
+            resources.GetString("comboBoxAutoLag.AutoCompleteCustomSource"),
+            resources.GetString("comboBoxAutoLag.AutoCompleteCustomSource1")});
+            this.comboBoxAutoLag.FormattingEnabled = true;
+            this.comboBoxAutoLag.Items.AddRange(new object[] {
+            resources.GetString("comboBoxAutoLag.Items"),
+            resources.GetString("comboBoxAutoLag.Items1")});
+            resources.ApplyResources(this.comboBoxAutoLag, "comboBoxAutoLag");
+            this.comboBoxAutoLag.Name = "comboBoxAutoLag";
+            this.comboBoxAutoLag.SelectedIndexChanged += new System.EventHandler(this.comboBoxAutoLag_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -489,9 +529,7 @@
             this.comboBoxAutoBinSize.FormattingEnabled = true;
             this.comboBoxAutoBinSize.Items.AddRange(new object[] {
             resources.GetString("comboBoxAutoBinSize.Items"),
-            resources.GetString("comboBoxAutoBinSize.Items1"),
-            resources.GetString("comboBoxAutoBinSize.Items2"),
-            resources.GetString("comboBoxAutoBinSize.Items3")});
+            resources.GetString("comboBoxAutoBinSize.Items1")});
             resources.ApplyResources(this.comboBoxAutoBinSize, "comboBoxAutoBinSize");
             this.comboBoxAutoBinSize.Name = "comboBoxAutoBinSize";
             this.comboBoxAutoBinSize.SelectedIndexChanged += new System.EventHandler(this.comboBoxAutoBinSize_SelectedIndexChanged);
@@ -509,9 +547,7 @@
             this.comboBoxVerticalBeam.FormattingEnabled = true;
             this.comboBoxVerticalBeam.Items.AddRange(new object[] {
             resources.GetString("comboBoxVerticalBeam.Items"),
-            resources.GetString("comboBoxVerticalBeam.Items1"),
-            resources.GetString("comboBoxVerticalBeam.Items2"),
-            resources.GetString("comboBoxVerticalBeam.Items3")});
+            resources.GetString("comboBoxVerticalBeam.Items1")});
             resources.ApplyResources(this.comboBoxVerticalBeam, "comboBoxVerticalBeam");
             this.comboBoxVerticalBeam.Name = "comboBoxVerticalBeam";
             this.comboBoxVerticalBeam.SelectedIndexChanged += new System.EventHandler(this.comboBoxVerticalBeam_SelectedIndexChanged);
@@ -527,40 +563,43 @@
             resources.ApplyResources(this.label221, "label221");
             this.label221.Name = "label221";
             // 
-            // comboBoxAutoLag
+            // buttonDownloadCommandSettings
             // 
-            this.comboBoxAutoLag.AutoCompleteCustomSource.AddRange(new string[] {
-            resources.GetString("comboBoxAutoLag.AutoCompleteCustomSource"),
-            resources.GetString("comboBoxAutoLag.AutoCompleteCustomSource1")});
-            this.comboBoxAutoLag.FormattingEnabled = true;
-            this.comboBoxAutoLag.Items.AddRange(new object[] {
-            resources.GetString("comboBoxAutoLag.Items"),
-            resources.GetString("comboBoxAutoLag.Items1"),
-            resources.GetString("comboBoxAutoLag.Items2"),
-            resources.GetString("comboBoxAutoLag.Items3")});
-            resources.ApplyResources(this.comboBoxAutoLag, "comboBoxAutoLag");
-            this.comboBoxAutoLag.Name = "comboBoxAutoLag";
-            this.comboBoxAutoLag.SelectedIndexChanged += new System.EventHandler(this.comboBoxAutoLag_SelectedIndexChanged);
+            resources.ApplyResources(this.buttonDownloadCommandSettings, "buttonDownloadCommandSettings");
+            this.buttonDownloadCommandSettings.Name = "buttonDownloadCommandSettings";
+            this.buttonDownloadCommandSettings.UseVisualStyleBackColor = true;
+            this.buttonDownloadCommandSettings.Click += new System.EventHandler(this.buttonDownloadCommandSettings_Click);
             // 
-            // label12
+            // buttonReadCommandSettings
             // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
+            resources.ApplyResources(this.buttonReadCommandSettings, "buttonReadCommandSettings");
+            this.buttonReadCommandSettings.Name = "buttonReadCommandSettings";
+            this.buttonReadCommandSettings.UseVisualStyleBackColor = true;
+            this.buttonReadCommandSettings.Click += new System.EventHandler(this.buttonReadCommandSettings_Click);
             // 
-            // textBoxBTSNR
+            // groupBox2
             // 
-            resources.ApplyResources(this.textBoxBTSNR, "textBoxBTSNR");
-            this.textBoxBTSNR.Name = "textBoxBTSNR";
+            this.groupBox2.Controls.Add(this.buttonUploadCommandSettings);
+            this.groupBox2.Controls.Add(this.buttonWriteCommandSettings);
+            this.groupBox2.Controls.Add(this.buttonDownloadCommandSettings);
+            this.groupBox2.Controls.Add(this.buttonReadCommandSettings);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
             // 
-            // label13
+            // buttonWriteCommandSettings
             // 
-            resources.ApplyResources(this.label13, "label13");
-            this.label13.Name = "label13";
+            resources.ApplyResources(this.buttonWriteCommandSettings, "buttonWriteCommandSettings");
+            this.buttonWriteCommandSettings.Name = "buttonWriteCommandSettings";
+            this.buttonWriteCommandSettings.UseVisualStyleBackColor = true;
+            this.buttonWriteCommandSettings.Click += new System.EventHandler(this.buttonWriteCommandSettings_Click);
             // 
-            // label14
+            // buttonUploadCommandSettings
             // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
+            resources.ApplyResources(this.buttonUploadCommandSettings, "buttonUploadCommandSettings");
+            this.buttonUploadCommandSettings.Name = "buttonUploadCommandSettings";
+            this.buttonUploadCommandSettings.UseVisualStyleBackColor = true;
+            this.buttonUploadCommandSettings.Click += new System.EventHandler(this.buttonUploadCommandSettings_Click);
             // 
             // FrmSystemSetting
             // 
@@ -578,6 +617,7 @@
             this.groupBox41.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -646,5 +686,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxBTSNR;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buttonDownloadCommandSettings;
+        private System.Windows.Forms.Button buttonReadCommandSettings;
+        private System.Windows.Forms.Button buttonUploadCommandSettings;
+        private System.Windows.Forms.Button buttonWriteCommandSettings;
     }
 }
