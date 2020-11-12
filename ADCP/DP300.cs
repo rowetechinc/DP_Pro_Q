@@ -11747,7 +11747,7 @@ namespace ADCP
             btnSpeedFast.Visible = false; //LPJ 2013-7-12
             btnSpeedSlow.Visible = false; //LPJ 2013-7-12
 
-            frmsystemSet = new FrmSystemSetting(sp, systSet.bEnglishUnit);
+            frmsystemSet = new FrmSystemSetting(sp, ref systSet);
 
             SendStandardCommand();
 
@@ -17163,55 +17163,55 @@ namespace ADCP
                 CommandList += CMD + '\n';
                 Thread.Sleep(150);
 
-                CMD = "CRSMODE " + FrmSystemSetting.systSet.iMeasurmentMode.ToString() + '\r';
+                CMD = "CRSMODE " + systSet.iMeasurmentMode.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSVB " + FrmSystemSetting.systSet.iVerticalBeam.ToString() + '\r';
+                CMD = "CRSVB " + systSet.iVerticalBeam.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSAUTOBIN " + FrmSystemSetting.systSet.iAutoBinSize.ToString() + '\r';
+                CMD = "CRSAUTOBIN " + systSet.iAutoBinSize.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD;
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSAUTOLAG " + FrmSystemSetting.systSet.iAutoLag.ToString() + '\r';
+                CMD = "CRSAUTOLAG " + systSet.iAutoLag.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSWPBN " + FrmSystemSetting.systSet.iBins.ToString() + '\r';
+                CMD = "CRSWPBN " + systSet.iBins.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSWPAI " + FrmSystemSetting.systSet.dAveragingInterval.ToString() + '\r';
+                CMD = "CRSWPAI " + systSet.dAveragingInterval.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSMAXDEPTH " + FrmSystemSetting.systSet.dMaxMeasurementDepth.ToString() + '\r';
+                CMD = "CRSMAXDEPTH " + systSet.dMaxMeasurementDepth.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSWPSWITCH " + FrmSystemSetting.systSet.dWpSwitchDepth.ToString() + '\r';
+                CMD = "CRSWPSWITCH " + systSet.dWpSwitchDepth.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSBTSWITCH " + FrmSystemSetting.systSet.dBtSwitchDepth.ToString() + '\r';
+                CMD = "CRSBTSWITCH " + systSet.dBtSwitchDepth.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
@@ -17219,21 +17219,21 @@ namespace ADCP
 
                 if (!bEnglish2Metric)
                 {
-                    CMD = "CRSXDCRDEPTH " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dTransducerDepth, 1).ToString() + '\r';
+                    CMD = "CRSXDCRDEPTH " + projectUnit.FeetToMeter(systSet.dTransducerDepth, 1).ToString() + '\r';
                 }
                 else
                 {
-                    CMD = "CRSXDCRDEPTH " + FrmSystemSetting.systSet.dTransducerDepth.ToString() + '\r';
+                    CMD = "CRSXDCRDEPTH " + systSet.dTransducerDepth.ToString() + '\r';
                 }
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CWSSC " + FrmSystemSetting.systSet.iWaterTemperatureSource.ToString();
-                CMD += "," + FrmSystemSetting.systSet.iTransducerDepthSource.ToString();
-                CMD += "," + FrmSystemSetting.systSet.iSalinitySource.ToString();
-                CMD += "," + FrmSystemSetting.systSet.iSpeedOfSoundSource.ToString();
+                CMD = "CWSSC " + systSet.iWaterTemperatureSource.ToString();
+                CMD += "," + systSet.iTransducerDepthSource.ToString();
+                CMD += "," + systSet.iSalinitySource.ToString();
+                CMD += "," + systSet.iSpeedOfSoundSource.ToString();
                 CMD += "\r";
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
@@ -17242,54 +17242,54 @@ namespace ADCP
 
                 if (!bEnglish2Metric)
                 {
-                    CMD = "CWSS " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dSpeedOfSound, 1).ToString() + '\r';
+                    CMD = "CWSS " + projectUnit.FeetToMeter(systSet.dSpeedOfSound, 1).ToString() + '\r';
                 }
                 else
                 {
-                    CMD = "CWSS " + FrmSystemSetting.systSet.dSpeedOfSound.ToString() + '\r';
+                    CMD = "CWSS " + systSet.dSpeedOfSound.ToString() + '\r';
                 }
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSSALINITY " + FrmSystemSetting.systSet.dSalinity.ToString() + '\r';
+                CMD = "CRSSALINITY " + systSet.dSalinity.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSTEMP " + FrmSystemSetting.systSet.dWaterTemperature.ToString() + '\r';
+                CMD = "CRSTEMP " + systSet.dWaterTemperature.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSBTSNR " + FrmSystemSetting.systSet.dBtSNR.ToString() + '\r';
+                CMD = "CRSBTSNR " + systSet.dBtSNR.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSBTCOR " + FrmSystemSetting.systSet.dBtCorrelationThreshold.ToString() + '\r';
+                CMD = "CRSBTCOR " + systSet.dBtCorrelationThreshold.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CHO " + FrmSystemSetting.systSet.dHeadingOffset.ToString() + '\r';
+                CMD = "CHO " + systSet.dHeadingOffset.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CHS " + FrmSystemSetting.systSet.iHeadingRef.ToString() + '\r';
+                CMD = "CHS " + systSet.iHeadingRef.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "C232B " + FrmSystemSetting.systSet.strRS232 + '\r';
+                CMD = "C232B " + systSet.strRS232 + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
@@ -19730,7 +19730,7 @@ namespace ADCP
             return siteInfo;
 
         }
-
+        
         private void linkLabelSystemConf_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //FrmSystemConf.SystemConf sysconf;
@@ -19744,6 +19744,7 @@ namespace ADCP
             //    labelSystemNumber.Text = frmsystemConf.systemConf.SystemNumber;
             //}
         }
+        
 
         public int iVesselSpeedRef = 0; //LPJ 2016-8-18 船速参考
 
@@ -19796,7 +19797,7 @@ namespace ADCP
 
             try
             {
-                systSet.dSpeedOfSound = FrmSystemSetting.systSet.dSpeedOfSound;
+                systSet.dSpeedOfSound = systSet.dSpeedOfSound;
             }
             catch
             {
@@ -19809,15 +19810,15 @@ namespace ADCP
                 systSet.bEnglishUnit = false;
             
         
-            frmsystemSet = new FrmSystemSetting(sp, systSet.bEnglishUnit);
+            frmsystemSet = new FrmSystemSetting(sp, ref systSet);
 
             if (!playBackMode)
                 sp.Close();
 
-            if (DialogResult.OK == frmsystemSet.ShowDialog())
+            if (DialogResult.OK == frmsystemSet.ShowDialog(ref systSet))
             {
                 frmsystemSet.BringToFront();
-                switch (FrmSystemSetting.systSet.iHeadingRef)
+                switch (systSet.iHeadingRef)
                 {
                     case 0:
                         {
@@ -19833,7 +19834,7 @@ namespace ADCP
                     default:
                         break;
                 }
-                switch (FrmSystemSetting.systSet.iSpeedRef)
+                switch (systSet.iSpeedRef)
                 {
                     case 0:
                         {
@@ -19858,7 +19859,7 @@ namespace ADCP
                     default:
                         break;
                 }
-                switch (FrmSystemSetting.systSet.iMeasurmentMode)
+                switch (systSet.iMeasurmentMode)
                 {
                     case 0:
                         labelMeasMode.Text = "NONE";
@@ -19873,12 +19874,12 @@ namespace ADCP
                         labelMeasMode.Text = "Auto Frequency";
                         break;
                 }
-                labelTransducerDepth.Text = FrmSystemSetting.systSet.dTransducerDepth.ToString();
-                labelSalinity.Text = FrmSystemSetting.systSet.dSalinity.ToString();
-                label_Headingoffset.Text = FrmSystemSetting.systSet.dHeadingOffset.ToString(); //LPJ 2014-6-16
-                fHeadingOffset = FrmSystemSetting.systSet.dHeadingOffset; //LPJ 2016-8-12
+                labelTransducerDepth.Text = systSet.dTransducerDepth.ToString();
+                labelSalinity.Text = systSet.dSalinity.ToString();
+                label_Headingoffset.Text = systSet.dHeadingOffset.ToString(); //LPJ 2014-6-16
+                fHeadingOffset = systSet.dHeadingOffset; //LPJ 2016-8-12
 
-                iVesselSpeedRef = FrmSystemSetting.systSet.iSpeedRef; //LPJ 2016-8-18 船速参考
+                iVesselSpeedRef = systSet.iSpeedRef; //LPJ 2016-8-18 船速参考
             }
             
             sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
@@ -19897,7 +19898,7 @@ namespace ADCP
             }
             if (playBackMode)
             {
-                if ((iLastHeadingRef != FrmSystemSetting.systSet.iHeadingRef) || (Math.Abs(fHeadingOffset - fLastHeadingOffset) >= 0.00000001))//LPJ 2016-8-16 当回放模式时，艏向参考更改时，更新数据 //LPJ 2017-5-15 当艏向偏差更改了，更新数据
+                if ((iLastHeadingRef != systSet.iHeadingRef) || (Math.Abs(fHeadingOffset - fLastHeadingOffset) >= 0.00000001))//LPJ 2016-8-16 当回放模式时，艏向参考更改时，更新数据 //LPJ 2017-5-15 当艏向偏差更改了，更新数据
                 {
                     RefreshHDT();
                 }

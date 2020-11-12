@@ -68,6 +68,7 @@
             this.textBoxMaxDepth = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox41 = new System.Windows.Forms.GroupBox();
+            this.buttonDownloadCommandSettings = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxBTSNR = new System.Windows.Forms.TextBox();
@@ -90,15 +91,10 @@
             this.comboBoxVerticalBeam = new System.Windows.Forms.ComboBox();
             this.BTST_Correlation_text = new System.Windows.Forms.TextBox();
             this.label221 = new System.Windows.Forms.Label();
-            this.buttonDownloadCommandSettings = new System.Windows.Forms.Button();
-            this.buttonReadCommandSettings = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonWriteCommandSettings = new System.Windows.Forms.Button();
-            this.buttonUploadCommandSettings = new System.Windows.Forms.Button();
+            this.buttonSetDefaults = new System.Windows.Forms.Button();
             this.groupBox44.SuspendLayout();
             this.groupBox41.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -168,7 +164,6 @@
             resources.ApplyResources(this.btnOK, "btnOK");
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -367,7 +362,8 @@
             // 
             // groupBox41
             // 
-            this.groupBox41.Controls.Add(this.groupBox2);
+            this.groupBox41.Controls.Add(this.buttonSetDefaults);
+            this.groupBox41.Controls.Add(this.buttonDownloadCommandSettings);
             this.groupBox41.Controls.Add(this.label14);
             this.groupBox41.Controls.Add(this.label13);
             this.groupBox41.Controls.Add(this.textBoxBTSNR);
@@ -414,6 +410,13 @@
             this.groupBox41.Name = "groupBox41";
             this.groupBox41.TabStop = false;
             // 
+            // buttonDownloadCommandSettings
+            // 
+            resources.ApplyResources(this.buttonDownloadCommandSettings, "buttonDownloadCommandSettings");
+            this.buttonDownloadCommandSettings.Name = "buttonDownloadCommandSettings";
+            this.buttonDownloadCommandSettings.UseVisualStyleBackColor = true;
+            this.buttonDownloadCommandSettings.Click += new System.EventHandler(this.buttonDownloadCommandSettings_Click);
+            // 
             // label14
             // 
             resources.ApplyResources(this.label14, "label14");
@@ -428,6 +431,7 @@
             // 
             resources.ApplyResources(this.textBoxBTSNR, "textBoxBTSNR");
             this.textBoxBTSNR.Name = "textBoxBTSNR";
+            this.textBoxBTSNR.TextChanged += new System.EventHandler(this.textBoxBTSNR_TextChanged);
             // 
             // label12
             // 
@@ -563,43 +567,12 @@
             resources.ApplyResources(this.label221, "label221");
             this.label221.Name = "label221";
             // 
-            // buttonDownloadCommandSettings
+            // buttonSetDefaults
             // 
-            resources.ApplyResources(this.buttonDownloadCommandSettings, "buttonDownloadCommandSettings");
-            this.buttonDownloadCommandSettings.Name = "buttonDownloadCommandSettings";
-            this.buttonDownloadCommandSettings.UseVisualStyleBackColor = true;
-            this.buttonDownloadCommandSettings.Click += new System.EventHandler(this.buttonDownloadCommandSettings_Click);
-            // 
-            // buttonReadCommandSettings
-            // 
-            resources.ApplyResources(this.buttonReadCommandSettings, "buttonReadCommandSettings");
-            this.buttonReadCommandSettings.Name = "buttonReadCommandSettings";
-            this.buttonReadCommandSettings.UseVisualStyleBackColor = true;
-            this.buttonReadCommandSettings.Click += new System.EventHandler(this.buttonReadCommandSettings_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.buttonUploadCommandSettings);
-            this.groupBox2.Controls.Add(this.buttonWriteCommandSettings);
-            this.groupBox2.Controls.Add(this.buttonDownloadCommandSettings);
-            this.groupBox2.Controls.Add(this.buttonReadCommandSettings);
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
-            // 
-            // buttonWriteCommandSettings
-            // 
-            resources.ApplyResources(this.buttonWriteCommandSettings, "buttonWriteCommandSettings");
-            this.buttonWriteCommandSettings.Name = "buttonWriteCommandSettings";
-            this.buttonWriteCommandSettings.UseVisualStyleBackColor = true;
-            this.buttonWriteCommandSettings.Click += new System.EventHandler(this.buttonWriteCommandSettings_Click);
-            // 
-            // buttonUploadCommandSettings
-            // 
-            resources.ApplyResources(this.buttonUploadCommandSettings, "buttonUploadCommandSettings");
-            this.buttonUploadCommandSettings.Name = "buttonUploadCommandSettings";
-            this.buttonUploadCommandSettings.UseVisualStyleBackColor = true;
-            this.buttonUploadCommandSettings.Click += new System.EventHandler(this.buttonUploadCommandSettings_Click);
+            resources.ApplyResources(this.buttonSetDefaults, "buttonSetDefaults");
+            this.buttonSetDefaults.Name = "buttonSetDefaults";
+            this.buttonSetDefaults.UseVisualStyleBackColor = true;
+            this.buttonSetDefaults.Click += new System.EventHandler(this.buttonSetDefaults_Click);
             // 
             // FrmSystemSetting
             // 
@@ -617,7 +590,6 @@
             this.groupBox41.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -686,10 +658,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxBTSNR;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonDownloadCommandSettings;
-        private System.Windows.Forms.Button buttonReadCommandSettings;
-        private System.Windows.Forms.Button buttonUploadCommandSettings;
-        private System.Windows.Forms.Button buttonWriteCommandSettings;
+        private System.Windows.Forms.Button buttonSetDefaults;
     }
 }

@@ -15,18 +15,35 @@ namespace ADCP
 {
     public partial class FrmSystemSetting : Form
     {
-        public FrmSystemSetting(SerialPort _sp, bool English)
+        SystemSetting systSet;
+        public FrmSystemSetting(SerialPort _sp, ref SystemSetting _systSet)
         {
             InitializeComponent();
             sp = _sp;
-            systSet.bEnglishUnit = English;
-            GetReference();
+            systSet = _systSet;
+            GetReference(ref systSet);
+            _systSet = systSet;
         }
+
         private SerialPort sp;
-        public static SystemSetting systSet;
-        private void GetReference()
-        {   
-            CheckText();
+
+        public DialogResult ShowDialog(ref SystemSetting _systSet)
+        {
+            //Assign received parameter(s) to local context
+            systSet = _systSet;
+
+            DialogResult result = this.ShowDialog(); //Display and activate this form (Form2)
+
+            //Return parameter(s)
+            _systSet = systSet;
+
+            return result;
+        }
+        private void GetReference(ref SystemSetting systSet)
+        {
+            DownloadCommandSettings();
+
+            CheckText(ref systSet);
 
             if (systSet.bEnglishUnit)
             {
@@ -36,13 +53,9 @@ namespace ADCP
                 label23.Text = "(ft)";
                 label18.Text = "(ft/s)";
 
-                //string str = projectUnit.FeetToMeter(FrmSystemSetting.systSet.dTransducerDepth, 1).ToString() + "\r\n";
+                //string str = projectUnit.FeetToMeter(systSet.dTransducerDepth, 1).ToString() + "\r\n";
 
-                //textBoxMaxDepth
-                //textBoxWPswitchDepth
-                //textBoxBTswitchDepth
-                //textBoxTransducerDepth
-                //textSoundSpeed
+
             }
             else
             {
@@ -53,26 +66,11 @@ namespace ADCP
                 label18.Text = "(m/s)";
             }
         }
-        private void btnOK_Click(object sender, EventArgs e)
-        {   
-            //systemSet.iFlowRef = comboBoxFlowRef.SelectedIndex;
-            /*
-            systSet.iHeadingRef = comboBoxHeadingRef.SelectedIndex;
-            systSet.strRS232 = comboBox_RS232.Text;
-            systSet.iSpeedRef = comboBoxVesselSpeedRef.SelectedIndex;
-            systSet.iMeasurmentMode = comboBoxMeasMode.SelectedIndex;
-            systSet.iVerticalBeam = comboBoxVerticalBeam.SelectedIndex;
-            systSet.iAutoBinSize= comboBoxAutoBinSize.SelectedIndex;
-            systSet.iWaterTemperatureSource= comboBox_waterTemperature.SelectedIndex;
-            systSet.iTransducerDepthSource = comboBox_TransducerDepth.SelectedIndex;
-            systSet.iSalinitySource = comboBox_Salinity.SelectedIndex;
-            systSet.iSpeedOfSoundSource = comboBox_SpeedOfSound.SelectedIndex;
-            */
-        }
-
-        
         public struct SystemSetting
         {
+            public bool bEnglishUnit;
+            public int iInstrumentTypes;
+
             //public int iFlowRef;
             public int iSpeedRef;
             public int iHeadingRef;
@@ -102,17 +100,12 @@ namespace ADCP
             public double dSalinity;
             public double dWaterTemperature;
             public double dSpeedOfSound;
-
-            public bool bEnglishUnit;
-            public int iInstrumentTypes;
-            
         }
- 
-        ClassValidateInPut validateInput = new ClassValidateInPut();
 
-        
-        public void CheckText()
+        ClassValidateInPut validateInput = new ClassValidateInPut();
+        public void CheckText(ref SystemSetting systSet)
         {
+            double min, max;
             btnOK.Enabled = true;
 
             if (!validateInput.ValidateUserInput(textWaterSalinity.Text, 7))
@@ -145,7 +138,14 @@ namespace ADCP
             }
             else
             {
-                if (double.Parse(textBoxTransducerDepth.Text) >= 0 && double.Parse(textBoxTransducerDepth.Text) < 100)
+                min = 0;
+                max = 100;
+                if (systSet.bEnglishUnit)
+                {
+                    min = projectUnit.MeterToFeet(min, 1);
+                    max = projectUnit.MeterToFeet(max, 1);
+                }
+                if (double.Parse(textBoxTransducerDepth.Text) >= min && double.Parse(textBoxTransducerDepth.Text) < max)
                 {
                     textBoxTransducerDepth.BackColor = Color.White;
                     systSet.dTransducerDepth = double.Parse(textBoxTransducerDepth.Text);
@@ -183,7 +183,14 @@ namespace ADCP
             }
             else
             {
-                if (double.Parse(textSoundSpeed.Text) > 1400 && double.Parse(textSoundSpeed.Text) < 1600)
+                min = 1400;
+                max = 1600;
+                if (systSet.bEnglishUnit)
+                {
+                    min = projectUnit.MeterToFeet(min, 1);
+                    max = projectUnit.MeterToFeet(max, 1);
+                }
+                if (double.Parse(textSoundSpeed.Text) > min && double.Parse(textSoundSpeed.Text) < max)
                 {
                     textSoundSpeed.BackColor = Color.White;
                     systSet.dSpeedOfSound = double.Parse(textSoundSpeed.Text);
@@ -202,7 +209,15 @@ namespace ADCP
             }
             else
             {
-                if (double.Parse(textBoxMaxDepth.Text) >= 2 && double.Parse(textBoxMaxDepth.Text) < 100)
+                min = 2;
+                max = 100;
+                if (systSet.bEnglishUnit)
+                {
+                    min = projectUnit.MeterToFeet(min, 1);
+                    max = projectUnit.MeterToFeet(max, 1);
+                }
+
+                if (double.Parse(textBoxMaxDepth.Text) >= min && double.Parse(textBoxMaxDepth.Text) <= max)
                 {
                     textBoxMaxDepth.BackColor = Color.White;
                     systSet.dMaxMeasurementDepth = double.Parse(textBoxMaxDepth.Text);
@@ -259,7 +274,14 @@ namespace ADCP
             }
             else
             {
-                if (double.Parse(textBoxWPswitchDepth.Text) >= 2 && double.Parse(textBoxWPswitchDepth.Text) <= 20)
+                min = 2;
+                max = 20;
+                if (systSet.bEnglishUnit)
+                {
+                    min = projectUnit.MeterToFeet(min, 1);
+                    max = projectUnit.MeterToFeet(max, 1);
+                }
+                if (double.Parse(textBoxWPswitchDepth.Text) >= min && double.Parse(textBoxWPswitchDepth.Text) <= max)
                 {
                     textBoxWPswitchDepth.BackColor = Color.White;
                     systSet.dWpSwitchDepth = double.Parse(textBoxWPswitchDepth.Text);
@@ -278,7 +300,14 @@ namespace ADCP
             }
             else
             {
-                if (double.Parse(textBoxBTswitchDepth.Text) >= 2 && double.Parse(textBoxBTswitchDepth.Text) <= 50)
+                min = 2;
+                max = 50;
+                if (systSet.bEnglishUnit)
+                {
+                    min = projectUnit.MeterToFeet(min, 1);
+                    max = projectUnit.MeterToFeet(max, 1);
+                }
+                if (double.Parse(textBoxBTswitchDepth.Text) >= min && double.Parse(textBoxBTswitchDepth.Text) <= max)
                 {
                     textBoxBTswitchDepth.BackColor = Color.White;
                     systSet.dBtSwitchDepth = double.Parse(textBoxBTswitchDepth.Text);
@@ -306,6 +335,25 @@ namespace ADCP
                 {
                     btnOK.Enabled = false;
                     BTST_Correlation_text.BackColor = Color.Red;
+                }
+            }
+            //
+            if (!validateInput.ValidateUserInput(textBoxBTSNR.Text, 7))
+            {
+                btnOK.Enabled = false;
+                textBoxBTSNR.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textBoxBTSNR.Text) >= 0.0 && double.Parse(textBoxBTSNR.Text) <= 100)
+                {
+                    textBoxBTSNR.BackColor = Color.White;
+                    systSet.dBtSNR = double.Parse(textBoxBTSNR.Text);
+                }
+                else
+                {
+                    btnOK.Enabled = false;
+                    textBoxBTSNR.BackColor = Color.Red;
                 }
             }
             //
@@ -368,7 +416,7 @@ namespace ADCP
         }
         public void TheTextChanged(object sender, EventArgs e)
         {
-            CheckText();
+            CheckText(ref systSet);
         }
         private void comboBoxHeadingRef_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -472,6 +520,10 @@ namespace ADCP
         {
             TheTextChanged(sender, e);
         }
+        private void textBoxBTSNR_TextChanged(object sender, EventArgs e)
+        {
+            TheTextChanged(sender, e);
+        }
         private void BTST_Correlation_text_TextChanged(object sender, EventArgs e)
         {
             TheTextChanged(sender, e);
@@ -496,11 +548,7 @@ namespace ADCP
         {
 
         }
-
-
-        //private SerialPort sp;  
-        private System.Collections.Queue defaultQueue;// = new System.Collections.Queue();
-
+        private System.Collections.Queue defaultQueue;
         static object lockpack = new object();
         private void SP_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -511,7 +559,7 @@ namespace ADCP
                 defaultQueue.Enqueue(packet);
             }
         }
-        private void buttonDownloadCommandSettings_Click(object sender, EventArgs e)
+        private void DownloadCommandSettings()
         {
             defaultQueue = new System.Collections.Queue();
 
@@ -529,13 +577,13 @@ namespace ADCP
             {
                 sp.Write("CRSSHOW\r");
                 Thread.Sleep(1000);
-                
+
                 int thecount = 0;
                 int flag = 1;
                 while (flag < 2 && !OK)
                 {
                     if (defaultQueue.Count > 0)
-                    {                        
+                    {
                         while (defaultQueue.Count > 0)
                         {
                             thecount++;
@@ -560,13 +608,13 @@ namespace ADCP
             {
                 Int32 index = 0;
                 double dVal;
-                string[] separatingStrings = { "<<", "...", " ", "," };
+                string[] separatingStrings = { " ", "," };
 
                 var reader = new StringReader(strpack);
                 string cmd = reader.ReadLine();
                 string[] cmdPart = new string[2];
                 while (cmd != null)
-                {   
+                {
                     try
                     {
                         if (cmd != "")
@@ -633,46 +681,47 @@ namespace ADCP
                                     try
                                     {
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        textBoxWPaveragingInterval.Text = dVal.ToString();
+                                        textBoxWPaveragingInterval.Text = dVal.ToString("0.00");
                                     }
                                     catch { }
                                     break;
                                 case "CRSMAXDEPTH":
                                     try
                                     {
-                                        //Units
-
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        if(systSet.bEnglishUnit)
+                                        if (systSet.bEnglishUnit)
                                             dVal = projectUnit.MeterToFeet(dVal, 1);
-                                        textBoxMaxDepth.Text = dVal.ToString();
+                                        textBoxMaxDepth.Text = dVal.ToString("0.000");
                                     }
                                     catch { }
                                     break;
                                 case "CRSWPSWITCH":
                                     try
                                     {
-                                        //textBoxWPswitchDepth Units
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        textBoxWPswitchDepth.Text = dVal.ToString();
+                                        if (systSet.bEnglishUnit)
+                                            dVal = projectUnit.MeterToFeet(dVal, 1);
+                                        textBoxWPswitchDepth.Text = dVal.ToString("0.000");
                                     }
                                     catch { }
                                     break;
                                 case "CRSBTSWITCH":
                                     try
                                     {
-                                        //textBoxBTswitchDepth Units
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        textBoxBTswitchDepth.Text = dVal.ToString();
+                                        if (systSet.bEnglishUnit)
+                                            dVal = projectUnit.MeterToFeet(dVal, 1);
+                                        textBoxBTswitchDepth.Text = dVal.ToString("0.000");
                                     }
                                     catch { }
                                     break;
                                 case "CRSXDCRDEPTH":
                                     try
                                     {
-                                        //textBoxTransducerDepth Units
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        textBoxTransducerDepth.Text = dVal.ToString();
+                                        if (systSet.bEnglishUnit)
+                                            dVal = projectUnit.MeterToFeet(dVal, 1);
+                                        textBoxTransducerDepth.Text = dVal.ToString("0.000");
                                     }
                                     catch { }
                                     break;
@@ -680,7 +729,7 @@ namespace ADCP
                                     try
                                     {
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        textWaterSalinity.Text = dVal.ToString();
+                                        textWaterSalinity.Text = dVal.ToString("0.00");
                                     }
                                     catch { }
                                     break;
@@ -688,7 +737,7 @@ namespace ADCP
                                     try
                                     {
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        textWaterTemperature.Text = dVal.ToString();
+                                        textWaterTemperature.Text = dVal.ToString("0.00");
                                     }
                                     catch { }
                                     break;
@@ -696,7 +745,7 @@ namespace ADCP
                                     try
                                     {
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        textBoxBTSNR.Text = dVal.ToString();
+                                        textBoxBTSNR.Text = dVal.ToString("0.00");
                                     }
                                     catch { }
                                     break;
@@ -704,16 +753,17 @@ namespace ADCP
                                     try
                                     {
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        BTST_Correlation_text.Text = dVal.ToString();
+                                        BTST_Correlation_text.Text = dVal.ToString("0.00");
                                     }
                                     catch { }
                                     break;
                                 case "CWSS":
                                     try
                                     {
-                                        //textSoundSpeed Units
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        textSoundSpeed.Text = dVal.ToString();
+                                        if (systSet.bEnglishUnit)
+                                            dVal = projectUnit.MeterToFeet(dVal, 1);
+                                        textSoundSpeed.Text = dVal.ToString("0.000");
                                     }
                                     catch { }
                                     break;
@@ -721,11 +771,11 @@ namespace ADCP
                                     try
                                     {
                                         dVal = Convert.ToDouble(cmdPart[1]);
-                                        textHeadingOffset.Text = dVal.ToString();
+                                        textHeadingOffset.Text = dVal.ToString("0.00");
                                     }
                                     catch { }
                                     break;
-                                    
+
                             }
                         }
                         try
@@ -746,59 +796,51 @@ namespace ADCP
             sp.DataReceived -= new SerialDataReceivedEventHandler(SP_DataReceived);
             //sp.Close();
         }
-
-        private void buttonReadCommandSettings_Click(object sender, EventArgs e)
+        private void buttonDownloadCommandSettings_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void buttonUploadCommandSettings_Click(object sender, EventArgs e)
-        {
+            DownloadCommandSettings();
 
         }
         private Units projectUnit = new Units();
-        private void buttonWriteCommandSettings_Click(object sender, EventArgs e)
+        private void WriteCommandSettings(SystemSetting systSet)
         {
-            
-            
-
-            string CMD = "CRSMODE " + FrmSystemSetting.systSet.iMeasurmentMode.ToString() + "\r\n";
-            CMD += "CRSVB " + FrmSystemSetting.systSet.iVerticalBeam.ToString() + "\r\n";
-            CMD += "CRSAUTOBIN " + FrmSystemSetting.systSet.iAutoBinSize.ToString() + "\r\n";
-            CMD += "CRSAUTOLAG " + FrmSystemSetting.systSet.iAutoLag.ToString() + "\r\n";
-            CMD += "CRSWPBN " + FrmSystemSetting.systSet.iBins.ToString() + "\r\n";
-            CMD += "CRSWPAI " + FrmSystemSetting.systSet.dAveragingInterval.ToString() + "\r\n";
-            CMD += "CRSMAXDEPTH " + FrmSystemSetting.systSet.dMaxMeasurementDepth.ToString() + "\r\n";
-            CMD += "CRSWPSWITCH " + FrmSystemSetting.systSet.dWpSwitchDepth.ToString() + "\r\n";
-            CMD += "CRSBTSWITCH " + FrmSystemSetting.systSet.dBtSwitchDepth.ToString() + "\r\n";
+            string CMD = "CRSMODE " + systSet.iMeasurmentMode.ToString() + "\r\n";
+            CMD += "CRSVB " + systSet.iVerticalBeam.ToString() + "\r\n";
+            CMD += "CRSAUTOBIN " + systSet.iAutoBinSize.ToString() + "\r\n";
+            CMD += "CRSAUTOLAG " + systSet.iAutoLag.ToString() + "\r\n";
+            CMD += "CRSWPBN " + systSet.iBins.ToString() + "\r\n";
+            CMD += "CRSWPAI " + systSet.dAveragingInterval.ToString() + "\r\n";
+            CMD += "CRSMAXDEPTH " + systSet.dMaxMeasurementDepth.ToString() + "\r\n";
+            CMD += "CRSWPSWITCH " + systSet.dWpSwitchDepth.ToString() + "\r\n";
+            CMD += "CRSBTSWITCH " + systSet.dBtSwitchDepth.ToString() + "\r\n";
             if (systSet.bEnglishUnit)
             {
-                CMD += "CRSXDCRDEPTH " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dTransducerDepth, 1).ToString() + "\r\n";
+                CMD += "CRSXDCRDEPTH " + projectUnit.FeetToMeter(systSet.dTransducerDepth, 1).ToString() + "\r\n";
             }
             else
             {
-                CMD += "CRSXDCRDEPTH " + FrmSystemSetting.systSet.dTransducerDepth.ToString() + "\r\n";
+                CMD += "CRSXDCRDEPTH " + systSet.dTransducerDepth.ToString() + "\r\n";
             }
-            CMD += "CWSSC " + FrmSystemSetting.systSet.iWaterTemperatureSource.ToString();
-            CMD += "," + FrmSystemSetting.systSet.iTransducerDepthSource.ToString();
-            CMD += "," + FrmSystemSetting.systSet.iSalinitySource.ToString();
-            CMD += "," + FrmSystemSetting.systSet.iSpeedOfSoundSource.ToString();
+            CMD += "CWSSC " + systSet.iWaterTemperatureSource.ToString();
+            CMD += "," + systSet.iTransducerDepthSource.ToString();
+            CMD += "," + systSet.iSalinitySource.ToString();
+            CMD += "," + systSet.iSpeedOfSoundSource.ToString();
             CMD += "\r\n";
             if (systSet.bEnglishUnit)
             {
-                CMD += "CWSS " + projectUnit.FeetToMeter(FrmSystemSetting.systSet.dSpeedOfSound, 1).ToString() + "\r\n";
+                CMD += "CWSS " + projectUnit.FeetToMeter(systSet.dSpeedOfSound, 1).ToString() + "\r\n";
             }
             else
             {
-                CMD += "CWSS " + FrmSystemSetting.systSet.dSpeedOfSound.ToString() + "\r\n";
+                CMD += "CWSS " + systSet.dSpeedOfSound.ToString() + "\r\n";
             }
-            CMD += "CRSSALINITY " + FrmSystemSetting.systSet.dSalinity.ToString() + "\r\n";
-            CMD += "CRSTEMP " + FrmSystemSetting.systSet.dWaterTemperature.ToString() + "\r\n";
-            CMD += "CRSBTSNR " + FrmSystemSetting.systSet.dBtSNR.ToString() + "\r\n";
-            CMD += "CRSBTCOR " + FrmSystemSetting.systSet.dBtCorrelationThreshold.ToString() + "\r\n";
-            CMD += "CHO " + FrmSystemSetting.systSet.dHeadingOffset.ToString() + "\r\n";
-            CMD += "CHS " + FrmSystemSetting.systSet.iHeadingRef.ToString() + "\r\n";
-            CMD += "C232B " + FrmSystemSetting.systSet.strRS232 + "\r\n";
+            CMD += "CRSSALINITY " + systSet.dSalinity.ToString() + "\r\n";
+            CMD += "CRSTEMP " + systSet.dWaterTemperature.ToString() + "\r\n";
+            CMD += "CRSBTSNR " + systSet.dBtSNR.ToString() + "\r\n";
+            CMD += "CRSBTCOR " + systSet.dBtCorrelationThreshold.ToString() + "\r\n";
+            CMD += "CHO " + systSet.dHeadingOffset.ToString() + "\r\n";
+            CMD += "CHS " + systSet.iHeadingRef.ToString() + "\r\n";
+            CMD += "C232B " + systSet.strRS232 + "\r\n";
 
             //string fileName = Directory.GetCurrentDirectory() + "\\CommandFiles" + "\\Commands.txt";
             string fileName = Directory.GetCurrentDirectory() + "\\Commands.txt";
@@ -811,6 +853,22 @@ namespace ADCP
                 MessageBox.Show(ex.Message);
             }
             //File.AppendAllText(fileName, "ADCP_BaudRate " + sp.BaudRate + "\r\n");
+        }
+
+        private void buttonSetDefaults_Click(object sender, EventArgs e)
+        {
+            sp.Close();
+            sp.Open();
+
+            //sp.DataReceived += new SerialDataReceivedEventHandler(SP_DataReceived);
+
+            if (sp.IsOpen)
+            {
+                sp.Write("MODERIVER\r");
+                Thread.Sleep(1000);
+                sp.Close();
+            }
+            DownloadCommandSettings();
         }
     }
 }
