@@ -553,9 +553,10 @@
             this.label57 = new System.Windows.Forms.Label();
             this.tabPageSerialTime = new ADCP.DVL_Windows.NoPaintBackGroundTabPage();
             this.panelSerialTime = new ADCP.DVL_Windows.NoPaintBackGroundPanel();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.tabPageCommandSet = new System.Windows.Forms.TabPage();
             this.textBoxCommandSet = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.textBoxSmartPageFile = new System.Windows.Forms.TextBox();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -4280,6 +4281,7 @@
             // 
             // tabPageCommandSet
             // 
+            this.tabPageCommandSet.Controls.Add(this.textBoxSmartPageFile);
             this.tabPageCommandSet.Controls.Add(this.textBoxCommandSet);
             resources.ApplyResources(this.tabPageCommandSet, "tabPageCommandSet");
             this.tabPageCommandSet.Name = "tabPageCommandSet";
@@ -4289,6 +4291,11 @@
             // 
             resources.ApplyResources(this.textBoxCommandSet, "textBoxCommandSet");
             this.textBoxCommandSet.Name = "textBoxCommandSet";
+            // 
+            // textBoxSmartPageFile
+            // 
+            resources.ApplyResources(this.textBoxSmartPageFile, "textBoxSmartPageFile");
+            this.textBoxSmartPageFile.Name = "textBoxSmartPageFile";
             // 
             // DP300_Windows
             // 
@@ -5031,6 +5038,7 @@
         private System.Windows.Forms.Label label18; //LPJ 2013-9-22
         private System.Windows.Forms.TabPage tabPageCommandSet;
         private System.Windows.Forms.TextBox textBoxCommandSet;
+        private System.Windows.Forms.TextBox textBoxSmartPageFile;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }

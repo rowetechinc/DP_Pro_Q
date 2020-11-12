@@ -602,64 +602,6 @@ namespace ADCP
         /// <param name="e"></param>
         private void toolStripBtnStart_Click(object sender, EventArgs e)
         {
-            #region 
-            /*
-            //开始发射
-            toolStripBtnStart.Enabled = false; //LPJ 2013-8-21
-            try
-            {
-                if (DP300_wnd.btnStart())
-                {
-                    toolStripBtnHome.Enabled = false; //LPJ 2013-9-25 当开始发射后，home按钮不可用
-                    toolStripBtnSetting.Enabled = false;
-                    toolStripBtnSurvey.Visible = false;
-
-                    toolStripBtnStart.Visible = false;
-                    //toolStripBtnStartEdge.Visible = false;  //LPJ 2013-6-18 当在主窗口中弹出设置测量时，不需要再显示开始测量按钮
-                    toolStripBtnStartEdge.Visible = true;  //LPJ 2013-7-12 
-                    toolStripBtnMoving.Visible = false;
-                    toolStripBtnEndEdge.Visible = false;
-                    toolStripBtnStop.Image = pictureBoxStop.Image; //LPJ 2013-8-9
-                    toolStripBtnStop.Visible = true;
-
-                    toolStripBtnStatusR.Visible = false; //LPJ 2013-8-6
-                    toolStripBtnStatusY.Visible = true;   //LPJ 2013-8-6
-                    toolStripBtnStatusG.Visible = false;
-                    toolStripLabelTip.Text = Resource1.String263;
-
-                    //LPJ 2013-7-26 弹出提示框
-                    Point pnt = new Point();
-                    pnt.X = this.toolStrip1.Location.X + 10;
-                    pnt.Y = this.toolStrip1.Location.Y + 10;
-                    toolTip1.Show(Resource1.String256, this, pnt, 10000);
-
-                }
-
-                toolStripBtnStart.Enabled = true; //LPJ 2013-8-21
-
-            }
-            catch
-            {
-               // toolStripBtnSetting.Enabled = true;
-                //toolStripBtnSurvey.Visible = true;
-
-                toolStripBtnStart.Enabled = true; //LPJ 2013-8-21
-
-                toolStripBtnStart.Visible = true;
-                toolStripBtnStartEdge.Visible = false;
-                toolStripBtnMoving.Visible = false;
-                toolStripBtnEndEdge.Visible = false;
-                toolStripBtnStop.Visible = false;
-
-                toolStripBtnStatusR.Visible = true; //LPJ 2013-8-6
-                toolStripBtnStatusY.Visible = false; //LPJ 2013-8-6
-                toolStripBtnStatusG.Visible = false; //LPJ 2013-8-6
-
-                MessageBox.Show(Resource1.String17);
-            }
-*/
-            #endregion
-
             toolStripBtnStartPings.Visible = false;
             toolStripBtnStopPings.Visible = false;
             toolStripBtnStart.Visible = false;

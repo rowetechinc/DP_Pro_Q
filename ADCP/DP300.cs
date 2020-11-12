@@ -12044,6 +12044,9 @@ namespace ADCP
         /// </summary>
         public void OnStopRecording()
         {
+            string CMD = "CRSTS " + TRANSECT_STATE_STOP.ToString() + '\r';
+            sp.Write(CMD);
+
             bEndEdge = false;
 
             if (iStartMeasQ > 0) //LPJ 2013-5-31 当测量后，才写入配置信息
@@ -12088,6 +12091,7 @@ namespace ADCP
             {
                 GetGPSHeadingOffset();
             }
+
         }
             
         private void trackBarMaxV_Scroll(object sender, EventArgs e)
@@ -17148,6 +17152,17 @@ namespace ADCP
         }
         Configurations.Configuration conf = new Configurations.Configuration();
 
+
+
+        private const int TRANSECT_STATE_STOP = 0;
+        private const int TRANSECT_STATE_COMPASSCAL = 1;
+        private const int TRANSECT_STATE_BEDSTATIONARY = 2;
+        private const int TRANSECT_STATE_BEDLOOP = 3;
+        private const int TRANSECT_STATE_SYSTEMTEST = 4;
+        private const int TRANSECT_STATE_ACQUIRING_BT = 5;
+        private const int TRANSECT_STATE_EDGE = 6;
+        private const int TRANSECT_STATE_MOVING = 7;
+
         string CommandList = "";
         private void SendStandardCommand() //用户模式下发送命令
         {
@@ -17163,6 +17178,11 @@ namespace ADCP
                 CommandList += CMD + '\n';
                 Thread.Sleep(150);
 
+                
+                
+
+                
+
                 CMD = "CRSMODE " + systSet.iMeasurmentMode.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
@@ -17177,7 +17197,7 @@ namespace ADCP
 
                 CMD = "CRSAUTOBIN " + systSet.iAutoBinSize.ToString() + '\r';
                 sp.Write(CMD);
-                CommandList += CMD;
+                CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
@@ -17289,6 +17309,31 @@ namespace ADCP
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
+                /*
+                labelSiteName.Text = FrmSiteInformation.siteInfo.siteName;
+                labelStationNumber.Text = FrmSiteInformation.siteInfo.stationNumber;
+                labelMeasNumber.Text = FrmSiteInformation.siteInfo.MeasNumber;
+                labelSiteComments.Text = FrmSiteInformation.siteInfo.comments;
+                siteInformation = GetSiteInformation(FrmSiteInformation.siteInfo);
+                */
+                CMD = "CRSNAME " + labelSiteName.Text + '\r';// FrmSiteInformation.siteInfo.siteName + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(500);
+
+                CMD = "CRSNUMBER " + labelStationNumber.Text + '\r';// FrmSiteInformation.siteInfo.stationNumber + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
+                CMD = "CRSTS " + TRANSECT_STATE_ACQUIRING_BT.ToString() + '\r';
+                sp.Write(CMD);
+                CommandList += CMD + '\n';
+                displayprocessbar(4, progressBar1);
+                Thread.Sleep(150);
+
                 CMD = "C232B " + systSet.strRS232 + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
@@ -17301,20 +17346,21 @@ namespace ADCP
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
+                Thread.Sleep(1000);
 
                 CMD = "CSAVE RIVCONF\r";
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
+                Thread.Sleep(1000);
 
                 CMD = "START\r";
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(150);
+                //displayprocessbar(4, progressBar1);
+                //Thread.Sleep(500);
 
+                
                 progressBar1.Value = 100;
 
                 textBoxCommandSet.Text = CommandList;
@@ -17451,8 +17497,6 @@ namespace ADCP
                                     labelFirmWare.Text = strFirmWare;
                                 }
                             }
-
-                            //LPJ 2013-8-1 获取仪器型号
                             #region 
                             defaultSP.Write("BREAK" + '\r');
                             Thread.Sleep(1000);
@@ -17471,8 +17515,7 @@ namespace ADCP
 
                                     strpack += Encoding.Default.GetString(pack);
                                 }
-
-                                //判读串口读取的内容，如果是ADCP发送BREAK返回的内容，则可得出该串口连接正常
+                                
                                 if (strpack.Contains("Rowe Technologies Inc"))
                                 {
                                     packet = strpack.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -17480,17 +17523,9 @@ namespace ADCP
                                     {
                                         if (packet[i].Contains("RIVER"))
                                         {
-                                            //string[] snPacket = packet[i-1].Split(' ');
-                                            //labelSystemNumber.Text = snPacket[0]; //仪器类型
                                             string snPacket = packet[i + 1];
                                             labelSystemNumber.Text = snPacket; //仪器类型
                                         }
-
-                                        //if (packet[i].Contains("SN"))  //LPJ 2016-12-14 显示仪器SN号
-                                        //{
-                                        //    string[] snPacket = packet[i].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-                                        //    labelSystemNumber.Text += " SN:" + snPacket[0].Substring(28, 6);
-                                        //}
                                     }
                                 }
                             }
@@ -17529,8 +17564,6 @@ namespace ADCP
                     }
                     flag++;
                 }
-                //LPJ 2013-7-15 当采用无线电连接时，发送FMSHOW，检查连接是否正常 --end
-                
                 return false;
             }
         }
@@ -20051,6 +20084,15 @@ namespace ADCP
                 }
                 labelPowerCurveCoeff.Text = FrmEdgeSetting.edgeSet.dPowerCurveCoeff.ToString();
 
+                /*
+                uint32_t CurrentEdge;
+	            uint32_t EdgeType[2];
+	            float EdgeDistance[2];
+                TRANSECT_STATE_EDGE
+                */
+                //CMD = "CRSTS " + TRANSECT_STATE_ACQUIRING_BT.ToString();
+                //sp.Write(CMD);
+
                 if (FrmEdgeSetting.edgeSet.bStartLeft)
                 {
                     bStartLeftEdge = true;
@@ -20352,13 +20394,16 @@ namespace ADCP
         {
             if (File.Exists(fileName))
             {
+                textBoxSmartPageFile.Text = "";
                 try
                 {
                     StreamReader sr = new StreamReader(fileName);
                     string cmd = sr.ReadLine();
+                    
                     string[] cmdPart = new string[2];
                     while (cmd != null)
                     {
+                        textBoxSmartPageFile.Text += cmd + "\r\n";
                         cmdPart = cmd.Split(' ');
                         switch (cmdPart[0])
                         {
