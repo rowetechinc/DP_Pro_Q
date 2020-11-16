@@ -2987,6 +2987,13 @@ namespace ADCP
         double dGMeanFlowDir = 0.0;
         //float fGAveDepth = 0;
 
+        private int CurrentState = TRANSECT_STATE_STOP;
+        private int CurrentEdge = 99;//"%d,%d,%d,%f"
+        private int [] EdgeType = new int[2];
+        private double [] EdgeDistance = new double[2];
+        private double[] EdgeReference = new double[2];
+
+
         private void PickAndDecodeEnsemble()  //Used for record. 回放时不用此函数 Modified 2011-7-28 
         {
             //JZH 2012-03-21 更新窗口的工作转移到sp_DataReceived事件中完成
@@ -3150,6 +3157,21 @@ namespace ADCP
                     //比较两个校验和是否相等
                     if (BytesEquals(ChksumBytes, CopyChksumBytes))
                     {
+                        string CMD = "CRSTS " + CurrentState.ToString();
+                        switch (CurrentState)
+                        {
+                            case TRANSECT_STATE_EDGE:
+                                CMD += "," + CurrentEdge.ToString();
+                                CMD += "," + EdgeType[CurrentEdge].ToString();
+                                double dVal = EdgeDistance[CurrentEdge];
+                                if (systSet.bEnglishUnit)
+                                    dVal = projectUnit.FeetToMeter(dVal, 1);
+                                CMD += "," + EdgeDistance[CurrentEdge].ToString("0.000");
+                                break;
+                        }
+                        CMD += '\r';
+                        sp.Write(CMD);
+
                         bool getArrSuccessful = true;
                         try
                         {
@@ -11725,7 +11747,8 @@ namespace ADCP
         }
         
         FrmSystemSetting frmsystemSet;
-   
+
+        bool CommandsInitialized = false;
         public bool OnStartPinging()
         {   
             linkLabelEdgeSetting.Enabled = false; //LPJ 2013-6-24
@@ -11747,9 +11770,23 @@ namespace ADCP
             btnSpeedFast.Visible = false; //LPJ 2013-7-12
             btnSpeedSlow.Visible = false; //LPJ 2013-7-12
 
-            frmsystemSet = new FrmSystemSetting(sp, ref systSet);
+            //frmsystemSet = new FrmSystemSetting(sp, ref systSet);
+            if (!CommandsInitialized)
+            {
+                sp.Write("STOP\r");
+                Thread.Sleep(150);
 
-            SendStandardCommand();
+                while (!ReceiveBufferString.Contains("STOP"))
+                {
+                    sp.Write("STOP\r");
+                    Thread.Sleep(150);
+                }
+                
+                SystemSetting();
+            }
+
+            //SendStandardCommand(true);
+            CurrentState = TRANSECT_STATE_START;
 
             iEnsembleInterval = 1;
 
@@ -11991,7 +12028,8 @@ namespace ADCP
         /// </summary>
         public void OnStopPinging()
         {
-           
+            //CurrentState = TRANSECT_STATE_STOP;
+
             sp.Write("STOP" + '\r');
             Thread.Sleep(150);
 
@@ -12044,6 +12082,8 @@ namespace ADCP
         /// </summary>
         public void OnStopRecording()
         {
+            CurrentState = TRANSECT_STATE_STOP;
+
             string CMD = "CRSTS " + TRANSECT_STATE_STOP.ToString() + '\r';
             sp.Write(CMD);
 
@@ -15722,6 +15762,7 @@ namespace ADCP
                     labelLeftRef.Top = labelLeftType.Top;
 
                     bStartLeftEdge = true;
+                    CurrentEdge = TRANSECT_EDGE_LEFT;
                 }
                 else
                 {
@@ -15743,8 +15784,30 @@ namespace ADCP
                     labelRightRef.Top = labelRightType.Top;
 
                     bStartLeftEdge = false;
+                    
+                    CurrentEdge = TRANSECT_EDGE_RIGHT;
                 }
+                CurrentState = TRANSECT_STATE_EDGE;
+
+                if (labelLeftType.Text == Resource1.String221) //LPJ 2013-6-22
+                    EdgeType[0] = 0;
+                else if (labelLeftType.Text == Resource1.String222)
+                    EdgeType[0] = 1;
+                else
+                    EdgeType[0] = 2;
+                EdgeDistance[0] = double.Parse(labelLeftDis.Text);//FrmEdgeSetting.edgeSet.dLeftDis;
+                EdgeReference[0] = double.Parse(labelLeftDis.Text);// FrmEdgeSetting.edgeSet.dLeftRef;
+                
+                if (labelRightType.Text == Resource1.String221) //LPJ 2013-6-22
+                    EdgeType[1] = 0;
+                else if (labelRightType.Text == Resource1.String222)
+                    EdgeType[1] = 1;
+                else
+                    EdgeType[1] = 2;                
+                EdgeDistance[1] = double.Parse(labelRightDis.Text);// FrmEdgeSetting.edgeSet.dRightDis;
+                EdgeReference[1] = double.Parse(labelRightDis.Text);//FrmEdgeSetting.edgeSet.dRightRef;
             }
+
             //LPJ 2013-2-21 点击“开始测量”后，弹出“设置起始岸”对话框 --end
             bStartMeasQ = true;
 
@@ -15758,6 +15821,8 @@ namespace ADCP
         public void btnMoving() //LPJ 2013-5-22
         {
             bStartEdge = false;
+
+            CurrentState = TRANSECT_STATE_MOVING;
 
             //frmMeasurement = new FrmMeasurement(3); //LPJ 2013-6-18
             //frmMeasurement.ShowDialog(); //LPJ 2013-6-18
@@ -15814,6 +15879,9 @@ namespace ADCP
                     labelRightDis.Text = setFinishBank.strFinishDistance;
 
                     labelRightRef.Top = labelRightType.Top;
+
+                    CurrentEdge = TRANSECT_EDGE_RIGHT;
+                    
                 }
                 else
                 {
@@ -15830,7 +15898,30 @@ namespace ADCP
                         labelLeftType.Text = Resource1.String223;
                     labelLeftRef.Text = SetFinishBank.dFinishPara.ToString();
                     labelLeftDis.Text = setFinishBank.strFinishDistance;
+
+                    CurrentEdge = TRANSECT_EDGE_LEFT;
                 }
+                CurrentState = TRANSECT_STATE_EDGE;
+
+                if (labelLeftType.Text == Resource1.String221) //LPJ 2013-6-22
+                    EdgeType[0] = 0;
+                else if (labelLeftType.Text == Resource1.String222)
+                    EdgeType[0] = 1;
+                else
+                    EdgeType[0] = 2;
+                EdgeDistance[0] = double.Parse(labelLeftDis.Text);//FrmEdgeSetting.edgeSet.dLeftDis;
+                EdgeReference[0] = double.Parse(labelLeftDis.Text);//FrmEdgeSetting.edgeSet.dLeftRef;
+
+                if (labelRightType.Text == Resource1.String221) //LPJ 2013-6-22
+                    EdgeType[1] = 0;
+                else if (labelRightType.Text == Resource1.String222)
+                    EdgeType[1] = 1;
+                else
+                    EdgeType[1] = 2;
+                EdgeDistance[1] = double.Parse(labelRightDis.Text);// FrmEdgeSetting.edgeSet.dRightDis;
+                EdgeReference[1] = double.Parse(labelRightDis.Text);//FrmEdgeSetting.edgeSet.dRightRef;
+
+
             }
             //LPJ 2013-2-21 点击“结束测量”后，弹出“设置终止岸”对话框 --end
         }
@@ -17152,19 +17243,20 @@ namespace ADCP
         }
         Configurations.Configuration conf = new Configurations.Configuration();
 
-
+        private const int TRANSECT_EDGE_LEFT = 0;
+        private const int TRANSECT_EDGE_RIGHT = 1;
 
         private const int TRANSECT_STATE_STOP = 0;
         private const int TRANSECT_STATE_COMPASSCAL = 1;
         private const int TRANSECT_STATE_BEDSTATIONARY = 2;
         private const int TRANSECT_STATE_BEDLOOP = 3;
         private const int TRANSECT_STATE_SYSTEMTEST = 4;
-        private const int TRANSECT_STATE_ACQUIRING_BT = 5;
+        private const int TRANSECT_STATE_START = 5;
         private const int TRANSECT_STATE_EDGE = 6;
         private const int TRANSECT_STATE_MOVING = 7;
 
         string CommandList = "";
-        private void SendStandardCommand() //用户模式下发送命令
+        private void SendStandardCommand(bool OKtoStart) //用户模式下发送命令
         {
             string CMD;
             progressBar1.Value = 0;
@@ -17173,15 +17265,23 @@ namespace ADCP
 
             try
             {
-                CMD = "MODERIVER" + '\r';
+                CMD = "STOP" + '\r';
                 sp.Write(CMD);//set default
-                CommandList += CMD + '\n';
+                //CommandList += CMD + '\n';
                 Thread.Sleep(150);
+                int count = 0;
+                while (!ReceiveBufferString.Contains("STOP") && count < 5)
+                {
+                    sp.Write("STOP" + '\r');
+                    Thread.Sleep(150);
+                    count++;
+                }
 
-                
-                
+                //CMD = "MODERIVER" + '\r';
+                //sp.Write(CMD);//set default
+                //CommandList += CMD + '\n';
+                //Thread.Sleep(150);
 
-                
 
                 CMD = "CRSMODE " + systSet.iMeasurmentMode.ToString() + '\r';
                 sp.Write(CMD);
@@ -17328,7 +17428,8 @@ namespace ADCP
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                CMD = "CRSTS " + TRANSECT_STATE_ACQUIRING_BT.ToString() + '\r';
+                CurrentState = TRANSECT_STATE_START;
+                CMD = "CRSTS " + TRANSECT_STATE_START.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
@@ -17354,9 +17455,12 @@ namespace ADCP
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(1000);
 
-                CMD = "START\r";
-                sp.Write(CMD);
-                CommandList += CMD + '\n';
+                if (OKtoStart)
+                {
+                    CMD = "START\r";
+                    sp.Write(CMD);
+                    CommandList += CMD + '\n';
+                }
                 //displayprocessbar(4, progressBar1);
                 //Thread.Sleep(500);
 
@@ -19782,7 +19886,8 @@ namespace ADCP
         public int iVesselSpeedRef = 0; //LPJ 2016-8-18 船速参考
 
         FrmSystemSetting.SystemSetting systSet = new FrmSystemSetting.SystemSetting(); //从配置文件中读取参数，并将其写入smartPage中
-        private void linkLabelSystemSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+
+        private void SystemSetting()
         {
             sp.DataReceived -= new SerialDataReceivedEventHandler(sp_DataReceived);
 
@@ -19830,7 +19935,7 @@ namespace ADCP
 
             try
             {
-                systSet.dSpeedOfSound = systSet.dSpeedOfSound;
+                //systSet.dSpeedOfSound = systSet.dSpeedOfSound;
             }
             catch
             {
@@ -19841,8 +19946,7 @@ namespace ADCP
                 systSet.bEnglishUnit = true;
             else
                 systSet.bEnglishUnit = false;
-            
-        
+
             frmsystemSet = new FrmSystemSetting(sp, ref systSet);
 
             if (!playBackMode)
@@ -19850,15 +19954,27 @@ namespace ADCP
 
             if (DialogResult.OK == frmsystemSet.ShowDialog(ref systSet))
             {
-                frmsystemSet.BringToFront();
+                //frmsystemSet.BringToFront();
+                sp.Close();
+                sp.Open();
+                SendStandardCommand(true);
+                if (!playBackMode)
+                    sp.Close();
+
+                CommandsInitialized = true;
                 switch (systSet.iHeadingRef)
                 {
                     case 0:
                         {
-                            labelHeadingRef.Text = Resource1.String230;
+                            labelHeadingRef.Text = "None";
                             break;
                         }
                     case 1:
+                        {
+                            labelHeadingRef.Text = Resource1.String230;
+                            break;
+                        }
+                    case 2:
                         {
                             labelHeadingRef.Text = Resource1.String231;
                             break;
@@ -19914,7 +20030,7 @@ namespace ADCP
 
                 iVesselSpeedRef = systSet.iSpeedRef; //LPJ 2016-8-18 船速参考
             }
-            
+
             sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
 
             if (!playBackMode)
@@ -19924,7 +20040,7 @@ namespace ADCP
                     sp.Close();
                     sp.Open();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -19944,6 +20060,11 @@ namespace ADCP
             this.BeginInvoke(RefreshNavigation); //LPJ 2013-11-21
             this.BeginInvoke(RefreshOthers); //LPJ 2013-11-21
 
+        }
+        private void linkLabelSystemSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SystemSetting();
+            
 
         }
         FrmEdgeSetting.EdgeSetting edgeSetting;
@@ -19984,11 +20105,13 @@ namespace ADCP
             {
                 bStartLeftEdge = true;
                 edgeSetting.bStartLeft = true;
+                
             }
             else
             {
                 bStartLeftEdge = false;
                 edgeSetting.bStartLeft = false;
+                
             }
             try
             {
@@ -20039,6 +20162,7 @@ namespace ADCP
             {
                 edgeSetting.dRightRef = 0.35;
             }
+            
         }
         private void linkLabelEdgeSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -20084,26 +20208,28 @@ namespace ADCP
                 }
                 labelPowerCurveCoeff.Text = FrmEdgeSetting.edgeSet.dPowerCurveCoeff.ToString();
 
-                /*
-                uint32_t CurrentEdge;
-	            uint32_t EdgeType[2];
-	            float EdgeDistance[2];
-                TRANSECT_STATE_EDGE
-                */
-                //CMD = "CRSTS " + TRANSECT_STATE_ACQUIRING_BT.ToString();
-                //sp.Write(CMD);
-
+                //CurrentState = TRANSECT_STATE_EDGE;
                 if (FrmEdgeSetting.edgeSet.bStartLeft)
                 {
                     bStartLeftEdge = true;
                     labelStartEdge.Text = Resource1.String226;
+                    CurrentEdge = TRANSECT_EDGE_LEFT;
                 }
                 else
                 {
                     bStartLeftEdge = false;
                     labelStartEdge.Text = Resource1.String227;
+                    CurrentEdge = TRANSECT_EDGE_RIGHT;
                 }
                 labelLeftDis.Text = FrmEdgeSetting.edgeSet.dLeftDis.ToString();
+
+                EdgeType[0] = FrmEdgeSetting.edgeSet.iLeftType;
+                EdgeDistance[0] = FrmEdgeSetting.edgeSet.dLeftDis;
+                EdgeReference[0] = FrmEdgeSetting.edgeSet.dLeftRef;
+                EdgeType[1] = FrmEdgeSetting.edgeSet.iRightType;
+                EdgeDistance[1] = FrmEdgeSetting.edgeSet.dRightDis;
+                EdgeReference[1] = FrmEdgeSetting.edgeSet.dRightRef;
+
                 switch (FrmEdgeSetting.edgeSet.iLeftType)
                 {
                     case 0:
@@ -20125,9 +20251,12 @@ namespace ADCP
                         break;
                 }
                 labelLeftRef.Text = FrmEdgeSetting.edgeSet.dLeftRef.ToString(); //LPJ 2013-11-19
+
                 labelRightDis.Text = FrmEdgeSetting.edgeSet.dRightDis.ToString();
 
                 labelLeftRef.Top = labelLeftType.Top;
+
+                
 
                 switch (FrmEdgeSetting.edgeSet.iRightType)
                 {

@@ -68,6 +68,7 @@
             this.textBoxMaxDepth = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox41 = new System.Windows.Forms.GroupBox();
+            this.buttonSetDefaults = new System.Windows.Forms.Button();
             this.buttonDownloadCommandSettings = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -91,7 +92,6 @@
             this.comboBoxVerticalBeam = new System.Windows.Forms.ComboBox();
             this.BTST_Correlation_text = new System.Windows.Forms.TextBox();
             this.label221 = new System.Windows.Forms.Label();
-            this.buttonSetDefaults = new System.Windows.Forms.Button();
             this.groupBox44.SuspendLayout();
             this.groupBox41.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -164,6 +164,7 @@
             resources.ApplyResources(this.btnOK, "btnOK");
             this.btnOK.Name = "btnOK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -410,6 +411,13 @@
             this.groupBox41.Name = "groupBox41";
             this.groupBox41.TabStop = false;
             // 
+            // buttonSetDefaults
+            // 
+            resources.ApplyResources(this.buttonSetDefaults, "buttonSetDefaults");
+            this.buttonSetDefaults.Name = "buttonSetDefaults";
+            this.buttonSetDefaults.UseVisualStyleBackColor = true;
+            this.buttonSetDefaults.Click += new System.EventHandler(this.buttonSetDefaults_Click);
+            // 
             // buttonDownloadCommandSettings
             // 
             resources.ApplyResources(this.buttonDownloadCommandSettings, "buttonDownloadCommandSettings");
@@ -566,13 +574,6 @@
             // 
             resources.ApplyResources(this.label221, "label221");
             this.label221.Name = "label221";
-            // 
-            // buttonSetDefaults
-            // 
-            resources.ApplyResources(this.buttonSetDefaults, "buttonSetDefaults");
-            this.buttonSetDefaults.Name = "buttonSetDefaults";
-            this.buttonSetDefaults.UseVisualStyleBackColor = true;
-            this.buttonSetDefaults.Click += new System.EventHandler(this.buttonSetDefaults_Click);
             // 
             // FrmSystemSetting
             // 

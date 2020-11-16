@@ -870,5 +870,14 @@ namespace ADCP
             }
             DownloadCommandSettings();
         }
+
+        //private void WriteIt()
+        //{
+        //    WriteCommandSettings(systSet);
+        //}
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            //WriteIt();
+        }
     }
 }
