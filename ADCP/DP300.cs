@@ -6116,14 +6116,10 @@ namespace ADCP
         {
           
         }
-
-      
         private void MainPanel_MouseUp(object sender, MouseEventArgs e)
         {
            
         }
-
-      
         private void MainPanel_MouseMove(object sender, MouseEventArgs e)
         {
             try
@@ -17218,8 +17214,8 @@ namespace ADCP
             defaultSP.PortName = defaultADCP_PortName;
             defaultSP.BaudRate = defaultADCP_Baudrate;
 
-            string cmd = defaultSP.PortName + "," + defaultSP.BaudRate;
-            if (ConnectPort(cmd))
+            //string cmd = defaultSP.PortName + "," + defaultSP.BaudRate;
+            if (ConnectPort())//cmd))
             {
                 //LPJ 2013-6-20 连接成功后，直接跳转到smartPage页
                 tabControl4.SelectedIndex = 0;
@@ -17482,7 +17478,7 @@ namespace ADCP
 
         }
 
-        private bool ConnectPort(string cmd)  //LPJ 2013-5-21 连接串口
+        private bool ConnectPort()//string cmd)  //LPJ 2013-5-21 连接串口
         {
             detected = AutoDetect();
 
@@ -17511,8 +17507,8 @@ namespace ADCP
                         defaultSP.PortName = setCommand.ADCPsp.PortName;
                         defaultSP.BaudRate = setCommand.ADCPsp.BaudRate;
 
-                        cmd = setCommand.ADCPsp.PortName + "," + setCommand.ADCPsp.BaudRate;
-                        if (ConnectPort(cmd))
+                        //cmd = setCommand.ADCPsp.PortName + "," + setCommand.ADCPsp.BaudRate;
+                        if (ConnectPort())//cmd))
                         {
                             return true;
                         }

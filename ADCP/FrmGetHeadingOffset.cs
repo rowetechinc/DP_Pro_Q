@@ -12,6 +12,8 @@ using System.Collections;
 using Calcflow;
 using System.Runtime.InteropServices;
 
+#pragma warning disable IDE1006
+
 namespace ADCP
 {
     public partial class FrmGetHeadingOffset : Form
@@ -109,7 +111,7 @@ namespace ADCP
 
         private double GetGPSHeadingOffset()
         {
-            double dHeadingOffset = 0; //该单位为弧度
+            double dHeadingOffset;// = 0; //该单位为弧度
 
             List<float> fBoatVx_GPS = new List<float>();
             List<float> fBoatVy_GPS = new List<float>();
@@ -117,7 +119,7 @@ namespace ADCP
             for (int i = 0; i < RTIdata.Count; i++)
             {
                 string GPVTGbuffer = "";
-                string NMEA_buffer = "";
+                string NMEA_buffer;// = "";
                 NMEA_buffer = Encoding.Default.GetString(RTIdata[i].NMEA_Buffer);
                
                 CDecodeGPS decodeGPS = new CDecodeGPS();
@@ -236,8 +238,8 @@ namespace ADCP
                     return;
                 }
                 //计算数据包除数据头、校验部分以外的所有数据校验和
-                byte[] ChksumBytes = new byte[4];
-                ChksumBytes = CRC16Chksum(BytesPacket);
+                //byte[] ChksumBytes = new byte[4];
+                byte[] ChksumBytes = CRC16Chksum(BytesPacket);
 
                 //读取数据包中的校验和
                 byte[] CopyChksumBytes = new byte[4];

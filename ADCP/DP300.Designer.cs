@@ -554,9 +554,10 @@
             this.tabPageSerialTime = new ADCP.DVL_Windows.NoPaintBackGroundTabPage();
             this.panelSerialTime = new ADCP.DVL_Windows.NoPaintBackGroundPanel();
             this.tabPageCommandSet = new System.Windows.Forms.TabPage();
+            this.textBoxSmartPageFile = new System.Windows.Forms.TextBox();
             this.textBoxCommandSet = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.textBoxSmartPageFile = new System.Windows.Forms.TextBox();
+            this.textBoxBackscatter = new System.Windows.Forms.TextBox();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -4281,21 +4282,27 @@
             // 
             // tabPageCommandSet
             // 
+            this.tabPageCommandSet.Controls.Add(this.textBoxBackscatter);
             this.tabPageCommandSet.Controls.Add(this.textBoxSmartPageFile);
             this.tabPageCommandSet.Controls.Add(this.textBoxCommandSet);
             resources.ApplyResources(this.tabPageCommandSet, "tabPageCommandSet");
             this.tabPageCommandSet.Name = "tabPageCommandSet";
             this.tabPageCommandSet.UseVisualStyleBackColor = true;
             // 
+            // textBoxSmartPageFile
+            // 
+            resources.ApplyResources(this.textBoxSmartPageFile, "textBoxSmartPageFile");
+            this.textBoxSmartPageFile.Name = "textBoxSmartPageFile";
+            // 
             // textBoxCommandSet
             // 
             resources.ApplyResources(this.textBoxCommandSet, "textBoxCommandSet");
             this.textBoxCommandSet.Name = "textBoxCommandSet";
             // 
-            // textBoxSmartPageFile
+            // textBoxBackscatter
             // 
-            resources.ApplyResources(this.textBoxSmartPageFile, "textBoxSmartPageFile");
-            this.textBoxSmartPageFile.Name = "textBoxSmartPageFile";
+            resources.ApplyResources(this.textBoxBackscatter, "textBoxBackscatter");
+            this.textBoxBackscatter.Name = "textBoxBackscatter";
             // 
             // DP300_Windows
             // 
@@ -5039,6 +5046,7 @@
         private System.Windows.Forms.TabPage tabPageCommandSet;
         private System.Windows.Forms.TextBox textBoxCommandSet;
         private System.Windows.Forms.TextBox textBoxSmartPageFile;
+        private System.Windows.Forms.TextBox textBoxBackscatter;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }

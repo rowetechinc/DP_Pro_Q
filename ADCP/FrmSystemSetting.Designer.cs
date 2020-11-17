@@ -68,14 +68,11 @@
             this.textBoxMaxDepth = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox41 = new System.Windows.Forms.GroupBox();
-            this.buttonSetDefaults = new System.Windows.Forms.Button();
-            this.buttonDownloadCommandSettings = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxBTSNR = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBoxAutoLag = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -92,9 +89,100 @@
             this.comboBoxVerticalBeam = new System.Windows.Forms.ComboBox();
             this.BTST_Correlation_text = new System.Windows.Forms.TextBox();
             this.label221 = new System.Windows.Forms.Label();
+            this.buttonSetDefaults = new System.Windows.Forms.Button();
+            this.buttonDownloadCommandSettings = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.textBoxXmt9 = new System.Windows.Forms.TextBox();
+            this.textBoxXmt8 = new System.Windows.Forms.TextBox();
+            this.textBoxXmt7 = new System.Windows.Forms.TextBox();
+            this.textBoxXmt6 = new System.Windows.Forms.TextBox();
+            this.textBoxXmt5 = new System.Windows.Forms.TextBox();
+            this.textBoxXmt4 = new System.Windows.Forms.TextBox();
+            this.textBoxXmt3 = new System.Windows.Forms.TextBox();
+            this.textBoxXmt2 = new System.Windows.Forms.TextBox();
+            this.textBoxXmt1 = new System.Windows.Forms.TextBox();
+            this.textBoxXmt0 = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBoxBinSize9 = new System.Windows.Forms.TextBox();
+            this.textBoxBinSize8 = new System.Windows.Forms.TextBox();
+            this.textBoxBinSize7 = new System.Windows.Forms.TextBox();
+            this.textBoxBinSize6 = new System.Windows.Forms.TextBox();
+            this.textBoxBinSize5 = new System.Windows.Forms.TextBox();
+            this.textBoxBinSize4 = new System.Windows.Forms.TextBox();
+            this.textBoxBinSize3 = new System.Windows.Forms.TextBox();
+            this.textBoxBinSize2 = new System.Windows.Forms.TextBox();
+            this.textBoxBinSize1 = new System.Windows.Forms.TextBox();
+            this.textBoxBinSize0 = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBoxBlank9 = new System.Windows.Forms.TextBox();
+            this.textBoxBlank8 = new System.Windows.Forms.TextBox();
+            this.textBoxBlank7 = new System.Windows.Forms.TextBox();
+            this.textBoxBlank6 = new System.Windows.Forms.TextBox();
+            this.textBoxBlank5 = new System.Windows.Forms.TextBox();
+            this.textBoxBlank4 = new System.Windows.Forms.TextBox();
+            this.textBoxBlank3 = new System.Windows.Forms.TextBox();
+            this.textBoxBlank2 = new System.Windows.Forms.TextBox();
+            this.textBoxBlank1 = new System.Windows.Forms.TextBox();
+            this.textBoxBlank0 = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBoxTBP9 = new System.Windows.Forms.TextBox();
+            this.textBoxTBP8 = new System.Windows.Forms.TextBox();
+            this.textBoxTBP7 = new System.Windows.Forms.TextBox();
+            this.textBoxTBP6 = new System.Windows.Forms.TextBox();
+            this.textBoxTBP5 = new System.Windows.Forms.TextBox();
+            this.textBoxTBP4 = new System.Windows.Forms.TextBox();
+            this.textBoxTBP3 = new System.Windows.Forms.TextBox();
+            this.textBoxTBP2 = new System.Windows.Forms.TextBox();
+            this.textBoxTBP1 = new System.Windows.Forms.TextBox();
+            this.textBoxTBP0 = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBoxBins9 = new System.Windows.Forms.TextBox();
+            this.textBoxBins8 = new System.Windows.Forms.TextBox();
+            this.textBoxBins7 = new System.Windows.Forms.TextBox();
+            this.textBoxBins6 = new System.Windows.Forms.TextBox();
+            this.textBoxBins5 = new System.Windows.Forms.TextBox();
+            this.textBoxBins4 = new System.Windows.Forms.TextBox();
+            this.textBoxBins3 = new System.Windows.Forms.TextBox();
+            this.textBoxBins2 = new System.Windows.Forms.TextBox();
+            this.textBoxBins1 = new System.Windows.Forms.TextBox();
+            this.textBoxBins0 = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBoxFreq9 = new System.Windows.Forms.TextBox();
+            this.textBoxFreq8 = new System.Windows.Forms.TextBox();
+            this.textBoxFreq7 = new System.Windows.Forms.TextBox();
+            this.textBoxFreq6 = new System.Windows.Forms.TextBox();
+            this.textBoxFreq5 = new System.Windows.Forms.TextBox();
+            this.textBoxFreq4 = new System.Windows.Forms.TextBox();
+            this.textBoxFreq3 = new System.Windows.Forms.TextBox();
+            this.textBoxFreq2 = new System.Windows.Forms.TextBox();
+            this.textBoxFreq1 = new System.Windows.Forms.TextBox();
+            this.textBoxFreq0 = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBoxEnable9 = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnable8 = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnable7 = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnable6 = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnable5 = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnable4 = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnable3 = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnable2 = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnable1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxEnable0 = new System.Windows.Forms.CheckBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox44.SuspendLayout();
             this.groupBox41.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -363,26 +451,16 @@
             // 
             // groupBox41
             // 
-            this.groupBox41.Controls.Add(this.buttonSetDefaults);
-            this.groupBox41.Controls.Add(this.buttonDownloadCommandSettings);
             this.groupBox41.Controls.Add(this.label14);
             this.groupBox41.Controls.Add(this.label13);
             this.groupBox41.Controls.Add(this.textBoxBTSNR);
             this.groupBox41.Controls.Add(this.label12);
             this.groupBox41.Controls.Add(this.comboBoxAutoLag);
-            this.groupBox41.Controls.Add(this.groupBox1);
             this.groupBox41.Controls.Add(this.label52);
-            this.groupBox41.Controls.Add(this.btnOK);
-            this.groupBox41.Controls.Add(this.btnCancel);
-            this.groupBox41.Controls.Add(this.comboBox_RS232);
-            this.groupBox41.Controls.Add(this.label_RS232);
-            this.groupBox41.Controls.Add(this.groupBox44);
             this.groupBox41.Controls.Add(this.label9);
             this.groupBox41.Controls.Add(this.label23);
             this.groupBox41.Controls.Add(this.textHeadingOffset);
-            this.groupBox41.Controls.Add(this.comboBoxHeadingRef);
             this.groupBox41.Controls.Add(this.comboBoxVesselSpeedRef);
-            this.groupBox41.Controls.Add(this.label3);
             this.groupBox41.Controls.Add(this.label2);
             this.groupBox41.Controls.Add(this.label22);
             this.groupBox41.Controls.Add(this.label21);
@@ -410,20 +488,6 @@
             resources.ApplyResources(this.groupBox41, "groupBox41");
             this.groupBox41.Name = "groupBox41";
             this.groupBox41.TabStop = false;
-            // 
-            // buttonSetDefaults
-            // 
-            resources.ApplyResources(this.buttonSetDefaults, "buttonSetDefaults");
-            this.buttonSetDefaults.Name = "buttonSetDefaults";
-            this.buttonSetDefaults.UseVisualStyleBackColor = true;
-            this.buttonSetDefaults.Click += new System.EventHandler(this.buttonSetDefaults_Click);
-            // 
-            // buttonDownloadCommandSettings
-            // 
-            resources.ApplyResources(this.buttonDownloadCommandSettings, "buttonDownloadCommandSettings");
-            this.buttonDownloadCommandSettings.Name = "buttonDownloadCommandSettings";
-            this.buttonDownloadCommandSettings.UseVisualStyleBackColor = true;
-            this.buttonDownloadCommandSettings.Click += new System.EventHandler(this.buttonDownloadCommandSettings_Click);
             // 
             // label14
             // 
@@ -458,21 +522,6 @@
             resources.ApplyResources(this.comboBoxAutoLag, "comboBoxAutoLag");
             this.comboBoxAutoLag.Name = "comboBoxAutoLag";
             this.comboBoxAutoLag.SelectedIndexChanged += new System.EventHandler(this.comboBoxAutoLag_SelectedIndexChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label43);
-            this.groupBox1.Controls.Add(this.textWaterSalinity);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textWaterTemperature);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.label46);
-            this.groupBox1.Controls.Add(this.textSoundSpeed);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.label49);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
             // 
             // label23
             // 
@@ -575,12 +624,544 @@
             resources.ApplyResources(this.label221, "label221");
             this.label221.Name = "label221";
             // 
+            // buttonSetDefaults
+            // 
+            resources.ApplyResources(this.buttonSetDefaults, "buttonSetDefaults");
+            this.buttonSetDefaults.Name = "buttonSetDefaults";
+            this.buttonSetDefaults.UseVisualStyleBackColor = true;
+            this.buttonSetDefaults.Click += new System.EventHandler(this.buttonSetDefaults_Click);
+            // 
+            // buttonDownloadCommandSettings
+            // 
+            resources.ApplyResources(this.buttonDownloadCommandSettings, "buttonDownloadCommandSettings");
+            this.buttonDownloadCommandSettings.Name = "buttonDownloadCommandSettings";
+            this.buttonDownloadCommandSettings.UseVisualStyleBackColor = true;
+            this.buttonDownloadCommandSettings.Click += new System.EventHandler(this.buttonDownloadCommandSettings_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label43);
+            this.groupBox1.Controls.Add(this.textWaterSalinity);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.textWaterTemperature);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label46);
+            this.groupBox1.Controls.Add(this.textSoundSpeed);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.label49);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.groupBox9);
+            this.groupBox2.Controls.Add(this.groupBox8);
+            this.groupBox2.Controls.Add(this.groupBox7);
+            this.groupBox2.Controls.Add(this.groupBox6);
+            this.groupBox2.Controls.Add(this.groupBox5);
+            this.groupBox2.Controls.Add(this.groupBox4);
+            this.groupBox2.Controls.Add(this.groupBox3);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.textBoxXmt9);
+            this.groupBox9.Controls.Add(this.textBoxXmt8);
+            this.groupBox9.Controls.Add(this.textBoxXmt7);
+            this.groupBox9.Controls.Add(this.textBoxXmt6);
+            this.groupBox9.Controls.Add(this.textBoxXmt5);
+            this.groupBox9.Controls.Add(this.textBoxXmt4);
+            this.groupBox9.Controls.Add(this.textBoxXmt3);
+            this.groupBox9.Controls.Add(this.textBoxXmt2);
+            this.groupBox9.Controls.Add(this.textBoxXmt1);
+            this.groupBox9.Controls.Add(this.textBoxXmt0);
+            resources.ApplyResources(this.groupBox9, "groupBox9");
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.TabStop = false;
+            // 
+            // textBoxXmt9
+            // 
+            resources.ApplyResources(this.textBoxXmt9, "textBoxXmt9");
+            this.textBoxXmt9.Name = "textBoxXmt9";
+            // 
+            // textBoxXmt8
+            // 
+            resources.ApplyResources(this.textBoxXmt8, "textBoxXmt8");
+            this.textBoxXmt8.Name = "textBoxXmt8";
+            // 
+            // textBoxXmt7
+            // 
+            resources.ApplyResources(this.textBoxXmt7, "textBoxXmt7");
+            this.textBoxXmt7.Name = "textBoxXmt7";
+            // 
+            // textBoxXmt6
+            // 
+            resources.ApplyResources(this.textBoxXmt6, "textBoxXmt6");
+            this.textBoxXmt6.Name = "textBoxXmt6";
+            // 
+            // textBoxXmt5
+            // 
+            resources.ApplyResources(this.textBoxXmt5, "textBoxXmt5");
+            this.textBoxXmt5.Name = "textBoxXmt5";
+            // 
+            // textBoxXmt4
+            // 
+            resources.ApplyResources(this.textBoxXmt4, "textBoxXmt4");
+            this.textBoxXmt4.Name = "textBoxXmt4";
+            // 
+            // textBoxXmt3
+            // 
+            resources.ApplyResources(this.textBoxXmt3, "textBoxXmt3");
+            this.textBoxXmt3.Name = "textBoxXmt3";
+            // 
+            // textBoxXmt2
+            // 
+            resources.ApplyResources(this.textBoxXmt2, "textBoxXmt2");
+            this.textBoxXmt2.Name = "textBoxXmt2";
+            // 
+            // textBoxXmt1
+            // 
+            resources.ApplyResources(this.textBoxXmt1, "textBoxXmt1");
+            this.textBoxXmt1.Name = "textBoxXmt1";
+            // 
+            // textBoxXmt0
+            // 
+            resources.ApplyResources(this.textBoxXmt0, "textBoxXmt0");
+            this.textBoxXmt0.Name = "textBoxXmt0";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.textBoxBinSize9);
+            this.groupBox8.Controls.Add(this.textBoxBinSize8);
+            this.groupBox8.Controls.Add(this.textBoxBinSize7);
+            this.groupBox8.Controls.Add(this.textBoxBinSize6);
+            this.groupBox8.Controls.Add(this.textBoxBinSize5);
+            this.groupBox8.Controls.Add(this.textBoxBinSize4);
+            this.groupBox8.Controls.Add(this.textBoxBinSize3);
+            this.groupBox8.Controls.Add(this.textBoxBinSize2);
+            this.groupBox8.Controls.Add(this.textBoxBinSize1);
+            this.groupBox8.Controls.Add(this.textBoxBinSize0);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.TabStop = false;
+            // 
+            // textBoxBinSize9
+            // 
+            resources.ApplyResources(this.textBoxBinSize9, "textBoxBinSize9");
+            this.textBoxBinSize9.Name = "textBoxBinSize9";
+            // 
+            // textBoxBinSize8
+            // 
+            resources.ApplyResources(this.textBoxBinSize8, "textBoxBinSize8");
+            this.textBoxBinSize8.Name = "textBoxBinSize8";
+            // 
+            // textBoxBinSize7
+            // 
+            resources.ApplyResources(this.textBoxBinSize7, "textBoxBinSize7");
+            this.textBoxBinSize7.Name = "textBoxBinSize7";
+            // 
+            // textBoxBinSize6
+            // 
+            resources.ApplyResources(this.textBoxBinSize6, "textBoxBinSize6");
+            this.textBoxBinSize6.Name = "textBoxBinSize6";
+            // 
+            // textBoxBinSize5
+            // 
+            resources.ApplyResources(this.textBoxBinSize5, "textBoxBinSize5");
+            this.textBoxBinSize5.Name = "textBoxBinSize5";
+            // 
+            // textBoxBinSize4
+            // 
+            resources.ApplyResources(this.textBoxBinSize4, "textBoxBinSize4");
+            this.textBoxBinSize4.Name = "textBoxBinSize4";
+            // 
+            // textBoxBinSize3
+            // 
+            resources.ApplyResources(this.textBoxBinSize3, "textBoxBinSize3");
+            this.textBoxBinSize3.Name = "textBoxBinSize3";
+            // 
+            // textBoxBinSize2
+            // 
+            resources.ApplyResources(this.textBoxBinSize2, "textBoxBinSize2");
+            this.textBoxBinSize2.Name = "textBoxBinSize2";
+            // 
+            // textBoxBinSize1
+            // 
+            resources.ApplyResources(this.textBoxBinSize1, "textBoxBinSize1");
+            this.textBoxBinSize1.Name = "textBoxBinSize1";
+            // 
+            // textBoxBinSize0
+            // 
+            resources.ApplyResources(this.textBoxBinSize0, "textBoxBinSize0");
+            this.textBoxBinSize0.Name = "textBoxBinSize0";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.textBoxBlank9);
+            this.groupBox7.Controls.Add(this.textBoxBlank8);
+            this.groupBox7.Controls.Add(this.textBoxBlank7);
+            this.groupBox7.Controls.Add(this.textBoxBlank6);
+            this.groupBox7.Controls.Add(this.textBoxBlank5);
+            this.groupBox7.Controls.Add(this.textBoxBlank4);
+            this.groupBox7.Controls.Add(this.textBoxBlank3);
+            this.groupBox7.Controls.Add(this.textBoxBlank2);
+            this.groupBox7.Controls.Add(this.textBoxBlank1);
+            this.groupBox7.Controls.Add(this.textBoxBlank0);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.TabStop = false;
+            // 
+            // textBoxBlank9
+            // 
+            resources.ApplyResources(this.textBoxBlank9, "textBoxBlank9");
+            this.textBoxBlank9.Name = "textBoxBlank9";
+            // 
+            // textBoxBlank8
+            // 
+            resources.ApplyResources(this.textBoxBlank8, "textBoxBlank8");
+            this.textBoxBlank8.Name = "textBoxBlank8";
+            // 
+            // textBoxBlank7
+            // 
+            resources.ApplyResources(this.textBoxBlank7, "textBoxBlank7");
+            this.textBoxBlank7.Name = "textBoxBlank7";
+            // 
+            // textBoxBlank6
+            // 
+            resources.ApplyResources(this.textBoxBlank6, "textBoxBlank6");
+            this.textBoxBlank6.Name = "textBoxBlank6";
+            // 
+            // textBoxBlank5
+            // 
+            resources.ApplyResources(this.textBoxBlank5, "textBoxBlank5");
+            this.textBoxBlank5.Name = "textBoxBlank5";
+            // 
+            // textBoxBlank4
+            // 
+            resources.ApplyResources(this.textBoxBlank4, "textBoxBlank4");
+            this.textBoxBlank4.Name = "textBoxBlank4";
+            // 
+            // textBoxBlank3
+            // 
+            resources.ApplyResources(this.textBoxBlank3, "textBoxBlank3");
+            this.textBoxBlank3.Name = "textBoxBlank3";
+            // 
+            // textBoxBlank2
+            // 
+            resources.ApplyResources(this.textBoxBlank2, "textBoxBlank2");
+            this.textBoxBlank2.Name = "textBoxBlank2";
+            // 
+            // textBoxBlank1
+            // 
+            resources.ApplyResources(this.textBoxBlank1, "textBoxBlank1");
+            this.textBoxBlank1.Name = "textBoxBlank1";
+            // 
+            // textBoxBlank0
+            // 
+            resources.ApplyResources(this.textBoxBlank0, "textBoxBlank0");
+            this.textBoxBlank0.Name = "textBoxBlank0";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBoxTBP9);
+            this.groupBox6.Controls.Add(this.textBoxTBP8);
+            this.groupBox6.Controls.Add(this.textBoxTBP7);
+            this.groupBox6.Controls.Add(this.textBoxTBP6);
+            this.groupBox6.Controls.Add(this.textBoxTBP5);
+            this.groupBox6.Controls.Add(this.textBoxTBP4);
+            this.groupBox6.Controls.Add(this.textBoxTBP3);
+            this.groupBox6.Controls.Add(this.textBoxTBP2);
+            this.groupBox6.Controls.Add(this.textBoxTBP1);
+            this.groupBox6.Controls.Add(this.textBoxTBP0);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.TabStop = false;
+            // 
+            // textBoxTBP9
+            // 
+            resources.ApplyResources(this.textBoxTBP9, "textBoxTBP9");
+            this.textBoxTBP9.Name = "textBoxTBP9";
+            // 
+            // textBoxTBP8
+            // 
+            resources.ApplyResources(this.textBoxTBP8, "textBoxTBP8");
+            this.textBoxTBP8.Name = "textBoxTBP8";
+            // 
+            // textBoxTBP7
+            // 
+            resources.ApplyResources(this.textBoxTBP7, "textBoxTBP7");
+            this.textBoxTBP7.Name = "textBoxTBP7";
+            // 
+            // textBoxTBP6
+            // 
+            resources.ApplyResources(this.textBoxTBP6, "textBoxTBP6");
+            this.textBoxTBP6.Name = "textBoxTBP6";
+            // 
+            // textBoxTBP5
+            // 
+            resources.ApplyResources(this.textBoxTBP5, "textBoxTBP5");
+            this.textBoxTBP5.Name = "textBoxTBP5";
+            // 
+            // textBoxTBP4
+            // 
+            resources.ApplyResources(this.textBoxTBP4, "textBoxTBP4");
+            this.textBoxTBP4.Name = "textBoxTBP4";
+            // 
+            // textBoxTBP3
+            // 
+            resources.ApplyResources(this.textBoxTBP3, "textBoxTBP3");
+            this.textBoxTBP3.Name = "textBoxTBP3";
+            // 
+            // textBoxTBP2
+            // 
+            resources.ApplyResources(this.textBoxTBP2, "textBoxTBP2");
+            this.textBoxTBP2.Name = "textBoxTBP2";
+            // 
+            // textBoxTBP1
+            // 
+            resources.ApplyResources(this.textBoxTBP1, "textBoxTBP1");
+            this.textBoxTBP1.Name = "textBoxTBP1";
+            // 
+            // textBoxTBP0
+            // 
+            resources.ApplyResources(this.textBoxTBP0, "textBoxTBP0");
+            this.textBoxTBP0.Name = "textBoxTBP0";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBoxBins9);
+            this.groupBox5.Controls.Add(this.textBoxBins8);
+            this.groupBox5.Controls.Add(this.textBoxBins7);
+            this.groupBox5.Controls.Add(this.textBoxBins6);
+            this.groupBox5.Controls.Add(this.textBoxBins5);
+            this.groupBox5.Controls.Add(this.textBoxBins4);
+            this.groupBox5.Controls.Add(this.textBoxBins3);
+            this.groupBox5.Controls.Add(this.textBoxBins2);
+            this.groupBox5.Controls.Add(this.textBoxBins1);
+            this.groupBox5.Controls.Add(this.textBoxBins0);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            // 
+            // textBoxBins9
+            // 
+            resources.ApplyResources(this.textBoxBins9, "textBoxBins9");
+            this.textBoxBins9.Name = "textBoxBins9";
+            // 
+            // textBoxBins8
+            // 
+            resources.ApplyResources(this.textBoxBins8, "textBoxBins8");
+            this.textBoxBins8.Name = "textBoxBins8";
+            // 
+            // textBoxBins7
+            // 
+            resources.ApplyResources(this.textBoxBins7, "textBoxBins7");
+            this.textBoxBins7.Name = "textBoxBins7";
+            // 
+            // textBoxBins6
+            // 
+            resources.ApplyResources(this.textBoxBins6, "textBoxBins6");
+            this.textBoxBins6.Name = "textBoxBins6";
+            // 
+            // textBoxBins5
+            // 
+            resources.ApplyResources(this.textBoxBins5, "textBoxBins5");
+            this.textBoxBins5.Name = "textBoxBins5";
+            // 
+            // textBoxBins4
+            // 
+            resources.ApplyResources(this.textBoxBins4, "textBoxBins4");
+            this.textBoxBins4.Name = "textBoxBins4";
+            // 
+            // textBoxBins3
+            // 
+            resources.ApplyResources(this.textBoxBins3, "textBoxBins3");
+            this.textBoxBins3.Name = "textBoxBins3";
+            // 
+            // textBoxBins2
+            // 
+            resources.ApplyResources(this.textBoxBins2, "textBoxBins2");
+            this.textBoxBins2.Name = "textBoxBins2";
+            // 
+            // textBoxBins1
+            // 
+            resources.ApplyResources(this.textBoxBins1, "textBoxBins1");
+            this.textBoxBins1.Name = "textBoxBins1";
+            // 
+            // textBoxBins0
+            // 
+            resources.ApplyResources(this.textBoxBins0, "textBoxBins0");
+            this.textBoxBins0.Name = "textBoxBins0";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.textBoxFreq9);
+            this.groupBox4.Controls.Add(this.textBoxFreq8);
+            this.groupBox4.Controls.Add(this.textBoxFreq7);
+            this.groupBox4.Controls.Add(this.textBoxFreq6);
+            this.groupBox4.Controls.Add(this.textBoxFreq5);
+            this.groupBox4.Controls.Add(this.textBoxFreq4);
+            this.groupBox4.Controls.Add(this.textBoxFreq3);
+            this.groupBox4.Controls.Add(this.textBoxFreq2);
+            this.groupBox4.Controls.Add(this.textBoxFreq1);
+            this.groupBox4.Controls.Add(this.textBoxFreq0);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // textBoxFreq9
+            // 
+            resources.ApplyResources(this.textBoxFreq9, "textBoxFreq9");
+            this.textBoxFreq9.Name = "textBoxFreq9";
+            // 
+            // textBoxFreq8
+            // 
+            resources.ApplyResources(this.textBoxFreq8, "textBoxFreq8");
+            this.textBoxFreq8.Name = "textBoxFreq8";
+            // 
+            // textBoxFreq7
+            // 
+            resources.ApplyResources(this.textBoxFreq7, "textBoxFreq7");
+            this.textBoxFreq7.Name = "textBoxFreq7";
+            // 
+            // textBoxFreq6
+            // 
+            resources.ApplyResources(this.textBoxFreq6, "textBoxFreq6");
+            this.textBoxFreq6.Name = "textBoxFreq6";
+            // 
+            // textBoxFreq5
+            // 
+            resources.ApplyResources(this.textBoxFreq5, "textBoxFreq5");
+            this.textBoxFreq5.Name = "textBoxFreq5";
+            // 
+            // textBoxFreq4
+            // 
+            resources.ApplyResources(this.textBoxFreq4, "textBoxFreq4");
+            this.textBoxFreq4.Name = "textBoxFreq4";
+            // 
+            // textBoxFreq3
+            // 
+            resources.ApplyResources(this.textBoxFreq3, "textBoxFreq3");
+            this.textBoxFreq3.Name = "textBoxFreq3";
+            // 
+            // textBoxFreq2
+            // 
+            resources.ApplyResources(this.textBoxFreq2, "textBoxFreq2");
+            this.textBoxFreq2.Name = "textBoxFreq2";
+            // 
+            // textBoxFreq1
+            // 
+            resources.ApplyResources(this.textBoxFreq1, "textBoxFreq1");
+            this.textBoxFreq1.Name = "textBoxFreq1";
+            // 
+            // textBoxFreq0
+            // 
+            resources.ApplyResources(this.textBoxFreq0, "textBoxFreq0");
+            this.textBoxFreq0.Name = "textBoxFreq0";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkBoxEnable9);
+            this.groupBox3.Controls.Add(this.checkBoxEnable8);
+            this.groupBox3.Controls.Add(this.checkBoxEnable7);
+            this.groupBox3.Controls.Add(this.checkBoxEnable6);
+            this.groupBox3.Controls.Add(this.checkBoxEnable5);
+            this.groupBox3.Controls.Add(this.checkBoxEnable4);
+            this.groupBox3.Controls.Add(this.checkBoxEnable3);
+            this.groupBox3.Controls.Add(this.checkBoxEnable2);
+            this.groupBox3.Controls.Add(this.checkBoxEnable1);
+            this.groupBox3.Controls.Add(this.checkBoxEnable0);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            // 
+            // checkBoxEnable9
+            // 
+            resources.ApplyResources(this.checkBoxEnable9, "checkBoxEnable9");
+            this.checkBoxEnable9.Name = "checkBoxEnable9";
+            this.checkBoxEnable9.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnable8
+            // 
+            resources.ApplyResources(this.checkBoxEnable8, "checkBoxEnable8");
+            this.checkBoxEnable8.Name = "checkBoxEnable8";
+            this.checkBoxEnable8.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnable7
+            // 
+            resources.ApplyResources(this.checkBoxEnable7, "checkBoxEnable7");
+            this.checkBoxEnable7.Name = "checkBoxEnable7";
+            this.checkBoxEnable7.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnable6
+            // 
+            resources.ApplyResources(this.checkBoxEnable6, "checkBoxEnable6");
+            this.checkBoxEnable6.Name = "checkBoxEnable6";
+            this.checkBoxEnable6.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnable5
+            // 
+            resources.ApplyResources(this.checkBoxEnable5, "checkBoxEnable5");
+            this.checkBoxEnable5.Name = "checkBoxEnable5";
+            this.checkBoxEnable5.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnable4
+            // 
+            resources.ApplyResources(this.checkBoxEnable4, "checkBoxEnable4");
+            this.checkBoxEnable4.Name = "checkBoxEnable4";
+            this.checkBoxEnable4.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnable3
+            // 
+            resources.ApplyResources(this.checkBoxEnable3, "checkBoxEnable3");
+            this.checkBoxEnable3.Name = "checkBoxEnable3";
+            this.checkBoxEnable3.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnable2
+            // 
+            resources.ApplyResources(this.checkBoxEnable2, "checkBoxEnable2");
+            this.checkBoxEnable2.Name = "checkBoxEnable2";
+            this.checkBoxEnable2.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnable1
+            // 
+            resources.ApplyResources(this.checkBoxEnable1, "checkBoxEnable1");
+            this.checkBoxEnable1.Name = "checkBoxEnable1";
+            this.checkBoxEnable1.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxEnable0
+            // 
+            resources.ApplyResources(this.checkBoxEnable0, "checkBoxEnable0");
+            this.checkBoxEnable0.Name = "checkBoxEnable0";
+            this.checkBoxEnable0.UseVisualStyleBackColor = true;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.comboBoxHeadingRef);
+            this.groupBox10.Controls.Add(this.label3);
+            this.groupBox10.Controls.Add(this.comboBox_RS232);
+            this.groupBox10.Controls.Add(this.label_RS232);
+            resources.ApplyResources(this.groupBox10, "groupBox10");
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.TabStop = false;
+            // 
             // FrmSystemSetting
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox10);
+            this.Controls.Add(this.buttonDownloadCommandSettings);
+            this.Controls.Add(this.buttonSetDefaults);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox41);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.groupBox44);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnCancel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSystemSetting";
@@ -591,6 +1172,23 @@
             this.groupBox41.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -661,5 +1259,84 @@
         private System.Windows.Forms.TextBox textBoxBTSNR;
         private System.Windows.Forms.Button buttonDownloadCommandSettings;
         private System.Windows.Forms.Button buttonSetDefaults;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox textBoxFreq9;
+        private System.Windows.Forms.TextBox textBoxFreq8;
+        private System.Windows.Forms.TextBox textBoxFreq7;
+        private System.Windows.Forms.TextBox textBoxFreq6;
+        private System.Windows.Forms.TextBox textBoxFreq5;
+        private System.Windows.Forms.TextBox textBoxFreq4;
+        private System.Windows.Forms.TextBox textBoxFreq3;
+        private System.Windows.Forms.TextBox textBoxFreq2;
+        private System.Windows.Forms.TextBox textBoxFreq1;
+        private System.Windows.Forms.TextBox textBoxFreq0;
+        private System.Windows.Forms.CheckBox checkBoxEnable9;
+        private System.Windows.Forms.CheckBox checkBoxEnable8;
+        private System.Windows.Forms.CheckBox checkBoxEnable7;
+        private System.Windows.Forms.CheckBox checkBoxEnable6;
+        private System.Windows.Forms.CheckBox checkBoxEnable5;
+        private System.Windows.Forms.CheckBox checkBoxEnable4;
+        private System.Windows.Forms.CheckBox checkBoxEnable3;
+        private System.Windows.Forms.CheckBox checkBoxEnable2;
+        private System.Windows.Forms.CheckBox checkBoxEnable1;
+        private System.Windows.Forms.CheckBox checkBoxEnable0;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox textBoxBins9;
+        private System.Windows.Forms.TextBox textBoxBins8;
+        private System.Windows.Forms.TextBox textBoxBins7;
+        private System.Windows.Forms.TextBox textBoxBins6;
+        private System.Windows.Forms.TextBox textBoxBins5;
+        private System.Windows.Forms.TextBox textBoxBins4;
+        private System.Windows.Forms.TextBox textBoxBins3;
+        private System.Windows.Forms.TextBox textBoxBins2;
+        private System.Windows.Forms.TextBox textBoxBins1;
+        private System.Windows.Forms.TextBox textBoxBins0;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox textBoxTBP9;
+        private System.Windows.Forms.TextBox textBoxTBP8;
+        private System.Windows.Forms.TextBox textBoxTBP7;
+        private System.Windows.Forms.TextBox textBoxTBP6;
+        private System.Windows.Forms.TextBox textBoxTBP5;
+        private System.Windows.Forms.TextBox textBoxTBP4;
+        private System.Windows.Forms.TextBox textBoxTBP3;
+        private System.Windows.Forms.TextBox textBoxTBP2;
+        private System.Windows.Forms.TextBox textBoxTBP1;
+        private System.Windows.Forms.TextBox textBoxTBP0;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox textBoxBlank9;
+        private System.Windows.Forms.TextBox textBoxBlank8;
+        private System.Windows.Forms.TextBox textBoxBlank7;
+        private System.Windows.Forms.TextBox textBoxBlank6;
+        private System.Windows.Forms.TextBox textBoxBlank5;
+        private System.Windows.Forms.TextBox textBoxBlank4;
+        private System.Windows.Forms.TextBox textBoxBlank3;
+        private System.Windows.Forms.TextBox textBoxBlank2;
+        private System.Windows.Forms.TextBox textBoxBlank1;
+        private System.Windows.Forms.TextBox textBoxBlank0;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.TextBox textBoxXmt9;
+        private System.Windows.Forms.TextBox textBoxXmt8;
+        private System.Windows.Forms.TextBox textBoxXmt7;
+        private System.Windows.Forms.TextBox textBoxXmt6;
+        private System.Windows.Forms.TextBox textBoxXmt5;
+        private System.Windows.Forms.TextBox textBoxXmt4;
+        private System.Windows.Forms.TextBox textBoxXmt3;
+        private System.Windows.Forms.TextBox textBoxXmt2;
+        private System.Windows.Forms.TextBox textBoxXmt1;
+        private System.Windows.Forms.TextBox textBoxXmt0;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox textBoxBinSize9;
+        private System.Windows.Forms.TextBox textBoxBinSize8;
+        private System.Windows.Forms.TextBox textBoxBinSize7;
+        private System.Windows.Forms.TextBox textBoxBinSize6;
+        private System.Windows.Forms.TextBox textBoxBinSize5;
+        private System.Windows.Forms.TextBox textBoxBinSize4;
+        private System.Windows.Forms.TextBox textBoxBinSize3;
+        private System.Windows.Forms.TextBox textBoxBinSize2;
+        private System.Windows.Forms.TextBox textBoxBinSize1;
+        private System.Windows.Forms.TextBox textBoxBinSize0;
+        private System.Windows.Forms.GroupBox groupBox10;
     }
 }

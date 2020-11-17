@@ -561,10 +561,11 @@ namespace ADCP
                 defaultQueue.Enqueue(packet);
             }
         }
-        private void DownloadCommandSettings()
-        {
-            defaultQueue = new System.Collections.Queue();
 
+        private bool GetParameters(ref string strpack, string Command)
+        {
+            strpack = "";
+            defaultQueue = new System.Collections.Queue();
             //sp.PortName = "COM18";
             //sp.BaudRate = 921600;
 
@@ -573,11 +574,12 @@ namespace ADCP
 
             sp.DataReceived += new SerialDataReceivedEventHandler(SP_DataReceived);
 
-            string strpack = "";
+
             bool OK = false;
             if (sp.IsOpen)
             {
-                sp.Write("CRSSHOW\r");
+                //sp.Write("CRSSHOW\r");
+                sp.Write(Command);
                 Thread.Sleep(1000);
 
                 int thecount = 0;
@@ -606,6 +608,833 @@ namespace ADCP
                     flag++;
                 }
             }
+            return OK;
+        }
+
+        private void DownloadCommandSettings()
+        {
+            GetFlowCommands();
+            GetBackscatterCommands();
+        }
+        private void GetBackscatterCommands()
+        {
+            string strpack = "";
+            string Command = "CBSSHOW\r";
+
+            bool OK = GetParameters(ref strpack, Command);
+
+            if (OK)
+            {
+                //Int32 index = 0;
+                int i;
+                double dVal;
+                string[] separatingStrings = { " ", "," };
+
+                var reader = new StringReader(strpack);
+                string cmd = reader.ReadLine();
+                string[] cmdPart = new string[2];
+                while (cmd != null)
+                {
+                    try
+                    {
+                        if (cmd != "")
+                        {
+                            cmdPart = cmd.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                            switch (cmdPart[0])
+                            {
+                                case "CBSBEAMON":
+                                    try
+                                    {
+                                        int j = 0;
+                                        int count = cmdPart.Count();
+                                        for (i = 1; i < count; i++)
+                                        {
+                                            Int32 n = Convert.ToInt32(cmdPart[i]);
+
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    checkBoxEnable0.Enabled = true;
+                                                    if (n == 1)
+                                                        checkBoxEnable0.Checked = true;
+                                                    else
+                                                        checkBoxEnable0.Checked = false;
+                                                    break;
+                                                case 1:
+                                                    checkBoxEnable1.Enabled = true;
+                                                    if (n == 1)
+                                                        checkBoxEnable1.Checked = true;
+                                                    else
+                                                        checkBoxEnable1.Checked = false;
+                                                    break;
+                                                case 2:
+                                                    checkBoxEnable2.Enabled = true;
+                                                    if (n == 1)
+                                                        checkBoxEnable2.Checked = true;
+                                                    else
+                                                        checkBoxEnable2.Checked = false;
+                                                    break;
+                                                case 3:
+                                                    checkBoxEnable3.Enabled = true;
+                                                    if (n == 1)
+                                                        checkBoxEnable3.Checked = true;
+                                                    else
+                                                        checkBoxEnable3.Checked = false;
+                                                    break;
+                                                case 4:
+                                                    checkBoxEnable4.Enabled = true;
+                                                    if (n == 1)
+                                                        checkBoxEnable4.Checked = true;
+                                                    else
+                                                        checkBoxEnable4.Checked = false;
+                                                    break;
+                                                case 5:
+                                                    checkBoxEnable5.Enabled = true;
+                                                    if (n == 1)
+                                                        checkBoxEnable5.Checked = true;
+                                                    else
+                                                        checkBoxEnable5.Checked = false;
+                                                    break;
+                                                case 6:
+                                                    checkBoxEnable6.Enabled = true;
+                                                    if (n == 1)
+                                                        checkBoxEnable6.Checked = true;
+                                                    else
+                                                        checkBoxEnable6.Checked = false;
+                                                    break;
+                                                case 7:
+                                                    checkBoxEnable7.Enabled = true;
+                                                    if (n == 1)
+                                                        checkBoxEnable7.Checked = true;
+                                                    else
+                                                        checkBoxEnable7.Checked = false;
+                                                    break;
+                                                case 8:
+                                                    checkBoxEnable8.Enabled = true;
+                                                    if (n == 1)
+                                                        checkBoxEnable8.Checked = true;
+                                                    else
+                                                        checkBoxEnable8.Checked = false;
+                                                    break;
+                                                case 9:
+                                                    checkBoxEnable9.Enabled = true;
+                                                    if (n == 1)
+                                                        checkBoxEnable9.Checked = true;
+                                                    else
+                                                        checkBoxEnable9.Checked = false;
+                                                    break;
+                                            }
+                                            j++;
+                                        }
+
+                                        for(;j<10;j++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    checkBoxEnable0.Checked = false;
+                                                    checkBoxEnable0.Enabled = false;
+                                                    break;
+                                                case 1:
+                                                    checkBoxEnable1.Checked = false;
+                                                    checkBoxEnable1.Enabled = false;
+                                                    break;
+                                                case 2:
+                                                    checkBoxEnable2.Checked = false;
+                                                    checkBoxEnable2.Enabled = false;
+                                                    break;
+                                                case 3:
+                                                    checkBoxEnable3.Checked = false;
+                                                    checkBoxEnable3.Enabled = false;
+                                                    break;
+                                                case 4:
+                                                    checkBoxEnable4.Checked = false;
+                                                    checkBoxEnable4.Enabled = false;
+                                                    break;
+                                                case 5:
+                                                    checkBoxEnable5.Checked = false;
+                                                    checkBoxEnable5.Enabled = false;
+                                                    break;
+                                                case 6:
+                                                    checkBoxEnable6.Checked = false;
+                                                    checkBoxEnable6.Enabled = false;
+                                                    break;
+                                                case 7:
+                                                    checkBoxEnable7.Checked = false;
+                                                    checkBoxEnable7.Enabled = false;                                                    
+                                                    break;
+                                                case 8:
+                                                    checkBoxEnable8.Checked = false;
+                                                    checkBoxEnable8.Enabled = false;
+                                                    break;
+                                                case 9:
+                                                    checkBoxEnable9.Checked = false;
+                                                    checkBoxEnable9.Enabled = false;
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    catch { }
+                                    break;
+                                case "Frequency":
+                                    try
+                                    {
+                                        int j = 0;
+                                        int count = cmdPart.Count();
+                                        for (i = 1; i < count-1; i++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxFreq0.Enabled = true;
+                                                    textBoxFreq0.Text = cmdPart[i];
+                                                    break;
+                                                case 1:
+                                                    textBoxFreq1.Enabled = true;
+                                                    textBoxFreq1.Text = cmdPart[i];
+                                                    break;
+                                                case 2:
+                                                    textBoxFreq2.Enabled = true;
+                                                    textBoxFreq2.Text = cmdPart[i];
+                                                    break;
+                                                case 3:
+                                                    textBoxFreq3.Enabled = true;
+                                                    textBoxFreq3.Text = cmdPart[i];
+                                                    break;
+                                                case 4:
+                                                    textBoxFreq4.Enabled = true;
+                                                    textBoxFreq4.Text = cmdPart[i];
+                                                    break;
+                                                case 5:
+                                                    textBoxFreq5.Enabled = true;
+                                                    textBoxFreq5.Text = cmdPart[i];
+                                                    break;
+                                                case 6:
+                                                    textBoxFreq6.Enabled = true;
+                                                    textBoxFreq6.Text = cmdPart[i];
+                                                    break;
+                                                case 7:
+                                                    textBoxFreq7.Enabled = true;
+                                                    textBoxFreq7.Text = cmdPart[i];
+                                                    break;
+                                                case 8:
+                                                    textBoxFreq8.Enabled = true;
+                                                    textBoxFreq8.Text = cmdPart[i];
+                                                    break;
+                                                case 9:
+                                                    textBoxFreq9.Enabled = true;
+                                                    textBoxFreq9.Text = cmdPart[i];
+                                                    break;
+                                            }
+                                            j++;
+                                        }
+
+                                        for (; j < 10; j++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxFreq0.Text = "";
+                                                    textBoxFreq0.Enabled = false;
+                                                    break;
+                                                case 1:
+                                                    textBoxFreq1.Text = "";
+                                                    textBoxFreq1.Enabled = false;
+                                                    break;
+                                                case 2:
+                                                    textBoxFreq2.Text = "";
+                                                    textBoxFreq2.Enabled = false;
+                                                    break;
+                                                case 3:
+                                                    textBoxFreq3.Text = "";
+                                                    textBoxFreq3.Enabled = false;
+                                                    break;
+                                                case 4:
+                                                    textBoxFreq4.Text = "";
+                                                    textBoxFreq4.Enabled = false;
+                                                    break;
+                                                case 5:
+                                                    textBoxFreq5.Text = "";
+                                                    textBoxFreq5.Enabled = false;
+                                                    break;
+                                                case 6:
+                                                    textBoxFreq6.Text = "";
+                                                    textBoxFreq6.Enabled = false;
+                                                    break;
+                                                case 7:
+                                                    textBoxFreq7.Text = "";
+                                                    textBoxFreq7.Enabled = false;
+                                                    break;
+                                                case 8:
+                                                    textBoxFreq8.Text = "";
+                                                    textBoxFreq8.Enabled = false;
+                                                    break;
+                                                case 9:
+                                                    textBoxFreq9.Text = "";
+                                                    textBoxFreq9.Enabled = false;
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    catch { }
+                                    break;
+                                case "CBSBINS":
+                                    try
+                                    {
+                                        int j = 0;
+                                        int count = cmdPart.Count();
+                                        for (i = 1; i < count; i++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxBins0.Enabled = true;
+                                                    textBoxBins0.Text = cmdPart[i];
+                                                    break;
+                                                case 1:
+                                                    textBoxBins1.Enabled = true;
+                                                    textBoxBins1.Text = cmdPart[i];
+                                                    break;
+                                                case 2:
+                                                    textBoxBins2.Enabled = true;
+                                                    textBoxBins2.Text = cmdPart[i];
+                                                    break;
+                                                case 3:
+                                                    textBoxBins3.Enabled = true;
+                                                    textBoxBins3.Text = cmdPart[i];
+                                                    break;
+                                                case 4:
+                                                    textBoxBins4.Enabled = true;
+                                                    textBoxBins4.Text = cmdPart[i];
+                                                    break;
+                                                case 5:
+                                                    textBoxBins5.Enabled = true;
+                                                    textBoxBins5.Text = cmdPart[i];
+                                                    break;
+                                                case 6:
+                                                    textBoxBins6.Enabled = true;
+                                                    textBoxBins6.Text = cmdPart[i];
+                                                    break;
+                                                case 7:
+                                                    textBoxBins7.Enabled = true;
+                                                    textBoxBins7.Text = cmdPart[i];
+                                                    break;
+                                                case 8:
+                                                    textBoxBins8.Enabled = true;
+                                                    textBoxBins8.Text = cmdPart[i];
+                                                    break;
+                                                case 9:
+                                                    textBoxBins9.Enabled = true;
+                                                    textBoxBins9.Text = cmdPart[i];
+                                                    break;
+                                            }
+                                            j++;
+                                        }
+
+                                        for (; j < 10; j++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxBins0.Text = "";
+                                                    textBoxBins0.Enabled = false;
+                                                    break;
+                                                case 1:
+                                                    textBoxBins1.Text = "";
+                                                    textBoxBins1.Enabled = false;
+                                                    break;
+                                                case 2:
+                                                    textBoxBins2.Text = "";
+                                                    textBoxBins2.Enabled = false;
+                                                    break;
+                                                case 3:
+                                                    textBoxBins3.Text = "";
+                                                    textBoxBins3.Enabled = false;
+                                                    break;
+                                                case 4:
+                                                    textBoxBins4.Text = "";
+                                                    textBoxBins4.Enabled = false;
+                                                    break;
+                                                case 5:
+                                                    textBoxBins5.Text = "";
+                                                    textBoxBins5.Enabled = false;
+                                                    break;
+                                                case 6:
+                                                    textBoxBins6.Text = "";
+                                                    textBoxBins6.Enabled = false;
+                                                    break;
+                                                case 7:
+                                                    textBoxBins7.Text = "";
+                                                    textBoxBins7.Enabled = false;
+                                                    break;
+                                                case 8:
+                                                    textBoxBins8.Text = "";
+                                                    textBoxBins8.Enabled = false;
+                                                    break;
+                                                case 9:
+                                                    textBoxBins9.Text = "";
+                                                    textBoxBins9.Enabled = false;
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    catch { }
+                                    break;
+                                case "CBSTBP":
+                                    try
+                                    {
+                                        int j = 0;
+                                        int count = cmdPart.Count();
+                                        for (i = 1; i < count - 1; i++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxTBP0.Enabled = true;
+                                                    textBoxTBP0.Text = cmdPart[i];
+                                                    break;
+                                                case 1:
+                                                    textBoxTBP1.Enabled = true;
+                                                    textBoxTBP1.Text = cmdPart[i];
+                                                    break;
+                                                case 2:
+                                                    textBoxTBP2.Enabled = true;
+                                                    textBoxTBP2.Text = cmdPart[i];
+                                                    break;
+                                                case 3:
+                                                    textBoxTBP3.Enabled = true;
+                                                    textBoxTBP3.Text = cmdPart[i];
+                                                    break;
+                                                case 4:
+                                                    textBoxTBP4.Enabled = true;
+                                                    textBoxTBP4.Text = cmdPart[i];
+                                                    break;
+                                                case 5:
+                                                    textBoxTBP5.Enabled = true;
+                                                    textBoxTBP5.Text = cmdPart[i];
+                                                    break;
+                                                case 6:
+                                                    textBoxTBP6.Enabled = true;
+                                                    textBoxTBP6.Text = cmdPart[i];
+                                                    break;
+                                                case 7:
+                                                    textBoxTBP7.Enabled = true;
+                                                    textBoxTBP7.Text = cmdPart[i];
+                                                    break;
+                                                case 8:
+                                                    textBoxTBP8.Enabled = true;
+                                                    textBoxTBP8.Text = cmdPart[i];
+                                                    break;
+                                                case 9:
+                                                    textBoxTBP9.Enabled = true;
+                                                    textBoxTBP9.Text = cmdPart[i];
+                                                    break;
+                                            }
+                                            j++;
+                                        }
+
+                                        for (; j < 10; j++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxTBP0.Text = "";
+                                                    textBoxTBP0.Enabled = false;
+                                                    break;
+                                                case 1:
+                                                    textBoxTBP1.Text = "";
+                                                    textBoxTBP1.Enabled = false;
+                                                    break;
+                                                case 2:
+                                                    textBoxTBP2.Text = "";
+                                                    textBoxTBP2.Enabled = false;
+                                                    break;
+                                                case 3:
+                                                    textBoxTBP3.Text = "";
+                                                    textBoxTBP3.Enabled = false;
+                                                    break;
+                                                case 4:
+                                                    textBoxTBP4.Text = "";
+                                                    textBoxTBP4.Enabled = false;
+                                                    break;
+                                                case 5:
+                                                    textBoxTBP5.Text = "";
+                                                    textBoxTBP5.Enabled = false;
+                                                    break;
+                                                case 6:
+                                                    textBoxTBP6.Text = "";
+                                                    textBoxTBP6.Enabled = false;
+                                                    break;
+                                                case 7:
+                                                    textBoxTBP7.Text = "";
+                                                    textBoxTBP7.Enabled = false;
+                                                    break;
+                                                case 8:
+                                                    textBoxTBP8.Text = "";
+                                                    textBoxTBP8.Enabled = false;
+                                                    break;
+                                                case 9:
+                                                    textBoxTBP9.Text = "";
+                                                    textBoxTBP9.Enabled = false;
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    catch { }
+                                    break;
+                                case "CBSBLANK":
+                                    try
+                                    {
+                                        int j = 0;
+                                        int count = cmdPart.Count();
+                                        for (i = 1; i < count - 1; i++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxBlank0.Enabled = true;
+                                                    textBoxBlank0.Text = cmdPart[i];
+                                                    break;
+                                                case 1:
+                                                    textBoxBlank1.Enabled = true;
+                                                    textBoxBlank1.Text = cmdPart[i];
+                                                    break;
+                                                case 2:
+                                                    textBoxBlank2.Enabled = true;
+                                                    textBoxBlank2.Text = cmdPart[i];
+                                                    break;
+                                                case 3:
+                                                    textBoxBlank3.Enabled = true;
+                                                    textBoxBlank3.Text = cmdPart[i];
+                                                    break;
+                                                case 4:
+                                                    textBoxBlank4.Enabled = true;
+                                                    textBoxBlank4.Text = cmdPart[i];
+                                                    break;
+                                                case 5:
+                                                    textBoxBlank5.Enabled = true;
+                                                    textBoxBlank5.Text = cmdPart[i];
+                                                    break;
+                                                case 6:
+                                                    textBoxBlank6.Enabled = true;
+                                                    textBoxBlank6.Text = cmdPart[i];
+                                                    break;
+                                                case 7:
+                                                    textBoxBlank7.Enabled = true;
+                                                    textBoxBlank7.Text = cmdPart[i];
+                                                    break;
+                                                case 8:
+                                                    textBoxBlank8.Enabled = true;
+                                                    textBoxBlank8.Text = cmdPart[i];
+                                                    break;
+                                                case 9:
+                                                    textBoxBlank9.Enabled = true;
+                                                    textBoxBlank9.Text = cmdPart[i];
+                                                    break;
+                                            }
+                                            j++;
+                                        }
+
+                                        for (; j < 10; j++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxBlank0.Text = "";
+                                                    textBoxBlank0.Enabled = false;
+                                                    break;
+                                                case 1:
+                                                    textBoxBlank1.Text = "";
+                                                    textBoxBlank1.Enabled = false;
+                                                    break;
+                                                case 2:
+                                                    textBoxBlank2.Text = "";
+                                                    textBoxBlank2.Enabled = false;
+                                                    break;
+                                                case 3:
+                                                    textBoxBlank3.Text = "";
+                                                    textBoxBlank3.Enabled = false;
+                                                    break;
+                                                case 4:
+                                                    textBoxBlank4.Text = "";
+                                                    textBoxBlank4.Enabled = false;
+                                                    break;
+                                                case 5:
+                                                    textBoxBlank5.Text = "";
+                                                    textBoxBlank5.Enabled = false;
+                                                    break;
+                                                case 6:
+                                                    textBoxBlank6.Text = "";
+                                                    textBoxBlank6.Enabled = false;
+                                                    break;
+                                                case 7:
+                                                    textBoxBlank7.Text = "";
+                                                    textBoxBlank7.Enabled = false;
+                                                    break;
+                                                case 8:
+                                                    textBoxBlank8.Text = "";
+                                                    textBoxBlank8.Enabled = false;
+                                                    break;
+                                                case 9:
+                                                    textBoxBlank9.Text = "";
+                                                    textBoxBlank9.Enabled = false;
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    catch { }
+                                    break;
+                                case "CBSBINSIZE":
+                                    try
+                                    {
+                                        int j = 0;
+                                        int count = cmdPart.Count();
+                                        for (i = 1; i < count - 1; i++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxBinSize0.Enabled = true;
+                                                    textBoxBinSize0.Text = cmdPart[i];
+                                                    break;
+                                                case 1:
+                                                    textBoxBinSize1.Enabled = true;
+                                                    textBoxBinSize1.Text = cmdPart[i];
+                                                    break;
+                                                case 2:
+                                                    textBoxBinSize2.Enabled = true;
+                                                    textBoxBinSize2.Text = cmdPart[i];
+                                                    break;
+                                                case 3:
+                                                    textBoxBinSize3.Enabled = true;
+                                                    textBoxBinSize3.Text = cmdPart[i];
+                                                    break;
+                                                case 4:
+                                                    textBoxBinSize4.Enabled = true;
+                                                    textBoxBinSize4.Text = cmdPart[i];
+                                                    break;
+                                                case 5:
+                                                    textBoxBinSize5.Enabled = true;
+                                                    textBoxBinSize5.Text = cmdPart[i];
+                                                    break;
+                                                case 6:
+                                                    textBoxBinSize6.Enabled = true;
+                                                    textBoxBinSize6.Text = cmdPart[i];
+                                                    break;
+                                                case 7:
+                                                    textBoxBinSize7.Enabled = true;
+                                                    textBoxBinSize7.Text = cmdPart[i];
+                                                    break;
+                                                case 8:
+                                                    textBoxBinSize8.Enabled = true;
+                                                    textBoxBinSize8.Text = cmdPart[i];
+                                                    break;
+                                                case 9:
+                                                    textBoxBinSize9.Enabled = true;
+                                                    textBoxBinSize9.Text = cmdPart[i];
+                                                    break;
+                                            }
+                                            j++;
+                                        }
+
+                                        for (; j < 10; j++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxBinSize0.Text = "";
+                                                    textBoxBinSize0.Enabled = false;
+                                                    break;
+                                                case 1:
+                                                    textBoxBinSize1.Text = "";
+                                                    textBoxBinSize1.Enabled = false;
+                                                    break;
+                                                case 2:
+                                                    textBoxBinSize2.Text = "";
+                                                    textBoxBinSize2.Enabled = false;
+                                                    break;
+                                                case 3:
+                                                    textBoxBinSize3.Text = "";
+                                                    textBoxBinSize3.Enabled = false;
+                                                    break;
+                                                case 4:
+                                                    textBoxBinSize4.Text = "";
+                                                    textBoxBinSize4.Enabled = false;
+                                                    break;
+                                                case 5:
+                                                    textBoxBinSize5.Text = "";
+                                                    textBoxBinSize5.Enabled = false;
+                                                    break;
+                                                case 6:
+                                                    textBoxBinSize6.Text = "";
+                                                    textBoxBinSize6.Enabled = false;
+                                                    break;
+                                                case 7:
+                                                    textBoxBinSize7.Text = "";
+                                                    textBoxBinSize7.Enabled = false;
+                                                    break;
+                                                case 8:
+                                                    textBoxBinSize8.Text = "";
+                                                    textBoxBinSize8.Enabled = false;
+                                                    break;
+                                                case 9:
+                                                    textBoxBinSize9.Text = "";
+                                                    textBoxBinSize9.Enabled = false;
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    catch { }
+                                    break;
+                                case "CBSXMTLENGTH":
+                                    try
+                                    {
+                                        int j = 0;
+                                        int count = cmdPart.Count();
+                                        for (i = 1; i < count - 1; i++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxXmt0.Enabled = true;
+                                                    textBoxXmt0.Text = cmdPart[i];
+                                                    break;
+                                                case 1:
+                                                    textBoxXmt1.Enabled = true;
+                                                    textBoxXmt1.Text = cmdPart[i];
+                                                    break;
+                                                case 2:
+                                                    textBoxXmt2.Enabled = true;
+                                                    textBoxXmt2.Text = cmdPart[i];
+                                                    break;
+                                                case 3:
+                                                    textBoxXmt3.Enabled = true;
+                                                    textBoxXmt3.Text = cmdPart[i];
+                                                    break;
+                                                case 4:
+                                                    textBoxXmt4.Enabled = true;
+                                                    textBoxXmt4.Text = cmdPart[i];
+                                                    break;
+                                                case 5:
+                                                    textBoxXmt5.Enabled = true;
+                                                    textBoxXmt5.Text = cmdPart[i];
+                                                    break;
+                                                case 6:
+                                                    textBoxXmt6.Enabled = true;
+                                                    textBoxXmt6.Text = cmdPart[i];
+                                                    break;
+                                                case 7:
+                                                    textBoxXmt7.Enabled = true;
+                                                    textBoxXmt7.Text = cmdPart[i];
+                                                    break;
+                                                case 8:
+                                                    textBoxXmt8.Enabled = true;
+                                                    textBoxXmt8.Text = cmdPart[i];
+                                                    break;
+                                                case 9:
+                                                    textBoxXmt9.Enabled = true;
+                                                    textBoxXmt9.Text = cmdPart[i];
+                                                    break;
+                                            }
+                                            j++;
+                                        }
+
+                                        for (; j < 10; j++)
+                                        {
+                                            switch (j)
+                                            {
+                                                case 0:
+                                                    textBoxXmt0.Text = "";
+                                                    textBoxXmt0.Enabled = false;
+                                                    break;
+                                                case 1:
+                                                    textBoxXmt1.Text = "";
+                                                    textBoxXmt1.Enabled = false;
+                                                    break;
+                                                case 2:
+                                                    textBoxXmt2.Text = "";
+                                                    textBoxXmt2.Enabled = false;
+                                                    break;
+                                                case 3:
+                                                    textBoxXmt3.Text = "";
+                                                    textBoxXmt3.Enabled = false;
+                                                    break;
+                                                case 4:
+                                                    textBoxXmt4.Text = "";
+                                                    textBoxXmt4.Enabled = false;
+                                                    break;
+                                                case 5:
+                                                    textBoxXmt5.Text = "";
+                                                    textBoxXmt5.Enabled = false;
+                                                    break;
+                                                case 6:
+                                                    textBoxXmt6.Text = "";
+                                                    textBoxXmt6.Enabled = false;
+                                                    break;
+                                                case 7:
+                                                    textBoxXmt7.Text = "";
+                                                    textBoxXmt7.Enabled = false;
+                                                    break;
+                                                case 8:
+                                                    textBoxXmt8.Text = "";
+                                                    textBoxXmt8.Enabled = false;
+                                                    break;
+                                                case 9:
+                                                    textBoxXmt9.Text = "";
+                                                    textBoxXmt9.Enabled = false;
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    catch { }
+                                    break;
+
+                                case "CWSS":
+                                    try
+                                    {
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        if (systSet.bEnglishUnit)
+                                            dVal = projectUnit.MeterToFeet(dVal, 1);
+                                        textSoundSpeed.Text = dVal.ToString("0.000");
+                                    }
+                                    catch { }
+                                    break;
+                                case "CHO":
+                                    try
+                                    {
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        textHeadingOffset.Text = dVal.ToString("0.00");
+                                    }
+                                    catch { }
+                                    break;
+
+                            }
+                        }
+                        try
+                        {
+                            cmd = reader.ReadLine();
+                        }
+                        catch //(Exception ex)
+                        {
+                            //MessageBox.Show(ex.Message);
+                        }
+                    }
+                    catch //(Exception ex)
+                    {
+                        //MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            sp.DataReceived -= new SerialDataReceivedEventHandler(SP_DataReceived);
+            //sp.Close();
+        }
+        private void GetFlowCommands()
+        {
+            string strpack = "";
+            string Command = "CRSSHOW\r";
+
+            bool OK = GetParameters(ref strpack, Command);
+
             if (OK)
             {
                 Int32 index = 0;
@@ -882,5 +1711,22 @@ namespace ADCP
         {
             //WriteIt();
         }
+
+
+        /*
+CBSBEAMON           1,        1,        1,        1,        1,        1,        1,        1
+CBSBINS            25,       25,       25,       25,       25,       25,       25,       25
+CBSTBP          0.100,    0.100,    0.100,    0.100,    0.025,    0.025,    0.025,    0.025 (seconds)
+CBSBLANK        0.500,    0.500,    0.500,    0.500,    0.500,    0.500,    0.500,    0.500 (meters)
+CBSBINSIZE      0.200,    0.200,    0.200,    0.200,    0.200,    0.200,    0.200,    0.200 (meters)
+CBSXMTLENGTH    0.100,    0.100,    0.100,    0.100,    0.100,    0.100,    0.100,    0.100 (meters)
+
+CBSTP         7
+CBSPINGS      1
+CBSDEPTH      0.100 (meters)
+CBSSALINITY   0.000 (parts per thousand)
+CBSTEMP      15.000 (deg C)
+CBSPH         8.000
+*/
     }
 }
