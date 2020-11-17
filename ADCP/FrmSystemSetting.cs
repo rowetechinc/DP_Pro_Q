@@ -11,6 +11,8 @@ using System.IO;
 using System.Threading;
 using System.Collections;
 
+#pragma warning disable IDE1006
+
 namespace ADCP
 {
     public partial class FrmSystemSetting : Form
@@ -802,6 +804,7 @@ namespace ADCP
 
         }
         private Units projectUnit = new Units();
+        /*
         private void WriteCommandSettings(SystemSetting systSet)
         {
             string CMD = "CRSMODE " + systSet.iMeasurmentMode.ToString() + "\r\n";
@@ -854,7 +857,7 @@ namespace ADCP
             }
             //File.AppendAllText(fileName, "ADCP_BaudRate " + sp.BaudRate + "\r\n");
         }
-
+        */
         private void buttonSetDefaults_Click(object sender, EventArgs e)
         {
             sp.Close();

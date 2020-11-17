@@ -21,6 +21,8 @@ using System.Linq;
 using System.Text;
 using Calcflow;
 
+#pragma warning disable IDE0017
+
 namespace ADCP
 {
     public class CGetHeadingOffset
@@ -52,7 +54,7 @@ namespace ADCP
          */
         private double GetHeadingOffset(List<ArrayClass> RTIdata, List<float> fBoatVx_GPS, List<float> fBoatVy_GPS)
         {
-            double dHeadingOffset = 0;
+            double dHeadingOffset;// = 0;
 
             //double dCourseMG_Bottom = 0;
             //double dCourseMG_GPS = 0;
@@ -103,13 +105,13 @@ namespace ADCP
             double dLastGoodEnsembleTime = 0;
             float fAccEast = 0, fAccNorth = 0;
 
-            double dCourseMGDir = 0;
+            //double dCourseMGDir = 0;
 
             for (int i = 0; i < RTIdata.Count; i++)
             {
                 if (i == 0)  //第一个数据
                 {
-                    Velocity BoatVelocity = new Velocity(); //LPJ 2013-7-9
+                    Velocity BoatVelocity;// = new Velocity(); //LPJ 2013-7-9
                     BoatVelocity = (Velocity)(fBoatV[i]); //LPJ 2013-8-16
 
                     if (BoatVelocity.VX > 20 || BoatVelocity.VY > 20)
@@ -125,8 +127,8 @@ namespace ADCP
                 }
                 else
                 {
-                    Velocity BoatVelocity = new Velocity(); //LPJ 2013-7-9
-                    Velocity preBoatVelocity = new Velocity();
+                    Velocity BoatVelocity;// = new Velocity(); //LPJ 2013-7-9
+                    Velocity preBoatVelocity;// = new Velocity();
 
                     BoatVelocity = (Velocity)fBoatV[i]; //LPJ 2013-8-16
                     preBoatVelocity = (Velocity)fBoatV[iPrevGoodEnsemble];  //LPJ 2013-8-16
@@ -160,12 +162,12 @@ namespace ADCP
 
             if (dCourseMG < 0)
             {
-                dCourseMGDir = dCourseMG / Math.PI * 180 + 360;
+                //dCourseMGDir = dCourseMG / Math.PI * 180 + 360;
                 dCourseMG = dCourseMG / Math.PI * 180 + 360;
             }
             else
             {
-                dCourseMGDir = dCourseMG / Math.PI * 180;
+                //dCourseMGDir = dCourseMG / Math.PI * 180;
                 dCourseMG = dCourseMG / Math.PI * 180;
             }
 
@@ -176,7 +178,7 @@ namespace ADCP
         {
             public float VX;
             public float VY;
-            public float VZ;
+            //public float VZ;
         }
     }
 }

@@ -18,6 +18,9 @@ using System.IO;
 using System.Diagnostics;
 using DP_Pro_Calibration;//写入文件
 
+#pragma warning disable IDE1006
+#pragma warning disable IDE0017
+
 /************************************************************************************************************************/
 /*       Form1.cs 的功能是处理 menu 的选项                                                                              */
 /************************************************************************************************************************/
@@ -461,7 +464,7 @@ namespace ADCP
          private List<DP300_Windows> dp300_playback = new List<DP300_Windows>(); //LPJ 2013-7-1
          
         private List<string> ListStrPath = new List<string>(); //LPJ 2013-6-13 用于保存文件路径名
-        private List<DischargeSummary.Report> ListReport = new List<DischargeSummary.Report>(); //LPJ 2013-7-1 该变量用于保存所有回放数据的Summary数据
+        //private List<DischargeSummary.Report> ListReport = new List<DischargeSummary.Report>(); //LPJ 2013-7-1 该变量用于保存所有回放数据的Summary数据
         private void toolStripBtnPlayback_Click(object sender, EventArgs e) //回放
         {
             //LPJ 2013-5-28 新建回放
@@ -1152,7 +1155,7 @@ namespace ADCP
         {
             reportList.Clear();
 
-            DischargeSummary.BasicMessage bM = new DischargeSummary.BasicMessage();  //LPJ 2016-10-10 汇总信息
+            DischargeSummary.BasicMessage bM;// = new DischargeSummary.BasicMessage();  //LPJ 2016-10-10 汇总信息
 
             bM = dp300_playback[0].bMessage;  //LPJ 2016-10-10 汇总信息
             bM.endhour = dp300_playback[dp300_playback.Count - 1].bMessage.endhour;
@@ -1795,7 +1798,7 @@ namespace ADCP
             frmCalibrate.Show();
         }
 
-
+        /*
         private bool OpenPress(string FileName, string Arguments)
         {
             System.Diagnostics.Process pro = new System.Diagnostics.Process();
@@ -1809,7 +1812,8 @@ namespace ADCP
             }
             return false;
         }
-
+        */
+        /*
         private bool ClosePress(string strName)
         {
             Process[] p = Process.GetProcesses();
@@ -1832,11 +1836,11 @@ namespace ADCP
             }
             return false;
         }
-
+        */
         private void toolStripDropDownBtnVesselRef_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             #region 船速参考图标 2016-8-22
-            int iSelectedIndex = 0;
+            int iSelectedIndex;// = 0;
             if (toolStripDropDownBtnVesselRef.DropDownItems[0].Selected)
             {
                 toolStripDropDownBtnVesselRef.Image = pictureBoxBT.Image;

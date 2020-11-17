@@ -5,6 +5,10 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 
+#pragma warning disable IDE1006
+#pragma warning disable IDE0054
+#pragma warning disable IDE0059
+#pragma warning disable IDE0017
 
 
 namespace ADCP

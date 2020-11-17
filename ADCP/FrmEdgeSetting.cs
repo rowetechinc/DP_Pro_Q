@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using JDL.UILib;
 
+#pragma warning disable IDE1006
+
 namespace ADCP
 {
     public partial class FrmEdgeSetting : Form

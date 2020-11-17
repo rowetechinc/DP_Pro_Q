@@ -22,6 +22,9 @@ using System.Text.RegularExpressions;
 using JDL.UILib;   //绘制tip控件
 using System.ComponentModel.Design;
 
+#pragma warning disable IDE0017
+#pragma warning disable IDE1006
+#pragma warning disable IDE0059
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Structure of DP300.cs  Modified 2011-8-24
@@ -317,7 +320,7 @@ namespace ADCP
 
             GPS_sp = new SerialPort("COM2", 9600, Parity.None, 8, StopBits.One);
             GPS_sp.DataReceived += new SerialDataReceivedEventHandler(GPS_sp_DataReceived);
-            getGPS_spDATA = new GPSDelegate(getInfoFromNMEAData); //委托指针指向 PickAndDecodeEnsemble 函数
+            //getGPS_spDATA = new GPSDelegate(getInfoFromNMEAData); //委托指针指向 PickAndDecodeEnsemble 函数
            
             //LPJ 2012-06-13 显示文件路径
             //  this.Text = Directory.GetCurrentDirectory()+ "\\dp300Data" ;
@@ -490,7 +493,7 @@ namespace ADCP
                 string[] split3 = data1.Split('$');    //Modified 2011-7-26
                 string ROT_str = split3[1];            //Modified 2011-7-26
                 string[] ROT1 = ROT_str.Split(',');     //Modified 2011-7-26
-                GPS_ROT = ROT1[1];
+                //GPS_ROT = ROT1[1];
                 defaultGPROT = data1;
             }
             catch
@@ -499,6 +502,7 @@ namespace ADCP
             }
         }
 
+        /*
         private void VXVY_decode(string data1)
         {
             //Modified 2011-8-10 ***************************
@@ -522,7 +526,7 @@ namespace ADCP
 
           
         }
-
+        */
         int GPSLines = 0;
         string GPStempData = "";
         private void getInfoFromNMEAData(string data)
@@ -1338,12 +1342,12 @@ namespace ADCP
                 CCC = (currentXposition % restoreNum);
                 if (CCC == 0 && totalNum > 2)
                 {
-                    CurrentGPSFileNumber++;
+                    //CurrentGPSFileNumber++;
                 }
                 //LPJ 2012-5-4  记录保存GPS数据的文件个数
                 if ((MeasTotalNum % restoreNum) == 0 && MeasTotalNum > 2)
                 {
-                    SaveGPSFileNumber++;
+                    //SaveGPSFileNumber++;
                 }
 
                 if (currentXposition <= restoreNum)
@@ -1773,7 +1777,7 @@ namespace ADCP
                 //LPJ 2012-5-4 保存GPS数据文件路径
                 //GPSfileNam = newPath + "\\GPS" + "\\GPSdata" + SaveGPSFileNumber.ToString("000000") + ".txt";
                 GPSfileNam = newPath +  ".gps"; //LPJ 2014-7-29 更改GPS文件保存路径
-                Version_2_CurrentGPSFileName = "GPSdata" + SaveGPSFileNumber.ToString("000000") + ".txt";
+                //Version_2_CurrentGPSFileName = "GPSdata" + SaveGPSFileNumber.ToString("000000") + ".txt";
 
                 //string GPSfileNam = newPath + "\\GPS" + "\\GPSdata.txt";
                 String addNum1 = "";
@@ -1821,7 +1825,7 @@ namespace ADCP
                     //String FileNumber = "#" + totalNum.ToString("000000") + "\r\n";
                     GPSdisplayData += VXVYinfo;
                     //string GPSfileNam = newPath + "\\GPS" + "\\GPSdata.txt";
-                    addNum = FileNumber + GPSdisplayData;  //Modified, 2011-8-9, ************************
+                    //addNum = FileNumber + GPSdisplayData;  //Modified, 2011-8-9, ************************
                     //File.AppendAllText(GPSfileNam, addNum); //保存GPS数据
                     if (bStartMeasQ) //LPJ 2012-5-4 当开始测量后才开始保存GPSdata数据                  
                         File.AppendAllText(GPSfileNam, (SaveFileNumber + GPSdisplayData)); //保存GPS数据
@@ -1829,8 +1833,8 @@ namespace ADCP
                     addNum1 = FileNumber + GPSInfoData + VXVYinfo;
 
                  
-                    addNum = String.Empty;
-                    GPSstoredNumber++;
+                    //addNum = String.Empty;
+                    //GPSstoredNumber++;
 
                     //ComputeXYposition(GPS_GGAbuffer); //recorde mode  //LPJ 2012-8-9 将提取GPS坐标移到保存EnsembleData前面
                 }
@@ -1841,7 +1845,7 @@ namespace ADCP
                     //if (bStartMeasQ) //LPJ 2012-5-4  当开始测量后才保存GPSdata                                            
                     //    File.AppendAllText(GPSfileNam, (SaveFileNumber + VXVYinfo)); //保存GPS数据
 
-                    addNum = String.Empty;
+                    //addNum = String.Empty;
                 }
 
 
@@ -1866,6 +1870,8 @@ namespace ADCP
         }
 
         //LPJ 2012-10-11 add
+        
+        /*
         private void getWaterVelocity(ArrayClass Arr,ref Velocity[] velWater) //在测量模式下，计算绝对流速
         {
             int n = GetVelocityBins(Arr, 0);          //得到水单元层数           
@@ -1882,42 +1888,7 @@ namespace ADCP
                 Bv.VY = 0;
                 Bv.VZ = 0;
             }
-
-            //if ("GPS" == labelVesselRef.Text) //LPJ 2013-11-22
-            //{
-                
-            //}
-           
-            /*
-             //LPJ 2013-5-29 当选择无船速时 --start
-            //if ("Null"==defCfg.DefCfgInf.BoatSpeedRef)
-            if (Resource1.String233 == labelVesselRef.Text)
-            {
-                Bv.VX = 0;
-                Bv.VY = 0;
-                Bv.VZ = 0;
-            }
-            //当选择GPS计算船速时
-         //   else if ("GPS" == defCfg.DefCfgInf.BoatSpeedRef)
-            else if("GPS"==labelVesselRef.Text)
-            {
-                string GPS_VTGBuffer;
-                if (EnsemblesInfoToStore.GPS_VTGbuffer.Count > 0)
-                {
-                    GPS_VTGBuffer = EnsemblesInfoToStore.GPS_VTGbuffer[EnsemblesInfoToStore.GPS_VTGbuffer.Count - 1].ToString();
-                    getGPSBoatSpeed(GPS_VTGBuffer, ref Bv.VX, ref Bv.VY);
-                    Bv.VZ = 0;
-                }
-                else
-                {
-                    Bv.VX = 0;
-                    Bv.VY = 0;
-                    Bv.VZ = 0;
-                }
-            }
-            //LPJ 2013-2-22 当用户勾选GPS计算船速时，并采用GPS数据计算绝对流速--end
-             */
-
+            
             for (int i = 0; i < n; i++)
             {
                 waterVel[i].VX = Arr.Earth[0, i];
@@ -1933,9 +1904,10 @@ namespace ADCP
             }
             velWater = waterVel; //LPJ 2013-7-3
         }
-      
+      */
 
         //LPJ 2012-10-11 该函数用于计算采集数据时的平均水流速，由于修复采集数据和回放数据的平均流速、总面积不一致的问题
+        /*
         private void CalculateAverageWaterSpeedMeasured(int iEnsemblesNum, ref float fAverageVX, ref float fAverageVY, ref float fAverageDepth)
         {
             float VXvalue = 0;
@@ -2015,7 +1987,8 @@ namespace ADCP
                 //fAverageVY = fAverageVY + fBoatVelY;   //JZH 2011-12-30 获取当前的绝对流速 参考底跟踪
             }
         }
-
+        */
+        /*
         private int CalGoodBinNumber(int iEnsemblesNum) //LPJ 2013-5-16
         {
             int iGoodBinNum = 0;
@@ -2044,7 +2017,7 @@ namespace ADCP
 
             return iGoodBinNum;
         }
-
+        */
         //JZH 2011-12-29 计算当前数据组平均流速，注意 参考：底跟踪 以后需要修改成参考：GPS，再做相应的修正
         private void CalculateAverageWaterSpeed(int iEnsemblesNum, ref float fAverageVX, ref float fAverageVY, ref float fAverageDepth)
         {
@@ -2115,8 +2088,8 @@ namespace ADCP
             }
             else
             {
-                fAverageVX = fAverageVX / icountValid;
-                fAverageVY = fAverageVY / icountValid;
+                fAverageVX /= icountValid;
+                fAverageVY /= icountValid;
                 //fAverageVX = fAverageVX + fBoatVelX;   //JZH 2011-12-30 获取当前的绝对流速 参考底跟踪 注意：当底跟踪丢失后！！！！//JZH 2012-03-21  绝对速度已经在GetWaterVelocityToBottom中实现
                 //fAverageVY = fAverageVY + fBoatVelY;   //JZH 2011-12-30 获取当前的绝对流速 参考底跟踪
             }
@@ -2185,8 +2158,8 @@ namespace ADCP
                 }
                 else
                 {
-                    fAverageVX = fAverageVX / icountValid;
-                    fAverageVY = fAverageVY / icountValid;
+                    fAverageVX /= icountValid;
+                    fAverageVY /= icountValid;
                 }
                 return iGoodBinNum;
             }
@@ -2255,8 +2228,8 @@ namespace ADCP
             }
             else
             {
-                fAverageVX = fAverageVX / icountValid;
-                fAverageVY = fAverageVY / icountValid;
+                fAverageVX /= icountValid;
+                fAverageVY /= icountValid;
             }
         }
 
@@ -2319,8 +2292,8 @@ namespace ADCP
             }
             else
             {
-                fAverageVX = fAverageVX / icountValid;
-                fAverageVY = fAverageVY / icountValid;
+                fAverageVX /= icountValid;
+                fAverageVY /= icountValid;
             }
         }
 
@@ -2383,8 +2356,8 @@ namespace ADCP
             }
             else
             {
-                fAverageVX = fAverageVX / icountValid;
-                fAverageVY = fAverageVY / icountValid;
+                fAverageVX /= icountValid;
+                fAverageVY /= icountValid;
             }
         }
 
@@ -2481,10 +2454,12 @@ namespace ADCP
             }
         }
 
+        /*
         private byte ByteArrayToByte(byte[] packet)
         {
             return (packet[PacketPointer++]);
         }
+        */
         private int ByteArrayToInt(byte[] packet)
         {
             ByteArrayToNumber.A = packet[PacketPointer++];
@@ -2944,7 +2919,7 @@ namespace ADCP
         }
 
         //Modified 2011-12-17 add ArrayClass
-        ArrayClass RiverQArrayClass; // = new ArrayClass;
+        //ArrayClass RiverQArrayClass; // = new ArrayClass;
 
         //JZH 2012-04-09 航迹计算全局变量
         //bool bFirstGoodEnsemble = false;
@@ -2957,11 +2932,11 @@ namespace ADCP
         //double dCourMG = 0;
 
         //JZH 2012-04-09 流量计算全局变量
-        double dTopFlow = 0;
-        double dMeasuredFlow = 0;
-        double dBottomFlow = 0;
-        double dRightFlow = 0;
-        double dLeftFlow = 0;
+        //double dTopFlow = 0;
+        //double dMeasuredFlow = 0;
+        //double dBottomFlow = 0;
+        //double dRightFlow = 0;
+        //double dLeftFlow = 0;
 
         //JZH 2012-04-16 流量计算初始化数据
         List<ArrayClass> leftBank = new List<ArrayClass>();
@@ -2974,17 +2949,17 @@ namespace ADCP
         int dRightShorePings = 10;  //LPJ 2013-5-29 右岸平均呯数
 
         //JZH 2012-04-18    实测面积、岸边面积全局变量
-        float fMeasArea = 0;   //实测面积
-        float fMeasRiverWidth = 0;
-        double dGRightShoreArea = 0.0;
-        double dGLeftShoreArea = 0.0;
+        //float fMeasArea = 0;   //实测面积
+        //float fMeasRiverWidth = 0;
+        //double dGRightShoreArea = 0.0;
+        //double dGLeftShoreArea = 0.0;
 
         //JZH 2012-04-18 计算平均流向、岸边流量正负系数全局参数
         //float fGAccVx = 0;
         //float fGAccVy = 0;
         //double dGShoreVelDir = 0.0;  //JZH 2012-04-18 岸边流速方向 用来判断岸边流量正负
         //double dGShoreCoff = 1.0;  //JZH 2012-04-18 岸边流量系数 用来判断岸边流量正负
-        double dGMeanFlowDir = 0.0;
+        //double dGMeanFlowDir = 0.0;
         //float fGAveDepth = 0;
 
         private int CurrentState = TRANSECT_STATE_STOP;
@@ -3206,7 +3181,7 @@ namespace ADCP
                                     //gpsTime =  gga[1];  //Modified add
 
                                     //theta = float.Parse(HDT) / 180.0 * Math.PI;
-                                    GPS_dataToEnsemble = GPS_receiveData;
+                                    //GPS_dataToEnsemble = GPS_receiveData;
                                 }
                             }
                             //JZH 2011-12-26  不要清除EnsemblesInfoToStore里面的数据 ------------开始
@@ -3393,7 +3368,7 @@ namespace ADCP
                             #endregion
 
                             #region BT
-                            GetBottomTrackVelocity(Arr, theta);
+                            GetBottomTrackVelocity(Arr);//, theta);
                             double fBx, fBy;
                             fBx = ((Velocity)EnsemblesInfoToStore.BoatVelocity[EnsemblesInfoToStore.BoatVelocity.Count - 1]).VX;
                             fBy = ((Velocity)EnsemblesInfoToStore.BoatVelocity[EnsemblesInfoToStore.BoatVelocity.Count - 1]).VY;
@@ -3421,7 +3396,7 @@ namespace ADCP
                             if (bStartMeasQ)
                                 SaveEnsemblesInfo.BoatDir.Add(fBoatDir);
 
-                            GetWaterVelocityToBottom(Arr, theta); //计算绝对流速WaterVelocity
+                            GetWaterVelocityToBottom(Arr);//, theta); //计算绝对流速WaterVelocity
 
                             Velocity[] Vel = (Velocity[])EnsemblesInfoToStore.WaterVelocity[EnsemblesInfoToStore.WaterVelocity.Count - 1];
                             double[] waterSpeed = new double[Vel.Length];
@@ -3751,7 +3726,8 @@ namespace ADCP
                             }
                             //LPJ 2013-7-30 将船速计算放在这里--end
 
-                            GetVelocityToColor(Arr);
+                            //GetVelocityToColor(Arr);
+                            GetVelocityToColor();
                             //ChangeToNewRGB(); //修改颜色 //LPJ 2013-7-12
                             ChangeToNewRGB_Survey(); //LPJ 2016-8-15 在采集过程中，不用全部更新颜色，只更新新添加的
 
@@ -3855,7 +3831,7 @@ namespace ADCP
 
                             pictureBox_W_A.Refresh();
                             pictureBox_W_C.Refresh();
-                            RiverQArrayClass = Arr;
+                            //RiverQArrayClass = Arr;
                             this.BeginInvoke(WriteToDataPageEvent, Arr); //LPJ 2014-3-11
                             
                             if (bStartMeasQ)
@@ -3877,8 +3853,8 @@ namespace ADCP
                         {
                             byte[] rawPacket = new byte[payloadLen + 36];
                             BytesArray.CopyTo(0, rawPacket, 0, payloadLen + 36);
-                            ByteArrayWriteToBinFile(rawPacket, fn);     //保存Bin数据
-                            fn++;
+                            ByteArrayWriteToBinFile(rawPacket);//, fn);     //保存Bin数据
+                            //fn++;
                         }
                     }
                     lock (locknull)   //JZH 2012-06-11
@@ -3900,7 +3876,7 @@ namespace ADCP
             }
         }
 
-        private void ByteArrayWriteToBinFile(byte[] rawBytesPacket, int fileNumber)
+        private void ByteArrayWriteToBinFile(byte[] rawBytesPacket)//, int fileNumber)
         {
             RiverPlaybackPath = newPath; //Modified 2011-12-10
             using (FileStream fs = new FileStream(newPath +  ".bin", FileMode.Append)) //LPJ 2014-7-29
@@ -3916,6 +3892,7 @@ namespace ADCP
             }
         }
 
+        /*
         private byte[] BinFileWriteToByteArray(int BinfileNumber, string path)
         {
             path += "\\rawData" + BinfileNumber.ToString("0000000") + ".bin";
@@ -3943,7 +3920,7 @@ namespace ADCP
             //    return null;
             //}
         }
-
+        */
         private void WriteToDataPage(ArrayClass arr)
         {
             int n = GetVelocityBins(arr, 0);//得到水单元层数
@@ -4284,6 +4261,7 @@ namespace ADCP
             }
         }
 
+        /*
         private EnsemblesInfo LoadFromBinaryFile(string path)
         {
             BinaryFormatter binFormat = new BinaryFormatter();
@@ -4299,7 +4277,7 @@ namespace ADCP
                 return null;
             }
         }
-
+        */
         private int GetVelocityBins(ArrayClass Arr, int flag)
         {
             int i;
@@ -4327,6 +4305,7 @@ namespace ADCP
         }
 
         //JZH  2012-01-06 该方法未调用
+        /*
         private int GetVelocityBeams(ArrayClass Arr, int flag)
         {
             int i;
@@ -4352,7 +4331,8 @@ namespace ADCP
             }
             return 0;
         }
-
+        */
+        /*
         private Velocity getHPR_Vel_B(ArrayClass Arr, Velocity v)
         {
             Velocity Vel = new Velocity();
@@ -4485,8 +4465,8 @@ namespace ADCP
             }
             return Vel;
         }
-
-        private void GetBottomTrackVelocity(ArrayClass Arr, double theta)//船相对于水底的速度 BoatVelocityToBottom
+        */
+        private void GetBottomTrackVelocity(ArrayClass Arr)//, double theta)//船相对于水底的速度 BoatVelocityToBottom
         {
             //JZH 2012-01-06 取消500个点的清除限制
             //if (restoreNum == EnsemblesInfoToStore.BoatVelocity.Count)
@@ -4552,7 +4532,7 @@ namespace ADCP
 
             //EnsemblesInfoToStore.BoatVelocity.Add(Vel);
         }
-
+        /*
         private Velocity CalXYZ2ENU(Velocity V, float Heading, float Pitch, float Roll) //LPJ 2013-5-29
         {
             Velocity Ve;
@@ -4583,7 +4563,9 @@ namespace ADCP
 
             return Ve;
         }
+        */
 
+        
         //从仪器坐标系到地球坐标系
         private void CalXYZ2ENU(float X, float Y, float Z, float Heading, float Pitch, float Roll, ref float East, ref float North)
         {
@@ -4611,7 +4593,8 @@ namespace ADCP
             
         }
 
-        private void GetWaterVelocityToBottom(ArrayClass Arr, double theta)//水相对于水底的速度，绝对速度
+
+        private void GetWaterVelocityToBottom(ArrayClass Arr)//, double theta)//水相对于水底的速度，绝对速度
         {
             int n = GetVelocityBins(Arr, 0);//得到水单元层数
             Velocity[] Vel = new Velocity[n];//定义一个数组，包含一次样本所有的水层速度
@@ -4723,8 +4706,9 @@ namespace ADCP
                 SaveEnsemblesInfo.RangeOfFirstBin.Add(Arr.A_FirstCellDepth);
             }
         }
-
-        private void GetVelocityToColor(ArrayClass Arr)
+        
+        
+        private void GetVelocityToColor()//ArrayClass Arr)
         {
             try
             {
@@ -4757,7 +4741,8 @@ namespace ADCP
             }
             catch { }
         }
-
+        
+        
         private Color GetNewRGB(Color c, float ColorMultiple)
         {
             Color clr;
@@ -5063,6 +5048,7 @@ namespace ADCP
         }
 
         //JZH 2011-12-25 取消转换时500个数据组数限制  注意无效数据未剔除？
+        /*
         private void WaterVelocityTransToColor2(Velocity[] WaterVel)
         {
             Color[] VelColorN1 = new Color[WaterVel.Length];
@@ -5128,7 +5114,8 @@ namespace ADCP
             //    SaveEnsemblesInfo.EastVelocityToYellowBlackCyan.Add(VelColorE4);
             //}
         }
-
+        */
+        /*
         private void WaterVelocityTransToColor(Velocity[] WaterVel)
         {
             Color[] VelColorN1 = new Color[WaterVel.Length];
@@ -5194,7 +5181,7 @@ namespace ADCP
             //    SaveEnsemblesInfo.EastVelocityToYellowBlackCyan.Add(VelColorE4);
             //}
         }
-
+        */
         private void WaterSpeedTransToColor_GPS(Velocity[] WaterVel) //LPJ 2013-7-31
         {
             Color[] VelColor1 = new Color[WaterVel.Length];
@@ -5308,7 +5295,7 @@ namespace ADCP
                 //SaveEnsemblesInfo.WaterSpeedToYellowBlackCyan_Null.Add(VelColor4);
             }
         }
-
+        /*
         private void WaterVelocityTransToColor_GPS(Velocity[] WaterVel) //LPJ 2013-7-31
         {
             Color[] VelColorN1 = new Color[WaterVel.Length];
@@ -5374,7 +5361,8 @@ namespace ADCP
                 //SaveEnsemblesInfo.EastVelocityToYellowBlackCyan_GPS.Add(VelColorE4);
             }
         }
-
+        */
+        /*
         private void WaterVelocityTransToColor_GPGGA(Velocity[] WaterVel) //LPJ 2013-7-31
         {
             Color[] VelColorN1 = new Color[WaterVel.Length];
@@ -5440,7 +5428,8 @@ namespace ADCP
                 //SaveEnsemblesInfo.EastVelocityToYellowBlackCyan_GPGGA.Add(VelColorE4);
             }
         }
-
+        */
+        /*
         private void WaterVelocityTransToColor_Null(Velocity[] WaterVel) //LPJ 2016-8-15
         {
             Color[] VelColorN1 = new Color[WaterVel.Length];
@@ -5506,7 +5495,7 @@ namespace ADCP
             //    SaveEnsemblesInfo.EastVelocityToYellowBlackCyan_Null.Add(VelColorE4);
             //}
         }
-
+        */
         private bool BytesEquals(byte[] b1, byte[] b2)
         {
             if (b1.Length != b2.Length) return false;
@@ -5537,7 +5526,7 @@ namespace ADCP
             BitConverter.GetBytes(csum).CopyTo(bytes, 0);
             return bytes;
         }
-
+        /*
         private void ArrayClassWriteToFile(ArrayClass m)
         {
             string MatString = string.Empty;
@@ -5786,7 +5775,8 @@ namespace ADCP
             File.AppendAllText(newPath + "\\EnsemblesSet" + "\\MatString" + textFileNum.ToString("0000000") + ".txt", MatString + "\r\n");
             EnsembleNumber++;
         }
-
+        */
+        /*
         private void WriteAllSettingsToFiles()
         {
            // if (MaxWaterVel.Text != null)
@@ -5824,7 +5814,8 @@ namespace ADCP
                 MessageBox.Show(Resource1.String6 + sourceFile + "or create destinationFile\r\n" + Resource1.String7);
             }
         }
-
+        */
+        /*
         private void writeAllSettingsToCfg()
         {
             WriteProjectInfoToCfg();
@@ -5832,6 +5823,8 @@ namespace ADCP
             //wirteQParaToCfg();    //JZH 2012-04-18 将流量测量参数写入到配置文件
             WriteNewProjectInfoToCfg(); //LPJ 2013-5-31 将新修改的工程配置写入文件
         }
+        */
+        /*
         private void WriteNewProjectInfoToCfg()//LPJ 2013-5-31 将新修改的工程配置写入文件
         {
             //File.AppendAllText(newPath + "\\SysCfg\\" + "Config.cfg", "Language " + defCfg.DefCfgInf.Language + "\r\n");
@@ -5850,9 +5843,9 @@ namespace ADCP
             //File.AppendAllText(newPath + "\\SysCfg\\" + "Config.cfg", "Mode " + defCfg.DefCfgInf.Mode + "\r\n");
             //File.AppendAllText(newPath + "\\SysCfg\\" + "Config.cfg", "DepthInWater " + defCfg.DefCfgInf.DepthInWater + "\r\n");
         }
-
+        */
         //JZH 2012-04-18 流量测量参数写入到配置文件
-    
+    /*
         private void WriteProjectInfoToCfg()
         {
             //File.WriteAllText(newPath + "\\SysCfg\\" + "Config.cfg", "ProjectName " + ProjectName + "\r\n");//WriteAllText创建新文件，存在，则覆盖
@@ -5876,7 +5869,7 @@ namespace ADCP
             //else
             //    File.AppendAllText(newPath + "\\SysCfg\\" + "Config.cfg", "radioButtonPCTime" + "\r\n");
         }
-
+        */
         private void buttonProjectSet_Click(object sender, EventArgs e)
         {
             if (playBackMode == false)
@@ -5949,6 +5942,7 @@ namespace ADCP
         }
 
         //private void connectComm() //JZH 2012-06-13
+        /*
         private bool connectComm()  //JZH 2012-06-13 更改函数返回类型
         {
             try
@@ -5962,7 +5956,7 @@ namespace ADCP
             }
             return true;  //JZH 2012-06-13 添加返回值
         }
-
+        */
         private void closeComm()
         {
             if (sp.IsOpen)
@@ -5994,7 +5988,7 @@ namespace ADCP
                 MessageBox.Show(Resource1.String15);
             }
         }
-
+        /*
         private bool IsNumber(String str)
         {
             int j = 0;
@@ -6018,8 +6012,9 @@ namespace ADCP
             return true;
 
         }
-
+        */
         //LPJ 2012-5-23 判断小数，若不是则不显示
+        /*
         private string IsDecimalFraction(string str)
         {
             bool isMatch1 = System.Text.RegularExpressions.Regex.IsMatch(str, @"^([0-9]+|[0-9]+\.{0,1}[0-9]*)$"); //正则表达式判断小数
@@ -6030,8 +6025,9 @@ namespace ADCP
             }
             return str;
         }
-
+        */
         //LPJ 2012-5-23 判断整数
+        /*
         private string IsNumber2(string str)
         {
             bool isMatch1 = System.Text.RegularExpressions.Regex.IsMatch(str, @"^[0-9]*$"); //正则表达式判断整数
@@ -6042,7 +6038,7 @@ namespace ADCP
             }
             return str;
         }
-
+        */
     
         private bool MainPanelMaxDisPlayer = false;
         private void MainPanel_MouseDoubleClick(object sender, MouseEventArgs e)//双击切换最大化
@@ -6095,7 +6091,7 @@ namespace ADCP
 
 
         private float MaxDisplayHeight;
-        private float MaxDisplayWidth;
+        //private float MaxDisplayWidth;
         private float CurrentDisplayUnit;
         private float CurrentDisplayTop;
         private float CurrentDisplayLeft;
@@ -6106,7 +6102,7 @@ namespace ADCP
         private float MouseWheelScale = 1;//滚轮缩小率的初始值
         //private float MouseWheelScale = 0.1f;//滚轮缩小率的初始值 //LPJ 2013-8-2
         private PointF DragEndPoint;
-        Rectangle DisplayRec;
+        //Rectangle DisplayRec;
         float MainGPSWidth = 0;
         float MainGPSHeight = 0;
         //int AverageScale = 80;
@@ -6115,7 +6111,7 @@ namespace ADCP
 
         private bool bDragMainPanel = false; //LPJ 2013-7-5 用于标记拖动mainpanel中的图示图例
         private PointF DragStartPntMainPanel; //LPJ 2013-7-5
-        private PointF pntPanelTrackLabel; //用于记录mainpanel中的图示图例的位置
+        //private PointF pntPanelTrackLabel; //用于记录mainpanel中的图示图例的位置
         private void MainPanel_MouseDown(object sender, MouseEventArgs e)
         {
           
@@ -6455,7 +6451,7 @@ namespace ADCP
                     CurrentNumXFromMousePosion = BinDataEnsembleNum - 1;
                     CurrentIndexOfEnsemblesInfoToStore = CurrentNumXFromMousePosion;
                 }
-                timeKnot = (float)BinDataEnsembleNum * 1000;
+                //timeKnot = (float)BinDataEnsembleNum * 1000;
                 //TimeLable.Text = NumToTime(timeKnot * (float)2.25) + "/" + DisPlayTimeLenth; //Modified 2011-7-13, 
                 TimeLable.Text = BinDataEnsembleNum + " / " + EnsembleNumOfAllFiles; //Modified 2011-10-26
                 //Modified 2011-9-13
@@ -6522,7 +6518,7 @@ namespace ADCP
                         CurrentNumXFromMousePosion = BinDataEnsembleNum - 1;
                         CurrentIndexOfEnsemblesInfoToStore = CurrentNumXFromMousePosion;
                     }
-                    timeKnot = (float)BinDataEnsembleNum * 1000;
+                    //timeKnot = (float)BinDataEnsembleNum * 1000;
                     //TimeLable.Text = NumToTime(timeKnot) + "/" + DisPlayTimeLenth;
                     TimeLable.Text = BinDataEnsembleNum + " / " + EnsembleNumOfAllFiles; //Modified 2011-10-26
 
@@ -6686,7 +6682,7 @@ namespace ADCP
                 ////创建并启动回放线程
                 //MessageBox.Show(EnsembleNumOfAllFiles.ToString());
                 //DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000);
-                DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000 * (float)2.25); //Modified 2011-7-12 Try to display total time
+                //DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000 * (float)2.25); //Modified 2011-7-12 Try to display total time
                 PlayBackTimer = new System.Timers.Timer();
                 PlayBackTimer.Elapsed += new System.Timers.ElapsedEventHandler(PlayBackCenter);
                 PlayBackTimeLenth = 1000; //Modified 2011-7-14
@@ -6894,7 +6890,7 @@ namespace ADCP
                         ////创建并启动回放线程
                         //MessageBox.Show(EnsembleNumOfAllFiles.ToString());
                         //DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000);
-                        DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000 * (float)2.25); //Modified 2011-7-12 Try to display total time
+                        //DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000 * (float)2.25); //Modified 2011-7-12 Try to display total time
                         PlayBackTimer = new System.Timers.Timer();
                         PlayBackTimer.Elapsed += new System.Timers.ElapsedEventHandler(PlayBackCenter);
                         PlayBackTimeLenth = 1000; //Modified 2011-7-14
@@ -7284,7 +7280,7 @@ namespace ADCP
                         ////创建并启动回放线程
                         //MessageBox.Show(EnsembleNumOfAllFiles.ToString());
                         //DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000);
-                        DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000 * (float)2.25); //Modified 2011-7-12 Try to display total time
+                        //DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000 * (float)2.25); //Modified 2011-7-12 Try to display total time
                         PlayBackTimer = new System.Timers.Timer();
                         PlayBackTimer.Elapsed += new System.Timers.ElapsedEventHandler(PlayBackCenter);
                         PlayBackTimeLenth = 1000; //Modified 2011-7-14
@@ -7396,8 +7392,8 @@ namespace ADCP
         float[] LongitudeSave = new float[TrackSaveMaxCount];
         Point[] UTMpointSave = new Point[TrackSaveMaxCount];
 
-        int fileBlockNum;   //Modified 2011-9-20 test
-        int BlockReadNum = 0; //Modified 2011-12-1
+        //int fileBlockNum;   //Modified 2011-9-20 test
+        //int BlockReadNum = 0; //Modified 2011-12-1
         //int EnsemblesInfoStoredBlocks = 0;   //保存当前存储的数据块号   JZH 2011-12-23
       
         private List<ArrayClass> RTIdata = new List<ArrayClass>();   //JZH 2012-01-12    供回放流量数据用
@@ -7418,19 +7414,19 @@ namespace ADCP
 
                         totalNum = BinDataEnsembleNum;
                         ClickPzn = ProcessBar.Width * BinDataEnsembleNum / EnsembleNumOfAllFiles;
-                        timeKnot = BinDataEnsembleNum * 1000;
-                        fileBlockNum = BinDataEnsembleNum / restoreNum; //Modified 2011-9-20 test
+                        //timeKnot = BinDataEnsembleNum * 1000;
+                        //fileBlockNum = BinDataEnsembleNum / restoreNum; //Modified 2011-9-20 test
 
                         int totalBlocks = (EnsembleNumOfAllFiles / restoreNum);
                         int littleNum = BinDataEnsembleNum % restoreNum;
                         int residu = EnsembleNumOfAllFiles - (totalBlocks * restoreNum);
 
                         totalBlocks += 1;
-                        BlockReadNum = 0;
-                         {
+                        //BlockReadNum = 0;
+                         //{
                             
-                            BlockReadNum++; //Modified 2011-12-1
-                        }
+                            //BlockReadNum++; //Modified 2011-12-1
+                        //}
                         
                     }
 
@@ -7448,7 +7444,7 @@ namespace ADCP
                 PlayBackTimer.Stop();
                 bPlaybackStop = true; //LPJ 2013-11-19
                 PlayBackTimer.Close();
-                InitialParam = new InitialParamDelegate(InitialAllParam);
+                //InitialParam = new InitialParamDelegate(InitialAllParam);
                 //this.BeginInvoke(InitialParam);   //LPJ  2012-6-27 bug //LPJ 2013-7-1 cancel
                 InitialAllParam(); //LPJ 2013-7-1
                 // MessageBox.Show("载入回放数据错误，请检查文件格式是否正确！ " + error.Message); //LPJ 2012-4-20
@@ -8945,7 +8941,7 @@ namespace ADCP
             //EnsemblesInfoToStore.WaterSpeedToYellowBlackCyan_GPS.Add(VelColor4);
 
         }
-
+        /*
         private void WaterVelocityTransToColor2_GPS(Velocity[] WaterVel) //LPJ 2013-7-31
         {
             Color[] VelColorN1 = new Color[WaterVel.Length];
@@ -9000,7 +8996,7 @@ namespace ADCP
             //EnsemblesInfoToStore.EastVelocityToYellowBlackCyan_GPS.Add(VelColorE4);
 
         }
-
+        */
         private void WaterSpeedTransToColor2_GPGGA(Velocity[] WaterVel) //LPJ 2013-7-31
         {
             Color[] VelColor1 = new Color[WaterVel.Length];
@@ -9031,7 +9027,7 @@ namespace ADCP
             //EnsemblesInfoToStore.WaterSpeedToYellowBlackCyan_GPGGA.Add(VelColor4);
 
         }
-
+        /*
         private void WaterVelocityTransToColor2_GPGGA(Velocity[] WaterVel) //LPJ 2013-7-31
         {
             Color[] VelColorN1 = new Color[WaterVel.Length];
@@ -9086,7 +9082,7 @@ namespace ADCP
             //EnsemblesInfoToStore.EastVelocityToYellowBlackCyan_GPGGA.Add(VelColorE4);
 
         }
-
+        */
 
         private void WaterSpeedTransToColor2_Null(Velocity[] WaterVel) //LPJ 2013-7-31
         {
@@ -9118,7 +9114,7 @@ namespace ADCP
             //EnsemblesInfoToStore.WaterSpeedToYellowBlackCyan_Null.Add(VelColor4);
 
         }
-
+        /*
         private void WaterVelocityTransToColor2_Null(Velocity[] WaterVel) //LPJ 2013-7-31
         {
             Color[] VelColorN1 = new Color[WaterVel.Length];
@@ -9173,7 +9169,7 @@ namespace ADCP
             //EnsemblesInfoToStore.EastVelocityToYellowBlackCyan_Null.Add(VelColorE4);
 
         }
-
+        */
 
         #region 将流量计算模块提取出来 //LPJ 2013-6-8
        
@@ -9395,8 +9391,8 @@ namespace ADCP
                                     float LEast = (1.0f) * 0.5f * (float)(PrecBoatVelocity.VX + BoatVelocity.VX) * (float)(RTIdata[i].A_FirstPingSeconds - lastSecond); //LPJ 2013-9-13
                                     float LNorth = (1.0f) * 0.5f * (float)(PrecBoatVelocity.VY + BoatVelocity.VY) * (float)(RTIdata[i].A_FirstPingSeconds - lastSecond);  //LPJ 2013-9-13
 
-                                    fAccEast = fAccEast + LEast;
-                                    fAccNorth = fAccNorth + LNorth;
+                                    fAccEast += LEast;
+                                    fAccNorth += LNorth;
                                     fAccLength += (float)System.Math.Sqrt(System.Math.Pow(LEast, 2) + System.Math.Pow(LNorth, 2));
                                     fAccMG = (float)System.Math.Sqrt(System.Math.Pow(fAccEast, 2) + System.Math.Pow(fAccNorth, 2));
                                     dCourseMG = System.Math.Atan2(fAccEast, fAccNorth);
@@ -10496,8 +10492,8 @@ namespace ADCP
                                 float LEast = (1.0f) * 0.5f * (float)(PrecBoatVelocity.VX + BoatVelocity.VX) * (float)(Arr.A_FirstPingSeconds - dischargeMsg.lastSecond); //LPJ 2013-9-13
                                 float LNorth = (1.0f) * 0.5f * (float)(PrecBoatVelocity.VY + BoatVelocity.VY) * (float)(Arr.A_FirstPingSeconds - dischargeMsg.lastSecond);  //LPJ 2013-9-13
 
-                                dischargeMsg.fAccEast = dischargeMsg.fAccEast + LEast;
-                                dischargeMsg.fAccNorth = dischargeMsg.fAccNorth + LNorth;
+                                dischargeMsg.fAccEast += LEast;
+                                dischargeMsg.fAccNorth += LNorth;
                                 dischargeMsg.fAccLength += (float)System.Math.Sqrt(System.Math.Pow(LEast, 2) + System.Math.Pow(LNorth, 2));
                                 //fAccMG = (float)System.Math.Sqrt(System.Math.Pow(dischargeMsg.fAccEast, 2) + System.Math.Pow(dischargeMsg.fAccNorth, 2));
                                 //dCourseMG = System.Math.Atan2(dischargeMsg.fAccEast, dischargeMsg.fAccNorth);
@@ -10796,6 +10792,7 @@ namespace ADCP
         }
 
         
+        /*
         private void decodeBinFile(ArrayList a)
         {
             byte[] Lng = new byte[4];
@@ -10816,7 +10813,8 @@ namespace ADCP
             //WriteToDataPage(Arr);
             this.BeginInvoke(WriteToDataPageEvent, Arr); //LPJ 2014-3-11
         }
-
+        */
+        /*
         private void GetOtherMembers()
         {
             float time;
@@ -10855,7 +10853,7 @@ namespace ADCP
             WaterSpeedTransToColor((Velocity[])EnsemblesInfoToStore.WaterVelocity[EnsemblesInfoToStore.WaterVelocity.Count - 1]);
             //WaterVelocityTransToColor((Velocity[])EnsemblesInfoToStore.WaterVelocity[EnsemblesInfoToStore.WaterVelocity.Count - 1]);
         }
-
+        */
         private void ClearDischargeMsg()  //LPJ 2016-12-12
         {
             dischargeMsg.dLeftShoreArea = 0;
@@ -11072,7 +11070,7 @@ namespace ADCP
          
             //hasCreatedProject = false;
           
-            EsnNum = 50;
+            //EsnNum = 50;
             //projectPause = true;
             projectHasStarted = false;
             //ConfigChangedFlag = true;
@@ -11094,8 +11092,8 @@ namespace ADCP
             BytesArray.Clear();
             payloadLen = 0;
             HasCheckedPayload = false;
-            EnsembleNumber = 1;
-            fn = 1;
+            //EnsembleNumber = 1;
+            //fn = 1;
             PickAndDecodeEnsemble_FunctionIsFree = true;
             fileNum = 0;
             HeaderFlag = false;
@@ -11108,14 +11106,14 @@ namespace ADCP
             DrawRecFlag = false;
             ClickPzn = 1;
             MouseDownFlag = false;
-            timeKnot = 0;
+            //timeKnot = 0;
             playBackMode = false;
             //BinDataFileNum = 0;
             //PlayBackTimeLenth = 1000; //oridinal
             setPlaybackTimeLength = 300; //Modified 2011-11-28
             //PlayBackTimeLenth = 200; //Modified 2011-07-11, This is the only place needed for changing playbacktimeLength
             PlayBackTimeLenth = setPlaybackTimeLength; //Modified 2011-07-11, This is the only place needed for changing playbacktimeLength
-            DisPlayTimeLenth = string.Empty;
+            //DisPlayTimeLenth = string.Empty;
             BinDataEnsembleNum = 0;
             //preBlockNum = -1;
             current_EsambleTotaleNum = "-";
@@ -11217,8 +11215,8 @@ namespace ADCP
             DP_ProVersion = Version_2;          //Modified 2011-8-23, playback version control
             //base.ADCP.Form1.版本V20ToolStripMenuItem.Checked = true;
             //版本V10ToolStripMenuItem.Checked = false;
-            CurrentGPSFileNumber = 0; //Modified 2011-8-30
-            SaveGPSFileNumber = 0; //LPJ 2012-5-4 保存GPS数据的文件数
+            //CurrentGPSFileNumber = 0; //Modified 2011-8-30
+            //SaveGPSFileNumber = 0; //LPJ 2012-5-4 保存GPS数据的文件数
             //displayUTM = true;  //Modified 2011-9-16
             displayUTM = false;   //JZH 2012-01-31 change to BtmTrack
             displayLatLong = false; //Modified 2011-11-18 change to lat long
@@ -11307,11 +11305,11 @@ namespace ADCP
             //dCourMG = 0;                     //JZH 2012-04-09　 直线方向
 
             //JZH 2012-04-11  初始化流量计算全局变量
-            dTopFlow = 0;
-            dMeasuredFlow = 0;
-            dBottomFlow = 0;
-            dRightFlow = 0;
-            dLeftFlow = 0;
+            //dTopFlow = 0;
+            //dMeasuredFlow = 0;
+            //dBottomFlow = 0;
+            //dRightFlow = 0;
+            //dLeftFlow = 0;
 
             //JZH 2012-04-16 初始化流量全局变量
             leftBank.Clear();
@@ -11329,10 +11327,10 @@ namespace ADCP
             current_MeanFLowVel = "-";
 
             //JZH 2012-04-18    初始化实测面积、岸边面积全局变量
-            fMeasArea = 0;   //实测面积
-            fMeasRiverWidth = 0;
-            dGRightShoreArea = 0.0;
-            dGLeftShoreArea = 0.0;
+            //fMeasArea = 0;   //实测面积
+            //fMeasRiverWidth = 0;
+            //dGRightShoreArea = 0.0;
+            //dGLeftShoreArea = 0.0;
 
             //JZH 2012-04-18 初始化计算平均流向、岸边流量正负系数全局参数
             //fGAccVx = 0;
@@ -11565,11 +11563,11 @@ namespace ADCP
 
         private void initialGPSData()
         {
-            GPSInfo = string.Empty;
+            //GPSInfo = string.Empty;
             //GPSLines = 0;
             GPS_receiveData = string.Empty;
-            GPS_dataToEnsemble = string.Empty;
-            theta = 0;
+            //GPS_dataToEnsemble = string.Empty;
+            //theta = 0;
             gpsTime = "000000";
             //MessageBox.Show("StartRecord : " + StartRecord.ToString() + "\r\ncurrentTotalNum: " + currentTotalNum.ToString() + "\r\ntotalNum: " + totalNum.ToString());  //HHHHHHH
             if (StartRecord == false)
@@ -11724,20 +11722,20 @@ namespace ADCP
                 //label_Headingoffset.Text = headingOffset.dHeadingOffset.ToString();
 
                 //显示结果
-                current_CourseMG_GPS = headingOffset.dCourseMG_GPS.ToString("0.000");
-                current_CourseMG_BT = headingOffset.dCourseMG_Bottom.ToString("0.000");
-                current_DMG_GPS = headingOffset.dDMG_GPS.ToString("0.000");
-                current_DMG_BT = headingOffset.dDMG_Bottom.ToString("0.000");
+                //current_CourseMG_GPS = headingOffset.dCourseMG_GPS.ToString("0.000");
+                //current_CourseMG_BT = headingOffset.dCourseMG_Bottom.ToString("0.000");
+                //current_DMG_GPS = headingOffset.dDMG_GPS.ToString("0.000");
+                //current_DMG_BT = headingOffset.dDMG_Bottom.ToString("0.000");
                 try
                 {
-                    if (headingOffset.dDMG_GPS < 0.0000001)
-                        current_Accuracy = "-";
-                    else
-                        current_Accuracy = ((headingOffset.dDMG_Bottom - headingOffset.dDMG_GPS) / headingOffset.dDMG_GPS * 100).ToString("0.00");
+                    //if (headingOffset.dDMG_GPS < 0.0000001)
+                        //current_Accuracy = "-";
+                    //else
+                        //current_Accuracy = ((headingOffset.dDMG_Bottom - headingOffset.dDMG_GPS) / headingOffset.dDMG_GPS * 100).ToString("0.00");
                 }
                 catch
                 {
-                    current_Accuracy = "-";
+                    //current_Accuracy = "-";
                 }
             }
             catch
@@ -11848,14 +11846,14 @@ namespace ADCP
             //fAccuLength = 0;
             //fGAccVx = 0;
             //fGAccVy = 0;
-            fMeasArea = 0;
-            fMeasRiverWidth = 0;
+            //fMeasArea = 0;
+            //fMeasRiverWidth = 0;
 
-            dTopFlow = 0;
-            dMeasuredFlow = 0;
-            dBottomFlow = 0;
-            dLeftFlow = 0; //LPJ 2013-6-5 清除记录
-            dRightFlow = 0;
+            //dTopFlow = 0;
+            //dMeasuredFlow = 0;
+            //dBottomFlow = 0;
+            //dLeftFlow = 0; //LPJ 2013-6-5 清除记录
+            //dRightFlow = 0;
 
             MeasTotalNum = 0;
             GGAsaveCount = 0; //LPJ 2013-8-2 初始化GPS数据个数
@@ -12530,13 +12528,13 @@ namespace ADCP
                                 //  g.DrawLine(Pens.Black, 0, FuTuHeight_WA * (i + 1), panel_W_A.Width, FuTuHeight_WA * (i + 1));   //副图中的层数的横线，这个可以去掉，只显示数字，或将其改为短线段
 
                                 if (cells > 150)
-                                    i = i + 8;
+                                    i += 8;
                                 else if (cells > 100)
-                                    i = i + 6;
+                                    i += 6;
                                 else if (cells > 50)
-                                    i = i + 4;
+                                    i += 4;
                                 else
-                                    i = i + 2;
+                                    i += 2;
                             }
                         }
                         else  //历史数据，回放的时候还是用的实时数据显示？
@@ -12664,13 +12662,13 @@ namespace ADCP
                                 g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, (float)panel_W_C.Height / cells * i); //LPJ 2013-9-24 显示深度
                                 //g.DrawLine(Pens.Black, 0, (float)panel_W_C.Height / (cells - 1) * (i + 1), 15 - s.Width / 2f, (float)panel_W_C.Height / (cells - 1) * (i + 1));   //副图中的层数的横线，这个可以去掉，只显示数字，或将其改为短线段
                                 if (cells > 150)
-                                    i = i + 8;
+                                    i += 8;
                                 else if (cells > 100)
-                                    i = i + 6;
+                                    i += 6;
                                 else if (cells > 50)
-                                    i = i + 4;
+                                    i += 4;
                                 else
-                                    i = i + 2;
+                                    i += 2;
                             }
                         }
                         else
@@ -13127,7 +13125,7 @@ namespace ADCP
 
       
         //private float SailTrackMaxDisplayWidth; //Modified 2011-11-15 cancel
-        private float SailTrackMaxDisplayHeight;
+        //private float SailTrackMaxDisplayHeight;
         private float SailTrackCurrentDisplayUnit;
         private float SailTrackCurrentDisplayTop;
         private float SailTrackCurrentDisplayLeft;
@@ -13178,7 +13176,7 @@ namespace ADCP
                 //  SailTrackBitmap.MakeTransparent(Color.Black);
 
                 //SailTrackMaxDisplayWidth = 985; // panelWidth; //DVLpanel.Width;//Modified 2011-11-15 cancel
-                SailTrackMaxDisplayHeight = panelHeight;
+                //SailTrackMaxDisplayHeight = panelHeight;
                 SailTrackDisplayRec.Width = (int)panelWidth;   // GPSdisplayPanel.Width - GPScontrolPanel.Width; // panelWidth;
                 SailTrackDisplayRec.Height = (int)panelHeight; // GPSdisplayPanel.Height;
 
@@ -13190,8 +13188,8 @@ namespace ADCP
                 //SailTrackMultiple = (float)panelWidth / (float)SailTrackMaxDisplayWidth;//设置随窗口大小的改变绘图区缩放的倍数 //Modified 2011-11-15 cancel
 
                 //拖动积累量 //Modified 2011-11-15 comment out
-                SailTrackDragLengthX = SailTrackDragLengthX * (SailTrackMultiple / SailTrackPreviousMultiple);//改变窗口大小后，相应更新拖动积累量的值//Modified 2011-11-15 cancel
-                SailTrackDragLengthY = SailTrackDragLengthY * (SailTrackMultiple / SailTrackPreviousMultiple);//Modified 2011-11-15 cancel
+                SailTrackDragLengthX *= (SailTrackMultiple / SailTrackPreviousMultiple);//改变窗口大小后，相应更新拖动积累量的值//Modified 2011-11-15 cancel
+                SailTrackDragLengthY *= (SailTrackMultiple / SailTrackPreviousMultiple);//Modified 2011-11-15 cancel
                 SailTrackPreviousMultiple = SailTrackMultiple;//Modified 2011-11-15 cancel
 
                 //Modified 2011-11-22, fix Lat Long origing to center display
@@ -13743,8 +13741,8 @@ namespace ADCP
                                                 float LEast = (1.0f) * 0.5f * (float)(fBoatVx_Prev + fBoatVx) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);   //JZH 2012-06-14
                                                 float LNorth = (1.0f) * 0.5f * (float)(fBoatVy_Prev + fBoatVy) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);  //JZH 2012-06-14
 
-                                                AccEast = AccEast + LEast;
-                                                AccNorth = AccNorth + LNorth;
+                                                AccEast += LEast;
+                                                AccNorth += LNorth;
                                                 //JZH 2012-04-17 支持自动缩放
                                                 //float fTransAccEast = AccEast / 10 * SailTrackCurrentDisplayUnit;
                                                 //float fTransAccNorth = AccNorth / 10 * SailTrackCurrentDisplayUnit;
@@ -14025,8 +14023,8 @@ namespace ADCP
                                                     float LEast = (1.0f) * 0.5f * (float)(fBoatVx_Prev + fBoatVx) * ((float)EnsemblesInfoToStore.RecivedTime[i] - LastSecond);  //JZH 2012-06-14
                                                     float LNorth = (1.0f) * 0.5f * (float)(fBoatVy_Prev + fBoatVy) * ((float)EnsemblesInfoToStore.RecivedTime[i] - LastSecond);  //JZH 2012-06-14
 
-                                                    AccEast = AccEast + LEast;
-                                                    AccNorth = AccNorth + LNorth;
+                                                    AccEast += LEast;
+                                                    AccNorth += LNorth;
                                                     //JZH 2012-04-17 支持自动缩放
                                                     //float fTransAccEast = AccEast / 10 * SailTrackCurrentDisplayUnit;
                                                     //float fTransAccNorth = AccNorth / 10 * SailTrackCurrentDisplayUnit;
@@ -14171,7 +14169,7 @@ namespace ADCP
         }
         //int ChangeTimerCounter = 0;
         //bool TimerChanged = false;
-        private PointF Sta = new PointF(0, 0);
+        //private PointF Sta = new PointF(0, 0);
 
         //private int n = 0;//记录已经写入的文件数
         private class SailTrackInfoClass
@@ -14441,6 +14439,7 @@ namespace ADCP
         }
 
         //JZH 2012-04-17 自动调整底跟踪航迹
+        /*
         private void CheckBottomTrackAutoSize(Point UTMPreverse)
         {
             Point UTMP = new Point(0, 0);
@@ -14484,7 +14483,7 @@ namespace ADCP
 
 
         }
-
+        */
         private void CheckUTMAutoSize(Point UTMPreverse)
         {
             //Modified 2011-11-21, due to original N-X and E-Y arrangement, need to reverse X, Y
@@ -14660,6 +14659,7 @@ namespace ADCP
         Point StartLatLongPosition;
 
         //Modified 2011-8-30 add
+        /*
         float SailTrackgetdata(string data, int num)
         {
             int iLength = data.Length;
@@ -14694,7 +14694,7 @@ namespace ADCP
                 return (float.Parse(str));
             }
         }
-
+        */
         public static Image SailTrackRotateImage(Image img, float RotationAngle)//顺时针旋转
         {
             //创建一个空的位图图像
@@ -14716,7 +14716,7 @@ namespace ADCP
             gfx.Dispose();
             return bmp;
         }
-
+        /*
         private float SailTrackAngleOf2Points(PointF Sta, PointF End)
         {
             float Angle = 0;
@@ -14731,7 +14731,7 @@ namespace ADCP
 
             return Angle;
         }
-
+        */
         //Modified 2011-9-2
         private void hScrollBarAveragePoints_Scroll(object sender, ScrollEventArgs e)
         {
@@ -14809,7 +14809,7 @@ namespace ADCP
             GPSdisplayPanel.Refresh();
         }
 
-        string ggadataCopy;
+        //string ggadataCopy;
         //Modified 2011-9-15 modify to compute two points distance using  computeDistanceFromLatLong()
 
         //double currentLat, currentLong, preLat, preLong;
@@ -14860,7 +14860,7 @@ namespace ADCP
         //Point StartUTMpnt;  //LPJ 2012-7-2 增加起始UTM坐标点 //LPJ 2012-8-6 取消
         private void ComputeXYposition(string GGAdata)
         {
-            ggadataCopy = GGAdata;
+            //ggadataCopy = GGAdata;
             if (GGAdata == null)
             {
                 GGAdata = saveGGA;
@@ -14924,8 +14924,10 @@ namespace ADCP
             {
                 originLat = FloatLatitude;
                 originLong = FloatLongitude;
-                previousXposition = currentX = 0;
-                previousYposition = currentY = 0;
+                //previousXposition = 0;
+                currentX = 0;
+                //previousYposition = 0;
+                currentY = 0;
 
                 originBL = currentBL;
 
@@ -14962,8 +14964,8 @@ namespace ADCP
                 UTMpointSave[GGAsaveCount] = UTMpoint;  //Modified 2011-9-27 use new GGAsaveCount, it is updaed in ComputeCombinedWaterVelocity()
                 //LatitudeSave[GGAsaveCount] = GPS_FloatLatitude; //Modified 2011-11-11 test
                 //LongitudeSave[GGAsaveCount] = GPS_FloatLongitude;
-                previousXposition = currentX;
-                previousYposition = currentY;
+                //previousXposition = currentX;
+                //previousYposition = currentY;
             }
 
             //  StartUTMpnt = UTMpoint;  //LPJ 2012-7-2 增加 //LPJ 2012-7-3 取消
@@ -15125,8 +15127,10 @@ namespace ADCP
             }
             for (int i = 0; i < currentPoint; i++)
             {
-                previousXposition = currentX = 0;
-                previousYposition = currentY = 0;
+                //previousXposition = 0;
+                currentX = 0;
+                //previousYposition = 0;
+                currentY = 0;
                 GPSdisplayPanel.Refresh();
             }
 
@@ -15139,8 +15143,8 @@ namespace ADCP
             labelStartPoint.Text = currentPoint.ToString();
         }
         //Modified 2011-9-15 compute distance
-        double Distance;
-
+        //double Distance;
+        /*
         private float computeDistanceFromLatLong(double latitudeA, double longitudeA, double latitudeB, double longitudeB)
         {
             //Modified 2011-9-15, convert first point
@@ -15171,7 +15175,7 @@ namespace ADCP
             Distance = 6378.140f * Math.Acos(Compute) * Math.PI / 180;
             return ((float)Distance);
         }
-
+        */
         //bool displayUTM = true;  
         bool displayUTM = false;   //JZH 2012-01-31
         bool displayLatLong = false;
@@ -15379,10 +15383,10 @@ namespace ADCP
             //public ArrayList EastVelocityToYellowBlackCyan_Null = new ArrayList();   //东分量RGB 参考GPS //LPJ 2013-12-3
             #endregion
         }
-        private EnsemblesInfo dat0 = new EnsemblesInfo();
-        private EnsemblesInfo dat1 = new EnsemblesInfo();
-        private EnsemblesInfo dat = new EnsemblesInfo();   //JZH 2011-12-23 读取整个回放数据组 
-        private EnsemblesInfo GPSdata = new EnsemblesInfo();  //Modified 2011-9-20 add
+        //private EnsemblesInfo dat0 = new EnsemblesInfo();
+        //private EnsemblesInfo dat1 = new EnsemblesInfo();
+        //private EnsemblesInfo dat = new EnsemblesInfo();   //JZH 2011-12-23 读取整个回放数据组 
+        //private EnsemblesInfo GPSdata = new EnsemblesInfo();  //Modified 2011-9-20 add
         private EnsemblesInfo EnsemblesInfoToStore = new EnsemblesInfo();
         private EnsemblesInfo SaveEnsemblesInfo = new EnsemblesInfo();
 
@@ -15414,13 +15418,13 @@ namespace ADCP
         object l = new object();
         static object locker1 = new object();
         static object locker = new object();
-        static object lockerRiver = new object();
+        //static object lockerRiver = new object();
 
         static System.Timers.Timer RealTimeProcessingTimer;  //JZH 2012-03-21 实时数据解析定时器
         private int iRealTimeInterval = 200;                 //JZH 2012-03-21 实时数据解析定时器间隔
 
         delegate void InitialParamDelegate();  //JZH 2012-03-21 定义一个初始化的委托，供回放定时器载入回放数据异常使用
-        InitialParamDelegate InitialParam;     //JZH 2012-03-21
+        //InitialParamDelegate InitialParam;     //JZH 2012-03-21
 
         static System.Timers.Timer PlayBackTimer;
 
@@ -15432,7 +15436,7 @@ namespace ADCP
         delegate void GPSDelegate(string s); //定义一个委托
         delegate void PlayBackDelegate(); //定义一个委托
         delegate void DisplayDelegate(); //定义一个委托
-        GPSDelegate getGPS_spDATA;
+        //GPSDelegate getGPS_spDATA;
         PlayBackDelegate PlayBack;
         //DisplayDelegate DecodeBytesDataGPS;//LPJ 2013-11-14 声明这个委托，用以执行GPS安装校正
 
@@ -15458,10 +15462,10 @@ namespace ADCP
         double lastGPGGA_Longitude;  //LPJ 2016-8-11
 
         private ArrayList BytesArray = new ArrayList();
-        private Object thisLock = new Object();
+        //private Object thisLock = new Object();
         //Modified 2011-12-14, with the help from 中海达 李炜
-        private List<ArrayClass> RiverLeftBankFlowDataList = new List<ArrayClass>();
-        private List<ArrayClass> RiverRightBankFlowDataList = new List<ArrayClass>();
+        //private List<ArrayClass> RiverLeftBankFlowDataList = new List<ArrayClass>();
+        //private List<ArrayClass> RiverRightBankFlowDataList = new List<ArrayClass>();
         //ArrayClass[] RightBankArrayClassData;
         //ArrayClass[] LeftBankArrayClassData;
 
@@ -15471,10 +15475,10 @@ namespace ADCP
         int payloadLen = 0;
         int preNum = 0;//28位 样本名E0000000（8位）+20位
         int HeaderFlagNum = 0;
-        int EnsembleNumber = 1;
-        int EsnNum = 50;
+        //int EnsembleNumber = 1;
+        //int EsnNum = 50;
         int currentTotalNum = 0;   //Modified 2011-8-1 
-        int GPSstoredNumber = 0;    //Modified, 2011-8-5 add to find if GPS data missing*****************************
+        //int GPSstoredNumber = 0;    //Modified, 2011-8-5 add to find if GPS data missing*****************************
         int CCC = 0; //count of calls, computed for remainder
         int callNum = 0;
         int gpsFlag = 0;  //Modified 2011-11-2 to check the GPS synchronization
@@ -15484,9 +15488,9 @@ namespace ADCP
         int rotNum = 0;
         int totalNum = 0;
         int MeasTotalNum = 0; //LPJ 2012-5-4 记录开始测量后保存的ensemble总数
-        int fn = 1;
-        int CurrentGPSFileNumber = 0; //Modified 2011-8-30
-        int SaveGPSFileNumber = 0;   //LPJ 2012-5-4
+        //int fn = 1;
+        //int CurrentGPSFileNumber = 0; //Modified 2011-8-30
+        //int SaveGPSFileNumber = 0;   //LPJ 2012-5-4
         //int setAveragePoints = 5; //Modified 2011-9-2
         int setAveragePoints = 1;  //JZH 2012-01-31 debug
         int setAverageScale = 100; //Modified 2011-9-2
@@ -15511,7 +15515,7 @@ namespace ADCP
         public int DP_ProVersion = 2;
         public int GPSFileCount = 0;
 
-        double theta = 0;
+        //double theta = 0;
 
         float[,] arrCorrelation;
         float[,] arrAmplitude;
@@ -15525,7 +15529,7 @@ namespace ADCP
         //float BTblankSize = 0.25f; //LPJ 2013-8-1
         float fSalinity = 0; //LPJ 2013-9-29
 
-        float timeKnot = 0;
+        //float timeKnot = 0;
         float VXsum = 0.0f;         // Modified 2011-8-4 compute combined water velocity  ******************
         float VXstore = 0.0f;
         float VYstore = 0.0f;
@@ -15564,7 +15568,7 @@ namespace ADCP
         public string newPath;
         public string RiverPlaybackPath;
         public string PathStr;  //LPJ 2013-5-30 将路径设置为公有变量
-        private string DisPlayTimeLenth = string.Empty;
+        //private string DisPlayTimeLenth = string.Empty;
         private string VelocityID = "E000001\0";
         private string InstrumentID = "E000002\0";
         private string EarthID = "E000003\0";
@@ -15577,7 +15581,7 @@ namespace ADCP
         private string BottomTrackID = "E000010\0";
         private string NMEAID = "E000011\0";
         private string GPS_receiveData = string.Empty;
-        string GPS_dataToEnsemble = string.Empty;
+        //string GPS_dataToEnsemble = string.Empty;
         string gpsTime = "000000";
         string gpsShipSpeed = "000000";
         string GPS_latitude = "0000.000"; //Modified 2011-7-25
@@ -15591,12 +15595,12 @@ namespace ADCP
         string EastWest = "E";
         string ReceiveBufferString = "";
         //"º"
-        string VXread = "";
-        string VYread = "";
-        string GPSInfo = string.Empty;
+        //string VXread;// = "";
+        //string VYread;// = "";
+        //string GPSInfo = string.Empty;
         string GPS_HDT = "0.0";
-        string GPS_ROT = "0.0";
-        string addNum = "";
+        //string GPS_ROT = "0.0";
+        //string addNum = "";
         String GPSdisplayData = String.Empty;
         String GPSInfoData = String.Empty;  //2011-8-10 Modified, found the some \r\n are mssing
         String defaultGPGGA = "$GPGGA,0,0,N,0,E,0,0,0,0,M,0,M,0,0*00\r\n";
@@ -15608,7 +15612,7 @@ namespace ADCP
         String GPS_HDTbuffer = "$HEHDT,0.0,T*00\r\n";
         String GPS_ROTbuffer = "$HEROT,0.0,A*00\r\n";
         //string Version_1_CurrentGPSFileName = "GPSdata.txt";
-        string Version_2_CurrentGPSFileName = "GPSdata000000.txt";
+        //string Version_2_CurrentGPSFileName = "GPSdata000000.txt";
 
         float currentX = 0;
         float currentY = 0;
@@ -15616,8 +15620,8 @@ namespace ADCP
         float FloatLongitude;
         float originLat;
         float originLong;
-        float previousXposition = 0;
-        float previousYposition = 0;
+        //float previousXposition = 0;
+        //float previousYposition = 0;
 
         bool TrackForward = true;
         bool TrackPause = false;
@@ -15686,9 +15690,9 @@ namespace ADCP
             ClearSaveEnsemblesGPSInfo();  //LPJ 2012-9-24  
 
             //LPJ 2012-9-26 添加初始化  --start
-            fn = 1;
-            SaveGPSFileNumber = 0;
-            EnsembleNumber = 1;
+            //fn = 1;
+            //SaveGPSFileNumber = 0;
+            //EnsembleNumber = 1;
             MeasTotalNum = 0;
             totalNum = 0;
             fileNum = 0;
@@ -15713,14 +15717,14 @@ namespace ADCP
             //fAccuLength = 0;
             //fGAccVx = 0;
             //fGAccVy = 0;
-            fMeasArea = 0;
-            fMeasRiverWidth = 0;
+            //fMeasArea = 0;
+            //fMeasRiverWidth = 0;
 
-            dTopFlow = 0;
-            dMeasuredFlow = 0;
-            dBottomFlow = 0;
-            dLeftFlow = 0; //LPJ 2013-6-5 清除记录
-            dRightFlow = 0;
+            //dTopFlow = 0;
+            //dMeasuredFlow = 0;
+            //dBottomFlow = 0;
+            //dLeftFlow = 0; //LPJ 2013-6-5 清除记录
+            //dRightFlow = 0;
 
             arrayListEastLength.Clear();
             arrayListNorthLength.Clear();
@@ -15929,7 +15933,7 @@ namespace ADCP
         //JZH 2012-01-15 流量测量按钮
         bool bStartMeasQ = false;
         public int iStartMeasQ = 0;   //LPJ 2012-9-26 增加变量判断点击开始测流的次数，从而确定是否新建项目
-      
+      /*
         private void RefreshQPanel()
         {
             //计算岸边平均水深
@@ -15991,7 +15995,7 @@ namespace ADCP
             this.BeginInvoke(RefreshNavigation); //LPJ 2013-6-18
             this.BeginInvoke(RefreshOthers);  //LPJ 2013-6-18
         }
-
+        */
      
         //LPJ 2012-5-23 正则判断----start
         public static bool ValidateUserInput(String value, int kind)
@@ -16162,11 +16166,11 @@ namespace ADCP
         ListViewItem itemRoll = new ListViewItem();
         ListViewItem itemTrueN = new ListViewItem();
 
-        ListViewItem itemCourseMG_GPS = new ListViewItem();  //LPJ 2015-9-22
-        ListViewItem itemCourseMG_BT = new ListViewItem();   //LPJ 2015-9-22
-        ListViewItem itemDMG_GPS = new ListViewItem();  //LPJ 2015-9-22
-        ListViewItem itemDMG_BT = new ListViewItem();   //LPJ 2015-9-22
-        ListViewItem itemAccuracy = new ListViewItem(); //LPJ2015-10-27 校准精度
+        //ListViewItem itemCourseMG_GPS = new ListViewItem();  //LPJ 2015-9-22
+        //ListViewItem itemCourseMG_BT = new ListViewItem();   //LPJ 2015-9-22
+        //ListViewItem itemDMG_GPS = new ListViewItem();  //LPJ 2015-9-22
+        //ListViewItem itemDMG_BT = new ListViewItem();   //LPJ 2015-9-22
+        //ListViewItem itemAccuracy = new ListViewItem(); //LPJ2015-10-27 校准精度
         #endregion
 
         private void LV_Measured_QPaint() //LPJ 2013-6-8 将每次不更改的内容写在这里
@@ -16261,11 +16265,11 @@ namespace ADCP
         private string current_WPRoll;
         private string current_TrueNorthText;
 
-        private string current_CourseMG_GPS;  //LPJ 2015-9-22
-        private string current_CourseMG_BT;   //LPJ 2015-9-22
-        private string current_DMG_BT;
-        private string current_DMG_GPS;
-        private string current_Accuracy; //LPJ 2015-10-27
+        //private string current_CourseMG_GPS;  //LPJ 2015-9-22
+        //private string current_CourseMG_BT;   //LPJ 2015-9-22
+        //private string current_DMG_BT;
+        //private string current_DMG_GPS;
+        //private string current_Accuracy; //LPJ 2015-10-27
         //LPJ 2013-7-3 将流量信息的实时变量放在这里 --end
 
         private void InitDischargeParameter()  //LPJ 2013-8-1 初始化流量信息栏 
@@ -16300,11 +16304,11 @@ namespace ADCP
             current_WPRoll = "-";
             current_TrueNorthText = "-";
 
-            current_CourseMG_BT = "-";  //LPJ 2015-9-22
-            current_CourseMG_GPS = "-";
-            current_DMG_BT = "-";
-            current_DMG_GPS = "-";
-            current_Accuracy = "-";
+            //current_CourseMG_BT = "-";  //LPJ 2015-9-22
+            //current_CourseMG_GPS = "-";
+            //current_DMG_BT = "-";
+            //current_DMG_GPS = "-";
+            //current_Accuracy = "-";
         }
 
         private void LV_MeasuredDischarge_Paint() //LPJ 2013-6-8 将每次需要更改的内容写在这里
@@ -17188,8 +17192,8 @@ namespace ADCP
         public DefaultCfg defCfg;      //LPJ 2013-5-20
         private Units projectUnit = new Units(); //LPJ 2013-5-28 定义一个对象，用于设置单位
 
-        private string defaultADCP_PortName, defaultGPS_PortName; //LPJ 2013-6-21为默认的串口号，和波特率设置参数
-        private int defaultADCP_Baudrate, defaultGPS_Baudrate; //LPJ 2013-6-21为默认的串口号，和波特率设置参数
+        private string defaultADCP_PortName;//, defaultGPS_PortName; //LPJ 2013-6-21为默认的串口号，和波特率设置参数
+        private int defaultADCP_Baudrate;//, defaultGPS_Baudrate; //LPJ 2013-6-21为默认的串口号，和波特率设置参数
 
         private bool CommandConnect()   //LPJ 2013-5-20 连接串口
         {
@@ -17247,10 +17251,10 @@ namespace ADCP
         private const int TRANSECT_EDGE_RIGHT = 1;
 
         private const int TRANSECT_STATE_STOP = 0;
-        private const int TRANSECT_STATE_COMPASSCAL = 1;
-        private const int TRANSECT_STATE_BEDSTATIONARY = 2;
-        private const int TRANSECT_STATE_BEDLOOP = 3;
-        private const int TRANSECT_STATE_SYSTEMTEST = 4;
+        //private const int TRANSECT_STATE_COMPASSCAL = 1;
+        //private const int TRANSECT_STATE_BEDSTATIONARY = 2;
+        //private const int TRANSECT_STATE_BEDLOOP = 3;
+        //private const int TRANSECT_STATE_SYSTEMTEST = 4;
         private const int TRANSECT_STATE_START = 5;
         private const int TRANSECT_STATE_EDGE = 6;
         private const int TRANSECT_STATE_MOVING = 7;
@@ -17982,7 +17986,7 @@ namespace ADCP
             //    dFlagRefreshTime = 0;
             //}
 
-            PlayBackTimeLenth = PlayBackTimeLenth * 2;
+            PlayBackTimeLenth *= 2;
             PlayBackTimer.Interval = PlayBackTimeLenth;
 
             if(!bPlaybackStop) //LPJ 2013-11-19
@@ -18006,7 +18010,7 @@ namespace ADCP
             //    PlayBackTimer.Interval = PlayBackTimeLenth;
             //}
 
-            PlayBackTimeLenth = PlayBackTimeLenth / 2;
+            PlayBackTimeLenth /= 2;
             if (PlayBackTimeLenth < 200)
                 PlayBackTimeLenth = 200;
             PlayBackTimer.Interval = PlayBackTimeLenth;
@@ -18147,9 +18151,9 @@ namespace ADCP
 
                     MaxDisplayHeight = MainGPSHeight;
 
-                    MaxDisplayWidth = MainGPSWidth;  //LPJ 2013-6-9
+                    //MaxDisplayWidth = MainGPSWidth;  //LPJ 2013-6-9
 
-                    DisplayRec = new Rectangle(0, 0, panelGPSTrack.Width, panelGPSTrack.Height);
+                    //DisplayRec = new Rectangle(0, 0, panelGPSTrack.Width, panelGPSTrack.Height);
 
                     CurrentDisplayUnit = (float)MainGPSWidth / 16;  //LPJ 2013-5-23
 
@@ -18160,8 +18164,8 @@ namespace ADCP
                     scaleMultiple = (float)MainGPSHeight / MaxDisplayHeight;
 
                     //拖动积累量
-                    DragLengthX = DragLengthX * (scaleMultiple / PreviousMultiple);//改变窗口大小后，相应更新拖动积累量的值//Modified 2011-11-15 cancel
-                    DragLengthY = DragLengthY * (scaleMultiple / PreviousMultiple);//Modified 2011-11-15 cancel
+                    DragLengthX *= (scaleMultiple / PreviousMultiple);//改变窗口大小后，相应更新拖动积累量的值//Modified 2011-11-15 cancel
+                    DragLengthY *= (scaleMultiple / PreviousMultiple);//Modified 2011-11-15 cancel
                     PreviousMultiple = scaleMultiple;//Modified 2011-11-15 cancel
 
                     float OrignX = 0;
@@ -18635,8 +18639,8 @@ namespace ADCP
                                                     float LEast = (1.0f) * 0.5f * (float)(fBoatVx_Prev + fBoatVx) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);   //JZH 2012-06-14
                                                     float LNorth = (1.0f) * 0.5f * (float)(fBoatVy_Prev + fBoatVy) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);  //JZH 2012-06-14
 
-                                                    AccEast = AccEast + LEast;
-                                                    AccNorth = AccNorth + LNorth;
+                                                    AccEast += LEast;
+                                                    AccNorth += LNorth;
                                                     //JZH 2012-04-17 支持自动缩放
                                                     //float fTransAccEast = AccEast / 10 * CurrentDisplayUnit;
                                                     //float fTransAccNorth = AccNorth / 10 * CurrentDisplayUnit;
@@ -19141,8 +19145,8 @@ namespace ADCP
                                 float LEast = (1.0f) * 0.5f * (float)(fBoatVx_Prev + fBoatVx) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);  //JZH 2012-06-14
                                 float LNorth = (1.0f) * 0.5f * (float)(fBoatVy_Prev + fBoatVy) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);  //JZH 2012-06-14
 
-                                AccEast = AccEast + LEast;
-                                AccNorth = AccNorth + LNorth;
+                                AccEast += LEast;
+                                AccNorth += LNorth;
                                 //JZH 2012-04-17 支持自动缩放
                                 //float fTransAccEast = AccEast / 10 * CurrentDisplayUnit;
                                 //float fTransAccNorth = AccNorth / 10 * CurrentDisplayUnit;
@@ -20549,12 +20553,12 @@ namespace ADCP
                                 }
                             case "GPS_SerialPort":
                                 {
-                                    defaultGPS_PortName = cmdPart[1];
+                                    //defaultGPS_PortName = cmdPart[1];
                                     break;
                                 }
                             case "GPS_Baudrate":
                                 {
-                                    defaultGPS_Baudrate = int.Parse(cmdPart[1]);
+                                    //defaultGPS_Baudrate = int.Parse(cmdPart[1]);
                                     break;
                                 }
 
@@ -21238,7 +21242,7 @@ namespace ADCP
             }
         }
 
-        private bool bUsePCTime = false;
+        //private bool bUsePCTime = false;
         //private string strTime = null; //LPJ 2013-10-30 当仪器发送“STIME”后，从仪器读取时间
         private void linkLabelSettingTime_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -21467,7 +21471,7 @@ namespace ADCP
         {
             if (e.Button == MouseButtons.Left)
             {
-                pntPanelTrackLabel = this.panel16.Location;
+                //pntPanelTrackLabel = this.panel16.Location;
                 bDragMainPanel = true;
                 DragStartPntMainPanel = e.Location;
                 this.Cursor = Cursors.Hand;
@@ -21865,7 +21869,7 @@ namespace ADCP
 
         private void btnScaleIncrease_Click(object sender, EventArgs e)
         {
-            AverageScale = AverageScale + 5;
+            AverageScale += 5;
             if (AverageScale > 5000)
                 AverageScale = 5000;
 
@@ -21874,7 +21878,7 @@ namespace ADCP
 
         private void btnScaleDecrease_Click(object sender, EventArgs e)
         {
-            AverageScale = AverageScale - 5;
+            AverageScale -= 5;
             if (AverageScale < 1)
                 AverageScale = 1;
 
