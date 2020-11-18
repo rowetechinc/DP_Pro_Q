@@ -299,8 +299,21 @@ namespace ADCP
             //BlackWhite.Checked = true;   // 取消将黑白作为默认选项   JZH  2011-12-21
           
             sp = new SerialPort("COM1", 115200, Parity.None, 8, StopBits.One); //用默认值初始化串口;
-            sp.ReadBufferSize = 11836 * 7; // 1024 * 20 * 3; // 注意设置一下接收缓冲区大小>=(payload + 64)，否则一次不能接受整个数据包，纠结了一天半！
+            
+            sp.ReadBufferSize = 16 * 65536;
+            sp.BaudRate = 115200;
+            sp.StopBits = StopBits.One;
+            sp.Parity = Parity.None;
+            sp.DataBits = 8;
+            sp.Handshake = Handshake.None;//_serialPort.Handshake = Handshake.RequestToSend;
+            sp.DtrEnable = true;
+            //Set the read/write timeouts
+            sp.ReadTimeout = 50;
+            sp.WriteTimeout = 500;
+
+            //sp.ReadBufferSize = 11836 * 7; // 1024 * 20 * 3; // 注意设置一下接收缓冲区大小>=(payload + 64)，否则一次不能接受整个数据包，纠结了一天半！
             sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
+
 
             DecodeBytesData = new DisplayDelegate(PickAndDecodeEnsemble);//委托指针指向 PickAndDecodeEnsemble 函数 
             //DecodeBytesDataGPS = new DisplayDelegate(PickAndDecodeEnsemble_GPS);//LPJ 2013-11-14 委托指针指向 PickAndDecodeEnsemble 函数 
@@ -317,8 +330,21 @@ namespace ADCP
 
             PaintRefreshEvent = new PaintRefreshEventHandler(PrivatePaintRefreshEvent); //LPJ 2014-3-11
             WriteToDataPageEvent = new WriteToDataPageEventHandler(WriteToDataPage); //LPJ 2014-3-11
-
+            
             GPS_sp = new SerialPort("COM2", 9600, Parity.None, 8, StopBits.One);
+
+            GPS_sp.ReadBufferSize = 16 * 65536;
+            GPS_sp.BaudRate = 9600;
+            GPS_sp.StopBits = StopBits.One;
+            GPS_sp.Parity = Parity.None;
+            GPS_sp.DataBits = 8;
+            GPS_sp.Handshake = Handshake.None;//_serialPort.Handshake = Handshake.RequestToSend;
+            GPS_sp.DtrEnable = true;
+
+            //Set the read/write timeouts
+            GPS_sp.ReadTimeout = 50;
+            GPS_sp.WriteTimeout = 500;
+
             GPS_sp.DataReceived += new SerialDataReceivedEventHandler(GPS_sp_DataReceived);
             //getGPS_spDATA = new GPSDelegate(getInfoFromNMEAData); //委托指针指向 PickAndDecodeEnsemble 函数
            
@@ -11778,8 +11804,7 @@ namespace ADCP
                 
                 SystemSetting();
             }
-
-            //SendStandardCommand(true);
+            
             CurrentState = TRANSECT_STATE_START;
 
             iEnsembleInterval = 1;
@@ -17194,6 +17219,20 @@ namespace ADCP
         private bool CommandConnect()   //LPJ 2013-5-20 连接串口
         {
             defaultSP = new SerialPort("COM1", 115200, Parity.None, 8, StopBits.One);
+
+            defaultSP.ReadBufferSize = 16 * 65536;
+            defaultSP.BaudRate = 115200;
+            defaultSP.StopBits = StopBits.One;
+            defaultSP.Parity = Parity.None;
+            defaultSP.DataBits = 8;
+            defaultSP.Handshake = Handshake.None;//_serialPort.Handshake = Handshake.RequestToSend;
+            defaultSP.DtrEnable = true;
+
+            //Set the read/write timeouts
+            defaultSP.ReadTimeout = 50;
+            defaultSP.WriteTimeout = 500;
+
+
             defaultQueue = new Queue();
  
             defaultADCP_PortName = "COM1";
@@ -17256,27 +17295,11 @@ namespace ADCP
         private const int TRANSECT_STATE_MOVING = 7;
 
         string CommandList = "";
-        private void SendStandardCommand(bool OKtoStart) //用户模式下发送命令
+        private void SendStandardCommand() //用户模式下发送命令
         {
             string CMD;
-            progressBar1.Value = 0;
-            progressBar1.Visible = true;
-            CommandList = "";
-
             try
             {
-                CMD = "STOP" + '\r';
-                sp.Write(CMD);//set default
-                //CommandList += CMD + '\n';
-                Thread.Sleep(150);
-                int count = 0;
-                while (!ReceiveBufferString.Contains("STOP") && count < 5)
-                {
-                    sp.Write("STOP" + '\r');
-                    Thread.Sleep(150);
-                    count++;
-                }
-
                 //CMD = "MODERIVER" + '\r';
                 //sp.Write(CMD);//set default
                 //CommandList += CMD + '\n';
@@ -17409,20 +17432,19 @@ namespace ADCP
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(150);
 
-                /*
-                labelSiteName.Text = FrmSiteInformation.siteInfo.siteName;
-                labelStationNumber.Text = FrmSiteInformation.siteInfo.stationNumber;
-                labelMeasNumber.Text = FrmSiteInformation.siteInfo.MeasNumber;
-                labelSiteComments.Text = FrmSiteInformation.siteInfo.comments;
-                siteInformation = GetSiteInformation(FrmSiteInformation.siteInfo);
-                */
-                CMD = "CRSNAME " + labelSiteName.Text + '\r';// FrmSiteInformation.siteInfo.siteName + '\r';
+                //labelSiteName.Text = FrmSiteInformation.siteInfo.siteName;
+                //labelStationNumber.Text = FrmSiteInformation.siteInfo.stationNumber;
+                //labelMeasNumber.Text = FrmSiteInformation.siteInfo.MeasNumber;
+                //labelSiteComments.Text = FrmSiteInformation.siteInfo.comments;
+                //siteInformation = GetSiteInformation(FrmSiteInformation.siteInfo);
+
+                CMD = "CRSNAME " + labelSiteName.Text + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
                 Thread.Sleep(500);
 
-                CMD = "CRSNUMBER " + labelStationNumber.Text + '\r';// FrmSiteInformation.siteInfo.stationNumber + '\r';
+                CMD = "CRSNUMBER " + labelStationNumber.Text + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
                 displayprocessbar(4, progressBar1);
@@ -17442,32 +17464,8 @@ namespace ADCP
                 Thread.Sleep(150);
                 //sp.Write("C485B " + frmsystemSet.systemSet.strRS485 + '\r');
                 //Thread.Sleep(150);
-
-                CMD = "CSAVE\r";
-                sp.Write(CMD);
-                CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(1000);
-
-                CMD = "CSAVE RIVCONF\r";
-                sp.Write(CMD);
-                CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
-                Thread.Sleep(1000);
-
-                if (OKtoStart)
-                {
-                    CMD = "START\r";
-                    sp.Write(CMD);
-                    CommandList += CMD + '\n';
-                }
-                //displayprocessbar(4, progressBar1);
-                //Thread.Sleep(500);
-
                 
-                progressBar1.Value = 100;
-
-                textBoxCommandSet.Text = CommandList;
+                
             }
             catch (System.Exception e)
             {
@@ -19952,12 +19950,78 @@ namespace ADCP
             if (!playBackMode)
                 sp.Close();
 
-            if (DialogResult.OK == frmsystemSet.ShowDialog(ref systSet))
+            string BSlist = "";
+            if (DialogResult.OK == frmsystemSet.ShowDialog(ref systSet, ref BSlist))
             {
-                //frmsystemSet.BringToFront();
                 sp.Close();
                 sp.Open();
-                SendStandardCommand(true);
+
+                CommandList = "";
+                progressBar1.Value = 0;
+                progressBar1.Visible = true;
+
+                try
+                {
+                    string CMD = "STOP" + '\r';
+                    sp.Write(CMD);
+                    Thread.Sleep(150);
+                    int count = 0;
+                    while (!ReceiveBufferString.Contains("STOP") && count < 5)
+                    {
+                        sp.Write("STOP" + '\r');
+                        Thread.Sleep(150);
+                        count++;
+                    }
+
+                    var reader = new StringReader(BSlist);
+                    string cmd = reader.ReadLine();
+                    while (cmd != null)
+                    {
+                        try
+                        {
+                            if (cmd != "")
+                            {
+                                cmd += '\r';
+                                sp.Write(cmd);
+                                CommandList += cmd + '\n';
+                                displayprocessbar(4, progressBar1);
+                                Thread.Sleep(150);
+                            }
+
+                        }
+                        catch { }
+                        try
+                        {
+                            cmd = reader.ReadLine();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+            
+                    //CommandList += BSlist;
+
+                    SendStandardCommand();
+
+                    CMD = "CSAVE\r";
+                    sp.Write(CMD);
+                    CommandList += CMD + '\n';
+                    Thread.Sleep(1000);
+
+                    CMD = "CSAVE RIVCONF\r";
+                    sp.Write(CMD);
+                    Thread.Sleep(1000);
+
+                    CMD = "START\r";
+                    sp.Write(CMD);
+                }
+                catch { }
+
+                progressBar1.Value = 100;
+
+                textBoxCommandSet.Text = CommandList;
+
                 if (!playBackMode)
                     sp.Close();
 
@@ -21448,7 +21512,18 @@ namespace ADCP
                     Thread.Sleep(150);
 
                     sp = new SerialPort();
+                    sp.ReadBufferSize = 16 * 65536;
+                    sp.BaudRate = 115200;
+                    sp.StopBits = StopBits.One;
+                    sp.Parity = Parity.None;
+                    sp.DataBits = 8;
+                    sp.Handshake = Handshake.None;//_serialPort.Handshake = Handshake.RequestToSend;
+                    sp.DtrEnable = true;
+                    //Set the read/write timeouts
+                    sp.ReadTimeout = 50;
+                    sp.WriteTimeout = 500;
                     sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
+
                     sp.PortName = serial.Port;
                     sp.BaudRate = serial.BaudRate;
                     if (!sp.IsOpen)
@@ -21852,6 +21927,18 @@ namespace ADCP
                 }
 
                 sp = new SerialPort();
+
+                sp.ReadBufferSize = 16 * 65536;
+                sp.BaudRate = 115200;
+                sp.StopBits = StopBits.One;
+                sp.Parity = Parity.None;
+                sp.DataBits = 8;
+                sp.Handshake = Handshake.None;//_serialPort.Handshake = Handshake.RequestToSend;
+                sp.DtrEnable = true;
+                //Set the read/write timeouts
+                sp.ReadTimeout = 50;
+                sp.WriteTimeout = 500;
+
                 sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
                 sp.PortName = serial.Port;
                 sp.BaudRate = serial.BaudRate;

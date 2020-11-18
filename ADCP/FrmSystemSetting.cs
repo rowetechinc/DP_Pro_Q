@@ -18,6 +18,7 @@ namespace ADCP
     public partial class FrmSystemSetting : Form
     {
         SystemSetting systSet;
+        string theList = "";
         public FrmSystemSetting(SerialPort _sp, ref SystemSetting _systSet)
         {
             InitializeComponent();
@@ -29,15 +30,17 @@ namespace ADCP
 
         private SerialPort sp;
 
-        public DialogResult ShowDialog(ref SystemSetting _systSet)
+        public DialogResult ShowDialog(ref SystemSetting _systSet, ref string _theList)
         {
             //Assign received parameter(s) to local context
             systSet = _systSet;
+            theList = _theList;
 
             DialogResult result = this.ShowDialog(); //Display and activate this form (Form2)
 
             //Return parameter(s)
             _systSet = systSet;
+            _theList = theList;
 
             return result;
         }
@@ -420,6 +423,8 @@ namespace ADCP
         {
             CheckText(ref systSet);
         }
+
+        
         private void comboBoxHeadingRef_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*
@@ -1388,7 +1393,58 @@ namespace ADCP
                                     }
                                     catch { }
                                     break;
-
+                                case "CBSPINGS":
+                                    try
+                                    {
+                                        textBoxBSpings.Text = cmdPart[1];
+                                    }
+                                    catch { }
+                                    break;
+                                case "CBSPH":
+                                    try
+                                    {
+                                        textBoxPH.Text = cmdPart[1];
+                                    }
+                                    catch { }
+                                    break;
+                                case "CWSSC":
+                                    try
+                                    {
+                                        Int32 index = Convert.ToInt32(cmdPart[1]);
+                                        comboBox_waterTemperature.SelectedIndex = index;
+                                        index = Convert.ToInt32(cmdPart[2]);
+                                        comboBox_TransducerDepth.SelectedIndex = index;
+                                        index = Convert.ToInt32(cmdPart[3]);
+                                        comboBox_Salinity.SelectedIndex = index;
+                                        index = Convert.ToInt32(cmdPart[4]);
+                                        comboBox_SpeedOfSound.SelectedIndex = index;
+                                    }
+                                    catch { }
+                                    break;
+                                case "CBSDEPTH":
+                                    try
+                                    {
+                                        dVal = Convert.ToDouble(cmdPart[1]);
+                                        if (systSet.bEnglishUnit)
+                                            dVal = projectUnit.MeterToFeet(dVal, 1);
+                                        textBoxTransducerDepth.Text = dVal.ToString("0.000");
+                                    }
+                                    catch { }
+                                    break;
+                                case "CBSSALINITY":
+                                    try
+                                    {
+                                        textWaterSalinity.Text = cmdPart[1];
+                                    }
+                                    catch { }
+                                    break;
+                                case "CBSTEMP":
+                                    try
+                                    {
+                                        textWaterTemperature.Text = cmdPart[1];
+                                    }
+                                    catch { }
+                                    break;
                                 case "CWSS":
                                     try
                                     {
@@ -1402,8 +1458,7 @@ namespace ADCP
                                 case "CHO":
                                     try
                                     {
-                                        dVal = Convert.ToDouble(cmdPart[1]);
-                                        textHeadingOffset.Text = dVal.ToString("0.00");
+                                        textHeadingOffset.Text = cmdPart[1];
                                     }
                                     catch { }
                                     break;
@@ -1503,16 +1558,14 @@ namespace ADCP
                                 case "CRSWPBN":
                                     try
                                     {
-                                        index = Convert.ToInt32(cmdPart[1]);
-                                        textBoxNumberOfBins.Text = index.ToString();
+                                        textBoxNumberOfBins.Text = cmdPart[1];
                                     }
                                     catch { }
                                     break;
                                 case "CRSWPAI":
                                     try
                                     {
-                                        dVal = Convert.ToDouble(cmdPart[1]);
-                                        textBoxWPaveragingInterval.Text = dVal.ToString("0.00");
+                                        textBoxWPaveragingInterval.Text = cmdPart[1];
                                     }
                                     catch { }
                                     break;
@@ -1559,32 +1612,28 @@ namespace ADCP
                                 case "CRSSALINITY":
                                     try
                                     {
-                                        dVal = Convert.ToDouble(cmdPart[1]);
-                                        textWaterSalinity.Text = dVal.ToString("0.00");
+                                        textWaterSalinity.Text = cmdPart[1];
                                     }
                                     catch { }
                                     break;
                                 case "CRSTEMP":
                                     try
                                     {
-                                        dVal = Convert.ToDouble(cmdPart[1]);
-                                        textWaterTemperature.Text = dVal.ToString("0.00");
+                                        textWaterTemperature.Text = cmdPart[1];
                                     }
                                     catch { }
                                     break;
                                 case "CRSBTSNR":
                                     try
                                     {
-                                        dVal = Convert.ToDouble(cmdPart[1]);
-                                        textBoxBTSNR.Text = dVal.ToString("0.00");
+                                        textBoxBTSNR.Text = cmdPart[1];
                                     }
                                     catch { }
                                     break;
                                 case "CRSBTCOR":
                                     try
                                     {
-                                        dVal = Convert.ToDouble(cmdPart[1]);
-                                        BTST_Correlation_text.Text = dVal.ToString("0.00");
+                                        BTST_Correlation_text.Text = cmdPart[1];
                                     }
                                     catch { }
                                     break;
@@ -1601,12 +1650,10 @@ namespace ADCP
                                 case "CHO":
                                     try
                                     {
-                                        dVal = Convert.ToDouble(cmdPart[1]);
-                                        textHeadingOffset.Text = dVal.ToString("0.00");
+                                        textHeadingOffset.Text = cmdPart[1];
                                     }
                                     catch { }
                                     break;
-
                             }
                         }
                         try
@@ -1710,23 +1757,522 @@ namespace ADCP
         private void btnOK_Click(object sender, EventArgs e)
         {
             //WriteIt();
+            theList = "";
+            try
+            {
+                theList += "CBSPINGS " + textBoxBSpings.Text + "\r\n";
+                theList += "CBSDEPTH " + textBoxTransducerDepth.Text + "\r\n";
+                theList += "CBSSALINITY " + textWaterSalinity.Text + "\r\n";
+                theList += "CBSTEMP " + textWaterTemperature.Text + "\r\n";
+                theList += "CBSPH " + textBoxPH.Text + "\r\n";
+
+                theList += "CBSBEAMON ";
+                if (checkBoxEnable0.Checked)
+                    theList += "1";
+                else
+                    theList += "0";
+                if (checkBoxEnable1.Checked)
+                    theList += ",1";
+                else
+                    theList += ",0";
+                if (checkBoxEnable2.Checked)
+                    theList += ",1";
+                else
+                    theList += ",0";
+                if (checkBoxEnable3.Checked)
+                    theList += ",1";
+                else
+                    theList += ",0";
+                if (checkBoxEnable4.Checked)
+                    theList += ",1";
+                else
+                    theList += ",0";
+                if (checkBoxEnable5.Checked)
+                    theList += ",1";
+                else
+                    theList += ",0";
+                if (checkBoxEnable6.Checked)
+                    theList += ",1";
+                else
+                    theList += ",0";
+                if (checkBoxEnable7.Checked)
+                    theList += ",1";
+                else
+                    theList += ",0";
+                if (checkBoxEnable8.Checked)
+                    theList += ",1";
+                else
+                    theList += ",0";
+                if (checkBoxEnable9.Checked)
+                    theList += ",1";
+                else
+                    theList += ",0";
+                theList += "\r\n";
+
+                theList += "CBSBINS " + textBoxBins0.Text;
+                theList += "," + textBoxBins1.Text;
+                theList += "," + textBoxBins2.Text; 
+                theList += "," + textBoxBins3.Text;
+                theList += "," + textBoxBins4.Text;
+                theList += "," + textBoxBins5.Text;
+                theList += "," + textBoxBins6.Text;
+                theList += "," + textBoxBins7.Text;
+                theList += "," + textBoxBins8.Text;
+                theList += "," + textBoxBins9.Text;
+                theList += "\r\n";
+
+                theList += "CBSTBP " + textBoxTBP0.Text;
+                theList += "," + textBoxTBP1.Text;
+                theList += "," + textBoxTBP2.Text;
+                theList += "," + textBoxTBP3.Text;
+                theList += "," + textBoxTBP4.Text;
+                theList += "," + textBoxTBP5.Text;
+                theList += "," + textBoxTBP6.Text;
+                theList += "," + textBoxTBP7.Text;
+                theList += "," + textBoxTBP8.Text;
+                theList += "," + textBoxTBP9.Text;
+                theList += "\r\n";
+
+                theList += "CBSBLANK " + textBoxBlank0.Text;
+                theList += "," + textBoxBlank1.Text;
+                theList += "," + textBoxBlank2.Text;
+                theList += "," + textBoxBlank3.Text;
+                theList += "," + textBoxBlank4.Text;
+                theList += "," + textBoxBlank5.Text;
+                theList += "," + textBoxBlank6.Text;
+                theList += "," + textBoxBlank7.Text;
+                theList += "," + textBoxBlank8.Text;
+                theList += "," + textBoxBlank9.Text;
+                theList += "\r\n";
+
+                theList += "CBSBINSIZE " + textBoxBinSize0.Text;
+                theList += "," + textBoxBinSize1.Text;
+                theList += "," + textBoxBinSize2.Text;
+                theList += "," + textBoxBinSize3.Text;
+                theList += "," + textBoxBinSize4.Text;
+                theList += "," + textBoxBinSize5.Text;
+                theList += "," + textBoxBinSize6.Text;
+                theList += "," + textBoxBinSize7.Text;
+                theList += "," + textBoxBinSize8.Text;
+                theList += "," + textBoxBinSize9.Text;
+                theList += "\r\n";
+
+                theList += "CBSXMTLENGTH " + textBoxXmt0.Text;
+                theList += "," + textBoxXmt1.Text;
+                theList += "," + textBoxXmt2.Text;
+                theList += "," + textBoxXmt3.Text;
+                theList += "," + textBoxXmt4.Text;
+                theList += "," + textBoxXmt5.Text;
+                theList += "," + textBoxXmt6.Text;
+                theList += "," + textBoxXmt7.Text;
+                theList += "," + textBoxXmt8.Text;
+                theList += "," + textBoxXmt9.Text;
+                theList += "\r\n";
+            }
+            catch { }
+        }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            theList = "";
+        }
+        private void textBoxBSpings_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBSpings.Text, 7))
+            {
+                textBoxBSpings.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBSpings.Text) >= 0) && (int.Parse(textBoxBSpings.Text) < 11))
+                {
+                    textBoxBSpings.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBSpings.BackColor = Color.Red;
+                }
+            }
         }
 
+        private void textBoxBins0_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBins0.Text, 7))
+            {
+                textBoxBins0.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBins0.Text) >= 0) && (int.Parse(textBoxBins0.Text) < 256))
+                {
+                    textBoxBins0.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBins0.BackColor = Color.Red;
+                }
+            }
+        }
 
-        /*
-CBSBEAMON           1,        1,        1,        1,        1,        1,        1,        1
-CBSBINS            25,       25,       25,       25,       25,       25,       25,       25
-CBSTBP          0.100,    0.100,    0.100,    0.100,    0.025,    0.025,    0.025,    0.025 (seconds)
-CBSBLANK        0.500,    0.500,    0.500,    0.500,    0.500,    0.500,    0.500,    0.500 (meters)
-CBSBINSIZE      0.200,    0.200,    0.200,    0.200,    0.200,    0.200,    0.200,    0.200 (meters)
-CBSXMTLENGTH    0.100,    0.100,    0.100,    0.100,    0.100,    0.100,    0.100,    0.100 (meters)
+        private void textBoxBins1_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBins1.Text, 7))
+            {
+                textBoxBins1.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBins1.Text) >= 0) && (int.Parse(textBoxBins1.Text) < 256))
+                {
+                    textBoxBins1.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBins1.BackColor = Color.Red;
+                }
+            }
+        }
 
-CBSTP         7
-CBSPINGS      1
-CBSDEPTH      0.100 (meters)
-CBSSALINITY   0.000 (parts per thousand)
-CBSTEMP      15.000 (deg C)
-CBSPH         8.000
-*/
+        private void textBoxBins2_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBins2.Text, 7))
+            {
+                textBoxBins2.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBins2.Text) >= 0) && (int.Parse(textBoxBins2.Text) < 256))
+                {
+                    textBoxBins2.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBins2.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxBins3_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBins3.Text, 7))
+            {
+                textBoxBins3.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBins3.Text) >= 0) && (int.Parse(textBoxBins3.Text) < 256))
+                {
+                    textBoxBins3.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBins3.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxBins4_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBins4.Text, 7))
+            {
+                textBoxBins4.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBins4.Text) >= 0) && (int.Parse(textBoxBins4.Text) < 256))
+                {
+                    textBoxBins4.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBins4.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxBins5_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBins5.Text, 7))
+            {
+                textBoxBins5.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBins5.Text) >= 0) && (int.Parse(textBoxBins5.Text) < 256))
+                {
+                    textBoxBins5.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBins5.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxBins6_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBins6.Text, 7))
+            {
+                textBoxBins6.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBins6.Text) >= 0) && (int.Parse(textBoxBins6.Text) < 256))
+                {
+                    textBoxBins6.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBins6.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxBins7_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBins7.Text, 7))
+            {
+                textBoxBins7.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBins7.Text) >= 0) && (int.Parse(textBoxBins7.Text) < 256))
+                {
+                    textBoxBins7.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBins7.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxBins8_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBins8.Text, 7))
+            {
+                textBoxBins8.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBins8.Text) >= 0) && (int.Parse(textBoxBins8.Text) < 256))
+                {
+                    textBoxBins8.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBins8.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxBins9_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxBins9.Text, 7))
+            {
+                textBoxBins9.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((int.Parse(textBoxBins9.Text) >= 0) && (int.Parse(textBoxBins9.Text) < 256))
+                {
+                    textBoxBins9.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxBins9.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxTBP0_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxTBP0.Text, 7))
+            {
+                textBoxTBP0.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((double.Parse(textBoxTBP0.Text) >= 0) && (double.Parse(textBoxTBP0.Text) <= 1.0))
+                {
+                    textBoxTBP0.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxTBP0.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxTBP1_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxTBP1.Text, 7))
+            {
+                textBoxTBP1.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((double.Parse(textBoxTBP1.Text) >= 0) && (double.Parse(textBoxTBP1.Text) <= 1.0))
+                {
+                    textBoxTBP1.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxTBP1.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxTBP2_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxTBP2.Text, 7))
+            {
+                textBoxTBP2.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((double.Parse(textBoxTBP2.Text) >= 0) && (double.Parse(textBoxTBP2.Text) <= 1.0))
+                {
+                    textBoxTBP2.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxTBP2.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxTBP3_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxTBP3.Text, 7))
+            {
+                textBoxTBP3.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((double.Parse(textBoxTBP3.Text) >= 0) && (double.Parse(textBoxTBP3.Text) <= 1.0))
+                {
+                    textBoxTBP3.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxTBP3.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxTBP4_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxTBP4.Text, 7))
+            {
+                textBoxTBP4.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((double.Parse(textBoxTBP4.Text) >= 0) && (double.Parse(textBoxTBP4.Text) <= 1.0))
+                {
+                    textBoxTBP4.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxTBP4.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxTBP5_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxTBP5.Text, 7))
+            {
+                textBoxTBP5.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((double.Parse(textBoxTBP5.Text) >= 0) && (double.Parse(textBoxTBP5.Text) <= 1.0))
+                {
+                    textBoxTBP5.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxTBP5.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxTBP6_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxTBP6.Text, 7))
+            {
+                textBoxTBP6.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((double.Parse(textBoxTBP6.Text) >= 0) && (double.Parse(textBoxTBP6.Text) <= 1.0))
+                {
+                    textBoxTBP6.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxTBP6.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxTBP7_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxTBP7.Text, 7))
+            {
+                textBoxTBP7.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((double.Parse(textBoxTBP7.Text) >= 0) && (double.Parse(textBoxTBP7.Text) <= 1.0))
+                {
+                    textBoxTBP7.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxTBP7.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxTBP8_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxTBP8.Text, 7))
+            {
+                textBoxTBP8.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((double.Parse(textBoxTBP8.Text) >= 0) && (double.Parse(textBoxTBP8.Text) <= 1.0))
+                {
+                    textBoxTBP8.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxTBP8.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void textBoxTBP9_TextChanged(object sender, EventArgs e)
+        {
+            if (!validateInput.ValidateUserInput(textBoxTBP9.Text, 7))
+            {
+                textBoxTBP9.BackColor = Color.Red;
+            }
+            else
+            {
+                if ((double.Parse(textBoxTBP9.Text) >= 0) && (double.Parse(textBoxTBP9.Text) <= 1.0))
+                {
+                    textBoxTBP9.BackColor = Color.White;
+                }
+                else
+                {
+                    textBoxTBP9.BackColor = Color.Red;
+                }
+            }
+        }
+
     }
 }

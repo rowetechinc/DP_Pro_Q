@@ -246,7 +246,7 @@
     <value>110, 21</value>
   </data>
   <data name="comboBoxVesselSpeedRef.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="comboBoxVesselSpeedRef.Text" xml:space="preserve">
     <value>Bottom Tracking</value>
@@ -279,7 +279,7 @@
     <value>110, 21</value>
   </data>
   <data name="comboBoxHeadingRef.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="comboBoxHeadingRef.Text" xml:space="preserve">
     <value>Internal Compass</value>
@@ -315,7 +315,7 @@
     <value>110, 21</value>
   </data>
   <data name="comboBoxMeasMode.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>2</value>
   </data>
   <data name="comboBoxMeasMode.Text" xml:space="preserve">
     <value>Auto Frequency</value>
@@ -339,7 +339,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxTransducerDepth.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>11</value>
   </data>
   <data name="textBoxTransducerDepth.Text" xml:space="preserve">
     <value>0.1</value>
@@ -357,7 +357,7 @@
     <value>23</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 420</value>
+    <value>251, 388</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 25</value>
@@ -381,7 +381,7 @@
     <value>7</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 420</value>
+    <value>412, 388</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 25</value>
@@ -483,7 +483,7 @@
     <value>110, 21</value>
   </data>
   <data name="comboBox_RS232.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="comboBox_RS232.Text" xml:space="preserve">
     <value>115200</value>
@@ -628,7 +628,7 @@
     <value>7</value>
   </data>
   <data name="groupBox44.Location" type="System.Drawing.Point, System.Drawing">
-    <value>776, 13</value>
+    <value>251, 13</value>
   </data>
   <data name="groupBox44.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -640,7 +640,7 @@
     <value>236, 137</value>
   </data>
   <data name="groupBox44.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
+    <value>6</value>
   </data>
   <data name="groupBox44.Text" xml:space="preserve">
     <value>Speed of Sound Control</value>
@@ -676,7 +676,7 @@
     <value>75, 21</value>
   </data>
   <data name="comboBox_SpeedOfSound.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
+    <value>4</value>
   </data>
   <data name="comboBox_SpeedOfSound.Text" xml:space="preserve">
     <value>Calculate</value>
@@ -712,7 +712,7 @@
     <value>75, 21</value>
   </data>
   <data name="comboBox_Salinity.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+    <value>3</value>
   </data>
   <data name="comboBox_Salinity.Text" xml:space="preserve">
     <value>Command</value>
@@ -748,7 +748,7 @@
     <value>75, 21</value>
   </data>
   <data name="comboBox_TransducerDepth.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>2</value>
   </data>
   <data name="comboBox_TransducerDepth.Text" xml:space="preserve">
     <value>Sensor</value>
@@ -784,7 +784,7 @@
     <value>75, 21</value>
   </data>
   <data name="comboBox_waterTemperature.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>1</value>
   </data>
   <data name="comboBox_waterTemperature.Text" xml:space="preserve">
     <value>Sensor</value>
@@ -991,7 +991,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1021,7 +1021,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1051,7 +1051,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="label43.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1084,7 +1084,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label43.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="textHeadingOffset.Location" type="System.Drawing.Point, System.Drawing">
     <value>168, 371</value>
@@ -1096,7 +1096,7 @@
     <value>55, 20</value>
   </data>
   <data name="textHeadingOffset.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>14</value>
   </data>
   <data name="textHeadingOffset.Text" xml:space="preserve">
     <value>0.00</value>
@@ -1144,7 +1144,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label46.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="textSoundSpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>150, 77</value>
@@ -1156,7 +1156,7 @@
     <value>55, 20</value>
   </data>
   <data name="textSoundSpeed.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
+    <value>3</value>
   </data>
   <data name="textSoundSpeed.Text" xml:space="preserve">
     <value>1500.00</value>
@@ -1171,7 +1171,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;textSoundSpeed.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="label49.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1204,7 +1204,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label49.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="textWaterTemperature.Location" type="System.Drawing.Point, System.Drawing">
     <value>150, 49</value>
@@ -1216,7 +1216,7 @@
     <value>55, 20</value>
   </data>
   <data name="textWaterTemperature.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+    <value>2</value>
   </data>
   <data name="textWaterTemperature.Text" xml:space="preserve">
     <value>15.00</value>
@@ -1231,7 +1231,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;textWaterTemperature.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label52.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1276,7 +1276,7 @@
     <value>55, 20</value>
   </data>
   <data name="textWaterSalinity.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
+    <value>1</value>
   </data>
   <data name="textWaterSalinity.Text" xml:space="preserve">
     <value>0.00</value>
@@ -1291,7 +1291,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;textWaterSalinity.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1330,7 +1330,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxMaxDepth.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="textBoxMaxDepth.Text" xml:space="preserve">
     <value>40.0</value>
@@ -1642,7 +1642,7 @@
     <value>233, 400</value>
   </data>
   <data name="groupBox41.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
+    <value>5</value>
   </data>
   <data name="groupBox41.Text" xml:space="preserve">
     <value>ADCP Flow Measurement Settings</value>
@@ -1726,7 +1726,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxBTSNR.TabIndex" type="System.Int32, mscorlib">
-    <value>49</value>
+    <value>12</value>
   </data>
   <data name="textBoxBTSNR.Text" xml:space="preserve">
     <value>15.0</value>
@@ -1792,7 +1792,7 @@
     <value>110, 21</value>
   </data>
   <data name="comboBoxAutoLag.TabIndex" type="System.Int32, mscorlib">
-    <value>47</value>
+    <value>5</value>
   </data>
   <data name="comboBoxAutoLag.Text" xml:space="preserve">
     <value>ON</value>
@@ -1936,7 +1936,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxBTswitchDepth.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="textBoxBTswitchDepth.Text" xml:space="preserve">
     <value>10.0</value>
@@ -1960,7 +1960,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxWPswitchDepth.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>9</value>
   </data>
   <data name="textBoxWPswitchDepth.Text" xml:space="preserve">
     <value>5.0</value>
@@ -2017,7 +2017,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxWPaveragingInterval.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="textBoxWPaveragingInterval.Text" xml:space="preserve">
     <value>0.5</value>
@@ -2074,7 +2074,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxNumberOfBins.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>6</value>
   </data>
   <data name="textBoxNumberOfBins.Text" xml:space="preserve">
     <value>30</value>
@@ -2140,7 +2140,7 @@
     <value>110, 21</value>
   </data>
   <data name="comboBoxAutoBinSize.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="comboBoxAutoBinSize.Text" xml:space="preserve">
     <value>ON</value>
@@ -2206,7 +2206,7 @@
     <value>110, 21</value>
   </data>
   <data name="comboBoxVerticalBeam.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>3</value>
   </data>
   <data name="comboBoxVerticalBeam.Text" xml:space="preserve">
     <value>ON</value>
@@ -2233,7 +2233,7 @@
     <value>55, 20</value>
   </data>
   <data name="BTST_Correlation_text.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>13</value>
   </data>
   <data name="BTST_Correlation_text.Text" xml:space="preserve">
     <value>0.95</value>
@@ -2284,13 +2284,13 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSetDefaults.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 420</value>
+    <value>871, 388</value>
   </data>
   <data name="buttonSetDefaults.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 25</value>
   </data>
   <data name="buttonSetDefaults.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
+    <value>4</value>
   </data>
   <data name="buttonSetDefaults.Text" xml:space="preserve">
     <value>Set System Defaults</value>
@@ -2311,13 +2311,13 @@
     <value>NoControl</value>
   </data>
   <data name="buttonDownloadCommandSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>174, 420</value>
+    <value>724, 388</value>
   </data>
   <data name="buttonDownloadCommandSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 25</value>
   </data>
   <data name="buttonDownloadCommandSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
+    <value>3</value>
   </data>
   <data name="buttonDownloadCommandSettings.Text" xml:space="preserve">
     <value>Read Settings from ADCP</value>
@@ -2334,8 +2334,32 @@
   <data name="&gt;&gt;buttonDownloadCommandSettings.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;label24.Name" xml:space="preserve">
+    <value>label24</value>
+  </data>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBoxPH.Name" xml:space="preserve">
+    <value>textBoxPH</value>
+  </data>
+  <data name="&gt;&gt;textBoxPH.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPH.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;textBoxPH.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>776, 158</value>
+    <value>251, 158</value>
   </data>
   <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -2344,13 +2368,13 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 111</value>
+    <value>236, 135</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
+    <value>7</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Speed of Sound Commands</value>
+    <value>Water Parameters</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -2364,6 +2388,90 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="label24.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label24.ImageKey" xml:space="preserve">
+    <value>(无)</value>
+  </data>
+  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 108</value>
+  </data>
+  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>21, 13</value>
+  </data>
+  <data name="label24.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>pH</value>
+  </data>
+  <data name="&gt;&gt;label24.Name" xml:space="preserve">
+    <value>label24</value>
+  </data>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxPH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 105</value>
+  </data>
+  <data name="textBoxPH.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="textBoxPH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 20</value>
+  </data>
+  <data name="textBoxPH.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="textBoxPH.Text" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;textBoxPH.Name" xml:space="preserve">
+    <value>textBoxPH</value>
+  </data>
+  <data name="&gt;&gt;textBoxPH.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxPH.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;textBoxPH.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label26.Name" xml:space="preserve">
+    <value>label26</value>
+  </data>
+  <data name="&gt;&gt;label26.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label25.Name" xml:space="preserve">
+    <value>label25</value>
+  </data>
+  <data name="&gt;&gt;label25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
     <value>groupBox9</value>
   </data>
@@ -2374,7 +2482,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;groupBox8.Name" xml:space="preserve">
     <value>groupBox8</value>
@@ -2386,7 +2494,19 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;textBoxBSpings.Name" xml:space="preserve">
+    <value>textBoxBSpings</value>
+  </data>
+  <data name="&gt;&gt;textBoxBSpings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxBSpings.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;textBoxBSpings.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;groupBox7.Name" xml:space="preserve">
     <value>groupBox7</value>
@@ -2398,7 +2518,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
     <value>groupBox6</value>
@@ -2410,7 +2530,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
     <value>groupBox5</value>
@@ -2422,7 +2542,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
     <value>groupBox4</value>
@@ -2434,7 +2554,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
     <value>groupBox3</value>
@@ -2446,16 +2566,16 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 12</value>
+    <value>493, 13</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>519, 401</value>
+    <value>519, 369</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+    <value>9</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>ADCP Backscatter Settings</value>
@@ -2471,6 +2591,66 @@
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="label26.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
+    <value>169, 24</value>
+  </data>
+  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
+  </data>
+  <data name="label26.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="label26.Text" xml:space="preserve">
+    <value>0 Disables Pinging</value>
+  </data>
+  <data name="&gt;&gt;label26.Name" xml:space="preserve">
+    <value>label26</value>
+  </data>
+  <data name="&gt;&gt;label26.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label25.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 23</value>
+  </data>
+  <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 13</value>
+  </data>
+  <data name="label25.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Backscatter Pings</value>
+  </data>
+  <data name="&gt;&gt;label25.Name" xml:space="preserve">
+    <value>label25</value>
+  </data>
+  <data name="&gt;&gt;label25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;textBoxXmt9.Name" xml:space="preserve">
     <value>textBoxXmt9</value>
@@ -2593,13 +2773,13 @@
     <value>9</value>
   </data>
   <data name="groupBox9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>423, 19</value>
+    <value>422, 52</value>
   </data>
   <data name="groupBox9.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 289</value>
   </data>
   <data name="groupBox9.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="groupBox9.Text" xml:space="preserve">
     <value>Transmit (m)</value>
@@ -2614,7 +2794,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="textBoxXmt9.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 262</value>
@@ -2623,7 +2803,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxXmt9.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;textBoxXmt9.Name" xml:space="preserve">
     <value>textBoxXmt9</value>
@@ -2644,7 +2824,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxXmt8.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;textBoxXmt8.Name" xml:space="preserve">
     <value>textBoxXmt8</value>
@@ -2665,7 +2845,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxXmt7.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;textBoxXmt7.Name" xml:space="preserve">
     <value>textBoxXmt7</value>
@@ -2686,7 +2866,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxXmt6.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;textBoxXmt6.Name" xml:space="preserve">
     <value>textBoxXmt6</value>
@@ -2707,7 +2887,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxXmt5.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;textBoxXmt5.Name" xml:space="preserve">
     <value>textBoxXmt5</value>
@@ -2728,7 +2908,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxXmt4.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;textBoxXmt4.Name" xml:space="preserve">
     <value>textBoxXmt4</value>
@@ -2749,7 +2929,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxXmt3.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;textBoxXmt3.Name" xml:space="preserve">
     <value>textBoxXmt3</value>
@@ -2770,7 +2950,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxXmt2.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;textBoxXmt2.Name" xml:space="preserve">
     <value>textBoxXmt2</value>
@@ -2791,7 +2971,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxXmt1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;textBoxXmt1.Name" xml:space="preserve">
     <value>textBoxXmt1</value>
@@ -2812,7 +2992,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxXmt0.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxXmt0.Name" xml:space="preserve">
     <value>textBoxXmt0</value>
@@ -2947,13 +3127,13 @@
     <value>9</value>
   </data>
   <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>341, 19</value>
+    <value>340, 52</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 289</value>
   </data>
   <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="groupBox8.Text" xml:space="preserve">
     <value>BinSize (m)</value>
@@ -2968,7 +3148,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="textBoxBinSize9.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 262</value>
@@ -2977,7 +3157,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBinSize9.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;textBoxBinSize9.Name" xml:space="preserve">
     <value>textBoxBinSize9</value>
@@ -2998,7 +3178,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBinSize8.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;textBoxBinSize8.Name" xml:space="preserve">
     <value>textBoxBinSize8</value>
@@ -3019,7 +3199,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBinSize7.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;textBoxBinSize7.Name" xml:space="preserve">
     <value>textBoxBinSize7</value>
@@ -3040,7 +3220,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBinSize6.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;textBoxBinSize6.Name" xml:space="preserve">
     <value>textBoxBinSize6</value>
@@ -3061,7 +3241,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBinSize5.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;textBoxBinSize5.Name" xml:space="preserve">
     <value>textBoxBinSize5</value>
@@ -3082,7 +3262,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBinSize4.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;textBoxBinSize4.Name" xml:space="preserve">
     <value>textBoxBinSize4</value>
@@ -3103,7 +3283,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBinSize3.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;textBoxBinSize3.Name" xml:space="preserve">
     <value>textBoxBinSize3</value>
@@ -3124,7 +3304,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBinSize2.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;textBoxBinSize2.Name" xml:space="preserve">
     <value>textBoxBinSize2</value>
@@ -3145,7 +3325,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBinSize1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;textBoxBinSize1.Name" xml:space="preserve">
     <value>textBoxBinSize1</value>
@@ -3166,7 +3346,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBinSize0.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxBinSize0.Name" xml:space="preserve">
     <value>textBoxBinSize0</value>
@@ -3179,6 +3359,27 @@
   </data>
   <data name="&gt;&gt;textBoxBinSize0.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <data name="textBoxBSpings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 21</value>
+  </data>
+  <data name="textBoxBSpings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 20</value>
+  </data>
+  <data name="textBoxBSpings.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBoxBSpings.Name" xml:space="preserve">
+    <value>textBoxBSpings</value>
+  </data>
+  <data name="&gt;&gt;textBoxBSpings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxBSpings.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;textBoxBSpings.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;textBoxBlank9.Name" xml:space="preserve">
     <value>textBoxBlank9</value>
@@ -3301,13 +3502,13 @@
     <value>9</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 20</value>
+    <value>264, 53</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 289</value>
   </data>
   <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="groupBox7.Text" xml:space="preserve">
     <value>Blank (m)</value>
@@ -3322,7 +3523,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="textBoxBlank9.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 262</value>
@@ -3331,7 +3532,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBlank9.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;textBoxBlank9.Name" xml:space="preserve">
     <value>textBoxBlank9</value>
@@ -3352,7 +3553,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBlank8.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;textBoxBlank8.Name" xml:space="preserve">
     <value>textBoxBlank8</value>
@@ -3373,7 +3574,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBlank7.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;textBoxBlank7.Name" xml:space="preserve">
     <value>textBoxBlank7</value>
@@ -3394,7 +3595,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBlank6.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;textBoxBlank6.Name" xml:space="preserve">
     <value>textBoxBlank6</value>
@@ -3415,7 +3616,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBlank5.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;textBoxBlank5.Name" xml:space="preserve">
     <value>textBoxBlank5</value>
@@ -3436,7 +3637,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBlank4.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;textBoxBlank4.Name" xml:space="preserve">
     <value>textBoxBlank4</value>
@@ -3457,7 +3658,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBlank3.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;textBoxBlank3.Name" xml:space="preserve">
     <value>textBoxBlank3</value>
@@ -3478,7 +3679,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBlank2.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;textBoxBlank2.Name" xml:space="preserve">
     <value>textBoxBlank2</value>
@@ -3499,7 +3700,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBlank1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;textBoxBlank1.Name" xml:space="preserve">
     <value>textBoxBlank1</value>
@@ -3520,7 +3721,7 @@
     <value>58, 20</value>
   </data>
   <data name="textBoxBlank0.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxBlank0.Name" xml:space="preserve">
     <value>textBoxBlank0</value>
@@ -3655,13 +3856,13 @@
     <value>9</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 19</value>
+    <value>204, 52</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 289</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="groupBox6.Text" xml:space="preserve">
     <value>TBP(s)</value>
@@ -3676,7 +3877,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="textBoxTBP9.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 262</value>
@@ -3685,7 +3886,7 @@
     <value>42, 20</value>
   </data>
   <data name="textBoxTBP9.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;textBoxTBP9.Name" xml:space="preserve">
     <value>textBoxTBP9</value>
@@ -3706,7 +3907,7 @@
     <value>42, 20</value>
   </data>
   <data name="textBoxTBP8.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;textBoxTBP8.Name" xml:space="preserve">
     <value>textBoxTBP8</value>
@@ -3727,7 +3928,7 @@
     <value>42, 20</value>
   </data>
   <data name="textBoxTBP7.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;textBoxTBP7.Name" xml:space="preserve">
     <value>textBoxTBP7</value>
@@ -3748,7 +3949,7 @@
     <value>42, 20</value>
   </data>
   <data name="textBoxTBP6.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;textBoxTBP6.Name" xml:space="preserve">
     <value>textBoxTBP6</value>
@@ -3769,7 +3970,7 @@
     <value>42, 20</value>
   </data>
   <data name="textBoxTBP5.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;textBoxTBP5.Name" xml:space="preserve">
     <value>textBoxTBP5</value>
@@ -3790,7 +3991,7 @@
     <value>42, 20</value>
   </data>
   <data name="textBoxTBP4.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;textBoxTBP4.Name" xml:space="preserve">
     <value>textBoxTBP4</value>
@@ -3811,7 +4012,7 @@
     <value>42, 20</value>
   </data>
   <data name="textBoxTBP3.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;textBoxTBP3.Name" xml:space="preserve">
     <value>textBoxTBP3</value>
@@ -3832,7 +4033,7 @@
     <value>42, 20</value>
   </data>
   <data name="textBoxTBP2.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;textBoxTBP2.Name" xml:space="preserve">
     <value>textBoxTBP2</value>
@@ -3853,7 +4054,7 @@
     <value>42, 20</value>
   </data>
   <data name="textBoxTBP1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;textBoxTBP1.Name" xml:space="preserve">
     <value>textBoxTBP1</value>
@@ -3874,7 +4075,7 @@
     <value>42, 20</value>
   </data>
   <data name="textBoxTBP0.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxTBP0.Name" xml:space="preserve">
     <value>textBoxTBP0</value>
@@ -4009,13 +4210,13 @@
     <value>9</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 19</value>
+    <value>157, 52</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 289</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
     <value>Bins</value>
@@ -4030,7 +4231,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="textBoxBins9.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 262</value>
@@ -4039,7 +4240,7 @@
     <value>29, 20</value>
   </data>
   <data name="textBoxBins9.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;textBoxBins9.Name" xml:space="preserve">
     <value>textBoxBins9</value>
@@ -4060,7 +4261,7 @@
     <value>29, 20</value>
   </data>
   <data name="textBoxBins8.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;textBoxBins8.Name" xml:space="preserve">
     <value>textBoxBins8</value>
@@ -4081,7 +4282,7 @@
     <value>29, 20</value>
   </data>
   <data name="textBoxBins7.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;textBoxBins7.Name" xml:space="preserve">
     <value>textBoxBins7</value>
@@ -4102,7 +4303,7 @@
     <value>29, 20</value>
   </data>
   <data name="textBoxBins6.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;textBoxBins6.Name" xml:space="preserve">
     <value>textBoxBins6</value>
@@ -4123,7 +4324,7 @@
     <value>29, 20</value>
   </data>
   <data name="textBoxBins5.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;textBoxBins5.Name" xml:space="preserve">
     <value>textBoxBins5</value>
@@ -4144,7 +4345,7 @@
     <value>29, 20</value>
   </data>
   <data name="textBoxBins4.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;textBoxBins4.Name" xml:space="preserve">
     <value>textBoxBins4</value>
@@ -4165,7 +4366,7 @@
     <value>29, 20</value>
   </data>
   <data name="textBoxBins3.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;textBoxBins3.Name" xml:space="preserve">
     <value>textBoxBins3</value>
@@ -4186,7 +4387,7 @@
     <value>29, 20</value>
   </data>
   <data name="textBoxBins2.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;textBoxBins2.Name" xml:space="preserve">
     <value>textBoxBins2</value>
@@ -4207,7 +4408,7 @@
     <value>29, 20</value>
   </data>
   <data name="textBoxBins1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;textBoxBins1.Name" xml:space="preserve">
     <value>textBoxBins1</value>
@@ -4228,7 +4429,7 @@
     <value>29, 20</value>
   </data>
   <data name="textBoxBins0.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;textBoxBins0.Name" xml:space="preserve">
     <value>textBoxBins0</value>
@@ -4363,13 +4564,13 @@
     <value>9</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 19</value>
+    <value>83, 52</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 289</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>kHz</value>
@@ -4384,7 +4585,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="textBoxFreq9.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 262</value>
@@ -4393,7 +4594,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxFreq9.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>10</value>
   </data>
   <data name="&gt;&gt;textBoxFreq9.Name" xml:space="preserve">
     <value>textBoxFreq9</value>
@@ -4414,7 +4615,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxFreq8.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;textBoxFreq8.Name" xml:space="preserve">
     <value>textBoxFreq8</value>
@@ -4435,7 +4636,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxFreq7.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;textBoxFreq7.Name" xml:space="preserve">
     <value>textBoxFreq7</value>
@@ -4456,7 +4657,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxFreq6.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>7</value>
   </data>
   <data name="&gt;&gt;textBoxFreq6.Name" xml:space="preserve">
     <value>textBoxFreq6</value>
@@ -4477,7 +4678,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxFreq5.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;textBoxFreq5.Name" xml:space="preserve">
     <value>textBoxFreq5</value>
@@ -4498,7 +4699,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxFreq4.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;textBoxFreq4.Name" xml:space="preserve">
     <value>textBoxFreq4</value>
@@ -4519,7 +4720,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxFreq3.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;textBoxFreq3.Name" xml:space="preserve">
     <value>textBoxFreq3</value>
@@ -4540,7 +4741,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxFreq2.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;textBoxFreq2.Name" xml:space="preserve">
     <value>textBoxFreq2</value>
@@ -4561,7 +4762,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxFreq1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;textBoxFreq1.Name" xml:space="preserve">
     <value>textBoxFreq1</value>
@@ -4582,7 +4783,7 @@
     <value>55, 20</value>
   </data>
   <data name="textBoxFreq0.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;textBoxFreq0.Name" xml:space="preserve">
     <value>textBoxFreq0</value>
@@ -4717,13 +4918,13 @@
     <value>9</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+    <value>5, 52</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 289</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Enable</value>
@@ -4738,7 +4939,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="checkBoxEnable9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4753,7 +4954,7 @@
     <value>62, 17</value>
   </data>
   <data name="checkBoxEnable9.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>9</value>
   </data>
   <data name="checkBoxEnable9.Text" xml:space="preserve">
     <value>Beam 9</value>
@@ -4783,7 +4984,7 @@
     <value>62, 17</value>
   </data>
   <data name="checkBoxEnable8.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="checkBoxEnable8.Text" xml:space="preserve">
     <value>Beam 8</value>
@@ -4813,7 +5014,7 @@
     <value>62, 17</value>
   </data>
   <data name="checkBoxEnable7.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="checkBoxEnable7.Text" xml:space="preserve">
     <value>Beam 7</value>
@@ -4843,7 +5044,7 @@
     <value>62, 17</value>
   </data>
   <data name="checkBoxEnable6.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="checkBoxEnable6.Text" xml:space="preserve">
     <value>Beam 6</value>
@@ -4873,7 +5074,7 @@
     <value>62, 17</value>
   </data>
   <data name="checkBoxEnable5.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="checkBoxEnable5.Text" xml:space="preserve">
     <value>Beam 5</value>
@@ -4903,7 +5104,7 @@
     <value>62, 17</value>
   </data>
   <data name="checkBoxEnable4.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>4</value>
   </data>
   <data name="checkBoxEnable4.Text" xml:space="preserve">
     <value>Beam 4</value>
@@ -4933,7 +5134,7 @@
     <value>62, 17</value>
   </data>
   <data name="checkBoxEnable3.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>3</value>
   </data>
   <data name="checkBoxEnable3.Text" xml:space="preserve">
     <value>Beam 3</value>
@@ -4963,7 +5164,7 @@
     <value>62, 17</value>
   </data>
   <data name="checkBoxEnable2.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>2</value>
   </data>
   <data name="checkBoxEnable2.Text" xml:space="preserve">
     <value>Beam 2</value>
@@ -5038,13 +5239,13 @@
     <value>9</value>
   </data>
   <data name="groupBox10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>776, 276</value>
+    <value>251, 300</value>
   </data>
   <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
     <value>236, 82</value>
   </data>
   <data name="groupBox10.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+    <value>8</value>
   </data>
   <data name="groupBox10.Text" xml:space="preserve">
     <value>Compass/GPS</value>
@@ -5068,7 +5269,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1015, 481</value>
+    <value>1015, 423</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>FrmSystemSetting</value>
