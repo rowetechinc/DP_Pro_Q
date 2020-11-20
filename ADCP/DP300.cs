@@ -300,6 +300,7 @@ namespace ADCP
           
             sp = new SerialPort("COM1", 115200, Parity.None, 8, StopBits.One); //用默认值初始化串口;
             
+            /*
             sp.ReadBufferSize = 16 * 65536;
             sp.BaudRate = 115200;
             sp.StopBits = StopBits.One;
@@ -310,8 +311,8 @@ namespace ADCP
             //Set the read/write timeouts
             sp.ReadTimeout = 50;
             sp.WriteTimeout = 500;
-
-            //sp.ReadBufferSize = 11836 * 7; // 1024 * 20 * 3; // 注意设置一下接收缓冲区大小>=(payload + 64)，否则一次不能接受整个数据包，纠结了一天半！
+            */
+            sp.ReadBufferSize = 11836 * 7; // 1024 * 20 * 3; // 注意设置一下接收缓冲区大小>=(payload + 64)，否则一次不能接受整个数据包，纠结了一天半！
             sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
 
 
@@ -333,6 +334,7 @@ namespace ADCP
             
             GPS_sp = new SerialPort("COM2", 9600, Parity.None, 8, StopBits.One);
 
+            /*
             GPS_sp.ReadBufferSize = 16 * 65536;
             GPS_sp.BaudRate = 9600;
             GPS_sp.StopBits = StopBits.One;
@@ -344,6 +346,7 @@ namespace ADCP
             //Set the read/write timeouts
             GPS_sp.ReadTimeout = 50;
             GPS_sp.WriteTimeout = 500;
+            */
 
             GPS_sp.DataReceived += new SerialDataReceivedEventHandler(GPS_sp_DataReceived);
             //getGPS_spDATA = new GPSDelegate(getInfoFromNMEAData); //委托指针指向 PickAndDecodeEnsemble 函数
@@ -8131,8 +8134,14 @@ namespace ADCP
                         fBoatDir = fBoatDir / Math.PI * 180;
                 EnsemblesInfoToStore.BoatDir.Add(fBoatDir); //LPJ 2013-7-3
 
-
                 Velocity[] Vel = (Velocity[])EnsemblesInfoToStore.WaterVelocity[i];  //Modified HERE 2011-7-28 get velocity here!!!
+
+                for (int n = 0; n < Vel.Count(); n++)
+                {
+                    Vel[0].VX -= fBoatVelX;
+                    Vel[0].VY -= fBoatVelY;
+                }
+
                 double[] waterSpeed = new double[Vel.Length];
                 int k = 0;
                 foreach (Velocity v in Vel)
@@ -8149,6 +8158,9 @@ namespace ADCP
                  //int iGoodBinNum = CalGoodBinNumber(i);
                 EnsemblesInfoToStore.iGoodBin.Add(iGoodBinNum);
 
+                fVx -= fBoatVelX;
+                fVy -= fBoatVelY;
+
                 fAverageX.Add(fVx); //LPJ 2013-7-3
                 fAverageY.Add(fVy); //LPJ 2013-7-3 
 
@@ -8160,6 +8172,12 @@ namespace ADCP
                     fWaterDir = fWaterDir / Math.PI * 180 + 360;
                 else
                     fWaterDir = fWaterDir / Math.PI * 180;
+
+                if(fWaterDir != 180)
+                {
+                    fWaterDir = fWaterDir;
+                }
+
                 EnsemblesInfoToStore.WaterDir.Add(fWaterDir);
                 
                 double fWaterSpeed = Math.Sqrt(Math.Pow(fVx, 2) + Math.Pow(fVy, 2));
@@ -11804,7 +11822,15 @@ namespace ADCP
                 
                 SystemSetting();
             }
-            
+
+            sp.Write("START\r");
+            Thread.Sleep(150);
+            while (!ReceiveBufferString.Contains("START"))
+            {
+                sp.Write("START\r");
+                Thread.Sleep(150);
+            }
+
             CurrentState = TRANSECT_STATE_START;
 
             iEnsembleInterval = 1;
@@ -17220,6 +17246,7 @@ namespace ADCP
         {
             defaultSP = new SerialPort("COM1", 115200, Parity.None, 8, StopBits.One);
 
+            /*
             defaultSP.ReadBufferSize = 16 * 65536;
             defaultSP.BaudRate = 115200;
             defaultSP.StopBits = StopBits.One;
@@ -17231,6 +17258,7 @@ namespace ADCP
             //Set the read/write timeouts
             defaultSP.ReadTimeout = 50;
             defaultSP.WriteTimeout = 500;
+            */
 
 
             defaultQueue = new Queue();
@@ -19999,8 +20027,6 @@ namespace ADCP
                             MessageBox.Show(ex.Message);
                         }
                     }
-            
-                    //CommandList += BSlist;
 
                     SendStandardCommand();
 
@@ -20009,12 +20035,8 @@ namespace ADCP
                     CommandList += CMD + '\n';
                     Thread.Sleep(1000);
 
-                    CMD = "CSAVE RIVCONF\r";
-                    sp.Write(CMD);
-                    Thread.Sleep(1000);
-
-                    CMD = "START\r";
-                    sp.Write(CMD);
+                    //CMD = "START\r";
+                    //sp.Write(CMD);
                 }
                 catch { }
 
@@ -21512,6 +21534,8 @@ namespace ADCP
                     Thread.Sleep(150);
 
                     sp = new SerialPort();
+                    
+                    /*
                     sp.ReadBufferSize = 16 * 65536;
                     sp.BaudRate = 115200;
                     sp.StopBits = StopBits.One;
@@ -21522,6 +21546,8 @@ namespace ADCP
                     //Set the read/write timeouts
                     sp.ReadTimeout = 50;
                     sp.WriteTimeout = 500;
+                    */
+
                     sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
 
                     sp.PortName = serial.Port;
@@ -21928,6 +21954,7 @@ namespace ADCP
 
                 sp = new SerialPort();
 
+                /*
                 sp.ReadBufferSize = 16 * 65536;
                 sp.BaudRate = 115200;
                 sp.StopBits = StopBits.One;
@@ -21938,6 +21965,7 @@ namespace ADCP
                 //Set the read/write timeouts
                 sp.ReadTimeout = 50;
                 sp.WriteTimeout = 500;
+                */
 
                 sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
                 sp.PortName = serial.Port;

@@ -1760,114 +1760,120 @@ namespace ADCP
             theList = "";
             try
             {
+                int pings = int.Parse(textBoxBSpings.Text);
+
                 theList += "CBSPINGS " + textBoxBSpings.Text + "\r\n";
-                theList += "CBSDEPTH " + textBoxTransducerDepth.Text + "\r\n";
-                theList += "CBSSALINITY " + textWaterSalinity.Text + "\r\n";
-                theList += "CBSTEMP " + textWaterTemperature.Text + "\r\n";
-                theList += "CBSPH " + textBoxPH.Text + "\r\n";
 
-                theList += "CBSBEAMON ";
-                if (checkBoxEnable0.Checked)
-                    theList += "1";
-                else
-                    theList += "0";
-                if (checkBoxEnable1.Checked)
-                    theList += ",1";
-                else
-                    theList += ",0";
-                if (checkBoxEnable2.Checked)
-                    theList += ",1";
-                else
-                    theList += ",0";
-                if (checkBoxEnable3.Checked)
-                    theList += ",1";
-                else
-                    theList += ",0";
-                if (checkBoxEnable4.Checked)
-                    theList += ",1";
-                else
-                    theList += ",0";
-                if (checkBoxEnable5.Checked)
-                    theList += ",1";
-                else
-                    theList += ",0";
-                if (checkBoxEnable6.Checked)
-                    theList += ",1";
-                else
-                    theList += ",0";
-                if (checkBoxEnable7.Checked)
-                    theList += ",1";
-                else
-                    theList += ",0";
-                if (checkBoxEnable8.Checked)
-                    theList += ",1";
-                else
-                    theList += ",0";
-                if (checkBoxEnable9.Checked)
-                    theList += ",1";
-                else
-                    theList += ",0";
-                theList += "\r\n";
+                if (pings > 0)
+                {
+                    theList += "CBSDEPTH " + textBoxTransducerDepth.Text + "\r\n";
+                    theList += "CBSSALINITY " + textWaterSalinity.Text + "\r\n";
+                    theList += "CBSTEMP " + textWaterTemperature.Text + "\r\n";
+                    theList += "CBSPH " + textBoxPH.Text + "\r\n";
 
-                theList += "CBSBINS " + textBoxBins0.Text;
-                theList += "," + textBoxBins1.Text;
-                theList += "," + textBoxBins2.Text; 
-                theList += "," + textBoxBins3.Text;
-                theList += "," + textBoxBins4.Text;
-                theList += "," + textBoxBins5.Text;
-                theList += "," + textBoxBins6.Text;
-                theList += "," + textBoxBins7.Text;
-                theList += "," + textBoxBins8.Text;
-                theList += "," + textBoxBins9.Text;
-                theList += "\r\n";
+                    theList += "CBSBEAMON ";
+                    if (checkBoxEnable0.Checked)
+                        theList += "1";
+                    else
+                        theList += "0";
+                    if (checkBoxEnable1.Checked)
+                        theList += ",1";
+                    else
+                        theList += ",0";
+                    if (checkBoxEnable2.Checked)
+                        theList += ",1";
+                    else
+                        theList += ",0";
+                    if (checkBoxEnable3.Checked)
+                        theList += ",1";
+                    else
+                        theList += ",0";
+                    if (checkBoxEnable4.Checked)
+                        theList += ",1";
+                    else
+                        theList += ",0";
+                    if (checkBoxEnable5.Checked)
+                        theList += ",1";
+                    else
+                        theList += ",0";
+                    if (checkBoxEnable6.Checked)
+                        theList += ",1";
+                    else
+                        theList += ",0";
+                    if (checkBoxEnable7.Checked)
+                        theList += ",1";
+                    else
+                        theList += ",0";
+                    if (checkBoxEnable8.Checked)
+                        theList += ",1";
+                    else
+                        theList += ",0";
+                    if (checkBoxEnable9.Checked)
+                        theList += ",1";
+                    else
+                        theList += ",0";
+                    theList += "\r\n";
 
-                theList += "CBSTBP " + textBoxTBP0.Text;
-                theList += "," + textBoxTBP1.Text;
-                theList += "," + textBoxTBP2.Text;
-                theList += "," + textBoxTBP3.Text;
-                theList += "," + textBoxTBP4.Text;
-                theList += "," + textBoxTBP5.Text;
-                theList += "," + textBoxTBP6.Text;
-                theList += "," + textBoxTBP7.Text;
-                theList += "," + textBoxTBP8.Text;
-                theList += "," + textBoxTBP9.Text;
-                theList += "\r\n";
+                    theList += "CBSBINS " + textBoxBins0.Text;
+                    theList += "," + textBoxBins1.Text;
+                    theList += "," + textBoxBins2.Text;
+                    theList += "," + textBoxBins3.Text;
+                    theList += "," + textBoxBins4.Text;
+                    theList += "," + textBoxBins5.Text;
+                    theList += "," + textBoxBins6.Text;
+                    theList += "," + textBoxBins7.Text;
+                    theList += "," + textBoxBins8.Text;
+                    theList += "," + textBoxBins9.Text;
+                    theList += "\r\n";
 
-                theList += "CBSBLANK " + textBoxBlank0.Text;
-                theList += "," + textBoxBlank1.Text;
-                theList += "," + textBoxBlank2.Text;
-                theList += "," + textBoxBlank3.Text;
-                theList += "," + textBoxBlank4.Text;
-                theList += "," + textBoxBlank5.Text;
-                theList += "," + textBoxBlank6.Text;
-                theList += "," + textBoxBlank7.Text;
-                theList += "," + textBoxBlank8.Text;
-                theList += "," + textBoxBlank9.Text;
-                theList += "\r\n";
+                    theList += "CBSTBP " + textBoxTBP0.Text;
+                    theList += "," + textBoxTBP1.Text;
+                    theList += "," + textBoxTBP2.Text;
+                    theList += "," + textBoxTBP3.Text;
+                    theList += "," + textBoxTBP4.Text;
+                    theList += "," + textBoxTBP5.Text;
+                    theList += "," + textBoxTBP6.Text;
+                    theList += "," + textBoxTBP7.Text;
+                    theList += "," + textBoxTBP8.Text;
+                    theList += "," + textBoxTBP9.Text;
+                    theList += "\r\n";
 
-                theList += "CBSBINSIZE " + textBoxBinSize0.Text;
-                theList += "," + textBoxBinSize1.Text;
-                theList += "," + textBoxBinSize2.Text;
-                theList += "," + textBoxBinSize3.Text;
-                theList += "," + textBoxBinSize4.Text;
-                theList += "," + textBoxBinSize5.Text;
-                theList += "," + textBoxBinSize6.Text;
-                theList += "," + textBoxBinSize7.Text;
-                theList += "," + textBoxBinSize8.Text;
-                theList += "," + textBoxBinSize9.Text;
-                theList += "\r\n";
+                    theList += "CBSBLANK " + textBoxBlank0.Text;
+                    theList += "," + textBoxBlank1.Text;
+                    theList += "," + textBoxBlank2.Text;
+                    theList += "," + textBoxBlank3.Text;
+                    theList += "," + textBoxBlank4.Text;
+                    theList += "," + textBoxBlank5.Text;
+                    theList += "," + textBoxBlank6.Text;
+                    theList += "," + textBoxBlank7.Text;
+                    theList += "," + textBoxBlank8.Text;
+                    theList += "," + textBoxBlank9.Text;
+                    theList += "\r\n";
 
-                theList += "CBSXMTLENGTH " + textBoxXmt0.Text;
-                theList += "," + textBoxXmt1.Text;
-                theList += "," + textBoxXmt2.Text;
-                theList += "," + textBoxXmt3.Text;
-                theList += "," + textBoxXmt4.Text;
-                theList += "," + textBoxXmt5.Text;
-                theList += "," + textBoxXmt6.Text;
-                theList += "," + textBoxXmt7.Text;
-                theList += "," + textBoxXmt8.Text;
-                theList += "," + textBoxXmt9.Text;
-                theList += "\r\n";
+                    theList += "CBSBINSIZE " + textBoxBinSize0.Text;
+                    theList += "," + textBoxBinSize1.Text;
+                    theList += "," + textBoxBinSize2.Text;
+                    theList += "," + textBoxBinSize3.Text;
+                    theList += "," + textBoxBinSize4.Text;
+                    theList += "," + textBoxBinSize5.Text;
+                    theList += "," + textBoxBinSize6.Text;
+                    theList += "," + textBoxBinSize7.Text;
+                    theList += "," + textBoxBinSize8.Text;
+                    theList += "," + textBoxBinSize9.Text;
+                    theList += "\r\n";
+
+                    theList += "CBSXMTLENGTH " + textBoxXmt0.Text;
+                    theList += "," + textBoxXmt1.Text;
+                    theList += "," + textBoxXmt2.Text;
+                    theList += "," + textBoxXmt3.Text;
+                    theList += "," + textBoxXmt4.Text;
+                    theList += "," + textBoxXmt5.Text;
+                    theList += "," + textBoxXmt6.Text;
+                    theList += "," + textBoxXmt7.Text;
+                    theList += "," + textBoxXmt8.Text;
+                    theList += "," + textBoxXmt9.Text;
+                    theList += "\r\n";
+                }
             }
             catch { }
         }
