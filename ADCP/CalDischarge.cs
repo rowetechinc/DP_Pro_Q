@@ -145,9 +145,12 @@ namespace ADCP
                                 float fVx = 0;
                                 float fVy = 0;
                                 CalculateAverageWaterSpeed(RTIData[i], i,conf, ref fVx, ref fVy, ref fAveDepth, ref EnsMaxVel, ref Ensfx, ref Ensfy);//LPJ 2012-12-27
+                                
                                 fAccVx += fVx;
                                 fAccVy += fVy;
-
+                                //boat speed playback
+                                fAccVx -= PreBoatSpeed.VX;
+                                fAccVy -= PreBoatSpeed.VY;
 
                                 //LPJ 2012-5-31 最大水深
                                 if (fAveDepth > rep.MaxDepth)

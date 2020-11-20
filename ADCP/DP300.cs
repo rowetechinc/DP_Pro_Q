@@ -2119,8 +2119,8 @@ namespace ADCP
             {
                 fAverageVX /= icountValid;
                 fAverageVY /= icountValid;
-                //fAverageVX = fAverageVX + fBoatVelX;   //JZH 2011-12-30 获取当前的绝对流速 参考底跟踪 注意：当底跟踪丢失后！！！！//JZH 2012-03-21  绝对速度已经在GetWaterVelocityToBottom中实现
-                //fAverageVY = fAverageVY + fBoatVelY;   //JZH 2011-12-30 获取当前的绝对流速 参考底跟踪
+                fAverageVX -= fBoatVelX;   //JZH 2011-12-30 获取当前的绝对流速 参考底跟踪 注意：当底跟踪丢失后！！！！//JZH 2012-03-21  绝对速度已经在GetWaterVelocityToBottom中实现
+                fAverageVY -= fBoatVelY;   //JZH 2011-12-30 获取当前的绝对流速 参考底跟踪
             }
         }
 
@@ -2189,6 +2189,9 @@ namespace ADCP
                 {
                     fAverageVX /= icountValid;
                     fAverageVY /= icountValid;
+                    //boat speed playback helps on stick screen
+                    fAverageVX -= fBoatVelX;
+                    fAverageVY -= fBoatVelY;
                 }
                 return iGoodBinNum;
             }
@@ -8136,11 +8139,12 @@ namespace ADCP
 
                 Velocity[] Vel = (Velocity[])EnsemblesInfoToStore.WaterVelocity[i];  //Modified HERE 2011-7-28 get velocity here!!!
 
-                for (int n = 0; n < Vel.Count(); n++)
-                {
-                    Vel[0].VX -= fBoatVelX;
-                    Vel[0].VY -= fBoatVelY;
-                }
+                //boat speed
+                //for (int n = 0; n < Vel.Count(); n++)
+                //{
+                //    Vel[0].VX -= fBoatVelX;
+                //    Vel[0].VY -= fBoatVelY;
+                //}
 
                 double[] waterSpeed = new double[Vel.Length];
                 int k = 0;
@@ -8157,9 +8161,9 @@ namespace ADCP
                 //LPJ 2013-5-16 计算有效单元层数
                  //int iGoodBinNum = CalGoodBinNumber(i);
                 EnsemblesInfoToStore.iGoodBin.Add(iGoodBinNum);
-
-                fVx -= fBoatVelX;
-                fVy -= fBoatVelY;
+                //boat speed
+                //fVx -= fBoatVelX;
+                //fVy -= fBoatVelY;
 
                 fAverageX.Add(fVx); //LPJ 2013-7-3
                 fAverageY.Add(fVy); //LPJ 2013-7-3 
