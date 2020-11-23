@@ -554,10 +554,57 @@
             this.tabPageSerialTime = new ADCP.DVL_Windows.NoPaintBackGroundTabPage();
             this.panelSerialTime = new ADCP.DVL_Windows.NoPaintBackGroundPanel();
             this.tabPageCommandSet = new System.Windows.Forms.TabPage();
+            this.textBoxBackscatter = new System.Windows.Forms.TextBox();
             this.textBoxSmartPageFile = new System.Windows.Forms.TextBox();
             this.textBoxCommandSet = new System.Windows.Forms.TextBox();
+            this.tabPageContour = new System.Windows.Forms.TabPage();
+            this.hScrollBar_BS = new System.Windows.Forms.HScrollBar();
+            this.panel_contour = new ADCP.DoubleBufferPanel();
+            this.panel_ColorScale = new System.Windows.Forms.Panel();
+            this.InfoPanel_BS = new ADCP.DoubleBufferPanel();
+            this.numericUpDown_Min = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Max = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.trackBarMaxV_BS = new System.Windows.Forms.TrackBar();
+            this.label25 = new System.Windows.Forms.Label();
+            this.labelMavV_BS = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.btnPick = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.checkBox_b9 = new System.Windows.Forms.CheckBox();
+            this.checkBox_b8 = new System.Windows.Forms.CheckBox();
+            this.checkBox_b7 = new System.Windows.Forms.CheckBox();
+            this.checkBox_b6 = new System.Windows.Forms.CheckBox();
+            this.checkBox_b5 = new System.Windows.Forms.CheckBox();
+            this.checkBox_b4 = new System.Windows.Forms.CheckBox();
+            this.checkBox_b3 = new System.Windows.Forms.CheckBox();
+            this.checkBox_b2 = new System.Windows.Forms.CheckBox();
+            this.checkBox_b1 = new System.Windows.Forms.CheckBox();
+            this.checkBox_b0 = new System.Windows.Forms.CheckBox();
+            this.btn_backscatter = new System.Windows.Forms.Button();
+            this.btn_Amp = new System.Windows.Forms.Button();
+            this.panel36 = new System.Windows.Forms.Panel();
+            this.textBox_EnsN = new System.Windows.Forms.TextBox();
+            this.label_DateTime = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.tabPageBackScatter = new System.Windows.Forms.TabPage();
+            this.panel_BSProfile = new System.Windows.Forms.Panel();
+            this.textBoxBSleaders = new System.Windows.Forms.TextBox();
+            this.textBoxBSdata = new System.Windows.Forms.TextBox();
+            this.textBoxBSsystem = new System.Windows.Forms.TextBox();
+            this.textBox_EnsNum = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtUserCommand = new System.Windows.Forms.TextBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBoxBSbeam = new System.Windows.Forms.TextBox();
+            this.radioButtonBSprofile = new System.Windows.Forms.RadioButton();
+            this.radioButtonBSleaders = new System.Windows.Forms.RadioButton();
+            this.radioButtonBSdata = new System.Windows.Forms.RadioButton();
+            this.radioButtonBSsystem = new System.Windows.Forms.RadioButton();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.textBoxBackscatter = new System.Windows.Forms.TextBox();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -661,6 +708,14 @@
             this.tabPage10.SuspendLayout();
             this.tabPageSerialTime.SuspendLayout();
             this.tabPageCommandSet.SuspendLayout();
+            this.tabPageContour.SuspendLayout();
+            this.panel_ColorScale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Min)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMaxV_BS)).BeginInit();
+            this.panel36.SuspendLayout();
+            this.tabPageBackScatter.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl4
@@ -671,6 +726,8 @@
             this.tabControl4.Controls.Add(this.tabPageData);
             this.tabControl4.Controls.Add(this.tabPageSerialTime);
             this.tabControl4.Controls.Add(this.tabPageCommandSet);
+            this.tabControl4.Controls.Add(this.tabPageContour);
+            this.tabControl4.Controls.Add(this.tabPageBackScatter);
             resources.ApplyResources(this.tabControl4, "tabControl4");
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
@@ -4289,6 +4346,11 @@
             this.tabPageCommandSet.Name = "tabPageCommandSet";
             this.tabPageCommandSet.UseVisualStyleBackColor = true;
             // 
+            // textBoxBackscatter
+            // 
+            resources.ApplyResources(this.textBoxBackscatter, "textBoxBackscatter");
+            this.textBoxBackscatter.Name = "textBoxBackscatter";
+            // 
             // textBoxSmartPageFile
             // 
             resources.ApplyResources(this.textBoxSmartPageFile, "textBoxSmartPageFile");
@@ -4299,10 +4361,365 @@
             resources.ApplyResources(this.textBoxCommandSet, "textBoxCommandSet");
             this.textBoxCommandSet.Name = "textBoxCommandSet";
             // 
-            // textBoxBackscatter
+            // tabPageContour
             // 
-            resources.ApplyResources(this.textBoxBackscatter, "textBoxBackscatter");
-            this.textBoxBackscatter.Name = "textBoxBackscatter";
+            this.tabPageContour.Controls.Add(this.hScrollBar_BS);
+            this.tabPageContour.Controls.Add(this.panel_contour);
+            this.tabPageContour.Controls.Add(this.panel_ColorScale);
+            this.tabPageContour.Controls.Add(this.btnPick);
+            this.tabPageContour.Controls.Add(this.label19);
+            this.tabPageContour.Controls.Add(this.checkBox_b9);
+            this.tabPageContour.Controls.Add(this.checkBox_b8);
+            this.tabPageContour.Controls.Add(this.checkBox_b7);
+            this.tabPageContour.Controls.Add(this.checkBox_b6);
+            this.tabPageContour.Controls.Add(this.checkBox_b5);
+            this.tabPageContour.Controls.Add(this.checkBox_b4);
+            this.tabPageContour.Controls.Add(this.checkBox_b3);
+            this.tabPageContour.Controls.Add(this.checkBox_b2);
+            this.tabPageContour.Controls.Add(this.checkBox_b1);
+            this.tabPageContour.Controls.Add(this.checkBox_b0);
+            this.tabPageContour.Controls.Add(this.btn_backscatter);
+            this.tabPageContour.Controls.Add(this.btn_Amp);
+            this.tabPageContour.Controls.Add(this.panel36);
+            resources.ApplyResources(this.tabPageContour, "tabPageContour");
+            this.tabPageContour.Name = "tabPageContour";
+            this.tabPageContour.UseVisualStyleBackColor = true;
+            // 
+            // hScrollBar_BS
+            // 
+            resources.ApplyResources(this.hScrollBar_BS, "hScrollBar_BS");
+            this.hScrollBar_BS.LargeChange = 1;
+            this.hScrollBar_BS.Name = "hScrollBar_BS";
+            this.hScrollBar_BS.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar_BS_Scroll);
+            // 
+            // panel_contour
+            // 
+            this.panel_contour.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.panel_contour, "panel_contour");
+            this.panel_contour.Name = "panel_contour";
+            this.panel_contour.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_contour_Paint);
+            this.panel_contour.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_contour_MouseDown);
+            this.panel_contour.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_contour_MouseMove);
+            this.panel_contour.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel_contour_MouseUp);
+            // 
+            // panel_ColorScale
+            // 
+            this.panel_ColorScale.BackColor = System.Drawing.Color.White;
+            this.panel_ColorScale.Controls.Add(this.InfoPanel_BS);
+            this.panel_ColorScale.Controls.Add(this.numericUpDown_Min);
+            this.panel_ColorScale.Controls.Add(this.numericUpDown_Max);
+            this.panel_ColorScale.Controls.Add(this.label22);
+            this.panel_ColorScale.Controls.Add(this.label23);
+            this.panel_ColorScale.Controls.Add(this.label24);
+            this.panel_ColorScale.Controls.Add(this.trackBarMaxV_BS);
+            this.panel_ColorScale.Controls.Add(this.label25);
+            this.panel_ColorScale.Controls.Add(this.labelMavV_BS);
+            this.panel_ColorScale.Controls.Add(this.label27);
+            resources.ApplyResources(this.panel_ColorScale, "panel_ColorScale");
+            this.panel_ColorScale.Name = "panel_ColorScale";
+            // 
+            // InfoPanel_BS
+            // 
+            resources.ApplyResources(this.InfoPanel_BS, "InfoPanel_BS");
+            this.InfoPanel_BS.Name = "InfoPanel_BS";
+            this.InfoPanel_BS.Paint += new System.Windows.Forms.PaintEventHandler(this.InfoPanel_BS_Paint);
+            // 
+            // numericUpDown_Min
+            // 
+            resources.ApplyResources(this.numericUpDown_Min, "numericUpDown_Min");
+            this.numericUpDown_Min.Name = "numericUpDown_Min";
+            this.numericUpDown_Min.ValueChanged += new System.EventHandler(this.numericUpDown_Min_ValueChanged);
+            // 
+            // numericUpDown_Max
+            // 
+            resources.ApplyResources(this.numericUpDown_Max, "numericUpDown_Max");
+            this.numericUpDown_Max.Name = "numericUpDown_Max";
+            this.numericUpDown_Max.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDown_Max.ValueChanged += new System.EventHandler(this.numericUpDown_Max_ValueChanged);
+            // 
+            // label22
+            // 
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
+            // 
+            // label24
+            // 
+            resources.ApplyResources(this.label24, "label24");
+            this.label24.Name = "label24";
+            // 
+            // trackBarMaxV_BS
+            // 
+            resources.ApplyResources(this.trackBarMaxV_BS, "trackBarMaxV_BS");
+            this.trackBarMaxV_BS.BackColor = System.Drawing.Color.White;
+            this.trackBarMaxV_BS.Maximum = 100;
+            this.trackBarMaxV_BS.Name = "trackBarMaxV_BS";
+            this.trackBarMaxV_BS.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarMaxV_BS.Value = 100;
+            this.trackBarMaxV_BS.Scroll += new System.EventHandler(this.trackBarMaxV_BS_Scroll);
+            // 
+            // label25
+            // 
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
+            // 
+            // labelMavV_BS
+            // 
+            resources.ApplyResources(this.labelMavV_BS, "labelMavV_BS");
+            this.labelMavV_BS.Name = "labelMavV_BS";
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // btnPick
+            // 
+            this.btnPick.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.btnPick, "btnPick");
+            this.btnPick.Name = "btnPick";
+            this.btnPick.UseVisualStyleBackColor = false;
+            this.btnPick.Click += new System.EventHandler(this.btnPick_Click);
+            // 
+            // label19
+            // 
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            // 
+            // checkBox_b9
+            // 
+            resources.ApplyResources(this.checkBox_b9, "checkBox_b9");
+            this.checkBox_b9.Name = "checkBox_b9";
+            this.checkBox_b9.UseVisualStyleBackColor = true;
+            this.checkBox_b9.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
+            // 
+            // checkBox_b8
+            // 
+            resources.ApplyResources(this.checkBox_b8, "checkBox_b8");
+            this.checkBox_b8.Name = "checkBox_b8";
+            this.checkBox_b8.UseVisualStyleBackColor = true;
+            this.checkBox_b8.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
+            // 
+            // checkBox_b7
+            // 
+            resources.ApplyResources(this.checkBox_b7, "checkBox_b7");
+            this.checkBox_b7.Name = "checkBox_b7";
+            this.checkBox_b7.UseVisualStyleBackColor = true;
+            this.checkBox_b7.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
+            // 
+            // checkBox_b6
+            // 
+            resources.ApplyResources(this.checkBox_b6, "checkBox_b6");
+            this.checkBox_b6.Checked = true;
+            this.checkBox_b6.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_b6.Name = "checkBox_b6";
+            this.checkBox_b6.UseVisualStyleBackColor = true;
+            this.checkBox_b6.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
+            // 
+            // checkBox_b5
+            // 
+            resources.ApplyResources(this.checkBox_b5, "checkBox_b5");
+            this.checkBox_b5.Checked = true;
+            this.checkBox_b5.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_b5.Name = "checkBox_b5";
+            this.checkBox_b5.UseVisualStyleBackColor = true;
+            this.checkBox_b5.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
+            // 
+            // checkBox_b4
+            // 
+            resources.ApplyResources(this.checkBox_b4, "checkBox_b4");
+            this.checkBox_b4.Checked = true;
+            this.checkBox_b4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_b4.Name = "checkBox_b4";
+            this.checkBox_b4.UseVisualStyleBackColor = true;
+            this.checkBox_b4.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
+            // 
+            // checkBox_b3
+            // 
+            resources.ApplyResources(this.checkBox_b3, "checkBox_b3");
+            this.checkBox_b3.Checked = true;
+            this.checkBox_b3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_b3.Name = "checkBox_b3";
+            this.checkBox_b3.UseVisualStyleBackColor = true;
+            this.checkBox_b3.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
+            // 
+            // checkBox_b2
+            // 
+            resources.ApplyResources(this.checkBox_b2, "checkBox_b2");
+            this.checkBox_b2.Checked = true;
+            this.checkBox_b2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_b2.Name = "checkBox_b2";
+            this.checkBox_b2.UseVisualStyleBackColor = true;
+            this.checkBox_b2.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
+            // 
+            // checkBox_b1
+            // 
+            resources.ApplyResources(this.checkBox_b1, "checkBox_b1");
+            this.checkBox_b1.Checked = true;
+            this.checkBox_b1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_b1.Name = "checkBox_b1";
+            this.checkBox_b1.UseVisualStyleBackColor = true;
+            this.checkBox_b1.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
+            // 
+            // checkBox_b0
+            // 
+            resources.ApplyResources(this.checkBox_b0, "checkBox_b0");
+            this.checkBox_b0.Checked = true;
+            this.checkBox_b0.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_b0.Name = "checkBox_b0";
+            this.checkBox_b0.UseVisualStyleBackColor = true;
+            this.checkBox_b0.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
+            // 
+            // btn_backscatter
+            // 
+            resources.ApplyResources(this.btn_backscatter, "btn_backscatter");
+            this.btn_backscatter.Name = "btn_backscatter";
+            this.btn_backscatter.UseVisualStyleBackColor = true;
+            this.btn_backscatter.Click += new System.EventHandler(this.btn_backscatter_Click);
+            // 
+            // btn_Amp
+            // 
+            resources.ApplyResources(this.btn_Amp, "btn_Amp");
+            this.btn_Amp.Name = "btn_Amp";
+            this.btn_Amp.UseVisualStyleBackColor = true;
+            this.btn_Amp.Click += new System.EventHandler(this.btn_Amp_Click);
+            // 
+            // panel36
+            // 
+            this.panel36.BackColor = System.Drawing.Color.MintCream;
+            this.panel36.Controls.Add(this.textBox_EnsN);
+            this.panel36.Controls.Add(this.label_DateTime);
+            this.panel36.Controls.Add(this.label26);
+            resources.ApplyResources(this.panel36, "panel36");
+            this.panel36.Name = "panel36";
+            // 
+            // textBox_EnsN
+            // 
+            resources.ApplyResources(this.textBox_EnsN, "textBox_EnsN");
+            this.textBox_EnsN.Name = "textBox_EnsN";
+            // 
+            // label_DateTime
+            // 
+            resources.ApplyResources(this.label_DateTime, "label_DateTime");
+            this.label_DateTime.Name = "label_DateTime";
+            // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
+            // tabPageBackScatter
+            // 
+            this.tabPageBackScatter.Controls.Add(this.panel_BSProfile);
+            this.tabPageBackScatter.Controls.Add(this.textBoxBSleaders);
+            this.tabPageBackScatter.Controls.Add(this.textBoxBSdata);
+            this.tabPageBackScatter.Controls.Add(this.textBoxBSsystem);
+            this.tabPageBackScatter.Controls.Add(this.textBox_EnsNum);
+            this.tabPageBackScatter.Controls.Add(this.label21);
+            this.tabPageBackScatter.Controls.Add(this.txtUserCommand);
+            this.tabPageBackScatter.Controls.Add(this.groupBox8);
+            resources.ApplyResources(this.tabPageBackScatter, "tabPageBackScatter");
+            this.tabPageBackScatter.Name = "tabPageBackScatter";
+            this.tabPageBackScatter.UseVisualStyleBackColor = true;
+            // 
+            // panel_BSProfile
+            // 
+            resources.ApplyResources(this.panel_BSProfile, "panel_BSProfile");
+            this.panel_BSProfile.Name = "panel_BSProfile";
+            // 
+            // textBoxBSleaders
+            // 
+            resources.ApplyResources(this.textBoxBSleaders, "textBoxBSleaders");
+            this.textBoxBSleaders.Name = "textBoxBSleaders";
+            // 
+            // textBoxBSdata
+            // 
+            resources.ApplyResources(this.textBoxBSdata, "textBoxBSdata");
+            this.textBoxBSdata.Name = "textBoxBSdata";
+            // 
+            // textBoxBSsystem
+            // 
+            resources.ApplyResources(this.textBoxBSsystem, "textBoxBSsystem");
+            this.textBoxBSsystem.Name = "textBoxBSsystem";
+            // 
+            // textBox_EnsNum
+            // 
+            resources.ApplyResources(this.textBox_EnsNum, "textBox_EnsNum");
+            this.textBox_EnsNum.Name = "textBox_EnsNum";
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
+            // txtUserCommand
+            // 
+            this.txtUserCommand.AcceptsReturn = true;
+            resources.ApplyResources(this.txtUserCommand, "txtUserCommand");
+            this.txtUserCommand.CausesValidation = false;
+            this.txtUserCommand.Name = "txtUserCommand";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label20);
+            this.groupBox8.Controls.Add(this.textBoxBSbeam);
+            this.groupBox8.Controls.Add(this.radioButtonBSprofile);
+            this.groupBox8.Controls.Add(this.radioButtonBSleaders);
+            this.groupBox8.Controls.Add(this.radioButtonBSdata);
+            this.groupBox8.Controls.Add(this.radioButtonBSsystem);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.TabStop = false;
+            // 
+            // label20
+            // 
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            // 
+            // textBoxBSbeam
+            // 
+            resources.ApplyResources(this.textBoxBSbeam, "textBoxBSbeam");
+            this.textBoxBSbeam.Name = "textBoxBSbeam";
+            this.textBoxBSbeam.TabStop = false;
+            this.textBoxBSbeam.TextChanged += new System.EventHandler(this.textBoxBSbeam_TextChanged);
+            // 
+            // radioButtonBSprofile
+            // 
+            resources.ApplyResources(this.radioButtonBSprofile, "radioButtonBSprofile");
+            this.radioButtonBSprofile.Name = "radioButtonBSprofile";
+            this.radioButtonBSprofile.UseVisualStyleBackColor = true;
+            this.radioButtonBSprofile.CheckedChanged += new System.EventHandler(this.radioButtonBSprofile_CheckedChanged);
+            // 
+            // radioButtonBSleaders
+            // 
+            resources.ApplyResources(this.radioButtonBSleaders, "radioButtonBSleaders");
+            this.radioButtonBSleaders.Name = "radioButtonBSleaders";
+            this.radioButtonBSleaders.UseVisualStyleBackColor = true;
+            this.radioButtonBSleaders.CheckedChanged += new System.EventHandler(this.radioButtonBSleaders_CheckedChanged);
+            // 
+            // radioButtonBSdata
+            // 
+            resources.ApplyResources(this.radioButtonBSdata, "radioButtonBSdata");
+            this.radioButtonBSdata.Name = "radioButtonBSdata";
+            this.radioButtonBSdata.UseVisualStyleBackColor = true;
+            this.radioButtonBSdata.CheckedChanged += new System.EventHandler(this.radioButtonBSdata_CheckedChanged);
+            // 
+            // radioButtonBSsystem
+            // 
+            resources.ApplyResources(this.radioButtonBSsystem, "radioButtonBSsystem");
+            this.radioButtonBSsystem.Checked = true;
+            this.radioButtonBSsystem.Name = "radioButtonBSsystem";
+            this.radioButtonBSsystem.TabStop = true;
+            this.radioButtonBSsystem.UseVisualStyleBackColor = true;
+            this.radioButtonBSsystem.CheckedChanged += new System.EventHandler(this.radioButtonBSsystem_CheckedChanged);
             // 
             // DP300_Windows
             // 
@@ -4475,6 +4892,19 @@
             this.tabPageSerialTime.ResumeLayout(false);
             this.tabPageCommandSet.ResumeLayout(false);
             this.tabPageCommandSet.PerformLayout();
+            this.tabPageContour.ResumeLayout(false);
+            this.tabPageContour.PerformLayout();
+            this.panel_ColorScale.ResumeLayout(false);
+            this.panel_ColorScale.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Min)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMaxV_BS)).EndInit();
+            this.panel36.ResumeLayout(false);
+            this.panel36.PerformLayout();
+            this.tabPageBackScatter.ResumeLayout(false);
+            this.tabPageBackScatter.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -5047,6 +5477,53 @@
         private System.Windows.Forms.TextBox textBoxCommandSet;
         private System.Windows.Forms.TextBox textBoxSmartPageFile;
         private System.Windows.Forms.TextBox textBoxBackscatter;
+        private System.Windows.Forms.TabPage tabPageContour;
+        private System.Windows.Forms.Panel panel_ColorScale;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Min;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Max;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TrackBar trackBarMaxV_BS;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label labelMavV_BS;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button btnPick;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.CheckBox checkBox_b9;
+        private System.Windows.Forms.CheckBox checkBox_b8;
+        private System.Windows.Forms.CheckBox checkBox_b7;
+        private System.Windows.Forms.CheckBox checkBox_b6;
+        private System.Windows.Forms.CheckBox checkBox_b5;
+        private System.Windows.Forms.CheckBox checkBox_b4;
+        private System.Windows.Forms.CheckBox checkBox_b3;
+        private System.Windows.Forms.CheckBox checkBox_b2;
+        private System.Windows.Forms.CheckBox checkBox_b1;
+        private System.Windows.Forms.CheckBox checkBox_b0;
+        private System.Windows.Forms.Button btn_backscatter;
+        private System.Windows.Forms.Button btn_Amp;
+        private System.Windows.Forms.Panel panel36;
+        private System.Windows.Forms.TextBox textBox_EnsN;
+        private System.Windows.Forms.Label label_DateTime;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TabPage tabPageBackScatter;
+        private System.Windows.Forms.HScrollBar hScrollBar_BS;
+        private DoubleBufferPanel panel_contour;
+        private System.Windows.Forms.TextBox textBox_EnsNum;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtUserCommand;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBoxBSbeam;
+        private System.Windows.Forms.RadioButton radioButtonBSprofile;
+        private System.Windows.Forms.RadioButton radioButtonBSleaders;
+        private System.Windows.Forms.RadioButton radioButtonBSdata;
+        private System.Windows.Forms.RadioButton radioButtonBSsystem;
+        private System.Windows.Forms.Panel panel_BSProfile;
+        private System.Windows.Forms.TextBox textBoxBSleaders;
+        private System.Windows.Forms.TextBox textBoxBSdata;
+        private System.Windows.Forms.TextBox textBoxBSsystem;
+        private DoubleBufferPanel InfoPanel_BS;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }

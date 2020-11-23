@@ -113,10 +113,15 @@
     <Compile Include="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
+    <Compile Include="BackScatter.cs" />
     <Compile Include="CAdcpCommands.cs" />
     <Compile Include="CalDischarge.cs" />
     <Compile Include="CDecodeEnsemble.cs" />
     <Compile Include="CDecodeGPS.cs" />
+    <Compile Include="CdoubleBuffer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CDrawDisplay.cs" />
     <Compile Include="CEffectiveNumber.cs" />
     <Compile Include="CGetHeadingOffset.cs" />
     <Compile Include="ClassDrawSerialTime.cs" />
@@ -125,6 +130,7 @@
     <Compile Include="CLockKeyDog.cs" />
     <Compile Include="Configurations.cs" />
     <Compile Include="CExportFile.cs" />
+    <Compile Include="CPaint.cs" />
     <Compile Include="DefaultCfg.cs" />
     <Compile Include="DischargeSummary.cs" />
     <Compile Include="DVL_Windows.cs">

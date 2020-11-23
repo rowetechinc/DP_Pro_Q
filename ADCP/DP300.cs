@@ -2189,9 +2189,6 @@ namespace ADCP
                 {
                     fAverageVX /= icountValid;
                     fAverageVY /= icountValid;
-                    //boat speed playback helps on stick screen
-                    fAverageVX -= fBoatVelX;
-                    fAverageVY -= fBoatVelY;
                 }
                 return iGoodBinNum;
             }
@@ -6872,6 +6869,11 @@ namespace ADCP
                         RTIdata.AddRange(Calcflow.RiverDischargeCalculate.ReadEnsembleRawData(openFile.FileName));
                         EnsembleNumOfAllFiles = RTIdata.Count();
 
+                        //-RMa 11/23/2020
+                        #region Backscatter
+                        openFileBackScatter(openFile.FileName);
+                        #endregion
+
                         //读取GPS数据
                         GetFileToGPS(strFile + ".gps");
                       
@@ -6979,9 +6981,12 @@ namespace ADCP
                         this.BeginInvoke(RefreshDishargePanel); //刷新流量计算的显示
                         this.BeginInvoke(RefreshNavigation);
                         this.BeginInvoke(RefreshOthers);
-                        MainPanelPaint();
+
                         TrackPanelPaint();
-            
+                        MainPanelPaint();
+                        
+                        //btnScaleIncrease_Click(sender, e);
+                        //btnScaleDecrease_Click(sender, e);
                     }
  
                     #endregion
@@ -7262,6 +7267,11 @@ namespace ADCP
                         RTIdata.AddRange(Calcflow.RiverDischargeCalculate.ReadEnsembleRawData(openFile.FileName));
                         EnsembleNumOfAllFiles = RTIdata.Count();
 
+                        //-RMa 11/23/2020
+                        #region Backscatter
+                        openFileBackScatter(openFile.FileName);
+                        #endregion
+
                         //读取GPS数据
                         GetFileToGPS(strFile + ".gps");
 
@@ -7361,6 +7371,110 @@ namespace ADCP
                 GPSdisplayLength = 500;
             }
         }
+
+        #region Backscatter open file
+        //-RMa 11/23/2020
+        private void openFileBackScatter(string filePath)
+        {
+            //read from file
+            #region method 2
+            iStartEnsemble = 0; //-RMa 11/25/2020
+            iEndEnsemble = 1;
+            hScrollBar_BS.Value = 0;
+            hScrollBar_BS.LargeChange = 1;
+
+            long nBytesRead;
+            //long nBytes;
+            string exceptionmessage;
+
+            //DecodeState = 0;
+            //DataBuffReadIndex = 0;
+            DataBuffWriteIndex = 0;
+
+            BackScatter.DataBuffWriteIndex = 0;
+            BackScatter.DataBuffReadIndex = 0;
+            using (FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                try
+                {
+                    //nBytes = stream.Length;
+                    txtUserCommand.Text = filePath;
+                    nBytesRead = stream.Read(bBuff, 0, 10000);
+                    while (nBytesRead > 0)
+                    {
+                        for (int i = 0; i < nBytesRead; i++)
+                        {
+                            DataBuff[DataBuffWriteIndex] = bBuff[i];
+                            DataBuffWriteIndex++;
+                            if (DataBuffWriteIndex > MaxDataBuff)
+                                DataBuffWriteIndex = 0;
+                            BackScatter.DataBuffWriteIndex = DataBuffWriteIndex;
+                        }
+
+                        #region test
+                        int DBRI = DataBuffWriteIndex;
+                        while (DBRI != DataBuffReadIndex)
+                        {
+                            DBRI = DataBuffReadIndex;
+                            if (BackScatter.FindEnsemble(EnsBuf, DataBuff))
+                            {
+                                DecodeBackScatterEnsemble(TheBSbeam, BackScatter.Ensemble);
+                                BackScatter.EnsembleClass m = new BackScatter.EnsembleClass();
+                                m = Clone(BackScatter.Ensemble);
+                                ensembles.Add(m);
+                            }
+                        }
+                        #endregion
+                        nBytesRead = stream.Read(bBuff, 0, 10000);
+                    }
+
+                    iEndEnsemble = ensembles.Count; //ensembles.Count - 1;
+                    hScrollBar_BS.Maximum = ensembles.Count; //ensembles.Count - 1;
+                    textBox_EnsN.Text = iEndEnsemble.ToString();
+
+                    BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
+                    label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
+                    label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
+                }
+                catch (Exception ex)
+                {
+                    exceptionmessage = String.Format("caughtD1: {0}", ex.GetType().ToString());
+                    MessageBox.Show(exceptionmessage);
+                }
+            }
+            #endregion
+        }
+
+        private BackScatter.EnsembleClass Clone(BackScatter.EnsembleClass E)  
+        {
+            BackScatter.EnsembleClass _E = new BackScatter.EnsembleClass();
+
+            _E.System_EnsembleNumber = E.System_EnsembleNumber;
+            _E.System_Year = E.System_Year;
+            _E.System_Month = E.System_Month;
+            _E.System_Day = E.System_Day;
+            _E.System_Hour = E.System_Hour;
+            _E.System_Minute = E.System_Minute;
+            _E.System_Second = E.System_Second;
+            _E.System_Hsec = E.System_Hsec;
+            for (int i = 0; i < BackScatter.MaxBSbeams; i++)
+            {
+                _E.BS_Bins[i] = E.BS_Bins[i];
+                _E.BS_BinSize[i] = E.BS_BinSize[i];
+                _E.BS_FirstBin[i] = E.BS_FirstBin[i];
+                _E.BS_Frequency[i] = E.BS_Frequency[i];
+                for (int bin = 0; bin < E.BS_Bins[i]; bin++)
+                {
+                    _E.BS_Amplitude[i, bin] = E.BS_Amplitude[i, bin];
+                    _E.BS_BackScatter[i, bin] = E.BS_BackScatter[i, bin];
+                }
+            }
+
+            return _E;
+        }
+        #endregion
+
+
 
         //Modified 2011-9-20 rewrite get GPS from playback file to Ensembles
         //int lastBlock = -1;
@@ -8176,11 +8290,6 @@ namespace ADCP
                     fWaterDir = fWaterDir / Math.PI * 180 + 360;
                 else
                     fWaterDir = fWaterDir / Math.PI * 180;
-
-                if(fWaterDir != 180)
-                {
-                    fWaterDir = fWaterDir;
-                }
 
                 EnsemblesInfoToStore.WaterDir.Add(fWaterDir);
                 
@@ -10942,6 +11051,9 @@ namespace ADCP
             EnsemblesInfoToStore.RecivedTime.Clear();
             EnsemblesInfoToStore.RecivedDataTime.Clear();
             EnsemblesInfoToStore.bottomDepth.Clear();
+
+            EnsemblesInfoToStore.BinSize.Clear();
+
             EnsemblesInfoToStore.t.Clear();
             EnsemblesInfoToStore.BoatSpeed.Clear();
             EnsemblesInfoToStore.WaterSpeed.Clear();
@@ -11792,7 +11904,9 @@ namespace ADCP
 
         bool CommandsInitialized = false;
         public bool OnStartPinging()
-        {   
+        {
+            //ClearEnsemblesInfoToStore();
+
             linkLabelEdgeSetting.Enabled = false; //LPJ 2013-6-24
             linkLabelSiteInfor.Enabled = false;
             linkLabelSystemConf.Enabled = false;
@@ -12070,6 +12184,8 @@ namespace ADCP
 
             //btnGPSCalibration.Enabled = true; //LPJ 2013-11-15
             linkLabelHeadingOffset.Enabled = true; //LPJ 2013-11-18
+
+            TrackPanelPaint();
         }
 
         /// <summary>
@@ -12124,6 +12240,7 @@ namespace ADCP
 
             //btnGPSCalibration.Enabled = true; //LPJ 2013-11-15
             linkLabelHeadingOffset.Enabled = true; //LPJ 2013-11-18
+            TrackPanelPaint();
         }
 
         /// <summary>
@@ -12180,7 +12297,7 @@ namespace ADCP
             {
                 GetGPSHeadingOffset();
             }
-
+            TrackPanelPaint();
         }
             
         private void trackBarMaxV_Scroll(object sender, EventArgs e)
@@ -17991,7 +18108,9 @@ namespace ADCP
             ResizeControls(); //LPJ 2013-6-24
 
             textBoxHelpTips.Text = Resource1.String19 + "\r\n\r\n" + Resource1.String217 + "\r\n\r\n" + Resource1.String218;
-           
+
+            getCheckednumber();  //-RMa 12/01/2020
+
         }
 
         private void btnSpeedFlow_Click(object sender, EventArgs e) //LPJ 2013-6-7 减速
@@ -18177,12 +18296,7 @@ namespace ADCP
 
                     MaxDisplayHeight = MainGPSHeight;
 
-                    //MaxDisplayWidth = MainGPSWidth;  //LPJ 2013-6-9
-
-                    //DisplayRec = new Rectangle(0, 0, panelGPSTrack.Width, panelGPSTrack.Height);
-
                     CurrentDisplayUnit = (float)MainGPSWidth / 16;  //LPJ 2013-5-23
-
 
                     CurrentDisplayTop = panelGPSTrack.ClientRectangle.Top; //LPJ 2013-6-9
                     CurrentDisplayLeft = panelGPSTrack.ClientRectangle.Left;
@@ -18197,613 +18311,393 @@ namespace ADCP
                     float OrignX = 0;
                     float OrignY = 0;
 
+                    //g1.DrawImage(Bitmap, 5, 5); //draw North arrow
+                    g1.DrawImage(Bitmap, 5, 5, 20, 20);
+
+                    Font font1 = new Font("Arial", 9);
+                    if (!playBackMode)
                     {
-                        //SolidBrush brush1 = new SolidBrush(Color.FromArgb(255, Color.White));
-
-                        //g1.DrawImage(Bitmap, 5, 5); //draw North arrow
-                        g1.DrawImage(Bitmap, 5, 5, 20, 20);
-
-                        Font font1 = new Font("Arial", 9);
-                        //if (Resource1.String237 == labelUnit.Text)
-                        if (!playBackMode)
+                        #region
+                        if (!bEnglish2Metric)
                         {
-                            #region
-                            if (!bEnglish2Metric)
+                            if ("GPS VTG" == labelVesselRef.Text)//LPJ 2016-8-15
                             {
-                                if ("GPS VTG" == labelVesselRef.Text)//LPJ 2016-8-15
-                                {
-                                    g1.DrawString("GPS VTG (ft)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
-                                }
-                                else if ("GPS GGA" == labelVesselRef.Text)
-                                {
-                                    g1.DrawString("GPS GGA (ft)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
-                                }
-                                else if (Resource1.String233 == labelVesselRef.Text)
-                                {
-                                    g1.DrawString("Null (ft)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
-                                }
-                                else
-                                    g1.DrawString("Bottom Track (ft)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
+                                g1.DrawString("GPS VTG (ft)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
+                            }
+                            else if ("GPS GGA" == labelVesselRef.Text)
+                            {
+                                g1.DrawString("GPS GGA (ft)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
+                            }
+                            else if (Resource1.String233 == labelVesselRef.Text)
+                            {
+                                g1.DrawString("Null (ft)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
                             }
                             else
-                            {
-                                if ("GPS VTG" == labelVesselRef.Text)//LPJ 2016-8-15
-                                {
-                                    g1.DrawString("GPS VTG (m)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
-                                }
-                                else if ("GPS GGA" == labelVesselRef.Text)
-                                {
-                                    g1.DrawString("GPS GGA (m)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
-                                }
-                                else if (Resource1.String233 == labelVesselRef.Text)
-                                {
-                                    g1.DrawString("Null (m)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
-                                }
-                                else
-                                    g1.DrawString("Bottom Track (m)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
-                            }
-                            #endregion
+                                g1.DrawString("Bottom Track (ft)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
                         }
-                       
                         else
-                        { 
-                            #region 图例  
-                            string strTitle = "Track";
-                            if (!bEnglish2Metric)
+                        {
+                            if ("GPS VTG" == labelVesselRef.Text)//LPJ 2016-8-15
                             {
-                                strTitle = Resource1.String313 + "(ft)";
+                                g1.DrawString("GPS VTG (m)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
+                            }
+                            else if ("GPS GGA" == labelVesselRef.Text)
+                            {
+                                g1.DrawString("GPS GGA (m)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
+                            }
+                            else if (Resource1.String233 == labelVesselRef.Text)
+                            {
+                                g1.DrawString("Null (m)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
                             }
                             else
-                            {
-                                strTitle = Resource1.String313 + "(m)";
-                            }
-                            if (bGPSVTGTrack && bBottomTrack && bGPSGGATrack)
-                            {
-                                g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 90, 120, 80));
-                                g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 87));
-
-                                g1.DrawLine(new Pen(Brushes.DarkBlue, 2), new Point(15, panelGPSTrack.Height - 60), new Point(55, panelGPSTrack.Height - 60));
-                                g1.DrawString(Resource1.String232, font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 67));
-
-                                g1.DrawLine(new Pen(Brushes.DarkRed, 2), new Point(15, panelGPSTrack.Height - 40), new Point(55, panelGPSTrack.Height - 40));
-                                g1.DrawString("GPS VTG", font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 47));
-
-                                g1.DrawLine(new Pen(Brushes.Purple, 2), new Point(15, panelGPSTrack.Height - 20), new Point(55, panelGPSTrack.Height - 20));
-                                g1.DrawString("GPS GGA", font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 27));
-                            }
-                            else if (!bGPSVTGTrack && !bBottomTrack&&!bGPSGGATrack)
-                            {
-                                g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 30, 120, 20));
-                                g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 27));
-                            }
-                            else if ((bGPSGGATrack && !bBottomTrack && !bGPSVTGTrack) || (bGPSVTGTrack && !bBottomTrack && !bGPSGGATrack) || (bBottomTrack && !bGPSVTGTrack && !bGPSGGATrack))
-                            {
-                                g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 50, 120, 40));
-                                g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 47));
-
-                                string strLine = Resource1.String232;
-                                Brush brush = Brushes.DarkBlue;
-                                if (bGPSVTGTrack)
-                                {
-                                    strLine = "GPS VTG";
-                                    brush = Brushes.DarkRed;
-                                }
-                                else if (bGPSGGATrack)
-                                {
-                                    strLine = "GPS GGA";
-                                    brush = Brushes.Purple;
-                                }
-                                g1.DrawLine(new Pen(brush, 2), new Point(15, panelGPSTrack.Height - 20), new Point(55, panelGPSTrack.Height - 20));
-                                g1.DrawString(strLine, font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 27));
-
-                            }
-                            else
-                            {
-                                string strLine1 = Resource1.String232, strLine2 = "GPS VTG";
-                                Brush brush1 = Brushes.DarkBlue, brush2 = Brushes.DarkRed;
-                                if (!bGPSVTGTrack)
-                                {
-                                    strLine2 = "GPS GGA";
-                                    brush2 = Brushes.Purple;
-                                }
-                                else if (!bBottomTrack)
-                                {
-                                    strLine1 = "GPS GGA";
-                                    brush1 = Brushes.Purple;
-                                }
-
-                                g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 70, 120, 60));
-                                g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 67));
-
-                                g1.DrawLine(new Pen(brush1, 2), new Point(15, panelGPSTrack.Height - 40), new Point(55, panelGPSTrack.Height - 40));
-                                g1.DrawString(strLine1, font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 47));
-
-                                g1.DrawLine(new Pen(brush2, 2), new Point(15, panelGPSTrack.Height - 20), new Point(55, panelGPSTrack.Height - 20));
-                                g1.DrawString(strLine2, font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 27));
-                            }  
-                            #endregion
+                                g1.DrawString("Bottom Track (m)", font1, Brushes.Black, new PointF(10, panelGPSTrack.Height - 30));
                         }
+                        #endregion
+                    }  
+                    else
+                    { 
+                        #region 图例  
+                        string strTitle = "Track";
+                        if (!bEnglish2Metric)
+                        {
+                            strTitle = Resource1.String313 + "(ft)";
+                        }
+                        else
+                        {
+                            strTitle = Resource1.String313 + "(m)";
+                        }
+                        if (bGPSVTGTrack && bBottomTrack && bGPSGGATrack)
+                        {
+                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 90, 120, 80));
+                            g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 87));
+
+                            g1.DrawLine(new Pen(Brushes.DarkBlue, 2), new Point(15, panelGPSTrack.Height - 60), new Point(55, panelGPSTrack.Height - 60));
+                            g1.DrawString(Resource1.String232, font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 67));
+
+                            g1.DrawLine(new Pen(Brushes.DarkRed, 2), new Point(15, panelGPSTrack.Height - 40), new Point(55, panelGPSTrack.Height - 40));
+                            g1.DrawString("GPS VTG", font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 47));
+
+                            g1.DrawLine(new Pen(Brushes.Purple, 2), new Point(15, panelGPSTrack.Height - 20), new Point(55, panelGPSTrack.Height - 20));
+                            g1.DrawString("GPS GGA", font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 27));
+                        }
+                        else if (!bGPSVTGTrack && !bBottomTrack&&!bGPSGGATrack)
+                        {
+                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 30, 120, 20));
+                            g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 27));
+                        }
+                        else if ((bGPSGGATrack && !bBottomTrack && !bGPSVTGTrack) || (bGPSVTGTrack && !bBottomTrack && !bGPSGGATrack) || (bBottomTrack && !bGPSVTGTrack && !bGPSGGATrack))
+                        {
+                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 50, 120, 40));
+                            g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 47));
+
+                            string strLine = Resource1.String232;
+                            Brush brush = Brushes.DarkBlue;
+                            if (bGPSVTGTrack)
+                            {
+                                strLine = "GPS VTG";
+                                brush = Brushes.DarkRed;
+                            }
+                            else if (bGPSGGATrack)
+                            {
+                                strLine = "GPS GGA";
+                                brush = Brushes.Purple;
+                            }
+                            g1.DrawLine(new Pen(brush, 2), new Point(15, panelGPSTrack.Height - 20), new Point(55, panelGPSTrack.Height - 20));
+                            g1.DrawString(strLine, font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 27));
+
+                        }
+                        else
+                        {
+                            string strLine1 = Resource1.String232, strLine2 = "GPS VTG";
+                            Brush brush1 = Brushes.DarkBlue, brush2 = Brushes.DarkRed;
+                            if (!bGPSVTGTrack)
+                            {
+                                strLine2 = "GPS GGA";
+                                brush2 = Brushes.Purple;
+                            }
+                            else if (!bBottomTrack)
+                            {
+                                strLine1 = "GPS GGA";
+                                brush1 = Brushes.Purple;
+                            }
+
+                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 70, 120, 60));
+                            g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 67));
+
+                            g1.DrawLine(new Pen(brush1, 2), new Point(15, panelGPSTrack.Height - 40), new Point(55, panelGPSTrack.Height - 40));
+                            g1.DrawString(strLine1, font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 47));
+
+                            g1.DrawLine(new Pen(brush2, 2), new Point(15, panelGPSTrack.Height - 20), new Point(55, panelGPSTrack.Height - 20));
+                            g1.DrawString(strLine2, font1, Brushes.Black, new PointF(60, panelGPSTrack.Height - 27));
+                        }  
+                        #endregion
+                    }
                      
-                        font1.Dispose();
+                    font1.Dispose();
 
-                        using (Pen GreenPen = new Pen(Color.DarkGray, 1))
+                    using (Pen GreenPen = new Pen(Color.DarkGray, 1))
+                    {
+                        using (Font font = new Font("Arial", 8))//画中心经纬度及距离标值所用字体
                         {
-                            using (Font font = new Font("Arial", 8))//画中心经纬度及距离标值所用字体
+                            //鼠标在边缘或手动移动时，画面水平移动距离除以单位刻度的商,代表的是画面流过的线条个数
+                            int nX = (int)(DragLengthX) / (int)CurrentDisplayUnit;
+                            //鼠标在边缘或手动移动时，画面水平移动距离除以单位刻度的余数，代表的是尚未产生最新线条时已经流过的距离
+                            int lX = (int)(DragLengthX) % (int)CurrentDisplayUnit;
+                            //鼠标在边缘或手动移动时，画面竖直移动距离除以单位刻度的商
+                            int nY = (int)(DragLengthY) / (int)CurrentDisplayUnit;
+                            //鼠标在边缘或手动移动时，画面竖直移动距离除以单位刻度的余数
+                            int lY = (int)(DragLengthY) % (int)CurrentDisplayUnit;
+
+                            bool DrawOrignX = false;
+
+                            for (int i = 0; i <= 16; i++)//画竖线
                             {
-                                //鼠标在边缘或手动移动时，画面水平移动距离除以单位刻度的商,代表的是画面流过的线条个数
-                                int nX = (int)(DragLengthX) / (int)CurrentDisplayUnit;
-                                //鼠标在边缘或手动移动时，画面水平移动距离除以单位刻度的余数，代表的是尚未产生最新线条时已经流过的距离
-                                int lX = (int)(DragLengthX) % (int)CurrentDisplayUnit;
-                                //鼠标在边缘或手动移动时，画面竖直移动距离除以单位刻度的商
-                                int nY = (int)(DragLengthY) / (int)CurrentDisplayUnit;
-                                //鼠标在边缘或手动移动时，画面竖直移动距离除以单位刻度的余数
-                                int lY = (int)(DragLengthY) % (int)CurrentDisplayUnit;
-
-                                bool DrawOrignX = false;
-
-                                for (int i = 0; i <= 16; i++)//画竖线
+                                //由顶端到低端，依次向下画横线，如果检测到画线的位置已经超出了显示区下端，则结束本次画面绘制
+                                if (lX + CurrentDisplayUnit * i > MainGPSWidth)  //LPJ 2013-5-23
                                 {
-                                    //由顶端到低端，依次向下画横线，如果检测到画线的位置已经超出了显示区下端，则结束本次画面绘制
-                                    if (lX + CurrentDisplayUnit * i > MainGPSWidth)  //LPJ 2013-5-23
-                                    {
-                                        break;
-                                    }
-
-                                    //float NumX = 10 * (i - 8 - nX) * MouseWheelScale;    //JZH 2012-04-17 改变比例尺大小
-                                    float NumX = 1 * (i - 8 - nX) * MouseWheelScale; 
-                                    //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
-                                    if (!bEnglish2Metric)
-                                    {
-                                        NumX = (float)(projectUnit.MeterToFeet(NumX, 1));
-                                    }
-
-                                    //float NumX = (10 * (i - 8 - nX) * MouseWheelScale) / scaleMultiple;  //LPJ 2013-5-28
-                                    string NumXStr = NumX.ToString("0.00");
-                                    SizeF NumXSize = g1.MeasureString(NumXStr, font);
-                                    float NumXLength = NumXSize.Width;//字符串长度（像素）
-                                    //标定横坐标
-                                    {
-                                        g1.DrawString(NumXStr, font, Brushes.Gray,
-                                            CurrentDisplayLeft + lX + CurrentDisplayUnit * i - NumXLength / 2,
-                                            CurrentDisplayTop);
-                                    }
-
-                                    if (i == nX + 8)  //纵轴线:nX==0,即第四根线；nX==1，即第五根线，... ...
-                                    {
-                                        //标出经度值 
-                                        DrawOrignX = true;
-                                        OrignX = CurrentDisplayLeft + lX + CurrentDisplayUnit * i;
-
-                                        g1.DrawString("S", font, Brushes.Blue,
-                                            OrignX, CurrentDisplayTop + MainGPSHeight - 1.5f * font.Height);
-
-                                        //VerticalFont
-                                        GreenPen.DashStyle = DashStyle.Solid;  //实线
-                                    }
-                                    else
-                                    {
-                                        GreenPen.DashStyle = DashStyle.Dot;    //点线形式
-                                    }
-
-                                    float fX1, fY2;
-                                    fX1 = CurrentDisplayLeft + lX + CurrentDisplayUnit * i;
-                                    fY2 = CurrentDisplayTop + MainGPSHeight;
-                                    //画竖线
-                                    g1.DrawLine(GreenPen, fX1, CurrentDisplayTop, fX1, fY2);
+                                    break;
                                 }
 
-                                //绘图区中心线两侧所显示的的线条个数
-                                int SideHNum = (int)(MainGPSHeight / CurrentDisplayUnit) / 2;
-                                //使初始绘图区中心始终为纵横两条线的交点
-                                int AllHNum = 2 * SideHNum + 1;
-                                //上侧最后一条横线到绘图区顶端之间的距离
-                                float SmallHeight = MainGPSHeight / 2 - SideHNum * CurrentDisplayUnit;
-
-                                bool DrawOrignY = false;
-
-                                //画横线，使初始绘图区中心始终为纵横两条线的交点
-                                for (int j = 0; j <= AllHNum; j++)
+                                //float NumX = 10 * (i - 8 - nX) * MouseWheelScale;    //JZH 2012-04-17 改变比例尺大小
+                                float NumX = 1 * (i - 8 - nX) * MouseWheelScale; 
+                                //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
+                                if (!bEnglish2Metric)
                                 {
-                                    //由顶端到低端，依次向下画横线，如果检测到画线的位置已经超出了显示区下端，则结束本次画面绘制
-                                    if (lY + SmallHeight + CurrentDisplayUnit * j > MainGPSHeight)
-                                    {
-                                        break;
-                                    }
-                                    //float NumY = 10 * (j - SideHNum - nY) * MouseWheelScale;    //JZH 2012-04-17 改变比例尺大小
-                                    float NumY = 1 * (j - SideHNum - nY) * MouseWheelScale; 
-                                    //float NumY = (10 * (j - SideHNum - nY) * MouseWheelScale) / scaleMultiple;  //LPJ 2013-5-28
-                                    //Modified 2011-11-21, negate X asix mark. When Mr Qi start the program, he set the X for North pointing right, and Y for East pointing down
-                                    NumY *= -1;
-
-                                    //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
-                                    if (!bEnglish2Metric)
-                                    {
-                                        NumY = (float)(projectUnit.MeterToFeet(NumY, 1));
-                                    }
-
-                                    string NumYStr = NumY.ToString("0.00");
-                                    SizeF NumYSize = g1.MeasureString(NumYStr, font);
-                                    float NumYHeight = NumYSize.Height;
-                                    //标定纵坐标
-                                    if (displayBtmTrack)  //LPJ 2012-7-2 修改 
-                                    {
-                                        g1.DrawString(NumYStr, font, Brushes.Gray,
-                                            CurrentDisplayLeft,
-                                            CurrentDisplayTop + lY + SmallHeight + CurrentDisplayUnit * j - NumYHeight / 2);
-                                    }
-
-                                    if (j == nY + SideHNum) //横轴线
-                                    {
-                                        //画纬度值:
-                                        //SizeF size = g1.MeasureString(SailTrackYpzn.ToString() + 'N', font);
-                                        SizeF size = g1.MeasureString("E", font);
-                                        float length = size.Width;
-                                        DrawOrignY = true;
-                                        OrignY = CurrentDisplayTop + lY + SmallHeight + CurrentDisplayUnit * j;
-
-                                        g1.DrawString("E", font, Brushes.Blue,
-                                            CurrentDisplayLeft + MainGPSWidth - length, OrignY);
-
-                                        GreenPen.DashStyle = DashStyle.Solid;  //实线
-                                    }
-                                    else
-                                    {
-                                        GreenPen.DashStyle = DashStyle.Dot;    //点线形式
-                                    }
-                                    float fY1, fX2;
-                                    fY1 = CurrentDisplayTop + lY + SmallHeight + CurrentDisplayUnit * j;
-                                    fX2 = CurrentDisplayLeft + MainGPSWidth;
-                                    //画横线
-                                    g1.DrawLine(GreenPen, CurrentDisplayLeft, fY1, fX2, fY1);
-                                }
-                                if (DrawOrignX && DrawOrignY)
-                                {
-                                    Pen n = new Pen(Color.Green, 2);
-                                    Rectangle rg = new Rectangle((int)(OrignX - 4), (int)(OrignY - 4), 8, 8);
-                                    g1.DrawEllipse(n, rg); 
-                                    //g1.FillEllipse(Brushes.GreenYellow, OrignX - 3f, OrignY - 3f, 6f, 6f);
+                                    NumX = (float)(projectUnit.MeterToFeet(NumX, 1));
                                 }
 
-                                //LPJ 2013-5-23
-                                //g1.FillEllipse(Brushes.Red, OrignX - 8f, OrignY - 8f,
-                                //    16 * SailTrackMouseWheelScale, 16 * SailTrackMouseWheelScale);
-                                //g1.FillEllipse(Brushes.Yellow, OrignX - 4f, OrignY - 4f,
-                                //    8 * SailTrackMouseWheelScale, 8 * SailTrackMouseWheelScale);
-
-
-                                //由于每次都是从（CurrentDisplayTop+SmallHeight）处开始往下绘制画横线，
-                                //故要补充绘制（CurrentDisplayTop+SmallHeight）以上的部分：
-                                if (lY + SmallHeight >= CurrentDisplayUnit)
+                                //float NumX = (10 * (i - 8 - nX) * MouseWheelScale) / scaleMultiple;  //LPJ 2013-5-28
+                                string NumXStr = NumX.ToString("0.00");
+                                SizeF NumXSize = g1.MeasureString(NumXStr, font);
+                                float NumXLength = NumXSize.Width;//字符串长度（像素）
+                                //标定横坐标
                                 {
-                                    //准备画的线是标定为0的那根线向上数第(SideHNum + (nY+1))根
-                                    //float NumY = 100 * (0 - SideHNum - nY - 1) * MouseWheelScale;//LPJ 2013-6-3
-                                    float NumY = 10 * (0 - SideHNum - nY - 1) * MouseWheelScale;
-                                  
-                                    //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
-                                    if (!bEnglish2Metric)
-                                    {
-                                        NumY = (float)(projectUnit.MeterToFeet(NumY, 1));
-                                    }
-
-                                    string NumYStr = NumY.ToString("0.00");
-                                    SizeF NumYSize = g1.MeasureString(NumYStr, font);
-                                    float NumYHeight = NumYSize.Height;
-                                    //标定纵坐标
-                                    g1.DrawString(NumYStr, font, Brushes.LightGray,
-                                        CurrentDisplayLeft,
-                                        CurrentDisplayTop + lY + SmallHeight - CurrentDisplayUnit - NumYHeight / 2);
-                                    //画横线
-                                    float fY1, fX2;
-                                    fY1=CurrentDisplayTop + lY + SmallHeight - CurrentDisplayUnit;
-                                    fX2=CurrentDisplayLeft + MainGPSWidth;
-                                    g1.DrawLine(GreenPen, CurrentDisplayLeft, fY1, fX2, fY1);
+                                    g1.DrawString(NumXStr, font, Brushes.Gray,
+                                        CurrentDisplayLeft + lX + CurrentDisplayUnit * i - NumXLength / 2,
+                                        CurrentDisplayTop);
                                 }
+
+                                if (i == nX + 8)  //纵轴线:nX==0,即第四根线；nX==1，即第五根线，... ...
+                                {
+                                    //标出经度值 
+                                    DrawOrignX = true;
+                                    OrignX = CurrentDisplayLeft + lX + CurrentDisplayUnit * i;
+
+                                    g1.DrawString("S", font, Brushes.Blue,
+                                        OrignX, CurrentDisplayTop + MainGPSHeight - 1.5f * font.Height);
+
+                                    //VerticalFont
+                                    GreenPen.DashStyle = DashStyle.Solid;  //实线
+                                }
+                                else
+                                {
+                                    GreenPen.DashStyle = DashStyle.Dot;    //点线形式
+                                }
+
+                                float fX1, fY2;
+                                fX1 = CurrentDisplayLeft + lX + CurrentDisplayUnit * i;
+                                fY2 = CurrentDisplayTop + MainGPSHeight;
+                                //画竖线
+                                g1.DrawLine(GreenPen, fX1, CurrentDisplayTop, fX1, fY2);
                             }
-                            GreenPen.Dispose(); //LPJ 2013-7-4
+
+                            //绘图区中心线两侧所显示的的线条个数
+                            int SideHNum = (int)(MainGPSHeight / CurrentDisplayUnit) / 2;
+                            //使初始绘图区中心始终为纵横两条线的交点
+                            int AllHNum = 2 * SideHNum + 1;
+                            //上侧最后一条横线到绘图区顶端之间的距离
+                            float SmallHeight = MainGPSHeight / 2 - SideHNum * CurrentDisplayUnit;
+
+                            bool DrawOrignY = false;
+
+                            //画横线，使初始绘图区中心始终为纵横两条线的交点
+                            for (int j = 0; j <= AllHNum; j++)
+                            {
+                                //由顶端到低端，依次向下画横线，如果检测到画线的位置已经超出了显示区下端，则结束本次画面绘制
+                                if (lY + SmallHeight + CurrentDisplayUnit * j > MainGPSHeight)
+                                {
+                                    break;
+                                }
+                                //float NumY = 10 * (j - SideHNum - nY) * MouseWheelScale;    //JZH 2012-04-17 改变比例尺大小
+                                float NumY = 1 * (j - SideHNum - nY) * MouseWheelScale; 
+                                //float NumY = (10 * (j - SideHNum - nY) * MouseWheelScale) / scaleMultiple;  //LPJ 2013-5-28
+                                //Modified 2011-11-21, negate X asix mark. When Mr Qi start the program, he set the X for North pointing right, and Y for East pointing down
+                                NumY *= -1;
+
+                                //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
+                                if (!bEnglish2Metric)
+                                {
+                                    NumY = (float)(projectUnit.MeterToFeet(NumY, 1));
+                                }
+
+                                string NumYStr = NumY.ToString("0.00");
+                                SizeF NumYSize = g1.MeasureString(NumYStr, font);
+                                float NumYHeight = NumYSize.Height;
+                                //标定纵坐标
+                                if (displayBtmTrack)  //LPJ 2012-7-2 修改 
+                                {
+                                    g1.DrawString(NumYStr, font, Brushes.Gray,
+                                        CurrentDisplayLeft,
+                                        CurrentDisplayTop + lY + SmallHeight + CurrentDisplayUnit * j - NumYHeight / 2);
+                                }
+
+                                if (j == nY + SideHNum) //横轴线
+                                {
+                                    //画纬度值:
+                                    //SizeF size = g1.MeasureString(SailTrackYpzn.ToString() + 'N', font);
+                                    SizeF size = g1.MeasureString("E", font);
+                                    float length = size.Width;
+                                    DrawOrignY = true;
+                                    OrignY = CurrentDisplayTop + lY + SmallHeight + CurrentDisplayUnit * j;
+
+                                    g1.DrawString("E", font, Brushes.Blue,
+                                        CurrentDisplayLeft + MainGPSWidth - length, OrignY);
+
+                                    GreenPen.DashStyle = DashStyle.Solid;  //实线
+                                }
+                                else
+                                {
+                                    GreenPen.DashStyle = DashStyle.Dot;    //点线形式
+                                }
+                                float fY1, fX2;
+                                fY1 = CurrentDisplayTop + lY + SmallHeight + CurrentDisplayUnit * j;
+                                fX2 = CurrentDisplayLeft + MainGPSWidth;
+                                //画横线
+                                g1.DrawLine(GreenPen, CurrentDisplayLeft, fY1, fX2, fY1);
+                            }
+                            if (DrawOrignX && DrawOrignY)
+                            {
+                                Pen n = new Pen(Color.Green, 2);
+                                Rectangle rg = new Rectangle((int)(OrignX - 4), (int)(OrignY - 4), 8, 8);
+                                g1.DrawEllipse(n, rg); 
+                                //g1.FillEllipse(Brushes.GreenYellow, OrignX - 3f, OrignY - 3f, 6f, 6f);
+                            }
+
+                            //LPJ 2013-5-23
+                            //g1.FillEllipse(Brushes.Red, OrignX - 8f, OrignY - 8f,
+                            //    16 * SailTrackMouseWheelScale, 16 * SailTrackMouseWheelScale);
+                            //g1.FillEllipse(Brushes.Yellow, OrignX - 4f, OrignY - 4f,
+                            //    8 * SailTrackMouseWheelScale, 8 * SailTrackMouseWheelScale);
+
+
+                            //由于每次都是从（CurrentDisplayTop+SmallHeight）处开始往下绘制画横线，
+                            //故要补充绘制（CurrentDisplayTop+SmallHeight）以上的部分：
+                            if (lY + SmallHeight >= CurrentDisplayUnit)
+                            {
+                                //准备画的线是标定为0的那根线向上数第(SideHNum + (nY+1))根
+                                //float NumY = 100 * (0 - SideHNum - nY - 1) * MouseWheelScale;//LPJ 2013-6-3
+                                float NumY = 10 * (0 - SideHNum - nY - 1) * MouseWheelScale;
+                                  
+                                //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
+                                if (!bEnglish2Metric)
+                                {
+                                    NumY = (float)(projectUnit.MeterToFeet(NumY, 1));
+                                }
+
+                                string NumYStr = NumY.ToString("0.00");
+                                SizeF NumYSize = g1.MeasureString(NumYStr, font);
+                                float NumYHeight = NumYSize.Height;
+                                //标定纵坐标
+                                g1.DrawString(NumYStr, font, Brushes.LightGray,
+                                    CurrentDisplayLeft,
+                                    CurrentDisplayTop + lY + SmallHeight - CurrentDisplayUnit - NumYHeight / 2);
+                                //画横线
+                                float fY1, fX2;
+                                fY1=CurrentDisplayTop + lY + SmallHeight - CurrentDisplayUnit;
+                                fX2=CurrentDisplayLeft + MainGPSWidth;
+                                g1.DrawLine(GreenPen, CurrentDisplayLeft, fY1, fX2, fY1);
+                            }
                         }
+                        GreenPen.Dispose(); //LPJ 2013-7-4
+                    }
 
                        
-                        float scaleFactor = MouseWheelScale / scaleMultiple;
-                        Matrix matrix = new Matrix();//定义一个做几何变换的对象
+                    float scaleFactor = MouseWheelScale / scaleMultiple;
+                    Matrix matrix = new Matrix();//定义一个做几何变换的对象
 
-                        // SailTrackmatrix.Translate((float)panelWidth / 2 + SailTrackDragLengthX, (float)panelHeight / 2 + SailTrackDragLengthY);//缩放中心设为绘图区中心
-                        //matrix.Translate(MainGPSWidth / 2 + 60 + DragLengthX, DragLengthY + 205 + MainGPSHeight / 2);//缩放中心设为绘图区中心 //LPJ 2013-5-23
-                        matrix.Translate(MainGPSWidth / 2 + DragLengthX, DragLengthY + MainGPSHeight / 2);
-                        matrix.Scale(scaleMultiple / MouseWheelScale, scaleMultiple / MouseWheelScale);
+                    // SailTrackmatrix.Translate((float)panelWidth / 2 + SailTrackDragLengthX, (float)panelHeight / 2 + SailTrackDragLengthY);//缩放中心设为绘图区中心
+                    //matrix.Translate(MainGPSWidth / 2 + 60 + DragLengthX, DragLengthY + 205 + MainGPSHeight / 2);//缩放中心设为绘图区中心 //LPJ 2013-5-23
+                    matrix.Translate(MainGPSWidth / 2 + DragLengthX, DragLengthY + MainGPSHeight / 2);
+                    matrix.Scale(scaleMultiple / MouseWheelScale, scaleMultiple / MouseWheelScale);
 
-                        g1.Transform = matrix;//Modified 2011-11-15 cancel
+                    g1.Transform = matrix;//Modified 2011-11-15 cancel
 
 
-                        if (playBackMode)
+                    if (playBackMode)
+                    {
+                        GPSdataCount = BinDataEnsembleNum;   //Modified 2011-9-13
+                    }
+                    else
+                    {
+                        GPSdataCount = totalNum;
+                    }
+
+                    if (TrackStop)
+                    {
+                        ComputeXYposition((string)GGAsave[GGAsaveCount - 1]);  //playback and record //LPJ 2013-7-2 cancel
+                        return;
+                    }
+
+                    //Modified 2011-9-24 here
+                    PointF PtStart = new PointF(0, 0);
+                    PointF tempP = new PointF(0, 0);
+                    PointF VP = new PointF(0, 0);
+                    Point saveLastPoint = new Point(0, 0);
+
+                    if (GPSdataCount >= 2)
+                    {
+                        if (!playBackMode) //record mode
                         {
-                            GPSdataCount = BinDataEnsembleNum;   //Modified 2011-9-13
-                        }
-                        else
-                        {
-                            GPSdataCount = totalNum;
-                        }
-
-                        if (TrackStop)
-                        {
-                            ComputeXYposition((string)GGAsave[GGAsaveCount - 1]);  //playback and record //LPJ 2013-7-2 cancel
-                            return;
-                        }
-
-                        //Modified 2011-9-24 here
-                        PointF PtStart = new PointF(0, 0);
-                        PointF tempP = new PointF(0, 0);
-                        PointF VP = new PointF(0, 0);
-                        Point saveLastPoint = new Point(0, 0);
-
-                        if (GPSdataCount >= 2)
-                        {
-                            if (!playBackMode) //record mode
+                            if (TrackPause)
                             {
-                                if (TrackPause)
-                                {
-                                    GPSdataCount = PausePoint;
-                                }
+                                GPSdataCount = PausePoint;
+                            }
 
-                                //Modified 2011-9-18 to prevent overrun
-                                if (GPSdataCount < GGAsaveCount) //LPJ 2013-8-2 这里直接跳出？？？？？？？？？？？？？？
-                                {
-                                    return;
-                                }
+                            //Modified 2011-9-18 to prevent overrun
+                            if (GPSdataCount < GGAsaveCount) //LPJ 2013-8-2 这里直接跳出？？？？？？？？？？？？？？
+                            {
+                                return;
+                            }
 
-                                //LPJ 2013-9-13  在采集模式时，起始点始终为第一个采集数据点 --start
+                            //LPJ 2013-9-13  在采集模式时，起始点始终为第一个采集数据点 --start
+                            GPSdisplayStartPoint = 0;
+                            PtStart.X = 0;
+                            PtStart.Y = 0;
+
+                            /*
+                            if (GGAsaveCount < GPSdisplayLength)  //当回放模式时，GPSdisplayLength为5000，实时采集为500
+                            {
                                 GPSdisplayStartPoint = 0;
                                 PtStart.X = 0;
                                 PtStart.Y = 0;
-
-                                /*
-                                if (GGAsaveCount < GPSdisplayLength)  //当回放模式时，GPSdisplayLength为5000，实时采集为500
-                                {
-                                    GPSdisplayStartPoint = 0;
-                                    PtStart.X = 0;
-                                    PtStart.Y = 0;
-                                }
-                                else
-                                {
-                                    GPSdisplayStartPoint = GGAsaveCount - GPSdisplayLength;
-                                    PtStart = UTMpointSave[GPSdisplayStartPoint];
-                                    //StartLongitude = GPS_longitude; //Modified 2011-11-8
-                                }*/
-                                //LPJ 2013-9-13  在采集模式时，起始点始终为第一个采集数据点 --start
-
-                                int PrevGoodEnsembleNoOffset = 0;  //JZH 2012-04-18  底跟踪前一个有效单元的偏移                     
-                                bool GetFirstGoodEnsemble = true;  //JZH 2012-04-18  采集到第一个有效单元
-                                float AccEast = 0; //JZH 2012-04-18  底跟踪东向累积量
-                                float AccNorth = 0; //JZH 2012-04-18 底跟踪北向累积量
-                                int PrevGoodEnsemblePos = 0; //JZH 2012-04-18 前一个底跟踪有效单元位置
-                                float fLastSecond = 0;    //JZH 2012-06-14 上一个有效的Ensemble时间
-
-                                PointF tempPnt = TransToMapPoint(tempP); ; //LPJ 2013-7-4
-                                PointF[] TempPnts = new PointF[BinDataEnsembleNum + 1]; //LPJ 2013-7-10 将航迹线用折线来绘制
-                                int icounts = 0; //LPJ 2013-7-10 
-                                Pen bluePen = new Pen(Brushes.Blue, (int)(1.5 * MouseWheelScale)); //LPJ 2013-8-2
-
-                                for (int i = GPSdisplayStartPoint; i < GGAsaveCount; i++) //Modified 2011-9-17
-                                {
-                                    {
-                                        if (i == 0)
-                                        {
-                                            UTMpoint.X = 0;  //
-                                            UTMpoint.Y = 0;
-
-                                            float fBoatVx, fBoatVy; //LPJ 2013-7-31
-                                            fBoatVx = ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VX;
-                                            fBoatVy = ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VY;
-                                            if ("GPS VTG" == labelVesselRef.Text)
-                                            {
-                                                fBoatVx = ((Velocity)(EnsemblesInfoToStore.BoatV_GPS[i])).VX;
-                                                fBoatVy = ((Velocity)(EnsemblesInfoToStore.BoatV_GPS[i])).VY;
-                                            }//LPJ 2013-7-31
-                                            else if ("GPS GGA" == labelVesselRef.Text)
-                                            {
-                                                fBoatVx = ((Velocity)(EnsemblesInfoToStore.BoatV_GPGGA[i])).VX;
-                                                fBoatVy = ((Velocity)(EnsemblesInfoToStore.BoatV_GPGGA[i])).VY;
-                                            }
-                                            else if (Resource1.String233 == labelVesselRef.Text)
-                                            {
-                                                 fBoatVx = 0;
-                                                 fBoatVy = 0;
-                                            }
-
-                                            if(Math.Abs( fBoatVx) > 20 || Math.Abs( fBoatVy) > 20)
-                                            //if (((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VX > 20 || ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VY > 20)
-                                            {
-                                                //FirstGoodEnsembleNoOffset++; //起始数据组不是有效底跟踪数据
-                                                GetFirstGoodEnsemble = false;
-                                            }
-                                            else  //JZH 2012-06-14 改正导航航迹计算
-                                            {
-                                                GetFirstGoodEnsemble = true;
-                                                fLastSecond = (float)EnsemblesInfoToStore.RecivedTime[0];
-                                                PrevGoodEnsemblePos = 0;
-                                            }
-
-                                            TempPnts[icounts++] = TransToMapPoint(PtStart); //LPJ 2013-7-10
-                                        }
-                                        else
-                                        {
-                                            float fBoatVx, fBoatVy; //LPJ 2013-7-31
-                                            float fBoatVx_Prev, fBoatVy_Prev;
-                                            fBoatVx = ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VX;
-                                            fBoatVy = ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VY;
-                                            fBoatVx_Prev = ((Velocity)EnsemblesInfoToStore.BoatVelocity[PrevGoodEnsemblePos]).VX;
-                                            fBoatVy_Prev = ((Velocity)EnsemblesInfoToStore.BoatVelocity[PrevGoodEnsemblePos]).VY;
-                                            if ("GPS VTG" == labelVesselRef.Text)
-                                            {
-                                                fBoatVx = ((Velocity)(EnsemblesInfoToStore.BoatV_GPS[i])).VX;
-                                                fBoatVy = ((Velocity)(EnsemblesInfoToStore.BoatV_GPS[i])).VY;
-                                                fBoatVx_Prev = ((Velocity)EnsemblesInfoToStore.BoatV_GPS[PrevGoodEnsemblePos]).VX;
-                                                fBoatVy_Prev = ((Velocity)EnsemblesInfoToStore.BoatV_GPS[PrevGoodEnsemblePos]).VY;
-                                            }//LPJ 2013-7-31
-                                            else if ("GPS GGA" == labelVesselRef.Text)
-                                            {
-                                                fBoatVx = ((Velocity)(EnsemblesInfoToStore.BoatV_GPGGA[i])).VX;
-                                                fBoatVy = ((Velocity)(EnsemblesInfoToStore.BoatV_GPGGA[i])).VY;
-                                                fBoatVx_Prev = ((Velocity)EnsemblesInfoToStore.BoatV_GPGGA[PrevGoodEnsemblePos]).VX;
-                                                fBoatVy_Prev = ((Velocity)EnsemblesInfoToStore.BoatV_GPGGA[PrevGoodEnsemblePos]).VY;
-                                            }
-                                            else if (Resource1.String233 == labelVesselRef.Text)
-                                            {
-                                                fBoatVx = 0;
-                                                fBoatVy = 0;
-                                                fBoatVx_Prev = 0;
-                                                fBoatVy_Prev = 0;
-                                            }
-
-                                            if( Math.Abs( fBoatVx) < 20 && Math.Abs( fBoatVy) < 20)
-                                            //if (((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VX < 20 && ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VY < 20)
-                                            {
-                                                if (GetFirstGoodEnsemble)
-                                                {
-                                                    //float LEast = (1.0f) * 0.5f * (float)(((Velocity)EnsemblesInfoToStore.BoatVelocity[PrevGoodEnsemblePos]).VX + ((Velocity)EnsemblesInfoToStore.BoatVelocity[i]).VX) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);   //JZH 2012-06-14
-                                                    //float LNorth = (1.0f) * 0.5f * (float)(((Velocity)EnsemblesInfoToStore.BoatVelocity[PrevGoodEnsemblePos]).VY + ((Velocity)EnsemblesInfoToStore.BoatVelocity[i]).VY) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);  //JZH 2012-06-14
-
-                                                    float LEast = (1.0f) * 0.5f * (float)(fBoatVx_Prev + fBoatVx) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);   //JZH 2012-06-14
-                                                    float LNorth = (1.0f) * 0.5f * (float)(fBoatVy_Prev + fBoatVy) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);  //JZH 2012-06-14
-
-                                                    AccEast += LEast;
-                                                    AccNorth += LNorth;
-                                                    //JZH 2012-04-17 支持自动缩放
-                                                    //float fTransAccEast = AccEast / 10 * CurrentDisplayUnit;
-                                                    //float fTransAccNorth = AccNorth / 10 * CurrentDisplayUnit;
-                                                    float fTransAccEast = AccEast / 1 * CurrentDisplayUnit;
-                                                    float fTransAccNorth = AccNorth / 1 * CurrentDisplayUnit;
-
-                                                    UTMpoint.X = (int)fTransAccEast; //JZH 2012-04-17
-                                                    UTMpoint.Y = (int)fTransAccNorth;
-
-                                                    PrevGoodEnsembleNoOffset = 0;
-                                                    PrevGoodEnsemblePos = i;
-                                                    fLastSecond = (float)EnsemblesInfoToStore.RecivedTime[i];  //JZH 2012-06-14
-
-                                                }
-                                                else
-                                                {
-                                                    GetFirstGoodEnsemble = true;
-                                                    PrevGoodEnsemblePos = i;
-                                                    fLastSecond = (float)EnsemblesInfoToStore.RecivedTime[i];  //JZH 2012-06-14
-                                                }
-                                            }
-                                            else
-                                            {
-                                                PrevGoodEnsembleNoOffset++;
-
-                                            }
-
-                                        }
-                                        tempP.X = UTMpoint.X;
-                                        tempP.Y = UTMpoint.Y;
-                                        tempP.Y *= -1;
-                                    }
-
-                                    tempPnt = TransToMapPoint(tempP); //LPJ 2013-7-10
-                                    PointF VPnt = TransToMapPoint(VP);  //LPJ 2013-7-10
-
-                                    if ((i % setAveragePoints) == 0 && i > setAveragePoints)
-                                    {
- 
-                                        float AVX = AverageVXsave[i];
-                                        float AVY = AverageVYsave[i];
-
-                                        if ("GPS VTG" == labelVesselRef.Text) //LPJ 2013-7-31
-                                        {
-                                            AVX = AverageVXsave_GPS[i];
-                                            AVY = AverageVXsave_GPS[i];
-                                        }
-                                        else if ("GPS GGA" == labelVesselRef.Text) //LPJ 2013-7-31
-                                        {
-                                            AVX = AverageVXsave_GPGGA[i];
-                                            AVY = AverageVXsave_GPGGA[i];
-                                        }
-                                        else if (Resource1.String233 == labelVesselRef.Text)
-                                        {
-                                            AVX = AverageVXsave_Null[i];
-                                            AVY = AverageVXsave_Null[i];
-                                        }
-
-
-                                        //VP.Y = tempP.Y + AverageVYsave[i] * AverageScale;
-                                        VP.Y = tempP.Y - AVY * AverageScale * MouseWheelScale / 8; //LPJ 2013-8-6
-                                        //VP.X = tempP.X + AVX * AverageScale; //(float)EnsemblesInfoToStore.VYstore[i] * setAverageScale;
-                                        VP.X = tempP.X + AVX * AverageScale * MouseWheelScale / 8; //LPJ 2013-8-6
-
-                                        //流速矢量线 //LPJ 2013-6-4
-                                        if ((float)EnsemblesInfoToStore.bottomDepth[i] > 0.01f) //LPJ 2013-9-22 当水深有效时，绘制流速矢量线
-                                            g1.DrawLine(bluePen, tempPnt, VPnt);
-
-                                        //g1.DrawLine(Pens.Blue, tempP, VP); //SailTrackTansToMapPoint((PointF)(bc.SailTrackBoatPosition)));
-                                    }
-
-                                    TempPnts[icounts++] = tempPnt; //LPJ 2013-7-10
-                                    //LPJ 2013-6-4 绘制航迹线
-                                    //Pen TrackPen = new Pen(Brushes.Red, 4 * MouseWheelScale);
-                                    //g1.DrawLine(TrackPen, TransToMapPoint(PtStart), TransToMapPoint(tempP));
-
-                                    PtStart = tempP; // SailTrackTansToMapPoint((PointF)(bc.SailTrackBoatPosition));
-                                    //TrackPen.Dispose(); //LPJ 2013-7-4
-                                }
-                                Pen TrackPen = new Pen(Brushes.Red, 4 * MouseWheelScale);
-                                g1.DrawLines(TrackPen, TempPnts); //LPJ 2013-7-10 
-                                TrackPen.Dispose(); //LPJ 2013-7-4
-
-                                //LPJ 2013-5-23
-                                //g1.FillEllipse(Brushes.Red, tempP.X - 2, tempP.Y - 2, 4 * MouseWheelScale, 4 * MouseWheelScale); //(-1 * originSize / 2) * SailTrackMouseWheelScale, originSize * SailTrackMouseWheelScale, originSize * SailTrackMouseWheelScale);
-                                Pen n = new Pen(Color.Red, 2 * MouseWheelScale);
-                                Rectangle rg = new Rectangle((int)(tempPnt.X - 4 * MouseWheelScale), (int)(tempPnt.Y - 4 * MouseWheelScale), (int)(8 * MouseWheelScale), (int)(8 * MouseWheelScale));
-                                g1.DrawEllipse(n, rg); 
-                                //g1.FillEllipse(Brushes.Red, tempPnt.X, tempPnt.Y, 8 * MouseWheelScale, 8 * MouseWheelScale);
-                                AutoSizeGPS(tempP);
                             }
-                            else //playbackmode  //Modified 2011-11-27, try display every setAveragePoints
+                            else
                             {
-                                if (TrackOverPlay == true)
-                                {
-                                    return;
-                                }
-                                if (TrackPause)
-                                {
-                                    GPSdataCount = PausePoint;
-                                }
+                                GPSdisplayStartPoint = GGAsaveCount - GPSdisplayLength;
+                                PtStart = UTMpointSave[GPSdisplayStartPoint];
+                                //StartLongitude = GPS_longitude; //Modified 2011-11-8
+                            }*/
+                            //LPJ 2013-9-13  在采集模式时，起始点始终为第一个采集数据点 --start
 
-                                //JZH 2012-01-04 新版代码
-                                if (BinDataEnsembleNum < GPSdisplayLength)
-                                {
-                                    GPSdisplayStartPoint = 0;
-                                    PtStart.X = 0; //LPJ 2013-5-23
-                                    PtStart.Y = 0;
-                                }
-                                else
-                                {
-                                    GPSdisplayStartPoint = BinDataEnsembleNum - GPSdisplayLength;
-                                    PtStart = (Point)EnsemblesInfoToStore.UTMpoint[GPSdisplayStartPoint];
+                            int PrevGoodEnsembleNoOffset = 0;  //JZH 2012-04-18  底跟踪前一个有效单元的偏移                     
+                            bool GetFirstGoodEnsemble = true;  //JZH 2012-04-18  采集到第一个有效单元
+                            float AccEast = 0; //JZH 2012-04-18  底跟踪东向累积量
+                            float AccNorth = 0; //JZH 2012-04-18 底跟踪北向累积量
+                            int PrevGoodEnsemblePos = 0; //JZH 2012-04-18 前一个底跟踪有效单元位置
+                            float fLastSecond = 0;    //JZH 2012-06-14 上一个有效的Ensemble时间
 
-                                }
+                            PointF tempPnt = TransToMapPoint(tempP); ; //LPJ 2013-7-4
+                            PointF[] TempPnts = new PointF[BinDataEnsembleNum + 1]; //LPJ 2013-7-10 将航迹线用折线来绘制
+                            int icounts = 0; //LPJ 2013-7-10 
+                            Pen bluePen = new Pen(Brushes.Blue, (int)(1.5 * MouseWheelScale)); //LPJ 2013-8-2
 
-                                #region
-                                /*
-                                int PrevGoodEnsembleNoOffset = 0;  //JZH 2012-01-31  底跟踪前一个有效单元的偏移
-                                //int FirstGoodEnsembleNoOffset = 0;       //JZH 2012-01-31  底跟踪第一个有效单元偏移
-                                bool GetFirstGoodEnsemble = true;  //JZH 2012-01-31  采集到第一个有效单元
-                                float AccEast = 0; //JZH 2012-02-09  底跟踪东向累积量
-                                float AccNorth = 0; //JZH 2012-02-09 底跟踪北向累积量
-                                int PrevGoodEnsemblePos = 0; //JZH 2012-04-01 前一个底跟踪有效单元位置
-                                float LastSecond = 0;
-                                PointF tempPnt  = TransToMapPoint(tempP);; //LPJ 2013-7-4
-
-                                Pen darkblue = new Pen(Brushes.Red, 4 * MouseWheelScale); //LPJ 2013-7-10 将航迹图中的航迹改为红色
-                                Pen bluePen = new Pen(Brushes.Blue, (int)(1.5 * MouseWheelScale)); //LPJ 2013-8-2
-                                PointF[] TempPnts = new PointF[BinDataEnsembleNum + 1]; //LPJ 2013-7-10 将航迹线用折线来绘制
-                                int icounts = 0; //LPJ 2013-7-10 
-                                for (int i = GPSdisplayStartPoint; i < BinDataEnsembleNum; i++) //JZH 2012-01-04
+                            for (int i = GPSdisplayStartPoint; i < GGAsaveCount; i++) //Modified 2011-9-17
+                            {
                                 {
                                     if (i == 0)
                                     {
-                                        UTMpoint.X = 0;  //LPJ 2013-5-23
-                                        UTMpoint.Y = 0; //
+                                        UTMpoint.X = 0;  //
+                                        UTMpoint.Y = 0;
 
                                         float fBoatVx, fBoatVy; //LPJ 2013-7-31
                                         fBoatVx = ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VX;
@@ -18820,22 +18714,21 @@ namespace ADCP
                                         }
                                         else if (Resource1.String233 == labelVesselRef.Text)
                                         {
-                                            fBoatVx = 0;
-                                            fBoatVy = 0;
+                                                fBoatVx = 0;
+                                                fBoatVy = 0;
                                         }
 
-                                        if( fBoatVx > 20 || fBoatVy > 20)
+                                        if(Math.Abs( fBoatVx) > 20 || Math.Abs( fBoatVy) > 20)
                                         //if (((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VX > 20 || ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VY > 20)
                                         {
                                             //FirstGoodEnsembleNoOffset++; //起始数据组不是有效底跟踪数据
                                             GetFirstGoodEnsemble = false;
                                         }
-                                        else  //JZH 2012-06-14 修正导航航迹计算
+                                        else  //JZH 2012-06-14 改正导航航迹计算
                                         {
                                             GetFirstGoodEnsemble = true;
-                                            LastSecond = (float)EnsemblesInfoToStore.RecivedTime[0];
+                                            fLastSecond = (float)EnsemblesInfoToStore.RecivedTime[0];
                                             PrevGoodEnsemblePos = 0;
-
                                         }
 
                                         TempPnts[icounts++] = TransToMapPoint(PtStart); //LPJ 2013-7-10
@@ -18870,38 +18763,38 @@ namespace ADCP
                                             fBoatVy_Prev = 0;
                                         }
 
-                                        if( fBoatVx < 20 && fBoatVy < 20)
+                                        if( Math.Abs( fBoatVx) < 20 && Math.Abs( fBoatVy) < 20)
                                         //if (((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VX < 20 && ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VY < 20)
                                         {
                                             if (GetFirstGoodEnsemble)
                                             {
-                                                //float LEast = (1.0f) * 0.5f * (float)(((Velocity)EnsemblesInfoToStore.BoatVelocity[PrevGoodEnsemblePos]).VX + ((Velocity)EnsemblesInfoToStore.BoatVelocity[i]).VX) * ((float)EnsemblesInfoToStore.RecivedTime[i] - LastSecond);  //JZH 2012-06-14
-                                                //float LNorth = (1.0f) * 0.5f * (float)(((Velocity)EnsemblesInfoToStore.BoatVelocity[PrevGoodEnsemblePos]).VY + ((Velocity)EnsemblesInfoToStore.BoatVelocity[i]).VY) * ((float)EnsemblesInfoToStore.RecivedTime[i] - LastSecond);  //JZH 2012-06-14
+                                                //float LEast = (1.0f) * 0.5f * (float)(((Velocity)EnsemblesInfoToStore.BoatVelocity[PrevGoodEnsemblePos]).VX + ((Velocity)EnsemblesInfoToStore.BoatVelocity[i]).VX) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);   //JZH 2012-06-14
+                                                //float LNorth = (1.0f) * 0.5f * (float)(((Velocity)EnsemblesInfoToStore.BoatVelocity[PrevGoodEnsemblePos]).VY + ((Velocity)EnsemblesInfoToStore.BoatVelocity[i]).VY) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);  //JZH 2012-06-14
 
-                                                float LEast = (1.0f) * 0.5f * (float)(fBoatVx_Prev + fBoatVx) * ((float)EnsemblesInfoToStore.RecivedTime[i] - LastSecond);  //JZH 2012-06-14
-                                                float LNorth = (1.0f) * 0.5f * (float)(fBoatVy_Prev + fBoatVy) * ((float)EnsemblesInfoToStore.RecivedTime[i] - LastSecond);  //JZH 2012-06-14
+                                                float LEast = (1.0f) * 0.5f * (float)(fBoatVx_Prev + fBoatVx) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);   //JZH 2012-06-14
+                                                float LNorth = (1.0f) * 0.5f * (float)(fBoatVy_Prev + fBoatVy) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);  //JZH 2012-06-14
 
-                                                AccEast = AccEast + LEast;
-                                                AccNorth = AccNorth + LNorth;
+                                                AccEast += LEast;
+                                                AccNorth += LNorth;
                                                 //JZH 2012-04-17 支持自动缩放
                                                 //float fTransAccEast = AccEast / 10 * CurrentDisplayUnit;
                                                 //float fTransAccNorth = AccNorth / 10 * CurrentDisplayUnit;
                                                 float fTransAccEast = AccEast / 1 * CurrentDisplayUnit;
                                                 float fTransAccNorth = AccNorth / 1 * CurrentDisplayUnit;
-                                                UTMpoint.X = (int)fTransAccEast; //JZH 2012-04-17  
+
+                                                UTMpoint.X = (int)fTransAccEast; //JZH 2012-04-17
                                                 UTMpoint.Y = (int)fTransAccNorth;
 
                                                 PrevGoodEnsembleNoOffset = 0;
                                                 PrevGoodEnsemblePos = i;
-                                                LastSecond = (float)EnsemblesInfoToStore.RecivedTime[i];  //JZH 2012-06-14
+                                                fLastSecond = (float)EnsemblesInfoToStore.RecivedTime[i];  //JZH 2012-06-14
 
                                             }
                                             else
                                             {
-                                                //FirstGoodEnsembleNoOffset++;
                                                 GetFirstGoodEnsemble = true;
                                                 PrevGoodEnsemblePos = i;
-                                                LastSecond = (float)EnsemblesInfoToStore.RecivedTime[i];  //JZH 2012-06-14
+                                                fLastSecond = (float)EnsemblesInfoToStore.RecivedTime[i];  //JZH 2012-06-14
                                             }
                                         }
                                         else
@@ -18914,75 +18807,93 @@ namespace ADCP
                                     tempP.X = UTMpoint.X;
                                     tempP.Y = UTMpoint.Y;
                                     tempP.Y *= -1;
+                                }
 
-                                    //JZH 2011-01-05  暂时先计算平均流速， 以后直接在记录原始数据时候改正？
-                                    float AverageVY = 0;
-                                    float AverageVX = 0;
-                                    //float AverageDepth = 0;
+                                tempPnt = TransToMapPoint(tempP); //LPJ 2013-7-10
+                                //PointF VPnt = TransToMapPoint(VP);  //LPJ 2013-7-10
 
-                                    ////JZH 2012-01-05 计算平均流速
-                                    //CalculateAverageWaterSpeed(i, ref AverageVX, ref AverageVY, ref AverageDepth);
-
-                                    AverageVX = fAverageX[i]; //LPJ 2013-7-3 平均流速在开始载入数据时已经计算过
-                                    AverageVY = fAverageY[i]; //LPJ 2013-7-3 平均流速在开始载入数据时已经计算过
+                                if ((i % setAveragePoints) == 0 && i > setAveragePoints)
+                                {
+ 
+                                    float AVX = AverageVXsave[i];
+                                    float AVY = AverageVYsave[i];
 
                                     if ("GPS VTG" == labelVesselRef.Text) //LPJ 2013-7-31
                                     {
-                                        AverageVX = fAverageX_GPS[i];
-                                        AverageVY = fAverageY_GPS[i];
+                                        AVX = AverageVXsave_GPS[i];
+                                        AVY = AverageVXsave_GPS[i];
                                     }
                                     else if ("GPS GGA" == labelVesselRef.Text) //LPJ 2013-7-31
                                     {
-                                        AverageVX = fAverageX_GPGGA[i];
-                                        AverageVY = fAverageY_GPGGA[i];
+                                        AVX = AverageVXsave_GPGGA[i];
+                                        AVY = AverageVXsave_GPGGA[i];
                                     }
                                     else if (Resource1.String233 == labelVesselRef.Text)
                                     {
-                                        AverageVX = fAverageX_Null[i];
-                                        AverageVY = fAverageY_Null[i];
+                                        AVX = AverageVXsave_Null[i];
+                                        AVY = AverageVXsave_Null[i];
                                     }
+                                        
+                                    VP.Y = tempP.Y - AVY * AverageScale * MouseWheelScale / 8; //LPJ 2013-8-6
+                                    VP.X = tempP.X + AVX * AverageScale * MouseWheelScale / 8; //LPJ 2013-8-6
 
-                                    //float scaleMouseWheel = AverageScale * MouseWheelScale;  //LPJ 2013-7-4
-                                    float scaleMouseWheel = AverageScale * MouseWheelScale / 8; //LPJ 2013-7-4
-
-                                    VP.Y = tempP.Y - AverageVY * scaleMouseWheel; //LPJ 2013-6-9 
-                                    VP.X = tempP.X + AverageVX * scaleMouseWheel;  //LPJ 2013-6-9
-                                    //VP.X = tempP.X + AVX * AverageScale; //(float)EnsemblesInfoToStore.VYstore[i] * setAverageScale;
-
-                                    tempPnt = TransToMapPoint(tempP);
-                                    PointF VPnt=TransToMapPoint(VP);
-
-                                    if ((float)EnsemblesInfoToStore.bottomDepth[i] > 0.01f)   //LPJ 2013-9-22 当底跟踪无效时，不用绘制流速矢量线
-                                        g1.DrawLine(bluePen, tempPnt, VPnt);
- 
-                                    TempPnts[icounts++] = tempPnt; //LPJ 2013-7-10
-                                    //PointF ptStartPnt = TransToMapPoint(PtStart);  //LPJ 2013-7-10 cancel
-                                    //g1.DrawLine(darkblue, ptStartPnt, tempPnt); //LPJ 2013-7-10 cancel 直接绘制折线
-
-                                    PtStart = tempP;
+                                    //流速矢量线 //LPJ 2013-6-4
+                                        
+                                    //Velocity Vector Line
+                                    if ((float)EnsemblesInfoToStore.bottomDepth[i] > 0.01f) //LPJ 2013-9-22 当水深有效时，绘制流速矢量线
+                                        g1.DrawLine(bluePen, tempPnt, VP); //g1.DrawLine(bluePen, tempPnt, VPnt);
                                 }
-                                g1.DrawLines(darkblue, TempPnts); //LPJ 2013-7-10 
-                                darkblue.Dispose();
-
-                                Pen n = new Pen(Color.Red, 2 * MouseWheelScale);    
-                                Rectangle rg = new Rectangle((int)(tempPnt.X - 4 * MouseWheelScale), (int)(tempPnt.Y - 4 * MouseWheelScale), (int)(8 * MouseWheelScale), (int)(8 * MouseWheelScale));
-                                g1.DrawEllipse(n, rg);
-                                //g1.FillEllipse(Brushes.Red, tempPnt.X, tempPnt.Y, 8 * MouseWheelScale, 8 * MouseWheelScale);
-                                 * */
-                                #endregion
-
-                                if (bBottomTrack)
-                                    OnDrawTrackBT_GPS(g1, EnsemblesInfoToStore, 1, GPSdisplayStartPoint, BinDataEnsembleNum, PtStart, ref tempP, VP); //LPJ 2016-10-21  底跟踪航迹
-                                if (bGPSVTGTrack)
-                                    OnDrawTrackBT_GPS(g1, EnsemblesInfoToStore, 2, GPSdisplayStartPoint, BinDataEnsembleNum, PtStart, ref tempP, VP); //LPJ 2016-10-21  GPS VTG航迹
-                                if (bGPSGGATrack)
-                                    OnDrawTrackBT_GPS(g1, EnsemblesInfoToStore, 3, GPSdisplayStartPoint, BinDataEnsembleNum, PtStart, ref tempP, VP); //LPJ 2016-10-21  GPS GGA航迹
-
-                                //LPJ 2013-6-3 自动缩放
-                                AutoSizeGPS(tempP);
+                                TempPnts[icounts++] = tempPnt; //LPJ 2013-7-10
+                                PtStart = tempP;
                             }
-                        }
+                            Pen TrackPen = new Pen(Brushes.Red, 4 * MouseWheelScale);
+                            g1.DrawLines(TrackPen, TempPnts); //LPJ 2013-7-10 
+                            TrackPen.Dispose(); //LPJ 2013-7-4
 
+                            //LPJ 2013-5-23
+                            //g1.FillEllipse(Brushes.Red, tempP.X - 2, tempP.Y - 2, 4 * MouseWheelScale, 4 * MouseWheelScale); //(-1 * originSize / 2) * SailTrackMouseWheelScale, originSize * SailTrackMouseWheelScale, originSize * SailTrackMouseWheelScale);
+                            Pen n = new Pen(Color.Red, 2 * MouseWheelScale);
+                            Rectangle rg = new Rectangle((int)(tempPnt.X - 4 * MouseWheelScale), (int)(tempPnt.Y - 4 * MouseWheelScale), (int)(8 * MouseWheelScale), (int)(8 * MouseWheelScale));
+                            g1.DrawEllipse(n, rg); 
+                            //g1.FillEllipse(Brushes.Red, tempPnt.X, tempPnt.Y, 8 * MouseWheelScale, 8 * MouseWheelScale);
+                            AutoSizeGPS(tempP);
+                        }
+                        else //playbackmode  //Modified 2011-11-27, try display every setAveragePoints
+                        {
+                            if (TrackOverPlay == true)
+                            {
+                                return;
+                            }
+                            if (TrackPause)
+                            {
+                                GPSdataCount = PausePoint;
+                            }
+
+                            //JZH 2012-01-04 新版代码
+                            if (BinDataEnsembleNum < GPSdisplayLength)
+                            {
+                                GPSdisplayStartPoint = 0;
+                                PtStart.X = 0; //LPJ 2013-5-23
+                                PtStart.Y = 0;
+                            }
+                            else
+                            {
+                                GPSdisplayStartPoint = BinDataEnsembleNum - GPSdisplayLength;
+                                PtStart = (Point)EnsemblesInfoToStore.UTMpoint[GPSdisplayStartPoint];
+
+                            }
+
+                            if (bBottomTrack)
+                                OnDrawTrackBT_GPS(g1, EnsemblesInfoToStore, 1, GPSdisplayStartPoint, BinDataEnsembleNum, PtStart, ref tempP, VP); //LPJ 2016-10-21  底跟踪航迹
+                            if (bGPSVTGTrack)
+                                OnDrawTrackBT_GPS(g1, EnsemblesInfoToStore, 2, GPSdisplayStartPoint, BinDataEnsembleNum, PtStart, ref tempP, VP); //LPJ 2016-10-21  GPS VTG航迹
+                            if (bGPSGGATrack)
+                                OnDrawTrackBT_GPS(g1, EnsemblesInfoToStore, 3, GPSdisplayStartPoint, BinDataEnsembleNum, PtStart, ref tempP, VP); //LPJ 2016-10-21  GPS GGA航迹
+
+                            //LPJ 2013-6-3 自动缩放
+                            AutoSizeGPS(tempP);
+                            //panelGPSTrack.Refresh();
+                        }
                     }
                 }
                 catch //(Exception ex) //LPJ 2013-6-11
@@ -19983,6 +19894,9 @@ namespace ADCP
                 sp.Close();
 
             string BSlist = "";
+
+            
+
             if (DialogResult.OK == frmsystemSet.ShowDialog(ref systSet, ref BSlist))
             {
                 sp.Close();
@@ -19991,6 +19905,11 @@ namespace ADCP
                 CommandList = "";
                 progressBar1.Value = 0;
                 progressBar1.Visible = true;
+
+                // Set cursor as hourglass
+                Cursor.Current = Cursors.WaitCursor;
+                // Set cursor as default arrow
+                //Cursor.Current = Cursors.Default;
 
                 try
                 {
@@ -20120,6 +20039,7 @@ namespace ADCP
 
                 iVesselSpeedRef = systSet.iSpeedRef; //LPJ 2016-8-18 船速参考
             }
+            
 
             sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
 
@@ -20150,6 +20070,8 @@ namespace ADCP
             this.BeginInvoke(RefreshNavigation); //LPJ 2013-11-21
             this.BeginInvoke(RefreshOthers); //LPJ 2013-11-21
 
+            // Set cursor as default arrow
+            Cursor.Current = Cursors.Default;
         }
         private void linkLabelSystemSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -21987,7 +21909,7 @@ namespace ADCP
             AverageScale += 5;
             if (AverageScale > 5000)
                 AverageScale = 5000;
-
+            
             panelGPSTrack.Refresh();
         }
 
@@ -22042,6 +21964,542 @@ namespace ADCP
             panelGPSTrack.Refresh();
         }
 
+        #endregion
+
+        #region Amplitude & BackScatter Display. -RMa 11/19/2020
+        private int MaxDataBuff = 1400000 - 1;
+        private byte[] aBuff = new byte[1400000];
+        private byte[] bBuff = new byte[1400000];
+        private byte[] cBuff = new byte[1400000];
+        private byte[] DataBuff = new byte[1400000];
+
+        private int DataBuffReadIndex = 0;
+        private int DataBuffWriteIndex = 0;
+
+        List<BackScatter.EnsembleClass> ensembles = new List<BackScatter.EnsembleClass>(); 
+
+        #region BackScatter. -RMa 12/01/2020
+        int TheBSbeam = 0;
+        private void textBoxBSbeam_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                TheBSbeam = Convert.ToInt32(textBoxBSbeam.Text);
+                //textBoxBSprofile.Text = BackScatter.GetBsProfileString(TheBSbeam, BackScatter.Ensemble);
+                tbs[0].Text = BackScatter.GetBsProfileString(TheBSbeam, BackScatter.Ensemble);
+            }
+            catch { }
+        }
+
+        private void radioButtonBSsystem_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxBSsystem.BringToFront();
+        }
+
+        private void radioButtonBSdata_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxBSdata.BringToFront();
+        }
+
+        private void radioButtonBSleaders_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxBSleaders.BringToFront();
+        }
+
+        private void radioButtonBSprofile_CheckedChanged(object sender, EventArgs e)
+        {
+            panel_BSProfile.BringToFront();
+
+            #region Create 10 beam textboxes
+            //Create 10 beam textboxes
+            int X = panel_BSProfile.Location.X;
+            int Y = panel_BSProfile.Location.Y;
+
+            //the first row of beam textBoxs
+            for (int i = 0; i < n / 2; i++)
+            {
+                var txt = new TextBox();
+                tbs[i] = txt;
+                txt.Name = "Beam" + i;
+                txt.Text = "Beam" + i;
+                txt.Location = new Point(X + (i * 250) - 100 + i * 10, Y);
+                txt.Size = new System.Drawing.Size(250, 327);
+                txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top)
+                                | System.Windows.Forms.AnchorStyles.Left))));
+                txt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+                txt.Font = new System.Drawing.Font("Courier New", 8.25F);
+                txt.Multiline = true;
+                txt.Visible = true;
+                this.panel_BSProfile.Controls.Add(txt);
+            }
+
+            //the second row of beam textBoxs
+            for (int i = n / 2; i < n; i++)
+            {
+                var txt = new TextBox();
+                tbs[i] = txt;
+                txt.Name = "Beam" + i;
+                txt.Text = "Beam" + i;
+                txt.Location = new Point(X + ((i - n / 2) * 250) - 100 + (i - n / 2) * 10, Y + 340);
+                txt.Size = new System.Drawing.Size(250, 327);
+                txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top)
+                                | System.Windows.Forms.AnchorStyles.Left))));
+                txt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+                txt.Font = new System.Drawing.Font("Courier New", 8.25F);
+                txt.Multiline = true;
+                txt.Visible = true;
+                this.panel_BSProfile.Controls.Add(txt);
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                tbs[i].Text = BackScatter.GetBsProfileString(i, BackScatter.Ensemble);
+            }
+            #endregion
+        }
+        #endregion
+
+        #endregion
+
+        bool bAmp = true; 
+        private void panel_contour_Paint(object sender, PaintEventArgs e)
+        {
+            panel_contour.Width = this.Width;
+            panel_contour.Height = this.Height - 50;
+
+            hScrollBar_BS.Location = new Point(panel_contour.Location.X, panel_contour.Bottom + 2);
+            hScrollBar_BS.Width = panel_contour.DisplayRectangle.Width * 2 / 3;
+
+            int icheckedBeam = iCheckedBeam.Count();
+            int icount = 0;
+            for (int i = 0; i < BackScatter.MaxBSbeams; i++)
+            {
+                bool bchecked = false;
+                for (int j = 0; j < icheckedBeam; j++) //判断该beam是否选中
+                {
+                    if (i == iCheckedBeam[j])
+                        bchecked = true;
+                }
+
+                if (!bchecked) //如该beam没有被选中，则不绘制
+                    continue;
+
+                List<float[]> fData = new List<float[]>();
+                //float fMinData = 0;
+                //float fMaxData = 0;
+                float fMinData = trackBarMaxV_BS.Minimum;
+                float fMaxData = (float)trackBarMaxV_BS.Value; //color scale knob
+
+                string _systemfreq = "";
+
+                int istartEns = 0;
+                //int iendEns = ensembles.Count();
+                int iendEns = iEndEnsemble;
+                bool bDraw = false;
+                bool bDrawTitle = true;
+
+                string strVertical = "Depth (m)";
+                string strTitle = "Title";
+                string strUnit = "dB";
+
+                float fMinDistance = 0;
+                float fMaxDistance = 50;
+
+                //for (int k = 0; k < ensembles.Count(); k++)
+                for (int k = 0; k < iendEns; k++) //for scroll bar
+                {
+                    BackScatter.EnsembleClass m = ensembles[k];
+
+                    float[] data = new float[m.BS_Bins[i]];
+                    int t = 0;
+
+                    float depth = m.BS_FirstBin[i];
+
+                    for (int bin = 0; bin < m.BS_Bins[i]; bin++)
+                    {
+                        if (bAmp)  //Amplitude
+                        {
+                            data[t++] = m.BS_Amplitude[i, bin];
+                            if (fMinData > m.BS_Amplitude[i, bin])
+                                fMinData = m.BS_Amplitude[i, bin];
+
+                            if (fMaxData < m.BS_Amplitude[i, bin])
+                                fMaxData = m.BS_Amplitude[i, bin];
+
+                            strTitle = "Amp Beam" + i.ToString();
+                        }
+                        else    //BackScatter
+                        {
+                            data[t++] = m.BS_BackScatter[i, bin];
+                            if (fMinData > m.BS_BackScatter[i, bin])
+                                fMinData = m.BS_BackScatter[i, bin];
+
+                            if (fMaxData < m.BS_BackScatter[i, bin])
+                                fMaxData = m.BS_BackScatter[i, bin];
+
+                            strTitle = "BackScatter Beam" + i.ToString();
+                        }
+
+                        depth += m.BS_BinSize[i];
+                    }
+
+                    fMaxDistance = depth;
+                    _systemfreq = m.BS_Frequency[i].ToString();
+
+                    fData.Add(data);
+                }
+
+                CDrawDisplay drawDisplay = new CDrawDisplay();
+
+                Rectangle rect = new Rectangle();
+
+                rect.X = 0;
+                rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1; //icheckedBeam * icount - 1;
+                rect.Width = panel_contour.DisplayRectangle.Width * 2 / 3;
+                rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
+
+                if (icount == icheckedBeam - 1) //判断是否为最后一组图形
+                    bDraw = true;
+
+                drawDisplay.OnDrawContour_BS(rect, e, _systemfreq, strTitle, strUnit, fData, fMinDistance, fMaxDistance, fMinData, fMaxData, strVertical, istartEns, iendEns, bDraw, bDrawTitle); //LPJ 2019-8-7
+
+                icount++;
+            }
+
+            //backscatter
+            #region backscatter
+            //BackScatter.EnsembleClass mm = BackScatter.Ensemble;
+            int _icurrentEns = iCurrentEns;  //ensemble picker
+            if (_icurrentEns >= ensembles.Count)   //ensemble picker
+                _icurrentEns = ensembles.Count - 1;   //ensemble picker
+            if (_icurrentEns < 0)   //ensemble picker
+                _icurrentEns = 0;    //ensemble picker
+            BackScatter.EnsembleClass mm = ensembles[_icurrentEns];   //ensemble picker
+
+            icount = 0;
+            for (int k = 0; k < BackScatter.MaxBSbeams; k++)
+            {
+                List<float[]> fData = new List<float[]>();
+
+                //float fMinData = 0;
+                //float fMaxData = 0;
+                float fMinData = trackBarMaxV_BS.Minimum;
+                float fMaxData = trackBarMaxV_BS.Value; //color scale knob
+
+                float fScreen = 10000;
+                string strTitle = "";
+                string strVertical = "Depth (m)";
+                float fLeftMinDistance = 0;
+                float fLeftMaxDistance = 50;
+
+                List<float[]> fDataDown = new List<float[]>();
+
+                float[] data = new float[mm.BS_Bins[k]];
+                int t = 0;
+
+                float depth = mm.BS_FirstBin[k];
+                fLeftMinDistance = depth;
+                for (int bin = 0; bin < mm.BS_Bins[k]; bin++)
+                {
+                    if (bAmp)  //Amplitude
+                    {
+                        if (bin == 0)
+                            fMinData = mm.BS_Amplitude[k, bin];
+
+                        data[t++] = mm.BS_Amplitude[k, bin];
+                        if (fMinData > mm.BS_Amplitude[k, bin])
+                            fMinData = mm.BS_Amplitude[k, bin];
+
+                        if (fMaxData < mm.BS_Amplitude[k, bin])
+                            fMaxData = mm.BS_Amplitude[k, bin];
+
+                        strTitle = "Amp Beam" + k.ToString();
+                    }
+                    else    //BackScatter
+                    {
+                        if (bin == 0)
+                            fMinData = mm.BS_BackScatter[k, bin];
+
+                        data[t++] = mm.BS_BackScatter[k, bin];
+                        if (fMinData > mm.BS_BackScatter[k, bin])
+                            fMinData = mm.BS_BackScatter[k, bin];
+
+                        if (fMaxData < mm.BS_BackScatter[k, bin])
+                            fMaxData = mm.BS_BackScatter[k, bin];
+
+                        strTitle = "BackScatter Beam" + k.ToString();
+                    }
+
+                    depth += mm.BS_BinSize[k];
+
+                    fData.Add(data);
+                }
+
+                fLeftMaxDistance = (int)(depth + 0.5);
+                fMinData = (int)(fMinData - 0.5);
+                fMaxData = (int)(fMaxData + 0.5);
+
+                CDrawDisplay drawDisplay = new CDrawDisplay();
+
+                Rectangle rect = new Rectangle();
+                rect.X = panel_contour.DisplayRectangle.X + panel_contour.DisplayRectangle.Width * 2 / 3 + 10;
+                rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1;
+                rect.Width = panel_contour.DisplayRectangle.Width * 1 / 3 - 130;
+                rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
+
+                //vertical profile
+                drawDisplay.OnDrawVertical(rect, e, fData, strTitle, 4, fLeftMinDistance, fLeftMaxDistance, fLeftMinDistance, fLeftMaxDistance, fScreen, fMaxData, fMinData, strVertical);
+                icount++;
+            }
+            #endregion
+
+            #region Ensemble picker line
+            Pen p = new Pen(Brushes.LightGray, 0.1f);  
+            int startY = panel_contour.DisplayRectangle.Y + 20;  
+            int endY = panel_contour.DisplayRectangle.Y + 20 + panel_contour.DisplayRectangle.Height - 40;  
+            if (bPickCurrentEns)  
+                e.Graphics.DrawLine(p, _currentX, startY, _currentX, endY);  
+            #endregion
+        }
+
+        private void btn_Amp_Click(object sender, EventArgs e)
+        {
+            bAmp = true;
+            panel_contour.Refresh();
+        }
+
+        private void btn_backscatter_Click(object sender, EventArgs e)
+        {
+            bAmp = false;
+            panel_contour.Refresh();
+        }
+
+
+        //BackScatter Ensemble. -RMa 12/01/2020
+        private byte[] EnsBuf = new byte[1000000];
+        private void checkBox_beam_CheckedChanged(object sender, EventArgs e)
+        {
+            getCheckednumber();
+            panel_contour.Refresh();
+        }
+
+        List<int> iCheckedBeam = new List<int>();
+        private void getCheckednumber() 
+        {
+            iCheckedBeam.Clear();
+            if (checkBox_b0.Checked)
+                iCheckedBeam.Add(0);
+            if (checkBox_b1.Checked)
+                iCheckedBeam.Add(1);
+            if (checkBox_b2.Checked) 
+                iCheckedBeam.Add(2);
+            if (checkBox_b3.Checked)
+                iCheckedBeam.Add(3);
+            if (checkBox_b4.Checked)
+                iCheckedBeam.Add(4);
+
+            if (checkBox_b5.Checked)
+                iCheckedBeam.Add(5);
+            if (checkBox_b6.Checked)
+                iCheckedBeam.Add(6);
+            if (checkBox_b7.Checked)
+                iCheckedBeam.Add(7);
+            if (checkBox_b8.Checked)
+                iCheckedBeam.Add(8);
+            if (checkBox_b9.Checked)
+                iCheckedBeam.Add(9);
+        }
+
+        static int n = 10; //10 beams
+        TextBox[] tbs = new TextBox[n]; //10 beam profile textboxes
+        void DecodeBackScatterEnsemble(int beam, BackScatter.EnsembleClass E)
+        {
+            BackScatter.DecodeEnsemble(EnsBuf, E);
+
+            textBoxBSsystem.BringToFront();
+            textBoxBSsystem.Text = BackScatter.GetSystemString(E);
+            textBoxBSdata.Text = BackScatter.GetBsString(E);
+            textBoxBSleaders.Text = BackScatter.GetHeaderString(E) + BackScatter.GetHeaderDataTypesString();
+            //textBoxBSprofile.Text = BackScatter.GetBsProfileString(beam, E);
+            textBox_EnsNum.Text = E.System_EnsembleNumber.ToString();
+        }
+
+        int iStartEnsemble = 0;    
+        int iEndEnsemble = 1;    
+
+
+        #region ensemble picker. -RMa 12/01/2020
+        bool bPickCurrentEns = false;  
+        int iCurrentEns = 0;   
+        int _currentX;    
+        bool bpick = false;
+        private void btnPick_Click(object sender, EventArgs e)
+        {
+            bPickCurrentEns = !bPickCurrentEns;
+
+            if (bPickCurrentEns)
+            {
+                btnPick.BackColor = Color.LightBlue;
+            }
+            else
+            {
+                btnPick.BackColor = Color.LightGray;
+            }
+
+            panel_contour.Refresh();
+        }
+
+        private void panel_contour_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (bPickCurrentEns && bpick)
+            {
+                if (e.X >= panel_contour.DisplayRectangle.X + 60 && e.X <= panel_contour.DisplayRectangle.X + 60 + panel_contour.DisplayRectangle.Width - 110)
+                {
+                    _currentX = e.X;
+                    iCurrentEns = OnTransferMap2Number(panel_contour.DisplayRectangle.X + 60, panel_contour.DisplayRectangle.X + 60 + panel_contour.DisplayRectangle.Width - 110, _currentX, iStartEnsemble, iEndEnsemble + 1);
+                }
+
+                bpick = false;
+                panel_contour.Refresh();
+            }
+        }
+
+        private void panel_contour_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (bPickCurrentEns && bpick)
+            {
+                if (e.X >= panel_contour.DisplayRectangle.X + 60 && e.X <= panel_contour.DisplayRectangle.X + 60 + panel_contour.DisplayRectangle.Width - 110
+                          && e.Y >= panel_contour.DisplayRectangle.Y + 15 && e.Y <= panel_contour.DisplayRectangle.Y + 15 + panel_contour.DisplayRectangle.Height - 30)
+                {
+                    _currentX = e.X;
+                }
+            }
+        }
+
+        private void panel_contour_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (bPickCurrentEns)
+            {
+                bpick = true;
+                _currentX = e.X;
+            }
+        }
+
+        int OnTransferMap2Number(int iStart, int iEnd, int iCurrent, int iStartNo, int iEndNo)
+        {
+            int iCurrentNo = 0;
+            iCurrentNo = iStartNo + (int)((iEndNo - iStartNo) * (iCurrent - iStart) * 1.0 / (iEnd - iStart));
+
+            return iCurrentNo;
+        }
+
+        #endregion
+
+
+        //scroll bar. -RMa 12/01/2020
+        private void hScrollBar_BS_Scroll(object sender, ScrollEventArgs e)
+        {
+            iEndEnsemble = iStartEnsemble + hScrollBar_BS.Value;
+            if (iEndEnsemble == 0) iEndEnsemble = 1;
+            //textBox_hScrollBarV.Text = hScrollBarPlayback.Value.ToString();
+            textBox_EnsN.Text = iEndEnsemble.ToString();
+            BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
+            label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
+            label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
+
+            panel_contour.Refresh();
+        }
+
+
+
+        #region BS color scale knob. -RMa 12/01/2020
+        private void InfoPanel_BS_Paint(object sender, PaintEventArgs e)
+        {
+            BufferedGraphicsContext currentContext = BufferedGraphicsManager.Current;
+            BufferedGraphics MainBuffer = currentContext.Allocate(e.Graphics, InfoPanel_BS.DisplayRectangle);
+            using (Graphics g = MainBuffer.Graphics)
+            {
+                g.FillRectangle(Brushes.White, InfoPanel_BS.DisplayRectangle); 
+
+                //if (true == SixColor.Checked)
+                {
+                    for (int c = 0; c <= 1275; c++)
+                    {
+                        //   float x = 470f * ((float)num / 1275) + 16;
+                        float x = InfoPanel_BS.Width * ((float)c / 1275); //Horizontal
+                        //float x = InfoPanel_BS.DisplayRectangle.X; //Vertical
+                        //float y = InfoPanel_BS.DisplayRectangle.Y + InfoPanel_BS.Height  * (1 - (float)c / 1275); //Vertical
+                        Color cl;
+                        if (c <= 127)
+                            cl = Color.FromArgb(0, 0, 127 + c);//(0,0,127)-(0,0,255)深蓝色->蓝色
+                        else if (c <= 382)
+                            cl = Color.FromArgb(0, c - 127, 255);//(0,0,255)-(0,255,255)蓝色->青色
+                        else if (c <= 637)
+                            cl = Color.FromArgb(0, 255, 637 - c);//(0,255,255)-(0,255,0)青色->绿色
+                        else if (c <= 892)
+                            cl = Color.FromArgb(c - 637, 255, 0);//(0,255,0)-(255,255,0)绿色->黄色
+                        else if (c <= 1147)
+                            cl = Color.FromArgb(255, 1147 - c, 0);//(255,255,0)-(255,0,0)黄色->红色
+                        else if (c <= 1275)
+                            cl = Color.FromArgb(1403 - c, 0, 0);//(255,0,0)-(127,0,0)红色->深红色
+                        else
+                            //cl = Color.FromArgb(245, 245, 245);//white snow
+                            //cl = Color.FromArgb(211, 211, 211);//light gray
+                            cl = Color.FromArgb(248, 248, 255);//Gainsboro
+                        using (Pen p = new Pen(cl))
+                        {
+                            //  p.Width = 470f / 1275;
+                            p.Width = InfoPanel_BS.Width / 1275;
+                            g.DrawLine(p, x, 0, x, 16); //Horizontal
+                            //g.DrawLine(p, x, y, x + InfoPanel.Width, y); //Vertical
+                            p.Dispose();
+                        }
+                    }
+                    using (Font font = new Font("Arial", 6))
+                    {
+                        SizeF size = g.MeasureString((trackBarMaxV_BS.Value / 40f).ToString("0.00"), font);
+                        g.DrawString((trackBarMaxV_BS.Minimum).ToString("0.00"), font, Brushes.Black, new PointF(1, 16));
+                        g.DrawString(((trackBarMaxV_BS.Value - trackBarMaxV_BS.Minimum) / 2f).ToString("0.00"), font, Brushes.Black, new PointF(InfoPanel_BS.Width / 2f - size.Width / 2, 16));
+                        g.DrawString((trackBarMaxV_BS.Value / 1f).ToString("0.00"), font, Brushes.Black, new PointF(InfoPanel_BS.Width - size.Width - 1, 16));
+                    }
+
+                    //
+                    Font font2 = new System.Drawing.Font("Arial Narrow", 7, FontStyle.Bold);//Font2
+                    Font font3 = new System.Drawing.Font("Arial Narrow", 7);//Font3
+
+                    Rectangle rect = new Rectangle(DisplayRectangle.X + 60, DisplayRectangle.Y + 2, DisplayRectangle.Width - 110, DisplayRectangle.Height - 17);
+                }
+
+                g.DrawRectangle(Pens.Black, 0, 0, InfoPanel_BS.Width, 16);
+
+                MainBuffer.Render(e.Graphics);
+                g.Dispose();
+                MainBuffer.Dispose();
+            }
+        }
+
+        private void trackBarMaxV_BS_Scroll(object sender, EventArgs e)
+        {
+            labelMavV_BS.Text = (float)trackBarMaxV_BS.Value + " dB";
+
+            panel_contour.Refresh();
+            InfoPanel_BS.Refresh();
+        }
+
+        private void numericUpDown_Min_ValueChanged(object sender, EventArgs e)
+        {
+            trackBarMaxV_BS.Minimum = Convert.ToInt32(numericUpDown_Min.Value);
+            panel_contour.Refresh();
+            InfoPanel_BS.Refresh();
+        }
+
+        private void numericUpDown_Max_ValueChanged(object sender, EventArgs e)
+        {
+            trackBarMaxV_BS.Maximum = Convert.ToInt32(numericUpDown_Max.Value);
+            labelMavV_BS.Text = (float)trackBarMaxV_BS.Maximum + " dB";
+            panel_contour.Refresh();
+            InfoPanel_BS.Refresh();
+        }
         #endregion
     }
 }

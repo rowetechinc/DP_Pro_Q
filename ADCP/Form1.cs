@@ -534,6 +534,8 @@ namespace ADCP
             {
                 if (DP300_wnd.OnStartPinging())
                 {
+                    //DP300_wnd.OnStartRecording();
+
                     toolStripBtnHome.Enabled = false; //LPJ 2013-9-25 当开始发射后，home按钮不可用
                     toolStripBtnSetting.Enabled = false;
                     toolStripBtnSurvey.Visible = false;
@@ -612,7 +614,10 @@ namespace ADCP
             toolStripBtnMoving.Visible = false;
             toolStripBtnEndEdge.Visible = false;
             toolStripBtnStop.Visible = true;
+            
+            
             DP300_wnd.OnStartRecording();
+
 
             toolStripBtnStatusY.Visible = false; //LPJ 2013-8-6
             toolStripBtnStatusG.Visible = true; //LPJ 2013-8-6
