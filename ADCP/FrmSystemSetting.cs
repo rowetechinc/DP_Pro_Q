@@ -32,6 +32,10 @@ namespace ADCP
 
         public DialogResult ShowDialog(ref SystemSetting _systSet, ref string _theList)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            // Set cursor as default arrow
+            //Cursor.Current = Cursors.Default;
+
             //Assign received parameter(s) to local context
             systSet = _systSet;
             theList = _theList;
@@ -41,6 +45,8 @@ namespace ADCP
             //Return parameter(s)
             _systSet = systSet;
             _theList = theList;
+
+            Cursor.Current = Cursors.Default;
 
             return result;
         }
