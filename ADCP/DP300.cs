@@ -22179,161 +22179,168 @@ namespace ADCP
                 float fMinDistance = 0;
                 float fMaxDistance = 50;
 
-                //for (int k = 0; k < ensembles.Count(); k++)
-                for (int k = 0; k < iendEns; k++) //for scroll bar
+                if (ensembles.Count() > 0 && ensembles.Count() > iendEns)
                 {
-                    BackScatter.EnsembleClass m = ensembles[k];
+                    //for (int k = 0; k < ensembles.Count(); k++)
+                    for (int k = 0; k < iendEns; k++) //for scroll bar
+                    {
+                        BackScatter.EnsembleClass m = ensembles[k];
 
-                    float[] data = new float[m.BS_Bins[i]];
+                        float[] data = new float[m.BS_Bins[i]];
+                        int t = 0;
+
+                        float depth = m.BS_FirstBin[i];
+
+                        for (int bin = 0; bin < m.BS_Bins[i]; bin++)
+                        {
+                            if (bAmp)  //Amplitude
+                            {
+                                data[t++] = m.BS_Amplitude[i, bin];
+                                if (fMinData > m.BS_Amplitude[i, bin])
+                                    fMinData = m.BS_Amplitude[i, bin];
+
+                                if (fMaxData < m.BS_Amplitude[i, bin])
+                                    fMaxData = m.BS_Amplitude[i, bin];
+
+                                strTitle = "Amp Beam" + i.ToString();
+                            }
+                            else    //BackScatter
+                            {
+                                data[t++] = m.BS_BackScatter[i, bin];
+                                if (fMinData > m.BS_BackScatter[i, bin])
+                                    fMinData = m.BS_BackScatter[i, bin];
+
+                                if (fMaxData < m.BS_BackScatter[i, bin])
+                                    fMaxData = m.BS_BackScatter[i, bin];
+
+                                strTitle = "BackScatter Beam" + i.ToString();
+                            }
+
+                            depth += m.BS_BinSize[i];
+                        }
+
+                        fMaxDistance = depth;
+                        _systemfreq = m.BS_Frequency[i].ToString();
+
+                        fData.Add(data);
+                    }
+
+
+                    CDrawDisplay drawDisplay = new CDrawDisplay();
+
+                    Rectangle rect = new Rectangle();
+
+                    rect.X = 0;
+                    rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1; //icheckedBeam * icount - 1;
+                    rect.Width = panel_contour.DisplayRectangle.Width * 2 / 3;
+                    rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
+
+                    if (icount == icheckedBeam - 1) //判断是否为最后一组图形
+                        bDraw = true;
+
+                    drawDisplay.OnDrawContour_BS(rect, e, _systemfreq, strTitle, strUnit, fData, fMinDistance, fMaxDistance, fMinData, fMaxData, strVertical, istartEns, iendEns, bDraw, bDrawTitle); //LPJ 2019-8-7
+
+                    icount++;
+                }
+            }
+
+            if (ensembles.Count() > 0)
+            {
+                //backscatter
+                #region backscatter
+                //BackScatter.EnsembleClass mm = BackScatter.Ensemble;
+                int _icurrentEns = iCurrentEns;  //ensemble picker
+                if (_icurrentEns >= ensembles.Count)   //ensemble picker
+                    _icurrentEns = ensembles.Count - 1;   //ensemble picker
+                if (_icurrentEns < 0)   //ensemble picker
+                    _icurrentEns = 0;    //ensemble picker
+                BackScatter.EnsembleClass mm = ensembles[_icurrentEns];   //ensemble picker
+
+                icount = 0;
+                for (int k = 0; k < BackScatter.MaxBSbeams; k++)
+                {
+                    List<float[]> fData = new List<float[]>();
+
+                    //float fMinData = 0;
+                    //float fMaxData = 0;
+                    float fMinData = trackBarMaxV_BS.Minimum;
+                    float fMaxData = trackBarMaxV_BS.Value; //color scale knob
+
+                    float fScreen = 10000;
+                    string strTitle = "";
+                    string strVertical = "Depth (m)";
+                    float fLeftMinDistance = 0;
+                    float fLeftMaxDistance = 50;
+
+                    List<float[]> fDataDown = new List<float[]>();
+
+                    float[] data = new float[mm.BS_Bins[k]];
                     int t = 0;
 
-                    float depth = m.BS_FirstBin[i];
-
-                    for (int bin = 0; bin < m.BS_Bins[i]; bin++)
+                    float depth = mm.BS_FirstBin[k];
+                    fLeftMinDistance = depth;
+                    for (int bin = 0; bin < mm.BS_Bins[k]; bin++)
                     {
                         if (bAmp)  //Amplitude
                         {
-                            data[t++] = m.BS_Amplitude[i, bin];
-                            if (fMinData > m.BS_Amplitude[i, bin])
-                                fMinData = m.BS_Amplitude[i, bin];
+                            if (bin == 0)
+                                fMinData = mm.BS_Amplitude[k, bin];
 
-                            if (fMaxData < m.BS_Amplitude[i, bin])
-                                fMaxData = m.BS_Amplitude[i, bin];
+                            data[t++] = mm.BS_Amplitude[k, bin];
+                            if (fMinData > mm.BS_Amplitude[k, bin])
+                                fMinData = mm.BS_Amplitude[k, bin];
 
-                            strTitle = "Amp Beam" + i.ToString();
+                            if (fMaxData < mm.BS_Amplitude[k, bin])
+                                fMaxData = mm.BS_Amplitude[k, bin];
+
+                            strTitle = "Amp Beam" + k.ToString();
                         }
                         else    //BackScatter
                         {
-                            data[t++] = m.BS_BackScatter[i, bin];
-                            if (fMinData > m.BS_BackScatter[i, bin])
-                                fMinData = m.BS_BackScatter[i, bin];
+                            if (bin == 0)
+                                fMinData = mm.BS_BackScatter[k, bin];
 
-                            if (fMaxData < m.BS_BackScatter[i, bin])
-                                fMaxData = m.BS_BackScatter[i, bin];
+                            data[t++] = mm.BS_BackScatter[k, bin];
+                            if (fMinData > mm.BS_BackScatter[k, bin])
+                                fMinData = mm.BS_BackScatter[k, bin];
 
-                            strTitle = "BackScatter Beam" + i.ToString();
+                            if (fMaxData < mm.BS_BackScatter[k, bin])
+                                fMaxData = mm.BS_BackScatter[k, bin];
+
+                            strTitle = "BackScatter Beam" + k.ToString();
                         }
 
-                        depth += m.BS_BinSize[i];
+                        depth += mm.BS_BinSize[k];
+
+                        fData.Add(data);
                     }
 
-                    fMaxDistance = depth;
-                    _systemfreq = m.BS_Frequency[i].ToString();
+                    fLeftMaxDistance = (int)(depth + 0.5);
+                    fMinData = (int)(fMinData - 0.5);
+                    fMaxData = (int)(fMaxData + 0.5);
 
-                    fData.Add(data);
+                    CDrawDisplay drawDisplay = new CDrawDisplay();
+
+                    Rectangle rect = new Rectangle();
+                    rect.X = panel_contour.DisplayRectangle.X + panel_contour.DisplayRectangle.Width * 2 / 3 + 10;
+                    rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1;
+                    rect.Width = panel_contour.DisplayRectangle.Width * 1 / 3 - 130;
+                    rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
+
+                    //vertical profile
+                    drawDisplay.OnDrawVertical(rect, e, fData, strTitle, 4, fLeftMinDistance, fLeftMaxDistance, fLeftMinDistance, fLeftMaxDistance, fScreen, fMaxData, fMinData, strVertical);
+                    icount++;
                 }
+                #endregion
 
-                CDrawDisplay drawDisplay = new CDrawDisplay();
-
-                Rectangle rect = new Rectangle();
-
-                rect.X = 0;
-                rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1; //icheckedBeam * icount - 1;
-                rect.Width = panel_contour.DisplayRectangle.Width * 2 / 3;
-                rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
-
-                if (icount == icheckedBeam - 1) //判断是否为最后一组图形
-                    bDraw = true;
-
-                drawDisplay.OnDrawContour_BS(rect, e, _systemfreq, strTitle, strUnit, fData, fMinDistance, fMaxDistance, fMinData, fMaxData, strVertical, istartEns, iendEns, bDraw, bDrawTitle); //LPJ 2019-8-7
-
-                icount++;
+                #region Ensemble picker line
+                Pen p = new Pen(Brushes.LightGray, 0.1f);
+                int startY = panel_contour.DisplayRectangle.Y + 20;
+                int endY = panel_contour.DisplayRectangle.Y + 20 + panel_contour.DisplayRectangle.Height - 40;
+                if (bPickCurrentEns)
+                    e.Graphics.DrawLine(p, _currentX, startY, _currentX, endY);
+                #endregion
             }
-
-            //backscatter
-            #region backscatter
-            //BackScatter.EnsembleClass mm = BackScatter.Ensemble;
-            int _icurrentEns = iCurrentEns;  //ensemble picker
-            if (_icurrentEns >= ensembles.Count)   //ensemble picker
-                _icurrentEns = ensembles.Count - 1;   //ensemble picker
-            if (_icurrentEns < 0)   //ensemble picker
-                _icurrentEns = 0;    //ensemble picker
-            BackScatter.EnsembleClass mm = ensembles[_icurrentEns];   //ensemble picker
-
-            icount = 0;
-            for (int k = 0; k < BackScatter.MaxBSbeams; k++)
-            {
-                List<float[]> fData = new List<float[]>();
-
-                //float fMinData = 0;
-                //float fMaxData = 0;
-                float fMinData = trackBarMaxV_BS.Minimum;
-                float fMaxData = trackBarMaxV_BS.Value; //color scale knob
-
-                float fScreen = 10000;
-                string strTitle = "";
-                string strVertical = "Depth (m)";
-                float fLeftMinDistance = 0;
-                float fLeftMaxDistance = 50;
-
-                List<float[]> fDataDown = new List<float[]>();
-
-                float[] data = new float[mm.BS_Bins[k]];
-                int t = 0;
-
-                float depth = mm.BS_FirstBin[k];
-                fLeftMinDistance = depth;
-                for (int bin = 0; bin < mm.BS_Bins[k]; bin++)
-                {
-                    if (bAmp)  //Amplitude
-                    {
-                        if (bin == 0)
-                            fMinData = mm.BS_Amplitude[k, bin];
-
-                        data[t++] = mm.BS_Amplitude[k, bin];
-                        if (fMinData > mm.BS_Amplitude[k, bin])
-                            fMinData = mm.BS_Amplitude[k, bin];
-
-                        if (fMaxData < mm.BS_Amplitude[k, bin])
-                            fMaxData = mm.BS_Amplitude[k, bin];
-
-                        strTitle = "Amp Beam" + k.ToString();
-                    }
-                    else    //BackScatter
-                    {
-                        if (bin == 0)
-                            fMinData = mm.BS_BackScatter[k, bin];
-
-                        data[t++] = mm.BS_BackScatter[k, bin];
-                        if (fMinData > mm.BS_BackScatter[k, bin])
-                            fMinData = mm.BS_BackScatter[k, bin];
-
-                        if (fMaxData < mm.BS_BackScatter[k, bin])
-                            fMaxData = mm.BS_BackScatter[k, bin];
-
-                        strTitle = "BackScatter Beam" + k.ToString();
-                    }
-
-                    depth += mm.BS_BinSize[k];
-
-                    fData.Add(data);
-                }
-
-                fLeftMaxDistance = (int)(depth + 0.5);
-                fMinData = (int)(fMinData - 0.5);
-                fMaxData = (int)(fMaxData + 0.5);
-
-                CDrawDisplay drawDisplay = new CDrawDisplay();
-
-                Rectangle rect = new Rectangle();
-                rect.X = panel_contour.DisplayRectangle.X + panel_contour.DisplayRectangle.Width * 2 / 3 + 10;
-                rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1;
-                rect.Width = panel_contour.DisplayRectangle.Width * 1 / 3 - 130;
-                rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
-
-                //vertical profile
-                drawDisplay.OnDrawVertical(rect, e, fData, strTitle, 4, fLeftMinDistance, fLeftMaxDistance, fLeftMinDistance, fLeftMaxDistance, fScreen, fMaxData, fMinData, strVertical);
-                icount++;
-            }
-            #endregion
-
-            #region Ensemble picker line
-            Pen p = new Pen(Brushes.LightGray, 0.1f);  
-            int startY = panel_contour.DisplayRectangle.Y + 20;  
-            int endY = panel_contour.DisplayRectangle.Y + 20 + panel_contour.DisplayRectangle.Height - 40;  
-            if (bPickCurrentEns)  
-                e.Graphics.DrawLine(p, _currentX, startY, _currentX, endY);  
-            #endregion
         }
 
         private void btn_Amp_Click(object sender, EventArgs e)
@@ -22473,15 +22480,18 @@ namespace ADCP
         //scroll bar. -RMa 12/01/2020
         private void hScrollBar_BS_Scroll(object sender, ScrollEventArgs e)
         {
-            iEndEnsemble = iStartEnsemble + hScrollBar_BS.Value;
-            if (iEndEnsemble == 0) iEndEnsemble = 1;
-            //textBox_hScrollBarV.Text = hScrollBarPlayback.Value.ToString();
-            textBox_EnsN.Text = iEndEnsemble.ToString();
-            BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
-            label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
-            label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
+            if (ensembles.Count() > 0)
+            {
+                iEndEnsemble = iStartEnsemble + hScrollBar_BS.Value;
+                if (iEndEnsemble == 0) iEndEnsemble = 1;
+                //textBox_hScrollBarV.Text = hScrollBarPlayback.Value.ToString();
+                textBox_EnsN.Text = iEndEnsemble.ToString();
+                BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
+                label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
+                label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
 
-            panel_contour.Refresh();
+                panel_contour.Refresh();
+            }
         }
 
 
