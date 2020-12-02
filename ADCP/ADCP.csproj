@@ -85,6 +85,7 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="PickAndDecode, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\pancomm_packages\Pancomm\PickAndDecode.dll</HintPath>
@@ -259,6 +260,11 @@
     <Compile Include="FormNewADCP_Project.Designer.cs">
       <DependentUpon>FormNewADCP_Project.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\EdgeSetting.cs" />
+    <Compile Include="Models\RttProject.cs" />
+    <Compile Include="Models\SiteInformation.cs" />
+    <Compile Include="Models\SystemSetting.cs" />
+    <Compile Include="Models\TransectConfig.cs" />
     <Compile Include="ReadData.cs" />
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>

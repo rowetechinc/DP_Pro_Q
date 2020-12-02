@@ -11,12 +11,27 @@ namespace ADCP
 {
     public partial class FrmSiteInformation : Form
     {
+        /// <summary>
+        /// Object to hold all the values.
+        /// </summary>
+        public ADCP.SiteInformation siteInfo;
+
+        /// <summary>
+        /// Initialize the values.
+        /// </summary>
+        /// <param name="site"></param>
         public FrmSiteInformation(SiteInformation site)
         {
             InitializeComponent();
+            siteInfo = site;
             GetReference(site);
         }
 
+        /// <summary>
+        /// Save all the values to the object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
             siteInfo.siteName = textBoxSiteName.Text;
@@ -74,36 +89,6 @@ namespace ADCP
             //comboBoxControlCode1.SelectedIndex = site.ControlCode1;
             //comboBoxControlCode2.SelectedIndex = site.ControlCode2;
             //comboBoxControlCode3.SelectedIndex = site.ControlCode3;
-        }
-
-        public static SiteInformation siteInfo;
-        public struct SiteInformation
-        {
-            public string siteName;
-            public string stationNumber;
-            public string MeasNumber;
-            public string comments;
-
-            public string FieldParty;
-            public string ProcessedBy;
-            public int DeploymentType;
-            public string BoatMotor;
-            public string MeasLocation;
-
-            public string InsideGageH;
-            public string OutsideGageH;
-            public string GageHChange;
-            public string RatingDischarge;
-            public string IndexV;
-            public string RatingNumber;
-            public string RatedArea;
-            public string WaterTemp;
-            public int MagnVariationMethod;
-            public int MeasurementRating;
-            //public int ControlCode1;
-            //public int ControlCode2;
-            //public int ControlCode3;
-
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)

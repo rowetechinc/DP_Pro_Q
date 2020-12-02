@@ -12,7 +12,7 @@ namespace ADCP
 {
     public partial class SetFinishBank : Form
     {
-        public SetFinishBank(FrmEdgeSetting.EdgeSetting endEdge)
+        public SetFinishBank(EdgeSetting endEdge)
         {
             InitializeComponent();
             GetDefaultConf(endEdge);
@@ -88,7 +88,7 @@ namespace ADCP
             }
         }
 
-        private void GetDefaultConf(FrmEdgeSetting.EdgeSetting endEdge)
+        private void GetDefaultConf(EdgeSetting endEdge)
         {
             if (!endEdge.bStartLeft)
             {

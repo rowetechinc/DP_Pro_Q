@@ -11987,12 +11987,13 @@ namespace ADCP
 
             if (iStartMeasQ > 0) //LPJ 2013-5-31 当测量后，才写入配置信息
             {
-                WriteSmartPageToFile(newPath + ".cfg");  //LPJ 2014-7-29
+                WriteSmartPageToFile(newPath);  //LPJ 2014-7-29
             }
 
             try
             {
-                WriteSmartPageToFile(Directory.GetCurrentDirectory() + "\\dp300Data" + "\\Config.cfg"); //LPJ 2014-7-29
+                //WriteSmartPageToFile(Directory.GetCurrentDirectory() + "\\dp300Data" + "\\Config.cfg"); //LPJ 2014-7-29
+                WriteSmartPageToFile(RttProject.GetDefaultPath("Default_Config", ".cfg"));
             }
             catch
             {
@@ -12144,14 +12145,15 @@ namespace ADCP
             if (iStartMeasQ > 0) //LPJ 2013-5-31 当测量后，才写入配置信息
             {
                 //WriteSmartPageToFile(newPath + "\\SysCfg\\Config.cfg"); //LPJ 2013-6-20 当测量结束时，将smartPage页中的配置写入文件，并复制到Lastconf  
-                WriteSmartPageToFile(newPath + ".cfg");  //LPJ 2014-7-29
+                WriteSmartPageToFile(newPath);  //LPJ 2014-7-29
             }
 
             try
             {
                 //LPJ 2014-1-7 将配置信息保存到lastTimeCfg中
                 //WriteSmartPageToFile(Directory.GetCurrentDirectory() + "\\dp300Data" + "\\LastTimeCfg" + "\\Config.cfg");
-                WriteSmartPageToFile(Directory.GetCurrentDirectory() + "\\dp300Data" + "\\Config.cfg"); //LPJ 2014-7-29
+                //WriteSmartPageToFile(Directory.GetCurrentDirectory() + "\\dp300Data" + "\\Config.cfg"); //LPJ 2014-7-29
+                WriteSmartPageToFile(RttProject.GetDefaultPath("Default_Config", ".cfg"));
             }
             catch
             {
@@ -15619,7 +15621,7 @@ namespace ADCP
         public String ProjectName = "";
         public String ProjectFullName = "";    //LPJ 2013-4-16 输入的工程名加时间
         public string OldProjectName = "Project Name"; //LPJ 2012-6-13
-        public string newPath;
+        public string newPath;                                  // File path for configuration File
         public string RiverPlaybackPath;
         public string PathStr;  //LPJ 2013-5-30 将路径设置为公有变量
         //private string DisPlayTimeLenth = string.Empty;
@@ -15733,7 +15735,11 @@ namespace ADCP
             //System.IO.Directory.CreateDirectory(newPath + "\\SysCfg");
 
             ProjectFullName = labelSiteName.Text + "_" + dt.ToString(datePatt); //LPJ 2013-6-21
-            newPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "dp300Data", ProjectFullName);
+            //newPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "dp300Data", ProjectFullName);
+
+            // Create the Folder if it does not exist
+            newPath = RttProject.GetDefaultPath(ProjectFullName, ".cfg");
+
 
             projectHasStarted = true;
             //hasCreatedProject = true;
@@ -19637,31 +19643,49 @@ namespace ADCP
             this.BeginInvoke(RefreshOthers); //LPJ 2013-7-1
         }
 
+        /// <summary>
+        /// Rico
+        /// Open the Site Information Dialog.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void linkLabelSiteInfor_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //LPJ 2013-6-20 修改站信息
-            FrmSiteInformation.SiteInformation site;
+            SiteInformation site;
             //site.siteName = labelSiteName.Text;
             //site.stationNumber = labelStationNumber.Text;
             //site.MeasNumber = labelMeasNumber.Text;
             //site.comments = labelSiteComments.Text;
+
+            // Get the currently stored site information
             site = GetSiteInformation(siteInformation);
 
+            // Populate the dialog and display
             FrmSiteInformation frmsiteInfor = new FrmSiteInformation(site);
             if (DialogResult.OK == frmsiteInfor.ShowDialog())
             {
-                labelSiteName.Text = FrmSiteInformation.siteInfo.siteName;
-                labelStationNumber.Text = FrmSiteInformation.siteInfo.stationNumber;
-                labelMeasNumber.Text = FrmSiteInformation.siteInfo.MeasNumber;
-                labelSiteComments.Text = FrmSiteInformation.siteInfo.comments;
+                // Get the information from the dialog and set the values
+                labelSiteName.Text = frmsiteInfor.siteInfo.siteName;
+                labelStationNumber.Text = frmsiteInfor.siteInfo.stationNumber;
+                labelMeasNumber.Text = frmsiteInfor.siteInfo.MeasNumber;
+                labelSiteComments.Text = frmsiteInfor.siteInfo.comments;
 
-                siteInformation = GetSiteInformation(FrmSiteInformation.siteInfo);
+                // Set the new site information
+                siteInformation = GetSiteInformation(frmsiteInfor.siteInfo);
             }
         }
-        private FrmSiteInformation.SiteInformation siteInformation;
-        private FrmSiteInformation.SiteInformation GetSiteInformation(FrmSiteInformation.SiteInformation site)
+
+        /// <summary>
+        /// Rico
+        /// Store the Site Information.
+        /// </summary>
+        private SiteInformation siteInformation = new SiteInformation();
+
+
+        private SiteInformation GetSiteInformation(SiteInformation site)
         {
-            FrmSiteInformation.SiteInformation siteInfo;
+            SiteInformation siteInfo = new SiteInformation();
 
             siteInfo.siteName = site.siteName;
             siteInfo.stationNumber = site.stationNumber;
@@ -19693,6 +19717,12 @@ namespace ADCP
 
         }
         
+        /// <summary>
+        /// Rico
+        /// Get the System configuation.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void linkLabelSystemConf_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //FrmSystemConf.SystemConf sysconf;
@@ -19710,7 +19740,11 @@ namespace ADCP
 
         public int iVesselSpeedRef = 0; //LPJ 2016-8-18 船速参考
 
-        FrmSystemSetting.SystemSetting systSet = new FrmSystemSetting.SystemSetting(); //从配置文件中读取参数，并将其写入smartPage中
+        /// <summary>
+        /// Rico
+        /// Store the System configuration settings.
+        /// </summary>
+        SystemSetting systSet = new SystemSetting(); //从配置文件中读取参数，并将其写入smartPage中
 
         private void SystemSetting()
         {
@@ -19963,10 +19997,16 @@ namespace ADCP
             
 
         }
-        FrmEdgeSetting.EdgeSetting edgeSetting;
+        
+
+        /// <summary>
+        /// Rico
+        /// Edge Settings.
+        /// </summary>
+        EdgeSetting edgeSetting;
         private void GetEdgeSetting() //LPJ 2013-6-21
         {
-            edgeSetting = new FrmEdgeSetting.EdgeSetting();
+            edgeSetting = new EdgeSetting();
             //if (labelUnit.Text == Resource1.String237) //LPJ 2013-7-1 增加单位判断
             if (!bEnglish2Metric)
             {
@@ -20190,8 +20230,42 @@ namespace ADCP
             }
         }
 
+        /// <summary>
+        /// Rico
+        /// Write the QRev Project file.  This project
+        /// file is used to playback the data in QRev.
+        /// </summary>
+        public void WriteQRevProjectFile()
+        {
+            // Create the transects
+            TransectConfig transect1 = new TransectConfig();
+            transect1.AddFile("A0000004.ens");
+            transect1.SetEdgeSettings(edgeSetting);
+            transect1.SetSystemSettings(systSet);
+            //transect1.ActiveConfig["Q_Shore_Left_Ens_Count"] = 8;
+            //transect1.ActiveConfig["Q_Shore_Right_Ens_Count"] = 10;
+            //transect1.ActiveConfig["Offsets_Transducer_Depth"] = 0.2;
+            //transect1.ActiveConfig["Offsets_Magnetic_Variation"] = -3.5;
+            //transect1.ActiveConfig["Edge_Begin_Shore_Distance"] = 20.0;
+            //transect1.ActiveConfig["Edge_End_Shore_Distance"] = 10.0;
+
+            var transectList = new List<TransectConfig>();
+            transectList.Add(transect1);
+
+            RttProject prj = new RttProject();
+            prj.SaveProject(siteInformation, systSet, transectList);
+        }
+
+        /// <summary>
+        /// Rico
+        /// Write the settings to the configuration file.
+        /// </summary>
+        /// <param name="fileName"></param>
         private void WriteSmartPageToFile(string fileName) //LPJ 2013-6-20 将smartPage页中的所有设置写入配置文件
         {
+            // Write the QRev Project File
+            WriteQRevProjectFile();
+
             //File.WriteAllText(fileName, "Language " + "" + "\r\n"); //将语言单独写一个configuration
             File.WriteAllText(fileName, "ADCP_PortName " + sp.PortName + "\r\n");
             File.AppendAllText(fileName, "ADCP_BaudRate " + sp.BaudRate + "\r\n");
@@ -20217,6 +20291,7 @@ namespace ADCP
             //File.AppendAllText(fileName, "MeasurementNumber " + labelMeasNumber.Text + "\r\n");
             //File.AppendAllText(fileName, "Comments " + labelSiteComments.Text + "\r\n");
            
+            // Write the site information to the file
             WriteSiteInformationToFile(fileName, siteInformation);
             #endregion
 
@@ -20295,7 +20370,7 @@ namespace ADCP
             WriteStandardModeToFile(fileName); //lpj 2013-7-30
         }
 
-        private void WriteSiteInformationToFile(string fileName,FrmSiteInformation.SiteInformation site)
+        private void WriteSiteInformationToFile(string fileName, SiteInformation site)
         {
             File.AppendAllText(fileName, "SiteName " + site.siteName + "\r\n");
             File.AppendAllText(fileName, "StationNumber " + site.stationNumber + "\r\n");
@@ -20327,7 +20402,6 @@ namespace ADCP
 
         }
 
-    
         private void WriteStandardModeToFile(string fileName) //主要用于将高级模式的参数写入last配置中，在回放文件中不用显示该配置
         {
             File.AppendAllText(fileName, CommandList);

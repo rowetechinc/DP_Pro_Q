@@ -12,7 +12,7 @@ namespace ADCP
 {
     public partial class SetStartBank : Form
     {
-        public SetStartBank(FrmEdgeSetting.EdgeSetting startEdge)
+        public SetStartBank(EdgeSetting startEdge)
         {
             InitializeComponent();
             GetDefaultConf(startEdge);
@@ -101,7 +101,7 @@ namespace ADCP
             }
         }
 
-        private void GetDefaultConf(FrmEdgeSetting.EdgeSetting startEdge)
+        private void GetDefaultConf(EdgeSetting startEdge)
         {
             if (startEdge.bStartLeft)
             {
