@@ -22556,6 +22556,7 @@ namespace ADCP
 
                         fData.Add(data);
                     }
+                    //numericUpDown_Max.Value = Convert.ToDecimal(fMaxData);
 
                     CDrawDisplay drawDisplay = new CDrawDisplay();
 
