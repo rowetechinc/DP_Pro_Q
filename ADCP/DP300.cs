@@ -7428,19 +7428,19 @@ namespace ADCP
                         nBytesRead = stream.Read(bBuff, 0, 10000);
                     }
 
-                    iEndEnsemble = ensembles.Count; //ensembles.Count - 1;
-                    hScrollBar_BS.Maximum = ensembles.Count; //ensembles.Count - 1;
-                    textBox_EnsN.Text = iEndEnsemble.ToString();
+                    if (ensembles.Count > 0)
+                    {
+                        iEndEnsemble = ensembles.Count; //ensembles.Count - 1;
+                        hScrollBar_BS.Maximum = ensembles.Count; //ensembles.Count - 1;
+                        textBox_EnsN.Text = iEndEnsemble.ToString();
 
-                    BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
-                    label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
-                    label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
+                        BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
+                        label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
+                        label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
+                    }
+                    else return;
                 }
-                catch (Exception ex)
-                {
-                    exceptionmessage = String.Format("caughtD1: {0}", ex.GetType().ToString());
-                    MessageBox.Show(exceptionmessage);
-                }
+                catch { }
             }
             #endregion
         }
@@ -22144,43 +22144,43 @@ namespace ADCP
             hScrollBar_BS.Location = new Point(panel_contour.Location.X, panel_contour.Bottom + 2);
             hScrollBar_BS.Width = panel_contour.DisplayRectangle.Width * 2 / 3;
 
-            int icheckedBeam = iCheckedBeam.Count();
-            int icount = 0;
-            for (int i = 0; i < BackScatter.MaxBSbeams; i++)
+            if (ensembles.Count > 0 && iCheckedBeam.Count() > 0)
             {
-                bool bchecked = false;
-                for (int j = 0; j < icheckedBeam; j++) //判断该beam是否选中
+                int icheckedBeam = iCheckedBeam.Count();
+                int icount = 0;
+                for (int i = 0; i < BackScatter.MaxBSbeams; i++)
                 {
-                    if (i == iCheckedBeam[j])
-                        bchecked = true;
-                }
+                    bool bchecked = false;
+                    for (int j = 0; j < icheckedBeam; j++) //判断该beam是否选中
+                    {
+                        if (i == iCheckedBeam[j])
+                            bchecked = true;
+                    }
 
-                if (!bchecked) //如该beam没有被选中，则不绘制
-                    continue;
+                    if (!bchecked) //如该beam没有被选中，则不绘制
+                        continue;
 
-                List<float[]> fData = new List<float[]>();
-                //float fMinData = 0;
-                //float fMaxData = 0;
-                float fMinData = trackBarMaxV_BS.Minimum;
-                float fMaxData = (float)trackBarMaxV_BS.Value; //color scale knob
+                    List<float[]> fData = new List<float[]>();
+                    //float fMinData = 0;
+                    //float fMaxData = 0;
+                    float fMinData = trackBarMaxV_BS.Minimum;
+                    float fMaxData = (float)trackBarMaxV_BS.Value; //color scale knob
 
-                string _systemfreq = "";
+                    string _systemfreq = "";
 
-                int istartEns = 0;
-                //int iendEns = ensembles.Count();
-                int iendEns = iEndEnsemble;
-                bool bDraw = false;
-                bool bDrawTitle = true;
+                    int istartEns = 0;
+                    //int iendEns = ensembles.Count();
+                    int iendEns = iEndEnsemble;
+                    bool bDraw = false;
+                    bool bDrawTitle = true;
 
-                string strVertical = "Depth (m)";
-                string strTitle = "Title";
-                string strUnit = "dB";
+                    string strVertical = "Depth (m)";
+                    string strTitle = "Title";
+                    string strUnit = "dB";
 
-                float fMinDistance = 0;
-                float fMaxDistance = 50;
+                    float fMinDistance = 0;
+                    float fMaxDistance = 50;
 
-                if (ensembles.Count() > 0 && ensembles.Count() > iendEns)
-                {
                     //for (int k = 0; k < ensembles.Count(); k++)
                     for (int k = 0; k < iendEns; k++) //for scroll bar
                     {
@@ -22225,7 +22225,6 @@ namespace ADCP
                         fData.Add(data);
                     }
 
-
                     CDrawDisplay drawDisplay = new CDrawDisplay();
 
                     Rectangle rect = new Rectangle();
@@ -22242,10 +22241,7 @@ namespace ADCP
 
                     icount++;
                 }
-            }
 
-            if (ensembles.Count() > 0)
-            {
                 //backscatter
                 #region backscatter
                 //BackScatter.EnsembleClass mm = BackScatter.Ensemble;
@@ -22323,7 +22319,7 @@ namespace ADCP
 
                     Rectangle rect = new Rectangle();
                     rect.X = panel_contour.DisplayRectangle.X + panel_contour.DisplayRectangle.Width * 2 / 3 + 10;
-                    rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1;
+                    rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount;
                     rect.Width = panel_contour.DisplayRectangle.Width * 1 / 3 - 130;
                     rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
 
@@ -22334,11 +22330,11 @@ namespace ADCP
                 #endregion
 
                 #region Ensemble picker line
-                Pen p = new Pen(Brushes.LightGray, 0.1f);
-                int startY = panel_contour.DisplayRectangle.Y + 20;
-                int endY = panel_contour.DisplayRectangle.Y + 20 + panel_contour.DisplayRectangle.Height - 40;
-                if (bPickCurrentEns)
-                    e.Graphics.DrawLine(p, _currentX, startY, _currentX, endY);
+                Pen p = new Pen(Brushes.LightGray, 0.1f);  //LPJ 2020-11-27
+                int startY = panel_contour.DisplayRectangle.Y + 20;  //LPJ 2020-11-27
+                int endY = panel_contour.DisplayRectangle.Y + 20 + panel_contour.DisplayRectangle.Height - 40;  //LPJ 2020-11-27
+                if (bPickCurrentEns)  //LPJ 2020-11-27
+                    e.Graphics.DrawLine(p, _currentX, startY, _currentX, endY);  //LPJ 2020-11-27
                 #endregion
             }
         }
