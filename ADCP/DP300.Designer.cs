@@ -4427,12 +4427,32 @@
             // numericUpDown_Min
             // 
             resources.ApplyResources(this.numericUpDown_Min, "numericUpDown_Min");
+            this.numericUpDown_Min.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numericUpDown_Min.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown_Min.Name = "numericUpDown_Min";
             this.numericUpDown_Min.ValueChanged += new System.EventHandler(this.numericUpDown_Min_ValueChanged);
             // 
             // numericUpDown_Max
             // 
             resources.ApplyResources(this.numericUpDown_Max, "numericUpDown_Max");
+            this.numericUpDown_Max.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numericUpDown_Max.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown_Max.Name = "numericUpDown_Max";
             this.numericUpDown_Max.Value = new decimal(new int[] {
             100,
