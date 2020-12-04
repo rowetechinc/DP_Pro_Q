@@ -39,5 +39,12 @@ namespace ADCP
         public double dSalinity;
         public double dWaterTemperature;
         public double dSpeedOfSound;
+
+        public string sAdcpPort;
+        public int sAdcpBaud;
+        public bool bGPSConnect;
+        public string sGpsPort;
+        public int sGpsBaud;
+        public string firmware;
     }
 }

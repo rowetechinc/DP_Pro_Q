@@ -165,6 +165,58 @@ namespace ADCP
 {
     public partial class DP300_Windows : Form
     {
+
+        #region Variables
+
+        /// <summary>
+        /// Project file to hold all the settings
+        /// and transects.  Project is used in QRev.
+        /// </summary>
+        RttProject _qrevProject;
+
+        /// <summary>
+        /// Current Transect to use in QRev.
+        /// This project will contain the settings
+        /// and the file associated with the transect.
+        /// </summary>
+        TransectConfig _qrevTransect;
+
+        /// <summary>
+        /// The number of ensembles in the start edge.
+        /// </summary>
+        int _qrevStartEnsCount;
+
+
+        /// <summary>
+        /// Flag to know if we should be count the start edge ensembles.
+        /// </summary>
+        bool _bIsQRevStartCounter;
+
+
+        /// <summary>
+        /// The number of ensembles in the end edge.
+        /// </summary>
+        int _qrevEndEnsCount;
+
+        /// <summary>
+        /// The number of ensembles in the moving section.
+        /// </summary>
+        int _qrevMovingEnsCount;
+
+        /// <summary>
+        /// Flag to know if we should be count the end edge ensembles.
+        /// </summary>
+        bool _bIsQRevEndCounter;
+
+        /// <summary>
+        /// The current ensemble output file.
+        /// This is the file name for the binary file that is being written.
+        /// </summary>
+        string _ensOutputFileName;
+
+        #endregion
+
+
         public class NoPaintBackGroundPanel : Panel
         {
             protected override void OnPaintBackground(PaintEventArgs e)
@@ -1805,7 +1857,7 @@ namespace ADCP
 
                 //LPJ 2012-5-4 保存GPS数据文件路径
                 //GPSfileNam = newPath + "\\GPS" + "\\GPSdata" + SaveGPSFileNumber.ToString("000000") + ".txt";
-                GPSfileNam = newPath +  ".gps"; //LPJ 2014-7-29 更改GPS文件保存路径
+                GPSfileNam = Path.Combine(newPath, ProjectFullName +  ".gps"); //LPJ 2014-7-29 更改GPS文件保存路径
                 //Version_2_CurrentGPSFileName = "GPSdata" + SaveGPSFileNumber.ToString("000000") + ".txt";
 
                 //string GPSfileNam = newPath + "\\GPS" + "\\GPSdata.txt";
@@ -3772,6 +3824,25 @@ namespace ADCP
                             //向GPSdata000000和info.infm中添加数据，当开始测量后才开始记录   
                             ComputeCombinedWaterVilocity(totalNum);   //Modified 2011-8-31 moved from DP300_Window_Paint (DPS and VX VY is not stored if not paint)
 
+
+                            // QRev
+                            // Count the ensemble if on the edge
+                            if(_bIsQRevStartCounter)
+                            {
+                                // Start Edge Enabled
+                                _qrevStartEnsCount++;
+                            }
+                            else if(_bIsQRevEndCounter)
+                            {
+                                // End Edge Enabled
+                                _qrevEndEnsCount++;
+                            }
+                            else
+                            {
+                                // Moving Enabled
+                                _qrevMovingEnsCount++;
+                            }
+
                             //Modified 2011-12-17
                             //if (RiverQRecordStart)
                             //{
@@ -3907,8 +3978,8 @@ namespace ADCP
 
         private void ByteArrayWriteToBinFile(byte[] rawBytesPacket)//, int fileNumber)
         {
-            RiverPlaybackPath = newPath; //Modified 2011-12-10
-            using (FileStream fs = new FileStream(newPath +  ".bin", FileMode.Append)) //LPJ 2014-7-29
+            RiverPlaybackPath = Path.Combine(newPath, ProjectFullName); //Modified 2011-12-10
+            using (FileStream fs = new FileStream(Path.Combine(newPath, _ensOutputFileName +  ".ens"), FileMode.Append)) //LPJ 2014-7-29
             //using (FileStream fs = new FileStream(newPath + "\\rawData" + "\\rawData" + fileNumber.ToString("0000000") + ".bin", FileMode.Create))
             {
                 using (BinaryWriter w = new BinaryWriter(fs))
@@ -4283,7 +4354,7 @@ namespace ADCP
         private void SaveAsBinaryFormat(Object obj, int fileNum)
         {
             BinaryFormatter binFormat = new BinaryFormatter();
-            using (Stream fStream = new FileStream(newPath + "\\PlaybackData\\part" + fileNum.ToString("0000000") + ".dat",
+            using (Stream fStream = new FileStream(Path.Combine(newPath, ProjectFullName) + "\\PlaybackData\\part" + fileNum.ToString("0000000") + ".dat",
                 FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 binFormat.Serialize(fStream, obj);
@@ -11903,6 +11974,14 @@ namespace ADCP
         FrmSystemSetting frmsystemSet;
 
         bool CommandsInitialized = false;
+
+        /// <summary>
+        /// Called when first starting the measurements.
+        /// This will start pinging.  Data has not started to be
+        /// recording yet.  This will be done later when the start
+        /// edge is clicked.
+        /// </summary>
+        /// <returns></returns>
         public bool OnStartPinging()
         {
             //ClearEnsemblesInfoToStore();
@@ -11984,10 +12063,20 @@ namespace ADCP
             RealTimeProcessingTimer.Elapsed += new System.Timers.ElapsedEventHandler(RealTimeProcessingTimer_Elapsed);
             RealTimeProcessingTimer.Interval = iRealTimeInterval;
             RealTimeProcessingTimer.Start();
-              
+
+            // Create a new path for the project data
+            // This create a folder for each new project.
+            CreateNewProjectPath();
+
+            // Create a QRev Project file
+            CreateQRevProject(labelSiteName.Text);
+
             return true;
         }
-    
+        
+        /// <summary>
+        /// Start recording and processing the live data.
+        /// </summary>
         public void OnStartRecording()
         {
             MouseWheelScale = 1;
@@ -12101,7 +12190,7 @@ namespace ADCP
 
             if (iStartMeasQ > 0) //LPJ 2013-5-31 当测量后，才写入配置信息
             {
-                WriteSmartPageToFile(newPath);  //LPJ 2014-7-29
+                WriteSmartPageToFile(Path.Combine(newPath, ProjectFullName + ".cfg"));  //LPJ 2014-7-29
             }
 
             try
@@ -12242,6 +12331,9 @@ namespace ADCP
             //btnGPSCalibration.Enabled = true; //LPJ 2013-11-15
             linkLabelHeadingOffset.Enabled = true; //LPJ 2013-11-18
             TrackPanelPaint();
+
+            // Save the latest QRev Project data
+            SaveQRevProjectFile();
         }
 
         /// <summary>
@@ -12256,10 +12348,15 @@ namespace ADCP
 
             bEndEdge = false;
 
+            // QRev
+            // Stop the Edge Ensemble Counter
+            StopQRevEndEdgeCounter(bStartLeftEdge);
+
+
             if (iStartMeasQ > 0) //LPJ 2013-5-31 当测量后，才写入配置信息
             {
                 //WriteSmartPageToFile(newPath + "\\SysCfg\\Config.cfg"); //LPJ 2013-6-20 当测量结束时，将smartPage页中的配置写入文件，并复制到Lastconf  
-                WriteSmartPageToFile(newPath);  //LPJ 2014-7-29
+                WriteSmartPageToFile(Path.Combine(newPath, ProjectFullName + ".cfg"));  //LPJ 2014-7-29
             }
 
             try
@@ -12300,6 +12397,10 @@ namespace ADCP
                 GetGPSHeadingOffset();
             }
             TrackPanelPaint();
+
+            // QRev
+            // Add the Transect to the project
+            AddQRevTransectToProject();
         }
             
         private void trackBarMaxV_Scroll(object sender, EventArgs e)
@@ -15829,6 +15930,10 @@ namespace ADCP
         Point LowerRightOfDisplayRectagle = new Point(772, 614);
 
         private bool bStartEdge = false; //LPJ 2013-5-22
+
+        /// <summary>
+        /// Start the first edge measurement.
+        /// </summary>
         public void btnStartEdge() //LPJ 2013-5-22
         {
             //iCount = 0;
@@ -15836,28 +15941,13 @@ namespace ADCP
             bStartEdge = true;
 
             iStartMeasQ++;
-            DateTime dt = DateTime.Now;
-            string datePatt = @"yyyyMMdd_HHmmss";  //LPJ 2013-4-16 在日期与时间之间增加一个短下划线
-            //ProjectFullName = defCfg.DefCfgInf.FileName + "_" + iStartMeasQ.ToString("000") + "_" + dt.ToString(datePatt);
-            //ProjectFullName = labelSiteName.Text + "_" + iStartMeasQ.ToString("000") + "_" + dt.ToString(datePatt); //LPJ 2013-6-21
-            //newPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "dp300Data", ProjectFullName);
 
-            //System.IO.Directory.CreateDirectory(newPath + "\\PlaybackData");
-            //System.IO.Directory.CreateDirectory(newPath + "\\EnsemblesSet");
-            //System.IO.Directory.CreateDirectory(newPath + "\\rawData");
-            //System.IO.Directory.CreateDirectory(newPath + "\\GPS");
-            //System.IO.Directory.CreateDirectory(newPath + "\\SysCfg");
-
-            ProjectFullName = labelSiteName.Text + "_" + dt.ToString(datePatt); //LPJ 2013-6-21
-            //newPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "dp300Data", ProjectFullName);
-
-            // Create the Folder if it does not exist
-            newPath = RttProject.GetDefaultPath(ProjectFullName, ".cfg");
-
+            // Create a ensemble name based on the Site Name and the date and time
+            _ensOutputFileName = labelSiteName.Text + "_" + DateTime.Now.ToString(@"yyyyMMdd_HHmmss");
 
             projectHasStarted = true;
             //hasCreatedProject = true;
-            this.Text = newPath;  //LPJ 2013-4-16
+            this.Text = Path.Combine(newPath, ProjectFullName);  //LPJ 2013-4-16
 
             //清空计算的流量数据
             ClearSaveEnsemblesInfo();     //LPJ 2012-9-24
@@ -15880,8 +15970,8 @@ namespace ADCP
             //       Directory.GetCurrentDirectory() + "\\dp300Data" + "\\LastTimeCfg" + "\\Config.cfg", true);
 
             #region 保存配置文件
-            WriteSmartPageToFile(newPath + ".cfg");
-            File.Copy(newPath + ".cfg", Directory.GetCurrentDirectory() + "\\dp300Data" +  "\\Config.cfg", true);
+            WriteSmartPageToFile(Path.Combine(newPath, ProjectFullName + ".cfg"));
+            //File.Copy(newPath + ".cfg", Directory.GetCurrentDirectory() + "\\dp300Data" +  "\\Config.cfg", true);
             #endregion
 
             //LPJ 2012-10-10 初始化流量计算参数--start
@@ -15995,10 +16085,44 @@ namespace ADCP
             //{
             //    btnMoving(); //LPJ 2013-6-18
             //}
+
+
+            // QRev
+            // Parse the Start Edge value
+            // Set to 0.0 if any errors
+            double dStartDist = 0.0;
+            try
+            {
+                // Parse the distance
+                dStartDist = double.Parse(setStartBank.strStartDistance);
+            }
+            catch(Exception e)
+            {
+                // If exception leave as 0.0
+                dStartDist = 0.0;
+            }
+
+            // QRev
+            // Create a QRev Transect
+            CreateQRevTransect(_ensOutputFileName + ".ens", edgeSetting, systSet, CommandList);
+
+            // QRev
+            // Set all the start edge settings
+            SetQRevStartEdgeSettings(bStartLeftEdge,                 // Is starting on left or right side
+                                    dStartDist,                      // Start distance
+                                    setStartBank.iStartStyle,        // Start Edge Type (rectangular or angled)
+                                    SetStartBank.dStartPara,         // Start Coeffienct
+                                    edgeSetting.iTopEstimate,        // Top Method
+                                    edgeSetting.iBottomEstimate,     // Bottom Method
+                                    edgeSetting.dPowerCurveCoeff);   // Power Curve Coeffienct
         }
         public void btnMoving() //LPJ 2013-5-22
         {
             bStartEdge = false;
+
+            // QRev 
+            // Stop the QRev Start Edge Counter
+            StopQRevStartEdgeCounter(bStartLeftEdge);
 
             CurrentState = TRANSECT_STATE_MOVING;
 
@@ -16102,6 +16226,28 @@ namespace ADCP
 
             }
             //LPJ 2013-2-21 点击“结束测量”后，弹出“设置终止岸”对话框 --end
+
+            // QRev
+            // Parse the Start Edge value
+            // Set to 0.0 if any errors
+            double dEndDist = 0.0;
+            try
+            {
+                // Parse the distance
+                dEndDist = double.Parse(setFinishBank.strFinishDistance);
+            }
+            catch (Exception e)
+            {
+                // If exception leave as 0.0
+                dEndDist = 0.0;
+            }
+
+            // QRev
+            // Start the End Edge
+            SetQRevEndEdgeSettings(bStartLeftEdge,                      // Start on right or left side
+                                    dEndDist,                           // End Edge Distance
+                                    setFinishBank.iFinishStyle,         // Edge Type (rectangular or vertical)
+                                    SetFinishBank.dFinishPara);         // End Edge Coeffienct
         }
 
         //JZH 2012-01-15 流量测量按钮
@@ -19245,7 +19391,7 @@ namespace ADCP
                 if (iStartMeasQ > 0)
                 {
                     ListViewItem items = new ListViewItem();
-                    items.Text = newPath; //文件名
+                    items.Text = Path.Combine(newPath, ProjectFullName); //文件名
                     items.SubItems.Add(current_DataTime); //开始日期
                     items.SubItems.Add(current_DataTime); //开始时间
                     items.SubItems.Add(current_TotalTimelabel); //测量时间
@@ -19866,6 +20012,23 @@ namespace ADCP
         {
             sp.DataReceived -= new SerialDataReceivedEventHandler(sp_DataReceived);
 
+            // Set the COM ports and Baud rates
+            systSet.sAdcpPort = sp.PortName;
+            systSet.sAdcpBaud = sp.BaudRate;
+            systSet.bGPSConnect = bGPSConnect;
+            if(bGPSConnect)
+            {
+                systSet.sGpsPort = GPS_sp.PortName;
+                systSet.sGpsBaud = GPS_sp.BaudRate;
+            }
+            else
+            {
+                systSet.sGpsPort = "";
+                systSet.sGpsBaud = 0;
+            }
+
+            systSet.firmware = labelFirmWare.Text;
+
             if (labelHeadingRef.Text == Resource1.String230)
                 systSet.iHeadingRef = 0;
             else
@@ -20346,31 +20509,200 @@ namespace ADCP
             }
         }
 
+        #region QRev Project and Transect Logic
+
+        public void CreateNewProjectPath()
+        {
+            DateTime dt = DateTime.Now;
+            string datePatt = @"yyyyMMdd_HHmmss";
+
+            // Create a project name based on the Site Name and the date and time
+            ProjectFullName = labelSiteName.Text + "_" + dt.ToString(datePatt);
+
+            // Get the project default folder path
+            var folderPath = RttProject.GetDefaultFolderPath();
+            
+            
+            // Combine the default folder path for the project and the project name
+            // This will create a folder for each project
+            folderPath = Path.Combine(folderPath, ProjectFullName);
+
+            // Create the Folder if it does not exist
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            // Create the project path based on the folder path and project name
+            //newPath = Path.Combine(folderPath, ProjectFullName);
+            newPath = folderPath;
+        }
+
+        /// <summary>
+        /// Create a QRev Transect.  Give the file name
+        /// for the transect.
+        /// 
+        /// The file name is the file with the recorded ensemble data.
+        /// </summary>
+        /// <param name="ensFileName">Ensemble file name.</param>
+        /// <param name="edgeSet">Edge Setting used for this transect.</param>
+        /// <param name="systemSet">System Settings Used for this transect.</param>
+        /// <param name="cmdList">List of commands used for the transect.</param>
+        public void CreateQRevTransect(string ensFileName, EdgeSetting edgeSet, SystemSetting systemSet, string cmdList)
+        {
+            _qrevTransect = new TransectConfig();
+            _qrevTransect.AddFile(ensFileName);
+            _qrevTransect.SetEdgeSettings(edgeSetting);
+            _qrevTransect.SetSystemSettings(systSet);
+            _qrevTransect.SetCommandList(CommandList);
+
+            // Reset the Edge Count values
+            _qrevStartEnsCount = 0;
+            _bIsQRevStartCounter = false;
+            _qrevEndEnsCount = 0;
+            _bIsQRevEndCounter = false;
+            _qrevMovingEnsCount = 0;
+        }
+
+        /// <summary>
+        /// Start the Ensemble counter for the start edge.
+        /// Then set the edge settings to the transect.
+        /// </summary>
+        /// <param name="isStartLeft">Flag if the transect starts on the left or right.</param>
+        /// <param name="startDist">Start distance.</param>
+        /// <param name="startType">Start contour Type.  Rectangluar or Angled.</param>
+        /// <param name="startCoeff">Start coeffienct.</param>
+        /// <param name="topMethod">Top method used to calculate Q.</param>
+        /// <param name="bottomMethod">Bottom Method to calcualte Q.</param>
+        /// <param name="powerCurveCoeff">Power Curve Coefficent for Top method.</param>
+        public void SetQRevStartEdgeSettings(bool isStartLeft, double startDist, int startType, decimal startCoeff, int topMethod, int bottomMethod, double powerCurveCoeff)
+        {
+            // Start the QRev Start Edge Counter
+            StartQRevStartEdgeCounter();
+
+            // Set the start edge settings to the transect
+            _qrevTransect.SetStartEdgeSettings(isStartLeft,         // Is starting on left or right side
+                                                startDist,          // Start distance
+                                                startType,          // Start Edge Type (rectangular or angled)
+                                                startCoeff,         // Start Coeffienct
+                                                topMethod,          // Top Method
+                                                bottomMethod,       // Bottom Method
+                                                powerCurveCoeff);   // Power Curve Coeffienct
+
+        }
+
+        /// <summary>
+        /// Set the End Edge Settings.
+        /// </summary>
+        /// <param name="isStartLeft">Check which edge was start.</param>
+        /// <param name="endDist">End distance.</param>
+        /// <param name="endType">End Edge Type.</param>
+        /// <param name="endCoeff">End Edge Coeffienct.</param>
+        public void SetQRevEndEdgeSettings(bool isStartLeft, double endDist, int endType, decimal endCoeff)
+        {
+            // Start counting the edge ensembles
+            StartQRevEndEdgeCounter();
+
+            // Set the edge settings
+            _qrevTransect.SetEndEdgeSettings(isStartLeft, endDist, endType, endCoeff);
+        }
+
+        /// <summary>
+        /// Start the Start Edge counter.  This will
+        /// keep track of the number of ensembles in the
+        /// start edge.
+        /// </summary>
+        public void StartQRevStartEdgeCounter()
+        {
+            // Reset the counter and turn it on
+            _qrevStartEnsCount = 0;
+            _bIsQRevStartCounter = true;
+        }
+
+        /// <summary>
+        /// Stop the Start Edge counting and set the value to the
+        /// transect.
+        /// </summary>
+        /// <param name="isStartLeft">Did the transect start on the right or left.</param>
+        public void StopQRevStartEdgeCounter(bool isStartLeft)
+        {
+            // Set the flag to stop
+            _bIsQRevStartCounter = false;
+
+            // Pass the value to the transect
+            _qrevTransect.SetStartEdgeEnsCount(isStartLeft, _qrevStartEnsCount);
+        }
+
+        /// <summary>
+        /// Start the End Edge counter.  This will
+        /// keep track of the nubmer of ensembles in the
+        /// end edge.
+        /// </summary>
+        public void StartQRevEndEdgeCounter()
+        {
+            // Reset the counter and turn it on
+            _qrevEndEnsCount = 0;
+            _bIsQRevEndCounter = true;
+        }
+
+        public void StopQRevEndEdgeCounter(bool isStartLeft)
+        {
+            // Set the flag to stop
+            _bIsQRevEndCounter = false;
+
+            // Pass the value to the transect
+            _qrevTransect.SetEndEdgeEnsCount(isStartLeft, _qrevEndEnsCount);
+        }
+
+        /// <summary>
+        /// Create the QRev Project file.
+        /// This will generate a unique project name
+        /// using the date and time.
+        /// </summary>
+        public void CreateQRevProject(string siteName)
+        {
+            DateTime dt = DateTime.Now;
+
+            // Create the project name
+            string projectName = "RTI_QRev_" + ProjectFullName;
+
+            // Get the project default folder path
+            //var folderPath = RttProject.GetDefaultFolderPath();
+
+            // Combine the default folder path for the project and the project name
+            // This will create a folder for each project
+            //folderPath = Path.Combine(folderPath, ProjectFullName);
+
+            // Create the project with the folder path and project name
+            //_qrevProject = new RttProject(folderPath, projectName);
+            _qrevProject = new RttProject(newPath, projectName);
+        }
+
+        /// <summary>
+        ///  Add the latest QRev Transect to the project.
+        ///  A new transect will be created later.
+        /// </summary>
+        public void AddQRevTransectToProject()
+        {
+            // Add the transect to the project
+            _qrevProject.AddTransect(_qrevTransect);
+
+            // Write the latest project file
+            SaveQRevProjectFile();
+        }
+
         /// <summary>
         /// Rico
         /// Write the QRev Project file.  This project
         /// file is used to playback the data in QRev.
         /// </summary>
-        public void WriteQRevProjectFile()
+        public void SaveQRevProjectFile()
         {
-            // Create the transects
-            TransectConfig transect1 = new TransectConfig();
-            transect1.AddFile("A0000004.ens");
-            transect1.SetEdgeSettings(edgeSetting);
-            transect1.SetSystemSettings(systSet);
-            //transect1.ActiveConfig["Q_Shore_Left_Ens_Count"] = 8;
-            //transect1.ActiveConfig["Q_Shore_Right_Ens_Count"] = 10;
-            //transect1.ActiveConfig["Offsets_Transducer_Depth"] = 0.2;
-            //transect1.ActiveConfig["Offsets_Magnetic_Variation"] = -3.5;
-            //transect1.ActiveConfig["Edge_Begin_Shore_Distance"] = 20.0;
-            //transect1.ActiveConfig["Edge_End_Shore_Distance"] = 10.0;
-
-            var transectList = new List<TransectConfig>();
-            transectList.Add(transect1);
-
-            RttProject prj = new RttProject();
-            prj.SaveProject(siteInformation, systSet, transectList);
+            // Save all the settings to the project
+            _qrevProject.SaveProject(siteInformation, systSet, labelInstrumentSN.Text, labelSystemNumber.Text);
         }
+
+        #endregion
 
         /// <summary>
         /// Rico
@@ -20380,7 +20712,7 @@ namespace ADCP
         private void WriteSmartPageToFile(string fileName) //LPJ 2013-6-20 将smartPage页中的所有设置写入配置文件
         {
             // Write the QRev Project File
-            WriteQRevProjectFile();
+            SaveQRevProjectFile();
 
             //File.WriteAllText(fileName, "Language " + "" + "\r\n"); //将语言单独写一个configuration
             File.WriteAllText(fileName, "ADCP_PortName " + sp.PortName + "\r\n");

@@ -28,6 +28,12 @@ namespace ADCP
         public string ProjectName { get; set; }
 
         /// <summary>
+        /// List of all the transects associated
+        /// with this project.
+        /// </summary>
+        public List<TransectConfig> Transects;
+
+        /// <summary>
         /// Set the project name and folder path for the project.
         /// </summary>
         /// <param name="folderPath">Folder path to save the project.</param>
@@ -35,8 +41,31 @@ namespace ADCP
         public RttProject(string folderPath, string projectName)
         {
             // Intialize the values.
-            this.FolderPath = folderPath;
+            if (folderPath != null)
+            {
+                this.FolderPath = folderPath;
+            }
+            else
+            {
+                this.FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "RTI", "River");
+            }
             this.ProjectName = projectName;
+
+            Transects = new List<TransectConfig>();
+        }
+
+        /// <summary>
+        /// Set the project name for the project.
+        /// Use the default folder path.
+        /// </summary>
+        /// <param name="projectName">Project name. DO NOT INCLUDE THE FILE EXTENSION.</param>
+        public RttProject(string projectName)
+        {
+            // Intialize the values.
+            this.FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "RTI", "River");
+            this.ProjectName = projectName;
+
+            Transects = new List<TransectConfig>();
         }
 
         /// <summary>
@@ -48,6 +77,17 @@ namespace ADCP
         {
             this.FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "RTI", "River");
             this.ProjectName = RttProject.DEFAULT_PRJ_NAME;
+
+            Transects = new List<TransectConfig>();
+        }
+
+        /// <summary>
+        /// Add the transect to this project.
+        /// </summary>
+        /// <param name="transect"></param>
+        public void AddTransect(TransectConfig transect)
+        {
+            Transects.Add(transect);
         }
 
         /// <summary>
@@ -57,17 +97,25 @@ namespace ADCP
         /// <param name="siteInfo">Site Information.</param>
         /// <param name="sysSetting">System Settings.</param>
         /// <param name="transects">Transect Information.</param>
-        public void SaveProject(SiteInformation siteInfo, SystemSetting sysSetting, List<TransectConfig> transects)
+        /// <param name="serialNum">Serial Number</param>
+        /// <param name="systemDesc">System Description</param>
+        /// 
+        public void SaveProject(SiteInformation siteInfo, SystemSetting sysSetting, string serialNum, string systemDesc)
         {
+            // Create a datetime to share
+            var dt = DateTime.Now;
+            string dtStr = dt.ToUniversalTime().ToString("yyyyMMddHHmmss");
+            string dateStr = dt.ToUniversalTime().ToString("yyyy/MM/dd");
+
             Dictionary<string, object> prj = new Dictionary<string, object>();
-            prj.Add("project", GetProjectDict());                                   // Project Section
-            prj.Add("site_info", GetSiteInfoDict(siteInfo, sysSetting));            // Site_Info section
-            prj.Add("transects", GetTransectDict(transects));                       // Transects section
-            prj.Add("qaqc", GetQaQcDict());                                         // QAQC section
+            prj.Add("project", GetProjectDict(siteInfo, dtStr));                                                          // Project Section
+            prj.Add("site_info", GetSiteInfoDict(siteInfo, sysSetting, serialNum, systemDesc, dateStr));        // Site_Info section
+            prj.Add("transects", GetTransectDict());                                                            // Transects section
+            prj.Add("qaqc", GetQaQcDict());                                                                     // QAQC section
             
             // Create a top level RTI 
             Dictionary<string, object> rti = new Dictionary<string, object>();
-            rti.Add("RTI", prj);                                                    // Top Level
+            rti.Add("RTI", prj);                                                                    // Top Level
 
             // Create the Json string with indents
             string json = JsonConvert.SerializeObject(rti, Formatting.Indented);
@@ -79,11 +127,19 @@ namespace ADCP
         /// <summary>
         /// Create a dictionary for the rpoject information.
         /// </summary>
+        /// <param name="siteInfo">Site information</param>
+        /// <param name="dtStr">Date Time String as UTC.</param>
         /// <returns>Dictionary for the project section.</returns>
-        public Dictionary<string, object> GetProjectDict()
+        public Dictionary<string, object> GetProjectDict(SiteInformation siteInfo, string dtStr)
         {
             Dictionary<string, object> dict = new Dictionary<string, object>();
-            dict.Add("Name", "Project Lake Varying Bins");
+
+
+
+            // Create the project name
+            string prjName = siteInfo.siteName + "_" + siteInfo.stationNumber + "_" + dtStr;
+
+            dict.Add("Name", prjName);
             dict.Add("Version", "1.0");
             dict.Add("Locked", null);
 
@@ -104,8 +160,11 @@ namespace ADCP
         /// </summary>
         /// <param name="siteInfo">Site Information.</param>
         /// <param name="sysSetting">System Settings.</param>
+        /// <param name="serialNum">Serial Number</param>
+        /// <param name="systemDesc">System Description.</param>
+        /// <param name="dateStr">Date String as UTC.</param>
         /// <returns>Dictonary to convert to JSON to save project.</returns>
-        public Dictionary<string, object> GetSiteInfoDict(SiteInformation siteInfo, SystemSetting sysSetting)
+        public Dictionary<string, object> GetSiteInfoDict(SiteInformation siteInfo, SystemSetting sysSetting, string serialNum, string systemDesc, string dateStr)
         {
             Dictionary<string, object> si = new Dictionary<string, object>();
             si.Add("Agency", "");
@@ -116,13 +175,13 @@ namespace ADCP
             si.Add("Party", siteInfo.FieldParty);
             si.Add("BoatMotorUsed", siteInfo.BoatMotor);
             si.Add("ProcessedBy", siteInfo.ProcessedBy);
-            si.Add("ADCPSerialNmb", "000000000000000000000");
-            si.Add("Description", "");
+            si.Add("ADCPSerialNmb", serialNum);
+            si.Add("Description", systemDesc);
             si.Add("Grid_Reference", "");
             si.Add("Number", siteInfo.stationNumber);
             si.Add("Name", siteInfo.siteName);
             si.Add("River_Name", "");
-            si.Add("Measurement_Date", "11/09/20");
+            si.Add("Measurement_Date", dateStr);
             si.Add("Rating_Number", siteInfo.RatingNumber);
             si.Add("Wind_Speed", "");
             si.Add("Wind_Direction", "");
@@ -193,13 +252,13 @@ namespace ADCP
         /// </summary>
         /// <param name="transects">Transects to add.</param>
         /// <returns>Array containing all the transects configurations as dictionaries.</returns>
-        public Dictionary<string, object>[] GetTransectDict(List<TransectConfig> transects)
+        public Dictionary<string, object>[] GetTransectDict()
         {
             // Create a list which we will convert to an array and returned
             var transect_array = new List<Dictionary<string, object>>();
 
             // Go through each transect and add to list as a dictionary
-            foreach ( var transect in transects)
+            foreach ( var transect in this.Transects)
             {
                 // Convert the transect to a dictonary
                 transect_array.Add(transect.ToDict());
@@ -241,6 +300,22 @@ namespace ADCP
         }
 
         /// <summary>
+        /// Get the default folder path for all projects.
+        /// This will create the folder in MyDocuments/RTI/River
+        /// </summary>
+        /// <returns>Folder path for all projects.</returns>
+        public static string GetDefaultFolderPath()
+        {
+            var folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "RTI", "River");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            return folderPath;
+        }
+
+        /// <summary>
         /// Get the default file path for the project file.
         /// If no project name is given, the default project name is used.
         /// 
@@ -249,12 +324,10 @@ namespace ADCP
         /// <returns>Full file path to the project file.</returns>
         public static string GetDefaultPath(string projectName="QRev_RTI_Project", string fileExt = ".rtt")
         {
-            var folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "RTI", "River");
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
+            // Get the default folder path
+            string folderPath = RttProject.GetDefaultFolderPath();
 
+            // Create the path based on the project name and folder path
             var newPath = Path.Combine(folderPath, projectName + fileExt);
 
 
