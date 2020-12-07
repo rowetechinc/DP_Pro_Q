@@ -833,7 +833,7 @@ namespace ADCP
             catch
             {
             }
-
+            
             try
             {
                 StopTimer.Stop(); //LPJ 2013-8-8
