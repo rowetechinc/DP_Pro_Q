@@ -601,7 +601,7 @@ namespace ADCP
         }
 
         /// <summary>
-        /// 开始数据采集
+        /// Start Recording and processing data.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -636,7 +636,11 @@ namespace ADCP
 
         }
 
-        
+        /// <summary>
+        /// Start Edge measurement.  System is already pinging.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripBtnStartEdge_Click(object sender, EventArgs e)
         { //开始岸边
             toolStripBtnStart.Visible = false;
@@ -820,7 +824,10 @@ namespace ADCP
         {
             try
             {
-                MoveLightTimer.Stop(); //LPJ 2013-8-6
+                if (MoveLightTimer != null)
+                {
+                    MoveLightTimer.Stop(); //LPJ 2013-8-6
+                }
             }
             catch
             {
@@ -828,7 +835,10 @@ namespace ADCP
 
             try
             {
-                MoveTimer.Stop(); //LPJ 2013-8-6
+                if (MoveTimer != null)
+                {
+                    MoveTimer.Stop(); //LPJ 2013-8-6
+                }
             }
             catch
             {
@@ -836,7 +846,10 @@ namespace ADCP
             
             try
             {
-                StopTimer.Stop(); //LPJ 2013-8-8
+                if (StopTimer != null)
+                {
+                    StopTimer.Stop(); //LPJ 2013-8-8
+                }
             }
             catch
             {
