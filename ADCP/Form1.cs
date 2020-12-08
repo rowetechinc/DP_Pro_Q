@@ -843,7 +843,7 @@ namespace ADCP
             catch
             {
             }
-
+            
             try
             {
                 if (StopTimer != null)
@@ -1783,7 +1783,10 @@ namespace ADCP
                 }
                 else
                 {
-                    bClose = DP300_wnd.bClose;
+                    if (DP300_wnd != null)
+                        bClose = DP300_wnd.bClose;
+                    else
+                        bClose = true;
                 }
                 if (bClose)
                 {
