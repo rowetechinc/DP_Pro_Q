@@ -22585,9 +22585,20 @@ namespace ADCP
                     _icurrentEns = 0;    //ensemble picker
                 BackScatter.EnsembleClass mm = ensembles[_icurrentEns];   //ensemble picker
 
+                icheckedBeam = iCheckedBeam.Count(); 
                 icount = 0;
                 for (int k = 0; k < BackScatter.MaxBSbeams; k++)
                 {
+                    bool bchecked = false;
+                    for (int j = 0; j < icheckedBeam; j++) //判断该beam是否选中
+                    {
+                        if (k == iCheckedBeam[j])
+                            bchecked = true;
+                    }
+
+                    if (!bchecked) //如该beam没有被选中，则不绘制
+                        continue;
+
                     List<float[]> fData = new List<float[]>();
 
                     //float fMinData = 0;
