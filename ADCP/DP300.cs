@@ -7506,6 +7506,7 @@ namespace ADCP
                         textBox_EnsN.Text = iEndEnsemble.ToString();
 
                         BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
+                        textBox_EnsN.Text = m1.System_EnsembleNumber.ToString(); //RMa 12/7/2020
                         label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
                         label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
                     }
@@ -22583,7 +22584,7 @@ namespace ADCP
                     _icurrentEns = ensembles.Count - 1;   //ensemble picker
                 if (_icurrentEns < 0)   //ensemble picker
                     _icurrentEns = 0;    //ensemble picker
-                BackScatter.EnsembleClass mm = ensembles[_icurrentEns];   //ensemble picker
+                BackScatter.EnsembleClass mm = ensembles[_icurrentEns];   //ensemble picker          
 
                 icheckedBeam = iCheckedBeam.Count(); 
                 icount = 0;
@@ -22780,6 +22781,17 @@ namespace ADCP
                     iCurrentEns = OnTransferMap2Number(panel_contour.DisplayRectangle.X + 60, panel_contour.DisplayRectangle.X + 60 + panel_contour.DisplayRectangle.Width - 110, _currentX, iStartEnsemble, iEndEnsemble + 1);
                 }
 
+                //RMa 12/7/2020
+                int _icurrentEns = iCurrentEns;  //ensemble picker
+                if (_icurrentEns >= ensembles.Count)   //ensemble picker
+                    _icurrentEns = ensembles.Count - 1;   //ensemble picker
+                if (_icurrentEns < 0)   //ensemble picker
+                    _icurrentEns = 0;    //ensemble picker
+                BackScatter.EnsembleClass m1 = ensembles[_icurrentEns];   //ensemble picker          
+                textBox_EnsN.Text = m1.System_EnsembleNumber.ToString();
+                label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
+                label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
+
                 bpick = false;
                 panel_contour.Refresh();
             }
@@ -22824,9 +22836,8 @@ namespace ADCP
             {
                 iEndEnsemble = iStartEnsemble + hScrollBar_BS.Value;
                 if (iEndEnsemble == 0) iEndEnsemble = 1;
-                //textBox_hScrollBarV.Text = hScrollBarPlayback.Value.ToString();
-                textBox_EnsN.Text = iEndEnsemble.ToString();
-                BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
+                BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1]; //RMa 12/7/2020
+                textBox_EnsN.Text = m1.System_EnsembleNumber.ToString(); 
                 label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
                 label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
 
