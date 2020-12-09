@@ -22529,23 +22529,25 @@ namespace ADCP
                             if (bAmp)  //Amplitude
                             {
                                 data[t++] = m.BS_Amplitude[i, bin];
+                                /* //RMa 12/8/2020
                                 if (fMinData > m.BS_Amplitude[i, bin])
                                     fMinData = m.BS_Amplitude[i, bin];
 
                                 if (fMaxData < m.BS_Amplitude[i, bin])
                                     fMaxData = m.BS_Amplitude[i, bin];
-
+                                */
                                 strTitle = "Amp Beam" + i.ToString();
                             }
                             else    //BackScatter
                             {
                                 data[t++] = m.BS_BackScatter[i, bin];
+                                /* //RMa 12/8/2020
                                 if (fMinData > m.BS_BackScatter[i, bin])
                                     fMinData = m.BS_BackScatter[i, bin];
 
                                 if (fMaxData < m.BS_BackScatter[i, bin])
                                     fMaxData = m.BS_BackScatter[i, bin];
-
+                                */
                                 strTitle = "BackScatter Beam" + i.ToString();
                             }
 
@@ -22624,30 +22626,32 @@ namespace ADCP
                     {
                         if (bAmp)  //Amplitude
                         {
-                            if (bin == 0)
-                                fMinData = mm.BS_Amplitude[k, bin];
+                            //if (bin == 0) //RMa 12/8/2020
+                            //    fMinData = mm.BS_Amplitude[k, bin];
 
                             data[t++] = mm.BS_Amplitude[k, bin];
+                            /* //RMa 12/8/2020
                             if (fMinData > mm.BS_Amplitude[k, bin])
                                 fMinData = mm.BS_Amplitude[k, bin];
 
                             if (fMaxData < mm.BS_Amplitude[k, bin])
                                 fMaxData = mm.BS_Amplitude[k, bin];
-
+                            */
                             strTitle = "Amp Beam" + k.ToString();
                         }
                         else    //BackScatter
                         {
-                            if (bin == 0)
-                                fMinData = mm.BS_BackScatter[k, bin];
+                            //if (bin == 0) //RMa 12/8/2020
+                            //    fMinData = mm.BS_BackScatter[k, bin];
 
                             data[t++] = mm.BS_BackScatter[k, bin];
+                            /* //RMa 12/8/2020
                             if (fMinData > mm.BS_BackScatter[k, bin])
                                 fMinData = mm.BS_BackScatter[k, bin];
 
                             if (fMaxData < mm.BS_BackScatter[k, bin])
                                 fMaxData = mm.BS_BackScatter[k, bin];
-
+                            */
                             strTitle = "BackScatter Beam" + k.ToString();
                         }
 
@@ -22659,7 +22663,7 @@ namespace ADCP
                     fLeftMaxDistance = (int)(depth + 0.5);
                     fMinData = (int)(fMinData - 0.5);
                     fMaxData = (int)(fMaxData + 0.5);
-
+                    if (fMaxData <= fMinData) fMaxData = fMinData + 1; //to fix the Overflow problem in drawDisplay.OnDrawVertical() when fMaxData = fMinData.  -RMa 12/8/2020
                     CDrawDisplay drawDisplay = new CDrawDisplay();
 
                     Rectangle rect = new Rectangle();
@@ -22894,7 +22898,7 @@ namespace ADCP
                     {
                         SizeF size = g.MeasureString((trackBarMaxV_BS.Value / 40f).ToString("0.00"), font);
                         g.DrawString((trackBarMaxV_BS.Minimum).ToString("0.00"), font, Brushes.Black, new PointF(1, 16));
-                        g.DrawString(((trackBarMaxV_BS.Value - trackBarMaxV_BS.Minimum) / 2f).ToString("0.00"), font, Brushes.Black, new PointF(InfoPanel_BS.Width / 2f - size.Width / 2, 16));
+                        g.DrawString(((trackBarMaxV_BS.Value + trackBarMaxV_BS.Minimum) / 2f).ToString("0.00"), font, Brushes.Black, new PointF(InfoPanel_BS.Width / 2f - size.Width / 2, 16));
                         g.DrawString((trackBarMaxV_BS.Value / 1f).ToString("0.00"), font, Brushes.Black, new PointF(InfoPanel_BS.Width - size.Width - 1, 16));
                     }
 
@@ -22932,6 +22936,7 @@ namespace ADCP
         {
             trackBarMaxV_BS.Maximum = Convert.ToInt32(numericUpDown_Max.Value);
             labelMavV_BS.Text = (float)trackBarMaxV_BS.Maximum + " dB";
+            trackBarMaxV_BS.Value = trackBarMaxV_BS.Maximum; //-RMa 12/8/2020
             panel_contour.Refresh();
             InfoPanel_BS.Refresh();
         }
