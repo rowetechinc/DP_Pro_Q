@@ -22626,32 +22626,28 @@ namespace ADCP
                     {
                         if (bAmp)  //Amplitude
                         {
-                            //if (bin == 0) //RMa 12/8/2020
-                            //    fMinData = mm.BS_Amplitude[k, bin];
+                            if (bin == 0) 
+                                fMinData = mm.BS_Amplitude[k, bin];
 
                             data[t++] = mm.BS_Amplitude[k, bin];
-                            /* //RMa 12/8/2020
                             if (fMinData > mm.BS_Amplitude[k, bin])
                                 fMinData = mm.BS_Amplitude[k, bin];
 
                             if (fMaxData < mm.BS_Amplitude[k, bin])
-                                fMaxData = mm.BS_Amplitude[k, bin];
-                            */
+                                fMaxData = mm.BS_Amplitude[k, bin];                            
                             strTitle = "Amp Beam" + k.ToString();
                         }
                         else    //BackScatter
                         {
-                            //if (bin == 0) //RMa 12/8/2020
-                            //    fMinData = mm.BS_BackScatter[k, bin];
+                            if (bin == 0)
+                                fMinData = mm.BS_BackScatter[k, bin];
 
                             data[t++] = mm.BS_BackScatter[k, bin];
-                            /* //RMa 12/8/2020
                             if (fMinData > mm.BS_BackScatter[k, bin])
                                 fMinData = mm.BS_BackScatter[k, bin];
 
                             if (fMaxData < mm.BS_BackScatter[k, bin])
                                 fMaxData = mm.BS_BackScatter[k, bin];
-                            */
                             strTitle = "BackScatter Beam" + k.ToString();
                         }
 
@@ -22784,7 +22780,7 @@ namespace ADCP
                     _currentX = e.X;
                     iCurrentEns = OnTransferMap2Number(panel_contour.DisplayRectangle.X + 60, panel_contour.DisplayRectangle.X + 60 + panel_contour.DisplayRectangle.Width - 110, _currentX, iStartEnsemble, iEndEnsemble + 1);
                 }
-
+                /* wrong ensemble number for the picked ensemble. -RMa 12/10/2020
                 //RMa 12/7/2020
                 int _icurrentEns = iCurrentEns;  //ensemble picker
                 if (_icurrentEns >= ensembles.Count)   //ensemble picker
@@ -22792,10 +22788,10 @@ namespace ADCP
                 if (_icurrentEns < 0)   //ensemble picker
                     _icurrentEns = 0;    //ensemble picker
                 BackScatter.EnsembleClass m1 = ensembles[_icurrentEns];   //ensemble picker          
-                textBox_EnsN.Text = m1.System_EnsembleNumber.ToString();
+                //textBox_EnsN.Text = m1.System_EnsembleNumber.ToString(); 
                 label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
                 label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
-
+                */
                 bpick = false;
                 panel_contour.Refresh();
             }

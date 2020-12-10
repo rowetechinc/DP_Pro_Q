@@ -4179,7 +4179,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 144</value>
+    <value>0, 136</value>
   </data>
   <data name="pictureBox_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4203,7 +4203,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 145</value>
+    <value>29, 137</value>
   </data>
   <data name="panel_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4227,7 +4227,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_A.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-379, 0</value>
+    <value>-387, 0</value>
   </data>
   <data name="vScrollBar_W_A.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -4569,7 +4569,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 203</value>
+    <value>0, 195</value>
   </data>
   <data name="pictureBox_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4593,7 +4593,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 209</value>
+    <value>29, 201</value>
   </data>
   <data name="panel_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4620,7 +4620,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_C.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-434, 0</value>
+    <value>-442, 0</value>
   </data>
   <data name="vScrollBar_W_C.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -8211,10 +8211,10 @@
     <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="GPSdepthPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 424</value>
+    <value>0, 416</value>
   </data>
   <data name="GPSdepthPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 171</value>
+    <value>576, 171</value>
   </data>
   <data name="GPSdepthPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -14531,7 +14531,7 @@
     <value>12</value>
   </data>
   <data name="tabPageContour.Text" xml:space="preserve">
-    <value>Contour</value>
+    <value>Sv Contour</value>
   </data>
   <data name="&gt;&gt;tabPageContour.Name" xml:space="preserve">
     <value>tabPageContour</value>
@@ -14999,7 +14999,7 @@
     <value>13</value>
   </data>
   <data name="tabPageBackScatter.Text" xml:space="preserve">
-    <value>BackScatter</value>
+    <value>Sv Tabular</value>
   </data>
   <data name="&gt;&gt;tabPageBackScatter.Name" xml:space="preserve">
     <value>tabPageBackScatter</value>

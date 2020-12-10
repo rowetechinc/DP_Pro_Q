@@ -4517,6 +4517,8 @@
             // checkBox_b9
             // 
             resources.ApplyResources(this.checkBox_b9, "checkBox_b9");
+            this.checkBox_b9.Checked = true;
+            this.checkBox_b9.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_b9.Name = "checkBox_b9";
             this.checkBox_b9.UseVisualStyleBackColor = true;
             this.checkBox_b9.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
@@ -4524,6 +4526,8 @@
             // checkBox_b8
             // 
             resources.ApplyResources(this.checkBox_b8, "checkBox_b8");
+            this.checkBox_b8.Checked = true;
+            this.checkBox_b8.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_b8.Name = "checkBox_b8";
             this.checkBox_b8.UseVisualStyleBackColor = true;
             this.checkBox_b8.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
@@ -4531,6 +4535,8 @@
             // checkBox_b7
             // 
             resources.ApplyResources(this.checkBox_b7, "checkBox_b7");
+            this.checkBox_b7.Checked = true;
+            this.checkBox_b7.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_b7.Name = "checkBox_b7";
             this.checkBox_b7.UseVisualStyleBackColor = true;
             this.checkBox_b7.CheckedChanged += new System.EventHandler(this.checkBox_beam_CheckedChanged);
