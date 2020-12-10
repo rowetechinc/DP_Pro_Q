@@ -22665,7 +22665,7 @@ namespace ADCP
                     Rectangle rect = new Rectangle();
                     rect.X = panel_contour.DisplayRectangle.X + panel_contour.DisplayRectangle.Width * 2 / 3 + 10;
                     rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount;
-                    rect.Width = panel_contour.DisplayRectangle.Width * 1 / 3 - 130;
+                    rect.Width = panel_contour.DisplayRectangle.Width * 1 / 3 - 150;
                     rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
 
                     //vertical profile
