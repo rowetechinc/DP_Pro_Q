@@ -417,6 +417,12 @@ namespace ADCP
             this.UpdateStyles();
 
             //MainPanelStayTimer.Elapsed += new System.Timers.ElapsedEventHandler(MainPanelStayTimer_Elapsed); //LPJ 2013-11-20
+
+            //Contour panel play control. -RMa 12/11/2020
+            RefreshSvContour = new ContourPanelDelegate(refreshContourPanel);
+
+            BS_playbackTimer.Elapsed += new System.Timers.ElapsedEventHandler(BS_playbackTimer_Elapsed);  //RMa 12/10/2020
+            BS_playbackTimer.Interval = 1000;   //RMa 12/10/2020
         }
 
         //int currentGPSCount = -1;
@@ -7503,12 +7509,10 @@ namespace ADCP
                     {
                         iEndEnsemble = ensembles.Count; //ensembles.Count - 1;
                         hScrollBar_BS.Maximum = ensembles.Count; //ensembles.Count - 1;
-                        textBox_EnsN.Text = iEndEnsemble.ToString();
+                        //textBox_EnsN.Text = iEndEnsemble.ToString();
 
                         BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
-                        textBox_EnsN.Text = m1.System_EnsembleNumber.ToString(); //RMa 12/7/2020
-                        label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
-                        label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
+                        updateEnsNandDateTime(m1);
                     }
                     else return;
                 }
@@ -22466,8 +22470,6 @@ namespace ADCP
         }
         #endregion
 
-        #endregion
-
         bool bAmp = true; 
         private void panel_contour_Paint(object sender, PaintEventArgs e)
         {
@@ -22664,7 +22666,7 @@ namespace ADCP
 
                     Rectangle rect = new Rectangle();
                     rect.X = panel_contour.DisplayRectangle.X + panel_contour.DisplayRectangle.Width * 2 / 3 + 10;
-                    rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount;
+                    rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1;
                     rect.Width = panel_contour.DisplayRectangle.Width * 1 / 3 - 150;
                     rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
 
@@ -22837,10 +22839,7 @@ namespace ADCP
                 iEndEnsemble = iStartEnsemble + hScrollBar_BS.Value;
                 if (iEndEnsemble == 0) iEndEnsemble = 1;
                 BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1]; //RMa 12/7/2020
-                textBox_EnsN.Text = m1.System_EnsembleNumber.ToString(); 
-                label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
-                label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
-
+                updateEnsNandDateTime(m1);
                 panel_contour.Refresh();
             }
         }
@@ -22935,6 +22934,141 @@ namespace ADCP
             trackBarMaxV_BS.Value = trackBarMaxV_BS.Maximum; //-RMa 12/8/2020
             panel_contour.Refresh();
             InfoPanel_BS.Refresh();
+        }
+        #endregion
+
+
+        #region Playback paly controls
+        delegate void ContourPanelDelegate();
+        ContourPanelDelegate RefreshSvContour;
+
+        private void refreshContourPanel()
+        {
+            iEndEnsemble = iCurrentEns;
+            BackScatter.EnsembleClass m = ensembles[iCurrentEns];
+            updateEnsNandDateTime(m);
+            panel_contour.Refresh();
+        }
+
+        System.Timers.Timer BS_playbackTimer = new System.Timers.Timer();
+        private void BS_playbackTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            try
+            {
+                iCurrentEns++;
+                if (iCurrentEns < ensembles.Count && ensembles.Count > 0)
+                {
+                    if (InvokeRequired)
+                    {
+                        BeginInvoke(new Action(() =>
+                        {
+                            this.hScrollBar_BS.Value = iCurrentEns;
+                        }));
+                    }
+                    else
+                    {
+                        this.hScrollBar_BS.Value = iCurrentEns;
+                    }
+
+                    //iEndEnsemble = iCurrentEns;
+                    //BackScatter.EnsembleClass m = ensembles[iCurrentEns];
+                    this.BeginInvoke(RefreshSvContour);
+
+                    //updateEnsNandDateTime(m);
+                }
+                else
+                {
+                    iCurrentEns--;
+                    BS_playbackTimer.Stop();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            }
+        }
+
+        private void buttonBS_Play_Click(object sender, EventArgs e)
+        {
+            BS_playbackTimer.Start();
+        }
+
+        private void buttonBS_Pause_Click(object sender, EventArgs e)
+        {
+            BS_playbackTimer.Stop();
+        }
+
+        private void buttonBS_Start_Click(object sender, EventArgs e)
+        {
+            if (ensembles.Count > iStartEnsemble)
+            {
+                iCurrentEns = iStartEnsemble;
+
+                hScrollBar_BS.Value = iCurrentEns;
+                iEndEnsemble = iCurrentEns;
+                BackScatter.EnsembleClass m = ensembles[iCurrentEns];
+                panel_contour.Refresh();
+
+                updateEnsNandDateTime(m);
+            }
+        }
+
+        private void buttonPlaybackStepBack_Click(object sender, EventArgs e)
+        {
+            iCurrentEns--;
+
+            if (iCurrentEns > iStartEnsemble && ensembles.Count > iCurrentEns)
+            {
+                hScrollBar_BS.Value = iCurrentEns;
+                iEndEnsemble = iCurrentEns;
+                BackScatter.EnsembleClass m = ensembles[iCurrentEns];
+                panel_contour.Refresh();
+
+                updateEnsNandDateTime(m);
+
+            }
+            else
+                iCurrentEns++;
+        }
+
+        private void buttonPlaybackStep_Click(object sender, EventArgs e)
+        {
+            iCurrentEns++;
+
+            if (iCurrentEns < ensembles.Count && ensembles.Count > 0)
+            {
+                hScrollBar_BS.Value = iCurrentEns;
+                iEndEnsemble = iCurrentEns;
+                BackScatter.EnsembleClass m = ensembles[iCurrentEns];
+                panel_contour.Refresh();
+
+                updateEnsNandDateTime(m);
+            }
+            else
+                iCurrentEns--;
+        }
+
+        private void buttonBS_End_Click(object sender, EventArgs e)
+        {
+            if (ensembles.Count > iStartEnsemble)
+            {
+                iCurrentEns = ensembles.Count - 1;
+
+                hScrollBar_BS.Value = iCurrentEns;
+                iEndEnsemble = iCurrentEns;
+                BackScatter.EnsembleClass m = ensembles[iCurrentEns];
+                panel_contour.Refresh();
+
+                updateEnsNandDateTime(m);
+            }
+        }
+        #endregion
+
+        private void updateEnsNandDateTime(BackScatter.EnsembleClass m)
+        {
+            textBox_EnsN.Text = m.System_EnsembleNumber.ToString();
+            label_DateTime.Text = m.System_Year.ToString("D4") + "/" + m.System_Month.ToString("D2") + "/" + m.System_Day.ToString("D2") + ",";
+            label_DateTime.Text += m.System_Hour.ToString("D2") + ":" + m.System_Minute.ToString("D2") + ":" + m.System_Second.ToString("D2") + "." + m.System_Hsec.ToString("D2");
         }
         #endregion
     }

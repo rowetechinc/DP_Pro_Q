@@ -605,6 +605,12 @@
             this.radioButtonBSdata = new System.Windows.Forms.RadioButton();
             this.radioButtonBSsystem = new System.Windows.Forms.RadioButton();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.buttonBS_Pause = new System.Windows.Forms.Button();
+            this.buttonBS_Play = new System.Windows.Forms.Button();
+            this.buttonBS_Start = new System.Windows.Forms.Button();
+            this.buttonBS_End = new System.Windows.Forms.Button();
+            this.buttonPlaybackStepBack = new System.Windows.Forms.Button();
+            this.buttonPlaybackStep = new System.Windows.Forms.Button();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -4363,6 +4369,12 @@
             // 
             // tabPageContour
             // 
+            this.tabPageContour.Controls.Add(this.buttonBS_Pause);
+            this.tabPageContour.Controls.Add(this.buttonBS_Play);
+            this.tabPageContour.Controls.Add(this.buttonBS_Start);
+            this.tabPageContour.Controls.Add(this.buttonBS_End);
+            this.tabPageContour.Controls.Add(this.buttonPlaybackStepBack);
+            this.tabPageContour.Controls.Add(this.buttonPlaybackStep);
             this.tabPageContour.Controls.Add(this.hScrollBar_BS);
             this.tabPageContour.Controls.Add(this.panel_contour);
             this.tabPageContour.Controls.Add(this.panel_ColorScale);
@@ -4746,6 +4758,48 @@
             this.radioButtonBSsystem.TabStop = true;
             this.radioButtonBSsystem.UseVisualStyleBackColor = true;
             this.radioButtonBSsystem.CheckedChanged += new System.EventHandler(this.radioButtonBSsystem_CheckedChanged);
+            // 
+            // buttonBS_Pause
+            // 
+            resources.ApplyResources(this.buttonBS_Pause, "buttonBS_Pause");
+            this.buttonBS_Pause.Name = "buttonBS_Pause";
+            this.buttonBS_Pause.UseVisualStyleBackColor = true;
+            this.buttonBS_Pause.Click += new System.EventHandler(this.buttonBS_Pause_Click);
+            // 
+            // buttonBS_Play
+            // 
+            resources.ApplyResources(this.buttonBS_Play, "buttonBS_Play");
+            this.buttonBS_Play.Name = "buttonBS_Play";
+            this.buttonBS_Play.UseVisualStyleBackColor = true;
+            this.buttonBS_Play.Click += new System.EventHandler(this.buttonBS_Play_Click);
+            // 
+            // buttonBS_Start
+            // 
+            resources.ApplyResources(this.buttonBS_Start, "buttonBS_Start");
+            this.buttonBS_Start.Name = "buttonBS_Start";
+            this.buttonBS_Start.UseVisualStyleBackColor = true;
+            this.buttonBS_Start.Click += new System.EventHandler(this.buttonBS_Start_Click);
+            // 
+            // buttonBS_End
+            // 
+            resources.ApplyResources(this.buttonBS_End, "buttonBS_End");
+            this.buttonBS_End.Name = "buttonBS_End";
+            this.buttonBS_End.UseVisualStyleBackColor = true;
+            this.buttonBS_End.Click += new System.EventHandler(this.buttonBS_End_Click);
+            // 
+            // buttonPlaybackStepBack
+            // 
+            resources.ApplyResources(this.buttonPlaybackStepBack, "buttonPlaybackStepBack");
+            this.buttonPlaybackStepBack.Name = "buttonPlaybackStepBack";
+            this.buttonPlaybackStepBack.UseVisualStyleBackColor = true;
+            this.buttonPlaybackStepBack.Click += new System.EventHandler(this.buttonPlaybackStepBack_Click);
+            // 
+            // buttonPlaybackStep
+            // 
+            resources.ApplyResources(this.buttonPlaybackStep, "buttonPlaybackStep");
+            this.buttonPlaybackStep.Name = "buttonPlaybackStep";
+            this.buttonPlaybackStep.UseVisualStyleBackColor = true;
+            this.buttonPlaybackStep.Click += new System.EventHandler(this.buttonPlaybackStep_Click);
             // 
             // DP300_Windows
             // 
@@ -5550,6 +5604,12 @@
         private System.Windows.Forms.TextBox textBoxBSdata;
         private System.Windows.Forms.TextBox textBoxBSsystem;
         private DoubleBufferPanel InfoPanel_BS;
+        private System.Windows.Forms.Button buttonBS_Pause;
+        private System.Windows.Forms.Button buttonBS_Play;
+        private System.Windows.Forms.Button buttonBS_Start;
+        private System.Windows.Forms.Button buttonBS_End;
+        private System.Windows.Forms.Button buttonPlaybackStepBack;
+        private System.Windows.Forms.Button buttonPlaybackStep;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }
