@@ -22970,11 +22970,7 @@ namespace ADCP
                         this.hScrollBar_BS.Value = iCurrentEns;
                     }
 
-                    //iEndEnsemble = iCurrentEns;
-                    //BackScatter.EnsembleClass m = ensembles[iCurrentEns];
                     this.BeginInvoke(RefreshSvContour);
-
-                    //updateEnsNandDateTime(m);
                 }
                 else
                 {
@@ -23001,8 +22997,9 @@ namespace ADCP
         private void buttonBS_Start_Click(object sender, EventArgs e)
         {
             if (ensembles.Count > iStartEnsemble)
+            //if (iCurrentEns > iStartEnsemble && ensembles.Count > iCurrentEns)
             {
-                iCurrentEns = iStartEnsemble;
+                iCurrentEns = iStartEnsemble + 1;
 
                 hScrollBar_BS.Value = iCurrentEns;
                 iEndEnsemble = iCurrentEns;
