@@ -13,6 +13,54 @@ namespace ADCP
     public class TransectConfig
     {
 
+        public class TransectNote
+        {
+            /// <summary>
+            /// Date and time of the note.
+            /// </summary>
+            public string DT { get; set; }
+
+            /// <summary>
+            /// File number for the note.
+            /// </summary>
+            public int FileNum { get; set; }
+
+            /// <summary>
+            /// Test for the note.
+            /// </summary>
+            public string Text { get; set; }
+
+            /// <summary>
+            /// Initialize the value.
+            /// </summary>
+            /// <param name="text">Text to add to the note.</param>
+            /// <param name="fileNum">File number.</param>
+            public TransectNote(string text, int fileNum = 0)
+            {
+                this.DT = DateTime.Now.ToString();
+                this.FileNum = fileNum;
+                this.Text = text;
+            }
+
+            /// <summary>
+            /// Convert this object to a dictionary so it can be used as a JSON object.
+            /// </summary>
+            /// <returns>Dictonary of this object.</returns>
+            public Dictionary<string, object> toDict()
+            {
+                var json_dict = new Dictionary<string, object>()
+                {
+                    { "NoteFileNo", this.FileNum.ToString() },
+                    { "NoteDate", this.DT },
+                    { "NoteText", this.Text }
+                };
+
+                return json_dict;
+            }
+
+
+        }
+
         /// <summary>
         /// List of file names for the Transect.  It is assumed the
         /// files will be located in the same folder as the project.
@@ -33,7 +81,7 @@ namespace ADCP
         /// <summary>
         /// Notes.
         /// </summary>
-        public List<string> Notes { get; set; }
+        public List<TransectNote> Notes { get; set; }
 
         /// <summary>
         /// Moving bed type.
@@ -49,7 +97,7 @@ namespace ADCP
             Files = new List<string>();
             InitActiveConfig();
             Checked = true;
-            Notes = new List<string>();
+            Notes = new List<TransectNote>();
             MovingBedType = null;
         }
 
@@ -69,7 +117,7 @@ namespace ADCP
         /// <param name="note">Note to add.</param>
         public void AddNote(string note)
         {
-            Notes.Add(note);
+            Notes.Add(new TransectNote(note, Notes.Count));
         }
 
         public void InitActiveConfig()
@@ -97,7 +145,6 @@ namespace ADCP
                 {  "Q_Left_Edge_Coeff", 0.0 },
                 {  "Q_Right_Edge_Type", 1.0 },
                 {  "Q_Right_Edge_Coeff", 0.0 },
-                {  "Q_Shore_Pings_Avg", 0.0 },
                 {  "Q_Shore_Left_Ens_Count", 0.0 },
                 {  "Q_Shore_Right_Ens_Count", 0.0 },
                 {  "Edge_Begin_Shore_Distance", 0.0 },
@@ -106,69 +153,21 @@ namespace ADCP
                 {  "Offsets_Transducer_Depth", 0.2 },
                 {  "Offsets_Magnetic_Variation", 0.0 },
                 {  "Offsets_Heading_Offset", 0.0 },
-                {  "Offsets_One_Cycle_K", 0.0 },
-                {  "Offsets_One_Cycle_Offset", 0.0 },
-                {  "Offsets_Two_Cycle_K", 0.0 },
-                {  "Offsets_Two_Cycle_Offset", 0.0 },
                 {  "Proc_Speed_of_Sound_Correction", 0 },
                 {  "Proc_Salinity", 0.0 },
                 {  "Proc_Fixed_Speed_Of_Sound", 1500 },
                 {  "Proc_Mark_Below_Bottom_Bad", 1 },
-                {  "Proc_Mark_Below_Sidelobe_Bad", 1 },
                 {  "Proc_Screen_Depth", 0 },
-                {  "Proc_Screen_BT_Depth", 0 },
                 {  "Proc_Use_Weighted_Mean", 0 },
                 {  "Proc_Use_Weighted_Mean_Depth", 0 },
-                {  "Proc_Backscatter_Type", 0 },
-                {  "Proc_Intensity_Scale", 0.43 },
                 {  "Proc_Absorption", 0.139 },
-                {  "Proc_Projection_Angle", 0.0 },
                 {  "Proc_River_Depth_Source", 4 },
-                {  "Proc_Cross_Area_Type", 2 },
                 {  "Proc_Use_3_Beam_BT", 1 },
                 {  "Proc_Use_3_Beam_WT", 1 },
                 {  "Proc_BT_Error_Vel_Threshold", 0.1 },
                 {  "Proc_WT_Error_Velocity_Threshold", 10.0 },
                 {  "Proc_BT_Up_Vel_Threshold", 10.0 },
                 {  "Proc_WT_Up_Vel_Threshold", 10.0 },
-                {  "Proc_Fish_Intensity_Threshold", 255 },
-                {  "Proc_Near_Zone_Distance", 2.1 },
-                {  "Rec_Filename_Prefix", "" },
-                {  "Rec_Output_Directory", "" },
-                {  "Rec_Root_Directory", null },
-                {  "Rec_MeasNmb", "" },
-                {  "Rec_GPS", "NO" },
-                {  "Rec_DS", "NO" },
-                {  "Rec_EH", "NO" },
-                {  "Rec_ASCII_Output", "NO" },
-                {  "Rec_Max_File_Size", 0.0 },
-                {  "Rec_Next_Transect_Number", 0.0 },
-                {  "Rec_Add_Date_Time", 0.0 },
-                {  "Rec_Use_Delimiter", 1 },
-                {  "Rec_Delimiter", "" },
-                {  "Rec_Prefix", "" },
-                {  "Rec_Use_MeasNmb", "YES" },
-                {  "Rec_Use_TransectNmb", "YES" },
-                {  "Rec_Use_SequenceNmb", "NO" },
-                {  "Wiz_ADCP_Type", 0.0 },
-                {  "Wiz_Firmware", 0.0 },
-                {  "Wiz_Use_Ext_Heading", "NO" },
-                {  "Wiz_Use_GPS", "NO" },
-                {  "Wiz_Use_DS", "NO" },
-                {  "Wiz_Max_Water_Depth", 0.0 },
-                {  "Wiz_Max_Water_Speed", 0.0 },
-                {  "Wiz_Max_Boat_Space", 0.0 },
-                {  "Wiz_Material", 0.0 },
-                {  "Wiz_Water_Mode", 0.0 },
-                {  "Wiz_Bottom_Mode", 0.0 },
-                {  "Wiz_Beam_Angle", 0.0 },
-                {  "Wiz_Pressure_Sensor", 0.0 },
-                {  "Wiz_Water_Mode_13", 0.0 },
-                {  "Wiz_StreamPro_Default", 0.0 },
-                {  "Wiz_StreamPro_Bin_Size", 0.0 },
-                {  "Wiz_StreamPro_Bin_Number", 0.0 },
-                {  "Wiz_Use_GPS_Internal", "NO" },
-                {  "Wiz_Internal_GPS_Baud_Rate_Index", 0.0 }
             };
         }
 
@@ -333,22 +332,23 @@ namespace ADCP
             ActiveConfig["Wiz_ADCP_Type"] = sysSetting.iInstrumentTypes;
 
             ActiveConfig["Offsets_Transducer_Depth"] = sysSetting.dTransducerDepth;
+            ActiveConfig["DS_Transducer_Depth"] = sysSetting.dTransducerDepth;
             ActiveConfig["Offsets_Heading_Offset"] = sysSetting.dHeadingOffset;
 
             ActiveConfig["Proc_Salinity"] = sysSetting.dSalinity;
             ActiveConfig["Proc_Fixed_Speed_Of_Sound"] = sysSetting.dSpeedOfSound;
 
-            Notes.Add("ADCP Serial Port: " + sysSetting.sAdcpPort);
-            Notes.Add("ADCP Baud Rate: " + sysSetting.sAdcpBaud.ToString());
+            Notes.Add(new TransectNote("ADCP Serial Port: " + sysSetting.sAdcpPort, Notes.Count));
+            Notes.Add(new TransectNote("ADCP Baud Rate: " + sysSetting.sAdcpBaud.ToString(), Notes.Count));
             if (sysSetting.bGPSConnect)
             {
-                Notes.Add("GPS Connected");
-                Notes.Add("GPS Serial Port: " + sysSetting.sGpsPort);
-                Notes.Add("GPS Baud Rate: " + sysSetting.sGpsBaud.ToString());
+                Notes.Add(new TransectNote("GPS Connected", Notes.Count));
+                Notes.Add(new TransectNote("GPS Serial Port: " + sysSetting.sGpsPort, Notes.Count));
+                Notes.Add(new TransectNote("GPS Baud Rate: " + sysSetting.sGpsBaud.ToString(), Notes.Count));
             }
             else
             {
-                Notes.Add("No GPS Connected");
+                Notes.Add(new TransectNote("No GPS Connected", Notes.Count));
             }
 
             ActiveConfig["Wiz_Firmware"] = sysSetting.firmware;
@@ -403,38 +403,54 @@ namespace ADCP
         }
 
         /// <summary>
+        /// Convert the note objects to a dictionary and add it to an array.
+        /// This way they can be converted to a JSON object.
+        /// </summary>
+        /// <returns>Array of dictionaries containing the Note data.</returns>
+        private Dictionary<string, Object>[] NotesToArray()
+        {
+            var array = new Dictionary<string, Object>[Notes.Count];
+            for(int x = 0; x < Notes.Count; x++)
+            {
+                array[x] = Notes[x].toDict();
+            }
+
+            return array;
+        }
+
+        /// <summary>
         /// Create a dictionary to convert to JSON later.
         /// This will include all the values for this transect.
         /// </summary>
         /// <returns>Dictionary to add to Transects section.</returns>
         public Dictionary<string, object> ToDict()
-    {
-        var trans = new Dictionary<string, object>();
-
-        // Set if checked
-        if (this.Checked)
         {
-            trans.Add("Checked", 1);
+            var trans = new Dictionary<string, object>();
+
+            // Set if checked
+            if (this.Checked)
+            {
+                trans.Add("Checked", 1);
+            }
+            else
+            {
+                trans.Add("Checked", 0);
+            }
+
+            // Add the Files list
+            trans.Add("Files", this.Files.ToArray<string>());
+
+            // Add Notes
+            trans.Add("Notes", this.NotesToArray());
+
+            // Add Active Config
+            trans.Add("active_config", this.ActiveConfig);
+
+            // Add Moving bed type
+            trans.Add("moving_bed_type", this.MovingBedType);
+
+            return trans;
+
         }
-        else
-        {
-            trans.Add("Checked", 0);
-        }
-
-        // Add the Files list
-        trans.Add("Files", this.Files.ToArray<string>());
-
-        // Add Notes
-        trans.Add("Notes", this.Notes.ToArray<string>());
-
-        // Add Active Config
-        trans.Add("active_config", this.ActiveConfig);
-
-        // Add Moving bed type
-        trans.Add("moving_bed_type", this.MovingBedType);
-
-        return trans;
-
-    }
     }
 }
