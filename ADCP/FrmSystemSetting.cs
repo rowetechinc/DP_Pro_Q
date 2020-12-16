@@ -355,6 +355,31 @@ namespace ADCP
                     systSet.dHeadingOffset = double.Parse(textHeadingOffset.Text);
                 }
             }
+
+            // Magnetic Variance
+            if (!validateInput.ValidateUserInput(textMagVar.Text, 7))
+            {
+                //ToolTip tooltip1 = new ToolTip();
+                //tooltip1.Show(Resource1.String80, textHeadingOffset);
+                btnOK.Enabled = false;
+                textMagVar.BackColor = Color.Red;
+            }
+            else
+            {
+                if (double.Parse(textMagVar.Text) > 180 || double.Parse(textMagVar.Text) < -180)
+                {
+                    //ToolTip tooltip1 = new ToolTip();
+                    //tooltip1.Show(Resource1.String80, textHeadingOffset);
+                    btnOK.Enabled = false;
+                    textMagVar.BackColor = Color.Red;
+                }
+                else
+                {
+                    textMagVar.BackColor = Color.White;
+                    systSet.dMagneticVar = double.Parse(textMagVar.Text);
+                }
+            }
+
             //
             if (!validateInput.ValidateUserInput(textBoxBTSNR.Text, 7))
             {
@@ -479,6 +504,10 @@ namespace ADCP
             TheTextChanged(sender, e);
         }
         private void textHeadingOffset_TextChanged(object sender, EventArgs e)
+        {
+            TheTextChanged(sender, e);
+        }
+        private void textMagVar_TextChanged(object sender, EventArgs e)
         {
             TheTextChanged(sender, e);
         }
@@ -2250,6 +2279,5 @@ namespace ADCP
                 }
             }
         }
-
     }
 }

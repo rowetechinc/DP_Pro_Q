@@ -176,6 +176,9 @@
             this.checkBoxEnable1 = new System.Windows.Forms.CheckBox();
             this.checkBoxEnable0 = new System.Windows.Forms.CheckBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.textMagVar = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.groupBox44.SuspendLayout();
             this.groupBox41.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -457,6 +460,9 @@
             // 
             // groupBox41
             // 
+            this.groupBox41.Controls.Add(this.label28);
+            this.groupBox41.Controls.Add(this.textMagVar);
+            this.groupBox41.Controls.Add(this.label27);
             this.groupBox41.Controls.Add(this.label14);
             this.groupBox41.Controls.Add(this.label13);
             this.groupBox41.Controls.Add(this.textBoxBTSNR);
@@ -1225,6 +1231,22 @@
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.TabStop = false;
             // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
+            // textMagVar
+            // 
+            resources.ApplyResources(this.textMagVar, "textMagVar");
+            this.textMagVar.Name = "textMagVar";
+            this.textMagVar.TextChanged += new System.EventHandler(this.textMagVar_TextChanged);
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            // 
             // FrmSystemSetting
             // 
             resources.ApplyResources(this, "$this");
@@ -1421,5 +1443,8 @@
         private System.Windows.Forms.Label label24;
         public System.Windows.Forms.TextBox textBoxPH;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox textMagVar;
+        private System.Windows.Forms.Label label27;
     }
 }

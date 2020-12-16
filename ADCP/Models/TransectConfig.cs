@@ -334,6 +334,7 @@ namespace ADCP
             ActiveConfig["Offsets_Transducer_Depth"] = sysSetting.dTransducerDepth;
             ActiveConfig["DS_Transducer_Depth"] = sysSetting.dTransducerDepth;
             ActiveConfig["Offsets_Heading_Offset"] = sysSetting.dHeadingOffset;
+            ActiveConfig["Offsets_Magnetic_Variation"] = sysSetting.dMagneticVar;
 
             ActiveConfig["Proc_Salinity"] = sysSetting.dSalinity;
             ActiveConfig["Proc_Fixed_Speed_Of_Sound"] = sysSetting.dSpeedOfSound;

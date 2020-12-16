@@ -33,6 +33,7 @@ namespace ADCP
         public double dTransducerDepth;
         public double dBtCorrelationThreshold;
         public double dHeadingOffset;
+        public double dMagneticVar;
 
         public double dBtSNR;
 
