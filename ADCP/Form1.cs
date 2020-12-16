@@ -1254,9 +1254,12 @@ namespace ADCP
                 {
                     try
                     {
-                        MoveLightTimer.Stop(); //LPJ 2013-8-6
+                        if (MoveLightTimer != null)
+                        {
+                            MoveLightTimer.Stop(); //LPJ 2013-8-
+                        }
                     }
-                    catch
+                    catch(Exception ex)
                     {
                     }
 

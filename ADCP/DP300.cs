@@ -17929,9 +17929,9 @@ namespace ADCP
                                     packet = strpack.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                                     for (int i = 0; i < packet.Count(); i++)
                                     {
-                                        if (packet[i].Contains("RIVER"))
+                                        if (packet[i].Contains("Copyright") && packet.Count() > i+2)
                                         {
-                                            string snPacket = packet[i + 1];
+                                            string snPacket = packet[i + 2];
                                             labelSystemNumber.Text = snPacket; //仪器类型
                                         }
                                     }
@@ -21351,7 +21351,7 @@ namespace ADCP
             labelUnit.Text = Resource1.String236;
 
             #region site information
-            labelSiteName.Text = "Pan-Comm";
+            labelSiteName.Text = "Rowe";
             /*
                                     siteInformation.siteName = cmdPart[1];
                                

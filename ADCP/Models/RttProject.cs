@@ -108,10 +108,11 @@ namespace ADCP
             string dateStr = dt.ToUniversalTime().ToString("yyyy/MM/dd");
 
             Dictionary<string, object> prj = new Dictionary<string, object>();
-            prj.Add("project", GetProjectDict(siteInfo, dtStr));                                                          // Project Section
+            prj.Add("project", GetProjectDict(siteInfo, dtStr));                                                // Project Section
             prj.Add("site_info", GetSiteInfoDict(siteInfo, sysSetting, serialNum, systemDesc, dateStr));        // Site_Info section
             prj.Add("transects", GetTransectDict());                                                            // Transects section
             prj.Add("qaqc", GetQaQcDict());                                                                     // QAQC section
+            prj.Add("project_settings", GetProjectSettings(siteInfo, sysSetting));                              // Project Settings
             
             // Create a top level RTI 
             Dictionary<string, object> rti = new Dictionary<string, object>();
@@ -167,59 +168,12 @@ namespace ADCP
         public Dictionary<string, object> GetSiteInfoDict(SiteInformation siteInfo, SystemSetting sysSetting, string serialNum, string systemDesc, string dateStr)
         {
             Dictionary<string, object> si = new Dictionary<string, object>();
-            si.Add("Agency", "");
-            si.Add("Country", "");
-            si.Add("State", "");
-            si.Add("County", "");
-            si.Add("District", "");
-            si.Add("Party", siteInfo.FieldParty);
-            si.Add("BoatMotorUsed", siteInfo.BoatMotor);
-            si.Add("ProcessedBy", siteInfo.ProcessedBy);
+            si.Add("Name", siteInfo.siteName);
+            si.Add("Number", siteInfo.stationNumber);
             si.Add("ADCPSerialNmb", serialNum);
             si.Add("Description", systemDesc);
-            si.Add("Grid_Reference", "");
-            si.Add("Number", siteInfo.stationNumber);
-            si.Add("Name", siteInfo.siteName);
-            si.Add("River_Name", "");
-            si.Add("Measurement_Date", dateStr);
-            si.Add("Rating_Number", siteInfo.RatingNumber);
-            si.Add("Wind_Speed", "");
-            si.Add("Wind_Direction", "");
-            si.Add("Edge_Measurement_Method", "");
-            si.Add("Magnetic_Var_Method", siteInfo.MagnVariationMethod);
-            si.Add("Measurement_Rating", "");
-            si.Add("ControlCode1", "");
-            si.Add("ControlCode2", "");
-            si.Add("ControlCode3", "");
-            si.Add("MeasurementNmb", "");
             si.Add("Remarks", siteInfo.comments);
-            si.Add("TimeZone", "");
-            si.Add("DeploymentType", siteInfo.DeploymentType);
-            si.Add("Use_Inside_Gage_Height", 1);
-            si.Add("Magnetic_Var_Method_Index", 0);
-            si.Add("Measurement_Rating_Index", 0);
-            si.Add("ControlCode1_Index", 0);
-            si.Add("ControlCode2_Index", 0);
-            si.Add("ControlCode3_Index", 0);
-            si.Add("Inside_Gage_Height", siteInfo.InsideGageH);
-            si.Add("Outside_Gage_Height", siteInfo.OutsideGageH);
-            si.Add("Gage_Height_Change", siteInfo.GageHChange);
-            si.Add("Rating_Discharge", siteInfo.RatingDischarge);
-            si.Add("Index_Velocity", siteInfo.IndexV);
-            si.Add("Rated_Area", 0);
-            si.Add("Water_Temperature", siteInfo.WaterTemp);
-            si.Add("Tail_Water_Level", 0);
-            si.Add("Use_Old_Sidelobe_Method", 0);
-
-            // Measurement Units
-            if (sysSetting.bEnglishUnit)
-            {
-                si.Add("HydrologicUnit", "Metric");
-            }
-            else
-            {
-                si.Add("HydrologicUnit", "Standard");
-            }
+            si.Add("Water_Temperature", sysSetting.dWaterTemperature);
 
             // Vessel Speed Reference
             switch (sysSetting.iSpeedRef)
@@ -245,6 +199,77 @@ namespace ADCP
             return si;
         }
         
+        /// <summary>
+        /// Project settings.  These values are not used by QRev but should still be saved with the project.
+        /// </summary>
+        /// <param name="siteInfo">Site Information.</param>
+        /// <param name="sysSetting">System Settings.</param>
+        /// <returns></returns>
+        public Dictionary<string, object> GetProjectSettings(SiteInformation siteInfo, SystemSetting sysSetting)
+        {
+            Dictionary<string, object> si = new Dictionary<string, object>();
+            si.Add("Measurement_Number", siteInfo.MeasNumber);
+            si.Add("Party", siteInfo.FieldParty);
+            si.Add("BoatMotorUsed", siteInfo.BoatMotor);
+            si.Add("ProcessedBy", siteInfo.ProcessedBy);
+            si.Add("MeasLocation", siteInfo.MeasLocation);
+            si.Add("Inside_Gage_Height", siteInfo.InsideGageH);
+            si.Add("Outside_Gage_Height", siteInfo.OutsideGageH);
+            si.Add("Gage_Height_Change", siteInfo.GageHChange);
+            si.Add("Rating_Discharge", siteInfo.RatingDischarge);
+            si.Add("Index_Velocity", siteInfo.IndexV);
+            si.Add("Rating_Number", siteInfo.RatingNumber);
+            si.Add("Rated_Area", siteInfo.RatedArea);
+            si.Add("Magnetic_Var_Method", siteInfo.MagnVariationMethod);
+            si.Add("Measurement_Rating", siteInfo.MeasurementRating);
+
+
+            si.Add("GPS_Connected", sysSetting.bGPSConnect);
+            si.Add("Avg_Interval", sysSetting.dAveragingInterval);
+            si.Add("BT_Correlation_Thresh", sysSetting.dBtCorrelationThreshold);
+            si.Add("BT_SNR", sysSetting.dBtSNR);
+            si.Add("BT_Switch_Depth", sysSetting.dBtSwitchDepth);
+            si.Add("Heading_Offset", sysSetting.dHeadingOffset);
+            si.Add("Magnetic_Var", sysSetting.dMagneticVar);
+            si.Add("Max_Measurement_Depth", sysSetting.dMaxMeasurementDepth);
+            si.Add("Salinity", sysSetting.dSalinity);
+            si.Add("SoS", sysSetting.dSpeedOfSound);
+            si.Add("Transducer_Depth", sysSetting.dTransducerDepth);
+            si.Add("Water_Temp", sysSetting.dWaterTemperature);
+            si.Add("WP_Switch_Depth", sysSetting.dWpSwitchDepth);
+            si.Add("Firmware", sysSetting.firmware);
+            si.Add("Auto_Bin_Size", sysSetting.iAutoBinSize);
+            si.Add("Auto_Lag", sysSetting.iAutoLag);
+            si.Add("Bins", sysSetting.iBins);
+            si.Add("Heading_Ref", sysSetting.iHeadingRef);
+            si.Add("Instrument_Types", sysSetting.iInstrumentTypes);
+            si.Add("Measurement_Mode", sysSetting.iMeasurmentMode);
+            si.Add("Salinity_Source", sysSetting.iSalinitySource);
+            si.Add("SoS_Source", sysSetting.iSpeedOfSoundSource);
+            si.Add("Speed_Reference", sysSetting.iSpeedRef);
+            si.Add("Transducer_Depth_Source", sysSetting.iTransducerDepthSource);
+            si.Add("Vertical_Beams", sysSetting.iVerticalBeam);
+            si.Add("Water_Temp_Source", sysSetting.iWaterTemperatureSource);
+            si.Add("ADCP_Baud", sysSetting.sAdcpBaud);
+            si.Add("ADCP_Port", sysSetting.sAdcpPort);
+            si.Add("GPS_Baud", sysSetting.sGpsBaud);
+            si.Add("GPS_Port", sysSetting.sGpsPort);
+            si.Add("RS232", sysSetting.strRS232);
+
+            // Measurement Units
+            if (sysSetting.bEnglishUnit)
+            {
+                si.Add("HydrologicUnit", "Metric");
+            }
+            else
+            {
+                si.Add("HydrologicUnit", "Standard");
+            }
+
+
+            return si;
+        }
+
 
         /// <summary>
         /// Convert all the transects to an dictionary and return the array of
