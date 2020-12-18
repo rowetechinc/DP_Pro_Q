@@ -31,7 +31,40 @@ namespace ADCP
         /// List of all the transects associated
         /// with this project.
         /// </summary>
-        public List<TransectConfig> Transects;
+        public List<TransectConfig> Transects { get; set; }
+
+        /// <summary>
+        /// List of all the system test results.  This will be a string that contains Pass or Fails.  All the
+        /// test results should be a single string.  QRev will count the number of Pass and fails in the string.
+        /// Also add a timestamp for every test result.
+        /// </summary>
+        public List<string> SystemTestResults { get; private set; }
+
+        /// <summary>
+        /// Timestamp associated with every test result.
+        /// </summary>
+        public List<string> SystemTestResultsDataTime { get; private set; }
+
+        /// <summary>
+        /// List of all the compass calibration results.  QRev just documents the date and time.
+        /// </summary>
+        public List<string> CompassCalResults { get; private set; }
+
+        /// <summary>
+        /// Timestamp associated with every compass calibration.
+        /// </summary>
+        public List<string> CompassCalResultsDataTime { get; private set; }
+
+        /// <summary>
+        /// List of all the compass evaluation results.  QRev just documents the last entry contains "Fail".
+        /// The string should contain all the results for the compass evaluation.
+        /// </summary>
+        public List<string> CompassEvaluationResults { get; private set; }
+
+        /// <summary>
+        /// Timestamp associated with every compass evaluation.
+        /// </summary>
+        public List<string> CompassEvaluationResultsDataTime { get; private set; }
 
         /// <summary>
         /// Set the project name and folder path for the project.
@@ -52,6 +85,13 @@ namespace ADCP
             this.ProjectName = projectName;
 
             Transects = new List<TransectConfig>();
+            SystemTestResults = new List<string>();
+            SystemTestResultsDataTime = new List<string>();
+            CompassEvaluationResults = new List<string>();
+            CompassEvaluationResultsDataTime = new List<string>();
+            CompassCalResults = new List<string>();
+            CompassCalResultsDataTime = new List<string>();
+
         }
 
         /// <summary>
@@ -66,6 +106,12 @@ namespace ADCP
             this.ProjectName = projectName;
 
             Transects = new List<TransectConfig>();
+            SystemTestResults = new List<string>();
+            SystemTestResultsDataTime = new List<string>();
+            CompassEvaluationResults = new List<string>();
+            CompassEvaluationResultsDataTime = new List<string>();
+            CompassCalResults = new List<string>();
+            CompassCalResultsDataTime = new List<string>();
         }
 
         /// <summary>
@@ -79,6 +125,12 @@ namespace ADCP
             this.ProjectName = RttProject.DEFAULT_PRJ_NAME;
 
             Transects = new List<TransectConfig>();
+            SystemTestResults = new List<string>();
+            SystemTestResultsDataTime = new List<string>();
+            CompassEvaluationResults = new List<string>();
+            CompassEvaluationResultsDataTime = new List<string>();
+            CompassCalResults = new List<string>();
+            CompassCalResultsDataTime = new List<string>();
         }
 
         /// <summary>
@@ -230,7 +282,6 @@ namespace ADCP
             si.Add("BT_SNR", sysSetting.dBtSNR);
             si.Add("BT_Switch_Depth", sysSetting.dBtSwitchDepth);
             si.Add("Heading_Offset", sysSetting.dHeadingOffset);
-            si.Add("Magnetic_Var", sysSetting.dMagneticVar);
             si.Add("Max_Measurement_Depth", sysSetting.dMaxMeasurementDepth);
             si.Add("Salinity", sysSetting.dSalinity);
             si.Add("SoS", sysSetting.dSpeedOfSound);
@@ -300,8 +351,56 @@ namespace ADCP
         public Dictionary<string, object> GetQaQcDict()
         {
             var dict = new Dictionary<string, object>();
-            // EMPTY
+            dict.Add("RG_Test", SystemTestResults.ToArray<string>());
+            dict.Add("RG_Test_TimeStamp", SystemTestResultsDataTime.ToArray<string>());
+            dict.Add("Compass_Evaluation", CompassEvaluationResults.ToArray<string>());
+            dict.Add("Compass_Evaluation_TimeStamp", CompassEvaluationResultsDataTime.ToArray<string>());
+            dict.Add("Compass_Calibration", CompassCalResults.ToArray<string>());
+            dict.Add("Compass_Calibration_TimeStamp", CompassCalResultsDataTime.ToArray<string>());
             return dict;
+        }
+
+        /// <summary>
+        /// Add a Test result to the list.
+        /// A test result will contain a string with all the test results.
+        /// QRev counts all the PASS and FAILS.  It then documents all the test
+        /// run based on the count and all the failures based on the number of FAILS counted.
+        /// 
+        /// num_tests = re.findall('(Fail|FAIL|F A I L|Pass|PASS|NOT DETECTED|P A S S)', self.data)
+        /// num_fails = re.findall('(Fail|FAIL|F A I L)', self.data)
+        /// 
+        /// </summary>
+        /// <param name="testResult">String result of the test results.</param>
+        public void AddSystemTestResults(string testResult)
+        {
+            SystemTestResults.Add(testResult);
+            SystemTestResultsDataTime.Add(DateTime.Now.ToString());
+        }
+
+        /// <summary>
+        /// Add a Compass Calibraitons to the list.
+        /// QRev will use the date and time only.
+        /// 
+        /// </summary>
+        /// <param name="compassCalResult">String of the compass evaluation results.</param>
+        public void AddCompassCalibrationResults(string compassCalResult)
+        {
+            CompassCalResults.Add(compassCalResult);
+            CompassCalResultsDataTime.Add(DateTime.Now.ToString());
+        }
+
+        /// <summary>
+        /// Add a Compass Evaluations to the list.
+        /// QRev will use the last entry with "Error" as the results.
+        /// 
+        /// splits = re.split('(Total error:|Double Cycle Errors:|Error from calibration:)', self.data)
+        /// 
+        /// </summary>
+        /// <param name="compassEval">String of the compass evaluation results.</param>
+        public void AddCompassEvaluationResults(string compassEval)
+        {
+            CompassEvaluationResults.Add(compassEval);
+            CompassEvaluationResultsDataTime.Add(DateTime.Now.ToString());
         }
 
         /// <summary>
