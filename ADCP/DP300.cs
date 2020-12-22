@@ -22780,9 +22780,11 @@ namespace ADCP
                 if (e.X >= panel_contour.DisplayRectangle.X + 60 && e.X <= panel_contour.DisplayRectangle.X + 60 + panel_contour.DisplayRectangle.Width - 110)
                 {
                     _currentX = e.X;
-                    iCurrentEns = OnTransferMap2Number(panel_contour.DisplayRectangle.X + 60, panel_contour.DisplayRectangle.X + 60 + panel_contour.DisplayRectangle.Width - 110, _currentX, iStartEnsemble, iEndEnsemble + 1);
+                    //iCurrentEns = OnTransferMap2Number(panel_contour.DisplayRectangle.X + 60, panel_contour.DisplayRectangle.X + 60 + panel_contour.DisplayRectangle.Width - 110, _currentX, iStartEnsemble, iEndEnsemble + 1);
+                    iCurrentEns = OnTransferMap2Number(panel_contour.DisplayRectangle.X, panel_contour.DisplayRectangle.Width * 2 / 3 - 110, _currentX - 60, iStartEnsemble, iEndEnsemble);
                 }
-                /* wrong ensemble number for the picked ensemble. -RMa 12/10/2020
+                
+                // wrong ensemble number for the picked ensemble. -RMa 12/10/2020
                 //RMa 12/7/2020
                 int _icurrentEns = iCurrentEns;  //ensemble picker
                 if (_icurrentEns >= ensembles.Count)   //ensemble picker
@@ -22790,10 +22792,10 @@ namespace ADCP
                 if (_icurrentEns < 0)   //ensemble picker
                     _icurrentEns = 0;    //ensemble picker
                 BackScatter.EnsembleClass m1 = ensembles[_icurrentEns];   //ensemble picker          
-                //textBox_EnsN.Text = m1.System_EnsembleNumber.ToString(); 
+                textBox_EnsN.Text = m1.System_EnsembleNumber.ToString(); 
                 label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
                 label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
-                */
+                
                 bpick = false;
                 panel_contour.Refresh();
             }
