@@ -399,6 +399,7 @@ namespace ADCP
 
                     dp300_wnd.PalyBackBtn_Click(null, null);
 
+
                     #region 船速参考图标 2016-8-22
                     if (0 == dp300_wnd.iVesselSpeedRef)
                         toolStripDropDownBtnVesselRef.Image = pictureBoxBT.Image;
@@ -1629,7 +1630,8 @@ namespace ADCP
                     int i=strSplit.Count();
 
                     //获取str2下所有文件夹的名称
-                    string[] strFolders = Directory.GetFiles(strFoot, "*.bin"); //取得的是所有的该路径下的文件夹的路径
+                    //string[] strFolders = Directory.GetFiles(strFoot, "*.bin"); //取得的是所有的该路径下的文件夹的路径
+                    string[] strFolders = Directory.GetFiles(strFoot, "*.ens");
                     int min = 240000;
                     string strOpenNext = "";
 
@@ -1644,17 +1646,22 @@ namespace ADCP
                         string[] strSplit2 = strDir2Split[0].Split('_');
                         if ((strSplit2[0] == strSplit[0]) && (strSplit2[1] == strSplit[1]))
                         {
-                            if (int.Parse(strSplit2[2]) > int.Parse(strSplit[2]))
+                            int date2 = int.Parse(strSplit2[i - 2]);
+                            int date1 = int.Parse(strSplit[i - 2]);
+                            int time2 = int.Parse(strSplit2[i - 1]);
+                            int time1 = int.Parse(strSplit[i - 1]);
+
+                            if ((date2 + time2 ) > (date1 + time1))
                             {
-                                if (min > int.Parse(strSplit2[2]))
+                                //if (min > int.Parse(strSplit2[2]))
                                 {
                                     strOpenNext = str;
-                                    min = int.Parse(strSplit2[2]);
+                                    //min = int.Parse(strSplit2[2]);
+                                    break;
                                 }
                             }
                         }
                     }
-
                     if ("" == strOpenNext)
                     {
                         MessageBox.Show(Resource1.String285);

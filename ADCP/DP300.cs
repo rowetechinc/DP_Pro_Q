@@ -3981,7 +3981,6 @@ namespace ADCP
             {
             }
         }
-
         private void ByteArrayWriteToBinFile(byte[] rawBytesPacket)//, int fileNumber)
         {
             RiverPlaybackPath = Path.Combine(newPath, ProjectFullName); //Modified 2011-12-10
@@ -6689,6 +6688,7 @@ namespace ADCP
         //LPJ 2013-9-23 打开下一个可读数据
         public void btnOpenNext(string strNextPath)
         {
+            MouseWheelScale = 1;
             try
             {
                 closeComm();
@@ -6813,6 +6813,7 @@ namespace ADCP
                 this.BeginInvoke(RefreshDishargePanel); //刷新流量计算的显示
                 this.BeginInvoke(RefreshNavigation);
                 this.BeginInvoke(RefreshOthers);
+
                 MainPanelPaint();
                 TrackPanelPaint();
 
@@ -6828,70 +6829,21 @@ namespace ADCP
             if (playBackMode == false)
             {
                 bool AllowPlayBackFlag = false;
+                
                 if (projectHasStarted == false)
                 {
                     AllowPlayBackFlag = true;
                 }
                 else
                 {
-                    //DialogResult r = MessageBox.Show("系统正在进行工程测量，是否要保存工程文件？", "提示",
-                    //   MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk); //LPJ 2012-4-20
-                    //DialogResult r = MessageBox.Show(Resource1.String18, Resource1.String19,   //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                    //  MessageBoxButtons.YesNoCancel, MessageBoxIcon.Asterisk);   
-
-                    //if (r != DialogResult.Cancel)    //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                    {
-                        AllowPlayBackFlag = true;
-
-                        //if (DialogResult.Yes == r)   //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                        {
-
-                            //if (EnsemblesInfoToStore.ChangeNumSum <= restoreNum && EnsemblesInfoToStore.ChangeNumSum > 0/*&& bStartMeasQ == true*/)
-                            //{
-                            //    fileNum++;
-                            //    SaveAsBinaryFormat(EnsemblesInfoToStore, fileNum); //保存playback数据
-                            //}
-
-                            //LPJ 2012-05-04 开始测量后才可以保存数据
-                            //if (SaveEnsemblesInfo.ChangeNumSum <= restoreNum && SaveEnsemblesInfo.ChangeNumSum > 0)
-                            //{
-                            //    fileNum++;
-                            //    SaveAsBinaryFormat(SaveEnsemblesInfo, fileNum); //保存playback数据
-                            //}
-                        }
-                        //else    //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                        //{
-                        //    try
-                        //    {
-                        //        Directory.Delete(newPath, true);
-                        //    }
-                        //    catch (System.Exception ee)
-                        //    {
-                        //        MessageBox.Show(ee.Message);
-                        //    }
-                        //}   //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                    }
-                    //else     //LPJ 2013-4-15 取消提示“是否要保存工程文件？”，默认保存
-                    //    AllowPlayBackFlag = false;
+                    AllowPlayBackFlag = true;
                 }
+
                 if (AllowPlayBackFlag == true)
                 {
                     closeComm();
 
                     InitialAllParam();
-                    //MainPanel.Refresh();
-                    //panelGPSTrack.Refresh(); //LPJ 2013-6-9
-                   /* this.BeginInvoke(MainPanel_Refresh); //LPJ 2013-7-2
-                    //if (RiverAuthority == true) RiverPanel.Refresh();   //Modified 2011-10-16 //JZH 2012-01-12
-                 
-                    HPRpictureBox.Refresh();
-
-                    tabPage_BoatSpeed.Refresh(); //LPJ 2013-5-18
-                    tabPage_WaterDirection.Refresh(); //LPJ 2013-5-18
-                    tabPage_Pitch.Refresh(); //LPJ 2013-5-18
-                    tabPage_Roll.Refresh();  //LPJ 2013-5-18
-                    tabPage_BoatWater.Refresh();  //LPJ 2013-5-18*/
-                    //linkLabelSystemSetting.Visible = false; //LPJ 2013-6-24 当回放模式时，系统设置不可修改
                     linkLabelCompassCalibration.Visible = false; //LPJ 2013-6-28
                     linkLabelGPSConf.Visible = false;
                     linkLabelSettingTime.Visible = false;
@@ -6923,7 +6875,10 @@ namespace ADCP
                     OpenFileDialog openFile = new OpenFileDialog();
                     openFile.InitialDirectory = PathStr;
                     openFile.Filter = "BIN(*.bin)|*.bin|ENS(*.ENS)|*.ENS|All Document(*.*)|*.*";
+                    openFile.FilterIndex = 2;
                     openFile.Title = "Open File";
+
+                    MouseWheelScale = 1;
                     if (openFile.ShowDialog() == DialogResult.OK)
                     {
                         string strFile = openFile.FileName.Substring(0, openFile.FileName.LastIndexOf(".")); //strFile="C:\\E000001"
@@ -7004,43 +6959,16 @@ namespace ADCP
 
                         PlayBackTimer.Interval = PlayBackTimeLenth;
                         PlayBack = new PlayBackDelegate(RefreshPanels);//委托指针指向 SetPosion 函数
-                        /*
-                        {
-                            ////Modified 2011-8-3 try to read the length of GSP file HHHHHHHHHHHHHHHH
-                            string str1 = PathStr.Substring(0, x);
-                            string strGPS = str1;
-                            StreamReader srr;
-                            strGPS += "\\GPS";       //Modified  add for open GPSdata file
-
-                            strGPS += ("\\" + Version_2_CurrentGPSFileName);
-                            srr = new StreamReader(strGPS);
-
-                            int MaxCount = 2000000;
-                            char[] buffer1 = new char[MaxCount];
-                            int count = srr.Read(buffer1, 0, MaxCount);
-                            GPSFileCount = count / 173; //GPS one ping length 
-
-                            if (count > MaxCount)
-                            {
-                                MaxCount *= 10;
-                                StreamReader srr2 = new StreamReader(strGPS);
-                                count = srr.Read(buffer1, 0, MaxCount);
-                                GPSFileCount = count / 173; //GPS one ping length 
-                            }
-                            //MessageBox.Show("Count" + GPSFileCount.ToString());
-                        }*/
-
+                        
                         LoadAllData(); //LPJ 2013-7-2 一次载入所有回放数据
 
                         ProcessBar.Refresh();
-                        //PlayBackTimer.Start();   //LPJ 2013-9-18 回放时先显示整个测量结果，然后点击“回放”按钮开始回放 --start
 
                         //LPJ 2015-9-22 当用户选择获取艏向偏差
                         if (checkBoxGetHeadingOffset.Checked)
                         {
                             GetGPSHeadingOffset();
                         }
-
 
                         BinDataEnsembleNum = EnsembleNumOfAllFiles;
                         current_TotalTimelabel = (NumToTime(((float)EnsemblesInfoToStore.RecivedTime[EnsemblesInfoToStore.RecivedTime.Count - 1] - ((float)EnsemblesInfoToStore.RecivedTime[0])) * 1000)).ToString();
@@ -7062,215 +6990,8 @@ namespace ADCP
                         TrackPanelPaint();
                         MainPanelPaint();
                         
-                        //btnScaleIncrease_Click(sender, e);
-                        //btnScaleDecrease_Click(sender, e);
                     }
- 
                     #endregion
-
-                    #region 取消旧的载入回放文件的方式
-                    /*
-                    //MessageBox.Show("回放时请注意在《工程设置》栏中选定回放数据的版本。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop;//创建选择文件夹窗口
-                    if (PathStr != null) //LPJ 2013-1-15
-                    {
-                        folderBrowserDialog1.SelectedPath = PathStr;
-                    }
-                    else
-                    {
-                        folderBrowserDialog1.SelectedPath = Environment.CurrentDirectory; //LPJ 2013-1-14
-                    }
-                    if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)//选取路径后。。。
-                    {
-                        //获取数据路径及信息文件名
-                        PathStr = folderBrowserDialog1.SelectedPath;
-                        //newPath = PathStr; //Modified 2011-12-10
-                        CurrentPlaybackDirectory = PathStr;
-                        int x = PathStr.LastIndexOf("\\");
-                        string str = PathStr.Substring(0, x);
-
-                        //LPJ 2012-06-13 显示文件路径
-                        this.Text = PathStr;
-                        
-                        if (!File.Exists(PathStr + "\\info.infm"))//寻找回放信息文件，如果失败。。。
-                        {
-                            // MessageBox.Show("操作失败，回放所必需的文件丢失！"); //LPJ 2012-4-20
-                            MessageBox.Show(Resource1.String20);
-                        }
-                        else//如果成功。。。
-                        {
-                            //改变显示模式（由实时转变为回放），改变按钮颜色
-                            playBackMode = true;
-
-                            labelStep1.Visible = false; //LPJ 2013-6-24
-                            labelStep2.Visible = false;
-                            labelStep3.Visible = false;
-                            labelStep4.Visible = false;
-                            labelStep5.Visible = false;
-                            labelStep6.Visible = false;
-
-                            textBoxHelpTips.Text = Resource1.String19 + "\r\n\r\n" + Resource1.String219;
-
-                            //PalyBackBtn.ForeColor = Color.Blue;
-                            //RealDisPlay.ForeColor = Color.White;
-                            //Modified2011-12-10
-                            string newPath = CurrentPlaybackDirectory;   //defined at playback_clicked, Modified 2011-8-2
-                            //RiverPlaybackPath = newPath;
-                            int xx = newPath.LastIndexOf("\\");
-                            //Modified 2011-8-29 Try to see if the playback GPS file exits
-                            string newPath1 = newPath.Substring(0, xx);
-                            string playbackGPSdataPath_1 = "", playbackGPSdataPath_2 = "";
-                            playbackGPSdataPath_1 = newPath1 + "\\GPS" + "\\" + Version_1_CurrentGPSFileName;
-                            playbackGPSdataPath_2 = newPath1 + "\\GPS" + "\\" + Version_2_CurrentGPSFileName;
-
-                            playbackGPSdataPath = playbackGPSdataPath_2; // = newPath1 + "\\GPS" + "\\" + Version_2_CurrentGPSFileName;
-                            Version_2_CurrentGPSFileName = "GPSdata" + CurrentGPSFileNumber.ToString("000000") + ".txt";
-
-                            if (!File.Exists(playbackGPSdataPath))//寻找回放信息文件，如果失败。。。
-                            {
-                                playbackGPSdataPath = playbackGPSdataPath_2;
-                            }
-
-                            //读取信息文件的参数设置
-                            Dinfo = new DirectoryInfo(PathStr);
-                            BinDataFileNum = (Dinfo.GetFiles("*.dat")).Length;
-                            StreamReader sr = new StreamReader(PathStr + "\\info.infm");
-                            try
-                            {
-                                MaxVelocityByCostommer = float.Parse(sr.ReadLine());
-                                EnsembleNumOfAllFiles = int.Parse(sr.ReadLine());
-                                //EnsembleNumOfAllFiles Modified 2011-8-3, use this number to stop playback  HHHHHHHHHHH
-                                TimeLable.Text = EnsembleNumOfAllFiles.ToString(); //Modified 2011-11-3
-                            }
-                            catch (System.Exception ee)
-                            {
-                                MessageBox.Show(ee.Message);
-                            }
-                            try  //JZH 2012-06-17 测试发现当左右岸距离输入小数时程序出错！！！！！！
-                            {
-                              //  readCfg(str + "\\SysCfg"); //LPJ 2013-6-21
-                                GetFileToSmartPage(str + "\\SysCfg\\Config.cfg"); //LPJ 2013-6-21 读取配置文件到smartPage
-
-                                //LPJ 2014-2-19 读取回放文件中的高级配置
-                                CAdvancedCfg cAdcfg = new CAdvancedCfg();
-                                cAdcfg.GetFileToAdvancedMode(str + "\\SysCfg\\Config.cfg", ref advancedConf);
-
-                            }
-                            catch (System.Exception eee)
-                            {
-                                MessageBox.Show(eee.Message);
-                            }
-                            if (labelMeasMode.Text != Resource1.String235 && labelMeasMode.Text != "") //LPJ 2013-6-22
-                            {
-                                WaterAvgNum = 2;
-                            }
-
-                            //cellSize = float.Parse(textBinSize.Text);
-                            //cells = float.Parse(textBinNum.Text);
-                            //if (labelUnit.Text == Resource1.String237) //LPJ 2013-7-1
-                            if (!bEnglish2Metric)
-                            {
-                                try
-                                {
-                                    insDep = (float)(projectUnit.FeetToMeter(double.Parse(labelTransducerDepth.Text), 1));
-                                }
-                                catch
-                                {
-                                    insDep = (float)(projectUnit.FeetToMeter(0.1, 1));
-                                }
-                                cellSize=(float)(projectUnit.FeetToMeter(cellSize,1));
-                                cells = (long)(projectUnit.FeetToMeter(cells, 1));
-                            }
-                            else
-                            {
-                                try
-                                {
-                                    insDep = float.Parse(labelTransducerDepth.Text);
-                                }
-                                catch
-                                {
-                                    insDep = 0.1f;
-                                }
-                            }
-                            
-                            int i = str.LastIndexOf("\\");
-                            string pjtName = str.Substring(i + 1);
-
-                            tabControl4.SelectedIndex = 1; //LPJ 2013-8-5 回放数据时自动切换到测流页
-                        //    ResizeControls(); //LPJ 2013-8-5 
-                            ////创建并启动回放线程
-                            //MessageBox.Show(EnsembleNumOfAllFiles.ToString());
-                            //DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000);
-                            DisPlayTimeLenth = NumToTime(EnsembleNumOfAllFiles * 1000 * (float)2.25); //Modified 2011-7-12 Try to display total time
-                            PlayBackTimer = new System.Timers.Timer();
-                            PlayBackTimer.Elapsed += new System.Timers.ElapsedEventHandler(PlayBackCenter);
-                            PlayBackTimeLenth = 1000; //Modified 2011-7-14
-                         
-                            PlayBackTimer.Interval = PlayBackTimeLenth;
-                            PlayBack = new PlayBackDelegate(RefreshPanels);//委托指针指向 SetPosion 函数
-
-                            {
-                                ////Modified 2011-8-3 try to read the length of GSP file HHHHHHHHHHHHHHHH
-                                string str1 = PathStr.Substring(0, x);
-                                string strGPS = str1;
-                                StreamReader srr;
-                                strGPS += "\\GPS";       //Modified  add for open GPSdata file
-
-                                strGPS += ("\\" + Version_2_CurrentGPSFileName);
-                                srr = new StreamReader(strGPS);
-                              
-                                int MaxCount = 2000000;
-                                char[] buffer1 = new char[MaxCount];
-
-                                int count = srr.Read(buffer1, 0, MaxCount);
-
-                                GPSFileCount = count / 173; //GPS one ping length 
-
-                                if (count > MaxCount)
-                                {
-                                    MaxCount *= 10;
-                                    StreamReader srr2 = new StreamReader(strGPS);
-                                    count = srr.Read(buffer1, 0, MaxCount);
-                                    GPSFileCount = count / 173; //GPS one ping length 
-
-                                }
-                                //MessageBox.Show("Count" + GPSFileCount.ToString());
-                            }
-
-                            LoadAllData(); //LPJ 2013-7-2 一次载入所有回放数据
-
-                            ProcessBar.Refresh();
-                            //PlayBackTimer.Start();   //LPJ 2013-9-18 回放时先显示整个测量结果，然后点击“回放”按钮开始回放 --start
-                           
-                            BinDataEnsembleNum = EnsembleNumOfAllFiles;
-                            current_TotalTimelabel = (NumToTime(((float)EnsemblesInfoToStore.RecivedTime[EnsemblesInfoToStore.RecivedTime.Count - 1] - ((float)EnsemblesInfoToStore.RecivedTime[0])) * 1000)).ToString();
-                            current_DataTime = (string)EnsemblesInfoToStore.RecivedDataTime[BinDataEnsembleNum - 1];  //JZH 2012-02-18 显示当前数据组时间
-                            current_EsambleTotaleNum = BinDataEnsembleNum.ToString();
-
-                            //WriteToDataPage(RTIdata[BinDataEnsembleNum - 1]);
-                            this.BeginInvoke(WriteToDataPageEvent, RTIdata[BinDataEnsembleNum - 1]); //LPJ 2014-3-11
-                            arrAmplitude = RTIdata[BinDataEnsembleNum - 1].Amplitude;  
-                            arrCorrelation = RTIdata[BinDataEnsembleNum - 1].Correlation; 
-                            pictureBox_W_A.Refresh(); 
-                            pictureBox_W_C.Refresh(); 
-
-                            this.BeginInvoke(CalDischargeRefresh); //将流量计算在单独的线程中完成 
-                            this.BeginInvoke(RefreshDishargePanel); //刷新流量计算的显示
-                            this.BeginInvoke(RefreshNavigation); 
-                            this.BeginInvoke(RefreshOthers); 
-                            MainPanelPaint();
-
-                            //LPJ 2013-9-18 回放时先显示整个测量结果，然后点击“回放”按钮开始回放 --end
-                        }
-                    }
-                    else
-                    {
-                        //PalyBackBtn.ForeColor = Color.White;
-                        //RealDisPlay.ForeColor = Color.Blue;
-                    }
-                     * */
-                    #endregion
-
                 }
             }
             else
@@ -7433,6 +7154,8 @@ namespace ADCP
                         this.BeginInvoke(RefreshOthers);
                         MainPanelPaint();
                         TrackPanelPaint();
+                        btnScaleIncrease_Click(sender, e);
+                        btnScaleDecrease_Click(sender, e);
                     }
 
                     #endregion
@@ -12188,14 +11911,15 @@ namespace ADCP
                 }
             }
         }
-
+        /*
         public void btnStop()
         {
             bEndEdge = false;
-
             if (iStartMeasQ > 0) //LPJ 2013-5-31 当测量后，才写入配置信息
             {
-                WriteSmartPageToFile(Path.Combine(newPath, ProjectFullName + ".cfg"));  //LPJ 2014-7-29
+                //WriteSmartPageToFile(Path.Combine(newPath, ProjectFullName + ".cfg"));  //LPJ 2014-7-29
+                WriteSmartPageToFile(Path.Combine(newPath, _ensOutputFileName + ".cfg"));
+                //_ensOutputFileName
             }
 
             try
@@ -12282,7 +12006,7 @@ namespace ADCP
 
             TrackPanelPaint();
         }
-
+        */
         /// <summary>
         /// 停止发射呯
         /// </summary>
@@ -12357,11 +12081,11 @@ namespace ADCP
             // Stop the Edge Ensemble Counter
             StopQRevEndEdgeCounter(bStartLeftEdge);
 
-
             if (iStartMeasQ > 0) //LPJ 2013-5-31 当测量后，才写入配置信息
             {
                 //WriteSmartPageToFile(newPath + "\\SysCfg\\Config.cfg"); //LPJ 2013-6-20 当测量结束时，将smartPage页中的配置写入文件，并复制到Lastconf  
-                WriteSmartPageToFile(Path.Combine(newPath, ProjectFullName + ".cfg"));  //LPJ 2014-7-29
+                //WriteSmartPageToFile(Path.Combine(newPath, ProjectFullName + ".cfg"));  //LPJ 2014-7-29
+                WriteSmartPageToFile(Path.Combine(newPath, _ensOutputFileName + ".cfg"));
             }
 
             try
@@ -12406,6 +12130,8 @@ namespace ADCP
             // QRev
             // Add the Transect to the project
             AddQRevTransectToProject();
+
+            ResizeControls();
         }
             
         private void trackBarMaxV_Scroll(object sender, EventArgs e)
@@ -17549,8 +17275,11 @@ namespace ADCP
             defaultSP.DataReceived += new SerialDataReceivedEventHandler(defaultSP_DataReceived);
 
             //LPJ 2013-6-20 在连接仪器前，先读取配置文件信息
+            // Get the default folder path
 
-            if (!GetFileToSmartPage(Directory.GetCurrentDirectory() + "\\dp300Data" + "\\Config.cfg"))  //在测量模式下，文件名为当前路径下的last
+            //string folderPath = RttProject.GetDefaultFolderPath();
+            //if (!GetFileToSmartPage(Directory.GetCurrentDirectory() + "\\dp300Data" + "\\Config.cfg"))  //在测量模式下，文件名为当前路径下的last
+            if (!GetFileToSmartPage(RttProject.GetDefaultFolderPath() + "\\Default_Config.cfg"))
             {
                 MessageBox.Show(Resource1.String305);
                 InitSmartPage();
@@ -22176,39 +21905,6 @@ namespace ADCP
                 beamCheckTimer.Elapsed += new System.Timers.ElapsedEventHandler(beamCheckTimer_Elapsed);
                 beamCheckTimer.Interval = 5 * iRealTimeInterval;
                 beamCheckTimer.Start();
-
-                #region 
-                //float range = 0;
-                //int cells = 200;
-                //float[,] snr = new float[4, 200];
-
-                //while (ArrRaw.Count() < 1)
-                //{
-                //    Thread.Sleep(150);
-                //}
-                //int i = ArrRaw.Count() - 1;
-                //range = ArrRaw[i].B_Depth;
-                //cells = (int)ArrRaw[i].E_Cells;
-                //snr = ArrRaw[i].Amplitude;
-               
-                //FrmBeamCheck frmbeamcheck = new FrmBeamCheck(range, cells, snr);
-                //frmbeamcheck.ShowDialog();
-
-                //StartRecord = false;
-                //RealTimeProcessingTimer.Stop();
-
-                //sp.Write("STOP" + '\r'); //发送Stop
-                //Thread.Sleep(150);
-
-                //while (!ReceiveBufferString.Contains("STOP"))
-                //{
-                //    sp.Write("STOP" + '\r');
-                //    Thread.Sleep(150);
-                //}
-
-                //bBeamCheck = false;
-                //ArrRaw.Clear();
-                #endregion
             }
             catch
             {
@@ -22315,22 +22011,31 @@ namespace ADCP
             }
         }
 
-        private void btnScaleIncrease_Click(object sender, EventArgs e)
+        private void ScaleIncrease()
         {
             AverageScale += 5;
             if (AverageScale > 5000)
                 AverageScale = 5000;
-            
+
             panelGPSTrack.Refresh();
         }
 
-        private void btnScaleDecrease_Click(object sender, EventArgs e)
+        private void btnScaleIncrease_Click(object sender, EventArgs e)
+        {
+            ScaleIncrease();
+        }
+
+        private void ScaleDecrease()
         {
             AverageScale -= 5;
             if (AverageScale < 1)
                 AverageScale = 1;
 
             panelGPSTrack.Refresh();
+        }
+        private void btnScaleDecrease_Click(object sender, EventArgs e)
+        {
+            ScaleDecrease();
         }
 
         #region 航迹鼠标右键功能
