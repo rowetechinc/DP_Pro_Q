@@ -558,6 +558,12 @@
             this.textBoxSmartPageFile = new System.Windows.Forms.TextBox();
             this.textBoxCommandSet = new System.Windows.Forms.TextBox();
             this.tabPageContour = new System.Windows.Forms.TabPage();
+            this.buttonBS_Pause = new System.Windows.Forms.Button();
+            this.buttonBS_Play = new System.Windows.Forms.Button();
+            this.buttonBS_Start = new System.Windows.Forms.Button();
+            this.buttonBS_End = new System.Windows.Forms.Button();
+            this.buttonPlaybackStepBack = new System.Windows.Forms.Button();
+            this.buttonPlaybackStep = new System.Windows.Forms.Button();
             this.hScrollBar_BS = new System.Windows.Forms.HScrollBar();
             this.panel_contour = new ADCP.DoubleBufferPanel();
             this.panel_ColorScale = new System.Windows.Forms.Panel();
@@ -605,12 +611,6 @@
             this.radioButtonBSdata = new System.Windows.Forms.RadioButton();
             this.radioButtonBSsystem = new System.Windows.Forms.RadioButton();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.buttonBS_Pause = new System.Windows.Forms.Button();
-            this.buttonBS_Play = new System.Windows.Forms.Button();
-            this.buttonBS_Start = new System.Windows.Forms.Button();
-            this.buttonBS_End = new System.Windows.Forms.Button();
-            this.buttonPlaybackStepBack = new System.Windows.Forms.Button();
-            this.buttonPlaybackStep = new System.Windows.Forms.Button();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -4397,6 +4397,48 @@
             this.tabPageContour.Name = "tabPageContour";
             this.tabPageContour.UseVisualStyleBackColor = true;
             // 
+            // buttonBS_Pause
+            // 
+            resources.ApplyResources(this.buttonBS_Pause, "buttonBS_Pause");
+            this.buttonBS_Pause.Name = "buttonBS_Pause";
+            this.buttonBS_Pause.UseVisualStyleBackColor = true;
+            this.buttonBS_Pause.Click += new System.EventHandler(this.buttonBS_Pause_Click);
+            // 
+            // buttonBS_Play
+            // 
+            resources.ApplyResources(this.buttonBS_Play, "buttonBS_Play");
+            this.buttonBS_Play.Name = "buttonBS_Play";
+            this.buttonBS_Play.UseVisualStyleBackColor = true;
+            this.buttonBS_Play.Click += new System.EventHandler(this.buttonBS_Play_Click);
+            // 
+            // buttonBS_Start
+            // 
+            resources.ApplyResources(this.buttonBS_Start, "buttonBS_Start");
+            this.buttonBS_Start.Name = "buttonBS_Start";
+            this.buttonBS_Start.UseVisualStyleBackColor = true;
+            this.buttonBS_Start.Click += new System.EventHandler(this.buttonBS_Start_Click);
+            // 
+            // buttonBS_End
+            // 
+            resources.ApplyResources(this.buttonBS_End, "buttonBS_End");
+            this.buttonBS_End.Name = "buttonBS_End";
+            this.buttonBS_End.UseVisualStyleBackColor = true;
+            this.buttonBS_End.Click += new System.EventHandler(this.buttonBS_End_Click);
+            // 
+            // buttonPlaybackStepBack
+            // 
+            resources.ApplyResources(this.buttonPlaybackStepBack, "buttonPlaybackStepBack");
+            this.buttonPlaybackStepBack.Name = "buttonPlaybackStepBack";
+            this.buttonPlaybackStepBack.UseVisualStyleBackColor = true;
+            this.buttonPlaybackStepBack.Click += new System.EventHandler(this.buttonPlaybackStepBack_Click);
+            // 
+            // buttonPlaybackStep
+            // 
+            resources.ApplyResources(this.buttonPlaybackStep, "buttonPlaybackStep");
+            this.buttonPlaybackStep.Name = "buttonPlaybackStep";
+            this.buttonPlaybackStep.UseVisualStyleBackColor = true;
+            this.buttonPlaybackStep.Click += new System.EventHandler(this.buttonPlaybackStep_Click);
+            // 
             // hScrollBar_BS
             // 
             resources.ApplyResources(this.hScrollBar_BS, "hScrollBar_BS");
@@ -4758,48 +4800,6 @@
             this.radioButtonBSsystem.TabStop = true;
             this.radioButtonBSsystem.UseVisualStyleBackColor = true;
             this.radioButtonBSsystem.CheckedChanged += new System.EventHandler(this.radioButtonBSsystem_CheckedChanged);
-            // 
-            // buttonBS_Pause
-            // 
-            resources.ApplyResources(this.buttonBS_Pause, "buttonBS_Pause");
-            this.buttonBS_Pause.Name = "buttonBS_Pause";
-            this.buttonBS_Pause.UseVisualStyleBackColor = true;
-            this.buttonBS_Pause.Click += new System.EventHandler(this.buttonBS_Pause_Click);
-            // 
-            // buttonBS_Play
-            // 
-            resources.ApplyResources(this.buttonBS_Play, "buttonBS_Play");
-            this.buttonBS_Play.Name = "buttonBS_Play";
-            this.buttonBS_Play.UseVisualStyleBackColor = true;
-            this.buttonBS_Play.Click += new System.EventHandler(this.buttonBS_Play_Click);
-            // 
-            // buttonBS_Start
-            // 
-            resources.ApplyResources(this.buttonBS_Start, "buttonBS_Start");
-            this.buttonBS_Start.Name = "buttonBS_Start";
-            this.buttonBS_Start.UseVisualStyleBackColor = true;
-            this.buttonBS_Start.Click += new System.EventHandler(this.buttonBS_Start_Click);
-            // 
-            // buttonBS_End
-            // 
-            resources.ApplyResources(this.buttonBS_End, "buttonBS_End");
-            this.buttonBS_End.Name = "buttonBS_End";
-            this.buttonBS_End.UseVisualStyleBackColor = true;
-            this.buttonBS_End.Click += new System.EventHandler(this.buttonBS_End_Click);
-            // 
-            // buttonPlaybackStepBack
-            // 
-            resources.ApplyResources(this.buttonPlaybackStepBack, "buttonPlaybackStepBack");
-            this.buttonPlaybackStepBack.Name = "buttonPlaybackStepBack";
-            this.buttonPlaybackStepBack.UseVisualStyleBackColor = true;
-            this.buttonPlaybackStepBack.Click += new System.EventHandler(this.buttonPlaybackStepBack_Click);
-            // 
-            // buttonPlaybackStep
-            // 
-            resources.ApplyResources(this.buttonPlaybackStep, "buttonPlaybackStep");
-            this.buttonPlaybackStep.Name = "buttonPlaybackStep";
-            this.buttonPlaybackStep.UseVisualStyleBackColor = true;
-            this.buttonPlaybackStep.Click += new System.EventHandler(this.buttonPlaybackStep_Click);
             // 
             // DP300_Windows
             // 

@@ -1063,17 +1063,7 @@ namespace ADCP
                                     {
                                         VelClr = (Color[])EnsemblesInfoToStore.NewWaterSpeedToSixColor[i];
                                     }//LPJ 2013-7-31 end
-
-                                    //VelClr = (Color[])EnsemblesInfoToStore.WaterSpeedToSixColor[i]; //LPJ 2013-7-4 change
-
-                                    //if (maxCells < VelClr.Length)   //LPJ 2013-7-4 作用是什么？
-                                    //{
-                                    //    maxCells = VelClr.Length;
-                                    //    //labelMaxCellNum.Text = ((int)(((float)trackBarCellNum.Value / 200) * maxCells)).ToString();
-                                    //}
-
-                                    //SM>
-                                    //PixelRectangleHeight = (MainPanel.Height - seafaceLenToScreen) / (dep / cellSize); //LPJ 2013-5-28
+                                    
                                     float FirstPixel = 0;
                                     float PixelsPerMeter = 0;
                                     if (EnsemblesInfoToStore.RangeOfFirstBin.Count > 0)
@@ -1082,13 +1072,6 @@ namespace ADCP
                                         cellSize = (float)EnsemblesInfoToStore.BinSize[i];
                                         upBlank = (float)EnsemblesInfoToStore.RangeOfFirstBin[i] - cellSize / 2.0f;
                                         uplen = upBlank + insDep;
-                                        //if (dep > 0 && uplen >= 0 && cellSize > 0)
-                                        //{
-                                        //    seafaceLenToScreen = (MainPanel.Height / ((dep - uplen) / cellSize)) - (MainPanel.Height / (dep / cellSize));
-                                        //    if (seafaceLenToScreen < 0)
-                                        //        seafaceLenToScreen = 0;
-                                        //}
-                                        //PixelRectangleHeight = (MainPanel.Height - seafaceLenToScreen) / (dep / cellSize);
 
                                         if (dep > 0)
                                         {
@@ -1103,45 +1086,15 @@ namespace ADCP
                                         cellSize = 0;
                                         PixelRectangleHeight = 1;
                                     }
-                                    
-                                    
-                                    //SM<
-
                                     if (PixelRectangleWidth == 0)
                                     {
                                         PixelRectangleWidth = 1;
                                     }
-                                    //StartX -= (int)PixelRectangleWidth;
                                     StartX -= PixelRectangleWidth;
-
-                                    //int j = 0;
-                                    //foreach (Color color in VelClr)
-                                    //{
-                                    //    //if (j < (int)( maxCells)) //LPJ 2013-7-4 cancel
-                                    //    {
-                                    //        float StartY = seafaceLenToScreen + j * PixelRectangleHeight;
-                                    //        //LPJ 2013-5-16 在这里增加一个判断，是否是有效剖面，如果是，则填充色块，若不是，则填充黑色色块 --start
-                                    //        if (j < (int)EnsemblesInfoToStore.iGoodBin[i])
-                                    //        {
-                                    //            g.FillRectangle(new SolidBrush(color), StartX, StartY, PixelRectangleWidth, PixelRectangleHeight);
-                                    //        }
-                                    //        else if (j >= (int)EnsemblesInfoToStore.iGoodBin[i] && j < ((float)EnsemblesInfoToStore.bottomDepth[i] - upBlank) / cellSize - 1)
-                                    //        {
-                                    //            g.FillRectangle(Brushes.Black, StartX, StartY, PixelRectangleWidth, PixelRectangleHeight);
-                                    //        }
-                                    //        //LPJ 2013-5-16 在这里增加一个判断，是否是有效剖面，如果是，则填充色块，若不是，则填充黑色色块 --end
-
-                                    //        j++;
-                                    //    }
-                                    //}
-                                    //int imaxCells = (int)(((float)EnsemblesInfoToStore.bottomDepth[i] - upBlank) / cellSize);
                                     int iGoodBin = 0;
                                     try
                                     {
-                                        //SM>
-                                        //iGoodBin = (int)EnsemblesInfoToStore.iGoodBin[i] + 1;//LPJ 2016-12-15 多显示一层
                                         iGoodBin = (int)EnsemblesInfoToStore.iGoodBin[i];
-                                        //SM<
                                     }
                                     catch
                                     {
@@ -1158,45 +1111,11 @@ namespace ADCP
                                         {
                                             //j = j;
                                         }
-                                        //SM>
-                                        //float StartY = seafaceLenToScreen + j * PixelRectangleHeight;
-                                        //uplen = insDep;
-                                        //seafaceLenToScreen = 0;
-                                        //if (dep > 0 && uplen >= 0 && cellSize > 0)
-                                        //{
-                                        //    seafaceLenToScreen = (MainPanel.Height / ((dep - uplen) / cellSize)) - (MainPanel.Height / (dep / cellSize));
-                                        //    if (seafaceLenToScreen < 0)
-                                        //        seafaceLenToScreen = 0;
-                                        //}
-                                        // nono float StartY = seafaceLenToScreen + j * PixelRectangleHeight;
                                         float StartY = FirstPixel +  j * PixelRectangleHeight;
-                                        //SM<
-                                        //LPJ 2013-5-16 在这里增加一个判断，是否是有效剖面，如果是，则填充色块，若不是，则填充黑色色块 --start
                                         g.FillRectangle(colorBrush, StartX, StartY, PixelRectangleWidth, PixelRectangleHeight);
-
                                     }
-
-                                    //g.FillRectangle(Brushes.Black, StartX, StartY, PixelRectangleWidth, PixelRectangleHeight + heightY);
-
-                                    //LPJ 2013-5-16 在这里增加一个判断，是否是有效剖面，如果是，则填充色块，若不是，则填充黑色色块 --end
-
                                     if (dep > 0)
                                     {
-                                        //SM>
-                                        /*
-                                        float s1 = ((float)EnsemblesInfoToStore.bottomDepth[i] - upBlank) / dep;
-                                        if (s1 > 1) 
-                                            s1 = 1;
-                                        else 
-                                        if (s1 < 0) 
-                                            s1 = 0;
-                                        //float bottomToPanel = seafaceLenToScreen + s1 * (300f - seafaceLenToScreen) + 5;  //LPJ 2013-5-16
-                                        float bottomToPanel = seafaceLenToScreen + s1 * (MainPanel.Height - seafaceLenToScreen);
-
-                                        float StartY = seafaceLenToScreen + iGoodBin * PixelRectangleHeight; 
-                                        float recHeight = bottomToPanel - StartY;
-                                        */
-
                                         float curBottom = (float)EnsemblesInfoToStore.bottomDepth[i];
 
                                         if (curBottom < 0.0001)
@@ -1206,10 +1125,6 @@ namespace ADCP
                                         float BottomPixel = (curBottom + insDep) * PixelsPerMeter;
                                         float recHeight = BottomPixel - StartY;
                                         float bottomToPanel = BottomPixel;
-
-
-
-                                        //SM<
                                         try
                                         {
                                             if (recHeight > 0)
@@ -1226,34 +1141,19 @@ namespace ADCP
 
                                             if (i < EnsemblesInfoToStore.NewWaterSpeedToSixColor.Count - 1)
                                             {
-                                                //SM>
-                                                /*
-                                                float s2 = ((float)EnsemblesInfoToStore.bottomDepth[i + 1] - upBlank) / dep;
-                                                if (s2 > 1) s2 = 1;
-                                                else if (s2 < 0) s2 = 0;
-                                                //float preBottomToPanel = seafaceLenToScreen + s2 * (300f - seafaceLenToScreen) + 5; //LPJ 2013-5-16
-                                                float preBottomToPanel = seafaceLenToScreen + s2 * (MainPanel.Height - seafaceLenToScreen);
-                                                //g.DrawLine(blackPen, StartXpt, preBottomToPanel, StartXpt, bottomToPanel);
-                                                */
                                                 float preBottomPixel = (preBottom + insDep) * PixelsPerMeter;// (float)EnsemblesInfoToStore.bottomDepth[i + 1] * PixelsPerMeter;
-                                                float preBottomToPanel = preBottomPixel; 
-                                                //SM<
+                                                float preBottomToPanel = preBottomPixel;
                                                 linesPnt[iLines].X = StartXpt; //LPJ 2013-7-8
                                                 linesPnt[iLines++].Y = preBottomToPanel; //LPJ 2013-7-8
-
                                                 if(curBottom > 0)
                                                     preBottom = curBottom;
                                             }
-
                                             linesPnt[iLines].X = StartXpt; //LPJ 2013-7-8
                                             linesPnt[iLines++].Y = bottomToPanel; //LPJ 2013-7-8
-
                                             linesPnt[iLines].X = StartX; //LPJ 2013-7-8
                                             linesPnt[iLines++].Y = bottomToPanel; //LPJ 2013-7-8
-
                                         }
                                     }
-                                    //if (StartX <= MainPanel.Width - 471) break;   //JZH debug
                                     if (StartX <= 35)  ////JZH 2011-12-27 Adjust
                                     {
                                         try
@@ -1285,8 +1185,7 @@ namespace ADCP
                         int watercells = (int)(dep / cellSize);
                         if (watercells > 20)
                             watercells = 20; //LPJ 2013-8-7
-
-                        //SM>
+                        
                         if (EnsemblesInfoToStore.RangeOfFirstBin.Count > 0)
                         {
                             if (BinDataEnsembleNum > 0)
@@ -1296,12 +1195,8 @@ namespace ADCP
                         }
                         upBlank = 0;
                         uplen = upBlank + insDep;
-                        //SM<
                         for (int i = 0; i < watercells; i++) //LPJ 2013-8-7  for (int i = 0; i < 20; i++)
                         {
-                            //g.DrawLine(Pens.Black,  35, seafaceLenToScreen + i * (MainPanel.Height - seafaceLenToScreen) / 20 ,  //JZH 2011-12-27 Adjust
-                            //    35, seafaceLenToScreen + i * (MainPanel.Height - seafaceLenToScreen) / 20 );   //JZH 2011-12-27 Adjust
-                            //using (Font font = new Font("Arial", 8))
                             {
                                 float x, y;
                                 PointF pt;
@@ -1310,21 +1205,14 @@ namespace ADCP
                                 //y = seafaceLenToScreen + i * (MainPanel.Height - seafaceLenToScreen) / 20 - size.Height / 2 +5;     //JZH 2011-12-27 Adjust
                                 y = seafaceLenToScreen + i * (MainPanel.Height - seafaceLenToScreen) / watercells - size.Height / 2 + 5; //LPJ 2013-8-7
                                 pt = new PointF(x, y);
-                                //g.DrawString((uplen + i * dep / 20f).ToString("0.00"), font, Brushes.Black, pt);
-                                //LPJ 2013-6-26 当选择英制单位时，将显示的数据修改
-                                //if (labelUnit.Text == Resource1.String237)
                                 if (!bEnglish2Metric)
                                 {
-                                    //double fdepth = projectUnit.MeterToFeet((uplen + i * dep / 20f), 1);
                                     double fdepth = projectUnit.MeterToFeet((uplen + i * dep / watercells), 1);  //LPJ 2013-8-7
                                     g.DrawString(fdepth.ToString("0.00"), font, Brushes.Black, pt);
-                                    //labelMainPanelFigure.Text = Resource1.String220 + labelVesselRef.Text + "(ft/s)";
                                 }
                                 else
                                 {
-                                    //g.DrawString((uplen + i * dep / 20f).ToString("0.00"), font, Brushes.Black, pt);
                                     g.DrawString((uplen + i * dep / watercells).ToString("0.00"), font, Brushes.Black, pt); //LPJ 2013-8-7
-                                    //labelMainPanelFigure.Text = Resource1.String220 + labelVesselRef.Text + "(m/s)";
                                 }
                             }
                         }
@@ -1339,12 +1227,6 @@ namespace ADCP
                         }
 
                         font.Dispose();
-
-                        //using (Font font = new Font("Arial", 8))
-                        //{
-                        //    size = g.MeasureString((uplen + 12 * dep / 20f).ToString("0.00"), font);
-                        //    }
-
                     }
                     if (EnsemblesInfoToStore.WaterVelocity.Count > 0 && playBackMode == false)
                     {
@@ -9460,7 +9342,16 @@ namespace ADCP
 
                                         param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
                                         param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;
+
+                                        //helpme
+                                        param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[i].WP_Lag;
+                                        param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[i].A_CellSize + RTIdata[i].WP_Lag;
+
                                         param.RiverDischargeOrgData = RTIdata[i];
+
+                                        //helpme
+                                        //param.RiverDischargeInstrument.RiverDischargePulseLag = RTIData[i].;
+                                        //param.RiverDischargeInstrument.RiverDischargePulseLength = 0;
 
                                         float ve, vn; //LPJ 2013-7-31
                                         ve = RTIdata[i].B_Earth[0]; //LPJ 2013-7-31
@@ -9631,6 +9522,11 @@ namespace ADCP
                     param.RiverDischargeDistance = fLeftDis;
                     param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;        //ADCP参数
                     param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
+
+                    //helpme
+                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+
                     param.RiverDischargeOrgData = left.ToArray();
                     leftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
                     //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
@@ -9712,6 +9608,11 @@ namespace ADCP
                     param.RiverDischargeDistance = fRightDis;
                     param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;
                     param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
+
+                    //helpme
+                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+
                     param.RiverDischargeOrgData = right.ToArray();
                     rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
 
@@ -10156,6 +10057,11 @@ namespace ADCP
                 param.RiverDischargeDistance = fLeftDis;
                 param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;        //ADCP参数
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
+                
+                //helpme
+                param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+
                 param.RiverDischargeOrgData = dischargeMsg.left.ToArray();
                 dischargeMsg.leftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
 
@@ -10240,6 +10146,11 @@ namespace ADCP
                 param.RiverDischargeDistance = fRightDis;
                 param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
+
+                //helpme
+                param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+
                 param.RiverDischargeOrgData = dischargeMsg.right.ToArray();
                
                 dischargeMsg.rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
@@ -10539,6 +10450,10 @@ namespace ADCP
                                     param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
                                     param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;
                                     param.RiverDischargeOrgData = Arr;
+
+                                    //helpme
+                                    param.RiverDischargeInstrument.RiverDischargePulseLag = Arr.WP_Lag;
+                                    param.RiverDischargeInstrument.RiverDischargePulseLength = Arr.A_CellSize + Arr.WP_Lag;
 
                                     float ve = 0, vn = 0; //LPJ 2013-7-31 
                                     double dHeadingOffset = 0; //LPJ 2013-9-13
@@ -15893,6 +15808,11 @@ namespace ADCP
                
                 param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;        //ADCP参数
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
+
+                //helpme
+                param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+
                 //LPJ 2013-4-3 --end
 
                 if (bStartLeftEdge)
