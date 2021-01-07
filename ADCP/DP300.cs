@@ -991,36 +991,9 @@ namespace ADCP
                         }
                         if (maxDep > 0)  //LPJ 2014-1-8
                             dep = maxDep;
-                        //LPJ 2013-5-25 添加自动缩放功能，动态设置最大深度 --end
-
-                        //SM>
-                        /*
-                        //float uplen = upBlank + insDep;   //JZH 2012-02-14 第一个单元起始位置=RangeOfFirstBin - cellsize/2 + 仪器入水深度
-                        //JZH 2012-02-14                  
-                        if (EnsemblesInfoToStore.RangeOfFirstBin.Count > 0)
-                        {
-                            //upBlank = (float)EnsemblesInfoToStore.RangeOfFirstBin[0] - cellSize / 2.0f;  //默认一次测量中第一个单元起始位置不变，实际上变化非常微小，可以忽略不计
-                            //JZH 2012-05-18  默认用最后一个单元的起始位置
-                            if (BinDataEnsembleNum > 0)
-                                upBlank = (float)EnsemblesInfoToStore.RangeOfFirstBin[BinDataEnsembleNum - 1] - cellSize / 2.0f;
-                            else
-                                upBlank = (float)EnsemblesInfoToStore.RangeOfFirstBin[0] - cellSize / 2.0f;
-                        }
-                        float uplen = upBlank + insDep;
-                        */
+                        
                         float uplen = 0;
                         float preBottom = 0;
-                        //SM<
-
-                        //InsInfotextBox.Text = uplen.ToString(); //Modified
-
-                        //Modified 2011-10-14 display surface blind zone
-                        
-                        float seafaceLenToScreen;
-                                               
-                        {
-                            seafaceLenToScreen = 0;
-                        }
 
                         //if (true == SixColor.Checked)
                         {
@@ -1068,7 +1041,6 @@ namespace ADCP
                                     float PixelsPerMeter = 0;
                                     if (EnsemblesInfoToStore.RangeOfFirstBin.Count > 0)
                                     {
-                                        seafaceLenToScreen = 0;
                                         cellSize = (float)EnsemblesInfoToStore.BinSize[i];
                                         upBlank = (float)EnsemblesInfoToStore.RangeOfFirstBin[i] - cellSize / 2.0f;
                                         uplen = upBlank + insDep;
@@ -1134,25 +1106,22 @@ namespace ADCP
                                         {
                                         }
 
-                                        //using (Pen blackPen = new Pen(Color.WhiteSmoke, 2))
-                                        {
-                                            float StartXpt = StartX + PixelRectangleWidth;
-                                            //g.DrawLine(blackPen, StartXpt, bottomToPanel, StartX, bottomToPanel);
+                                        float StartXpt = StartX + PixelRectangleWidth;
+                                        //g.DrawLine(blackPen, StartXpt, bottomToPanel, StartX, bottomToPanel);
 
-                                            if (i < EnsemblesInfoToStore.NewWaterSpeedToSixColor.Count - 1)
-                                            {
-                                                float preBottomPixel = (preBottom + insDep) * PixelsPerMeter;// (float)EnsemblesInfoToStore.bottomDepth[i + 1] * PixelsPerMeter;
-                                                float preBottomToPanel = preBottomPixel;
-                                                linesPnt[iLines].X = StartXpt; //LPJ 2013-7-8
-                                                linesPnt[iLines++].Y = preBottomToPanel; //LPJ 2013-7-8
-                                                if(curBottom > 0)
-                                                    preBottom = curBottom;
-                                            }
+                                        if (i < EnsemblesInfoToStore.NewWaterSpeedToSixColor.Count - 1)
+                                        {
+                                            float preBottomPixel = (preBottom + insDep) * PixelsPerMeter;// (float)EnsemblesInfoToStore.bottomDepth[i + 1] * PixelsPerMeter;
+                                            float preBottomToPanel = preBottomPixel;
                                             linesPnt[iLines].X = StartXpt; //LPJ 2013-7-8
-                                            linesPnt[iLines++].Y = bottomToPanel; //LPJ 2013-7-8
-                                            linesPnt[iLines].X = StartX; //LPJ 2013-7-8
-                                            linesPnt[iLines++].Y = bottomToPanel; //LPJ 2013-7-8
+                                            linesPnt[iLines++].Y = preBottomToPanel; //LPJ 2013-7-8
+                                            if(curBottom > 0)
+                                                preBottom = curBottom;
                                         }
+                                        linesPnt[iLines].X = StartXpt; //LPJ 2013-7-8
+                                        linesPnt[iLines++].Y = bottomToPanel; //LPJ 2013-7-8
+                                        linesPnt[iLines].X = StartX; //LPJ 2013-7-8
+                                        linesPnt[iLines++].Y = bottomToPanel; //LPJ 2013-7-8
                                     }
                                     if (StartX <= 35)  ////JZH 2011-12-27 Adjust
                                     {
@@ -1181,40 +1150,94 @@ namespace ADCP
                         SizeF size;
                         Font font = new Font("Arial", 8);
 
-                        //LPJ 2013-8-7 将之前固定显示20行的深度，修改为根据水深显示，当水深层数超过20时，只显示20行
-                        int watercells = (int)(dep / cellSize);
-                        if (watercells > 20)
-                            watercells = 20; //LPJ 2013-8-7
-                        
-                        if (EnsemblesInfoToStore.RangeOfFirstBin.Count > 0)
+                        dep += insDep;
+
+                        if (!bEnglish2Metric)
                         {
-                            if (BinDataEnsembleNum > 0)
-                                upBlank = (float)EnsemblesInfoToStore.RangeOfFirstBin[BinDataEnsembleNum - 1] - cellSize / 2.0f;
-                            else
-                                upBlank = (float)EnsemblesInfoToStore.RangeOfFirstBin[0] - cellSize / 2.0f;
+                            dep = (float)projectUnit.MeterToFeet((double)dep, 1);
                         }
-                        upBlank = 0;
-                        uplen = upBlank + insDep;
-                        for (int i = 0; i < watercells; i++) //LPJ 2013-8-7  for (int i = 0; i < 20; i++)
+
+                        float step = (float)0.1;
+
+                        switch (dep)
                         {
+                            case float n when (n <= 0.1):
+                                step = (float)0.005;
+                                break;
+
+                            case float n when (n > 0.1 && n <= 0.2):
+                                step = (float)0.01;
+                                break;
+
+                            case float n when (n > 0.2 && n <= 0.5):
+                                step = (float)0.02;
+                                break;
+
+                            case float n when (n > 0.5 && n <= 1):
+                                step = (float)0.05;
+                                break;
+
+                            case float n when (n > 1 && n <= 2):
+                                step = (float)0.1;
+                                break;
+
+                            case float n when (n > 2 && n <= 5):
+                                step = (float)0.2;
+                                break;
+
+                            case float n when (n > 5 && n <= 10):
+                                step = (float)0.5;
+                                break;
+
+                            case float n when (n > 10 && n <= 20):
+                                step = (float)1.0;
+                                break;
+
+                            case float n when (n > 20 && n <= 50):
+                                step = (float)2.0;
+                                break;
+
+                            case float n when (n > 50 && n <= 100):
+                                step = (float)5.0;
+                                break;
+
+                            case float n when (n > 100 && n <= 200):
+                                step = (float)10.0;
+                                break;
+
+                            case float n when (n > 200 && n <= 500):
+                                step = (float)20.0;
+                                break;
+                        }
+
+                        //int watercells = (int)(dep / cellSize);
+                        float watercells = dep / step;
+
+                        float range = step;
+                        
+                        for (int i = 1; i < (int)watercells; i++)
+                        {   
+                            float x, y;
+                            PointF pt;
+                            size = g.MeasureString((i * dep / watercells).ToString("0.0"), font);
+                            x = 35 - size.Width;
+                            y = i * MainPanel.Height / watercells - size.Height / 2;// + 5;
+                            pt = new PointF(x, y);
+                            
+                            /*
+                            if (!bEnglish2Metric)
                             {
-                                float x, y;
-                                PointF pt;
-                                size = g.MeasureString((uplen + i * dep / watercells).ToString("0.00"), font); //size = g.MeasureString((uplen + i * dep / 20f).ToString("0.00"), font);
-                                x = 35 - size.Width;      //JZH 2011-12-27 Adjust
-                                //y = seafaceLenToScreen + i * (MainPanel.Height - seafaceLenToScreen) / 20 - size.Height / 2 +5;     //JZH 2011-12-27 Adjust
-                                y = seafaceLenToScreen + i * (MainPanel.Height - seafaceLenToScreen) / watercells - size.Height / 2 + 5; //LPJ 2013-8-7
-                                pt = new PointF(x, y);
-                                if (!bEnglish2Metric)
-                                {
-                                    double fdepth = projectUnit.MeterToFeet((uplen + i * dep / watercells), 1);  //LPJ 2013-8-7
-                                    g.DrawString(fdepth.ToString("0.00"), font, Brushes.Black, pt);
-                                }
-                                else
-                                {
-                                    g.DrawString((uplen + i * dep / watercells).ToString("0.00"), font, Brushes.Black, pt); //LPJ 2013-8-7
-                                }
+                                double fdepth = projectUnit.MeterToFeet((i * range / watercells), 1);
+                                g.DrawString(fdepth.ToString("0.0"), font, Brushes.Black, pt);
                             }
+                            else
+                            */
+                            {
+                                g.DrawString((i * dep / watercells).ToString("0.0"), font, Brushes.Black, pt);
+                            }
+                            range += step;
+                            if (range >= dep)
+                                break;
                         }
 
                         if (!bEnglish2Metric)
@@ -11826,102 +11849,7 @@ namespace ADCP
                 }
             }
         }
-        /*
-        public void btnStop()
-        {
-            bEndEdge = false;
-            if (iStartMeasQ > 0) //LPJ 2013-5-31 当测量后，才写入配置信息
-            {
-                //WriteSmartPageToFile(Path.Combine(newPath, ProjectFullName + ".cfg"));  //LPJ 2014-7-29
-                WriteSmartPageToFile(Path.Combine(newPath, _ensOutputFileName + ".cfg"));
-                //_ensOutputFileName
-            }
-
-            try
-            {
-                //WriteSmartPageToFile(Directory.GetCurrentDirectory() + "\\dp300Data" + "\\Config.cfg"); //LPJ 2014-7-29
-                WriteSmartPageToFile(RttProject.GetDefaultPath("Default_Config", ".cfg"));
-            }
-            catch
-            {
-            }
-
-            if(bStartMeasQ)
-            {
-                 //LPJ 2013-8-8 在测量结束后，自动到另一个起始岸 ---start
-                if(labelStartEdge.Text==Resource1.String226)
-                    labelStartEdge.Text=Resource1.String227;
-                else
-                    labelStartEdge.Text=Resource1.String226;
-                //LPJ 2013-8-8 在测量结束后，自动到另一个起始岸 ---end
-            }
-
-            StartRecord = false; //LPJ 2014-6-17
-            sp.Write("STOP" + '\r');
-            Thread.Sleep(150);
-
-            while (!ReceiveBufferString.Contains("STOP"))
-            {
-                sp.Write("STOP" + '\r');
-                Thread.Sleep(150);
-            }
-
-          //  if (GPScheckbox.Checked == true)
-            if(bGPSConnect) //LPJ 2013-6-21
-            {
-                GPS_sp.Close();
-                initialGPSData();
-
-                try
-                {
-                    //AlarmTimer_GPS.Stop();
-                    //AlarmTimer_GPS.Close();
-                }
-                catch
-                {
-                }
-            }
-            //projectPause = true;
-
-            //JZH 2012-03-21 停止并释放实时处理定时器
-            RealTimeProcessingTimer.Stop();
-            RealTimeProcessingTimer.Close();
-
-            //LPJ 2014-3-14 当点击了起始岸后，才可用
-            if (bStartMeasQ)
-                this.BeginInvoke(RefreshSummaryList); //LPJ 2013-6-19 在测量完成后，将该测回的汇总信息写入listViewSummary中
-
-            bStartMeasQ = false;
-            
-
-            //LPJ 2014-6-9 停止并释放
-            //AlarmTimer.Stop();
-            //AlarmTimer.Close();
-
-            if (checkBoxGetHeadingOffset.Checked) //LPJ 2015-9-22 当用户选择获取艏向偏差，则计算该值，并将其显示
-            {
-                GetGPSHeadingOffset();
-            }
-
-            linkLabelEdgeSetting.Enabled = true; //LPJ 2013-6-24
-            linkLabelSiteInfor.Enabled = true;
-            linkLabelSystemConf.Enabled = true;
-            linkLabelSystemSetting.Enabled = true;
-            linkLabelUnit.Enabled = true;
-            //linkLabelCompassCalibration.Enabled = true;
-            linkLabelGPSConf.Enabled = true;
-            linkLabelSettingTime.Enabled = true;
-            linkLabelSystemTest.Enabled = true;
-            linkLabelUpdateFirmware.Enabled = true;
-            linkLabelBeamCheck.Enabled = true; //LPJ 2014-6-20
-            linkLabelDownload.Enabled = true;
-
-            //btnGPSCalibration.Enabled = true; //LPJ 2013-11-15
-            linkLabelHeadingOffset.Enabled = true; //LPJ 2013-11-18
-
-            TrackPanelPaint();
-        }
-        */
+        
         /// <summary>
         /// 停止发射呯
         /// </summary>
@@ -11968,9 +11896,9 @@ namespace ADCP
             linkLabelGPSConf.Enabled = true;
             linkLabelSettingTime.Enabled = true;
             linkLabelSystemTest.Enabled = true;
-            linkLabelUpdateFirmware.Enabled = true;
-            linkLabelBeamCheck.Enabled = true; //LPJ 2014-6-20
-            linkLabelDownload.Enabled = true;
+            linkLabelUpdateFirmware.Enabled = false;// true;
+            linkLabelBeamCheck.Enabled = false; //LPJ 2014-6-20
+            linkLabelDownload.Enabled = false;
 
             //btnGPSCalibration.Enabled = true; //LPJ 2013-11-15
             linkLabelHeadingOffset.Enabled = true; //LPJ 2013-11-18
@@ -17838,8 +17766,6 @@ namespace ADCP
                 }
                
                 conf.RightBankPings = dRightShorePings;
-                conf.WPBinNum = (int)cells; //LPJ 2013-6-24
-                conf.WPBinSize = cellSize;//LPJ 2013-6-24
 
                 int iHeadingRef,iVesselRef;
                 if (labelHeadingRef.Text == Resource1.String230)

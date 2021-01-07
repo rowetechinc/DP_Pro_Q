@@ -553,23 +553,21 @@ namespace ADCP
 
         private void CalculateAverageWaterSpeed(ArrayClass RTIData,int iNum,Configurations.Configuration conf, ref float fAverageVX, ref float fAverageVY, ref float fAverageDepth, ref List<float> ensMaxVel, ref List<float> ensFx, ref List<float> ensFy) //LPJ 2012-12-27
         {
-            float VXvalue = 0;
-            float VYvalue = 0;
-            int iGoodBinNum = 0;    //数据组中深度有效单元数
+            float VXvalue;
+            float VYvalue;
+            int iGoodBinNum;    //数据组中深度有效单元数
             fAverageVX = 0;
             fAverageVY = 0;
-            fAverageDepth = 0;
 
-            float RangeOfMaxDepth = 0;     //最大有效数据单元深度
-            float BinSize = RTIData.A_CellSize; // conf.WPBinSize;               //单元尺寸
+            float RangeOfMaxDepth;     //最大有效数据单元深度
+            float BinSize = RTIData.A_CellSize;
             
             fAverageDepth = getAverageB_depth(RTIData);
             RangeOfMaxDepth = (float)(fAverageDepth * (1 - 0.06) - BinSize - ((float)RTIData.A_FirstCellDepth - BinSize / 2.0f));
 
             iGoodBinNum = (int)(RangeOfMaxDepth / BinSize);
-            //JZH 2012-01-17 注意最大水深可能不是正确数据，或者最大水深超过最大流速测量单元深度！
-            int iBinCount = 0;  //
-            iBinCount = GetVelocityBins(RTIData, 0);//得到水单元层数
+            
+            int iBinCount = GetVelocityBins(RTIData, 0);
 
             if (iGoodBinNum > iBinCount)
                 iGoodBinNum = iBinCount;
@@ -578,18 +576,12 @@ namespace ADCP
             DP300_Windows.Velocity[] vel = new DP300_Windows.Velocity[iBinCount];
             for (int icount = 0; icount < iGoodBinNum; icount++)
             {
-                float maxvel = 0;
+                float maxvel;
                 getWaterVelocity(RTIData, iNum, vel); //LPJ 2013-11-21 计算绝对流速
                 VYvalue = vel[icount].VY;
                 VXvalue = vel[icount].VX;
-
-                //JZH 2012-05-18 改写该判断方法,该方法会导致有效剖面单元数偏小
-                if (icount >= conf.WPBinNum) //LPJ 2012-7-12 change
-                {
-                    break;
-                }
-                //else if (VXvalue >= 88.0f || VYvalue >= 88.0f)
-                else if (Math.Abs(VXvalue )> 20.0f || Math.Abs(VYvalue) > 20.0f)  //LPJ 2017-5-15
+                
+                if (Math.Abs(VXvalue )> 20.0f || Math.Abs(VYvalue) > 20.0f)
                 {
                     continue;
                 }
@@ -602,7 +594,6 @@ namespace ADCP
                 fAverageVY += VYvalue;
                 maxvel = (float)Math.Sqrt(Math.Pow(VXvalue, 2) + Math.Pow(VYvalue, 2)); //2012-6-19 在判断是否为有效单元层数后，计算有效水流速
                 ensMaxVel.Add(maxvel); //LPJ 2012-7-23
-          
             }
 
             if (icountValid == 0)

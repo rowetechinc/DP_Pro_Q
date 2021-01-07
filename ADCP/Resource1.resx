@@ -244,7 +244,7 @@
     <value>请先连接仪器！</value>
   </data>
   <data name="String48" xml:space="preserve">
-    <value>回波强度[单位:count] (20 counts≈1 db)</value>
+    <value>回波强度[单位:count] (dB)</value>
   </data>
   <data name="String49" xml:space="preserve">
     <value>第</value>

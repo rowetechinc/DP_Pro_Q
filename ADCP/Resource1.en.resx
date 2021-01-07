@@ -244,7 +244,7 @@
     <value>Please connect the instrument first!</value>
   </data>
   <data name="String48" xml:space="preserve">
-    <value>Echo Intensity [Unit:count] (20 counts≈1 db)</value>
+    <value>Echo Intensity [Unit:count] (dB)</value>
   </data>
   <data name="String49" xml:space="preserve">
     <value>Number</value>

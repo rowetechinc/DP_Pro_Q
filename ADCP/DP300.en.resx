@@ -3827,7 +3827,7 @@
     <value>136, 17</value>
   </data>
   <data name="label57.Text" xml:space="preserve">
-    <value>Intensity(20 counts ≈ 1dB)</value>
+    <value>Intensity(dB)</value>
   </data>
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>789, 401</value>
