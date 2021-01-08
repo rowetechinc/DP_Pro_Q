@@ -83,33 +83,7 @@ namespace ADCP
         private void btnSetTime_Click(object sender, EventArgs e)
         {
             btnSetTime.Enabled = false;
-            //if (checkBoxPCTime.Checked)
-            //{
-            //    bUsePCTime = true;
-            //}
-            //else
-            //{
-            //    bUsePCTime = false;
-            //    //string strDate = dateTimePicker_Date.Value.ToShortDateString();
-            //    //string strTime = dateTimePicker_Time.Value.ToLongTimeString();
-            //    strDateTime = dateTimePicker_Date.Value.Year.ToString("0000") + "/" + dateTimePicker_Date.Value.Month.ToString("00") + "/" + dateTimePicker_Date.Value.Day.ToString("00")
-            //        + "," + dateTimePicker_Time.Value.Hour.ToString("00") + ":" + dateTimePicker_Time.Value.Minute.ToString("00") + ":" + dateTimePicker_Time.Value.Second.ToString("00");
-            //}
-
-            #region cancel
-            //if (radioBtnPCTime.Checked)
-            //{
-            //    bUsePCTime = true;
-
-            //}
-            //else
-            //{
-            //    bUsePCTime = false;
-            //    strDateTime = dateTimePicker_Date.Value.Year.ToString("0000") + "/" + dateTimePicker_Date.Value.Month.ToString("00") + "/" + dateTimePicker_Date.Value.Day.ToString("00")
-            //        + "," + dateTimePicker_Time.Value.Hour.ToString("00") + ":" + dateTimePicker_Time.Value.Minute.ToString("00") + ":" + dateTimePicker_Time.Value.Second.ToString("00");
-            //} 
-            //this.Close();
-            #endregion
+            btnReadTime.Enabled = false;
 
             #region  //2017-3-24
             Cursor.Current = Cursors.WaitCursor;
@@ -134,22 +108,9 @@ namespace ADCP
             GetInstrumentTime(ReceiveBufferString);
             Cursor.Current = Cursors.Default;
             btnSetTime.Enabled = true;
+            btnReadTime.Enabled = true;
             #endregion
         }
-
-        //private void checkBoxPCTime_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (checkBoxPCTime.Checked)
-        //    {
-        //        dateTimePicker_Date.Enabled = false;
-        //        dateTimePicker_Time.Enabled = false;
-        //    }
-        //    else
-        //    {
-        //        dateTimePicker_Date.Enabled = true;
-        //        dateTimePicker_Time.Enabled = true;
-        //    }
-        //}
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -177,53 +138,7 @@ namespace ADCP
 
             base.OnClosing(e);
         }
-
-        private void radioBtnPCTime_CheckedChanged(object sender, EventArgs e)
-        {
-            #region cancel  //LPJ 2017-3-24
-            //if (radioBtnPCTime.Checked)
-            //{
-            //    //dateTimePicker_Date.Enabled = false;
-            //    //dateTimePicker_Time.Enabled = false;
-            //    btnSet.Enabled = false;
-            //    groupBox1.Enabled = false;
-            //}
-            //else
-            //{
-            //    //dateTimePicker_Date.Enabled = true;
-            //    //dateTimePicker_Time.Enabled = true;
-            //    btnSet.Enabled = true;
-            //    groupBox1.Enabled = false;
-
-            //}
-            #endregion
-        }
-
-        private void radioBtnInstrumentTime_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!radioBtnInstrumentTime.Checked)
-            {
-                //dateTimePicker_Date.Enabled = false;
-                //dateTimePicker_Time.Enabled = false;
-                btnSet.Enabled = false;
-                groupBox1.Enabled = false;
-            }
-            else
-            {
-                //dateTimePicker_Date.Enabled = true;
-                //dateTimePicker_Time.Enabled = true;
-                btnSet.Enabled = true;
-                groupBox1.Enabled = false;
-            }
-        }
-
-        private void btnSet_Click(object sender, EventArgs e)
-        {
-            groupBox1.Enabled = true;
-            dateTimePicker_Date.Enabled = true;
-            dateTimePicker_Time.Enabled = true;
-        }
-
+        
         #region
         string ReceiveBufferString = null;
         private void _sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -240,5 +155,29 @@ namespace ADCP
 
         }
         #endregion
+
+        private void btnReadTime_Click(object sender, EventArgs e)
+        {
+            if (_sp.IsOpen)
+            {
+                btnReadTime.Enabled = false;
+                btnSetTime.Enabled = false;
+
+                ReceiveBufferString = null;
+
+                _sp.Write("STIME" + '\r');
+                Thread.Sleep(300);
+
+
+                GetInstrumentTime(ReceiveBufferString);
+                btnReadTime.Enabled = true;
+                btnSetTime.Enabled = true;
+            }
+        }
+
+        private void FrmSetTime_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

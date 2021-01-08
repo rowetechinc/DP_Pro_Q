@@ -117,255 +117,222 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;btnSet.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="dateTimePicker_Date.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 22</value>
+  </data>
+  <data name="dateTimePicker_Date.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="radioBtnInstrumentTime.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
-    <value>btnCancel</value>
-  </data>
-  <data name="radioBtnInstrumentTime.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;dateTimePicker_Time.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnSetTime.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="btnSet.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;dateTimePicker_Time.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioBtnInstrumentTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnSetTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="dateTimePicker_Time.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="dateTimePicker_Time.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 20</value>
-  </data>
-  <data name="dateTimePicker_Date.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 20</value>
-  </data>
-  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="btnSetTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 25</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 12</value>
-  </data>
-  <data name="radioBtnPCTime.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FrmSetTime</value>
-  </data>
-  <data name="&gt;&gt;radioBtnPCTime.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="radioBtnPCTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>40, 12</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Instrument Time</value>
-  </data>
-  <data name="&gt;&gt;radioBtnGMT.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnSetTime.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="groupBox1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="dateTimePicker_Time.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 21</value>
-  </data>
-  <data name="&gt;&gt;dateTimePicker_Time.Name" xml:space="preserve">
-    <value>dateTimePicker_Time</value>
-  </data>
-  <data name="btnSetTime.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;dateTimePicker_Date.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioBtnPCTime.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;dateTimePicker_Time.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;radioBtnPCTime.Name" xml:space="preserve">
-    <value>radioBtnPCTime</value>
-  </data>
-  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="btnSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 23</value>
-  </data>
-  <data name="&gt;&gt;dateTimePicker_Date.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="radioBtnInstrumentTime.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;btnSet.Name" xml:space="preserve">
-    <value>btnSet</value>
-  </data>
-  <data name="btnSetTime.Text" xml:space="preserve">
-    <value>Set Time</value>
-  </data>
   <data name="dateTimePicker_Date.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="&gt;&gt;dateTimePicker_Date.Name" xml:space="preserve">
     <value>dateTimePicker_Date</value>
   </data>
-  <data name="&gt;&gt;radioBtnGMT.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;dateTimePicker_Date.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 73</value>
-  </data>
-  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 131</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 52</value>
-  </data>
-  <data name="&gt;&gt;btnSetTime.Name" xml:space="preserve">
-    <value>btnSetTime</value>
-  </data>
-  <data name="&gt;&gt;btnSet.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;btnSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="radioBtnPCTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 16</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="radioBtnInstrumentTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 16</value>
-  </data>
-  <data name="radioBtnGMT.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 16</value>
-  </data>
-  <data name="&gt;&gt;radioBtnInstrumentTime.Name" xml:space="preserve">
-    <value>radioBtnInstrumentTime</value>
+  <data name="&gt;&gt;dateTimePicker_Date.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;dateTimePicker_Date.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btnSetTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 27</value>
+  </data>
+  <data name="btnSetTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="btnSetTime.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="btnSetTime.Text" xml:space="preserve">
+    <value>Set Time</value>
+  </data>
+  <data name="&gt;&gt;btnSetTime.Name" xml:space="preserve">
+    <value>btnSetTime</value>
+  </data>
+  <data name="&gt;&gt;btnSetTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSetTime.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSetTime.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 142</value>
+  </data>
+  <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Name" xml:space="preserve">
+    <value>btnCancel</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="dateTimePicker_Time.Location" type="System.Drawing.Point, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="dateTimePicker_Time.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 20</value>
+  </data>
+  <data name="dateTimePicker_Time.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;dateTimePicker_Time.Name" xml:space="preserve">
+    <value>dateTimePicker_Time</value>
+  </data>
+  <data name="&gt;&gt;dateTimePicker_Time.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dateTimePicker_Time.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;dateTimePicker_Time.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="radioBtnPCTime.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="btnSetTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="radioBtnPCTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>40, 13</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>FrmSetTime</value>
+  <data name="radioBtnPCTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 17</value>
   </data>
-  <data name="dateTimePicker_Date.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 21</value>
+  <data name="radioBtnPCTime.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="radioBtnPCTime.Text" xml:space="preserve">
     <value>PC Local Time</value>
   </data>
-  <data name="radioBtnGMT.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="&gt;&gt;radioBtnPCTime.Name" xml:space="preserve">
+    <value>radioBtnPCTime</value>
   </data>
-  <data name="&gt;&gt;radioBtnInstrumentTime.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;radioBtnPCTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioBtnPCTime.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;radioBtnPCTime.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;radioBtnGMT.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="groupBox1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="btnSet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 44</value>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 79</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 56</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Instrument Time</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioBtnGMT.Text" xml:space="preserve">
-    <value>GMT</value>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="btnReadTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 58</value>
+  </data>
+  <data name="btnReadTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="btnReadTime.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnReadTime.Text" xml:space="preserve">
+    <value>Read Time</value>
+  </data>
+  <data name="&gt;&gt;btnReadTime.Name" xml:space="preserve">
+    <value>btnReadTime</value>
+  </data>
+  <data name="&gt;&gt;btnReadTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnReadTime.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnReadTime.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="radioBtnGMT.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioBtnGMT.Location" type="System.Drawing.Point, System.Drawing">
-    <value>40, 44</value>
+    <value>40, 48</value>
   </data>
-  <data name="btnSet.Text" xml:space="preserve">
-    <value>Modify</value>
+  <data name="radioBtnGMT.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 17</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="radioBtnGMT.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
-  <data name="radioBtnInstrumentTime.Text" xml:space="preserve">
-    <value>Instrument Time</value>
-  </data>
-  <data name="radioBtnInstrumentTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 54</value>
-  </data>
-  <data name="btnSet.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>298, 166</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioBtnInstrumentTime.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;radioBtnPCTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="radioBtnGMT.Text" xml:space="preserve">
+    <value>GMT</value>
   </data>
   <data name="&gt;&gt;radioBtnGMT.Name" xml:space="preserve">
     <value>radioBtnGMT</value>
   </data>
-  <data name="btnCancel.Text" xml:space="preserve">
-    <value>Close</value>
+  <data name="&gt;&gt;radioBtnGMT.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnSet.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;radioBtnGMT.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;radioBtnGMT.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>292, 195</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>FrmSetTime</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FrmSetTime</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

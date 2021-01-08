@@ -21260,42 +21260,6 @@ namespace ADCP
         //private string strTime = null; //LPJ 2013-10-30 当仪器发送“STIME”后，从仪器读取时间
         private void linkLabelSettingTime_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //strTime = "";
-            #region cancel
-            //try
-            //{
-            //    //LPJ 2013-10-30 获取仪器时间
-            //    sp.Write("STIME" + '\r');
-            //    Thread.Sleep(300);
-
-            //    //设置时间
-            //    //FrmSetTime setTime = new FrmSetTime(strTime);
-            //    lock (l)
-            //    {
-            //        FrmSetTime setTime = new FrmSetTime(ReceiveBufferString);
-            //        if (DialogResult.OK == setTime.ShowDialog())
-            //        {
-            //            if (!setTime.bUsePCTime)
-            //            {
-            //                sp.Write("STIME " + setTime.strDateTime + '\r'); //将设置的时间发送到仪器
-            //                Thread.Sleep(2000);
-            //                bUsePCTime = false;
-            //            }
-            //            else
-            //            {
-            //                sp.Write("STIME " + DateTime.Now.Year.ToString("0000") + "/" + DateTime.Now.Month.ToString("00") + "/" + DateTime.Now.Day.ToString("00") + "," +
-            //                                  DateTime.Now.Hour.ToString("00") + ":" + DateTime.Now.Minute.ToString("00") + ":" + DateTime.Now.Second.ToString("00") + '\r'); //LPJ 2017-1-3 将电脑时间发送到仪器
-            //                Thread.Sleep(2000);
-            //                bUsePCTime = true;
-            //            }
-            //        }
-            //    }
-            //}
-            //catch
-            //{
-            //}
-            #endregion
-
             sp.Close();
             FrmSetTime setTime = new FrmSetTime(sp);
             if (DialogResult.OK == setTime.ShowDialog())
