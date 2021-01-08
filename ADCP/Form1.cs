@@ -212,6 +212,7 @@ namespace ADCP
 
         public void btnSurveying_Click(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             bSurveyMode = true;  //LPJ 2016-12-14
             //CLockKeyDog unlockKeydog = new CLockKeyDog();
             //if (unlockKeydog.UnLockKeyDog(201))
@@ -323,6 +324,7 @@ namespace ADCP
             //{
             //    MessageBox.Show(Resource1.String304);
             //}
+            Cursor.Current = Cursors.Default;
         }
 
         private int dPageNumbers = 0;

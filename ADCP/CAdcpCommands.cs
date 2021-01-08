@@ -365,8 +365,8 @@ namespace ADCP
 
         #endregion
 
-        #region ENGSAMP
-        public static samp DecodeENGSAMP(string buffer)
+        #region DIAGSAMP
+        public static samp DecodeDIAGSAMP(string buffer)
         {
             double temp = 0.0;
             double battery = 0.0;
@@ -378,7 +378,7 @@ namespace ADCP
             for (int x = 0; x < lines.Length; x++)
             {
                 // battery
-                if (lines[x].Contains("Battery"))
+                if (lines[x].Contains("VINF"))
                 {
                     delimiters = new char[] { ' ' };
                     string[] elem = lines[x].Split(delimiters, StringSplitOptions.RemoveEmptyEntries);

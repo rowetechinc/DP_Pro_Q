@@ -43,7 +43,7 @@ namespace ADCP
         /// <summary>
         /// Timestamp associated with every test result.
         /// </summary>
-        public List<string> SystemTestResultsDataTime { get; private set; }
+        public List<string> SystemTestResultsDateTime { get; private set; }
 
         /// <summary>
         /// List of all the compass calibration results.  QRev just documents the date and time.
@@ -53,7 +53,7 @@ namespace ADCP
         /// <summary>
         /// Timestamp associated with every compass calibration.
         /// </summary>
-        public List<string> CompassCalResultsDataTime { get; private set; }
+        public List<string> CompassCalResultsDateTime { get; private set; }
 
         /// <summary>
         /// List of all the compass evaluation results.  QRev just documents the last entry contains "Fail".
@@ -64,7 +64,7 @@ namespace ADCP
         /// <summary>
         /// Timestamp associated with every compass evaluation.
         /// </summary>
-        public List<string> CompassEvaluationResultsDataTime { get; private set; }
+        public List<string> CompassEvaluationResultsDateTime { get; private set; }
 
         /// <summary>
         /// Set the project name and folder path for the project.
@@ -86,11 +86,11 @@ namespace ADCP
 
             Transects = new List<TransectConfig>();
             SystemTestResults = new List<string>();
-            SystemTestResultsDataTime = new List<string>();
+            SystemTestResultsDateTime = new List<string>();
             CompassEvaluationResults = new List<string>();
-            CompassEvaluationResultsDataTime = new List<string>();
+            CompassEvaluationResultsDateTime = new List<string>();
             CompassCalResults = new List<string>();
-            CompassCalResultsDataTime = new List<string>();
+            CompassCalResultsDateTime = new List<string>();
 
         }
 
@@ -107,11 +107,11 @@ namespace ADCP
 
             Transects = new List<TransectConfig>();
             SystemTestResults = new List<string>();
-            SystemTestResultsDataTime = new List<string>();
+            SystemTestResultsDateTime = new List<string>();
             CompassEvaluationResults = new List<string>();
-            CompassEvaluationResultsDataTime = new List<string>();
+            CompassEvaluationResultsDateTime = new List<string>();
             CompassCalResults = new List<string>();
-            CompassCalResultsDataTime = new List<string>();
+            CompassCalResultsDateTime = new List<string>();
         }
 
         /// <summary>
@@ -126,11 +126,11 @@ namespace ADCP
 
             Transects = new List<TransectConfig>();
             SystemTestResults = new List<string>();
-            SystemTestResultsDataTime = new List<string>();
+            SystemTestResultsDateTime = new List<string>();
             CompassEvaluationResults = new List<string>();
-            CompassEvaluationResultsDataTime = new List<string>();
+            CompassEvaluationResultsDateTime = new List<string>();
             CompassCalResults = new List<string>();
-            CompassCalResultsDataTime = new List<string>();
+            CompassCalResultsDateTime = new List<string>();
         }
 
         /// <summary>
@@ -352,11 +352,11 @@ namespace ADCP
         {
             var dict = new Dictionary<string, object>();
             dict.Add("RG_Test", SystemTestResults.ToArray<string>());
-            dict.Add("RG_Test_TimeStamp", SystemTestResultsDataTime.ToArray<string>());
+            dict.Add("RG_Test_TimeStamp", SystemTestResultsDateTime.ToArray<string>());
             dict.Add("Compass_Evaluation", CompassEvaluationResults.ToArray<string>());
-            dict.Add("Compass_Evaluation_TimeStamp", CompassEvaluationResultsDataTime.ToArray<string>());
+            dict.Add("Compass_Evaluation_TimeStamp", CompassEvaluationResultsDateTime.ToArray<string>());
             dict.Add("Compass_Calibration", CompassCalResults.ToArray<string>());
-            dict.Add("Compass_Calibration_TimeStamp", CompassCalResultsDataTime.ToArray<string>());
+            dict.Add("Compass_Calibration_TimeStamp", CompassCalResultsDateTime.ToArray<string>());
             return dict;
         }
 
@@ -374,7 +374,7 @@ namespace ADCP
         public void AddSystemTestResults(string testResult)
         {
             SystemTestResults.Add(testResult);
-            SystemTestResultsDataTime.Add(DateTime.Now.ToString());
+            SystemTestResultsDateTime.Add(DateTime.Now.ToString());
         }
 
         /// <summary>
@@ -386,7 +386,7 @@ namespace ADCP
         public void AddCompassCalibrationResults(string compassCalResult)
         {
             CompassCalResults.Add(compassCalResult);
-            CompassCalResultsDataTime.Add(DateTime.Now.ToString());
+            CompassCalResultsDateTime.Add(DateTime.Now.ToString());
         }
 
         /// <summary>
@@ -400,7 +400,7 @@ namespace ADCP
         public void AddCompassEvaluationResults(string compassEval)
         {
             CompassEvaluationResults.Add(compassEval);
-            CompassEvaluationResultsDataTime.Add(DateTime.Now.ToString());
+            CompassEvaluationResultsDateTime.Add(DateTime.Now.ToString());
         }
 
         /// <summary>

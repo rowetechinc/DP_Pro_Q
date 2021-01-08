@@ -33,8 +33,6 @@ namespace ADCP
         public DialogResult ShowDialog(ref SystemSetting _systSet, ref string _theList)
         {
             Cursor.Current = Cursors.WaitCursor;
-            // Set cursor as default arrow
-            //Cursor.Current = Cursors.Default;
 
             //Assign received parameter(s) to local context
             systSet = _systSet;
@@ -46,7 +44,7 @@ namespace ADCP
             _systSet = systSet;
             _theList = theList;
 
-            Cursor.Current = Cursors.Default;
+            //Cursor.Current = Cursors.Default;
 
             return result;
         }
@@ -574,8 +572,15 @@ namespace ADCP
             //sp.PortName = "COM18";
             //sp.BaudRate = 921600;
 
-            sp.Close();
-            sp.Open();
+            try
+            {
+                sp.Close();
+                sp.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             sp.DataReceived += new SerialDataReceivedEventHandler(SP_DataReceived);
 
@@ -1736,8 +1741,15 @@ namespace ADCP
         */
         private void buttonSetDefaults_Click(object sender, EventArgs e)
         {
-            sp.Close();
-            sp.Open();
+            try
+            {
+                sp.Close();
+                sp.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             //sp.DataReceived += new SerialDataReceivedEventHandler(SP_DataReceived);
 

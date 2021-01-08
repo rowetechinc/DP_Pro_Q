@@ -16,20 +16,23 @@ namespace ADCP
         public FrmSetTime(/*string strTime,*/SerialPort sp)
         {
             InitializeComponent();
-
-            _sp = new SerialPort(sp.PortName, sp.BaudRate);   //2017-3-24
-            _sp.DataReceived += new SerialDataReceivedEventHandler(_sp_DataReceived);
-
-            if (!_sp.IsOpen)
+            try
             {
-                _sp.Open();
+                _sp = new SerialPort(sp.PortName, sp.BaudRate);   //2017-3-24
+                _sp.DataReceived += new SerialDataReceivedEventHandler(_sp_DataReceived);
+
+                if (!_sp.IsOpen)
+                {
+                    _sp.Open();
+                }
+
+                _sp.Write("STIME" + '\r');
+                Thread.Sleep(300);
+
+                //GetInstrumentTime(strTime); //LPJ 2013-10-30
+                GetInstrumentTime(ReceiveBufferString);
             }
-
-            _sp.Write("STIME" + '\r');
-            Thread.Sleep(300);
-
-            //GetInstrumentTime(strTime); //LPJ 2013-10-30
-            GetInstrumentTime(ReceiveBufferString);
+            catch { }
         }
 
         private void GetInstrumentTime(string strTime) //将仪器时间YYYY/MM/DD,HH:mm:SS提取并显示
@@ -79,6 +82,7 @@ namespace ADCP
         public string strDateTime;
         private void btnSetTime_Click(object sender, EventArgs e)
         {
+            btnSetTime.Enabled = false;
             //if (checkBoxPCTime.Checked)
             //{
             //    bUsePCTime = true;
@@ -108,7 +112,7 @@ namespace ADCP
             #endregion
 
             #region  //2017-3-24
-         
+            Cursor.Current = Cursors.WaitCursor;
             if (radioBtnPCTime.Checked)
             {
                 _sp.Write("STIME " + DateTime.Now.Year.ToString("0000") + "/" + DateTime.Now.Month.ToString("00") + "/" + DateTime.Now.Day.ToString("00") + "," +
@@ -128,6 +132,8 @@ namespace ADCP
             Thread.Sleep(300);
 
             GetInstrumentTime(ReceiveBufferString);
+            Cursor.Current = Cursors.Default;
+            btnSetTime.Enabled = true;
             #endregion
         }
 

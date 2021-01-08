@@ -65,13 +65,8 @@ namespace ADCP
             BoatV_GPGGA = _BoatV_GPGGA; //LPJ 2016-8-15
             GPS_Heading = _GPS_HDT;       //LPJ 2013-5-31
 
-            //FrmProgressBar frmProgressBar = new FrmProgressBar(0, BinDataEnsembleNum); //LPJ 2013-7-1
-            //frmProgressBar.Show();//LPJ 2013-7-1
-
             for (int i = 0; i < BinDataEnsembleNum; i++)
             {
-                //frmProgressBar.setPos(i); //LPJ 2013-7-1
-
                 EnsMaxVel = new List<float>(); //LPJ 2012-7-23 初始化  单个ensemble的水流速集合
 
                 List<float> Ensfx = new List<float>(); //LPJ 2012-12-27 
@@ -545,10 +540,7 @@ namespace ADCP
             //LPJ 2013-6-19 增加ListViewSummary数据 --end
 
             #endregion
-
-            //frmProgressBar.Close(); //LPJ 2013-7-1
             return rep;
-            
         }
 
         private void CalculateAverageWaterSpeed(ArrayClass RTIData,int iNum,Configurations.Configuration conf, ref float fAverageVX, ref float fAverageVY, ref float fAverageDepth, ref List<float> ensMaxVel, ref List<float> ensFx, ref List<float> ensFy) //LPJ 2012-12-27

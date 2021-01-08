@@ -425,6 +425,17 @@ namespace ADCP
             BS_playbackTimer.Interval = 1000;   //RMa 12/10/2020
         }
 
+
+        public static int CalcStringLines(string text)
+        {
+            int count = 1;
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == '\n') count++;
+            }
+
+            return count;
+        }
         //int currentGPSCount = -1;
         private void GPS_sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -7683,6 +7694,7 @@ namespace ADCP
             MaxWaterSpeed = 0; //LPJ 2013-8-6 
 
             //int iResidu = EnsembleNumOfAllFiles - (iTotalBlocks - 1) * restoreNum; //最后一个文件块的数据组数
+            
             for (int i = 0; i < EnsembleNumOfAllFiles; i++) //读取原始数据文件            
             {
                 //SM>
@@ -11369,6 +11381,8 @@ namespace ADCP
 
                     btnSpeedFast.Visible = false; //LPJ 2013-7-12
                     btnSpeedSlow.Visible = false; //LPJ 2013-7-12
+
+                    linkLabelSystemSetting.Enabled = true;
 
                     ProcessBar.Refresh();
                     HPRpictureBox.Refresh();
@@ -17180,6 +17194,10 @@ namespace ADCP
         string CommandList = "";
         private void SendStandardCommand() //用户模式下发送命令
         {
+
+            FrmProgressBar frmProgressBar = new FrmProgressBar(0, 30);
+            frmProgressBar.Show();
+            int i = 0;
             string CMD;
             try
             {
@@ -17192,55 +17210,55 @@ namespace ADCP
                 CMD = "CRSMODE " + systSet.iMeasurmentMode.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSVB " + systSet.iVerticalBeam.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSAUTOBIN " + systSet.iAutoBinSize.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSAUTOLAG " + systSet.iAutoLag.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSWPBN " + systSet.iBins.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSWPAI " + systSet.dAveragingInterval.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSMAXDEPTH " + systSet.dMaxMeasurementDepth.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSWPSWITCH " + systSet.dWpSwitchDepth.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSBTSWITCH " + systSet.dBtSwitchDepth.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 if (!bEnglish2Metric)
@@ -17253,7 +17271,7 @@ namespace ADCP
                 }
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CWSSC " + systSet.iWaterTemperatureSource.ToString();
@@ -17263,7 +17281,7 @@ namespace ADCP
                 CMD += "\r";
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 if (!bEnglish2Metric)
@@ -17276,43 +17294,43 @@ namespace ADCP
                 }
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSSALINITY " + systSet.dSalinity.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSTEMP " + systSet.dWaterTemperature.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSBTSNR " + systSet.dBtSNR.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CRSBTCOR " + systSet.dBtCorrelationThreshold.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CHO " + systSet.dHeadingOffset.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "CHS " + systSet.iHeadingRef.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 //labelSiteName.Text = FrmSiteInformation.siteInfo.siteName;
@@ -17324,26 +17342,26 @@ namespace ADCP
                 CMD = "CRSNAME " + labelSiteName.Text + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(500);
 
                 CMD = "CRSNUMBER " + labelStationNumber.Text + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CurrentState = TRANSECT_STATE_START;
                 CMD = "CRSTS " + TRANSECT_STATE_START.ToString() + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
 
                 CMD = "C232B " + systSet.strRS232 + '\r';
                 sp.Write(CMD);
                 CommandList += CMD + '\n';
-                displayprocessbar(4, progressBar1);
+                frmProgressBar.setPos(i++);
                 Thread.Sleep(150);
                 //sp.Write("C485B " + frmsystemSet.systemSet.strRS485 + '\r');
                 //Thread.Sleep(150);
@@ -17354,9 +17372,7 @@ namespace ADCP
             {
                 MessageBox.Show(e.Message);
             }
-            progressBar1.Visible = false;
-            progressBar1.Value = 0;
-
+            frmProgressBar.Close();
         }
 
         private bool ConnectPort()//string cmd)  //LPJ 2013-5-21 连接串口
@@ -19590,6 +19606,8 @@ namespace ADCP
 
         private void SystemSetting()
         {
+            Cursor.Current = Cursors.WaitCursor;
+
             sp.DataReceived -= new SerialDataReceivedEventHandler(sp_DataReceived);
 
             // Set the COM ports and Baud rates
@@ -19676,71 +19694,79 @@ namespace ADCP
 
             if (DialogResult.OK == frmsystemSet.ShowDialog(ref systSet, ref BSlist))
             {
-                sp.Close();
-                sp.Open();
-
-                CommandList = "";
-                progressBar1.Value = 0;
-                progressBar1.Visible = true;
-
-                // Set cursor as hourglass
-                Cursor.Current = Cursors.WaitCursor;
-                // Set cursor as default arrow
-                //Cursor.Current = Cursors.Default;
-
                 try
                 {
-                    string CMD = "STOP" + '\r';
-                    sp.Write(CMD);
-                    Thread.Sleep(150);
-                    int count = 0;
-                    while (!ReceiveBufferString.Contains("STOP") && count < 5)
-                    {
-                        sp.Write("STOP" + '\r');
-                        Thread.Sleep(150);
-                        count++;
-                    }
-
-                    var reader = new StringReader(BSlist);
-                    string cmd = reader.ReadLine();
-                    while (cmd != null)
-                    {
-                        try
-                        {
-                            if (cmd != "")
-                            {
-                                cmd += '\r';
-                                sp.Write(cmd);
-                                CommandList += cmd + '\n';
-                                displayprocessbar(4, progressBar1);
-                                Thread.Sleep(150);
-                            }
-
-                        }
-                        catch { }
-                        try
-                        {
-                            cmd = reader.ReadLine();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }
-
-                    SendStandardCommand();
-
-                    CMD = "CSAVE\r";
-                    sp.Write(CMD);
-                    CommandList += CMD + '\n';
-                    Thread.Sleep(1000);
-
-                    //CMD = "START\r";
-                    //sp.Write(CMD);
+                    sp.Close();
+                    sp.Open();
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
 
-                progressBar1.Value = 100;
+                
+                CommandList = "";
+
+                //Cursor.Current = Cursors.WaitCursor;
+
+                if (sp.IsOpen)
+                {
+                    int lines = CalcStringLines(BSlist);
+                    FrmProgressBar frmProgressBar = new FrmProgressBar(0, lines);
+                    frmProgressBar.Show();
+                    try
+                    {
+                        string CMD = "STOP" + '\r';
+                        sp.Write(CMD);
+                        Thread.Sleep(150);
+                        int count = 0;
+                        while (!ReceiveBufferString.Contains("STOP") && count < 5)
+                        {
+                            sp.Write("STOP" + '\r');
+                            Thread.Sleep(150);
+                            count++;
+                        }
+                        var reader = new StringReader(BSlist);
+                        int i = 0;
+                        string cmd = reader.ReadLine();
+                        while (cmd != null)
+                        {
+                            try
+                            {
+                                if (cmd != "")
+                                {
+                                    cmd += '\r';
+                                    sp.Write(cmd);
+                                    CommandList += cmd + '\n';
+                                    frmProgressBar.setPos(i++);
+                                    Thread.Sleep(150);
+                                }
+
+                            }
+                            catch { }
+                            try
+                            {
+                                cmd = reader.ReadLine();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                        }
+                        //frmProgressBar.Close();
+                        SendStandardCommand();
+
+                        CMD = "CSAVE\r";
+                        sp.Write(CMD);
+                        CommandList += CMD + '\n';
+                        Thread.Sleep(1000);
+
+                        //CMD = "START\r";
+                        //sp.Write(CMD);
+                    }
+                    catch { }
+                    frmProgressBar.Close();
+                }
 
                 textBoxCommandSet.Text = CommandList;
 
@@ -19816,8 +19842,6 @@ namespace ADCP
 
                 iVesselSpeedRef = systSet.iSpeedRef; //LPJ 2016-8-18 船速参考
             }
-            
-
             sp.DataReceived += new SerialDataReceivedEventHandler(sp_DataReceived);
 
             if (!playBackMode)
@@ -19847,16 +19871,12 @@ namespace ADCP
             this.BeginInvoke(RefreshNavigation); //LPJ 2013-11-21
             this.BeginInvoke(RefreshOthers); //LPJ 2013-11-21
 
-            // Set cursor as default arrow
             Cursor.Current = Cursors.Default;
         }
         private void linkLabelSystemSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             SystemSetting();
-            
-
         }
-        
 
         /// <summary>
         /// Rico
@@ -21281,7 +21301,11 @@ namespace ADCP
             if (DialogResult.OK == setTime.ShowDialog())
             {
             }
-            sp.Open();
+            try
+            {
+                sp.Open();
+            }
+            catch { }
         }
 
         private void linkLabelCompassCalibration_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -21362,12 +21386,22 @@ namespace ADCP
                     frmBar.setPos(60);
 
                     #region batteries
-                    sp.Write("ENGSAMP" + '\r');
-                    Thread.Sleep(8000);
+                    sp.Write("DIAGSAMP" + '\r');
+                    int n = 100;
+                    while (!ReceiveBufferString.Contains("Roll"))
+                    {
+                        //Thread.Sleep(8000);
+                        Thread.Sleep(100);
+                        n--;
+                        if (n <= 0)
+                            break;
+                    }
+                    if(n > 0)
+                        Thread.Sleep(200);
 
                     lock (l)
                     {
-                        CAdcpCommands.samp samp = CAdcpCommands.DecodeENGSAMP(ReceiveBufferString);
+                        CAdcpCommands.samp samp = CAdcpCommands.DecodeDIAGSAMP(ReceiveBufferString);
                         strResult += Resource1.String292 + samp.Battery.ToString() + " Volts." + "\r\n";
 
                     #endregion
@@ -21379,6 +21413,13 @@ namespace ADCP
                         if (samp.Temperature < -30 || samp.Temperature > 70)
                         {
                             strResult += Resource1.String294 + "\r\n";
+                        }
+
+                        systSet.dWaterTemperature = samp.Temperature;
+
+                        if(ReceiveBufferString.Contains("FAIL"))
+                        {
+                            strResult += "FAIL\r\n";
                         }
                     }
                     #endregion
