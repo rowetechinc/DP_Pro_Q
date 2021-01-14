@@ -337,7 +337,8 @@ namespace ADCP
             foreach ( var transect in this.Transects)
             {
                 // Convert the transect to a dictonary
-                transect_array.Add(transect.ToDict());
+                if(transect != null)
+                    transect_array.Add(transect.ToDict());
             }
 
             return transect_array.ToArray();

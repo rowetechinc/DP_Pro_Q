@@ -36,6 +36,18 @@ namespace ADCP
         {
             public double Battery { get; set; }
             public double Temperature { get; set; }
+            public int Beams { get; set; }
+            public string Beam0Result { get; set; }
+            public string Beam1Result { get; set; }
+            public string Beam2Result { get; set; }
+            public string Beam3Result { get; set; }
+            public string Beam4Result { get; set; }
+            public string Beam5Result { get; set; }
+            public string Beam6Result { get; set; }
+            public string Beam7Result { get; set; }
+
+
+
         }
         #endregion
 
@@ -370,6 +382,15 @@ namespace ADCP
         {
             double temp = 0.0;
             double battery = 0.0;
+            int beams = 0;
+            string bm0 = "";
+            string bm1 = "";
+            string bm2 = "";
+            string bm3 = "";
+            string bm4 = "";
+            string bm5 = "";
+            string bm6 = "";
+            string bm7 = "";
 
             char[] delimiters = new char[] { '\r', '\n' };
             string[] lines = buffer.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
@@ -397,9 +418,104 @@ namespace ADCP
                         double.TryParse(elem[1], out temp);
                     }
                 }
+                if (lines[x].Contains("Beam 0"))
+                {
+                    beams = 1;
+                    if (lines[x + 1].Contains("PASS"))
+                    {
+                        bm0 = "PASS";
+                    }
+                    else
+                    {
+                        bm0 = "FAIL";
+                    }
+                }
+                if (lines[x].Contains("Beam 1"))
+                {
+                    beams = 2;
+                    if (lines[x + 1].Contains("PASS"))
+                    {
+                        bm1 = "PASS";
+                    }
+                    else
+                    {
+                        bm1 = "FAIL";
+                    }
+                }
+                if (lines[x].Contains("Beam 2"))
+                {
+                    beams = 3;
+                    if (lines[x + 1].Contains("PASS"))
+                    {
+                        bm2 = "PASS";
+                    }
+                    else
+                    {
+                        bm2 = "FAIL";
+                    }
+                }
+                if (lines[x].Contains("Beam 3"))
+                {
+                    beams = 4;
+                    if (lines[x + 1].Contains("PASS"))
+                    {
+                        bm3 = "PASS";
+                    }
+                    else
+                    {
+                        bm3 = "FAIL";
+                    }
+                }
+                if (lines[x].Contains("Beam 4"))
+                {
+                    beams = 5;
+                    if (lines[x + 1].Contains("PASS"))
+                    {
+                        bm4 = "PASS";
+                    }
+                    else
+                    {
+                        bm4 = "FAIL";
+                    }
+                }
+                if (lines[x].Contains("Beam 5"))
+                {
+                    beams = 6;
+                    if (lines[x + 1].Contains("PASS"))
+                    {
+                        bm5 = "PASS";
+                    }
+                    else
+                    {
+                        bm5 = "FAIL";
+                    }
+                }
+                if (lines[x].Contains("Beam 6"))
+                {
+                    beams = 7;
+                    if (lines[x + 1].Contains("PASS"))
+                    {
+                        bm6 = "PASS";
+                    }
+                    else
+                    {
+                        bm6 = "FAIL";
+                    }
+                }
+                if (lines[x].Contains("Beam 7"))
+                {
+                    beams = 8;
+                    if (lines[x + 1].Contains("PASS"))
+                    {
+                        bm7 = "PASS";
+                    }
+                    else
+                    {
+                        bm7 = "FAIL";
+                    }
+                }
             }
-
-            return new samp { Battery = battery, Temperature = temp };
+            return new samp { Battery = battery, Temperature = temp, Beams = beams, Beam0Result = bm0, Beam1Result = bm1, Beam2Result = bm2, Beam3Result = bm3, Beam4Result = bm4, Beam5Result = bm5, Beam6Result = bm6, Beam7Result = bm7 };
         }
         #endregion
     }

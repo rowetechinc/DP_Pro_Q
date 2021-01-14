@@ -15752,9 +15752,16 @@ namespace ADCP
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
 
                 //helpme
-                param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
-                param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
-
+                if (BinDataEnsembleNum > 1)
+                {
+                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 2].WP_Lag;
+                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 2].A_CellSize + RTIdata[BinDataEnsembleNum - 2].WP_Lag;
+                }
+                else
+                {
+                    param.RiverDischargeInstrument.RiverDischargePulseLag = 0;
+                    param.RiverDischargeInstrument.RiverDischargePulseLength = 0;
+                }
                 //LPJ 2013-4-3 --end
 
                 if (bStartLeftEdge)
@@ -20230,7 +20237,8 @@ namespace ADCP
             _bIsQRevStartCounter = false;
 
             // Pass the value to the transect
-            _qrevTransect.SetStartEdgeEnsCount(isStartLeft, _qrevStartEnsCount);
+            if(_qrevTransect != null)
+                _qrevTransect.SetStartEdgeEnsCount(isStartLeft, _qrevStartEnsCount);
         }
 
         /// <summary>
@@ -20251,7 +20259,8 @@ namespace ADCP
             _bIsQRevEndCounter = false;
 
             // Pass the value to the transect
-            _qrevTransect.SetEndEdgeEnsCount(isStartLeft, _qrevEndEnsCount);
+            if(_qrevTransect != null)
+                _qrevTransect.SetEndEdgeEnsCount(isStartLeft, _qrevEndEnsCount);
         }
 
         /// <summary>
@@ -21381,10 +21390,43 @@ namespace ADCP
 
                         systSet.dWaterTemperature = samp.Temperature;
 
-                        if(ReceiveBufferString.Contains("FAIL"))
+                        //Battery = battery, Temperature = temp, Beams = beams, Beam0Result = bm0, Beam1Result = bm1, Beam2Result = bm2, Beam3Result = bm3, Beam4Result = bm4, Beam5Result = bm5, Beam6Result = bm6, Beam7Result = bm7
+                        strResult += "Beams " + samp.Beams + "\r\n";
+                        for (int i = 0; i < samp.Beams; i++)
                         {
-                            strResult += "FAIL\r\n";
+                            switch (i)
+                            {
+                                case 0:
+                                    strResult += "Beam 0 " + samp.Beam0Result + "\r\n";
+                                    break;
+                                case 1:
+                                    strResult += "Beam 1 " + samp.Beam1Result + "\r\n";
+                                    break;
+                                case 2:
+                                    strResult += "Beam 2 " + samp.Beam2Result + "\r\n";
+                                    break;
+                                case 3:
+                                    strResult += "Beam 3 " + samp.Beam3Result + "\r\n";
+                                    break;
+                                case 4:
+                                    strResult += "Beam 4 " + samp.Beam4Result + "\r\n";
+                                    break;
+                                case 5:
+                                    strResult += "Beam 5 " + samp.Beam5Result + "\r\n";
+                                    break;
+                                case 6:
+                                    strResult += "Beam 6 " + samp.Beam6Result + "\r\n";
+                                    break;
+                                case 7:
+                                    strResult += "Beam 7 " + samp.Beam7Result + "\r\n";
+                                    break;
+                            }
                         }
+
+                        //if (ReceiveBufferString.Contains("FAIL"))
+                        //{
+                        //    strResult += "FAIL\r\n";
+                        //}
                     }
                     #endregion
 
