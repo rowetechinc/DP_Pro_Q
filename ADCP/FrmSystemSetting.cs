@@ -1415,14 +1415,14 @@ namespace ADCP
                                 case "CWSSC":
                                     try
                                     {
-                                        Int32 index = Convert.ToInt32(cmdPart[1]);
-                                        comboBox_waterTemperature.SelectedIndex = index;
-                                        index = Convert.ToInt32(cmdPart[2]);
-                                        comboBox_TransducerDepth.SelectedIndex = index;
-                                        index = Convert.ToInt32(cmdPart[3]);
-                                        comboBox_Salinity.SelectedIndex = index;
-                                        index = Convert.ToInt32(cmdPart[4]);
-                                        comboBox_SpeedOfSound.SelectedIndex = index;
+                                        Int32 indexA = Convert.ToInt32(cmdPart[1]);
+                                        comboBox_waterTemperature.SelectedIndex = indexA;
+                                        indexA = Convert.ToInt32(cmdPart[2]);
+                                        comboBox_TransducerDepth.SelectedIndex = indexA;
+                                        indexA = Convert.ToInt32(cmdPart[3]);
+                                        comboBox_Salinity.SelectedIndex = indexA;
+                                        indexA = Convert.ToInt32(cmdPart[4]);
+                                        comboBox_SpeedOfSound.SelectedIndex = indexA;
                                     }
                                     catch { }
                                     break;
@@ -1497,7 +1497,7 @@ namespace ADCP
 
             if (OK)
             {
-                Int32 index = 0;
+                Int32 indexB = 0;
                 double dVal;
                 string[] separatingStrings = { " ", "," };
 
@@ -1516,46 +1516,46 @@ namespace ADCP
                                 case "CRSMODE":
                                     try
                                     {
-                                        index = Convert.ToInt32(cmdPart[1]);
-                                        comboBoxMeasMode.SelectedIndex = index;
+                                        indexB = Convert.ToInt32(cmdPart[1]);
+                                        comboBoxMeasMode.SelectedIndex = indexB;
                                     }
                                     catch { }
                                     break;
                                 case "CRSVB":
                                     try
                                     {
-                                        index = Convert.ToInt32(cmdPart[1]);
-                                        comboBoxVerticalBeam.SelectedIndex = index;
+                                        indexB = Convert.ToInt32(cmdPart[1]);
+                                        comboBoxVerticalBeam.SelectedIndex = indexB;
                                     }
                                     catch { }
                                     break;
                                 case "CRSAUTOBIN":
                                     try
                                     {
-                                        index = Convert.ToInt32(cmdPart[1]);
-                                        comboBoxAutoBinSize.SelectedIndex = index;
+                                        indexB = Convert.ToInt32(cmdPart[1]);
+                                        comboBoxAutoBinSize.SelectedIndex = indexB;
                                     }
                                     catch { }
                                     break;
                                 case "CRSAUTOLAG":
                                     try
                                     {
-                                        index = Convert.ToInt32(cmdPart[1]);
-                                        comboBoxAutoLag.SelectedIndex = index;
+                                        indexB = Convert.ToInt32(cmdPart[1]);
+                                        comboBoxAutoLag.SelectedIndex = indexB;
                                     }
                                     catch { }
                                     break;
                                 case "CWSSC":
                                     try
                                     {
-                                        index = Convert.ToInt32(cmdPart[1]);
-                                        comboBox_waterTemperature.SelectedIndex = index;
-                                        index = Convert.ToInt32(cmdPart[2]);
-                                        comboBox_TransducerDepth.SelectedIndex = index;
-                                        index = Convert.ToInt32(cmdPart[3]);
-                                        comboBox_Salinity.SelectedIndex = index;
-                                        index = Convert.ToInt32(cmdPart[4]);
-                                        comboBox_SpeedOfSound.SelectedIndex = index;
+                                        indexB = Convert.ToInt32(cmdPart[1]);
+                                        comboBox_waterTemperature.SelectedIndex = indexB;
+                                        indexB = Convert.ToInt32(cmdPart[2]);
+                                        comboBox_TransducerDepth.SelectedIndex = indexB;
+                                        indexB = Convert.ToInt32(cmdPart[3]);
+                                        comboBox_Salinity.SelectedIndex = indexB;
+                                        indexB = Convert.ToInt32(cmdPart[4]);
+                                        comboBox_SpeedOfSound.SelectedIndex = indexB;
                                     }
                                     catch { }
                                     break;

@@ -9384,10 +9384,6 @@ namespace ADCP
 
                                         param.RiverDischargeOrgData = RTIdata[i];
 
-                                        //helpme
-                                        //param.RiverDischargeInstrument.RiverDischargePulseLag = RTIData[i].;
-                                        //param.RiverDischargeInstrument.RiverDischargePulseLength = 0;
-
                                         float ve, vn; //LPJ 2013-7-31
                                         ve = RTIdata[i].B_Earth[0]; //LPJ 2013-7-31
                                         vn = RTIdata[i].B_Earth[1]; //LPJ 2013-7-31
@@ -9559,9 +9555,11 @@ namespace ADCP
                     param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
 
                     //helpme
-                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
-                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
-
+                    if (BinDataEnsembleNum > 0)
+                    {
+                        param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                        param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                    }
                     param.RiverDischargeOrgData = left.ToArray();
                     leftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
                     //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
@@ -9645,9 +9643,11 @@ namespace ADCP
                     param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
 
                     //helpme
-                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
-                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
-
+                    if (BinDataEnsembleNum > 0)
+                    {
+                        param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                        param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                    }
                     param.RiverDischargeOrgData = right.ToArray();
                     rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
 
@@ -10092,11 +10092,13 @@ namespace ADCP
                 param.RiverDischargeDistance = fLeftDis;
                 param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;        //ADCP参数
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
-                
-                //helpme
-                param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
-                param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
 
+                //helpme
+                if (BinDataEnsembleNum > 0)
+                {
+                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                }
                 param.RiverDischargeOrgData = dischargeMsg.left.ToArray();
                 dischargeMsg.leftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
 
@@ -10183,9 +10185,11 @@ namespace ADCP
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
 
                 //helpme
-                param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
-                param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
-
+                if (BinDataEnsembleNum > 0)
+                {
+                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                }
                 param.RiverDischargeOrgData = dischargeMsg.right.ToArray();
                
                 dischargeMsg.rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
@@ -11666,6 +11670,8 @@ namespace ADCP
         {
             //ClearEnsemblesInfoToStore();
 
+            
+
             linkLabelEdgeSetting.Enabled = false; //LPJ 2013-6-24
             linkLabelSiteInfor.Enabled = false;
             linkLabelSystemConf.Enabled = false;
@@ -11700,15 +11706,7 @@ namespace ADCP
                 SystemSetting();
             }
 
-            sp.Write("START\r");
-            Thread.Sleep(150);
-            while (!ReceiveBufferString.Contains("START"))
-            {
-                sp.Write("START\r");
-                Thread.Sleep(150);
-            }
-
-            CurrentState = TRANSECT_STATE_START;
+            
 
             iEnsembleInterval = 1;
 
@@ -11750,6 +11748,18 @@ namespace ADCP
 
             // Create a QRev Project file
             CreateQRevProject(labelSiteName.Text);
+
+            SystemTest();
+
+            sp.Write("START\r");
+            Thread.Sleep(150);
+            while (!ReceiveBufferString.Contains("START"))
+            {
+                sp.Write("START\r");
+                Thread.Sleep(150);
+            }
+
+            CurrentState = TRANSECT_STATE_START;
 
             return true;
         }
@@ -21286,13 +21296,13 @@ namespace ADCP
             //罗盘校准
         }
 
-        private void linkLabelSystemTest_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void SystemTest()
         {
             try
             {
                 //系统测试
-                FrmSystemTest frmsystemtest = new FrmSystemTest();
-                if (frmsystemtest.ShowDialog() == DialogResult.OK)
+                //FrmSystemTest frmsystemtest = new FrmSystemTest();
+                //if (frmsystemtest.ShowDialog() == DialogResult.OK)
                 {
                     FrmProgressBar frmBar = new FrmProgressBar(0, 100);
                     frmBar.Show();
@@ -21315,9 +21325,9 @@ namespace ADCP
                         }
                         else
                         {
-                            strResult += "Heading (Degrees): " + hpr.Heading.ToString() + "\r\n";
-                            strResult += "Pitch (Degrees): " + hpr.Pitch.ToString() + "\r\n";
-                            strResult += "Roll (Degrees): " + hpr.Roll.ToString() + "\r\n";
+                            strResult += "Heading: " + hpr.Heading.ToString() + "\r\n";
+                            strResult += "Pitch  : " + hpr.Pitch.ToString() + "\r\n";
+                            strResult += "Roll   : " + hpr.Roll.ToString() + "\r\n";
                         }
                     }
                     #endregion
@@ -21334,8 +21344,8 @@ namespace ADCP
                         CAdcpCommands.AdcpDirListing dirlisting = CAdcpCommands.DecodeDSDIR(ReceiveBufferString);
 
                         //check if the memory is 0 
-                        strResult += Resource1.String289 + dirlisting.TotalSpace.ToString() + "MB\r\n";
-                        strResult += Resource1.String290 + dirlisting.UsedSpace.ToString() + "MB\r\n";
+                        strResult += Resource1.String289 + dirlisting.TotalSpace.ToString() + " MB\r\n";
+                        strResult += Resource1.String290 + dirlisting.UsedSpace.ToString() + " MB\r\n";
 
                         if (dirlisting.TotalSpace - dirlisting.UsedSpace == 0)
                         {
@@ -21369,20 +21379,20 @@ namespace ADCP
                         if (n <= 0)
                             break;
                     }
-                    if(n > 0)
+                    if (n > 0)
                         Thread.Sleep(200);
 
                     lock (l)
                     {
                         CAdcpCommands.samp samp = CAdcpCommands.DecodeDIAGSAMP(ReceiveBufferString);
-                        strResult += Resource1.String292 + samp.Battery.ToString() + " Volts." + "\r\n";
+                        strResult += Resource1.String292 + " " + samp.Battery.ToString() + " Volts." + "\r\n";
 
-                    #endregion
+                        #endregion
 
                         frmBar.setPos(80);
 
                         #region temperature sensor
-                        strResult += Resource1.String293 + samp.Temperature.ToString() + " degrees." + "\r\n";
+                        strResult += Resource1.String293 + " " + samp.Temperature.ToString() + " degrees." + "\r\n";
                         if (samp.Temperature < -30 || samp.Temperature > 70)
                         {
                             strResult += Resource1.String294 + "\r\n";
@@ -21423,10 +21433,8 @@ namespace ADCP
                             }
                         }
 
-                        //if (ReceiveBufferString.Contains("FAIL"))
-                        //{
-                        //    strResult += "FAIL\r\n";
-                        //}
+                        _qrevProject.AddSystemTestResults(strResult);
+
                     }
                     #endregion
 
@@ -21459,6 +21467,11 @@ namespace ADCP
             catch
             {
             }
+        }
+
+        private void linkLabelSystemTest_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SystemTest();            
         }
 
         private void linkLabelUpdateFirmware_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
