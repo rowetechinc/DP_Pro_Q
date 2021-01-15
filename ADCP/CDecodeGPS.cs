@@ -87,13 +87,20 @@ namespace ADCP
                 {
                     GGA_str1 = data;
                 }
-
-                string[] gga1 = GGA_str1.Split(',');
-                GPS_Time = gga1[1];
-                GPS_Latitude = gga1[2];
-                GPS_NS = gga1[3];
-                GPS_Longitude = gga1[4];
-                GPS_EW = gga1[5];
+                if (GGA_str1 != "")
+                {
+                    string[] gga1 = GGA_str1.Split(',');
+                    GPS_Time = gga1[1];
+                    GPS_Latitude = gga1[2];
+                    GPS_NS = gga1[3];
+                    GPS_Longitude = gga1[4];
+                    GPS_EW = gga1[5];
+                }
+                else
+                {
+                    GPS_Latitude = "0000.000";
+                    GPS_Longitude = "00000.000";
+                }
             }
             catch
             {
@@ -144,26 +151,35 @@ namespace ADCP
         {
             try
             {
-                string[] split1; string VTG_str;
-                if (data.Contains('$'))
+                if (data != "")
                 {
-                    split1 = data.Split('$');
-                    VTG_str = split1[1];
+                    string[] split1; string VTG_str;
+                    if (data.Contains('$'))
+                    {
+                        split1 = data.Split('$');
+                        VTG_str = split1[1];
+                    }
+                    else
+                    {
+                        VTG_str = data;
+                    }
+
+                    //string[] split2 = data.Split('$');
+                    //string VTG_str = split2[1];
+                    string[] vtg1 = VTG_str.Split(',');
+                    GPS_Angle = double.Parse(vtg1[1]) * Math.PI / 180.0f;                     //提取运动角度，真北方向,单位:度,转为弧度
+                    GPS_BoatSpeed = float.Parse(vtg1[5]) * 1.852f * 1000.0f / 3600.0f;                 // 提取水平运动速度数据，单位：节，转为:m/s
+
+                    GPS_Vx = (float)(GPS_BoatSpeed * Math.Sin(GPS_Angle));
+                    GPS_Vy = (float)(GPS_BoatSpeed * Math.Cos(GPS_Angle));
                 }
                 else
                 {
-                    VTG_str = data;
+                    GPS_Angle = 0;
+                    GPS_BoatSpeed = 0;
+                    GPS_Vx = 0;
+                    GPS_Vy = 0;
                 }
-
-                //string[] split2 = data.Split('$');
-                //string VTG_str = split2[1];
-                string[] vtg1 = VTG_str.Split(',');
-                GPS_Angle = double.Parse(vtg1[1]) * Math.PI / 180.0f;                     //提取运动角度，真北方向,单位:度,转为弧度
-                GPS_BoatSpeed = float.Parse(vtg1[5]) * 1.852f * 1000.0f / 3600.0f;                 // 提取水平运动速度数据，单位：节，转为:m/s
-
-                GPS_Vx = (float)(GPS_BoatSpeed * Math.Sin(GPS_Angle));
-                GPS_Vy = (float)(GPS_BoatSpeed * Math.Cos(GPS_Angle));
-
             }
             catch
             {
@@ -275,19 +291,17 @@ namespace ADCP
         /// <returns></returns>
         public float GPS_Timedecode(string data)
         {
-            float fGPStime;
+            float fGPStime = 0;
+            if (data != "")
+            {
+                float time = float.Parse(data);
 
-            float time = float.Parse(data);
-
-            int iHour = (int)(time / 10000);
-            int iMinute = (int)((time - iHour * 10000) / 100);
-            float fSecond = time - iHour * 10000 - iMinute * 100;
-            fGPStime = iHour * 3600 + iMinute * 60 + fSecond;
-
+                int iHour = (int)(time / 10000);
+                int iMinute = (int)((time - iHour * 10000) / 100);
+                float fSecond = time - iHour * 10000 - iMinute * 100;
+                fGPStime = iHour * 3600 + iMinute * 60 + fSecond;
+            }
             return fGPStime;
-
         }
-
-
     }
 }

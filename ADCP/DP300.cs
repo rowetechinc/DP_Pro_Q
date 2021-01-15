@@ -256,7 +256,10 @@ namespace ADCP
                    
                 }
             }
-            catch { }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         ////LPJ 2012-4-20 判断语言类型
@@ -557,11 +560,12 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 GPS_VTGbuffer = defaultGPVTG;
                 GPS_latitude = "0000.000";
                 GPS_longitude = "00000.000";
                 GPS_HDT = "0.0";
-                //MessageBox.Show("GPS 错误！");
+                MessageBox.Show("GPS_VTG");
             }
         }
 
@@ -578,8 +582,10 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 GPS_HDTbuffer = defaultGPHDT;
                 GPS_HDT = "0.0";
+                MessageBox.Show("GPS_HDT");
             }
         }
 
@@ -596,7 +602,9 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 GPS_ROTbuffer = defaultGPROT;
+                MessageBox.Show("GPS_ROT");
             }
         }
 
@@ -720,6 +728,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("CheckRiverAuthority");
                 }
             }
 
@@ -786,6 +795,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("ChangeToNewRGB");
                 }
 
                 //LPJ 2013-7-31 --start
@@ -805,6 +815,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("ChangeToNewRGB2");
                 }
                 //LPJ 2013-7-31 --end
 
@@ -827,6 +838,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("ChangeToNewRGB3");
                 }
                 //LPJ 2013-12-3 --end
 
@@ -847,6 +859,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("ChangeToNewRGB4");
                 }
                 //LPJ 2016-8-11 --end
             }
@@ -876,6 +889,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("ChangeToNewRGB5");
             }
 
             //LPJ 2013-7-31 --start
@@ -895,6 +909,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("ChangeToNewRGB6");
             }
             //LPJ 2013-7-31 --end
 
@@ -917,6 +932,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("ChangeToNewRGB7");
             }
             //LPJ 2013-12-3 --end
 
@@ -937,6 +953,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("ChangeToNewRGB8");
             }
         }
 
@@ -997,7 +1014,7 @@ namespace ADCP
                             }
                             catch
                             {
-                                //dep = dep;
+                                MessageBox.Show("MainPanel_Paint");
                             }
                         }
                         if (maxDep > 0)  //LPJ 2014-1-8
@@ -1077,13 +1094,14 @@ namespace ADCP
                                     int iGoodBin = 0;
                                     try
                                     {
-                                        iGoodBin = (int)EnsemblesInfoToStore.iGoodBin[i];
+                                        if(i > 0)
+                                            iGoodBin = (int)EnsemblesInfoToStore.iGoodBin[i-1];
                                     }
                                     catch
                                     {
                                         iGoodBin = 0;
+                                        MessageBox.Show("MainPanel_Paint2");
                                     }
-                                    
                                     for (int j = 0; j < iGoodBin; j++)
                                     {
                                         try  //LPJ 2017-1-3
@@ -1092,7 +1110,7 @@ namespace ADCP
                                         }
                                         catch
                                         {
-                                            //j = j;
+                                            MessageBox.Show("MainPanel_Paint3");
                                         }
                                         float StartY = FirstPixel +  j * PixelRectangleHeight;
                                         g.FillRectangle(colorBrush, StartX, StartY, PixelRectangleWidth, PixelRectangleHeight);
@@ -1115,6 +1133,7 @@ namespace ADCP
                                         }
                                         catch
                                         {
+                                            MessageBox.Show("MainPanel_Paint4");
                                         }
 
                                         float StartXpt = StartX + PixelRectangleWidth;
@@ -1145,6 +1164,7 @@ namespace ADCP
                                         }
                                         catch
                                         {
+                                            MessageBox.Show("MainPanel_Paint5");
                                         }
                                         break;
                                     }
@@ -1323,6 +1343,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("MainPanel_Paint6");
             }
         }
 
@@ -1465,6 +1486,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                     }
                     #endregion
 
@@ -1510,6 +1532,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("B");
                     }
                     #endregion
 
@@ -1555,6 +1578,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("C");
                     }
                     #endregion
 
@@ -2168,6 +2192,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("D");
                 return 0;
             }
         }
@@ -2207,6 +2232,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("E");
                     continue;
                 }
 
@@ -2271,6 +2297,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("F");
                     continue;
                 }
 
@@ -2335,6 +2362,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("G");
                     continue;
                 }
 
@@ -2779,13 +2807,14 @@ namespace ADCP
                         }
                         catch
                         {
-
+                            MessageBox.Show("H");
                         }
                     }
                 }
             }
             catch
             {
+                MessageBox.Show("I");
             }
             #region cancel
             //}
@@ -2833,6 +2862,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("I");
                         queue.Clear();
                         break;
                     }
@@ -2883,6 +2913,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("J");
                 }
             }
             //else if (BytesArray.Count >= 736 && bStartGPSCalibration) //LPJ 2013-11-14 GPS安装校正时
@@ -3114,6 +3145,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("K");
                         lock (locknull)  //LPJ 2012-06-12
                         {
                             BytesArray.RemoveRange(0, payloadLen + 36);
@@ -3161,6 +3193,7 @@ namespace ADCP
                         }
                         catch
                         {
+                            MessageBox.Show("L");
                             getArrSuccessful = false;
                         }
                         if (!playBackMode)
@@ -3342,6 +3375,7 @@ namespace ADCP
                                 }
                                 catch
                                 {
+                                    MessageBox.Show("M");
                                 }
                             }
                             #endregion
@@ -3489,6 +3523,7 @@ namespace ADCP
                                 }
                                 catch
                                 {
+                                    MessageBox.Show("N");
                                 }
                             }
                             #endregion
@@ -3652,6 +3687,7 @@ namespace ADCP
                                 }
                                 catch
                                 {
+                                    MessageBox.Show("O");
                                 }
                             }
 
@@ -3724,6 +3760,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("P");
                                 current_BoatDirection = "Bad";
                                 current_BoatSpeed = "Bad";
                             }
@@ -3895,6 +3932,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("Q");
             }
         }
         private void ByteArrayWriteToBinFile(byte[] rawBytesPacket)//, int fileNumber)
@@ -3954,6 +3992,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("R");
                 return;
                 //v = (Velocity[])EnsemblesInfoToStore.WaterVelocity[EnsemblesInfoToStore.WaterVelocity.Count - 2];
             }
@@ -3984,123 +4023,131 @@ namespace ADCP
             labelBB2.Text = arr.B_Velocity[2].ToString("0.0000");
             labelBB3.Text = arr.B_Velocity[3].ToString("0.0000");
 
-            for (int i = 1; i <= n; i++)
-            {
-                try //LPJ 2013-6-13
+            bool okay = true;
+            if (EarthWaterlistView.Items.Count > 0)
+            { 
+                for (int i = 1; i <= n; i++)
                 {
-                    EarthWaterlistView.Items[i-1].SubItems[0].Text =  i.ToString();
-                    EarthWaterlistView.Items[i - 1].SubItems[1].Text = arr.Earth[0, i - 1].ToString("0.0000");
-                    EarthWaterlistView.Items[i - 1].SubItems[2].Text = arr.Earth[1, i - 1].ToString("0.0000");
-                    EarthWaterlistView.Items[i - 1].SubItems[3].Text = arr.Earth[2, i - 1].ToString("0.0000");
-                    EarthWaterlistView.Items[i - 1].SubItems[4].Text = arr.Earth[3, i - 1].ToString("0.0000");
-
-                    BeamWaterlistView.Items[i - 1].SubItems[0].Text = i.ToString();
-                    BeamWaterlistView.Items[i - 1].SubItems[1].Text = arr.Velocity[0, i - 1].ToString("0.0000");
-                    BeamWaterlistView.Items[i - 1].SubItems[2].Text = arr.Velocity[1, i - 1].ToString("0.0000");
-                    BeamWaterlistView.Items[i - 1].SubItems[3].Text = arr.Velocity[2, i - 1].ToString("0.0000");
-                    BeamWaterlistView.Items[i - 1].SubItems[4].Text = arr.Velocity[3, i - 1].ToString("0.0000");
-
-                    InstrmtWaterlistView.Items[i - 1].SubItems[0].Text = i.ToString();
-                    InstrmtWaterlistView.Items[i - 1].SubItems[1].Text = arr.Instrument[0, i - 1].ToString("0.0000");
-                    InstrmtWaterlistView.Items[i - 1].SubItems[2].Text = arr.Instrument[1, i - 1].ToString("0.0000");
-                    InstrmtWaterlistView.Items[i - 1].SubItems[3].Text = arr.Instrument[2, i - 1].ToString("0.0000");
-                    InstrmtWaterlistView.Items[i - 1].SubItems[4].Text = arr.Instrument[3, i - 1].ToString("0.0000");
-
-
-                    if (WaterAvgNum != 0)
+                    try //LPJ 2013-6-13
                     {
-                        // int WaterAvgNum = int.Parse(textWaterAvgNum.Text);
-                        EarthGdPnglistView.Items[i - 1].SubItems[0].Text = i.ToString();
-                        EarthGdPnglistView.Items[i - 1].SubItems[1].Text = (arr.XfrmN[1, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[1, i - 1].ToString("0") + ")";
-                        EarthGdPnglistView.Items[i - 1].SubItems[2].Text = (arr.XfrmN[0, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[0, i - 1].ToString("0") + ")";
-                        EarthGdPnglistView.Items[i - 1].SubItems[3].Text = (arr.XfrmN[2, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[2, i - 1].ToString("0") + ")";
-                        EarthGdPnglistView.Items[i - 1].SubItems[4].Text = (arr.XfrmN[3, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[3, i - 1].ToString("0") + ")";
-                   
-                        //int WaterAvgNum = int.Parse(textWaterAvgNum.Text);
-                        BeamGdPnglistView.Items[i - 1].SubItems[0].Text = i.ToString();
-                        BeamGdPnglistView.Items[i - 1].SubItems[1].Text = (arr.BeamN[1, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[1, i - 1].ToString("0") + ")";
-                        BeamGdPnglistView.Items[i - 1].SubItems[2].Text = (arr.BeamN[0, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[0, i - 1].ToString("0") + ")";
-                        BeamGdPnglistView.Items[i - 1].SubItems[3].Text = (arr.BeamN[2, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[2, i - 1].ToString("0") + ")";
-                        BeamGdPnglistView.Items[i - 1].SubItems[4].Text = (arr.BeamN[3, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[3, i - 1].ToString("0") + ")";
-                    }
+                        EarthWaterlistView.Items[i - 1].SubItems[0].Text = i.ToString();
+                        EarthWaterlistView.Items[i - 1].SubItems[1].Text = arr.Earth[0, i - 1].ToString("0.0000");
+                        EarthWaterlistView.Items[i - 1].SubItems[2].Text = arr.Earth[1, i - 1].ToString("0.0000");
+                        EarthWaterlistView.Items[i - 1].SubItems[3].Text = arr.Earth[2, i - 1].ToString("0.0000");
+                        EarthWaterlistView.Items[i - 1].SubItems[4].Text = arr.Earth[3, i - 1].ToString("0.0000");
 
-                    WaterAmplitudelistView.Items[i - 1].SubItems[0].Text = i.ToString();
-                    WaterAmplitudelistView.Items[i - 1].SubItems[1].Text = arr.Amplitude[0, i - 1].ToString("0.00");
-                    WaterAmplitudelistView.Items[i - 1].SubItems[2].Text = arr.Amplitude[1, i - 1].ToString("0.00");
-                    WaterAmplitudelistView.Items[i - 1].SubItems[3].Text = arr.Amplitude[2, i - 1].ToString("0.00");
-                    WaterAmplitudelistView.Items[i - 1].SubItems[4].Text = arr.Amplitude[3, i - 1].ToString("0.00");
+                        BeamWaterlistView.Items[i - 1].SubItems[0].Text = i.ToString();
+                        BeamWaterlistView.Items[i - 1].SubItems[1].Text = arr.Velocity[0, i - 1].ToString("0.0000");
+                        BeamWaterlistView.Items[i - 1].SubItems[2].Text = arr.Velocity[1, i - 1].ToString("0.0000");
+                        BeamWaterlistView.Items[i - 1].SubItems[3].Text = arr.Velocity[2, i - 1].ToString("0.0000");
+                        BeamWaterlistView.Items[i - 1].SubItems[4].Text = arr.Velocity[3, i - 1].ToString("0.0000");
 
-                    WaterCorrelationlistView.Items[i - 1].SubItems[0].Text = i.ToString();
-                    WaterCorrelationlistView.Items[i - 1].SubItems[1].Text = arr.Correlation[0, i - 1].ToString("0.00");
-                    WaterCorrelationlistView.Items[i - 1].SubItems[2].Text = arr.Correlation[1, i - 1].ToString("0.00");
-                    WaterCorrelationlistView.Items[i - 1].SubItems[3].Text = arr.Correlation[2, i - 1].ToString("0.00");
-                    WaterCorrelationlistView.Items[i - 1].SubItems[4].Text = arr.Correlation[3, i - 1].ToString("0.00");
-                }
-                catch
-                {
-                    ListViewItem Eitem = new ListViewItem(i.ToString());
-                    Eitem.SubItems.Add(arr.Earth[0, i - 1].ToString("0.0000"));//North  //
-                    Eitem.SubItems.Add(arr.Earth[1, i - 1].ToString("0.0000"));//East
-                    Eitem.SubItems.Add(arr.Earth[2, i - 1].ToString("0.0000"));
-                    Eitem.SubItems.Add(arr.Earth[3, i - 1].ToString("0.0000"));//目前不知道怎么算大地坐标系下的水流Vq,以E00003的Vq为准
-                    EarthWaterlistView.Items.Add(Eitem);
-                   
-                    ListViewItem Bitem = new ListViewItem(i.ToString());
-                    Bitem.SubItems.Add(arr.Velocity[0, i - 1].ToString("0.0000"));
-                    Bitem.SubItems.Add(arr.Velocity[1, i - 1].ToString("0.0000"));
-                    Bitem.SubItems.Add(arr.Velocity[2, i - 1].ToString("0.0000"));
-                    Bitem.SubItems.Add(arr.Velocity[3, i - 1].ToString("0.0000"));
-                    BeamWaterlistView.Items.Add(Bitem);
-               
-                    ListViewItem Iitem = new ListViewItem(i.ToString());
-                    Iitem.SubItems.Add(arr.Instrument[0, i - 1].ToString("0.0000"));
-                    Iitem.SubItems.Add(arr.Instrument[1, i - 1].ToString("0.0000"));
-                    Iitem.SubItems.Add(arr.Instrument[2, i - 1].ToString("0.0000"));
-                    Iitem.SubItems.Add(arr.Instrument[3, i - 1].ToString("0.0000"));
-                    InstrmtWaterlistView.Items.Add(Iitem);
-               
-                    ListViewItem EGdPngitem = new ListViewItem(i.ToString()); //LPJ 2013-6-3 用百分比显示测流 textWaterAvgNum
-                    //if (textWaterAvgNum.Text != null && textWaterAvgNum.Text != "0")
-                    if(WaterAvgNum!=0)
-                    {
-                        //int WaterAvgNum = int.Parse(textWaterAvgNum.Text);
-                        EGdPngitem.SubItems.Add((arr.XfrmN[1, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[1, i - 1].ToString("0") + ")");
-                        EGdPngitem.SubItems.Add((arr.XfrmN[0, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[0, i - 1].ToString("0") + ")");
-                        EGdPngitem.SubItems.Add((arr.XfrmN[2, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[2, i - 1].ToString("0") + ")");
-                        EGdPngitem.SubItems.Add((arr.XfrmN[3, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[3, i - 1].ToString("0") + ")");
+                        InstrmtWaterlistView.Items[i - 1].SubItems[0].Text = i.ToString();
+                        InstrmtWaterlistView.Items[i - 1].SubItems[1].Text = arr.Instrument[0, i - 1].ToString("0.0000");
+                        InstrmtWaterlistView.Items[i - 1].SubItems[2].Text = arr.Instrument[1, i - 1].ToString("0.0000");
+                        InstrmtWaterlistView.Items[i - 1].SubItems[3].Text = arr.Instrument[2, i - 1].ToString("0.0000");
+                        InstrmtWaterlistView.Items[i - 1].SubItems[4].Text = arr.Instrument[3, i - 1].ToString("0.0000");
+
+
+                        if (WaterAvgNum != 0)
+                        {
+                            // int WaterAvgNum = int.Parse(textWaterAvgNum.Text);
+                            EarthGdPnglistView.Items[i - 1].SubItems[0].Text = i.ToString();
+                            EarthGdPnglistView.Items[i - 1].SubItems[1].Text = (arr.XfrmN[1, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[1, i - 1].ToString("0") + ")";
+                            EarthGdPnglistView.Items[i - 1].SubItems[2].Text = (arr.XfrmN[0, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[0, i - 1].ToString("0") + ")";
+                            EarthGdPnglistView.Items[i - 1].SubItems[3].Text = (arr.XfrmN[2, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[2, i - 1].ToString("0") + ")";
+                            EarthGdPnglistView.Items[i - 1].SubItems[4].Text = (arr.XfrmN[3, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[3, i - 1].ToString("0") + ")";
+
+                            //int WaterAvgNum = int.Parse(textWaterAvgNum.Text);
+                            BeamGdPnglistView.Items[i - 1].SubItems[0].Text = i.ToString();
+                            BeamGdPnglistView.Items[i - 1].SubItems[1].Text = (arr.BeamN[1, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[1, i - 1].ToString("0") + ")";
+                            BeamGdPnglistView.Items[i - 1].SubItems[2].Text = (arr.BeamN[0, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[0, i - 1].ToString("0") + ")";
+                            BeamGdPnglistView.Items[i - 1].SubItems[3].Text = (arr.BeamN[2, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[2, i - 1].ToString("0") + ")";
+                            BeamGdPnglistView.Items[i - 1].SubItems[4].Text = (arr.BeamN[3, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[3, i - 1].ToString("0") + ")";
+                        }
+
+                        WaterAmplitudelistView.Items[i - 1].SubItems[0].Text = i.ToString();
+                        WaterAmplitudelistView.Items[i - 1].SubItems[1].Text = arr.Amplitude[0, i - 1].ToString("0.00");
+                        WaterAmplitudelistView.Items[i - 1].SubItems[2].Text = arr.Amplitude[1, i - 1].ToString("0.00");
+                        WaterAmplitudelistView.Items[i - 1].SubItems[3].Text = arr.Amplitude[2, i - 1].ToString("0.00");
+                        WaterAmplitudelistView.Items[i - 1].SubItems[4].Text = arr.Amplitude[3, i - 1].ToString("0.00");
+
+                        WaterCorrelationlistView.Items[i - 1].SubItems[0].Text = i.ToString();
+                        WaterCorrelationlistView.Items[i - 1].SubItems[1].Text = arr.Correlation[0, i - 1].ToString("0.00");
+                        WaterCorrelationlistView.Items[i - 1].SubItems[2].Text = arr.Correlation[1, i - 1].ToString("0.00");
+                        WaterCorrelationlistView.Items[i - 1].SubItems[3].Text = arr.Correlation[2, i - 1].ToString("0.00");
+                        WaterCorrelationlistView.Items[i - 1].SubItems[4].Text = arr.Correlation[3, i - 1].ToString("0.00");
                     }
-                    EarthGdPnglistView.Items.Add(EGdPngitem);
-               
-                    ListViewItem BGdPngitem = new ListViewItem(i.ToString()); //LPJ 2013-6-3 用百分比显示
-                    //BGdPngitem.SubItems.Add(arr.BeamN[1, i - 1].ToString());
-                    //BGdPngitem.SubItems.Add(arr.BeamN[0, i - 1].ToString());
-                    //BGdPngitem.SubItems.Add(arr.BeamN[2, i - 1].ToString());
-                    //BGdPngitem.SubItems.Add(arr.BeamN[3, i - 1].ToString());
-                    //if (textWaterAvgNum.Text != null && textWaterAvgNum.Text != "0")
-                    if (WaterAvgNum != 0)
+                    catch
                     {
-                        //int WaterAvgNum = int.Parse(textWaterAvgNum.Text);
-                        BGdPngitem.SubItems.Add((arr.BeamN[1, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[1, i - 1].ToString("0") + ")");
-                        BGdPngitem.SubItems.Add((arr.BeamN[0, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[0, i - 1].ToString("0") + ")");
-                        BGdPngitem.SubItems.Add((arr.BeamN[2, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[2, i - 1].ToString("0") + ")");
-                        BGdPngitem.SubItems.Add((arr.BeamN[3, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[3, i - 1].ToString("0") + ")");
+                        MessageBox.Show("S");
+                        okay = false;
                     }
-                    BeamGdPnglistView.Items.Add(BGdPngitem);
-               
-                    ListViewItem WAitem = new ListViewItem(i.ToString());
-                    WAitem.SubItems.Add(arr.Amplitude[0, i - 1].ToString("0.00"));
-                    WAitem.SubItems.Add(arr.Amplitude[1, i - 1].ToString("0.00"));
-                    WAitem.SubItems.Add(arr.Amplitude[2, i - 1].ToString("0.00"));
-                    WAitem.SubItems.Add(arr.Amplitude[3, i - 1].ToString("0.00"));
-                    WaterAmplitudelistView.Items.Add(WAitem);
-                
-                    ListViewItem WCitem = new ListViewItem(i.ToString());
-                    WCitem.SubItems.Add(arr.Correlation[0, i - 1].ToString("0.00"));
-                    WCitem.SubItems.Add(arr.Correlation[1, i - 1].ToString("0.00"));
-                    WCitem.SubItems.Add(arr.Correlation[2, i - 1].ToString("0.00"));
-                    WCitem.SubItems.Add(arr.Correlation[3, i - 1].ToString("0.00"));
-                    WaterCorrelationlistView.Items.Add(WCitem);
-                    
+                    if (!okay)
+                    {
+                        ListViewItem Eitem = new ListViewItem(i.ToString());
+                        Eitem.SubItems.Add(arr.Earth[0, i - 1].ToString("0.0000"));//North  //
+                        Eitem.SubItems.Add(arr.Earth[1, i - 1].ToString("0.0000"));//East
+                        Eitem.SubItems.Add(arr.Earth[2, i - 1].ToString("0.0000"));
+                        Eitem.SubItems.Add(arr.Earth[3, i - 1].ToString("0.0000"));//目前不知道怎么算大地坐标系下的水流Vq,以E00003的Vq为准
+                        EarthWaterlistView.Items.Add(Eitem);
+
+                        ListViewItem Bitem = new ListViewItem(i.ToString());
+                        Bitem.SubItems.Add(arr.Velocity[0, i - 1].ToString("0.0000"));
+                        Bitem.SubItems.Add(arr.Velocity[1, i - 1].ToString("0.0000"));
+                        Bitem.SubItems.Add(arr.Velocity[2, i - 1].ToString("0.0000"));
+                        Bitem.SubItems.Add(arr.Velocity[3, i - 1].ToString("0.0000"));
+                        BeamWaterlistView.Items.Add(Bitem);
+
+                        ListViewItem Iitem = new ListViewItem(i.ToString());
+                        Iitem.SubItems.Add(arr.Instrument[0, i - 1].ToString("0.0000"));
+                        Iitem.SubItems.Add(arr.Instrument[1, i - 1].ToString("0.0000"));
+                        Iitem.SubItems.Add(arr.Instrument[2, i - 1].ToString("0.0000"));
+                        Iitem.SubItems.Add(arr.Instrument[3, i - 1].ToString("0.0000"));
+                        InstrmtWaterlistView.Items.Add(Iitem);
+
+                        ListViewItem EGdPngitem = new ListViewItem(i.ToString()); //LPJ 2013-6-3 用百分比显示测流 textWaterAvgNum
+                        //if (textWaterAvgNum.Text != null && textWaterAvgNum.Text != "0")
+                        if (WaterAvgNum != 0)
+                        {
+                            //int WaterAvgNum = int.Parse(textWaterAvgNum.Text);
+                            EGdPngitem.SubItems.Add((arr.XfrmN[1, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[1, i - 1].ToString("0") + ")");
+                            EGdPngitem.SubItems.Add((arr.XfrmN[0, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[0, i - 1].ToString("0") + ")");
+                            EGdPngitem.SubItems.Add((arr.XfrmN[2, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[2, i - 1].ToString("0") + ")");
+                            EGdPngitem.SubItems.Add((arr.XfrmN[3, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.XfrmN[3, i - 1].ToString("0") + ")");
+                        }
+                        EarthGdPnglistView.Items.Add(EGdPngitem);
+
+                        ListViewItem BGdPngitem = new ListViewItem(i.ToString()); //LPJ 2013-6-3 用百分比显示
+                        //BGdPngitem.SubItems.Add(arr.BeamN[1, i - 1].ToString());
+                        //BGdPngitem.SubItems.Add(arr.BeamN[0, i - 1].ToString());
+                        //BGdPngitem.SubItems.Add(arr.BeamN[2, i - 1].ToString());
+                        //BGdPngitem.SubItems.Add(arr.BeamN[3, i - 1].ToString());
+                        //if (textWaterAvgNum.Text != null && textWaterAvgNum.Text != "0")
+                        if (WaterAvgNum != 0)
+                        {
+                            //int WaterAvgNum = int.Parse(textWaterAvgNum.Text);
+                            BGdPngitem.SubItems.Add((arr.BeamN[1, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[1, i - 1].ToString("0") + ")");
+                            BGdPngitem.SubItems.Add((arr.BeamN[0, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[0, i - 1].ToString("0") + ")");
+                            BGdPngitem.SubItems.Add((arr.BeamN[2, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[2, i - 1].ToString("0") + ")");
+                            BGdPngitem.SubItems.Add((arr.BeamN[3, i - 1] / (float)WaterAvgNum * 100.0f).ToString("0") + "%" + "(" + arr.BeamN[3, i - 1].ToString("0") + ")");
+                        }
+                        BeamGdPnglistView.Items.Add(BGdPngitem);
+
+                        ListViewItem WAitem = new ListViewItem(i.ToString());
+                        WAitem.SubItems.Add(arr.Amplitude[0, i - 1].ToString("0.00"));
+                        WAitem.SubItems.Add(arr.Amplitude[1, i - 1].ToString("0.00"));
+                        WAitem.SubItems.Add(arr.Amplitude[2, i - 1].ToString("0.00"));
+                        WAitem.SubItems.Add(arr.Amplitude[3, i - 1].ToString("0.00"));
+                        WaterAmplitudelistView.Items.Add(WAitem);
+
+                        ListViewItem WCitem = new ListViewItem(i.ToString());
+                        WCitem.SubItems.Add(arr.Correlation[0, i - 1].ToString("0.00"));
+                        WCitem.SubItems.Add(arr.Correlation[1, i - 1].ToString("0.00"));
+                        WCitem.SubItems.Add(arr.Correlation[2, i - 1].ToString("0.00"));
+                        WCitem.SubItems.Add(arr.Correlation[3, i - 1].ToString("0.00"));
+                        WaterCorrelationlistView.Items.Add(WCitem);
+                    }
                 }
             }
 
@@ -4191,6 +4238,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("T");
                 labelTime.Text = current_TotalTimelabel;//数据页的时间标签
                 labelNo.Text = current_EsambleTotaleNum;
             }
@@ -4735,7 +4783,10 @@ namespace ADCP
             {
                 WaterSpeedTransToColor((Velocity[])EnsemblesInfoToStore.WaterVelocity[EnsemblesInfoToStore.WaterVelocity.Count - 1]);
             }
-            catch  {   }
+            catch  
+            { 
+                MessageBox.Show("U"); 
+            }
             //WaterVelocityTransToColor((Velocity[])EnsemblesInfoToStore.WaterVelocity[EnsemblesInfoToStore.WaterVelocity.Count - 1]);
 
             //if ("GPS VTG" == labelVesselRef.Text) //LPJ 2013-7-31
@@ -4745,7 +4796,9 @@ namespace ADCP
                 //WaterVelocityTransToColor_GPS((Velocity[])EnsemblesInfoToStore.WaterV_GPS[EnsemblesInfoToStore.WaterV_GPS.Count - 1]);
             }
             catch
-            { }
+            {
+                MessageBox.Show("V");
+            }
 
             //else if ("GPS GGA" == labelVesselRef.Text) //LPJ 2013-7-31
             try
@@ -4753,14 +4806,20 @@ namespace ADCP
                 WaterSpeedTransToColor_GPGGA((Velocity[])EnsemblesInfoToStore.WaterV_GPGGA[EnsemblesInfoToStore.WaterV_GPGGA.Count - 1]);
                 //WaterVelocityTransToColor_GPGGA((Velocity[])EnsemblesInfoToStore.WaterV_GPGGA[EnsemblesInfoToStore.WaterV_GPGGA.Count - 1]);
             }
-            catch { }
+            catch 
+            {
+                MessageBox.Show("W");
+            }
             //else if (Resource1.String233 == labelVesselRef.Text)
             try
             {
                 WaterSpeedTransToColor_Null((Velocity[])EnsemblesInfoToStore.WaterV_Null[EnsemblesInfoToStore.WaterV_Null.Count - 1]);
                 //WaterVelocityTransToColor_Null((Velocity[])EnsemblesInfoToStore.WaterV_Null[EnsemblesInfoToStore.WaterV_Null.Count - 1]);
             }
-            catch { }
+            catch 
+            {
+                MessageBox.Show("X");
+            }
         }
         
         
@@ -5957,6 +6016,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("X");
                 return false;
             }
             return true;
@@ -6143,6 +6203,7 @@ namespace ADCP
         }
         private void MainPanel_MouseMove(object sender, MouseEventArgs e)
         {
+            int xx = 0;
             try
             {
                 if ((e.Location.Y >= 0 && e.Location.Y <= MainPanel.Height) && (e.Location.X >= 35))  //LPJ 2013-5-17
@@ -6151,20 +6212,29 @@ namespace ADCP
                 {
                     if (MouseDownFlag == false && EnsemblesInfoToStore.WaterVelocity.Count > 0)
                     {
+                        xx = 1;
                         lock (locker)
                         {
                             if (EnsemblesInfoToStore.WaterVelocity.Count > 1)
                             {
-
+                                xx = 2;
                                 //JZH 2011-12-26 新版本获取当前数据组序号   ----------开始
                                 float PixelRectangleWidth;
                                 int i = 0;   //当前数据组序号
                                 PixelRectangleWidth = (MainPanel.Width - 35) / (float)BinDataEnsembleNum;  //获取当前每个数据组单元绘制的宽度   //JZH 2011-12-27 Adjust
                                 i = (int)((e.Location.X - 35) / PixelRectangleWidth) + 1;   //根据当前X坐标获取数据组号   //JZH 2011-12-27 Adjust
-
+                                xx = 20;
                                 //SM>
-                                cellSize = (float)EnsemblesInfoToStore.BinSize[i]; //RTIdata[i].A_CellSize;
-                                upBlank = (float)EnsemblesInfoToStore.RangeOfFirstBin[i] - cellSize / 2.0f;
+                                if (EnsemblesInfoToStore.BinSize.Count > i)
+                                {
+                                    cellSize = (float)EnsemblesInfoToStore.BinSize[i]; //RTIdata[i].A_CellSize;
+                                    upBlank = (float)EnsemblesInfoToStore.RangeOfFirstBin[i] - cellSize / 2.0f;
+                                }
+                                else
+                                {
+                                    cellSize = 0;
+                                    upBlank = 0;
+                                }
                                 //SM<
 
                                 //JZH 2011-12-26 新版本获取当前数据组序号   ----------结束
@@ -6180,7 +6250,7 @@ namespace ADCP
                                 //SM>
                                 //i = 0;
                                 //SM<
-
+                                xx = 21;
                                 float h = 0;
                                 float dep;
                                 dep = cells * cellSize;
@@ -6197,21 +6267,14 @@ namespace ADCP
                                     }
                                 }
                                 dep = maxDep;
-                                //LPJ 2013-5-25 添加自动缩放功能，动态设置最大深度 --end
-
                                 float uplen = upBlank + insDep;
-
-                                //float seafaceLenToScreen;
-                                //seafaceLenToScreen = 0;
-
-                                //SM>
-                                //float PixelRectangleHeight;
-                                //PixelRectangleHeight = (MainPanel.Height - seafaceLenToScreen) / (dep / cellSize);  //LPJ 2013-6-8
+                                
                                 float PixelRectangleHeight = 0;
 
                                 float FirstPixel = 0;
                                 float PixelsPerMeter = 0;
-                                if (EnsemblesInfoToStore.RangeOfFirstBin.Count > 0)
+                                xx = 23;
+                                if (EnsemblesInfoToStore.RangeOfFirstBin.Count > i)
                                 {
                                     //seafaceLenToScreen = 0;
                                     cellSize = (float)EnsemblesInfoToStore.BinSize[i];
@@ -6225,17 +6288,12 @@ namespace ADCP
                                         PixelRectangleHeight = cellSize * PixelsPerMeter;
                                     }
                                 }
-                                //SM< 
-
-                                //SM>
                                 i = 0;
-                                //if (e.Location.Y >= 5 + seafaceLenToScreen)
-                                //{
-                                //while (h + 5 + seafaceLenToScreen <= e.Location.Y)
+                                xx = 3;
                                 if (e.Location.Y >= FirstPixel)
                                 {
+                                    xx = 24;
                                     while (h + FirstPixel <= e.Location.Y)
-                                    //SM<
                                     {
                                         i++;
                                         h += PixelRectangleHeight;
@@ -6243,113 +6301,106 @@ namespace ADCP
                                             break;
                                     }
                                     CurrentNumYFromMousePosion = i - 1;
-
-                                    if (CurrentNumYFromMousePosion <= (int)EnsemblesInfoToStore.iGoodBin[CurrentIndexOfEnsemblesInfoToStore]) ////LPJ 2013-5-17 只显示有效层数的流速信息 //LPJ 2016-12-15 多显示一层
+                                    xx = 25;
+                                    if (EnsemblesInfoToStore.iGoodBin.Count > CurrentIndexOfEnsemblesInfoToStore)
                                     {
-                                        //if (CurrentIndexOfEnsemblesInfoToStore > 0)  //JZH 第一个数据也要显示
-                                        if (CurrentIndexOfEnsemblesInfoToStore >= 0)
+                                        xx = 4;
+                                        if (CurrentNumYFromMousePosion <= (int)EnsemblesInfoToStore.iGoodBin[CurrentIndexOfEnsemblesInfoToStore]) ////LPJ 2013-5-17 只显示有效层数的流速信息 //LPJ 2016-12-15 多显示一层
                                         {
-                                            //LPJ 2013-5-17
-                                            Point pnt = new Point(Cursor.Position.X, Cursor.Position.Y); //LPJ 2013-5-17
-
-                                            //double fwaterVx, fwaterVy; //LPJ 2013-7-31
-                                            //fwaterVx = ((Velocity[])EnsemblesInfoToStore.WaterVelocity[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion].VX;
-                                            //fwaterVy = ((Velocity[])EnsemblesInfoToStore.WaterVelocity[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion].VY;
-                                            //if(true)
-                                            //{
-                                            //      fwaterVx = ((Velocity[])EnsemblesInfoToStore.WaterV_GPS[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion].VX;
-                                            //      fwaterVy = ((Velocity[])EnsemblesInfoToStore.WaterV_GPS[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion].VY;
-                                            //}
-
-                                            double fWaterDir = System.Math.Atan2(((Velocity[])EnsemblesInfoToStore.WaterVelocity[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion].VX,
-                                                                                 ((Velocity[])EnsemblesInfoToStore.WaterVelocity[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion].VY);
-                                            if (fWaterDir < 0)
-                                                fWaterDir = fWaterDir / Math.PI * 180 + 360;
-                                            else
-                                                fWaterDir = fWaterDir / Math.PI * 180;
-
-                                            string strTime = (string)EnsemblesInfoToStore.RecivedDataTime[CurrentIndexOfEnsemblesInfoToStore];
-                                            string strBinNumber = (CurrentNumYFromMousePosion + 1).ToString();
-                                            string strFlowSpeed;
-                                            double dFlowSpeed = ((double[])EnsemblesInfoToStore.WaterSpeed[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion];
-                                            if ("GPS VTG" == labelVesselRef.Text)
-                                                dFlowSpeed = ((double[])EnsemblesInfoToStore.WaterSpeed_GPS[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion]; //LPJ 2013-7-31
-                                            else if ("GPS GGA" == labelVesselRef.Text)
-                                                dFlowSpeed = ((double[])EnsemblesInfoToStore.WaterSpeed_GPGGA[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion];
-                                            else if (Resource1.String233 == labelVesselRef.Text)
-                                                dFlowSpeed = ((double[])EnsemblesInfoToStore.WaterSpeed_Null[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion];
-
-                                            if (dFlowSpeed > 20)
-                                                strFlowSpeed = "bad";
-                                            else
+                                            xx = 5;
+                                            if (CurrentIndexOfEnsemblesInfoToStore >= 0)
                                             {
-                                                strFlowSpeed = dFlowSpeed.ToString("0.00") + "(m/s)";
+                                                Point pnt = new Point(Cursor.Position.X, Cursor.Position.Y);
+
+                                                double fWaterDir = System.Math.Atan2(((Velocity[])EnsemblesInfoToStore.WaterVelocity[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion].VX,
+                                                                                     ((Velocity[])EnsemblesInfoToStore.WaterVelocity[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion].VY);
+                                                if (fWaterDir < 0)
+                                                    fWaterDir = fWaterDir / Math.PI * 180 + 360;
+                                                else
+                                                    fWaterDir = fWaterDir / Math.PI * 180;
+
+                                                string strTime = (string)EnsemblesInfoToStore.RecivedDataTime[CurrentIndexOfEnsemblesInfoToStore];
+                                                string strBinNumber = (CurrentNumYFromMousePosion + 1).ToString();
+                                                string strFlowSpeed;
+                                                double dFlowSpeed = ((double[])EnsemblesInfoToStore.WaterSpeed[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion];
+                                                if ("GPS VTG" == labelVesselRef.Text)
+                                                    dFlowSpeed = ((double[])EnsemblesInfoToStore.WaterSpeed_GPS[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion]; //LPJ 2013-7-31
+                                                else if ("GPS GGA" == labelVesselRef.Text)
+                                                    dFlowSpeed = ((double[])EnsemblesInfoToStore.WaterSpeed_GPGGA[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion];
+                                                else if (Resource1.String233 == labelVesselRef.Text)
+                                                    dFlowSpeed = ((double[])EnsemblesInfoToStore.WaterSpeed_Null[CurrentIndexOfEnsemblesInfoToStore])[CurrentNumYFromMousePosion];
+
+                                                if (dFlowSpeed > 20)
+                                                    strFlowSpeed = "bad";
+                                                else
+                                                {
+                                                    strFlowSpeed = dFlowSpeed.ToString("0.00") + "(m/s)";
+                                                    //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
+                                                    if (!bEnglish2Metric)
+                                                        strFlowSpeed = (projectUnit.MeterToFeet(dFlowSpeed, 1)).ToString("0.00") + "(ft/s)";
+
+                                                }
+
+                                                string strDepth = ((float)EnsemblesInfoToStore.RangeOfFirstBin[CurrentIndexOfEnsemblesInfoToStore] + CurrentNumYFromMousePosion * cellSize).ToString("0.00") + "(m)";
+
                                                 //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
                                                 if (!bEnglish2Metric)
-                                                    strFlowSpeed = (projectUnit.MeterToFeet(dFlowSpeed, 1)).ToString("0.00") + "(ft/s)";
+                                                    strDepth = (projectUnit.MeterToFeet((float)EnsemblesInfoToStore.RangeOfFirstBin[CurrentIndexOfEnsemblesInfoToStore] + CurrentNumYFromMousePosion * cellSize, 1)).ToString("0.00") + "(ft)";
+
+                                                //string str = Resource1.String112 + ": " + strTime + "\r\n"
+                                                //    + Resource1.String268 + ":" + (CurrentIndexOfEnsemblesInfoToStore + 1).ToString() + "\r\n" //LPJ 2013-9-13 add
+                                                //    + Resource1.String129 + ": " + strBinNumber + "\r\n"
+                                                //    + Resource1.String102 + ": " + strFlowSpeed + "\r\n"
+                                                //    + Resource1.String103 + ": " + fWaterDir.ToString("00.00") + "(Deg)" + "\r\n"
+                                                //    + Resource1.String115 + ": " + strDepth;
+
+                                                string str = Resource1.String268 + ":" + (CurrentIndexOfEnsemblesInfoToStore + 1).ToString() + ", " //LPJ 2013-9-13 add
+                                                    + Resource1.String129 + ":" + strBinNumber + ", "
+                                                    + Resource1.String102 + ":" + strFlowSpeed + ", "
+                                                    + Resource1.String103 + ":" + fWaterDir.ToString("00.00") + "(Deg)" + ", "
+                                                    + Resource1.String115 + ":" + strDepth;
+
+                                                //if (pnt.X < 500) //LPJ 2013-8-6
+                                                //{
+                                                //    int dis = 500 - pnt.X;
+                                                //    ShowTip3(m_tip,pnt, dis, str);
+                                                //}
+                                                //else
+                                                //{
+                                                //    ShowTip2(m_tip,pnt, str); //LPJ 2013-5-17
+                                                //}
+
+                                                //if (str != strLast)
+                                                //{
+                                                //    iMainPanelStayTime = 0; //LPJ 2013-11-20 
+                                                //    strLast = str;
+                                                //    MainPanelStayTimer.Start();
+                                                //}
+                                                //if (str == strLast) //LPJ 2013-11-18 当鼠标位置改变时才显示
+                                                //{
+                                                //    if (iMainPanelStayTime >1)
+                                                //    {
+                                                //        MainTooltip.Show(str, MainPanel, e.Location.X, e.Location.Y, 5000);
+                                                //        //MainPanelStayTimer.Stop();
+                                                //        iMainPanelStayTime = 0;
+                                                //    }
+                                                //    //iMainPanelStayTime++;
+
+                                                //}
+
+                                                if (str != strLast)
+                                                {
+                                                    MainTooltip.Show(str, MainPanel, e.Location.X, e.Location.Y, 5000);
+                                                }
+                                                strLast = str;
 
                                             }
-
-                                            string strDepth = ((float)EnsemblesInfoToStore.RangeOfFirstBin[CurrentIndexOfEnsemblesInfoToStore] + CurrentNumYFromMousePosion * cellSize).ToString("0.00") + "(m)";
-
-                                            //if (Resource1.String237 == labelUnit.Text) //LPJ 2013-6-26
-                                            if (!bEnglish2Metric)
-                                                strDepth = (projectUnit.MeterToFeet((float)EnsemblesInfoToStore.RangeOfFirstBin[CurrentIndexOfEnsemblesInfoToStore] + CurrentNumYFromMousePosion * cellSize, 1)).ToString("0.00") + "(ft)";
-
-                                            //string str = Resource1.String112 + ": " + strTime + "\r\n"
-                                            //    + Resource1.String268 + ":" + (CurrentIndexOfEnsemblesInfoToStore + 1).ToString() + "\r\n" //LPJ 2013-9-13 add
-                                            //    + Resource1.String129 + ": " + strBinNumber + "\r\n"
-                                            //    + Resource1.String102 + ": " + strFlowSpeed + "\r\n"
-                                            //    + Resource1.String103 + ": " + fWaterDir.ToString("00.00") + "(Deg)" + "\r\n"
-                                            //    + Resource1.String115 + ": " + strDepth;
-                                           
-                                            string str = Resource1.String268 + ":" + (CurrentIndexOfEnsemblesInfoToStore + 1).ToString() + ", " //LPJ 2013-9-13 add
-                                                + Resource1.String129 + ":" + strBinNumber + ", "
-                                                + Resource1.String102 + ":" + strFlowSpeed + ", "
-                                                + Resource1.String103 + ":" + fWaterDir.ToString("00.00") + "(Deg)" + ", "
-                                                + Resource1.String115 + ":" + strDepth; 
-
-                                            //if (pnt.X < 500) //LPJ 2013-8-6
-                                            //{
-                                            //    int dis = 500 - pnt.X;
-                                            //    ShowTip3(m_tip,pnt, dis, str);
-                                            //}
-                                            //else
-                                            //{
-                                            //    ShowTip2(m_tip,pnt, str); //LPJ 2013-5-17
-                                            //}
-
-                                            //if (str != strLast)
-                                            //{
-                                            //    iMainPanelStayTime = 0; //LPJ 2013-11-20 
-                                            //    strLast = str;
-                                            //    MainPanelStayTimer.Start();
-                                            //}
-                                            //if (str == strLast) //LPJ 2013-11-18 当鼠标位置改变时才显示
-                                            //{
-                                            //    if (iMainPanelStayTime >1)
-                                            //    {
-                                            //        MainTooltip.Show(str, MainPanel, e.Location.X, e.Location.Y, 5000);
-                                            //        //MainPanelStayTimer.Stop();
-                                            //        iMainPanelStayTime = 0;
-                                            //    }
-                                            //    //iMainPanelStayTime++;
-
-                                            //}
-
-                                            if (str != strLast)
+                                            else
                                             {
-                                                MainTooltip.Show(str, MainPanel, e.Location.X, e.Location.Y, 5000);
-                                            }
-                                            strLast = str;
-                                         
-                                        }
-                                        else
-                                        {
 
+                                            }
                                         }
                                     }
-
                                 }
                             }
                         }
@@ -6364,6 +6415,8 @@ namespace ADCP
             }
             catch
             {
+                xx = xx;
+                MessageBox.Show("Y");
                 return;
             }
 
@@ -6675,6 +6728,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("Z");
                         insDep = (float)(projectUnit.FeetToMeter(0.1, 1));
                     }
                     cellSize = (float)(projectUnit.FeetToMeter(cellSize, 1));
@@ -6688,6 +6742,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("a");
                         insDep = 0.1f;
                     }
                 }
@@ -6737,6 +6792,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("b");
             }
         }
 
@@ -6843,6 +6899,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("c");
                                 insDep = (float)(projectUnit.FeetToMeter(0.1, 1));
                             }
                             cellSize = (float)(projectUnit.FeetToMeter(cellSize, 1));
@@ -6856,6 +6913,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("d");
                                 insDep = 0.1f;
                             }
                         }
@@ -7007,6 +7065,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("f");
                                 insDep = (float)(projectUnit.FeetToMeter(0.1, 1));
                             }
                             cellSize = (float)(projectUnit.FeetToMeter(cellSize, 1));
@@ -7020,6 +7079,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("g");
                                 insDep = 0.1f;
                             }
                         }
@@ -7155,7 +7215,10 @@ namespace ADCP
                     }
                     else return;
                 }
-                catch { }
+                catch 
+                {
+                    MessageBox.Show("h");
+                }
             }
             #endregion
         }
@@ -7298,6 +7361,7 @@ namespace ADCP
             }
             catch (System.Exception error)   //JZH 2012-03-21 数据载入错误处理
             {
+                MessageBox.Show("i");
                 PlayBackTimer.Stop();
                 bPlaybackStop = true; //LPJ 2013-11-19
                 PlayBackTimer.Close();
@@ -7468,25 +7532,33 @@ namespace ADCP
                             GPS_GGAbuffer = EnsemblesInfoToStore.GPS_GGAbuffer[BinDataEnsembleNum - 1].ToString();
                         }
                         catch
-                        { }
+                        {
+                            MessageBox.Show("j");
+                        }
                         try
                         {
                             GPS_VTGbuffer = EnsemblesInfoToStore.GPS_VTGbuffer[BinDataEnsembleNum - 1].ToString();
                         }
                         catch
-                        { }
+                        {
+                            MessageBox.Show("k");
+                        }
                         try
                         {
                             GPS_HDTbuffer = EnsemblesInfoToStore.GPS_HDTbuffer[BinDataEnsembleNum - 1].ToString();
                         }
                         catch
-                        { }
+                        {
+                            MessageBox.Show("l");
+                        }
                         try
                         {
                             GPS_ROTbuffer = EnsemblesInfoToStore.GPS_ROTbuffer[BinDataEnsembleNum - 1].ToString();
                         }
                         catch
-                        { }
+                        {
+                            MessageBox.Show("m");
+                        }
 
                         #region Decode GPGGA //LPJ 2014-7-10
                         CDecodeGPS decodeGPS = new CDecodeGPS();
@@ -7544,6 +7616,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("m");
                     }
                     totalNum = currentTotalNum; //Modified 2011-9-8
 
@@ -7559,6 +7632,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("n");
                     }
 
                     GPScontrolPanel.Refresh(); //Modified 2011-9-8 for playback
@@ -7694,7 +7768,7 @@ namespace ADCP
             MaxWaterSpeed = 0; //LPJ 2013-8-6 
 
             //int iResidu = EnsembleNumOfAllFiles - (iTotalBlocks - 1) * restoreNum; //最后一个文件块的数据组数
-            
+            int ji = 1;
             for (int i = 0; i < EnsembleNumOfAllFiles; i++) //读取原始数据文件            
             {
                 //SM>
@@ -7705,7 +7779,7 @@ namespace ADCP
                     WaterAvgNum = (int)(RTIdata[i].E_PingsInEnsemble);
                 }
                 //SM<
-                frmProgressBar.setPos(i); //LPJ 2013-5-31
+                frmProgressBar.setPos(ji++); //LPJ 2013-5-31
 
                 #region LPJ 2016-8-10 艏向参考外接罗盘
                 if (labelHeadingRef.Text == Resource1.String231)
@@ -7747,6 +7821,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("o");
                     }
                 }
                 #endregion
@@ -8153,6 +8228,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("p");
                     }
                     #region GPS VTG
 
@@ -8219,6 +8295,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("q");
                     }
                     #endregion
 
@@ -8372,6 +8449,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("r");
                     }
                     #endregion
                 }
@@ -8379,6 +8457,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("s");
             }
         }
 
@@ -8543,6 +8622,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("t");
                     }
                 }
                 else
@@ -9095,6 +9175,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("u");
                         fTransducerDepth = (float)(projectUnit.FeetToMeter(0.1, 1));
                     }
                     try
@@ -9104,6 +9185,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("v");
                         fLeftDis = 0;
                         fRightDis = 0;
                     }
@@ -9116,6 +9198,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("w");
                         fTransducerDepth = 0.1f;
                     }
                     try
@@ -9125,6 +9208,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("x");
                         fLeftDis = 0;
                         fRightDis = 0;
                     }
@@ -9137,6 +9221,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("y");
                     fPowerCurveCoeff = 0.1667;
                 }
 
@@ -9154,6 +9239,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("z");
                                 continue;
                             }
 
@@ -9165,6 +9251,7 @@ namespace ADCP
                                 }
                                 catch
                                 {
+                                    MessageBox.Show("1");
                                     continue;
                                 }
                             }
@@ -9176,7 +9263,10 @@ namespace ADCP
 
                                 }
                                 catch
-                                { continue; }
+                                {
+                                    MessageBox.Show("2");
+                                    continue; 
+                                }
                             }
                             else if (Resource1.String233 == labelVesselRef.Text)
                             {
@@ -9210,6 +9300,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("3");
                                 continue;
                             }
 
@@ -9223,6 +9314,7 @@ namespace ADCP
                                 }
                                 catch
                                 {
+                                    MessageBox.Show("4");
                                     continue;
                                 }
                             }
@@ -9236,6 +9328,7 @@ namespace ADCP
                                 }
                                 catch
                                 {
+                                    MessageBox.Show("5");
                                     continue;
                                 }
                             }
@@ -9544,6 +9637,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("6");
                         leftRef = 0.35;
                     }
                     param.RiverDischarge_A = leftRef;
@@ -9561,9 +9655,13 @@ namespace ADCP
                         param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                     }
                     param.RiverDischargeOrgData = left.ToArray();
-                    leftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
-                    //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
-                    dShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
+                    if (BinDataEnsembleNum > 0)
+                    {
+                        leftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
+
+                        //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
+                        dShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
+                    }
                     if (dCourseMG >= 0 && dCourseMG <= 180)
                     {
                         if (dShoreVelDir - dCourseMG >= 0 && dShoreVelDir - dCourseMG <= 180)
@@ -9612,9 +9710,9 @@ namespace ADCP
                     dLeftShoreArea = CalculateShoreArea(dLeftShoreAvgDepth, dLeftShoreWidth, dLeftShoreCoff);
 
                 }
-                catch //(System.Exception ex)
-                {
-                    //MessageBox.Show(ex.Message);
+                catch (System.Exception ex)
+                {   
+                    MessageBox.Show(ex.Message);
                 }
 
                 #endregion
@@ -9631,6 +9729,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("8");
                         RightRef = 0.35;
                     }
                     param.RiverDischarge_A = RightRef;
@@ -9642,17 +9741,23 @@ namespace ADCP
                     param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;
                     param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
 
+                    
+                    param.RiverDischargeOrgData = right.ToArray();
                     //helpme
                     if (BinDataEnsembleNum > 0)
                     {
                         param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                         param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
-                    }
-                    param.RiverDischargeOrgData = right.ToArray();
-                    rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
+                        rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
 
-                    //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
-                    dShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
+                        //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
+                        dShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
+                    }
+                    else
+                    {
+                        rightFlow = 0;
+                        dShoreVelDir = 0;
+                    }
                     if (dCourseMG >= 0 && dCourseMG <= 180)
                     {
                         if (dShoreVelDir - dCourseMG >= 0 && dShoreVelDir - dCourseMG <= 180)
@@ -9689,7 +9794,8 @@ namespace ADCP
 
                     //JZH 2012-04-16 计算岸边平均水深
                     double dRightShoreAvgDepth = 0.0;
-                    dRightShoreAvgDepth = CalculateAvgShoreDepth(right) + fTransducerDepth;  //JZH 2012-04-17 
+                    if (BinDataEnsembleNum > 0)
+                        dRightShoreAvgDepth = CalculateAvgShoreDepth(right) + fTransducerDepth;  //JZH 2012-04-17 
 
                     //JZH 2012-04-16 计算岸边面积
                     //label_Area.Text = dLeftShoreAvgDepth.ToString("0.000");
@@ -9698,9 +9804,9 @@ namespace ADCP
                     double dRightShoreCoff = RightRef;
                     dRightShoreArea = CalculateShoreArea(dRightShoreAvgDepth, dRightShoreWidth, dRightShoreCoff);
                 }
-                catch //(System.Exception ex)
+                catch (System.Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message);
                 }
                 #endregion
 
@@ -9762,6 +9868,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("10");
             }
         }
 
@@ -9852,6 +9959,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("10");
                     fTransducerDepth = (float)(projectUnit.FeetToMeter(0.1, 1));
                 }
                 try
@@ -9861,6 +9969,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("11");
                     fLeftDis = 0;
                     fRightDis = 0;
                 }
@@ -9873,6 +9982,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("12");
                     fTransducerDepth = 0.1f;
                 }
                 try
@@ -9882,6 +9992,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("13");
                     fLeftDis = 0;
                     fRightDis = 0;
                 }
@@ -9940,7 +10051,9 @@ namespace ADCP
                 }
             }
             catch
-            { }
+            {
+                MessageBox.Show("14");
+            }
 
             #region 更新导航面板
             float fRiverWidth = 0;
@@ -10069,7 +10182,7 @@ namespace ADCP
         {
             double dShoreVelDir = 1.0; //JZH 2012-04-06 岸边流速方向 用来判断岸边流量正负
             double dShoreCoff = 0;  //JZH 2012-04-06 岸边流量系数 用来判断岸边流量正负
-
+            int xx = 0;
             #region 计算左岸流量
             try
             {
@@ -10083,6 +10196,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("14");
                     leftRef = 0.35;
                 }
                 param.RiverDischarge_A = leftRef;
@@ -10092,16 +10206,17 @@ namespace ADCP
                 param.RiverDischargeDistance = fLeftDis;
                 param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;        //ADCP参数
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
-
+                xx = 1;
                 //helpme
-                if (BinDataEnsembleNum > 0)
+                if (RTIdata.Count > (BinDataEnsembleNum - 1) && BinDataEnsembleNum > 0)
                 {
                     param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                     param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                 }
+                xx = 11;
                 param.RiverDischargeOrgData = dischargeMsg.left.ToArray();
                 dischargeMsg.leftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
-
+                xx = 2;
                 dLeftShorePings = dischargeMsg.left.Count(); //LPJ 2016-12-19 左岸呯数
 
                 //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
@@ -10145,26 +10260,30 @@ namespace ADCP
                 //JZH 2012-04-16 计算岸边平均水深
                 double dLeftShoreAvgDepth = 0.0;
                 dLeftShoreAvgDepth = CalculateAvgShoreDepth(dischargeMsg.left) + fTransducerDepth; //LPJ 2013-6-21
-
+                xx = 4;
                 //JZH 2012-04-16 计算岸边面积
 
                 double dLeftShoreWidth = fLeftDis; //LPJ 2013-6-21
 
                 double dLeftShoreCoff = leftRef; //LPJ 2013-6-21
                 dischargeMsg.dLeftShoreArea = CalculateShoreArea(dLeftShoreAvgDepth, dLeftShoreWidth, dLeftShoreCoff);
+                xx = 5;
 
             }
             catch //(System.Exception ex)
             {
+                //MessageBox.Show("14");
                 //MessageBox.Show(ex.Message);
             }
 
             #endregion
 
             #region 计算右岸流量
+            int yx = 0;
             try
             {
                 CalculateShoreFlowParam param = new CalculateShoreFlowParam();
+                yx = 1;
                 //param.RiverDischarge_A = 0.35;
                 double RightRef = 0.35;
                 try
@@ -10173,6 +10292,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                     RightRef = 0.35;
                 }
                 param.RiverDischarge_A = RightRef;
@@ -10191,13 +10311,14 @@ namespace ADCP
                     param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                 }
                 param.RiverDischargeOrgData = dischargeMsg.right.ToArray();
-               
+                yx = 2;
                 dischargeMsg.rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
 
                 dRightShorePings = dischargeMsg.right.Count(); //LPJ 2016-12-19 右岸呯数
 
                 //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
                 dShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
+                yx = 3;
                 if (dCourseMG >= 0 && dCourseMG <= 180)
                 {
                     if (dShoreVelDir - dCourseMG >= 0 && dShoreVelDir - dCourseMG <= 180)
@@ -10234,6 +10355,7 @@ namespace ADCP
 
                 //JZH 2012-04-16 计算岸边平均水深
                 double dRightShoreAvgDepth = 0.0;
+                yx = 4;
                 dRightShoreAvgDepth = CalculateAvgShoreDepth(dischargeMsg.right) + fTransducerDepth;  //JZH 2012-04-17 
 
                 //JZH 2012-04-16 计算岸边面积
@@ -10241,10 +10363,14 @@ namespace ADCP
                 //double dRightShoreArea = 0.0;
                 double dRightShoreWidth = fRightDis;
                 double dRightShoreCoff = RightRef;
+                yx = 5;
                 dischargeMsg.dRightShoreArea = CalculateShoreArea(dRightShoreAvgDepth, dRightShoreWidth, dRightShoreCoff);
+                yx = 6;
             }
             catch //(System.Exception ex)
             {
+                yx = yx;
+                MessageBox.Show("A");
                 //MessageBox.Show(ex.Message);
             }
 
@@ -10277,6 +10403,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                     fPowerCurveCoeff = 0.1667;
                 }
 
@@ -10293,6 +10420,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("A");
                                 return false;
                             }
                         }
@@ -10305,6 +10433,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("A");
                                 return false;
                             }
                         }
@@ -10321,7 +10450,10 @@ namespace ADCP
                                 BoatVelocity = (Velocity)(ensembles.BoatV_GPGGA[0]);  //LPJ 2013-7-31
                             }
                             catch
-                            { return false; }
+                            {
+                                MessageBox.Show("A");
+                                return false; 
+                            }
                         }
 
                         if (Math.Abs(BoatVelocity.VX) > 20 ||Math.Abs( BoatVelocity.VY) > 20)
@@ -10352,6 +10484,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("A");
                                 return false;
                             }
                         }
@@ -10371,6 +10504,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("A");
                                 return false;   //LPJ 2016-8-25
                             }
                         }
@@ -10383,6 +10517,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("A");
                                 return false;
                             }
                         }
@@ -10415,10 +10550,12 @@ namespace ADCP
                                 double fWaterDir = 0;
                                 try
                                 {
-                                    fWaterDir = (double)(ensembles.WaterDir[ensembleNum]);
+                                    if(ensembles.WaterDir.Count > ensembleNum)
+                                        fWaterDir = (double)(ensembles.WaterDir[ensembleNum]);
                                 }
                                 catch
                                 {
+                                    MessageBox.Show("A");
                                 }
                                 //discharge.waterDirection = fWaterDir;
 
@@ -10582,6 +10719,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
             }
             return bValid;  //LPJ 2017-8-9
         }
@@ -11440,6 +11578,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                     }
                 }
                 base.OnFormClosing(e);
@@ -11462,6 +11601,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
             }
         }
 
@@ -11553,7 +11693,7 @@ namespace ADCP
                 }
                 catch //(System.Exception eee)
                 {
-                    //
+                    MessageBox.Show("A");
                 }
             }
         }
@@ -11647,10 +11787,12 @@ namespace ADCP
                 catch
                 {
                     //current_Accuracy = "-";
+                    MessageBox.Show("A");
                 }
             }
             catch
             {
+                MessageBox.Show("A");
             }
             return dHeadingOffset;
         }
@@ -11902,6 +12044,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
             }
             //projectPause = true;
@@ -11963,6 +12106,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
             }
 
             if (bStartMeasQ)
@@ -12457,6 +12601,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                     }
                 }
                 else
@@ -12943,12 +13088,22 @@ namespace ADCP
             float H, P, R;
             try
             {
-                H = float.Parse(current_WPHeading);
-                P = float.Parse(current_WPPitch);
-                R = float.Parse(current_WPRoll);
+                if (current_WPHeading != "" && current_WPHeading != "-")
+                    H = float.Parse(current_WPHeading);
+                else
+                    H = 0;
+                if (current_WPPitch != "" && current_WPPitch != "-")
+                    P = float.Parse(current_WPPitch);
+                else
+                    P = 0;
+                if (current_WPRoll != "" && current_WPRoll != "-")
+                    R = float.Parse(current_WPRoll);
+                else
+                    R = 0;
             }
             catch
             {
+                //MessageBox.Show("ok");
                 H = 0;
                 P = 0;
                 R = 0;
@@ -13120,6 +13275,7 @@ namespace ADCP
                         }
                         catch
                         {
+                            MessageBox.Show("A");
                             radioButtonLatLong.Enabled = false;
                             radioButtonMotoke.Enabled = false;
 
@@ -14032,6 +14188,7 @@ namespace ADCP
             }
             catch//(Exception ex)
             {
+                MessageBox.Show("A");
                 //MessageBox.Show(ex.Message);
             }
         }
@@ -14104,6 +14261,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                         //this.Cursor = new Cursor(Cursor.Current.Handle);
                     }
                     SailTrackDragStartPoint = e.Location;
@@ -14124,6 +14282,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 //this.Cursor = new Cursor(Cursor.Current.Handle);
             }
             this.GPSdisplayPanel.Focus();
@@ -14178,6 +14337,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                     //this.Cursor = new Cursor(Cursor.Current.Handle);
                 }
                 SailTrackTragCursorChangeToTrag = false;
@@ -14760,6 +14920,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 return;
             }
 
@@ -14900,6 +15061,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
             }
         }
 
@@ -15695,6 +15857,7 @@ namespace ADCP
             }
             catch(Exception e)
             {
+                MessageBox.Show("A");
                 // If exception leave as 0.0
                 dStartDist = 0.0;
             }
@@ -15847,6 +16010,7 @@ namespace ADCP
             }
             catch (Exception e)
             {
+                MessageBox.Show("A");
                 // If exception leave as 0.0
                 dEndDist = 0.0;
             }
@@ -16367,12 +16531,21 @@ namespace ADCP
             string current_Date,current_Time; //LPJ 2013-9-23 将日期和时间分为两行显示
             try
             {
-                string[] str = current_DataTime.Split(' ');
-                current_Date = str[0];
-                current_Time = str[1];
+                if (current_DataTime != "-")
+                {
+                    string[] str = current_DataTime.Split(' ');
+                    current_Date = str[0];
+                    current_Time = str[1];
+                }
+                else 
+                {
+                    current_Date = "-";
+                    current_Time = "-";
+                }
             }
             catch
             {
+                MessageBox.Show("A");
                 current_Date = "-";
                 current_Time = "-";
             }
@@ -16466,12 +16639,16 @@ namespace ADCP
         {
             try
             {
-                string[] str = current_DataTime.Split(' '); //LPJ 2013-9-23
-                itemDate.SubItems[1].Text = str[0]; //LPJ 2013-9-23
-                itemTime.SubItems[1].Text = str[1]; //LPJ 2013-9-23
+                if (current_DataTime != "-")
+                {
+                    string[] str = current_DataTime.Split(' '); //LPJ 2013-9-23
+                    itemDate.SubItems[1].Text = str[0]; //LPJ 2013-9-23
+                    itemTime.SubItems[1].Text = str[1]; //LPJ 2013-9-23
+                }
             }
             catch
             {
+                MessageBox.Show("A");
             }
 
             itemTotalTime.SubItems[1].Text = current_TotalTimelabel;
@@ -16567,6 +16744,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                     }
                 }
                 unit = (max - min) / 5.0;
@@ -16622,6 +16800,7 @@ namespace ADCP
                         }
                         catch
                         {
+                            MessageBox.Show("A");
                         }
 
                         if (i == 0)
@@ -16648,6 +16827,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
 
                 MainBuffer.Render(e.Graphics);
@@ -16715,12 +16895,14 @@ namespace ADCP
                         }
                         catch
                         {
+                            MessageBox.Show("A");
                         }
                         lastY = startY;
                     }
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
                 MainBuffer.Render(e.Graphics);
                 MainBuffer.Dispose();
@@ -16783,6 +16965,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                     }
                 }
                 unit = (max - min) / 5.0f;
@@ -16827,6 +17010,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
 
                 MainBuffer.Render(e.Graphics);
@@ -16919,6 +17103,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                     }
                 }
                 unit = (max - min) / 5.0f;
@@ -16969,6 +17154,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
                 MainBuffer.Render(e.Graphics);
                 MainBuffer.Dispose();
@@ -17044,6 +17230,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                     min = 0;
                     max = 1;
                 }
@@ -17097,6 +17284,7 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("A");
                             }
                             lastY = startY;
                         }
@@ -17104,6 +17292,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
                 MainBuffer.Render(e.Graphics);
                 MainBuffer.Dispose();
@@ -17430,6 +17619,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                         return false;
                     }
                 }
@@ -17463,6 +17653,7 @@ namespace ADCP
                 }
                 catch//(Exception ex)
                 {
+                    MessageBox.Show("A");
                     //MessageBox.Show(ex.Message);
                     return false;
                 }
@@ -17700,6 +17891,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                     conf.PowerCoff = 0.1667f;
                 }
 
@@ -17723,6 +17915,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                         dTransducerDepth = 0.1f;
                     }
 
@@ -17732,6 +17925,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                         dLeftDis = 0;
                     }
                     try
@@ -17740,6 +17934,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                         dRightDis = 0;
                     }
                    
@@ -17762,6 +17957,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
 
                 //conf.LeftBankStyle= comboBoxLeftBankStyle.SelectedIndex;
@@ -17777,6 +17973,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                     conf.LeftBankPara = 0.35f;
                 }
                
@@ -17794,6 +17991,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                     conf.RightBankPara = 0.35f;
                 }
                
@@ -18662,6 +18860,7 @@ namespace ADCP
                 }
                 catch //(Exception ex) //LPJ 2013-6-11
                 {
+                    MessageBox.Show("A");
                     //MessageBox.Show(ex.Message + " in panelGPSTrack_Paint");
                 }
 
@@ -18931,6 +19130,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
             }
         }
 
@@ -19138,12 +19338,14 @@ namespace ADCP
                             }
                             catch
                             {
+                                MessageBox.Show("A");
                             }
                         }
                         #endregion
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                     }
                 }
             }
@@ -19235,6 +19437,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
             } 
         }
@@ -19438,21 +19641,27 @@ namespace ADCP
                         labelTransducerDepth.Text = projectUnit.FeetToMeter(double.Parse(labelTransducerDepth.Text), 1).ToString("0.00");
                     }
                     catch
-                    {}
+                    { 
+                        MessageBox.Show("A"); 
+                    }
 
                     try
                     {
                         labelLeftDis.Text = projectUnit.FeetToMeter(double.Parse(labelLeftDis.Text), 1).ToString("0.00");
                     }
                     catch
-                    {}
+                    {
+                        MessageBox.Show("A");
+                    }
 
                     try
                     {
                         labelRightDis.Text = projectUnit.FeetToMeter(double.Parse(labelRightDis.Text), 1).ToString("0.00");
                     }
                     catch
-                    { }
+                    {
+                        MessageBox.Show("A");
+                    }
 
                     RefreshListViewSummary(0); //LPJ 2013-8-8 
                 }
@@ -19469,21 +19678,27 @@ namespace ADCP
                         labelTransducerDepth.Text = projectUnit.MeterToFeet(double.Parse(labelTransducerDepth.Text), 1).ToString("0.000");
                     }
                     catch
-                    {}
+                    {
+                        MessageBox.Show("A");
+                    }
 
                     try
                     {
                         labelLeftDis.Text = projectUnit.MeterToFeet(double.Parse(labelLeftDis.Text), 1).ToString("0.000");
                     }
                     catch
-                    {}
+                    {
+                        MessageBox.Show("A");
+                    }
 
                     try
                     {
                         labelRightDis.Text = projectUnit.MeterToFeet(double.Parse(labelRightDis.Text), 1).ToString("0.000");
                     }
                     catch
-                    {}
+                    {
+                        MessageBox.Show("A");
+                    }
 
                     RefreshListViewSummary(1); //LPJ 2013-8-8 
                 }
@@ -19666,6 +19881,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 systSet.dSalinity = 0;
             }
             try
@@ -19674,6 +19890,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 systSet.dHeadingOffset = 0;
             }
             try
@@ -19682,6 +19899,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 systSet.dTransducerDepth = 0.1;
             }
 
@@ -19691,6 +19909,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 systSet.dSpeedOfSound = 1500.0;
             }
 
@@ -19759,7 +19978,10 @@ namespace ADCP
                                 }
 
                             }
-                            catch { }
+                            catch 
+                            {
+                                MessageBox.Show("A");
+                            }
                             try
                             {
                                 cmd = reader.ReadLine();
@@ -19780,7 +20002,10 @@ namespace ADCP
                         //CMD = "START\r";
                         //sp.Write(CMD);
                     }
-                    catch { }
+                    catch 
+                    {
+                        MessageBox.Show("A");
+                    }
                     frmProgressBar.Close();
                 }
 
@@ -19929,6 +20154,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 edgeSetting.dPowerCurveCoeff = 0.1667;
             }
 
@@ -19950,6 +20176,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 edgeSetting.dLeftDis = 0;
             }
 
@@ -19959,6 +20186,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 edgeSetting.dRightDis = 0;
             }
 
@@ -19975,6 +20203,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 edgeSetting.dLeftRef = 0.35;
             }
 
@@ -19991,6 +20220,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
                 edgeSetting.dRightRef = 0.35;
             }
             
@@ -20546,6 +20776,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
 
                 return true;
@@ -20747,6 +20978,7 @@ namespace ADCP
                                     }
                                     catch
                                     {
+                                        MessageBox.Show("A");
                                     }
                                     break;
                                 }
@@ -20931,6 +21163,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
 
                 LV_Measured_QPaint();  //LPJ 2013-8-22 更新流量汇总栏
@@ -21287,7 +21520,10 @@ namespace ADCP
             {
                 sp.Open();
             }
-            catch { }
+            catch 
+            {
+                MessageBox.Show("A");
+            }
         }
 
         private void linkLabelCompassCalibration_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -21457,6 +21693,7 @@ namespace ADCP
                     }
                     catch
                     {
+                        MessageBox.Show("A");
                         File.AppendAllText(Directory.GetCurrentDirectory() + "\\SystemTest.txt", strFile);
                     }
                     #endregion
@@ -21465,6 +21702,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
             }
         }
 
@@ -21530,6 +21768,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
             }
         }
 
@@ -21663,6 +21902,7 @@ namespace ADCP
                     }
                     catch//(Exception ex)
                     {
+                        MessageBox.Show("A");
                         //MessageBox.Show(ex.Message);
                     }
                 }
@@ -21674,6 +21914,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                     fDistanceMG = 0;
                 }
 
@@ -21844,6 +22085,7 @@ namespace ADCP
                 }
                 catch
                 {
+                    MessageBox.Show("A");
                 }
             }
 
@@ -21913,6 +22155,7 @@ namespace ADCP
             }
             catch
             {
+                MessageBox.Show("A");
             }
         }
 
@@ -22009,7 +22252,10 @@ namespace ADCP
                 //textBoxBSprofile.Text = BackScatter.GetBsProfileString(TheBSbeam, BackScatter.Ensemble);
                 tbs[0].Text = BackScatter.GetBsProfileString(TheBSbeam, BackScatter.Ensemble);
             }
-            catch { }
+            catch 
+            {
+                MessageBox.Show("A");
+            }
         }
 
         private void radioButtonBSsystem_CheckedChanged(object sender, EventArgs e)
@@ -22592,6 +22838,7 @@ namespace ADCP
             }
             catch (Exception ex)
             {
+                MessageBox.Show("A");
                 System.Diagnostics.Debug.WriteLine(ex);
             }
         }

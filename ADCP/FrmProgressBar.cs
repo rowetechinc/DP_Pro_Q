@@ -31,7 +31,7 @@ namespace ADCP
             {
                 this.Close();
             }
-            Application.DoEvents();
+            //Application.DoEvents();
         }
 
         private void FrmProgressBar_Load(object sender, EventArgs e)
