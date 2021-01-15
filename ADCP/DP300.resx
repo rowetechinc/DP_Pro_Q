@@ -1326,36 +1326,6 @@
   <data name="&gt;&gt;panel31.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="linkLabelSystemTest.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="linkLabelSystemTest.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="linkLabelSystemTest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 745</value>
-  </data>
-  <data name="linkLabelSystemTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 13</value>
-  </data>
-  <data name="linkLabelSystemTest.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="linkLabelSystemTest.Text" xml:space="preserve">
-    <value>System test</value>
-  </data>
-  <data name="&gt;&gt;linkLabelSystemTest.Name" xml:space="preserve">
-    <value>linkLabelSystemTest</value>
-  </data>
-  <data name="&gt;&gt;linkLabelSystemTest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;linkLabelSystemTest.Parent" xml:space="preserve">
-    <value>panel23</value>
-  </data>
-  <data name="&gt;&gt;linkLabelSystemTest.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
   <data name="linkLabelSystemSetting.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1387,7 +1357,7 @@
     <value>panel23</value>
   </data>
   <data name="&gt;&gt;linkLabelSystemSetting.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>13</value>
   </data>
   <data name="labelStep6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1441,7 +1411,7 @@
     <value>panel23</value>
   </data>
   <data name="&gt;&gt;panel25.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>14</value>
   </data>
   <data name="label_Headingoffset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1882,7 +1852,7 @@
     <value>panel23</value>
   </data>
   <data name="&gt;&gt;panel26.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>15</value>
   </data>
   <data name="labelStep4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1936,7 +1906,7 @@
     <value>panel23</value>
   </data>
   <data name="&gt;&gt;panel27.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>16</value>
   </data>
   <data name="linkLabelSiteInfor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1969,7 +1939,7 @@
     <value>panel23</value>
   </data>
   <data name="&gt;&gt;linkLabelSiteInfor.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>17</value>
   </data>
   <data name="labelInstrumentSN.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2320,7 +2290,7 @@
     <value>panel23</value>
   </data>
   <data name="&gt;&gt;panel28.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>18</value>
   </data>
   <data name="labelStep3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2374,7 +2344,7 @@
     <value>panel23</value>
   </data>
   <data name="&gt;&gt;panelStep2.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>19</value>
   </data>
   <data name="labelSiteComments.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2623,7 +2593,7 @@
     <value>panel23</value>
   </data>
   <data name="&gt;&gt;panel29.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>20</value>
   </data>
   <data name="labelStep2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2677,7 +2647,7 @@
     <value>panel23</value>
   </data>
   <data name="&gt;&gt;panelStep1.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>21</value>
   </data>
   <data name="panel23.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -4194,7 +4164,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 116</value>
+    <value>0, 112</value>
   </data>
   <data name="pictureBox_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4218,7 +4188,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 117</value>
+    <value>29, 113</value>
   </data>
   <data name="panel_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4242,7 +4212,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_A.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-407, 0</value>
+    <value>-411, 0</value>
   </data>
   <data name="vScrollBar_W_A.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -4584,7 +4554,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 175</value>
+    <value>0, 171</value>
   </data>
   <data name="pictureBox_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4608,7 +4578,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 181</value>
+    <value>29, 177</value>
   </data>
   <data name="panel_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4635,7 +4605,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_C.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-462, 0</value>
+    <value>-466, 0</value>
   </data>
   <data name="vScrollBar_W_C.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -8226,10 +8196,10 @@
     <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="GPSdepthPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 396</value>
+    <value>0, 392</value>
   </data>
   <data name="GPSdepthPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>556, 171</value>
+    <value>552, 171</value>
   </data>
   <data name="GPSdepthPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

@@ -1124,6 +1124,7 @@ namespace ADCP
 
         private void Form1_Load(object sender, EventArgs e) //修改父窗体的背景颜色
         {
+            int count = 0;
             MdiClient ctlMDI;
             // Loop through all of the form's controls looking
             // for the control of type MdiClient.
@@ -1132,13 +1133,18 @@ namespace ADCP
                 try
                 {
                     // Attempt to cast the control to type MdiClient.
-                    ctlMDI = (MdiClient)ctl;
-                    // Set the BackColor of the MdiClient control.
-                    ctlMDI.BackColor = this.BackColor;
+                    if (ctl is MdiClient)
+                    {
+                        ctlMDI = (MdiClient)ctl;
+                        // Set the BackColor of the MdiClient control.
+                        ctlMDI.BackColor = this.BackColor;
+                    }
                 }
-                catch //(InvalidCastException exc)
+                catch //(Exception ex)//(InvalidCastException ex)
                 {
                     // Catch and ignore the error if casting failed.
+                    count++;
+                    //MessageBox.Show(ex.Message + " Form1_Load");
                 }
             }
 

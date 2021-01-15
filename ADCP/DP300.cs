@@ -3155,8 +3155,8 @@ namespace ADCP
                         {
                             DecodeEnsemble(BytesPacket, Arr, payloadLen);
 
-                            if (bBeamCheck)
-                                ArrRaw.Add(Arr);//LPJ 2014-6-20 设置一个变量，用于存储解析的ArrayClass数据
+                            //if (bBeamCheck)
+                            //    ArrRaw.Add(Arr);//LPJ 2014-6-20 设置一个变量，用于存储解析的ArrayClass数据
 
                         }
                         catch
@@ -6614,7 +6614,7 @@ namespace ADCP
                 linkLabelCompassCalibration.Visible = false; //LPJ 2013-6-28
                 linkLabelGPSConf.Visible = false;
                 linkLabelSettingTime.Visible = false;
-                linkLabelSystemTest.Visible = false;
+                //linkLabelSystemTest.Visible = false;
                 linkLabelUpdateFirmware.Visible = false;
                 linkLabelBeamCheck.Visible = false; //LPJ 2014-6-20
                 linkLabelDownload.Visible = false;
@@ -6763,7 +6763,7 @@ namespace ADCP
                     linkLabelCompassCalibration.Visible = false; //LPJ 2013-6-28
                     linkLabelGPSConf.Visible = false;
                     linkLabelSettingTime.Visible = false;
-                    linkLabelSystemTest.Visible = false;
+                    //linkLabelSystemTest.Visible = false;
                     linkLabelUpdateFirmware.Visible = false;
                     //btnGPSCalibration.Visible = false; //LPJ 2013-11-15
                     linkLabelHeadingOffset.Visible = false; //LPJ 2013-11-18
@@ -6945,7 +6945,7 @@ namespace ADCP
                     linkLabelCompassCalibration.Visible = false; //LPJ 2013-6-28
                     linkLabelGPSConf.Visible = false;
                     linkLabelSettingTime.Visible = false;
-                    linkLabelSystemTest.Visible = false;
+                    //linkLabelSystemTest.Visible = false;
                     linkLabelUpdateFirmware.Visible = false;
                     linkLabelBeamCheck.Visible = false; //LPJ 2014-6-20
                     linkLabelDownload.Visible = false;
@@ -11680,7 +11680,7 @@ namespace ADCP
             linkLabelCompassCalibration.Enabled = false;
             linkLabelGPSConf.Enabled = false;
             linkLabelSettingTime.Enabled = false;
-            linkLabelSystemTest.Enabled = false;
+            //linkLabelSystemTest.Enabled = false;
             linkLabelUpdateFirmware.Enabled = false;
             linkLabelBeamCheck.Enabled = false; //LPJ 2014-6-20
             linkLabelDownload.Enabled = false;
@@ -11691,22 +11691,21 @@ namespace ADCP
             btnSpeedFast.Visible = false; //LPJ 2013-7-12
             btnSpeedSlow.Visible = false; //LPJ 2013-7-12
 
-            //frmsystemSet = new FrmSystemSetting(sp, ref systSet);
-            if (!CommandsInitialized)
+            sp.Write("STOP\r");
+            Thread.Sleep(150);
+
+            int ii = 10;
+            while (!ReceiveBufferString.Contains("STOP") && ii > 0)
             {
                 sp.Write("STOP\r");
                 Thread.Sleep(150);
-
-                while (!ReceiveBufferString.Contains("STOP"))
-                {
-                    sp.Write("STOP\r");
-                    Thread.Sleep(150);
-                }
-                
-                SystemSetting();
+                ii--;
             }
 
-            
+            if (!CommandsInitialized)
+            {   
+                SystemSetting();
+            }
 
             iEnsembleInterval = 1;
 
@@ -11919,7 +11918,7 @@ namespace ADCP
             //linkLabelCompassCalibration.Enabled = true;
             linkLabelGPSConf.Enabled = true;
             linkLabelSettingTime.Enabled = true;
-            linkLabelSystemTest.Enabled = true;
+            //linkLabelSystemTest.Enabled = true;
             linkLabelUpdateFirmware.Enabled = false;// true;
             linkLabelBeamCheck.Enabled = false; //LPJ 2014-6-20
             linkLabelDownload.Enabled = false;
@@ -21469,10 +21468,10 @@ namespace ADCP
             }
         }
 
-        private void linkLabelSystemTest_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        /*private void linkLabelSystemTest_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             SystemTest();            
-        }
+        }*/
 
         private void linkLabelUpdateFirmware_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -21788,9 +21787,9 @@ namespace ADCP
         #endregion
 
         List<ArrayClass> ArrRaw = new List<ArrayClass>(); //设置一个全局变量ArrRaw，用于存储解析的ArrayClass数据
-        bool bBeamCheck = false; //
+        //bool bBeamCheck = false; //
        
-        private void linkLabelBeamCheck_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        /*private void linkLabelBeamCheck_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
@@ -21816,7 +21815,7 @@ namespace ADCP
             {
             }
         }
-
+        */
         System.Timers.Timer beamCheckTimer;
         private void beamCheckTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -21861,7 +21860,7 @@ namespace ADCP
             }
 
             beamCheckTimer.Stop();
-            bBeamCheck = false; 
+            //bBeamCheck = false; 
             ArrRaw.Clear();
 
             FrmBeamCheck frmbeamcheck = new FrmBeamCheck(range, cells, snr);

@@ -75,7 +75,6 @@
             this.label256 = new System.Windows.Forms.Label();
             this.panel31 = new System.Windows.Forms.Panel();
             this.labelStep1 = new System.Windows.Forms.Label();
-            this.linkLabelSystemTest = new System.Windows.Forms.LinkLabel();
             this.linkLabelSystemSetting = new System.Windows.Forms.LinkLabel();
             this.panel25 = new System.Windows.Forms.Panel();
             this.labelStep6 = new System.Windows.Forms.Label();
@@ -784,7 +783,6 @@
             this.panel23.Controls.Add(this.linkLabelUnit);
             this.panel23.Controls.Add(this.panel30);
             this.panel23.Controls.Add(this.panel31);
-            this.panel23.Controls.Add(this.linkLabelSystemTest);
             this.panel23.Controls.Add(this.linkLabelSystemSetting);
             this.panel23.Controls.Add(this.panel25);
             this.panel23.Controls.Add(this.panel26);
@@ -838,7 +836,7 @@
             resources.ApplyResources(this.linkLabelBeamCheck, "linkLabelBeamCheck");
             this.linkLabelBeamCheck.Name = "linkLabelBeamCheck";
             this.linkLabelBeamCheck.TabStop = true;
-            this.linkLabelBeamCheck.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelBeamCheck_LinkClicked);
+            //this.linkLabelBeamCheck.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelBeamCheck_LinkClicked);
             // 
             // linkLabelDownload
             // 
@@ -1049,14 +1047,6 @@
             this.labelStep1.BackColor = System.Drawing.Color.LightSlateGray;
             this.labelStep1.ForeColor = System.Drawing.Color.Yellow;
             this.labelStep1.Name = "labelStep1";
-            // 
-            // linkLabelSystemTest
-            // 
-            this.linkLabelSystemTest.ActiveLinkColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.linkLabelSystemTest, "linkLabelSystemTest");
-            this.linkLabelSystemTest.Name = "linkLabelSystemTest";
-            this.linkLabelSystemTest.TabStop = true;
-            this.linkLabelSystemTest.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelSystemTest_LinkClicked);
             // 
             // linkLabelSystemSetting
             // 
@@ -5413,7 +5403,6 @@
         private System.Windows.Forms.ColumnHeader TotalQ;
         private System.Windows.Forms.TabPage tabPageSmartPage;
         private System.Windows.Forms.Panel panel23;
-        private System.Windows.Forms.LinkLabel linkLabelSystemTest;
         private System.Windows.Forms.LinkLabel linkLabelUpdateFirmware;
         private System.Windows.Forms.LinkLabel linkLabelSettingTime;
         private System.Windows.Forms.LinkLabel linkLabelGPSConf;
