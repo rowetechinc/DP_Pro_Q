@@ -988,14 +988,8 @@ namespace ADCP
                         float PixelRectangleWidth = 1;   //JZH Debug
                         float PixelRectangleHeight = 0;
 
-                        //SM>
                         float dep = 0;
                         float maxDep = 0;
-                        //float dep;
-                        //dep = cells * cellSize;  //10*0.5=5m
-                        //LPJ 2013-5-25 添加自动缩放功能，动态设置最大深度 --start
-                        //float maxDep = dep;
-                        //SM<
 
                         if (BinDataEnsembleNum > 0)
                         {   
@@ -2455,22 +2449,33 @@ namespace ADCP
                         //}
 
                         //LPJ 2013-6-24
-                        SizeF size = g.MeasureString((trackBarMaxV.Value / 40f).ToString("0.00"), font);
+                        //SizeF size = g.MeasureString((trackBarMaxV.Value / 40f).ToString("0.00"), font);
 
+                        SizeF size;
                         //if (Resource1.String237 == labelUnit.Text)
                         if (!bEnglish2Metric)
                         {
                             g.DrawString("0.00", font, Brushes.Black, new PointF(1, 16));
+
+                            size = g.MeasureString(projectUnit.MeterToFeet(trackBarMaxV.Value / 20f, 1).ToString("0.00"), font);
+                            
                             g.DrawString(projectUnit.MeterToFeet(trackBarMaxV.Value / 20f,1).ToString("0.00"), font, Brushes.Black, new PointF(InfoPanel.Width / 2f - size.Width / 2, 16));
+
+                            size = g.MeasureString(projectUnit.MeterToFeet(trackBarMaxV.Value / 10f, 1).ToString("0.00"), font);
                             g.DrawString(projectUnit.MeterToFeet(trackBarMaxV.Value / 10f,1).ToString("0.00"), font, Brushes.Black, new PointF(InfoPanel.Width - size.Width - 1, 16));
 
-                            labelMavV.Text = (projectUnit.MeterToFeet(trackBarMaxV.Value / 10f, 1)).ToString("0.00") + "(ft/s)";
+                            //labelMavV.Text = (projectUnit.MeterToFeet(trackBarMaxV.Value / 10f, 1)).ToString("0.00") + "(ft/s)";
+                            labelMavV.Text = "(ft/s)";
                         }
                         else
                         {
                             g.DrawString("0.00", font, Brushes.Black, new PointF(1, 16));
+                            size = g.MeasureString(projectUnit.MeterToFeet(trackBarMaxV.Value / 20f, 1).ToString("0.00"), font);
                             g.DrawString((trackBarMaxV.Value / 20f).ToString("0.00"), font, Brushes.Black, new PointF(InfoPanel.Width / 2f - size.Width / 2, 16));
+                            size = g.MeasureString(projectUnit.MeterToFeet(trackBarMaxV.Value / 10f, 1).ToString("0.00"), font);
                             g.DrawString((trackBarMaxV.Value / 10f).ToString("0.00"), font, Brushes.Black, new PointF(InfoPanel.Width - size.Width - 1, 16));
+
+                            labelMavV.Text = "(m/s)";
                         }
 
                     }
@@ -21303,7 +21308,7 @@ namespace ADCP
             tabControl4.Height = this.Height; //LPJ 2017-3-3
 
             labelMainPanelFigure.Location = new Point(MainWidth / 2 - labelMainPanelFigure.Width / 2, 2);
-            label3.Location = new Point(20,1);
+            label3.Location = new Point(45,1);
 
             panel17.Width = this.Width - panel34.Width;
             panel17.Height = this.Height;
@@ -21323,13 +21328,18 @@ namespace ADCP
             panel21.Location = new Point(0, 0);
 
             MainPanel.Height = (MainHeight - 35) / 2;
-            MainPanel.Width = MainWidth-10;
-            MainPanel.Location = new Point(10, 20);
+            //MainPanel.Width = MainWidth-10;
+            //MainPanel.Location = new Point(10, 20);
+            MainPanel.Width = MainWidth - 30;
+            MainPanel.Location = new Point(30, 20);
 
             panelGPSTrack.Height = (MainHeight - 35) / 2;
             panelGPSTrack.Width = MainWidth-10;
             panelGPSTrack.Location = new Point(10, 22 + (MainHeight - 35) / 2);
             panel16.Location = new Point(40, MainPanel.Height - panel16.Height - 5);
+
+            //panel16.Width = 160;
+
             // label8.Location = new Point(50, panelGPSTrack.Height - 30); //LPJ 2013-6-26
             label8.Visible = false; //LPJ 2013-6-26
 

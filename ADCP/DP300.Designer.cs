@@ -836,7 +836,6 @@
             resources.ApplyResources(this.linkLabelBeamCheck, "linkLabelBeamCheck");
             this.linkLabelBeamCheck.Name = "linkLabelBeamCheck";
             this.linkLabelBeamCheck.TabStop = true;
-            //this.linkLabelBeamCheck.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelBeamCheck_LinkClicked);
             // 
             // linkLabelDownload
             // 
@@ -2263,6 +2262,7 @@
             // 
             // panel16
             // 
+            resources.ApplyResources(this.panel16, "panel16");
             this.panel16.BackColor = System.Drawing.Color.White;
             this.panel16.Controls.Add(this.label93);
             this.panel16.Controls.Add(this.trackBarMaxV);
@@ -2270,7 +2270,6 @@
             this.panel16.Controls.Add(this.label13);
             this.panel16.Controls.Add(this.labelMavV);
             this.panel16.Controls.Add(this.label91);
-            resources.ApplyResources(this.panel16, "panel16");
             this.panel16.Name = "panel16";
             this.panel16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown_Clicked);
             this.panel16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMove_Clicked);

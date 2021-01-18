@@ -553,6 +553,7 @@
             this.pictureBoxMove.Name = "pictureBoxMove";
             this.helpProvider1.SetShowHelp(this.pictureBoxMove, ((bool)(resources.GetObject("pictureBoxMove.ShowHelp"))));
             this.pictureBoxMove.TabStop = false;
+            //this.pictureBoxMove.Click += new System.EventHandler(this.pictureBoxMove_Click);
             // 
             // pictureBoxStop
             // 

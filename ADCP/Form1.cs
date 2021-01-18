@@ -1917,7 +1917,5 @@ namespace ADCP
            
             #endregion
         }
-
-        
     }
 }
