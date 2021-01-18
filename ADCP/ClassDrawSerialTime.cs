@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace ADCP
 {
@@ -17,8 +18,8 @@ namespace ADCP
             g.FillRectangle(Brushes.White, rectangle);
             Rectangle rect = new Rectangle(rectangle.X, rectangle.Y+2, rectangle.Width-15, rectangle.Height - rectangle.Height / 6);
 
-            Pen pline = new Pen(Color.Black, 1);
-            g.DrawRectangle(pline, 55 + rect.X, 5 + rect.Y, rect.Width - 60, rect.Height - 20);
+            //Pen pline = new Pen(Color.Black, 1);
+            //g.DrawRectangle(pline, 55 + rect.X, 5 + rect.Y, rect.Width - 60, rect.Height - 20);
 
             //LPJ 2013-5-25 设置参数控制最大值和最小值
             double min, max, unit;
@@ -45,24 +46,32 @@ namespace ADCP
                 }
 
             }
+            if (max == min)
+            {
+                max++;
+                min--;
+            }
             unit = (max - min) / 5.0;
 
             //绘制横线
-            Pen pgray = new Pen(Color.WhiteSmoke, 0.1f);
+            Pen pgray = new Pen(Color.LightGray, 0.1f);
             Font font = new System.Drawing.Font("Arial Narrow", 10);//字体
 
-            for (int i = 1; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                // Point pnt = new Point(12 + rect.X, (int)((i + 1) / 6.0f * rect.Height - 18) + rect.Y);
                 Point pnt = new Point(17 + rect.X, (int)((rect.Height - 25.0f) * i / 5.0f - 5 + rect.Y));
                 
-                g.DrawLine(pgray, 55 + rect.X, (rect.Height - 25.0f) * i / 5.0f + 5 + rect.Y, rect.Width - 5 + rect.X, (rect.Height - 25.0f) * i / 5.0f + 5 + rect.Y);
+                g.DrawLine(pgray, 55 + rect.X
+                    , (rect.Height - 25.0f) * i / 5.0f + 5 + rect.Y
+                    , rect.Width - 5 + rect.X
+                    , (rect.Height - 25.0f) * i / 5.0f + 5 + rect.Y);
 
                 g.DrawString((min + unit * (5 - i)).ToString("0.00"), font, Brushes.DarkBlue, pnt); //LPJ 2013-5-25 从最小值到最大值范围内
             }
 
             //LPJ 2013-9-23 绘制纵线 
-            for (int i = 1; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if(i<5)
                 g.DrawLine(pgray, 55 + rect.X + (rect.Width - 60) * i / 5, rect.Height - 15 + rect.Y, 55 + rect.X + (rect.Width - 60) * i / 5, 5 + rect.Y);
@@ -71,6 +80,9 @@ namespace ADCP
                 Point pnt = new Point(50 + rect.X + (rect.Width - 60) * i / 5 - length * 5, rect.Height - 15 + rect.Y);
                 g.DrawString((fDistance / 5 * i).ToString("0.0"), font, Brushes.DarkBlue, pnt); 
             }
+
+            Pen pline = new Pen(Color.Black, 1);
+            g.DrawRectangle(pline, 55 + rect.X, 3 + rect.Y, rect.Width - 60, rect.Height - 21);
 
             //横纵坐标说明
             Font font1 = new System.Drawing.Font("Arial Narrow", 11); //LPJ 2013-6-13
@@ -95,8 +107,9 @@ namespace ADCP
                     {
                         yy = dData[i];
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        MessageBox.Show(ex.Message);
                     }
                     if (i == 0)
                     {
@@ -107,8 +120,11 @@ namespace ADCP
                     {
                         startY = (float)yy;
                         float xscale = (float)(rect.Width - 60) / (dData.Count);
-                        int yscale = rect.Height - 35;
-                        g.DrawLine(pblue, xscale * i + 55 + rect.X, ((float)max - lastY) / (float)(max - min) * yscale + 5 + rect.Y, xscale * (i + 1) + 55 + rect.X, ((float)max - startY) / (float)(max - min) * yscale + 5 + rect.Y);
+                        int yscale = rect.Height - 25;
+                        g.DrawLine(pblue, xscale * i + 55 + rect.X
+                            , ((float)max - lastY) / (float)(max - min) * yscale + 5 + rect.Y
+                            , xscale * (i + 1) + 55 + rect.X
+                            , ((float)max - startY) / (float)(max - min) * yscale + 5 + rect.Y);
 
                         lastY = startY;
                     }
@@ -116,13 +132,14 @@ namespace ADCP
                     {
                         startY = lastY;
                         float xscale = (float)(rect.Width - 60) / (dData.Count);
-                        int yscale = rect.Height - 35;
+                        int yscale = rect.Height - 25;
                         g.DrawLine(pblue, xscale * i + 55 + rect.X, ((float)max - lastY) / (float)(max - min) * yscale + 5 + rect.Y, xscale * (i + 1) + 55 + rect.X, ((float)max - startY) / (float)(max - min) * yscale + 5 + rect.Y);
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -136,24 +153,27 @@ namespace ADCP
 
             Rectangle rect = new Rectangle(rectangle.X, rectangle.Y, rectangle.Width-15, rectangle.Height - rectangle.Height / 6);
 
-            Pen pline = new Pen(Color.Black, 1);
-            g.DrawRectangle(pline, 55+rect.X, 5+rect.Y, rect.Width - 60, rect.Height - 20);
+            //Pen pline = new Pen(Color.Black, 1);
+            //g.DrawRectangle(pline, 55+rect.X, 5+rect.Y, rect.Width - 60, rect.Height - 20);
 
             //绘制格网
-            Pen pgray = new Pen(Color.WhiteSmoke, 0.1f);
+            Pen pgray = new Pen(Color.LightGray, 0.1f);
             Font font = new System.Drawing.Font("Arial Narrow", 10);//字体
-            for (int i = 1; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 //Point pnt = new Point(12 + rect.X, (int)((i + 1) / 5.0f * rect.Height - 18) + rect.Y);
                 Point pnt = new Point(27 + rect.X, (int)((rect.Height - 25.0f) * i / 4.0f - 5 + rect.Y));
                
-                g.DrawLine(pgray, 55 + rect.X, (rect.Height - 25.0f) * i / 4.0f + 5 + rect.Y, rect.Width - 5 + rect.X, (rect.Height - 25.0f) * i / 4.0f + 5 + rect.Y);
+                g.DrawLine(pgray, 55 + rect.X
+                    , (rect.Height - 25.0f) * i / 4.0f + 5 + rect.Y
+                    , rect.Width - 5 + rect.X
+                    , (rect.Height - 25.0f) * i / 4.0f + 5 + rect.Y);
                
                 g.DrawString((360 - i * 90).ToString(""), font, Brushes.DarkBlue, pnt);
             }
 
             //LPJ 2013-9-23 绘制纵线 
-            for (int i = 1; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (i < 5)
                 g.DrawLine(pgray, 55 + rect.X + (rect.Width - 60) * i / 5, rect.Height - 15 + rect.Y, 55 + rect.X + (rect.Width - 60) * i / 5, 5 + rect.Y);
@@ -171,6 +191,9 @@ namespace ADCP
             g.DrawString(strUnit, font1, Brushes.DarkBlue, pnt1, sf);
             g.DrawString(Resource1.String272 + strDis, font1, Brushes.DarkBlue, new Point(rect.Width / 2 - 10 + rect.X, rect.Y + rect.Height - 10));
 
+            Pen pline = new Pen(Color.Black, 1);
+            g.DrawRectangle(pline, 55 + rect.X, 3 + rect.Y, rect.Width - 60, rect.Height - 21);
+
             Pen pblue = new Pen(color, 1);
             float startY = 0.0f, lastY = 0.0f;
 
@@ -181,19 +204,25 @@ namespace ADCP
                     startY = (float)(dData[i]);
 
                     float xscale = (float)(rect.Width - 60) / (dData.Count );
-                    float yscale = (rect.Height - 35) / 360.0f;
+                    //float yscale = (rect.Height - 32) / 360.0f;
+                    float yscale = (rect.Height - 25) / 360.0f;
                     try
                     {
-                        g.DrawLine(pblue, xscale * i + 55 + rect.X, (360 - lastY) * yscale + 5 + rect.Y, xscale * (i + 1) + 55 + rect.X, (360 - startY) * yscale + 5 + rect.Y);
+                        g.DrawLine(pblue, xscale * i + 55 + rect.X
+                            , (360 - lastY) * yscale + 5 + rect.Y
+                            , xscale * (i + 1) + 55 + rect.X
+                            , (360 - startY) * yscale + 5 + rect.Y);
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        MessageBox.Show(ex.Message);
                     }
                     lastY = startY;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -205,13 +234,13 @@ namespace ADCP
             g.FillRectangle(Brushes.White, rectangle);
             Rectangle rect = new Rectangle(rectangle.X, rectangle.Y, rectangle.Width-15, rectangle.Height - rectangle.Height / 6);
 
-            Pen pline = new Pen(Color.Black, 1);
-            g.DrawRectangle(pline, 55 + rect.X, 5 + rect.Y, rect.Width - 60, rect.Height - 20);
+            //Pen pline = new Pen(Color.Black, 1);
+            //g.DrawRectangle(pline, 55 + rect.X, 5 + rect.Y, rect.Width - 60, rect.Height - 20);
 
             //LPJ 2013-5-25 设置参数控制最大值和最小值
             double min, max, unit;
             min = 0;
-            max = 1;
+            max = 0;
             if (dData.Count > 0)
             {
                 min = dData[0];
@@ -224,24 +253,33 @@ namespace ADCP
                         max = dData[i];
                 }
             }
+            if(max == min)
+            {
+                max++;
+                min--;
+            }
             unit = (max - min) / 5.0f;
 
             //绘制格网
-            Pen pgray = new Pen(Color.WhiteSmoke, 0.1f);
+            //Pen pgray = new Pen(Color.WhiteSmoke, 0.1f);
+            Pen pgray = new Pen(Color.LightGray, 0.1f);
             Font font = new System.Drawing.Font("Arial Narrow", 10);//字体
 
-            for (int i = 1; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 //Point pnt = new Point(12 + rect.X, (int)((i + 1) / 6.0f * rect.Height - 18) + rect.Y);
                 Point pnt = new Point(17 + rect.X, (int)((rect.Height - 25.0f) * i / 5.0f - 5 + rect.Y));
                
-                g.DrawLine(pgray, 55 + rect.X, (rect.Height - 25.0f) * i / 5.0f +5+ rect.Y, rect.Width - 5 + rect.X, (rect.Height - 25.0f) * i / 5.0f +5+ rect.Y);
+                g.DrawLine(pgray, 55 + rect.X
+                    , (rect.Height - 25.0f) * i / 5.0f + 5 + rect.Y
+                    , rect.Width - 5 + rect.X
+                    , (rect.Height - 25.0f) * i / 5.0f + 5 + rect.Y);
                
                 g.DrawString((min + unit * (5 - i)).ToString("0.00"), font, Brushes.DarkBlue, pnt); //LPJ 2013-5-25 从最小值到最大值范围内              
             }
 
             //LPJ 2013-9-23 绘制纵线 
-            for (int i = 1; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (i < 5)
                 g.DrawLine(pgray, 55 + rect.X + (rect.Width - 60) * i / 5, rect.Height - 15 + rect.Y, 55 + rect.X + (rect.Width - 60) * i / 5, 5 + rect.Y);
@@ -250,6 +288,9 @@ namespace ADCP
                 Point pnt = new Point(50 + rect.X + (rect.Width - 60) * i / 5 - length * 5, rect.Height - 15 + rect.Y);
                 g.DrawString((fDistance / 5 * i).ToString("0.0"), font, Brushes.DarkBlue, pnt);
             }
+
+            Pen pline = new Pen(Color.Black, 1);
+            g.DrawRectangle(pline, 55 + rect.X, 3 + rect.Y, rect.Width - 60, rect.Height - 21);
 
             Font font1 = new System.Drawing.Font("Arial Narrow", 11); //LPJ 2013-6-13
             //Point pnt1 = new Point(0 + rect.X, rect.Height / 3 - strUnit.Length * 2 + rect.Y); //LPJ 2013-6-13
@@ -276,14 +317,22 @@ namespace ADCP
                     startY = dData[i];
 
                     float xscale = (float)(rect.Width - 60) / (dData.Count );
-                    float yscale = rect.Height - 35;
+                    float yscale = rect.Height - 25;
 
-                    g.DrawLine(pblue, xscale * i + 55 + rect.X, (float)((max - lastY) / (max - min) * yscale) + 5 + rect.Y, xscale * (i + 1) + 55 + rect.X, (float)((max - startY) / (max - min) * yscale) + 5 + rect.Y);
+                    /*g.DrawLine(pblue, xscale * i + 55 + rect.X
+                        , (float)((max - lastY) / (max - min) * yscale) + 5 + rect.Y
+                        , xscale * (i + 1) + 55 + rect.X
+                        , (float)((max - startY) / (max - min) * yscale) + 5 + rect.Y);*/
+                    g.DrawLine(pblue, xscale * i + 55 + rect.X
+                        , (float)((max - lastY) / (max - min) * yscale) + 5 + rect.Y
+                        , xscale * (i + 1) + 55 + rect.X
+                        , (float)((max - startY) / (max - min) * yscale) + 5 + rect.Y);
                     lastY = startY;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -295,13 +344,13 @@ namespace ADCP
             g.FillRectangle(Brushes.White, rectangle);
             Rectangle rect = new Rectangle(rectangle.X, rectangle.Y, rectangle.Width-15, rectangle.Height - rectangle.Height / 6);
 
-            Pen pline = new Pen(Color.Black, 1);
-            g.DrawRectangle(pline, 55 + rect.X, 5 + rect.Y, rect.Width - 60, rect.Height - 20);
+            //Pen pline = new Pen(Color.Black, 1);
+            //g.DrawRectangle(pline, 55 + rect.X, 5 + rect.Y, rect.Width - 60, rect.Height - 20);
 
             //LPJ 2013-5-25 设置参数控制最大值和最小值
             double min, max, unit;
             min = 0;
-            max = 1;
+            max = 0;
             if (dData.Count > 0)
             {
                 min = dData[0];
@@ -317,23 +366,31 @@ namespace ADCP
                     }
                 }
             }
+            if (max == min)
+            {
+                max++;
+                min--;
+            }
             unit = (max - min) / 5.0;
 
             //绘制格网
-            Pen pgray = new Pen(Color.WhiteSmoke, 0.1f);
+            Pen pgray = new Pen(Color.LightGray, 0.1f);
             Font font = new System.Drawing.Font("Arial Narrow", 10);//字体
-            for (int i = 1; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 //Point pnt = new Point(12 + rect.X, (int)(i / 5.0f * rect.Height - 10) + rect.Y);
                 Point pnt = new Point(17 + rect.X, (int)((rect.Height - 25.0f) * i / 5.0f - 5 + rect.Y));
                 
-                g.DrawLine(pgray, 55 + rect.X, (rect.Height - 25.0f) * i / 5.0f +5+ rect.Y, rect.Width - 5 + rect.X, (rect.Height - 25.0f) * i / 5.0f +5+ rect.Y);
+                g.DrawLine(pgray, 55 + rect.X
+                    , (rect.Height - 25.0f) * i / 5.0f +5+ rect.Y
+                    , rect.Width - 5 + rect.X
+                    , (rect.Height - 25.0f) * i / 5.0f +5+ rect.Y);
                 //g.DrawString((10-i*2).ToString("0.0"), font, Brushes.DarkBlue, pnt);
                 g.DrawString((min + unit * (5 - i)).ToString("0.0"), font, Brushes.DarkBlue, pnt); //LPJ 2013-5-25 从最小值到最大值范围内
             }
 
             //LPJ 2013-9-23 绘制纵线 
-            for (int i = 1; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (i < 5)
                 g.DrawLine(pgray, 55 + rect.X + (rect.Width - 60) * i / 5, rect.Height - 15 + rect.Y, 55 + rect.X + (rect.Width - 60) * i / 5, 5 + rect.Y);
@@ -342,6 +399,9 @@ namespace ADCP
                 Point pnt = new Point(50 + rect.X + (rect.Width - 60) * i / 5 - length * 5, rect.Height - 15 + rect.Y);
                 g.DrawString((fDistance / 5 * i).ToString("0.0"), font, Brushes.DarkBlue, pnt);
             }
+
+            Pen pline = new Pen(Color.Black, 1);
+            g.DrawRectangle(pline, 55 + rect.X, 3 + rect.Y, rect.Width - 60, rect.Height - 21);
 
             Font font1 = new System.Drawing.Font("Arial Narrow", 11); //LPJ 2013-6-13
             //Point pnt1 = new Point(0 + rect.X, rect.Height / 3 - strUnit.Length * 2 + rect.Y); //LPJ 2013-6-13
@@ -362,19 +422,24 @@ namespace ADCP
                     if (i == 0)
                         lastY = startY;
                     float xscale = (float)(rect.Width - 60) / (dData.Count );
-                    float yscale = rect.Height - 35;
+                    float yscale = rect.Height - 25;
                     try
                     {
-                        g.DrawLine(pblue, xscale * i + 55 + rect.X, ((float)max - lastY) / (float)(max - min) * yscale + 5 + rect.Y, xscale * (i + 1) + 55 + rect.X, ((float)max - startY) / (float)(max - min) * yscale + 5 + rect.Y);
+                        g.DrawLine(pblue, xscale * i + 55 + rect.X
+                            , ((float)max - lastY) / (float)(max - min) * yscale + 5 + rect.Y
+                            , xscale * (i + 1) + 55 + rect.X
+                            , ((float)max - startY) / (float)(max - min) * yscale + 5 + rect.Y);
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        MessageBox.Show(ex.Message);
                     }
                     lastY = startY;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
             }
         }
     }
