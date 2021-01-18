@@ -10305,7 +10305,7 @@ namespace ADCP
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
 
                 //helpme
-                if (BinDataEnsembleNum > 0)
+                if (RTIdata.Count > (BinDataEnsembleNum - 1))
                 {
                     param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                     param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
@@ -12597,7 +12597,8 @@ namespace ADCP
                     try
                     {
                         //WriteToDataPage(RTIdata[BinDataEnsembleNum - 1]); //LPJ 2013-7-3
-                        this.BeginInvoke(WriteToDataPageEvent, RTIdata[BinDataEnsembleNum - 1]); //LPJ 2014-3-11
+                        if(RTIdata.Count > (BinDataEnsembleNum - 1))
+                            this.BeginInvoke(WriteToDataPageEvent, RTIdata[BinDataEnsembleNum - 1]); //LPJ 2014-3-11
                     }
                     catch
                     {
@@ -15924,10 +15925,10 @@ namespace ADCP
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
 
                 //helpme
-                if (BinDataEnsembleNum > 1)
+                if (RTIdata.Count > (BinDataEnsembleNum - 1))
                 {
-                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 2].WP_Lag;
-                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 2].A_CellSize + RTIdata[BinDataEnsembleNum - 2].WP_Lag;
+                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
+                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                 }
                 else
                 {
