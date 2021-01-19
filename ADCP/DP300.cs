@@ -10318,13 +10318,14 @@ namespace ADCP
                     param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                 }
                 param.RiverDischargeOrgData = dischargeMsg.right.ToArray();
-                yx = 2;
+                yx = 20;
                 dischargeMsg.rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
-
+                yx = 21;
                 dRightShorePings = dischargeMsg.right.Count(); //LPJ 2016-12-19 右岸呯数
-
+                yx = 22;
                 //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
                 dShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
+                
                 yx = 3;
                 if (dCourseMG >= 0 && dCourseMG <= 180)
                 {
