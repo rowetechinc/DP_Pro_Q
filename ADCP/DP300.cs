@@ -2541,6 +2541,7 @@ namespace ADCP
             m.AncillaryAvailable = false;
             m.BottomTrackAvailable = false;
             m.NmeaAvailable = false;
+            m.TransectStateAvailable = false;
 
             int i = 0;
             PacketPointer = HDRLEN;
@@ -2554,6 +2555,25 @@ namespace ADCP
                 m.Name[i] = ByteArrayToString(packet, 8);
 
                 ArrayCount = m.Bins[i] * m.Beams[i];
+                switch (m.Type[i])
+                {
+                    default:
+                        break;
+                    case 50:
+                        break;
+                    case 0:
+                        ArrayCount *= 8;
+                        break;
+                    case 10:
+                    case 20:
+                        ArrayCount *= 4;
+                        break;
+                    case 30:
+                    case 40:
+                        ArrayCount *= 2;
+                        break;
+                }
+
                 SizeCount = PacketPointer;
 
                 if (VelocityID.Equals(m.Name[i], StringComparison.Ordinal))
@@ -2746,6 +2766,38 @@ namespace ADCP
                                                                 m.NMEA_Buffer[end] = 0;
                                                             }
                                                         }
+                                                        /*  private string RiverBTID = "R000001\0";
+                                                            private string RiverTimeStampID = "R000002\0";
+                                                            private string RiverNMEAID = "R000003\0";
+                                                            private string RiverBThump = "R000004\0";
+                                                            private string RiverStationID = "R000005\0";
+                                                            private string RiverTransectID = "R000006\0";*/
+                                                        else
+                                                        {
+                                                            if (RiverTransectID.Equals(m.Name[i], StringComparison.Ordinal))
+                                                            {
+                                                                m.TransectStateAvailable = true;
+                                                                m.TransectState = ByteArrayToFloat(packet);
+                                                                m.TransectNumber = ByteArrayToFloat(packet);
+                                                                m.TransectStatus = ByteArrayToFloat(packet);
+                                                                m.BottomStatus = ByteArrayToFloat(packet);
+                                                                m.ProfileStatus = ByteArrayToFloat(packet);
+                                                                m.MovingEnsembles = ByteArrayToFloat(packet);
+                                                                m.MovingBTEnsembles = ByteArrayToFloat(packet);
+                                                                m.MovingWPEnsembles = ByteArrayToFloat(packet);
+                                                                m.CurrentEdge = ByteArrayToFloat(packet);
+
+                                                                m.EdgeType[0] = ByteArrayToFloat(packet);
+                                                                m.EdgeDistance[0] = ByteArrayToFloat(packet);
+                                                                m.EdgeEnsembles[0] = ByteArrayToFloat(packet);
+                                                                m.EdgeStatus[0] = ByteArrayToFloat(packet);
+
+                                                                m.EdgeType[1] = ByteArrayToFloat(packet);
+                                                                m.EdgeDistance[1] = ByteArrayToFloat(packet);
+                                                                m.EdgeEnsembles[1] = ByteArrayToFloat(packet);
+                                                                m.EdgeStatus[1] = ByteArrayToFloat(packet);
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
@@ -2757,6 +2809,7 @@ namespace ADCP
                     }
                 }
 
+                /*
                 SizeCount = (PacketPointer - SizeCount) / 4;
                 if (SizeCount != ArrayCount)
                 {
@@ -2765,11 +2818,23 @@ namespace ADCP
 
                 if (PacketPointer + 4 >= PacketSize)
                     break;
+                */
+                SizeCount = PacketPointer - SizeCount;
+
+                if (SizeCount != ArrayCount)
+                {
+                    PacketPointer += (ArrayCount - SizeCount);
+                    if (PacketPointer < 0)
+                        PacketPointer = 2 * PacketSize;
+                }
+
+                if (PacketPointer + 4 >= PacketSize)
+                    break;//no more data
             }
             m.nArray = i + 1;
-            if (i >= 11)
+            if (i >= 20)
             {
-                m.nArray = 11;
+                m.nArray = 20;
             }
             if (m.E_Cells < 1)
                 m.E_Cells = 1;
@@ -11139,7 +11204,7 @@ namespace ADCP
             initialGPSData();
           
             PacketPointer = 0;
-            MaxArray = 11;
+            //MaxArray = 11;
             ClearEnsemblesInfoToStore();
             ClearEnsemblesGPSInfo();     //LPJ 2012-6-29 增加清除GPS数据
             ClearSaveEnsemblesInfo();     //LPJ 2012-5-4
@@ -11921,7 +11986,7 @@ namespace ADCP
             MouseWheelScale = 1;
             sp.DiscardInBuffer();
             PacketPointer = 0;
-            MaxArray = 11;
+            //MaxArray = 11;
             BytesArray.Clear();
             payloadLen = 0;
             HasCheckedPayload = false;
@@ -15547,7 +15612,7 @@ namespace ADCP
         //private int BinDataEnsembleNum = 0;
         private int fileNum = 0;
         private static int HDRLEN = 0;
-        private static int MaxArray = 11;
+        private static int MaxArray = 20;//11 + 6;
         private int PacketPointer = 0;
         public int Version_1 = 1;
         public int Version_2 = 2;
@@ -15619,6 +15684,14 @@ namespace ADCP
         private string AncillaryID = "E000009\0";
         private string BottomTrackID = "E000010\0";
         private string NMEAID = "E000011\0";
+
+        private string RiverBTID = "R000001\0";
+        private string RiverTimeStampID = "R000002\0";
+        private string RiverNMEAID = "R000003\0";
+        private string RiverBThump = "R000004\0";
+        private string RiverStationID = "R000005\0";
+        private string RiverTransectID = "R000006\0";
+
         private string GPS_receiveData = string.Empty;
         //string GPS_dataToEnsemble = string.Empty;
         string gpsTime = "000000";

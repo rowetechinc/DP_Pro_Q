@@ -224,6 +224,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelFlowPix = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panelGPSTrack = new ADCP.DVL_Windows.NoPaintBackGroundPanel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -2096,6 +2097,7 @@
             // panel21
             // 
             this.panel21.BackColor = System.Drawing.Color.Transparent;
+            this.panel21.Controls.Add(this.label28);
             this.panel21.Controls.Add(this.label3);
             this.panel21.Controls.Add(this.panelGPSTrack);
             this.panel21.Controls.Add(this.label188);
@@ -2115,6 +2117,11 @@
             this.panel21.Controls.Add(this.label11);
             resources.ApplyResources(this.panel21, "panel21");
             this.panel21.Name = "panel21";
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
             // 
             // label3
             // 
@@ -5598,6 +5605,7 @@
         private System.Windows.Forms.Button buttonBS_End;
         private System.Windows.Forms.Button buttonPlaybackStepBack;
         private System.Windows.Forms.Button buttonPlaybackStep;
+        private System.Windows.Forms.Label label28;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }
