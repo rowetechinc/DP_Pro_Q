@@ -7166,7 +7166,7 @@ namespace ADCP
 
             long nBytesRead;
             //long nBytes;
-            string exceptionmessage;
+            //string exceptionmessage;
 
             //DecodeState = 0;
             //DataBuffReadIndex = 0;
@@ -9477,10 +9477,12 @@ namespace ADCP
                                         param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;
 
                                         //helpme
-                                        param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[i].WP_Lag;
-                                        param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[i].A_CellSize + RTIdata[i].WP_Lag;
-
-                                        param.RiverDischargeOrgData = RTIdata[i];
+                                        if (RTIdata.Count > i)
+                                        {
+                                            param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[i].WP_Lag;
+                                            param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[i].A_CellSize + RTIdata[i].WP_Lag;
+                                            param.RiverDischargeOrgData = RTIdata[i];
+                                        }
 
                                         float ve, vn; //LPJ 2013-7-31
                                         ve = RTIdata[i].B_Earth[0]; //LPJ 2013-7-31
@@ -9654,7 +9656,7 @@ namespace ADCP
                     param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
 
                     //helpme
-                    if (BinDataEnsembleNum > 0)
+                    if (RTIdata.Count > BinDataEnsembleNum)
                     {
                         param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                         param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
@@ -10375,7 +10377,7 @@ namespace ADCP
             catch //(System.Exception ex)
             {
                 yx = yx;
-                MessageBox.Show("A");
+                MessageBox.Show("A9");
                 //MessageBox.Show(ex.Message);
             }
 
@@ -11698,7 +11700,7 @@ namespace ADCP
                 }
                 catch //(System.Exception eee)
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A1");
                 }
             }
         }
@@ -14194,7 +14196,7 @@ namespace ADCP
             }
             catch//(Exception ex)
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A2");
                 //MessageBox.Show(ex.Message);
             }
         }
@@ -15863,7 +15865,7 @@ namespace ADCP
             }
             catch(Exception e)
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A3");
                 // If exception leave as 0.0
                 dStartDist = 0.0;
             }
@@ -16016,7 +16018,7 @@ namespace ADCP
             }
             catch (Exception e)
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A4");
                 // If exception leave as 0.0
                 dEndDist = 0.0;
             }
@@ -17659,7 +17661,7 @@ namespace ADCP
                 }
                 catch//(Exception ex)
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A5");
                     //MessageBox.Show(ex.Message);
                     return false;
                 }
@@ -18866,7 +18868,7 @@ namespace ADCP
                 }
                 catch //(Exception ex) //LPJ 2013-6-11
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A6");
                     //MessageBox.Show(ex.Message + " in panelGPSTrack_Paint");
                 }
 
@@ -21913,7 +21915,7 @@ namespace ADCP
                     }
                     catch//(Exception ex)
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A7");
                         //MessageBox.Show(ex.Message);
                     }
                 }
@@ -22849,7 +22851,7 @@ namespace ADCP
             }
             catch (Exception ex)
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A8");
                 System.Diagnostics.Debug.WriteLine(ex);
             }
         }

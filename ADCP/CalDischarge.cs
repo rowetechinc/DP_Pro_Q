@@ -213,9 +213,11 @@ namespace ADCP
                                     param.RiverDischargeOrgData = RTIData[i];
 
                                     //helpme
-                                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIData[i].WP_Lag;
-                                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIData[i].A_CellSize + RTIData[i].WP_Lag;
-
+                                    if (RTIData.Count > i)
+                                    {
+                                        param.RiverDischargeInstrument.RiverDischargePulseLag = RTIData[i].WP_Lag;
+                                        param.RiverDischargeInstrument.RiverDischargePulseLength = RTIData[i].A_CellSize + RTIData[i].WP_Lag;
+                                    }
                                     float ve, vn; //LPJ 2013-7-31
                                     ve = RTIData[i].B_Earth[0]; //LPJ 2013-7-31
                                     vn = RTIData[i].B_Earth[1]; //LPJ 2013-7-31
@@ -360,9 +362,11 @@ namespace ADCP
                 param.RiverDischargeInstrument.RiverDischargeBeamAngle = 20;        //ADCP参数
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;  //判断GOODBIn条件
                 //helpme
-                param.RiverDischargeInstrument.RiverDischargePulseLag = RTIData[BinDataEnsembleNum - 1].WP_Lag;
-                param.RiverDischargeInstrument.RiverDischargePulseLength = RTIData[BinDataEnsembleNum - 1].A_CellSize + RTIData[BinDataEnsembleNum - 1].WP_Lag;
-
+                if (RTIData.Count > BinDataEnsembleNum)
+                {
+                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIData[BinDataEnsembleNum - 1].WP_Lag;
+                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIData[BinDataEnsembleNum - 1].A_CellSize + RTIData[BinDataEnsembleNum - 1].WP_Lag;
+                }
                 param.RiverDischargeOrgData = left.ToArray();
                 leftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
                 //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
@@ -429,9 +433,11 @@ namespace ADCP
                 param.RiverDischargeConditions.RiverDischargeMinNG4 = 1;
 
                 //helpme
-                param.RiverDischargeInstrument.RiverDischargePulseLag = RTIData[BinDataEnsembleNum - 1].WP_Lag;
-                param.RiverDischargeInstrument.RiverDischargePulseLength = RTIData[BinDataEnsembleNum - 1].A_CellSize + RTIData[BinDataEnsembleNum - 1].WP_Lag;
-
+                if (RTIData.Count > BinDataEnsembleNum)
+                {
+                    param.RiverDischargeInstrument.RiverDischargePulseLag = RTIData[BinDataEnsembleNum - 1].WP_Lag;
+                    param.RiverDischargeInstrument.RiverDischargePulseLength = RTIData[BinDataEnsembleNum - 1].A_CellSize + RTIData[BinDataEnsembleNum - 1].WP_Lag;
+                }
                 param.RiverDischargeOrgData = right.ToArray();
                 rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
 
