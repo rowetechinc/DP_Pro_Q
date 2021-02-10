@@ -68,6 +68,9 @@
             this.textBoxMaxDepth = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox41 = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.textMagVar = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxBTSNR = new System.Windows.Forms.TextBox();
@@ -176,9 +179,6 @@
             this.checkBoxEnable1 = new System.Windows.Forms.CheckBox();
             this.checkBoxEnable0 = new System.Windows.Forms.CheckBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.textMagVar = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
             this.groupBox44.SuspendLayout();
             this.groupBox41.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -500,6 +500,22 @@
             resources.ApplyResources(this.groupBox41, "groupBox41");
             this.groupBox41.Name = "groupBox41";
             this.groupBox41.TabStop = false;
+            // 
+            // label28
+            // 
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            // 
+            // textMagVar
+            // 
+            resources.ApplyResources(this.textMagVar, "textMagVar");
+            this.textMagVar.Name = "textMagVar";
+            this.textMagVar.TextChanged += new System.EventHandler(this.textMagVar_TextChanged);
+            // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
             // 
             // label14
             // 
@@ -1230,22 +1246,6 @@
             resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.TabStop = false;
-            // 
-            // label27
-            // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
-            // 
-            // textMagVar
-            // 
-            resources.ApplyResources(this.textMagVar, "textMagVar");
-            this.textMagVar.Name = "textMagVar";
-            this.textMagVar.TextChanged += new System.EventHandler(this.textMagVar_TextChanged);
-            // 
-            // label28
-            // 
-            resources.ApplyResources(this.label28, "label28");
-            this.label28.Name = "label28";
             // 
             // FrmSystemSetting
             // 

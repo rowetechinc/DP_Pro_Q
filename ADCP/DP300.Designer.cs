@@ -224,7 +224,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelFlowPix = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.label28 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panelGPSTrack = new ADCP.DVL_Windows.NoPaintBackGroundPanel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -611,6 +610,15 @@
             this.radioButtonBSdata = new System.Windows.Forms.RadioButton();
             this.radioButtonBSsystem = new System.Windows.Forms.RadioButton();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.textBoxCC = new System.Windows.Forms.TextBox();
+            this.textBoxMB = new System.Windows.Forms.TextBox();
+            this.textBoxBT = new System.Windows.Forms.TextBox();
+            this.textBoxST = new System.Windows.Forms.TextBox();
+            this.textBoxWT = new System.Windows.Forms.TextBox();
+            this.textBoxLE = new System.Windows.Forms.TextBox();
+            this.textBoxRE = new System.Windows.Forms.TextBox();
+            this.tabPageSystemTest = new System.Windows.Forms.TabPage();
+            this.textBoxSystemTest = new System.Windows.Forms.TextBox();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -722,6 +730,7 @@
             this.panel36.SuspendLayout();
             this.tabPageBackScatter.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.tabPageSystemTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl4
@@ -731,9 +740,10 @@
             this.tabControl4.Controls.Add(this.tabPageTrack);
             this.tabControl4.Controls.Add(this.tabPageData);
             this.tabControl4.Controls.Add(this.tabPageSerialTime);
-            this.tabControl4.Controls.Add(this.tabPageCommandSet);
             this.tabControl4.Controls.Add(this.tabPageContour);
             this.tabControl4.Controls.Add(this.tabPageBackScatter);
+            this.tabControl4.Controls.Add(this.tabPageCommandSet);
+            this.tabControl4.Controls.Add(this.tabPageSystemTest);
             resources.ApplyResources(this.tabControl4, "tabControl4");
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
@@ -2097,7 +2107,13 @@
             // panel21
             // 
             this.panel21.BackColor = System.Drawing.Color.Transparent;
-            this.panel21.Controls.Add(this.label28);
+            this.panel21.Controls.Add(this.textBoxRE);
+            this.panel21.Controls.Add(this.textBoxLE);
+            this.panel21.Controls.Add(this.textBoxWT);
+            this.panel21.Controls.Add(this.textBoxST);
+            this.panel21.Controls.Add(this.textBoxBT);
+            this.panel21.Controls.Add(this.textBoxMB);
+            this.panel21.Controls.Add(this.textBoxCC);
             this.panel21.Controls.Add(this.label3);
             this.panel21.Controls.Add(this.panelGPSTrack);
             this.panel21.Controls.Add(this.label188);
@@ -2117,11 +2133,6 @@
             this.panel21.Controls.Add(this.label11);
             resources.ApplyResources(this.panel21, "panel21");
             this.panel21.Name = "panel21";
-            // 
-            // label28
-            // 
-            resources.ApplyResources(this.label28, "label28");
-            this.label28.Name = "label28";
             // 
             // label3
             // 
@@ -4797,6 +4808,53 @@
             this.radioButtonBSsystem.UseVisualStyleBackColor = true;
             this.radioButtonBSsystem.CheckedChanged += new System.EventHandler(this.radioButtonBSsystem_CheckedChanged);
             // 
+            // textBoxCC
+            // 
+            resources.ApplyResources(this.textBoxCC, "textBoxCC");
+            this.textBoxCC.Name = "textBoxCC";
+            // 
+            // textBoxMB
+            // 
+            resources.ApplyResources(this.textBoxMB, "textBoxMB");
+            this.textBoxMB.Name = "textBoxMB";
+            // 
+            // textBoxBT
+            // 
+            resources.ApplyResources(this.textBoxBT, "textBoxBT");
+            this.textBoxBT.Name = "textBoxBT";
+            // 
+            // textBoxST
+            // 
+            resources.ApplyResources(this.textBoxST, "textBoxST");
+            this.textBoxST.Name = "textBoxST";
+            // 
+            // textBoxWT
+            // 
+            resources.ApplyResources(this.textBoxWT, "textBoxWT");
+            this.textBoxWT.Name = "textBoxWT";
+            // 
+            // textBoxLE
+            // 
+            resources.ApplyResources(this.textBoxLE, "textBoxLE");
+            this.textBoxLE.Name = "textBoxLE";
+            // 
+            // textBoxRE
+            // 
+            resources.ApplyResources(this.textBoxRE, "textBoxRE");
+            this.textBoxRE.Name = "textBoxRE";
+            // 
+            // tabPageSystemTest
+            // 
+            this.tabPageSystemTest.Controls.Add(this.textBoxSystemTest);
+            resources.ApplyResources(this.tabPageSystemTest, "tabPageSystemTest");
+            this.tabPageSystemTest.Name = "tabPageSystemTest";
+            this.tabPageSystemTest.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSystemTest
+            // 
+            resources.ApplyResources(this.textBoxSystemTest, "textBoxSystemTest");
+            this.textBoxSystemTest.Name = "textBoxSystemTest";
+            // 
             // DP300_Windows
             // 
             resources.ApplyResources(this, "$this");
@@ -4981,6 +5039,8 @@
             this.tabPageBackScatter.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.tabPageSystemTest.ResumeLayout(false);
+            this.tabPageSystemTest.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -5605,7 +5665,15 @@
         private System.Windows.Forms.Button buttonBS_End;
         private System.Windows.Forms.Button buttonPlaybackStepBack;
         private System.Windows.Forms.Button buttonPlaybackStep;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox textBoxCC;
+        private System.Windows.Forms.TextBox textBoxMB;
+        private System.Windows.Forms.TextBox textBoxBT;
+        private System.Windows.Forms.TextBox textBoxRE;
+        private System.Windows.Forms.TextBox textBoxLE;
+        private System.Windows.Forms.TextBox textBoxWT;
+        private System.Windows.Forms.TextBox textBoxST;
+        private System.Windows.Forms.TabPage tabPageSystemTest;
+        private System.Windows.Forms.TextBox textBoxSystemTest;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }

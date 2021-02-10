@@ -3257,8 +3257,84 @@ namespace ADCP
                         {
                             DecodeEnsemble(BytesPacket, Arr, payloadLen);
 
+                            switch(Arr.BottomStatus)
+                            {
+                                default:
+                                case 0:
+                                    textBoxBT.BackColor = Color.Green;
+                                    break;
+                                case 1:
+                                    textBoxBT.BackColor = Color.Yellow;
+                                    break;
+                                case 99:
+                                    textBoxBT.BackColor = Color.Red;
+                                    break;
+                            }
+                            switch (Arr.ProfileStatus)
+                            {
+                                default:
+                                case 0:
+                                    textBoxWT.BackColor = Color.Green;
+                                    break;
+                                case 99:
+                                    textBoxWT.BackColor = Color.Red;
+                                    break;
+                            }
+                            if (Arr.EdgeEnsembles[0] > 0)
+                            {
+                                switch (Arr.EdgeStatus[0])
+                                {
+                                    case 0:
+                                        textBoxLE.BackColor = Color.Green;
+                                        break;
+                                    default:
+                                    case 99:
+                                        textBoxLE.BackColor = Color.Red;
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                textBoxLE.BackColor = Color.Yellow;
+                            }
+                            if (Arr.EdgeEnsembles[1] > 0)
+                            {
+                                switch (Arr.EdgeStatus[1])
+                                {   
+                                    case 0:
+                                        textBoxRE.BackColor = Color.Green;
+                                        break;
+                                    default:
+                                    case 99:
+                                        textBoxRE.BackColor = Color.Red;
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                textBoxRE.BackColor = Color.Yellow;
+                            }
+
                             //if (bBeamCheck)
                             //    ArrRaw.Add(Arr);//LPJ 2014-6-20 设置一个变量，用于存储解析的ArrayClass数据
+
+                            /*
+                                #define TRANSECT_BT_GOOD 0
+                                #define TRANSECT_BT3_BEAM 1
+                                #define TRANSECT_BT_BAD 99
+                             public float TransectState;
+                              public float TransectNumber;
+                              public float TransectStatus;
+                              public float BottomStatus;
+                              public float ProfileStatus;
+                              public float MovingEnsembles;
+                              public float MovingBTEnsembles;
+                              public float MovingWPEnsembles;
+                              public float CurrentEdge;
+                              public float[] EdgeType = new float[2];
+                              public float[] EdgeDistance = new float[2];
+                              public float[] EdgeEnsembles = new float[2];
+                              public float[] EdgeStatus = new float[2];*/
 
                         }
                         catch
@@ -11886,6 +11962,14 @@ namespace ADCP
             //ClearEnsemblesInfoToStore();
 
             
+            textBoxCC.BackColor = Color.LightGray;
+            textBoxMB.BackColor = Color.LightGray;
+            textBoxST.BackColor = Color.LightGray;
+            textBoxBT.BackColor = Color.LightGray;
+            textBoxWT.BackColor = Color.LightGray;
+            textBoxLE.BackColor = Color.LightGray;
+            textBoxRE.BackColor = Color.LightGray;
+
 
             linkLabelEdgeSetting.Enabled = false; //LPJ 2013-6-24
             linkLabelSiteInfor.Enabled = false;
@@ -21384,14 +21468,12 @@ namespace ADCP
             tabControl4.Height = this.Height; //LPJ 2017-3-3
 
             labelMainPanelFigure.Location = new Point(MainWidth / 2 - labelMainPanelFigure.Width / 2, 2);
-            label3.Location = new Point(45,1);
-
+            
             panel17.Width = this.Width - panel34.Width;
             panel17.Height = this.Height;
 
             panel23.Width = this.Width - panel34.Width;
             panel23.Height = this.Height;
-
 
             panel20.Height = this.Height - 20;
             tabControlFuTu.Height = this.Height - 20;
@@ -21406,8 +21488,10 @@ namespace ADCP
             MainPanel.Height = (MainHeight - 35) / 2;
             //MainPanel.Width = MainWidth-10;
             //MainPanel.Location = new Point(10, 20);
-            MainPanel.Width = MainWidth - 30;
-            MainPanel.Location = new Point(30, 20);
+            int MPL = 50;
+            MainPanel.Width = MainWidth - MPL;
+            MainPanel.Location = new Point(MPL, 20);
+            label3.Location = new Point(MainPanel.Location.X + 15, 1);
 
             panelGPSTrack.Height = (MainHeight - 35) / 2;
             panelGPSTrack.Width = MainWidth-10;
@@ -21622,6 +21706,7 @@ namespace ADCP
         {
             try
             {
+                textBoxST.BackColor = Color.Yellow;
                 //系统测试
                 //FrmSystemTest frmsystemtest = new FrmSystemTest();
                 //if (frmsystemtest.ShowDialog() == DialogResult.OK)
@@ -21755,6 +21840,15 @@ namespace ADCP
                             }
                         }
 
+                        if(strResult.Contains("FAIL"))
+                        {
+                            textBoxST.BackColor = Color.Red;
+                        }
+                        else
+                        {
+                            textBoxST.BackColor = Color.Green;
+                        }
+
                         _qrevProject.AddSystemTestResults(strResult);
 
                     }
@@ -21764,7 +21858,8 @@ namespace ADCP
                     frmBar.Close();
 
                     //show result
-                    MessageBox.Show(strResult, Resource1.String295);
+                    //MessageBox.Show(strResult, Resource1.String295);
+                    textBoxSystemTest.Text = strResult;
 
                     #region save to file
                     DateTime date = DateTime.Now;
@@ -21779,7 +21874,7 @@ namespace ADCP
                         File.AppendAllText(System.IO.Path.Combine(Directory.GetCurrentDirectory(), "dp300Data") + "\\SystemTest.txt", strFile);
                     }
                     catch
-                    {
+                    {   
                         MessageBox.Show("A");
                         File.AppendAllText(Directory.GetCurrentDirectory() + "\\SystemTest.txt", strFile);
                     }
@@ -21789,6 +21884,7 @@ namespace ADCP
             }
             catch
             {
+                textBoxST.BackColor = Color.Red;
                 MessageBox.Show("A");
             }
         }

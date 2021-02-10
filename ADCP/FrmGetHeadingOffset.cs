@@ -46,7 +46,7 @@ namespace ADCP
                 //发送“CHS 2”命令
                 sp.Write("CHS 2" + '\r');
                 Thread.Sleep(150);
-
+                
                 sp.Write("C232B " + comboBox_RS232.Text + '\r');
                 Thread.Sleep(150);
 
@@ -447,43 +447,53 @@ namespace ADCP
         #region 按钮
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if (btnGPSCalibration_Start())
+            //helpme
+            MessageBox.Show("Offset function not ready A");
+            if (false)
             {
-                btnStop.Enabled = true;
-            }
-            else
-            {
-                //SM>
-                //MessageBox.Show("请检查串口连接是否正确");//Please check if the serial port connection is correct
-                MessageBox.Show("Check serial port connection");
-                //<SM
+                if (btnGPSCalibration_Start())
+                {
+                    btnStop.Enabled = true;
+                }
+                else
+                {
+                    //SM>
+                    //MessageBox.Show("请检查串口连接是否正确");//Please check if the serial port connection is correct
+                    MessageBox.Show("Check serial port connection");
+                    //<SM
+                }
             }
         }
         private void btnStop_Click(object sender, EventArgs e)
         {
-            if (btnGPSCalibration_Stop())
+            //helpme
+            MessageBox.Show("Offset function not ready B");
+            if (false)
             {
-                btnStart.Enabled = true;
-                btnOK.Enabled = true;
-
-                //将艏向偏差角显示出来
-                //string strHeadingOffset = (fHeadingOffset / Math.PI * 180).ToString("0.00");
-                //textBoxHeadingOffset.Text = "Result" + "\r\n\r\n" + " The Heading Offset is (Deg):" + strHeadingOffset;
-
-                textBoxHeadingOffset.Text = "Result" + "\r\n\r\n" + " The Heading Offset is (Deg):";
-                double dHeadingOffsetAve = 0;
-                for (int i = 0; i < LHeadingOffset.Count; i++) //LPJ 2013-11-21 取几次测回的平均值，作为最终结果
+                if (btnGPSCalibration_Stop())
                 {
-                    textBoxHeadingOffset.Text += i.ToString("") + "   " + (LHeadingOffset[i] / Math.PI * 180).ToString("0.00") + "\r\n";
-                    dHeadingOffsetAve += LHeadingOffset[i];
-                }
-                fHeadingOffset = dHeadingOffsetAve / LHeadingOffset.Count;
+                    btnStart.Enabled = true;
+                    btnOK.Enabled = true;
 
-                textBoxHeadingOffset.Text += "Average is" + (fHeadingOffset / Math.PI * 180).ToString("0.00");
-            }
-            else
-            {
-                MessageBox.Show("");
+                    //将艏向偏差角显示出来
+                    //string strHeadingOffset = (fHeadingOffset / Math.PI * 180).ToString("0.00");
+                    //textBoxHeadingOffset.Text = "Result" + "\r\n\r\n" + " The Heading Offset is (Deg):" + strHeadingOffset;
+
+                    textBoxHeadingOffset.Text = "Result" + "\r\n\r\n" + " The Heading Offset is (Deg):";
+                    double dHeadingOffsetAve = 0;
+                    for (int i = 0; i < LHeadingOffset.Count; i++) //LPJ 2013-11-21 取几次测回的平均值，作为最终结果
+                    {
+                        textBoxHeadingOffset.Text += i.ToString("") + "   " + (LHeadingOffset[i] / Math.PI * 180).ToString("0.00") + "\r\n";
+                        dHeadingOffsetAve += LHeadingOffset[i];
+                    }
+                    fHeadingOffset = dHeadingOffsetAve / LHeadingOffset.Count;
+
+                    textBoxHeadingOffset.Text += "Average is" + (fHeadingOffset / Math.PI * 180).ToString("0.00");
+                }
+                else
+                {
+                    MessageBox.Show("");
+                }
             }
          
         }
