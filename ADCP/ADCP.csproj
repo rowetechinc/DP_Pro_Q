@@ -54,7 +54,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -556,6 +556,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="Installer\Installer_Full.nsi" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -593,6 +594,7 @@
   <ItemGroup>
     <Content Include="014.ico" />
     <Content Include="favicon.ico" />
+    <Content Include="Installer\License.txt" />
     <None Include="Resources\Pancomm03.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -608,6 +610,16 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>IF "$(ConfigurationName)"=="Debug" Goto Exit
+IF "$(ConfigurationName)"=="Minimal Build" Goto Exit
+
+ECHO Moving NullSoft Installer
+"C:\Program Files (x86)\NSIS\makensisw" "$(ProjectDir)\Installer\Installer_Full.nsi"
+move "$(ProjectDir)Installer\Sea Monitor.Installer.v*" $(TargetDir)
+
+:Exit</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

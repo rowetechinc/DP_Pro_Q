@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("ADCP")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("River Discharge")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HH")]
+[assembly: AssemblyCompany("Rowe Technologies, Inc.")]
 [assembly: AssemblyProduct("ADCP")]
-[assembly: AssemblyCopyright("Copyright © HH Limited 2010")]
+[assembly: AssemblyCopyright("Copyright © 2021 Rowe Technologies, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
