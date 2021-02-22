@@ -22602,16 +22602,15 @@ namespace ADCP
 
         private void refreshBSProfile()
         {
-            string ss = "";
             try
             {
-                if (iCurrentEns < ensembles.Count && ensembles.Count > 0) //-RMa 1/28/2021
+                if (iCurrentEns <= ensembles.Count && ensembles.Count > 0) //-RMa 1/28/2021
                 {
                     //iEndEnsemble = ensembles.Count; //ensembles.Count - 1; //-RMa 1/28/2021
                     iEndEnsemble = iCurrentEns; //-RMa 1/28/2021
-                    if (iEndEnsemble > 0)
+                    if (iEndEnsemble - 1 >= 0)
                     {
-                        BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble];
+                        BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
                         try
                         {
                             for (int i = 0; i < n; i++)
@@ -22638,7 +22637,6 @@ namespace ADCP
                                 {
                                     Debug.WriteLine(e);
                                 }
-
                             }
                         }
                         catch (Exception ex)
@@ -22663,9 +22661,6 @@ namespace ADCP
             int X = panel_BSProfile.Location.X;
             int Y = panel_BSProfile.Location.Y;
 
-            int bHeight = panel_BSProfile.Height;
-            int bWidth = panel_BSProfile.Width;
-
             //the first row of beam textBoxs
             for (int i = 0; i < n / 2; i++)
             {
@@ -22674,11 +22669,10 @@ namespace ADCP
                 txt.Name = "Beam" + i;
                 txt.Text = "Beam" + i;
                 txt.Location = new Point(X + (i * 250) - 100 + i * 10, Y);
-                //txt.Size = new System.Drawing.Size(250, 327);
-                txt.Size = new System.Drawing.Size(bWidth / 5 + 60, bHeight / 2);
+                txt.Size = new System.Drawing.Size(250, 327);
                 txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top)
                                 | System.Windows.Forms.AnchorStyles.Left))));
-                txt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+                txt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
                 txt.Font = new System.Drawing.Font("Courier New", 8.25F);
                 txt.Multiline = true;
                 txt.Visible = true;
@@ -22693,11 +22687,10 @@ namespace ADCP
                 txt.Name = "Beam" + i;
                 txt.Text = "Beam" + i;
                 txt.Location = new Point(X + ((i - n / 2) * 250) - 100 + (i - n / 2) * 10, Y + 340);
-                //txt.Size = new System.Drawing.Size(250, 327);
-                txt.Size = new System.Drawing.Size(bWidth / 5 + 60, bHeight / 2);
+                txt.Size = new System.Drawing.Size(250, 327);
                 txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top)
                                 | System.Windows.Forms.AnchorStyles.Left))));
-                txt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+                txt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
                 txt.Font = new System.Drawing.Font("Courier New", 8.25F);
                 txt.Multiline = true;
                 txt.Visible = true;
