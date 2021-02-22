@@ -21,6 +21,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using JDL.UILib;   //绘制tip控件
 using System.ComponentModel.Design;
+using System.Diagnostics;
 
 #pragma warning disable IDE0017
 #pragma warning disable IDE1006
@@ -421,11 +422,27 @@ namespace ADCP
 
             //MainPanelStayTimer.Elapsed += new System.Timers.ElapsedEventHandler(MainPanelStayTimer_Elapsed); //LPJ 2013-11-20
 
+            #region BackScatter -RMa
             //Contour panel play control. -RMa 12/11/2020
-            RefreshSvContour = new ContourPanelDelegate(refreshContourPanel);
+            RefreshSvContour = new ContourPanelDelegate(refreshContourPanel); //playback
 
             BS_playbackTimer.Elapsed += new System.Timers.ElapsedEventHandler(BS_playbackTimer_Elapsed);  //RMa 12/10/2020
             BS_playbackTimer.Interval = 1000;   //RMa 12/10/2020
+            updateEnsNandDT = new updateEnsNandDateTimeDelegate(OnSurvey); //-RMa 01/14/2021
+                                                                           //decodeBSEnsemble = new decodeBSEnsembleDelegate(DecodeBackScatterEnsemble); //-RMa 01/14/2021
+            refreshBSProfileData = new RefreshBSProfileDelegate(refreshBSProfile);
+
+            timer_BS.Interval = 500;
+            timer_BS.Tick += new EventHandler(timer_BS_Tick);
+
+            //-RMa 1/29/2021
+            setupBSBeamTextBox(); //set up BS profile Tabluar page
+            #endregion
+
+            #region format. -RMa
+            textBox_comments.Location = new Point(label267.Location.X + 100, label267.Location.Y - 3);
+            textBox_comments.Font = new System.Drawing.Font("Courier New", 8.25F);
+            #endregion
         }
 
 
@@ -2844,13 +2861,54 @@ namespace ADCP
         Queue queue = new Queue();  //JZH 2012-03-21 添加一个队列用于串口数据接收
         private void sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            int count = 0; //-RMa 01/12/2021
             iAlarmTime = 0;
             try
             {
                 byte[] pack = new byte[sp.BytesToRead];   //LPJ 2012-5-7  Bug：端口被关闭？？？？？？？？？
-                //try
-                //{
-                sp.Read(pack, 0, pack.Length);
+                //sp.Read(pack, 0, pack.Length); //-RMa 01/12/2021
+                count = sp.Read(pack, 0, pack.Length); //-RMa 01/12/2021
+
+                #region check BS data -RMa 01/12/2021
+                if (count > 0)
+                {
+                    // move data into the internal circular buffer;
+                    for (int i = 0; i < count; i++)
+                    {
+                        DataBuff[DataBuffWriteIndex] = pack[i];
+                        DataBuffWriteIndex++;
+                        if (DataBuffWriteIndex >= MaxDataBuff)
+                            DataBuffWriteIndex = 0;
+                        BackScatter.DataBuffWriteIndex = DataBuffWriteIndex;
+                    }
+
+                    #region test
+                    int DBRI = DataBuffWriteIndex;
+                    while (DBRI != DataBuffReadIndex)
+                    {
+                        DBRI = DataBuffReadIndex;
+                        if (BackScatter.FindEnsemble(EnsBuf, DataBuff))
+                        {
+                            iCurrentEns++; //make profile plots update when new data came in. -RMa 1/25/2021
+                            DecodeBackScatterEnsemble(TheBSbeam, BackScatter.Ensemble); //-RMa 01/19/2021
+                            //this.BeginInvoke(decodeBSEnsemble, TheBSbeam, BackScatter.Ensemble); //-RMa 01/19/2021
+                            BackScatter.EnsembleClass m = new BackScatter.EnsembleClass();
+                            m = Clone(BackScatter.Ensemble);
+                            ensembles.Add(m);
+                        }
+                    }
+                    #endregion
+                }
+
+                /*
+                if (ensembles.Count > 0)
+                {
+                    //OnSurvey(ensembles);
+                    this.BeginInvoke(updateEnsNandDT, ensembles);
+                }
+                */
+                #endregion
+
                 lock (l)
                 {
                     //recStr += Encoding.Default.GetString(pack);  //JZH 2012-03-21 
@@ -2863,9 +2921,6 @@ namespace ADCP
                         //strTime += ReceiveBufferString; //LPJ 2013-10-30 从仪器读取时间 //LPJ 2014-6-17 cancel
                         //ReceiveBufferString = null;  //LPJ 2014-6-17 cancel
                     }
-                    //recStr = null;  //JZH 2012-03-21
-                    //}
-                    //JZH 2012-03-21 新版本的串口数据接收及处理方法
                     else   //当数据开始记录时再将进行数据处理
                     {
                         try  //2012-6-2
@@ -2875,16 +2930,24 @@ namespace ADCP
                                 queue.Enqueue(pack);  //将接收到的串口数据放到队列中,数据解析在定时器时间中完成
                             }
                         }
-                        catch
+                        catch { }
+
+                        #region decode backscatter data. -RMa 01/11/2021
+                        try
                         {
-                            MessageBox.Show("H");
+                            writeToBinFile(pack, dataPath + datafilename);
                         }
+                        catch (Exception ex)
+                        {
+                            System.Diagnostics.Debug.WriteLine(ex);
+                        }
+                        #endregion
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("I");
+                Debug.WriteLine("DP300_1: " + ex);
             }
             #region cancel
             //}
@@ -2915,6 +2978,31 @@ namespace ADCP
             //    }
             //}
             #endregion
+        }
+
+
+        private delegate void decodeBSEnsembleDelegate(int beam, BackScatter.EnsembleClass Ens); //-RMa 01/19/2021
+        decodeBSEnsembleDelegate decodeBSEnsemble; //-RMa 01/19/2021
+
+        private delegate void updateEnsNandDateTimeDelegate(List<BackScatter.EnsembleClass> ens); //-RMa 01/14/2021
+        updateEnsNandDateTimeDelegate updateEnsNandDT; //-RMa 01/14/2021
+
+        private void OnSurvey(List<BackScatter.EnsembleClass> bs_ens) //-RMa 01/13/2021
+        {
+            try
+            {
+                if (bs_ens.Count > 0)
+                {
+                    iEndEnsemble = bs_ens.Count; //ensembles.Count - 1;
+                    BackScatter.EnsembleClass m1 = bs_ens[iEndEnsemble - 1];
+                    updateEnsNandDateTime(m1);
+                    panel_contour.Refresh();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
 
         //int iCount = 0; //LPJ 2016-6-8 验证采集模块
@@ -6993,7 +7081,7 @@ namespace ADCP
                     OpenFileDialog openFile = new OpenFileDialog();
                     openFile.InitialDirectory = PathStr;
                     openFile.Filter = "BIN(*.bin)|*.bin|ENS(*.ENS)|*.ENS|All Document(*.*)|*.*";
-                    openFile.FilterIndex = 2;
+                    openFile.FilterIndex = 1;
                     openFile.Title = "Open File";
 
                     MouseWheelScale = 1;
@@ -12083,6 +12171,7 @@ namespace ADCP
             ClearEnsemblesGPSInfo();      //LPJ 2012-10-11
             totalNum = 0;
             InitDischargeParameter();
+            checkADCPFileNumber(); //-RMa 01/12/2021
             //fAccuEast = 0;
             //fAccuNorth = 0;
             //fAccuLength = 0;
@@ -12123,6 +12212,24 @@ namespace ADCP
 
             StartRecord = true;    //Modified 2011-8-3 used for clear info display   HHHHHHHHH  //LPJ 2016-12-13
 
+            //-RMa 01/14/2021
+            iCurrentEns = 0;
+            iStartEnsemble = 0; //-RMa 11/25/2020
+            iEndEnsemble = 1;
+            hScrollBar_BS.Value = 0;
+            hScrollBar_BS.LargeChange = 1;
+            ensembles = new List<BackScatter.EnsembleClass>();
+
+            buttonBS_Play.Enabled = false;
+            buttonBS_Pause.Enabled = false;
+            buttonBS_Start.Enabled = false;
+            buttonPlaybackStepBack.Enabled = false;
+            buttonPlaybackStep.Enabled = false;
+            buttonBS_End.Enabled = false;
+            btnPick.Enabled = false;
+            hScrollBar_BS.Enabled = false;
+
+            timer_BS.Start(); //-RMa
         }
 
         private System.Timers.Timer AlarmTimer; //LPJ 2014-6-9 计时器，当无接收数据时报警
@@ -12236,6 +12343,20 @@ namespace ADCP
         /// </summary>
         public void OnStopRecording()
         {
+            //-RMa 01/20/2021
+            #region enable Sv Contour buttons
+            buttonBS_Play.Enabled = true;
+            buttonBS_Pause.Enabled = true;
+            buttonBS_Start.Enabled = true;
+            buttonPlaybackStepBack.Enabled = true;
+            buttonPlaybackStep.Enabled = true;
+            buttonBS_End.Enabled = true;
+            btnPick.Enabled = true;
+            hScrollBar_BS.Enabled = true;
+
+            timer_BS.Stop();
+            #endregion
+
             CurrentState = TRANSECT_STATE_STOP;
 
             string CMD = "CRSTS " + TRANSECT_STATE_STOP.ToString() + '\r';
@@ -16369,6 +16490,16 @@ namespace ADCP
         private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
         {
             ResizeControls(); //LPJ 2013-8-5 
+
+            if (tabControl4.SelectedIndex == 6) //Sv Tabular. -RMa 1/28/2021
+            {
+                groupBox_playcontrol.Parent = tabControl4.TabPages[6];
+                //panel_BSProfile.BringToFront();
+            }
+            else if (tabControl4.SelectedIndex == 5)
+            {
+                groupBox_playcontrol.Parent = tabControl4.TabPages[5];
+            }
         } //LPJ 2012-5-25 不能更改当前tabpage页 --------end
 
       
@@ -19924,7 +20055,8 @@ namespace ADCP
                 labelSiteName.Text = frmsiteInfor.siteInfo.siteName;
                 labelStationNumber.Text = frmsiteInfor.siteInfo.stationNumber;
                 labelMeasNumber.Text = frmsiteInfor.siteInfo.MeasNumber;
-                labelSiteComments.Text = frmsiteInfor.siteInfo.comments;
+                //labelSiteComments.Text = frmsiteInfor.siteInfo.comments; //-RMa 2/11/2021
+                textBox_comments.Text = frmsiteInfor.siteInfo.comments; //-RMa 2/11/2021
 
                 // Set the new site information
                 siteInformation = GetSiteInformation(frmsiteInfor.siteInfo);
@@ -21130,7 +21262,8 @@ namespace ADCP
                             //        }
                             case "Comments":
                                 {
-                                    labelSiteComments.Text = cmdPart[1];
+                                    //labelSiteComments.Text = cmdPart[1];  //-RMa 2/11/2011
+                                    textBox_comments.Text = cmdPart[1]; //-RMa 2/11/2021
                                     break;
                                 }
                             case "FirmwareVersion":
@@ -22413,6 +22546,7 @@ namespace ADCP
 
         #endregion
 
+
         #region Amplitude & BackScatter Display. -RMa 11/19/2020
         private int MaxDataBuff = 1400000 - 1;
         private byte[] aBuff = new byte[1400000];
@@ -22423,7 +22557,7 @@ namespace ADCP
         private int DataBuffReadIndex = 0;
         private int DataBuffWriteIndex = 0;
 
-        List<BackScatter.EnsembleClass> ensembles = new List<BackScatter.EnsembleClass>(); 
+        List<BackScatter.EnsembleClass> ensembles = new List<BackScatter.EnsembleClass>();
 
         #region BackScatter. -RMa 12/01/2020
         int TheBSbeam = 0;
@@ -22435,9 +22569,10 @@ namespace ADCP
                 //textBoxBSprofile.Text = BackScatter.GetBsProfileString(TheBSbeam, BackScatter.Ensemble);
                 tbs[0].Text = BackScatter.GetBsProfileString(TheBSbeam, BackScatter.Ensemble);
             }
-            catch 
+            catch (Exception ex)
             {
-                MessageBox.Show("A");
+                //MessageBox.Show("A");
+                Debug.WriteLine("A\r\n" + ex);
             }
         }
 
@@ -22459,11 +22594,77 @@ namespace ADCP
         private void radioButtonBSprofile_CheckedChanged(object sender, EventArgs e)
         {
             panel_BSProfile.BringToFront();
+            refreshBSProfile();
+        }
 
+        private delegate void RefreshBSProfileDelegate(); //-RMa 1/25/2021
+        RefreshBSProfileDelegate refreshBSProfileData; //-RMa 1/25/2021
+
+        private void refreshBSProfile()
+        {
+            string ss = "";
+            try
+            {
+                if (iCurrentEns < ensembles.Count && ensembles.Count > 0) //-RMa 1/28/2021
+                {
+                    //iEndEnsemble = ensembles.Count; //ensembles.Count - 1; //-RMa 1/28/2021
+                    iEndEnsemble = iCurrentEns; //-RMa 1/28/2021
+                    if (iEndEnsemble > 0)
+                    {
+                        BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble];
+                        try
+                        {
+                            for (int i = 0; i < n; i++)
+                            {
+                                try
+                                {
+                                    if (InvokeRequired)
+                                    {
+                                        BeginInvoke(new Action(() =>
+                                        {
+                                            //Debug.WriteLine("++++++" + BackScatter.GetSystemString(m1));
+                                            //textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
+                                            tbs[i].Text = BackScatter.GetBsProfileString(i, m1);
+                                        }));
+                                    }
+                                    else
+                                    {
+                                        //Debug.WriteLine("++++++" + BackScatter.GetSystemString(m1));
+                                        //textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
+                                        tbs[i].Text = BackScatter.GetBsProfileString(i, m1);
+                                    }
+                                }
+                                catch (Exception e)
+                                {
+                                    Debug.WriteLine(e);
+                                }
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+        }
+
+
+        //-RMa 1/29/2021
+        private void setupBSBeamTextBox()
+        {
             #region Create 10 beam textboxes
             //Create 10 beam textboxes
             int X = panel_BSProfile.Location.X;
             int Y = panel_BSProfile.Location.Y;
+
+            int bHeight = panel_BSProfile.Height;
+            int bWidth = panel_BSProfile.Width;
 
             //the first row of beam textBoxs
             for (int i = 0; i < n / 2; i++)
@@ -22473,10 +22674,11 @@ namespace ADCP
                 txt.Name = "Beam" + i;
                 txt.Text = "Beam" + i;
                 txt.Location = new Point(X + (i * 250) - 100 + i * 10, Y);
-                txt.Size = new System.Drawing.Size(250, 327);
+                //txt.Size = new System.Drawing.Size(250, 327);
+                txt.Size = new System.Drawing.Size(bWidth / 5 + 60, bHeight / 2);
                 txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top)
                                 | System.Windows.Forms.AnchorStyles.Left))));
-                txt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+                txt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
                 txt.Font = new System.Drawing.Font("Courier New", 8.25F);
                 txt.Multiline = true;
                 txt.Visible = true;
@@ -22491,25 +22693,23 @@ namespace ADCP
                 txt.Name = "Beam" + i;
                 txt.Text = "Beam" + i;
                 txt.Location = new Point(X + ((i - n / 2) * 250) - 100 + (i - n / 2) * 10, Y + 340);
-                txt.Size = new System.Drawing.Size(250, 327);
+                //txt.Size = new System.Drawing.Size(250, 327);
+                txt.Size = new System.Drawing.Size(bWidth / 5 + 60, bHeight / 2);
                 txt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top)
                                 | System.Windows.Forms.AnchorStyles.Left))));
-                txt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+                txt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
                 txt.Font = new System.Drawing.Font("Courier New", 8.25F);
                 txt.Multiline = true;
                 txt.Visible = true;
                 this.panel_BSProfile.Controls.Add(txt);
             }
-
-            for (int i = 0; i < n; i++)
-            {
-                tbs[i].Text = BackScatter.GetBsProfileString(i, BackScatter.Ensemble);
-            }
             #endregion
+
+            textBoxExtract.Text = "textBoxExtract";
         }
         #endregion
 
-        bool bAmp = true; 
+        bool bAmp = true;
         private void panel_contour_Paint(object sender, PaintEventArgs e)
         {
             panel_contour.Width = this.Width;
@@ -22518,211 +22718,219 @@ namespace ADCP
             hScrollBar_BS.Location = new Point(panel_contour.Location.X, panel_contour.Bottom + 2);
             hScrollBar_BS.Width = panel_contour.DisplayRectangle.Width * 2 / 3;
 
-            if (ensembles.Count > 0 && iCheckedBeam.Count() > 0)
+            try
             {
-                int icheckedBeam = iCheckedBeam.Count();
-                int icount = 0;
-                for (int i = 0; i < BackScatter.MaxBSbeams; i++)
+                if (ensembles.Count > 0 && iCheckedBeam.Count() > 0)
                 {
-                    bool bchecked = false;
-                    for (int j = 0; j < icheckedBeam; j++) //判断该beam是否选中
+                    int icheckedBeam = iCheckedBeam.Count();
+                    int icount = 0;
+                    for (int i = 0; i < BackScatter.MaxBSbeams; i++)
                     {
-                        if (i == iCheckedBeam[j])
-                            bchecked = true;
+                        bool bchecked = false;
+                        for (int j = 0; j < icheckedBeam; j++) //判断该beam是否选中
+                        {
+                            if (i == iCheckedBeam[j])
+                                bchecked = true;
+                        }
+
+                        if (!bchecked) //如该beam没有被选中，则不绘制
+                            continue;
+
+                        List<float[]> fData = new List<float[]>();
+                        //float fMinData = 0;
+                        //float fMaxData = 0;
+                        float fMinData = trackBarMaxV_BS.Minimum;
+                        float fMaxData = (float)trackBarMaxV_BS.Value; //color scale knob
+
+                        string _systemfreq = "";
+
+                        int istartEns = 0;
+                        //int iendEns = ensembles.Count();
+                        int iendEns = iEndEnsemble;
+                        bool bDraw = false;
+                        bool bDrawTitle = true;
+
+                        string strVertical = "Depth (m)";
+                        string strTitle = "Title";
+                        string strUnit = "dB";
+
+                        float fMinDistance = 0;
+                        float fMaxDistance = 50;
+
+                        //for (int k = 0; k < ensembles.Count(); k++)
+                        for (int k = 0; k < iendEns; k++) //for scroll bar
+                        {
+                            BackScatter.EnsembleClass m = ensembles[k];
+
+                            float[] data = new float[m.BS_Bins[i]];
+                            int t = 0;
+
+                            float depth = m.BS_FirstBin[i];
+
+                            for (int bin = 0; bin < m.BS_Bins[i]; bin++)
+                            {
+                                if (bAmp)  //Amplitude
+                                {
+                                    data[t++] = m.BS_Amplitude[i, bin];
+                                    /* //RMa 12/8/2020
+                                    if (fMinData > m.BS_Amplitude[i, bin])
+                                        fMinData = m.BS_Amplitude[i, bin];
+
+                                    if (fMaxData < m.BS_Amplitude[i, bin])
+                                        fMaxData = m.BS_Amplitude[i, bin];
+                                    */
+                                    strTitle = "Amp Beam" + i.ToString();
+                                }
+                                else    //BackScatter
+                                {
+                                    data[t++] = m.BS_BackScatter[i, bin];
+                                    /* //RMa 12/8/2020
+                                    if (fMinData > m.BS_BackScatter[i, bin])
+                                        fMinData = m.BS_BackScatter[i, bin];
+
+                                    if (fMaxData < m.BS_BackScatter[i, bin])
+                                        fMaxData = m.BS_BackScatter[i, bin];
+                                    */
+                                    strTitle = "BackScatter Beam" + i.ToString();
+                                }
+
+                                depth += m.BS_BinSize[i];
+                            }
+
+                            fMaxDistance = depth;
+                            _systemfreq = m.BS_Frequency[i].ToString();
+
+                            fData.Add(data);
+                        }
+                        //numericUpDown_Max.Value = Convert.ToDecimal(fMaxData);
+
+                        CDrawDisplay drawDisplay = new CDrawDisplay();
+
+                        Rectangle rect = new Rectangle();
+
+                        rect.X = 0;
+                        rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1; //icheckedBeam * icount - 1;
+                        rect.Width = panel_contour.DisplayRectangle.Width * 2 / 3;
+                        rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
+
+                        if (icount == icheckedBeam - 1) //判断是否为最后一组图形
+                            bDraw = true;
+
+                        drawDisplay.OnDrawContour_BS(rect, e, _systemfreq, strTitle, strUnit, fData, fMinDistance, fMaxDistance, fMinData, fMaxData, strVertical, istartEns, iendEns, bDraw, bDrawTitle); //LPJ 2019-8-7
+
+                        icount++;
                     }
 
-                    if (!bchecked) //如该beam没有被选中，则不绘制
-                        continue;
+                    //backscatter
+                    #region backscatter
+                    //BackScatter.EnsembleClass mm = BackScatter.Ensemble;
+                    int _icurrentEns = iCurrentEns;  //ensemble picker
+                    if (_icurrentEns >= ensembles.Count)   //ensemble picker
+                        _icurrentEns = ensembles.Count - 1;   //ensemble picker
+                    if (_icurrentEns < 0)   //ensemble picker
+                        _icurrentEns = 0;    //ensemble picker
+                    BackScatter.EnsembleClass mm = ensembles[_icurrentEns];   //ensemble picker          
 
-                    List<float[]> fData = new List<float[]>();
-                    //float fMinData = 0;
-                    //float fMaxData = 0;
-                    float fMinData = trackBarMaxV_BS.Minimum;
-                    float fMaxData = (float)trackBarMaxV_BS.Value; //color scale knob
-
-                    string _systemfreq = "";
-
-                    int istartEns = 0;
-                    //int iendEns = ensembles.Count();
-                    int iendEns = iEndEnsemble;
-                    bool bDraw = false;
-                    bool bDrawTitle = true;
-
-                    string strVertical = "Depth (m)";
-                    string strTitle = "Title";
-                    string strUnit = "dB";
-
-                    float fMinDistance = 0;
-                    float fMaxDistance = 50;
-
-                    //for (int k = 0; k < ensembles.Count(); k++)
-                    for (int k = 0; k < iendEns; k++) //for scroll bar
+                    icheckedBeam = iCheckedBeam.Count();
+                    icount = 0;
+                    for (int k = 0; k < BackScatter.MaxBSbeams; k++)
                     {
-                        BackScatter.EnsembleClass m = ensembles[k];
+                        bool bchecked = false;
+                        for (int j = 0; j < icheckedBeam; j++) //判断该beam是否选中
+                        {
+                            if (k == iCheckedBeam[j])
+                                bchecked = true;
+                        }
 
-                        float[] data = new float[m.BS_Bins[i]];
+                        if (!bchecked) //如该beam没有被选中，则不绘制
+                            continue;
+
+                        List<float[]> fData = new List<float[]>();
+
+                        //float fMinData = 0;
+                        //float fMaxData = 0;
+                        float fMinData = trackBarMaxV_BS.Minimum;
+                        float fMaxData = trackBarMaxV_BS.Value; //color scale knob
+
+                        float fScreen = 10000;
+                        string strTitle = "";
+                        string strVertical = "Depth (m)";
+                        float fLeftMinDistance = 0;
+                        float fLeftMaxDistance = 50;
+
+                        List<float[]> fDataDown = new List<float[]>();
+
+                        float[] data = new float[mm.BS_Bins[k]];
                         int t = 0;
 
-                        float depth = m.BS_FirstBin[i];
-
-                        for (int bin = 0; bin < m.BS_Bins[i]; bin++)
+                        float depth = mm.BS_FirstBin[k];
+                        fLeftMinDistance = depth;
+                        for (int bin = 0; bin < mm.BS_Bins[k]; bin++)
                         {
                             if (bAmp)  //Amplitude
                             {
-                                data[t++] = m.BS_Amplitude[i, bin];
-                                /* //RMa 12/8/2020
-                                if (fMinData > m.BS_Amplitude[i, bin])
-                                    fMinData = m.BS_Amplitude[i, bin];
+                                if (bin == 0)
+                                    fMinData = mm.BS_Amplitude[k, bin];
 
-                                if (fMaxData < m.BS_Amplitude[i, bin])
-                                    fMaxData = m.BS_Amplitude[i, bin];
-                                */
-                                strTitle = "Amp Beam" + i.ToString();
+                                data[t++] = mm.BS_Amplitude[k, bin];
+                                if (fMinData > mm.BS_Amplitude[k, bin])
+                                    fMinData = mm.BS_Amplitude[k, bin];
+
+                                if (fMaxData < mm.BS_Amplitude[k, bin])
+                                    fMaxData = mm.BS_Amplitude[k, bin];
+                                strTitle = "Amp Beam" + k.ToString();
                             }
                             else    //BackScatter
                             {
-                                data[t++] = m.BS_BackScatter[i, bin];
-                                /* //RMa 12/8/2020
-                                if (fMinData > m.BS_BackScatter[i, bin])
-                                    fMinData = m.BS_BackScatter[i, bin];
+                                if (bin == 0)
+                                    fMinData = mm.BS_BackScatter[k, bin];
 
-                                if (fMaxData < m.BS_BackScatter[i, bin])
-                                    fMaxData = m.BS_BackScatter[i, bin];
-                                */
-                                strTitle = "BackScatter Beam" + i.ToString();
+                                data[t++] = mm.BS_BackScatter[k, bin];
+                                if (fMinData > mm.BS_BackScatter[k, bin])
+                                    fMinData = mm.BS_BackScatter[k, bin];
+
+                                if (fMaxData < mm.BS_BackScatter[k, bin])
+                                    fMaxData = mm.BS_BackScatter[k, bin];
+                                strTitle = "BackScatter Beam" + k.ToString();
                             }
 
-                            depth += m.BS_BinSize[i];
+                            depth += mm.BS_BinSize[k];
+
+                            fData.Add(data);
                         }
 
-                        fMaxDistance = depth;
-                        _systemfreq = m.BS_Frequency[i].ToString();
+                        fLeftMaxDistance = (int)(depth + 0.5);
+                        fMinData = (int)(fMinData - 0.5);
+                        fMaxData = (int)(fMaxData + 0.5);
+                        if (fMaxData <= fMinData) fMaxData = fMinData + 1; //to fix the Overflow problem in drawDisplay.OnDrawVertical() when fMaxData = fMinData.  -RMa 12/8/2020
+                        CDrawDisplay drawDisplay = new CDrawDisplay();
 
-                        fData.Add(data);
+                        Rectangle rect = new Rectangle();
+                        rect.X = panel_contour.DisplayRectangle.X + panel_contour.DisplayRectangle.Width * 2 / 3 + 10;
+                        rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1;
+                        rect.Width = panel_contour.DisplayRectangle.Width * 1 / 3 - 150;
+                        rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
+
+                        //vertical profile
+                        drawDisplay.OnDrawVertical(rect, e, fData, strTitle, 4, fLeftMinDistance, fLeftMaxDistance, fLeftMinDistance, fLeftMaxDistance, fScreen, fMaxData, fMinData, strVertical);
+                        icount++;
                     }
-                    //numericUpDown_Max.Value = Convert.ToDecimal(fMaxData);
+                    #endregion
 
-                    CDrawDisplay drawDisplay = new CDrawDisplay();
-
-                    Rectangle rect = new Rectangle();
-
-                    rect.X = 0;
-                    rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1; //icheckedBeam * icount - 1;
-                    rect.Width = panel_contour.DisplayRectangle.Width * 2 / 3;
-                    rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
-
-                    if (icount == icheckedBeam - 1) //判断是否为最后一组图形
-                        bDraw = true;
-
-                    drawDisplay.OnDrawContour_BS(rect, e, _systemfreq, strTitle, strUnit, fData, fMinDistance, fMaxDistance, fMinData, fMaxData, strVertical, istartEns, iendEns, bDraw, bDrawTitle); //LPJ 2019-8-7
-
-                    icount++;
+                    #region Ensemble picker line
+                    Pen p = new Pen(Brushes.LightGray, 0.1f);  //LPJ 2020-11-27
+                    int startY = panel_contour.DisplayRectangle.Y + 20;  //LPJ 2020-11-27
+                    int endY = panel_contour.DisplayRectangle.Y + 20 + panel_contour.DisplayRectangle.Height - 40;  //LPJ 2020-11-27
+                    if (bPickCurrentEns)  //LPJ 2020-11-27
+                        e.Graphics.DrawLine(p, _currentX, startY, _currentX, endY);  //LPJ 2020-11-27
+                    #endregion
                 }
-
-                //backscatter
-                #region backscatter
-                //BackScatter.EnsembleClass mm = BackScatter.Ensemble;
-                int _icurrentEns = iCurrentEns;  //ensemble picker
-                if (_icurrentEns >= ensembles.Count)   //ensemble picker
-                    _icurrentEns = ensembles.Count - 1;   //ensemble picker
-                if (_icurrentEns < 0)   //ensemble picker
-                    _icurrentEns = 0;    //ensemble picker
-                BackScatter.EnsembleClass mm = ensembles[_icurrentEns];   //ensemble picker          
-
-                icheckedBeam = iCheckedBeam.Count(); 
-                icount = 0;
-                for (int k = 0; k < BackScatter.MaxBSbeams; k++)
-                {
-                    bool bchecked = false;
-                    for (int j = 0; j < icheckedBeam; j++) //判断该beam是否选中
-                    {
-                        if (k == iCheckedBeam[j])
-                            bchecked = true;
-                    }
-
-                    if (!bchecked) //如该beam没有被选中，则不绘制
-                        continue;
-
-                    List<float[]> fData = new List<float[]>();
-
-                    //float fMinData = 0;
-                    //float fMaxData = 0;
-                    float fMinData = trackBarMaxV_BS.Minimum;
-                    float fMaxData = trackBarMaxV_BS.Value; //color scale knob
-
-                    float fScreen = 10000;
-                    string strTitle = "";
-                    string strVertical = "Depth (m)";
-                    float fLeftMinDistance = 0;
-                    float fLeftMaxDistance = 50;
-
-                    List<float[]> fDataDown = new List<float[]>();
-
-                    float[] data = new float[mm.BS_Bins[k]];
-                    int t = 0;
-
-                    float depth = mm.BS_FirstBin[k];
-                    fLeftMinDistance = depth;
-                    for (int bin = 0; bin < mm.BS_Bins[k]; bin++)
-                    {
-                        if (bAmp)  //Amplitude
-                        {
-                            if (bin == 0) 
-                                fMinData = mm.BS_Amplitude[k, bin];
-
-                            data[t++] = mm.BS_Amplitude[k, bin];
-                            if (fMinData > mm.BS_Amplitude[k, bin])
-                                fMinData = mm.BS_Amplitude[k, bin];
-
-                            if (fMaxData < mm.BS_Amplitude[k, bin])
-                                fMaxData = mm.BS_Amplitude[k, bin];                            
-                            strTitle = "Amp Beam" + k.ToString();
-                        }
-                        else    //BackScatter
-                        {
-                            if (bin == 0)
-                                fMinData = mm.BS_BackScatter[k, bin];
-
-                            data[t++] = mm.BS_BackScatter[k, bin];
-                            if (fMinData > mm.BS_BackScatter[k, bin])
-                                fMinData = mm.BS_BackScatter[k, bin];
-
-                            if (fMaxData < mm.BS_BackScatter[k, bin])
-                                fMaxData = mm.BS_BackScatter[k, bin];
-                            strTitle = "BackScatter Beam" + k.ToString();
-                        }
-
-                        depth += mm.BS_BinSize[k];
-
-                        fData.Add(data);
-                    }
-
-                    fLeftMaxDistance = (int)(depth + 0.5);
-                    fMinData = (int)(fMinData - 0.5);
-                    fMaxData = (int)(fMaxData + 0.5);
-                    if (fMaxData <= fMinData) fMaxData = fMinData + 1; //to fix the Overflow problem in drawDisplay.OnDrawVertical() when fMaxData = fMinData.  -RMa 12/8/2020
-                    CDrawDisplay drawDisplay = new CDrawDisplay();
-
-                    Rectangle rect = new Rectangle();
-                    rect.X = panel_contour.DisplayRectangle.X + panel_contour.DisplayRectangle.Width * 2 / 3 + 10;
-                    rect.Y = panel_contour.DisplayRectangle.Y + panel_contour.DisplayRectangle.Height / icheckedBeam * icount - 1;
-                    rect.Width = panel_contour.DisplayRectangle.Width * 1 / 3 - 150;
-                    rect.Height = panel_contour.DisplayRectangle.Height / icheckedBeam;
-
-                    //vertical profile
-                    drawDisplay.OnDrawVertical(rect, e, fData, strTitle, 4, fLeftMinDistance, fLeftMaxDistance, fLeftMinDistance, fLeftMaxDistance, fScreen, fMaxData, fMinData, strVertical);
-                    icount++;
-                }
-                #endregion
-
-                #region Ensemble picker line
-                Pen p = new Pen(Brushes.LightGray, 0.1f);  //LPJ 2020-11-27
-                int startY = panel_contour.DisplayRectangle.Y + 20;  //LPJ 2020-11-27
-                int endY = panel_contour.DisplayRectangle.Y + 20 + panel_contour.DisplayRectangle.Height - 40;  //LPJ 2020-11-27
-                if (bPickCurrentEns)  //LPJ 2020-11-27
-                    e.Graphics.DrawLine(p, _currentX, startY, _currentX, endY);  //LPJ 2020-11-27
-                #endregion
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
         }
 
         private void btn_Amp_Click(object sender, EventArgs e)
@@ -22747,14 +22955,14 @@ namespace ADCP
         }
 
         List<int> iCheckedBeam = new List<int>();
-        private void getCheckednumber() 
+        private void getCheckednumber()
         {
             iCheckedBeam.Clear();
             if (checkBox_b0.Checked)
                 iCheckedBeam.Add(0);
             if (checkBox_b1.Checked)
                 iCheckedBeam.Add(1);
-            if (checkBox_b2.Checked) 
+            if (checkBox_b2.Checked)
                 iCheckedBeam.Add(2);
             if (checkBox_b3.Checked)
                 iCheckedBeam.Add(3);
@@ -22777,24 +22985,39 @@ namespace ADCP
         TextBox[] tbs = new TextBox[n]; //10 beam profile textboxes
         void DecodeBackScatterEnsemble(int beam, BackScatter.EnsembleClass E)
         {
-            BackScatter.DecodeEnsemble(EnsBuf, E);
-
-            textBoxBSsystem.BringToFront();
-            textBoxBSsystem.Text = BackScatter.GetSystemString(E);
-            textBoxBSdata.Text = BackScatter.GetBsString(E);
-            textBoxBSleaders.Text = BackScatter.GetHeaderString(E) + BackScatter.GetHeaderDataTypesString();
-            //textBoxBSprofile.Text = BackScatter.GetBsProfileString(beam, E);
-            textBox_EnsNum.Text = E.System_EnsembleNumber.ToString();
+            try
+            {
+                BackScatter.DecodeEnsemble(EnsBuf, E);
+                try
+                {
+                    BeginInvoke((Action)delegate ()
+                    {
+                        //textBoxBSsystem.BringToFront();
+                        textBoxBSsystem.Text = BackScatter.GetSystemString(E);
+                        textBoxBSdata.Text = BackScatter.GetBsString(E);
+                        textBoxBSleaders.Text = BackScatter.GetHeaderString(E) + BackScatter.GetHeaderDataTypesString();
+                        //textBoxBSprofile.Text = BackScatter.GetBsProfileString(beam, E);
+                    });
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("***3. " + ex);
+            }
         }
 
-        int iStartEnsemble = 0;    
-        int iEndEnsemble = 1;    
+        int iStartEnsemble = 0;
+        int iEndEnsemble = 1;
 
 
         #region ensemble picker. -RMa 12/01/2020
-        bool bPickCurrentEns = false;  
-        int iCurrentEns = 0;   
-        int _currentX;    
+        bool bPickCurrentEns = false;
+        int iCurrentEns = 0;
+        int _currentX;
         bool bpick = false;
         private void btnPick_Click(object sender, EventArgs e)
         {
@@ -22822,7 +23045,7 @@ namespace ADCP
                     //iCurrentEns = OnTransferMap2Number(panel_contour.DisplayRectangle.X + 60, panel_contour.DisplayRectangle.X + 60 + panel_contour.DisplayRectangle.Width - 110, _currentX, iStartEnsemble, iEndEnsemble + 1);
                     iCurrentEns = OnTransferMap2Number(panel_contour.DisplayRectangle.X, panel_contour.DisplayRectangle.Width * 2 / 3 - 110, _currentX - 60, iStartEnsemble, iEndEnsemble);
                 }
-                
+
                 // wrong ensemble number for the picked ensemble. -RMa 12/10/2020
                 //RMa 12/7/2020
                 int _icurrentEns = iCurrentEns;  //ensemble picker
@@ -22831,10 +23054,10 @@ namespace ADCP
                 if (_icurrentEns < 0)   //ensemble picker
                     _icurrentEns = 0;    //ensemble picker
                 BackScatter.EnsembleClass m1 = ensembles[_icurrentEns];   //ensemble picker          
-                textBox_EnsN.Text = m1.System_EnsembleNumber.ToString(); 
+                textBox_EnsN.Text = m1.System_EnsembleNumber.ToString();
                 label_DateTime.Text = m1.System_Year.ToString("D4") + "/" + m1.System_Month.ToString("D2") + "/" + m1.System_Day.ToString("D2") + ",";
                 label_DateTime.Text += m1.System_Hour.ToString("D2") + ":" + m1.System_Minute.ToString("D2") + ":" + m1.System_Second.ToString("D2") + "." + m1.System_Hsec.ToString("D2");
-                
+
                 bpick = false;
                 panel_contour.Refresh();
             }
@@ -22875,13 +23098,20 @@ namespace ADCP
         //scroll bar. -RMa 12/01/2020
         private void hScrollBar_BS_Scroll(object sender, ScrollEventArgs e)
         {
-            if (ensembles.Count() > 0)
+            try
             {
-                iEndEnsemble = iStartEnsemble + hScrollBar_BS.Value;
-                if (iEndEnsemble == 0) iEndEnsemble = 1;
-                BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1]; //RMa 12/7/2020
-                updateEnsNandDateTime(m1);
-                panel_contour.Refresh();
+                if (ensembles.Count() > 0)
+                {
+                    iEndEnsemble = iStartEnsemble + hScrollBar_BS.Value;
+                    if (iEndEnsemble == 0) iEndEnsemble = 1;
+                    BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1]; //RMa 12/7/2020
+                    updateEnsNandDateTime(m1);
+                    panel_contour.Refresh();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -22894,7 +23124,7 @@ namespace ADCP
             BufferedGraphics MainBuffer = currentContext.Allocate(e.Graphics, InfoPanel_BS.DisplayRectangle);
             using (Graphics g = MainBuffer.Graphics)
             {
-                g.FillRectangle(Brushes.White, InfoPanel_BS.DisplayRectangle); 
+                g.FillRectangle(Brushes.White, InfoPanel_BS.DisplayRectangle);
 
                 //if (true == SixColor.Checked)
                 {
@@ -22999,6 +23229,8 @@ namespace ADCP
                 iCurrentEns++;
                 if (iCurrentEns < ensembles.Count && ensembles.Count > 0)
                 {
+
+                    Debug.WriteLine("BS_playbackTimer_Elapsed: ensembles.Count = {0}  iCurrentEns = {1} ", ensembles.Count, iCurrentEns);
                     if (InvokeRequired)
                     {
                         BeginInvoke(new Action(() =>
@@ -23012,6 +23244,7 @@ namespace ADCP
                     }
 
                     this.BeginInvoke(RefreshSvContour);
+                    this.BeginInvoke(refreshBSProfileData); //-RMa 1/25/2021                         
                 }
                 else
                 {
@@ -23021,8 +23254,8 @@ namespace ADCP
             }
             catch (Exception ex)
             {
-                MessageBox.Show("A8");
-                System.Diagnostics.Debug.WriteLine(ex);
+                //MessageBox.Show("A8");
+                System.Diagnostics.Debug.WriteLine("A8\r\n" + ex);
             }
         }
 
@@ -23039,9 +23272,10 @@ namespace ADCP
         private void buttonBS_Start_Click(object sender, EventArgs e)
         {
             if (ensembles.Count > iStartEnsemble)
-            //if (iCurrentEns > iStartEnsemble && ensembles.Count > iCurrentEns)
+            //if (iCurrentEns >= iStartEnsemble && ensembles.Count > iCurrentEns)
             {
-                iCurrentEns = iStartEnsemble + 1;
+                //iCurrentEns = iStartEnsemble + 1; //-RMa 1/29/2021
+                iCurrentEns = iStartEnsemble; //-RMa 1/29/2021
 
                 hScrollBar_BS.Value = iCurrentEns;
                 iEndEnsemble = iCurrentEns;
@@ -23049,6 +23283,7 @@ namespace ADCP
                 panel_contour.Refresh();
 
                 updateEnsNandDateTime(m);
+                refreshBSProfile();
             }
         }
 
@@ -23056,15 +23291,15 @@ namespace ADCP
         {
             iCurrentEns--;
 
-            if (iCurrentEns > iStartEnsemble && ensembles.Count > iCurrentEns)
+            if (iCurrentEns >= iStartEnsemble && ensembles.Count > iCurrentEns)
             {
                 hScrollBar_BS.Value = iCurrentEns;
                 iEndEnsemble = iCurrentEns;
-                BackScatter.EnsembleClass m = ensembles[iCurrentEns];
+                BackScatter.EnsembleClass m = ensembles[iCurrentEns]; //was ensembles[iCurrentEns - 1]. -RMa 1/29/2021
                 panel_contour.Refresh();
 
                 updateEnsNandDateTime(m);
-
+                refreshBSProfile();
             }
             else
                 iCurrentEns++;
@@ -23082,6 +23317,7 @@ namespace ADCP
                 panel_contour.Refresh();
 
                 updateEnsNandDateTime(m);
+                refreshBSProfile();
             }
             else
                 iCurrentEns--;
@@ -23099,15 +23335,784 @@ namespace ADCP
                 panel_contour.Refresh();
 
                 updateEnsNandDateTime(m);
+                refreshBSProfile();
             }
         }
         #endregion
 
         private void updateEnsNandDateTime(BackScatter.EnsembleClass m)
         {
-            textBox_EnsN.Text = m.System_EnsembleNumber.ToString();
-            label_DateTime.Text = m.System_Year.ToString("D4") + "/" + m.System_Month.ToString("D2") + "/" + m.System_Day.ToString("D2") + ",";
-            label_DateTime.Text += m.System_Hour.ToString("D2") + ":" + m.System_Minute.ToString("D2") + ":" + m.System_Second.ToString("D2") + "." + m.System_Hsec.ToString("D2");
+            try
+            {
+                textBox_EnsN.Text = m.System_EnsembleNumber.ToString();
+                label_DateTime.Text = m.System_Year.ToString("D4") + "/" + m.System_Month.ToString("D2") + "/" + m.System_Day.ToString("D2") + ",";
+                label_DateTime.Text += m.System_Hour.ToString("D2") + ":" + m.System_Minute.ToString("D2") + ":" + m.System_Second.ToString("D2") + "." + m.System_Hsec.ToString("D2");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+        }
+        #endregion
+
+        #region BackScatter Real-time data. -RMa 01/11/2021
+        private void decodeBackScatter(byte[] DataBuff)
+        {
+            //read from file
+            #region method 2
+            iStartEnsemble = 0; //-RMa 11/25/2020
+            iEndEnsemble = 1;
+            hScrollBar_BS.Value = 0;
+            hScrollBar_BS.LargeChange = 1;
+
+            long nBytesRead;
+            //long nBytes;
+
+            //DecodeState = 0;
+            //DataBuffReadIndex = 0;
+            DataBuffWriteIndex = 0;
+
+            BackScatter.DataBuffWriteIndex = 0;
+            BackScatter.DataBuffReadIndex = 0;
+            /*
+            try
+            {
+                //nBytes = stream.Length;
+                nBytesRead = stream.Read(bBuff, 0, 10000);
+                while (nBytesRead > 0)
+                {
+                    for (int i = 0; i < nBytesRead; i++)
+                    {
+                        DataBuff[DataBuffWriteIndex] = bBuff[i];
+                        DataBuffWriteIndex++;
+                        if (DataBuffWriteIndex > MaxDataBuff)
+                            DataBuffWriteIndex = 0;
+                        BackScatter.DataBuffWriteIndex = DataBuffWriteIndex;
+                    }
+
+                    #region test
+                    int DBRI = DataBuffWriteIndex;
+                    while (DBRI != DataBuffReadIndex)
+                    {
+                        DBRI = DataBuffReadIndex;
+                        if (BackScatter.FindEnsemble(EnsBuf, DataBuff))
+                        {
+                            DecodeBackScatterEnsemble(TheBSbeam, BackScatter.Ensemble);
+                            BackScatter.EnsembleClass m = new BackScatter.EnsembleClass();
+                            m = Clone(BackScatter.Ensemble);
+                            ensembles.Add(m);
+                        }
+                    }
+                    #endregion
+                    nBytesRead = stream.Read(bBuff, 0, 10000);
+                }
+                
+                if (ensembles.Count > 0)
+                {
+                    iEndEnsemble = ensembles.Count; //ensembles.Count - 1;
+                    hScrollBar_BS.Maximum = ensembles.Count; //ensembles.Count - 1;
+                                                             //textBox_EnsN.Text = iEndEnsemble.ToString();
+
+                    BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
+                    updateEnsNandDateTime(m1);
+                }
+                else return;
+            }
+            catch { }
+            */
+
+
+            #endregion
+        }
+
+
+        public static string myDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\RTI\River\";
+        public static string dataPath = myDir + @"Data\";
+        public static string datafilename = "";
+        private void writeToBinFile(byte[] buf, string dataFile)
+        {
+            using (FileStream fs = new FileStream(dataFile, FileMode.Append))
+            {
+                using (BinaryWriter writer = new BinaryWriter(fs))
+                {
+                    writer.Write(buf);
+                }
+            }
+        }
+
+        string adcpFileCount = myDir + @"Sys\FileCount.txt";
+        ushort adcpFileNumber { get; set; }
+        private void getADCPFileNumber()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader(adcpFileCount))
+                {
+                    String line = sr.ReadLine();
+                    adcpFileNumber = Convert.ToUInt16(line);
+                }
+            }
+            catch { }
+        }
+
+        //check and get new filenumber for saving raw Backscatter data files
+        private void checkADCPFileNumber()
+        {
+            if (File.Exists(adcpFileCount))
+            {
+                getADCPFileNumber();
+                //update Project number 
+                if (adcpFileNumber++ > 65535) adcpFileNumber = 0;
+                using (StreamWriter file = new StreamWriter(adcpFileCount))
+                {
+                    file.Write(adcpFileNumber);
+                }
+            }
+            else //file doesn't exist, create it and set the project number to 1.
+            {
+                try
+                {
+                    adcpFileNumber = 1;
+                    using (StreamWriter file = new StreamWriter(adcpFileCount))
+                    {
+                        file.Write(1);
+                    }
+                }
+                catch { }
+            }
+            datafilename = "RTI_BS" + adcpFileNumber + ".bin";   //save raw data to file
+            System.Diagnostics.Debug.WriteLine(datafilename);
+        }
+
+        //-RMa 1/20/2021
+        //timer for displaying backscatter data
+        public static System.Windows.Forms.Timer timer_BS = new System.Windows.Forms.Timer();
+        private void timer_BS_Tick(object sender, EventArgs e)
+        {
+            if (ensembles.Count > 0)
+            {
+                //Sv Contour page
+                //OnSurvey(ensembles);
+                this.BeginInvoke(updateEnsNandDT, ensembles);
+
+                //Sv Tabular 
+                this.BeginInvoke(refreshBSProfileData); //-RMa 1/25/2021
+                //refreshBSProfile(); //-RMa 1/29/2021
+            }
+        }
+        #endregion
+
+        #region export BS data to CSV file. -RMa 02/03/2021
+        bool[] FirstSeries = new bool[n];
+        //string[] dtstrSeries = new string[csubs];
+        //string[] snSeries = new string[csubs];
+        string DirNameSeries = "";
+        string FilNameSeries = "";
+        public static string dtformat = "yyyy-MM-dd HH:mm:ss";
+        //double[] BTdisMag = new double[csubs];
+
+        const int maxBins = 300;
+
+        public static string exportPath = myDir + @"Export\";
+        private int DecodeState = 0;
+        private void btn_Extract_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < n; i++) //n = 10 beams
+                FirstSeries[i] = true;
+
+            DecodeState = 0;
+            DataBuffReadIndex = 0;
+            DataBuffWriteIndex = 0;
+
+            BackScatter.DataBuffWriteIndex = 0;
+            BackScatter.DataBuffReadIndex = 0;
+
+            long nBytesRead = 0;
+            long nBytes = 0;
+            Stream stream = null;
+            OpenFileDialog openFile = new OpenFileDialog();
+            //openFile.InitialDirectory = "c:\\";
+            openFile.Title = "Please choose a data file to convert";
+            openFile.Filter = "bin files (*.bin)|*.bin|ens files (*.ens)|*.ens|All files (*.*)|*.*";
+            openFile.RestoreDirectory = true;
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((stream = openFile.OpenFile()) != null)
+                    {
+                        string path = openFile.FileName;
+                        //...
+                        try
+                        {
+                            nBytes = stream.Length;
+                            textBoxExtract.Text = "Source File: " + nBytes.ToString() + " bytes\r\n" + openFile.FileName + "\r\n";
+
+                            bool hasfilename_amp = false;
+                            bool hasfilename_bs = false;
+                            string extractfile_amp = "";
+                            string extractfile_bs = "";
+                            nBytesRead = stream.Read(bBuff, 0, 10000);
+                            while (nBytesRead > 0) //&& PlaybackEnabled
+                            {
+                                for (int i = 0; i < nBytesRead; i++)
+                                {
+                                    DataBuff[DataBuffWriteIndex] = bBuff[i];
+                                    DataBuffWriteIndex++;
+                                    if (DataBuffWriteIndex > MaxDataBuff)
+                                        DataBuffWriteIndex = 0;
+                                    BackScatter.DataBuffWriteIndex = DataBuffWriteIndex;
+                                }
+
+                                DateTime tmStamp = DateTime.Now;
+                                int DBRI = DataBuffWriteIndex;
+                                while (DBRI != DataBuffReadIndex)
+                                {
+                                    DBRI = DataBuffReadIndex;
+                                    //DecodeData(false, false, true);
+                                    if (BackScatter.FindEnsemble(EnsBuf, DataBuff))
+                                    {
+                                        BackScatter.EnsembleClass m = new BackScatter.EnsembleClass();
+                                        DecodeBackScatterEnsemble(TheBSbeam, m);
+                                        ensembles.Add(m);
+                                        /*
+                                        DateTime tmStamp = new DateTime(m.System_Year, m.System_Month, m.System_Day, m.System_Hour, m.System_Minute, m.System_Second);
+                                        string extractfile_amp = exportPath + _sn + "_AMP" + tmStamp.ToString("yyyyMMddHHmmss") + ".csv";
+                                        string extractfile_bs = exportPath + _sn + "_BS" + tmStamp.ToString("yyyyMMddHHmmss") + ".csv";
+                                        */
+
+                                        #region System information
+                                        string _sn = System.Text.ASCIIEncoding.ASCII.GetString(m.System_SN, 0, 32);
+                                        string _fw = m.System_FW_MAJOR.ToString("D2") + "." + m.System_FW_MINOR.ToString("D2") + "." + m.System_FW_REVISION.ToString("D2");
+                                        string _lat = m.System_Latitude.ToString("F7");
+                                        string _lon = m.System_Longitude.ToString("F7");
+                                        string _deployDepth = m.System_DeployDepth.ToString("F3");
+
+                                        string _heading = m.System_Heading.ToString("F2");
+                                        string _pitch = m.System_Pitch.ToString("F2");
+                                        string _roll = m.System_Roll.ToString("F2");
+                                        string _salinity = m.System_Salinity.ToString("F2");
+                                        string _waterTemp = m.System_Temperature.ToString("F2");
+
+                                        string _seedOfSound = m.System_SpeedOfSound.ToString("F2");
+                                        string _status = "0x" + m.System_Status.ToString("X04") + " 0x" + m.System_Status2.ToString("X04");
+                                        #endregion
+
+                                        #region Header
+                                        int headerLen = 7;
+                                        //Header
+                                        //Method 3: headerLen = 7
+                                        StringBuilder[] csvHeader = new StringBuilder[headerLen];
+                                        for (int ix = 0; ix < headerLen; ix++)
+                                            csvHeader[ix] = new StringBuilder();
+                                        try
+                                        {
+                                            csvHeader[0].AppendFormat("SN, {0}", _sn);
+                                            csvHeader[1].AppendFormat("FW, {0}", _fw);
+                                            csvHeader[2].AppendFormat("Latitude(deg), {0}", _lat);
+                                            csvHeader[3].AppendFormat("Longitude(deg), {0}", _lon);
+                                            csvHeader[4].AppendFormat("Deploy Depth(m), {0}", _deployDepth);
+                                            csvHeader[5].AppendFormat("Salinity(ppt), {0}", _salinity);
+                                            csvHeader[6].AppendFormat("");
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Debug.WriteLine(ex);
+                                        }
+                                        #endregion
+
+                                        if (!hasfilename_amp || !hasfilename_bs)
+                                        {
+                                            //DateTime tmStamp = new DateTime(m.System_Year, m.System_Month, m.System_Day, m.System_Hour, m.System_Minute, m.System_Second);
+                                            extractfile_amp = exportPath + _sn + "_AMP" + tmStamp.ToString("yyyyMMddHHmmss") + ".csv";
+                                            extractfile_bs = exportPath + _sn + "_BS" + tmStamp.ToString("yyyyMMddHHmmss") + ".csv";
+                                            hasfilename_amp = true;
+                                            hasfilename_bs = true;
+                                        }
+
+                                        //amp
+                                        var dir = Path.GetDirectoryName(extractfile_amp);
+                                        if (!Directory.Exists(dir))
+                                            Directory.CreateDirectory(dir);
+
+                                        if (!File.Exists(extractfile_amp))
+                                        {
+                                            int bm;
+                                            int[] bins = new int[n];
+                                            for (bm = 0; bm < MaxBSbeams; bm++)
+                                            {
+                                                if (m.BS_Beams[bm] > 0) bins[bm] = m.BS_Bins[bm];
+                                            }
+
+                                            //Header
+                                            using (StreamWriter writer_bstitle = new StreamWriter(extractfile_amp, true))
+                                            {
+                                                for (int ix = 0; ix < headerLen; ix++)
+                                                    writer_bstitle.WriteLine(csvHeader[ix].ToString());
+                                            }
+
+                                            //Title
+                                            StringBuilder csvTitle = new StringBuilder();
+                                            try
+                                            {
+                                                /*
+                                                csvTitle.AppendFormat("Ensemble#, Date/time,");
+                                                for (int i = 0; i < n; i++)
+                                                {
+                                                   // if (i == n - 1)
+                                                   //     csvTitle.AppendFormat("Beam_{0}, Frequency (Hz), Range to Bottom (m), # of Bins, First Bin, Bin Size", i);
+                                                    //else
+                                                        csvTitle.AppendFormat("Beam_{0}, Frequency (Hz), Noise Level(dB), Range to Bottom (m), # of Bins, First Bin, Bin Size,", i);
+                                                    for (int j = 0; j < bins[i]; j++)
+                                                    {
+                                                        
+                                                        if (j == bins[i] - 1 && n == n-1)
+                                                            csvTitle.AppendFormat("Bin_{0} Amp", j);
+                                                        else csvTitle.AppendFormat("Bin_{0} Amp,", j);                                                      
+                                                    }
+                                                }
+                                                */
+
+                                                //Methord 3; Steve's
+                                                csvTitle.AppendFormat("Ensemble#, Date/time, Status, Heading(deg), Pitch(deg), Roll(deg), WaterTemp(C), Speed of Sound(m/s),");
+                                                for (int i = 0; i < n; i++)
+                                                {
+                                                    // if (i == n - 1)
+                                                    //     csvTitle.AppendFormat("Beam_{0}, Frequency (Hz), Range to Bottom (m), # of Bins, First Bin, Bin Size", i);
+                                                    //else
+                                                    csvTitle.AppendFormat("Beam_{0}, Frequency (Hz), Noise Level(dB), # of Bins, First Bin, Bin Size,", i);
+                                                    for (int j = 0; j < bins[i]; j++)
+                                                    {
+
+                                                        if (j == bins[i] - 1 && n == n - 1)
+                                                            csvTitle.AppendFormat("Bin_{0} Amp", j);
+                                                        else csvTitle.AppendFormat("Bin_{0} Amp,", j);
+                                                    }
+                                                }
+
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Debug.WriteLine(ex);
+                                            }
+
+                                            using (StreamWriter writer_bstitle = new StreamWriter(extractfile_amp, true))
+                                            {
+                                                writer_bstitle.WriteLine(csvTitle.ToString());
+                                            }
+                                            extract2CVS(extractfile_amp, m, "AMP");
+                                        }
+                                        else //write data
+                                        {
+                                            extract2CVS(extractfile_amp, m, "AMP");
+                                        }
+
+                                        //bs
+                                        dir = Path.GetDirectoryName(extractfile_bs);
+                                        if (!Directory.Exists(dir))
+                                            Directory.CreateDirectory(dir);
+
+                                        if (!File.Exists(extractfile_bs))
+                                        {
+                                            //write the title
+                                            int bm;
+                                            int[] bins = new int[n];
+                                            for (bm = 0; bm < MaxBSbeams; bm++)
+                                            {
+                                                if (m.BS_Beams[bm] > 0) bins[bm] = m.BS_Bins[bm];
+                                            }
+
+                                            //Header
+                                            using (StreamWriter writer_bstitle = new StreamWriter(extractfile_bs, true))
+                                            {
+                                                for (int ix = 0; ix < headerLen; ix++)
+                                                    writer_bstitle.WriteLine(csvHeader[ix].ToString());
+                                            }
+
+
+                                            //Title
+                                            StringBuilder csvTitle = new StringBuilder();
+                                            try
+                                            {
+                                                /*
+                                                csvTitle.AppendFormat("Ensemble#, Date/time,");
+                                                for (int i = 0; i < n; i++)
+                                                {
+                                                    // if (i == n - 1)
+                                                    //     csvTitle.AppendFormat("Beam_{0}, Frequency (Hz), Range to Bottom (m), # of Bins, First Bin, Bin Size", i);
+                                                    //else
+                                                    csvTitle.AppendFormat("Beam_{0}, Frequency (Hz),  Noise Level(dB), Range to Bottom (m), # of Bins, First Bin, Bin Size,", i);
+                                                    for (int j = 0; j < bins[i]; j++)
+                                                    {
+
+                                                        if (j == bins[i] - 1 && n == n - 1)
+                                                            csvTitle.AppendFormat("Bin_{0} BS", j);
+                                                        else csvTitle.AppendFormat("Bin_{0} BS,", j);
+                                                    }
+                                                }
+                                                */
+
+                                                //Methord 3; Steve's
+                                                csvTitle.AppendFormat("Ensemble#, Date/time, Status, Heading(deg), Pitch(deg), Roll(deg), WaterTemp(C), Speed of Sound(m/s),");
+                                                for (int i = 0; i < n; i++)
+                                                {
+                                                    // if (i == n - 1)
+                                                    //     csvTitle.AppendFormat("Beam_{0}, Frequency (Hz), Range to Bottom (m), # of Bins, First Bin, Bin Size", i);
+                                                    //else
+                                                    csvTitle.AppendFormat("Beam_{0}, Frequency (Hz), Noise Level(dB), # of Bins, First Bin, Bin Size,", i);
+                                                    for (int j = 0; j < bins[i]; j++)
+                                                    {
+
+                                                        if (j == bins[i] - 1 && n == n - 1)
+                                                            csvTitle.AppendFormat("Bin_{0} BS", j);
+                                                        else csvTitle.AppendFormat("Bin_{0} BS,", j);
+                                                    }
+                                                }
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Debug.WriteLine(ex);
+                                            }
+
+                                            using (StreamWriter writer_bstitle = new StreamWriter(extractfile_bs, true))
+                                            {
+                                                writer_bstitle.WriteLine(csvTitle.ToString());
+                                            }
+                                            extract2CVS(extractfile_bs, m, "BS");
+                                        }
+                                        else //write data
+                                        {
+                                            extract2CVS(extractfile_bs, m, "BS");
+                                        }
+
+
+                                        try
+                                        {
+                                            if (InvokeRequired)
+                                            {
+                                                BeginInvoke(new Action(() =>
+                                                {
+                                                    //Debug.WriteLine("++++++" + BackScatter.GetSystemString(m1));
+                                                    //textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
+                                                    textBoxExtract.Text += getBSbeamInfo(m);
+                                                    textBoxExtract.Text += "\r\n" + BackScatter.GetBsProfileString(1, m);
+                                                }));
+                                            }
+                                            else
+                                            {
+                                                //Debug.WriteLine("++++++" + BackScatter.GetSystemString(m1));
+                                                //textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
+                                                //textBoxExtract.Text = getBSbeamInfo(m);
+                                                textBoxExtract.Text = getBSbeamInfo(m);
+                                                textBoxExtract.Text += BackScatter.GetBsProfileString(1, m);
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Debug.WriteLine(ex);
+                                        }
+
+
+                                    }
+                                }
+                                //textBoxExtract.Text += ".";
+                                nBytesRead = stream.Read(bBuff, 0, 10000);
+                                Application.DoEvents();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.GetType().ToString());
+                        }
+                        stream.Close();
+                    }
+                    //test();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file. Original error: " + ex);
+                }
+            }
+        }
+
+        //-RMa 2/8/2021
+        private string getBSbeamInfo(BackScatter.EnsembleClass m)
+        {
+            string s = "";
+            int bm;
+
+            s += "Ens " + m.System_EnsembleNumber.ToString("0") + "\r\n";
+            s += m.System_Year.ToString("D4") + "/" + m.System_Month.ToString("D2") + "/" + m.System_Day.ToString("D2");
+            s += ",";
+            s += m.System_Hour.ToString("D2") + ":" + m.System_Minute.ToString("D2") + ":" + m.System_Second.ToString("D2") + "." + m.System_Hsec.ToString("D2");
+            s += "\r\n";
+
+            s += "SN:";
+            for (int i = 0; i < 32; i++)
+            {
+                s += (char)m.System_SN[i];
+            }
+            s += "\r\n";
+            s += "\r\n";
+
+            //s += "SN:" + System.Text.ASCIIEncoding.ASCII.GetString(m.System_SN, 0, 32) + "\r\n";
+
+
+            s += "Beams            ";
+            for (bm = 0; bm < MaxBSbeams; bm++)
+            {
+                if (m.BS_Beams[bm] > 0) s += AddSpaces(m.BS_Beams[bm].ToString(), 8);
+            }
+            s += "\r\n";
+
+            s += "Bins             ";
+            for (bm = 0; bm < MaxBSbeams; bm++)
+            {
+                if (m.BS_Beams[bm] > 0) s += AddSpaces(m.BS_Bins[bm].ToString(), 8);
+            }
+            s += "\r\n\r\n";
+
+            s += "First Bin(m)     ";
+            for (bm = 0; bm < MaxBSbeams; bm++)
+            {
+                if (m.BS_Beams[bm] > 0) s += AddSpaces(m.BS_FirstBin[bm].ToString("F3"), 8);
+            }
+            s += "\r\n";
+
+            s += "Bin Size(m)      ";
+            for (bm = 0; bm < MaxBSbeams; bm++)
+            {
+                if (m.BS_Beams[bm] > 0) s += AddSpaces(m.BS_BinSize[bm].ToString("F3"), 8);
+            }
+            s += "\r\n";
+            s += "\r\n";
+
+            return s;
+        }
+
+        private void extract2CVS(string path, BackScatter.EnsembleClass m, string datatype)
+        {
+            #region System information
+            string _sn = System.Text.ASCIIEncoding.ASCII.GetString(m.System_SN, 0, 32);
+            string _fw = m.System_FW_MAJOR.ToString("D2") + "." + m.System_FW_MINOR.ToString("D2") + "." + m.System_FW_REVISION.ToString("D2");
+            string _lat = m.System_Latitude.ToString("F7");
+            string _lon = m.System_Longitude.ToString("F7");
+            string _deployDepth = m.System_DeployDepth.ToString("F3");
+
+            string _heading = m.System_Heading.ToString("F2");
+            string _pitch = m.System_Pitch.ToString("F2");
+            string _roll = m.System_Roll.ToString("F2");
+            string _salinity = m.System_Salinity.ToString("F2");
+            string _waterTemp = m.System_Temperature.ToString("F2");
+
+            string _seedOfSound = m.System_SpeedOfSound.ToString("F2");
+            string _status = "0x" + m.System_Status.ToString("X04") + " 0x" + m.System_Status2.ToString("X04");
+            #endregion
+
+            #region save to cvs file
+            uint ensNum = m.System_EnsembleNumber;
+            string sn = System.Text.ASCIIEncoding.ASCII.GetString(m.System_SN, 0, 32);
+            //string dt = m.System_Year.ToString("D04") + m.System_Month.ToString("D02") + m.System_Day.ToString("D02") +
+            //     m.System_Hour.ToString("D02") + m.System_Minute.ToString("D02") + m.System_Second.ToString("D02");
+
+            DateTime tmStamp = new DateTime(m.System_Year, m.System_Month, m.System_Day, m.System_Hour, m.System_Minute, m.System_Second);
+
+            int bm;
+            float[] freq = new float[n];
+            int[] bins = new int[n];
+            float[] firstBin = new float[n];
+            float[] binSize = new float[n];
+            float[] noise = new float[n];
+            float[] rangeToBottom = new float[n];
+            ushort[] nBins = new ushort[n];
+
+            for (bm = 0; bm < MaxBSbeams; bm++)
+            {
+                if (m.BS_Beams[bm] > 0)
+                {
+                    freq[bm] = m.BS_Frequency[bm];
+                    bins[bm] = m.BS_Bins[bm];
+                    firstBin[bm] = m.BS_FirstBin[bm];
+                    binSize[bm] = m.BS_BinSize[bm];
+                    noise[bm] = m.BS_NoiseAmplitude[bm];
+                    rangeToBottom[bm] = 0;
+                    nBins[bm] = m.BS_Bins[bm];
+                }
+            }
+
+            StringBuilder csvData = new StringBuilder();
+            try
+            {
+                //csvData.AppendFormat("{0}, {1},", ensNum, tmStamp.ToString(dtformat));
+                csvData.AppendFormat("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7},", ensNum, tmStamp.ToString(dtformat), _status, _heading, _pitch, _roll, _waterTemp, _seedOfSound);
+                for (int i = 0; i < n; i++)
+                {
+                    //if (i == n - 1)
+                    //    csvData.AppendFormat("Beam_{0}, {1}, {2}, {3}, {4}, {5}", i, freq[i], rangeToBottom[i], nBins[i], firstBin[i], binSize[i]);
+                    //else
+                    //csvData.AppendFormat("Beam_{0}, {1}, {2}, {3}, {4}, {5}, {6},", i, freq[i], noise[i], rangeToBottom[i], nBins[i], firstBin[i], binSize[i]);
+                    csvData.AppendFormat("Beam_{0}, {1}, {2}, {3}, {4}, {5},", i, freq[i], noise[i], nBins[i], firstBin[i], binSize[i]);
+
+                    for (int j = 0; j < bins[i]; j++)
+                    {
+                        if (datatype == "AMP")
+                        {
+                            if (j == bins[i] - 1 && n == n - 1)
+                                csvData.AppendFormat("{0}", m.BS_Amplitude[i, j]);
+                            else csvData.AppendFormat("{0},", m.BS_Amplitude[i, j]);
+                        }
+                        else if (datatype == "BS")
+                        {
+                            if (j == bins[i] - 1 && n == n - 1)
+                                csvData.AppendFormat("{0}", m.BS_BackScatter[i, j]);
+                            else csvData.AppendFormat("{0},", m.BS_BackScatter[i, j]);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            //string dataFilename_ecord = OMS.GetYYYMMDDFilename(adcpName + "_EarthCoord", ".ENG");
+            using (StreamWriter writer_bsdata = new StreamWriter(path, true))
+            {
+                writer_bsdata.WriteLine(csvData.ToString());
+            }
+            #endregion
+        }
+
+        private void extract2CVS_bak(BackScatter.EnsembleClass m)
+        {
+            #region save to cvs file
+            uint ensNum = m.System_EnsembleNumber;
+            string sn = System.Text.ASCIIEncoding.ASCII.GetString(m.System_SN, 0, 32);
+            string dt = m.System_Year.ToString("D04") + m.System_Month.ToString("D02") + m.System_Day.ToString("D02") +
+                 m.System_Hour.ToString("D02") + m.System_Minute.ToString("D02") + m.System_Second.ToString("D02");
+
+            int bm;
+            int[] bins = new int[n];
+            for (bm = 0; bm < MaxBSbeams; bm++)
+            {
+                if (m.BS_Beams[bm] > 0) bins[bm] = m.BS_Bins[bm];
+                textBoxExtract.Text += bins[bm].ToString() + "  ";
+            }
+            textBoxExtract.Text += "\r\n";
+
+            string extractDir = exportPath + sn;
+            string extractfile = extractDir + "\\" + dt + ".csv";
+            DirNameSeries = extractDir;
+            FilNameSeries = extractfile;
+
+            Debug.WriteLine("extractDir:  {0}", extractDir);
+            Debug.WriteLine("extractfile:  {0}", extractfile);
+            Debug.WriteLine(extractfile);
+
+            var dir = Path.GetDirectoryName(extractfile);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
+            /*
+            StringBuilder[] csvTitle = new StringBuilder[maxBins];
+            try
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    csvTitle[i].AppendFormat("Ensemble #, Date/time, Beam#, First Bin, Bin Size,");
+                    for (int j = 0; j < bins[i]; j++)
+                    {
+                        if (j == bins[i] - 1)
+                            csvTitle[i].AppendFormat("Bin_{0} Amp", j);
+                        else csvTitle[i].AppendFormat("Bin_{0} Amp,", j);
+                    }
+
+                    textBoxExtract.Text += csvTitle[i].ToString() + "\r\n";
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            */
+
+            StringBuilder csvTitle = new StringBuilder();
+            try
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    csvTitle.AppendFormat("Ensemble# {0}, Date/time, Beam_{1}, First Bin, Bin Size,", ensNum, i);
+                    for (int j = 0; j < bins[i]; j++)
+                    {
+                        if (j == bins[i] - 1)
+                            csvTitle.AppendFormat("Bin_{0} Amp", j);
+                        else csvTitle.AppendFormat("Bin_{0} Amp,", j);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            Debug.WriteLine(csvTitle.ToString() + "\r\n");
+
+            //string dataFilename_ecord = OMS.GetYYYMMDDFilename(adcpName + "_EarthCoord", ".ENG");
+            using (StreamWriter writer_ecoord = new StreamWriter(extractfile, true))
+            {
+                writer_ecoord.WriteLine(csvTitle.ToString());
+            }
+            #endregion
+        }
+
+        int MaxBSbeams = 10;
+        private string ExtractBS(int beam, BackScatter.EnsembleClass m)
+        {
+            float Frequency;
+            float BinPos;
+            float Noise;
+            if (beam > MaxBSbeams)
+                beam = 0;
+            if (beam < 0)
+                beam = 0;
+
+            Frequency = m.BS_Frequency[beam];
+            Noise = m.BS_NoiseAmplitude[beam];
+
+            string s = "Beam " + beam.ToString() + "   Ens#: " + m.System_EnsembleNumber.ToString() + "\r\n";
+            s += "Frequency " + Frequency.ToString() + " (Hertz)\r\n";
+            s += "Noise Level    " + Noise.ToString("F3") + "(dB)\r\n";
+
+            s += "Bin, Meters, Amp(dB),  BS(dB)\r\n";
+
+            BinPos = m.BS_FirstBin[beam];
+            for (int bin = 0; bin < m.BS_Bins[beam]; bin++)
+            {
+                s += AddSpaces(bin.ToString(), 3);
+                s += ",";
+                s += AddSpaces(BinPos.ToString("F3"), 7);
+                s += ",";
+                s += AddSpaces(m.BS_Amplitude[beam, bin].ToString("F3"), 8);
+                s += ",";
+                s += AddSpaces(m.BS_BackScatter[beam, bin].ToString("F3"), 8);
+                s += "\r\n";
+                BinPos += m.BS_BinSize[beam];
+            }
+            s += "\r\n";
+            return s;
+        }
+
+        string AddSpaces(string str, int n)
+        {
+            string s = str;
+
+            for (int i = 0; i < n - str.Length; i++)
+            {
+                s = " " + s;
+            }
+
+            return s;
         }
         #endregion
     }

@@ -224,6 +224,13 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelFlowPix = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
+            this.textBoxRE = new System.Windows.Forms.TextBox();
+            this.textBoxLE = new System.Windows.Forms.TextBox();
+            this.textBoxWT = new System.Windows.Forms.TextBox();
+            this.textBoxST = new System.Windows.Forms.TextBox();
+            this.textBoxBT = new System.Windows.Forms.TextBox();
+            this.textBoxMB = new System.Windows.Forms.TextBox();
+            this.textBoxCC = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panelGPSTrack = new ADCP.DVL_Windows.NoPaintBackGroundPanel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -552,15 +559,15 @@
             this.label57 = new System.Windows.Forms.Label();
             this.tabPageSerialTime = new ADCP.DVL_Windows.NoPaintBackGroundTabPage();
             this.panelSerialTime = new ADCP.DVL_Windows.NoPaintBackGroundPanel();
-            this.tabPageCommandSet = new System.Windows.Forms.TabPage();
-            this.textBoxBackscatter = new System.Windows.Forms.TextBox();
-            this.textBoxSmartPageFile = new System.Windows.Forms.TextBox();
-            this.textBoxCommandSet = new System.Windows.Forms.TextBox();
             this.tabPageContour = new System.Windows.Forms.TabPage();
+            this.groupBox_playcontrol = new System.Windows.Forms.GroupBox();
             this.buttonBS_Pause = new System.Windows.Forms.Button();
+            this.textBox_EnsN = new System.Windows.Forms.TextBox();
             this.buttonBS_Play = new System.Windows.Forms.Button();
             this.buttonBS_Start = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
             this.buttonBS_End = new System.Windows.Forms.Button();
+            this.label_DateTime = new System.Windows.Forms.Label();
             this.buttonPlaybackStepBack = new System.Windows.Forms.Button();
             this.buttonPlaybackStep = new System.Windows.Forms.Button();
             this.hScrollBar_BS = new System.Windows.Forms.HScrollBar();
@@ -590,18 +597,13 @@
             this.checkBox_b0 = new System.Windows.Forms.CheckBox();
             this.btn_backscatter = new System.Windows.Forms.Button();
             this.btn_Amp = new System.Windows.Forms.Button();
-            this.panel36 = new System.Windows.Forms.Panel();
-            this.textBox_EnsN = new System.Windows.Forms.TextBox();
-            this.label_DateTime = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
             this.tabPageBackScatter = new System.Windows.Forms.TabPage();
+            this.groupBox_export = new System.Windows.Forms.GroupBox();
+            this.btn_Extract = new System.Windows.Forms.Button();
             this.panel_BSProfile = new System.Windows.Forms.Panel();
             this.textBoxBSleaders = new System.Windows.Forms.TextBox();
             this.textBoxBSdata = new System.Windows.Forms.TextBox();
             this.textBoxBSsystem = new System.Windows.Forms.TextBox();
-            this.textBox_EnsNum = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtUserCommand = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label20 = new System.Windows.Forms.Label();
             this.textBoxBSbeam = new System.Windows.Forms.TextBox();
@@ -609,16 +611,17 @@
             this.radioButtonBSleaders = new System.Windows.Forms.RadioButton();
             this.radioButtonBSdata = new System.Windows.Forms.RadioButton();
             this.radioButtonBSsystem = new System.Windows.Forms.RadioButton();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.textBoxCC = new System.Windows.Forms.TextBox();
-            this.textBoxMB = new System.Windows.Forms.TextBox();
-            this.textBoxBT = new System.Windows.Forms.TextBox();
-            this.textBoxST = new System.Windows.Forms.TextBox();
-            this.textBoxWT = new System.Windows.Forms.TextBox();
-            this.textBoxLE = new System.Windows.Forms.TextBox();
-            this.textBoxRE = new System.Windows.Forms.TextBox();
+            this.tabPageCommandSet = new System.Windows.Forms.TabPage();
+            this.textBoxBackscatter = new System.Windows.Forms.TextBox();
+            this.textBoxSmartPageFile = new System.Windows.Forms.TextBox();
+            this.textBoxCommandSet = new System.Windows.Forms.TextBox();
             this.tabPageSystemTest = new System.Windows.Forms.TabPage();
             this.textBoxSystemTest = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.panel_Extract = new System.Windows.Forms.Panel();
+            this.txtUserCommand = new System.Windows.Forms.TextBox();
+            this.textBoxExtract = new System.Windows.Forms.TextBox();
+            this.textBox_comments = new System.Windows.Forms.TextBox();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -721,16 +724,18 @@
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.tabPageSerialTime.SuspendLayout();
-            this.tabPageCommandSet.SuspendLayout();
             this.tabPageContour.SuspendLayout();
+            this.groupBox_playcontrol.SuspendLayout();
             this.panel_ColorScale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMaxV_BS)).BeginInit();
-            this.panel36.SuspendLayout();
             this.tabPageBackScatter.SuspendLayout();
+            this.groupBox_export.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.tabPageCommandSet.SuspendLayout();
             this.tabPageSystemTest.SuspendLayout();
+            this.panel_Extract.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl4
@@ -1290,6 +1295,7 @@
             // panel29
             // 
             this.panel29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel29.Controls.Add(this.textBox_comments);
             this.panel29.Controls.Add(this.labelSiteComments);
             this.panel29.Controls.Add(this.labelMeasNumber);
             this.panel29.Controls.Add(this.labelStationNumber);
@@ -2133,6 +2139,41 @@
             this.panel21.Controls.Add(this.label11);
             resources.ApplyResources(this.panel21, "panel21");
             this.panel21.Name = "panel21";
+            // 
+            // textBoxRE
+            // 
+            resources.ApplyResources(this.textBoxRE, "textBoxRE");
+            this.textBoxRE.Name = "textBoxRE";
+            // 
+            // textBoxLE
+            // 
+            resources.ApplyResources(this.textBoxLE, "textBoxLE");
+            this.textBoxLE.Name = "textBoxLE";
+            // 
+            // textBoxWT
+            // 
+            resources.ApplyResources(this.textBoxWT, "textBoxWT");
+            this.textBoxWT.Name = "textBoxWT";
+            // 
+            // textBoxST
+            // 
+            resources.ApplyResources(this.textBoxST, "textBoxST");
+            this.textBoxST.Name = "textBoxST";
+            // 
+            // textBoxBT
+            // 
+            resources.ApplyResources(this.textBoxBT, "textBoxBT");
+            this.textBoxBT.Name = "textBoxBT";
+            // 
+            // textBoxMB
+            // 
+            resources.ApplyResources(this.textBoxMB, "textBoxMB");
+            this.textBoxMB.Name = "textBoxMB";
+            // 
+            // textBoxCC
+            // 
+            resources.ApplyResources(this.textBoxCC, "textBoxCC");
+            this.textBoxCC.Name = "textBoxCC";
             // 
             // label3
             // 
@@ -4350,38 +4391,9 @@
             this.panelSerialTime.Name = "panelSerialTime";
             this.panelSerialTime.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSerialTime_Paint);
             // 
-            // tabPageCommandSet
-            // 
-            this.tabPageCommandSet.Controls.Add(this.textBoxBackscatter);
-            this.tabPageCommandSet.Controls.Add(this.textBoxSmartPageFile);
-            this.tabPageCommandSet.Controls.Add(this.textBoxCommandSet);
-            resources.ApplyResources(this.tabPageCommandSet, "tabPageCommandSet");
-            this.tabPageCommandSet.Name = "tabPageCommandSet";
-            this.tabPageCommandSet.UseVisualStyleBackColor = true;
-            // 
-            // textBoxBackscatter
-            // 
-            resources.ApplyResources(this.textBoxBackscatter, "textBoxBackscatter");
-            this.textBoxBackscatter.Name = "textBoxBackscatter";
-            // 
-            // textBoxSmartPageFile
-            // 
-            resources.ApplyResources(this.textBoxSmartPageFile, "textBoxSmartPageFile");
-            this.textBoxSmartPageFile.Name = "textBoxSmartPageFile";
-            // 
-            // textBoxCommandSet
-            // 
-            resources.ApplyResources(this.textBoxCommandSet, "textBoxCommandSet");
-            this.textBoxCommandSet.Name = "textBoxCommandSet";
-            // 
             // tabPageContour
             // 
-            this.tabPageContour.Controls.Add(this.buttonBS_Pause);
-            this.tabPageContour.Controls.Add(this.buttonBS_Play);
-            this.tabPageContour.Controls.Add(this.buttonBS_Start);
-            this.tabPageContour.Controls.Add(this.buttonBS_End);
-            this.tabPageContour.Controls.Add(this.buttonPlaybackStepBack);
-            this.tabPageContour.Controls.Add(this.buttonPlaybackStep);
+            this.tabPageContour.Controls.Add(this.groupBox_playcontrol);
             this.tabPageContour.Controls.Add(this.hScrollBar_BS);
             this.tabPageContour.Controls.Add(this.panel_contour);
             this.tabPageContour.Controls.Add(this.panel_ColorScale);
@@ -4399,10 +4411,24 @@
             this.tabPageContour.Controls.Add(this.checkBox_b0);
             this.tabPageContour.Controls.Add(this.btn_backscatter);
             this.tabPageContour.Controls.Add(this.btn_Amp);
-            this.tabPageContour.Controls.Add(this.panel36);
             resources.ApplyResources(this.tabPageContour, "tabPageContour");
             this.tabPageContour.Name = "tabPageContour";
             this.tabPageContour.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_playcontrol
+            // 
+            this.groupBox_playcontrol.Controls.Add(this.buttonBS_Pause);
+            this.groupBox_playcontrol.Controls.Add(this.textBox_EnsN);
+            this.groupBox_playcontrol.Controls.Add(this.buttonBS_Play);
+            this.groupBox_playcontrol.Controls.Add(this.buttonBS_Start);
+            this.groupBox_playcontrol.Controls.Add(this.label26);
+            this.groupBox_playcontrol.Controls.Add(this.buttonBS_End);
+            this.groupBox_playcontrol.Controls.Add(this.label_DateTime);
+            this.groupBox_playcontrol.Controls.Add(this.buttonPlaybackStepBack);
+            this.groupBox_playcontrol.Controls.Add(this.buttonPlaybackStep);
+            resources.ApplyResources(this.groupBox_playcontrol, "groupBox_playcontrol");
+            this.groupBox_playcontrol.Name = "groupBox_playcontrol";
+            this.groupBox_playcontrol.TabStop = false;
             // 
             // buttonBS_Pause
             // 
@@ -4410,6 +4436,11 @@
             this.buttonBS_Pause.Name = "buttonBS_Pause";
             this.buttonBS_Pause.UseVisualStyleBackColor = true;
             this.buttonBS_Pause.Click += new System.EventHandler(this.buttonBS_Pause_Click);
+            // 
+            // textBox_EnsN
+            // 
+            resources.ApplyResources(this.textBox_EnsN, "textBox_EnsN");
+            this.textBox_EnsN.Name = "textBox_EnsN";
             // 
             // buttonBS_Play
             // 
@@ -4425,12 +4456,22 @@
             this.buttonBS_Start.UseVisualStyleBackColor = true;
             this.buttonBS_Start.Click += new System.EventHandler(this.buttonBS_Start_Click);
             // 
+            // label26
+            // 
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            // 
             // buttonBS_End
             // 
             resources.ApplyResources(this.buttonBS_End, "buttonBS_End");
             this.buttonBS_End.Name = "buttonBS_End";
             this.buttonBS_End.UseVisualStyleBackColor = true;
             this.buttonBS_End.Click += new System.EventHandler(this.buttonBS_End_Click);
+            // 
+            // label_DateTime
+            // 
+            resources.ApplyResources(this.label_DateTime, "label_DateTime");
+            this.label_DateTime.Name = "label_DateTime";
             // 
             // buttonPlaybackStepBack
             // 
@@ -4679,43 +4720,32 @@
             this.btn_Amp.UseVisualStyleBackColor = true;
             this.btn_Amp.Click += new System.EventHandler(this.btn_Amp_Click);
             // 
-            // panel36
-            // 
-            this.panel36.BackColor = System.Drawing.Color.MintCream;
-            this.panel36.Controls.Add(this.textBox_EnsN);
-            this.panel36.Controls.Add(this.label_DateTime);
-            this.panel36.Controls.Add(this.label26);
-            resources.ApplyResources(this.panel36, "panel36");
-            this.panel36.Name = "panel36";
-            // 
-            // textBox_EnsN
-            // 
-            resources.ApplyResources(this.textBox_EnsN, "textBox_EnsN");
-            this.textBox_EnsN.Name = "textBox_EnsN";
-            // 
-            // label_DateTime
-            // 
-            resources.ApplyResources(this.label_DateTime, "label_DateTime");
-            this.label_DateTime.Name = "label_DateTime";
-            // 
-            // label26
-            // 
-            resources.ApplyResources(this.label26, "label26");
-            this.label26.Name = "label26";
-            // 
             // tabPageBackScatter
             // 
+            this.tabPageBackScatter.Controls.Add(this.panel_Extract);
+            this.tabPageBackScatter.Controls.Add(this.groupBox_export);
             this.tabPageBackScatter.Controls.Add(this.panel_BSProfile);
             this.tabPageBackScatter.Controls.Add(this.textBoxBSleaders);
             this.tabPageBackScatter.Controls.Add(this.textBoxBSdata);
             this.tabPageBackScatter.Controls.Add(this.textBoxBSsystem);
-            this.tabPageBackScatter.Controls.Add(this.textBox_EnsNum);
-            this.tabPageBackScatter.Controls.Add(this.label21);
-            this.tabPageBackScatter.Controls.Add(this.txtUserCommand);
             this.tabPageBackScatter.Controls.Add(this.groupBox8);
             resources.ApplyResources(this.tabPageBackScatter, "tabPageBackScatter");
             this.tabPageBackScatter.Name = "tabPageBackScatter";
             this.tabPageBackScatter.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_export
+            // 
+            this.groupBox_export.Controls.Add(this.btn_Extract);
+            resources.ApplyResources(this.groupBox_export, "groupBox_export");
+            this.groupBox_export.Name = "groupBox_export";
+            this.groupBox_export.TabStop = false;
+            // 
+            // btn_Extract
+            // 
+            resources.ApplyResources(this.btn_Extract, "btn_Extract");
+            this.btn_Extract.Name = "btn_Extract";
+            this.btn_Extract.UseVisualStyleBackColor = true;
+            this.btn_Extract.Click += new System.EventHandler(this.btn_Extract_Click);
             // 
             // panel_BSProfile
             // 
@@ -4736,23 +4766,6 @@
             // 
             resources.ApplyResources(this.textBoxBSsystem, "textBoxBSsystem");
             this.textBoxBSsystem.Name = "textBoxBSsystem";
-            // 
-            // textBox_EnsNum
-            // 
-            resources.ApplyResources(this.textBox_EnsNum, "textBox_EnsNum");
-            this.textBox_EnsNum.Name = "textBox_EnsNum";
-            // 
-            // label21
-            // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
-            // 
-            // txtUserCommand
-            // 
-            this.txtUserCommand.AcceptsReturn = true;
-            resources.ApplyResources(this.txtUserCommand, "txtUserCommand");
-            this.txtUserCommand.CausesValidation = false;
-            this.txtUserCommand.Name = "txtUserCommand";
             // 
             // groupBox8
             // 
@@ -4808,40 +4821,29 @@
             this.radioButtonBSsystem.UseVisualStyleBackColor = true;
             this.radioButtonBSsystem.CheckedChanged += new System.EventHandler(this.radioButtonBSsystem_CheckedChanged);
             // 
-            // textBoxCC
+            // tabPageCommandSet
             // 
-            resources.ApplyResources(this.textBoxCC, "textBoxCC");
-            this.textBoxCC.Name = "textBoxCC";
+            this.tabPageCommandSet.Controls.Add(this.textBoxBackscatter);
+            this.tabPageCommandSet.Controls.Add(this.textBoxSmartPageFile);
+            this.tabPageCommandSet.Controls.Add(this.textBoxCommandSet);
+            resources.ApplyResources(this.tabPageCommandSet, "tabPageCommandSet");
+            this.tabPageCommandSet.Name = "tabPageCommandSet";
+            this.tabPageCommandSet.UseVisualStyleBackColor = true;
             // 
-            // textBoxMB
+            // textBoxBackscatter
             // 
-            resources.ApplyResources(this.textBoxMB, "textBoxMB");
-            this.textBoxMB.Name = "textBoxMB";
+            resources.ApplyResources(this.textBoxBackscatter, "textBoxBackscatter");
+            this.textBoxBackscatter.Name = "textBoxBackscatter";
             // 
-            // textBoxBT
+            // textBoxSmartPageFile
             // 
-            resources.ApplyResources(this.textBoxBT, "textBoxBT");
-            this.textBoxBT.Name = "textBoxBT";
+            resources.ApplyResources(this.textBoxSmartPageFile, "textBoxSmartPageFile");
+            this.textBoxSmartPageFile.Name = "textBoxSmartPageFile";
             // 
-            // textBoxST
+            // textBoxCommandSet
             // 
-            resources.ApplyResources(this.textBoxST, "textBoxST");
-            this.textBoxST.Name = "textBoxST";
-            // 
-            // textBoxWT
-            // 
-            resources.ApplyResources(this.textBoxWT, "textBoxWT");
-            this.textBoxWT.Name = "textBoxWT";
-            // 
-            // textBoxLE
-            // 
-            resources.ApplyResources(this.textBoxLE, "textBoxLE");
-            this.textBoxLE.Name = "textBoxLE";
-            // 
-            // textBoxRE
-            // 
-            resources.ApplyResources(this.textBoxRE, "textBoxRE");
-            this.textBoxRE.Name = "textBoxRE";
+            resources.ApplyResources(this.textBoxCommandSet, "textBoxCommandSet");
+            this.textBoxCommandSet.Name = "textBoxCommandSet";
             // 
             // tabPageSystemTest
             // 
@@ -4854,6 +4856,31 @@
             // 
             resources.ApplyResources(this.textBoxSystemTest, "textBoxSystemTest");
             this.textBoxSystemTest.Name = "textBoxSystemTest";
+            // 
+            // panel_Extract
+            // 
+            resources.ApplyResources(this.panel_Extract, "panel_Extract");
+            this.panel_Extract.Controls.Add(this.txtUserCommand);
+            this.panel_Extract.Controls.Add(this.textBoxExtract);
+            this.panel_Extract.Name = "panel_Extract";
+            // 
+            // txtUserCommand
+            // 
+            this.txtUserCommand.AcceptsReturn = true;
+            resources.ApplyResources(this.txtUserCommand, "txtUserCommand");
+            this.txtUserCommand.CausesValidation = false;
+            this.txtUserCommand.Name = "txtUserCommand";
+            // 
+            // textBoxExtract
+            // 
+            resources.ApplyResources(this.textBoxExtract, "textBoxExtract");
+            this.textBoxExtract.Name = "textBoxExtract";
+            // 
+            // textBox_comments
+            // 
+            resources.ApplyResources(this.textBox_comments, "textBox_comments");
+            this.textBox_comments.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_comments.Name = "textBox_comments";
             // 
             // DP300_Windows
             // 
@@ -5024,23 +5051,26 @@
             this.tabPage9.ResumeLayout(false);
             this.tabPage10.ResumeLayout(false);
             this.tabPageSerialTime.ResumeLayout(false);
-            this.tabPageCommandSet.ResumeLayout(false);
-            this.tabPageCommandSet.PerformLayout();
             this.tabPageContour.ResumeLayout(false);
             this.tabPageContour.PerformLayout();
+            this.groupBox_playcontrol.ResumeLayout(false);
+            this.groupBox_playcontrol.PerformLayout();
             this.panel_ColorScale.ResumeLayout(false);
             this.panel_ColorScale.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMaxV_BS)).EndInit();
-            this.panel36.ResumeLayout(false);
-            this.panel36.PerformLayout();
             this.tabPageBackScatter.ResumeLayout(false);
             this.tabPageBackScatter.PerformLayout();
+            this.groupBox_export.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.tabPageCommandSet.ResumeLayout(false);
+            this.tabPageCommandSet.PerformLayout();
             this.tabPageSystemTest.ResumeLayout(false);
             this.tabPageSystemTest.PerformLayout();
+            this.panel_Extract.ResumeLayout(false);
+            this.panel_Extract.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -5637,16 +5667,12 @@
         private System.Windows.Forms.CheckBox checkBox_b0;
         private System.Windows.Forms.Button btn_backscatter;
         private System.Windows.Forms.Button btn_Amp;
-        private System.Windows.Forms.Panel panel36;
         private System.Windows.Forms.TextBox textBox_EnsN;
         private System.Windows.Forms.Label label_DateTime;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TabPage tabPageBackScatter;
         private System.Windows.Forms.HScrollBar hScrollBar_BS;
         private DoubleBufferPanel panel_contour;
-        private System.Windows.Forms.TextBox textBox_EnsNum;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txtUserCommand;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox textBoxBSbeam;
@@ -5674,6 +5700,13 @@
         private System.Windows.Forms.TextBox textBoxST;
         private System.Windows.Forms.TabPage tabPageSystemTest;
         private System.Windows.Forms.TextBox textBoxSystemTest;
+        private System.Windows.Forms.GroupBox groupBox_playcontrol;
+        private System.Windows.Forms.GroupBox groupBox_export;
+        private System.Windows.Forms.Button btn_Extract;
+        private System.Windows.Forms.Panel panel_Extract;
+        private System.Windows.Forms.TextBox txtUserCommand;
+        private System.Windows.Forms.TextBox textBoxExtract;
+        private System.Windows.Forms.TextBox textBox_comments;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }
