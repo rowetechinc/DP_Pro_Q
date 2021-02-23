@@ -22602,15 +22602,115 @@ namespace ADCP
 
         private void refreshBSProfile()
         {
+            string s = "";
             try
             {
                 if (iCurrentEns <= ensembles.Count && ensembles.Count > 0) //-RMa 1/28/2021
                 {
                     //iEndEnsemble = ensembles.Count; //ensembles.Count - 1; //-RMa 1/28/2021
                     iEndEnsemble = iCurrentEns; //-RMa 1/28/2021
-                    if (iEndEnsemble - 1 >= 0)
+                    if (iEndEnsemble>= 0)
                     {
-                        BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
+                        BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble];
+                        /*
+                        try
+                        {
+                            try
+                            {
+                                if (InvokeRequired)
+                                {
+                                    BeginInvoke(new Action(() =>
+                                    {
+                                        textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
+                                        #region System information
+                                        string _sn = System.Text.ASCIIEncoding.ASCII.GetString(m1.System_SN, 0, 32);
+                                        string _fw = m1.System_FW_MAJOR.ToString("D2") + "." + m1.System_FW_MINOR.ToString("D2") + "." + m1.System_FW_REVISION.ToString("D2");
+                                        string _lat = m1.System_Latitude.ToString("F7");
+                                        string _lon = m1.System_Longitude.ToString("F7");
+                                        string _deployDepth = m1.System_DeployDepth.ToString("F3");
+
+                                        string _heading = m1.System_Heading.ToString("F2");
+                                        string _pitch = m1.System_Pitch.ToString("F2");
+                                        string _roll = m1.System_Roll.ToString("F2");
+                                        string _salinity = m1.System_Salinity.ToString("F2");
+                                        string _waterTemp = m1.System_Temperature.ToString("F2");
+
+                                        string _seedOfSound = m1.System_SpeedOfSound.ToString("F2");
+                                        string _status = "0x" + m1.System_Status.ToString("X04") + " 0x" + m1.System_Status2.ToString("X04");
+                                        #endregion
+
+                                        //s += "Ens " + m1.System_EnsembleNumber.ToString("0") + " lat = " + _lat;
+                                        //s += "\r\n";
+
+                                        s += "SN: " + System.Text.ASCIIEncoding.ASCII.GetString(m1.System_SN, 0, 32);
+
+                                        s += "\r\n";
+                                        s += "Firmware: " + _fw;
+                                        s += "\r\n";
+
+                                        textBoxExtract.Text = s;
+                                    }));
+                                }
+                                else
+                                {
+                                    textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
+                                    #region System information
+                                    string _sn = System.Text.ASCIIEncoding.ASCII.GetString(m1.System_SN, 0, 32);
+                                    string _fw = m1.System_FW_MAJOR.ToString("D2") + "." + m1.System_FW_MINOR.ToString("D2") + "." + m1.System_FW_REVISION.ToString("D2");
+                                    string _lat = m1.System_Latitude.ToString("F7");
+                                    string _lon = m1.System_Longitude.ToString("F7");
+                                    string _deployDepth = m1.System_DeployDepth.ToString("F3");
+
+                                    string _heading = m1.System_Heading.ToString("F2");
+                                    string _pitch = m1.System_Pitch.ToString("F2");
+                                    string _roll = m1.System_Roll.ToString("F2");
+                                    string _salinity = m1.System_Salinity.ToString("F2");
+                                    string _waterTemp = m1.System_Temperature.ToString("F2");
+
+                                    string _seedOfSound = m1.System_SpeedOfSound.ToString("F2");
+                                    string _status = "0x" + m1.System_Status.ToString("X04") + " 0x" + m1.System_Status2.ToString("X04");
+                                    #endregion
+
+                                    s += "Ens " + m1.System_EnsembleNumber.ToString("0");
+                                    s += "\r\n";
+
+                                    s += "SN: " + _sn;
+
+                                    s += "\r\n";
+                                    s += "Firmware: " + _fw;
+                                    s += "\r\n";
+
+
+                                    textBoxExtract.Text = s;
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Debug.WriteLine(e);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex);
+                        }
+
+                        */
+
+                        try
+                        {
+                            BeginInvoke((Action)delegate ()
+                            {
+                                textBoxExtract.Text = getBSbeamInfo(m1);
+                                //textBoxBSsystem.Text = getBSbeamInfo(m1);
+                                textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex);
+                        }
+
+                        //
                         try
                         {
                             for (int i = 0; i < n; i++)
@@ -23237,7 +23337,7 @@ namespace ADCP
                     }
 
                     this.BeginInvoke(RefreshSvContour);
-                    this.BeginInvoke(refreshBSProfileData); //-RMa 1/25/2021                         
+                    this.BeginInvoke(refreshBSProfileData); //-RMa 1/25/2021           
                 }
                 else
                 {
@@ -23540,7 +23640,8 @@ namespace ADCP
                         try
                         {
                             nBytes = stream.Length;
-                            textBoxExtract.Text = "Source File: " + nBytes.ToString() + " bytes\r\n" + openFile.FileName + "\r\n";
+                            //textBoxExtract.Text = "Source File: " + nBytes.ToString() + " bytes\r\n" + openFile.FileName + "\r\n";
+                            string sourcefile = "Source File: " + nBytes.ToString() + " bytes\r\n" + openFile.FileName + "\r\n";
 
                             bool hasfilename_amp = false;
                             bool hasfilename_bs = false;
@@ -23628,6 +23729,7 @@ namespace ADCP
                                         var dir = Path.GetDirectoryName(extractfile_amp);
                                         if (!Directory.Exists(dir))
                                             Directory.CreateDirectory(dir);
+                                        //textBoxExtract.Text += extractfile_amp + "\r\n";                        
 
                                         if (!File.Exists(extractfile_amp))
                                         {
@@ -23705,6 +23807,8 @@ namespace ADCP
                                         dir = Path.GetDirectoryName(extractfile_bs);
                                         if (!Directory.Exists(dir))
                                             Directory.CreateDirectory(dir);
+
+                                        //textBoxExtract.Text += extractfile_bs + "\r\n";
 
                                         if (!File.Exists(extractfile_bs))
                                         {
@@ -23788,6 +23892,10 @@ namespace ADCP
                                                 {
                                                     //Debug.WriteLine("++++++" + BackScatter.GetSystemString(m1));
                                                     //textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
+                                                    textBoxExtract.Text = sourcefile + "\r\n"
+                                                     + "Extract to:" + "\r\n"
+                                                    + extractfile_amp + "\r\n"
+                                                    + extractfile_bs + "\r\n" + "\r\n";
                                                     textBoxExtract.Text += getBSbeamInfo(m);
                                                     textBoxExtract.Text += "\r\n" + BackScatter.GetBsProfileString(1, m);
                                                 }));
@@ -23797,8 +23905,13 @@ namespace ADCP
                                                 //Debug.WriteLine("++++++" + BackScatter.GetSystemString(m1));
                                                 //textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
                                                 //textBoxExtract.Text = getBSbeamInfo(m);
-                                                textBoxExtract.Text = getBSbeamInfo(m);
-                                                textBoxExtract.Text += BackScatter.GetBsProfileString(1, m);
+                                                //textBoxExtract.Text += BackScatter.GetBsProfileString(1, m);
+                                                textBoxExtract.Text = sourcefile + "\r\n" 
+                                                    + "Extract to:" + "\r\n"
+                                                + extractfile_amp + "\r\n"
+                                                + extractfile_bs + "\r\n" + "\r\n";
+                                                textBoxExtract.Text += getBSbeamInfo(m);
+                                                textBoxExtract.Text += "\r\n" + BackScatter.GetBsProfileString(1, m);
                                             }
                                         }
                                         catch (Exception ex)
@@ -23842,13 +23955,14 @@ namespace ADCP
             s += "\r\n";
 
             s += "SN:";
+            
             for (int i = 0; i < 32; i++)
             {
                 s += (char)m.System_SN[i];
             }
             s += "\r\n";
             s += "\r\n";
-
+            
             //s += "SN:" + System.Text.ASCIIEncoding.ASCII.GetString(m.System_SN, 0, 32) + "\r\n";
 
 

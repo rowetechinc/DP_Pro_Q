@@ -4197,7 +4197,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 68</value>
+    <value>0, 64</value>
   </data>
   <data name="pictureBox_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4221,7 +4221,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 69</value>
+    <value>29, 65</value>
   </data>
   <data name="panel_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4245,7 +4245,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_A.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-455, 0</value>
+    <value>-459, 0</value>
   </data>
   <data name="vScrollBar_W_A.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -4587,7 +4587,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 127</value>
+    <value>0, 123</value>
   </data>
   <data name="pictureBox_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4611,7 +4611,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 133</value>
+    <value>29, 129</value>
   </data>
   <data name="panel_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4638,7 +4638,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_C.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-510, 0</value>
+    <value>-514, 0</value>
   </data>
   <data name="vScrollBar_W_C.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -8400,10 +8400,10 @@
     <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="GPSdepthPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 348</value>
+    <value>0, 344</value>
   </data>
   <data name="GPSdepthPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>508, 171</value>
+    <value>504, 171</value>
   </data>
   <data name="GPSdepthPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

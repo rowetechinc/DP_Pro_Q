@@ -111,6 +111,7 @@
             this.panelStep2 = new System.Windows.Forms.Panel();
             this.labelStep3 = new System.Windows.Forms.Label();
             this.panel29 = new System.Windows.Forms.Panel();
+            this.textBox_comments = new System.Windows.Forms.TextBox();
             this.labelSiteComments = new System.Windows.Forms.Label();
             this.labelMeasNumber = new System.Windows.Forms.Label();
             this.labelStationNumber = new System.Windows.Forms.Label();
@@ -598,6 +599,9 @@
             this.btn_backscatter = new System.Windows.Forms.Button();
             this.btn_Amp = new System.Windows.Forms.Button();
             this.tabPageBackScatter = new System.Windows.Forms.TabPage();
+            this.panel_Extract = new System.Windows.Forms.Panel();
+            this.txtUserCommand = new System.Windows.Forms.TextBox();
+            this.textBoxExtract = new System.Windows.Forms.TextBox();
             this.groupBox_export = new System.Windows.Forms.GroupBox();
             this.btn_Extract = new System.Windows.Forms.Button();
             this.panel_BSProfile = new System.Windows.Forms.Panel();
@@ -618,10 +622,6 @@
             this.tabPageSystemTest = new System.Windows.Forms.TabPage();
             this.textBoxSystemTest = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.panel_Extract = new System.Windows.Forms.Panel();
-            this.txtUserCommand = new System.Windows.Forms.TextBox();
-            this.textBoxExtract = new System.Windows.Forms.TextBox();
-            this.textBox_comments = new System.Windows.Forms.TextBox();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -731,11 +731,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMaxV_BS)).BeginInit();
             this.tabPageBackScatter.SuspendLayout();
+            this.panel_Extract.SuspendLayout();
             this.groupBox_export.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.tabPageCommandSet.SuspendLayout();
             this.tabPageSystemTest.SuspendLayout();
-            this.panel_Extract.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl4
@@ -1306,6 +1306,12 @@
             this.panel29.Controls.Add(this.label270);
             resources.ApplyResources(this.panel29, "panel29");
             this.panel29.Name = "panel29";
+            // 
+            // textBox_comments
+            // 
+            resources.ApplyResources(this.textBox_comments, "textBox_comments");
+            this.textBox_comments.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_comments.Name = "textBox_comments";
             // 
             // labelSiteComments
             // 
@@ -4733,6 +4739,25 @@
             this.tabPageBackScatter.Name = "tabPageBackScatter";
             this.tabPageBackScatter.UseVisualStyleBackColor = true;
             // 
+            // panel_Extract
+            // 
+            resources.ApplyResources(this.panel_Extract, "panel_Extract");
+            this.panel_Extract.Controls.Add(this.txtUserCommand);
+            this.panel_Extract.Controls.Add(this.textBoxExtract);
+            this.panel_Extract.Name = "panel_Extract";
+            // 
+            // txtUserCommand
+            // 
+            this.txtUserCommand.AcceptsReturn = true;
+            resources.ApplyResources(this.txtUserCommand, "txtUserCommand");
+            this.txtUserCommand.CausesValidation = false;
+            this.txtUserCommand.Name = "txtUserCommand";
+            // 
+            // textBoxExtract
+            // 
+            resources.ApplyResources(this.textBoxExtract, "textBoxExtract");
+            this.textBoxExtract.Name = "textBoxExtract";
+            // 
             // groupBox_export
             // 
             this.groupBox_export.Controls.Add(this.btn_Extract);
@@ -4794,7 +4819,9 @@
             // radioButtonBSprofile
             // 
             resources.ApplyResources(this.radioButtonBSprofile, "radioButtonBSprofile");
+            this.radioButtonBSprofile.Checked = true;
             this.radioButtonBSprofile.Name = "radioButtonBSprofile";
+            this.radioButtonBSprofile.TabStop = true;
             this.radioButtonBSprofile.UseVisualStyleBackColor = true;
             this.radioButtonBSprofile.CheckedChanged += new System.EventHandler(this.radioButtonBSprofile_CheckedChanged);
             // 
@@ -4815,9 +4842,7 @@
             // radioButtonBSsystem
             // 
             resources.ApplyResources(this.radioButtonBSsystem, "radioButtonBSsystem");
-            this.radioButtonBSsystem.Checked = true;
             this.radioButtonBSsystem.Name = "radioButtonBSsystem";
-            this.radioButtonBSsystem.TabStop = true;
             this.radioButtonBSsystem.UseVisualStyleBackColor = true;
             this.radioButtonBSsystem.CheckedChanged += new System.EventHandler(this.radioButtonBSsystem_CheckedChanged);
             // 
@@ -4856,31 +4881,6 @@
             // 
             resources.ApplyResources(this.textBoxSystemTest, "textBoxSystemTest");
             this.textBoxSystemTest.Name = "textBoxSystemTest";
-            // 
-            // panel_Extract
-            // 
-            resources.ApplyResources(this.panel_Extract, "panel_Extract");
-            this.panel_Extract.Controls.Add(this.txtUserCommand);
-            this.panel_Extract.Controls.Add(this.textBoxExtract);
-            this.panel_Extract.Name = "panel_Extract";
-            // 
-            // txtUserCommand
-            // 
-            this.txtUserCommand.AcceptsReturn = true;
-            resources.ApplyResources(this.txtUserCommand, "txtUserCommand");
-            this.txtUserCommand.CausesValidation = false;
-            this.txtUserCommand.Name = "txtUserCommand";
-            // 
-            // textBoxExtract
-            // 
-            resources.ApplyResources(this.textBoxExtract, "textBoxExtract");
-            this.textBoxExtract.Name = "textBoxExtract";
-            // 
-            // textBox_comments
-            // 
-            resources.ApplyResources(this.textBox_comments, "textBox_comments");
-            this.textBox_comments.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox_comments.Name = "textBox_comments";
             // 
             // DP300_Windows
             // 
@@ -5062,6 +5062,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMaxV_BS)).EndInit();
             this.tabPageBackScatter.ResumeLayout(false);
             this.tabPageBackScatter.PerformLayout();
+            this.panel_Extract.ResumeLayout(false);
+            this.panel_Extract.PerformLayout();
             this.groupBox_export.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
@@ -5069,8 +5071,6 @@
             this.tabPageCommandSet.PerformLayout();
             this.tabPageSystemTest.ResumeLayout(false);
             this.tabPageSystemTest.PerformLayout();
-            this.panel_Extract.ResumeLayout(false);
-            this.panel_Extract.PerformLayout();
             this.ResumeLayout(false);
 
         }

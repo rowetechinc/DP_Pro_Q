@@ -916,6 +916,7 @@ namespace ADCP
                 s += "Status 0x" + m.System_Status.ToString("X04") + ",0x" + m.System_Status2.ToString("X04");
                 s += "\r\n";
             }
+            else s = "No data";
             return s;
         }
         public static string GetVolumeAmplitudeString(BackScatter.EnsembleClass m)
@@ -1246,7 +1247,7 @@ namespace ADCP
             Frequency = m.BS_Frequency[beam];
             Noise = m.BS_NoiseAmplitude[beam];
 
-            string s = "Beam " + beam.ToString() + "\r\n";
+            string s = "Beam " + beam.ToString() + "   Ens#: " + m.System_EnsembleNumber.ToString() + "\r\n"; //-RMa 2/22/2021
             s += "Frequency " + Frequency.ToString() + " (Hertz)\r\n";
             s += "Noise Level    " + Noise.ToString("F3") + "(dB)\r\n";
 
