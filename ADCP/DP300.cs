@@ -22602,16 +22602,15 @@ namespace ADCP
 
         private void refreshBSProfile()
         {
-            string s = "";
             try
             {
                 if (iCurrentEns <= ensembles.Count && ensembles.Count > 0) //-RMa 1/28/2021
                 {
                     //iEndEnsemble = ensembles.Count; //ensembles.Count - 1; //-RMa 1/28/2021
                     iEndEnsemble = iCurrentEns; //-RMa 1/28/2021
-                    if (iEndEnsemble>= 0)
+                    if (iEndEnsemble - 1 >= 0)
                     {
-                        BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble];
+                        BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
                         /*
                         try
                         {
@@ -22695,7 +22694,7 @@ namespace ADCP
                         }
 
                         */
-
+                        /*
                         try
                         {
                             BeginInvoke((Action)delegate ()
@@ -22709,7 +22708,7 @@ namespace ADCP
                         {
                             Debug.WriteLine(ex);
                         }
-
+                        */
                         //
                         try
                         {
