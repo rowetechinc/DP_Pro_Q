@@ -12771,6 +12771,7 @@ namespace ADCP
             }
         }
 
+        //paint for Amplitude profile on the right colum on Q Control Tabpage. -RMa 2/23/2021
         private void panel_W_A_Paint(object sender, PaintEventArgs e)
         {
             if (tabControlFuTu.SelectedTab == tabPage_WP && tabControl_FuTu_WP.SelectedTab == tabPage32)
@@ -12808,13 +12809,14 @@ namespace ADCP
                         //}
 
                         //LPJ 2012-9-27 修改——start
+                        float uplen = upBlank + insDep;  //find depth. -RMa 2/23/2021
                         if (radioButtonRealTime_WA.Checked)  //实时数据
                         {
                             for (int i = 0; i < cells; )
                             //for (int i = 0; i < 200; i++)    //LPJ 2012-9-27 副图中画了200层，没必要这么多，可修改为只画设置的层数textBinNum的值
                             {
-                                SizeF s = g.MeasureString((i + 1).ToString(), ft);
-                                g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, (float)panel_W_A.Height / cells  * i);
+                                //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, (float)panel_W_A.Height / cells  * i); //-RMa 2/23/2021
+                                g.DrawString((uplen + i * cellSize).ToString(), ft, Brushes.Black, 0, (float)panel_W_A.Height / cells * i); //-RMa 2/23/2021
                                 //  g.DrawLine(Pens.Black, 0, FuTuHeight_WA * (i + 1), panel_W_A.Width, FuTuHeight_WA * (i + 1));   //副图中的层数的横线，这个可以去掉，只显示数字，或将其改为短线段
 
                                 if (cells > 150)
@@ -12834,8 +12836,8 @@ namespace ADCP
                             {
                                 // g.DrawString("第", ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i);//LPJ 2012-4-20
                                 g.DrawString(Resource1.String49, ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i);
-                                SizeF s = g.MeasureString((i + 1).ToString(), ft);
-                                g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, 15 + FuTuHeight_WA * i + 15);
+                                //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, 15 + FuTuHeight_WA * i + 15); //-RMa 2/23/2021
+                                g.DrawString((uplen + i * cellSize).ToString(), ft, Brushes.Black, 0, 15 + FuTuHeight_WA * i + 15); //-RMa 2/23/2021
                                 // g.DrawString("层", ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i + 30);//LPJ 2012-4-20
                                 g.DrawString(Resource1.String50, ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i + 30);
                                 g.DrawLine(Pens.Black, 0, FuTuHeight_WA * (i + 1), panel_W_A.Width, FuTuHeight_WA * (i + 1));
@@ -12904,6 +12906,7 @@ namespace ADCP
             }
         }
 
+        //paint for Correlation profile on the right colum on Q Control Tabpage. -RMa 2/23/2021
         private void panel_W_C_Paint(object sender, PaintEventArgs e) //相关性
         {
             if (tabControlFuTu.SelectedTab == tabPage_WP && tabControl_FuTu_WP.SelectedTab == tabPage35)
@@ -12942,6 +12945,8 @@ namespace ADCP
                         //}
 
                         //LPJ 2012-9-27 start
+                        float uplen = upBlank + insDep; //-RMa 2/23/2021
+                        //Debug.WriteLine("upBlank = {0}  insDep = {1}  cellSize = {2}", upBlank, insDep, cellSize );
                         if (radioButtonRealTime_WC.Checked)
                         {
                             for (int i = 0; i < cells; )
@@ -12950,8 +12955,10 @@ namespace ADCP
                                 SizeF s = g.MeasureString((i + 1).ToString(), ft);
                                 //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, (FuTuHeight_WC - s.Height) / 2 + FuTuHeight_WC * i);
                                 ////g.DrawLine(Pens.Black, 0, FuTuHeight_WC * (i + 1), panel_W_A.Width, FuTuHeight_WC * (i + 1));
-                             
-                                g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, (float)panel_W_C.Height / cells * i); //LPJ 2013-9-24 显示深度
+
+                                //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, (float)panel_W_C.Height / cells * i); //LPJ 2013-9-24 显示深度  //-RMa 2/23/2021
+                                g.DrawString((uplen + i * cellSize).ToString(), ft, Brushes.Black, 0, (float)panel_W_C.Height / cells * i); //LPJ 2013-9-24 显示深度 // change to depth. -RMa 2/23/2021
+                                //Debug.WriteLine("upBlank = {0}  insDep = {1}  cellSize = {2}  depth = {3}", upBlank, insDep, cellSize, uplen + i * cellSize);
                                 //g.DrawLine(Pens.Black, 0, (float)panel_W_C.Height / (cells - 1) * (i + 1), 15 - s.Width / 2f, (float)panel_W_C.Height / (cells - 1) * (i + 1));   //副图中的层数的横线，这个可以去掉，只显示数字，或将其改为短线段
                                 if (cells > 150)
                                     i += 8;
@@ -12970,8 +12977,8 @@ namespace ADCP
                             {
                                 // g.DrawString("第", ft, Brushes.Black, 7, 15 + FuTuHeight_WC * i);//LPJ 2012-4-20
                                 g.DrawString(Resource1.String49, ft, Brushes.Black, 7, 15 + FuTuHeight_WC * i);
-                                SizeF s = g.MeasureString((i + 1).ToString(), ft);
-                                g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, 15 + FuTuHeight_WC * i + 15);
+                                //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, 15 + FuTuHeight_WC * i + 15); //-RMa 2/23/2021
+                                g.DrawString((uplen + i * cellSize).ToString(), ft, Brushes.Black, 0, 15 + FuTuHeight_WC * i + 15); //-RMa 2/23/2021
                                 // g.DrawString("层", ft, Brushes.Black, 7, 15 + FuTuHeight_WC * i + 30);//LPJ 2012-4-20
                                 g.DrawString(Resource1.String50, ft, Brushes.Black, 7, 15 + FuTuHeight_WC * i + 30);
                                 g.DrawLine(Pens.Black, 0, FuTuHeight_WC * (i + 1), panel_W_C.Width, FuTuHeight_WC * (i + 1));
@@ -18627,7 +18634,7 @@ namespace ADCP
                         }
                         if (bGPSVTGTrack && bBottomTrack && bGPSGGATrack)
                         {
-                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 90, 120, 80));
+                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 90, 150, 80)); //for correcting "Bottom Track is out of the box" was 120. -RMa 2/23/2021
                             g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 87));
 
                             g1.DrawLine(new Pen(Brushes.DarkBlue, 2), new Point(15, panelGPSTrack.Height - 60), new Point(55, panelGPSTrack.Height - 60));
@@ -18641,12 +18648,12 @@ namespace ADCP
                         }
                         else if (!bGPSVTGTrack && !bBottomTrack&&!bGPSGGATrack)
                         {
-                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 30, 120, 20));
+                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 30, 150, 20)); //was 120. -RMa 2/23/2021
                             g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 27));
                         }
                         else if ((bGPSGGATrack && !bBottomTrack && !bGPSVTGTrack) || (bGPSVTGTrack && !bBottomTrack && !bGPSGGATrack) || (bBottomTrack && !bGPSVTGTrack && !bGPSGGATrack))
                         {
-                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 50, 120, 40));
+                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 50, 150, 40)); //was 120. -RMa 2/23/2021
                             g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 47));
 
                             string strLine = Resource1.String232;
@@ -18680,7 +18687,7 @@ namespace ADCP
                                 brush1 = Brushes.Purple;
                             }
 
-                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 70, 120, 60));
+                            g1.DrawRectangle(Pens.Black, new Rectangle(5, panelGPSTrack.Height - 70, 150, 60)); //was 120. -RMa 2/23/2021
                             g1.DrawString(strTitle, font1, Brushes.Black, new PointF(25, panelGPSTrack.Height - 67));
 
                             g1.DrawLine(new Pen(brush1, 2), new Point(15, panelGPSTrack.Height - 40), new Point(55, panelGPSTrack.Height - 40));
@@ -21680,8 +21687,8 @@ namespace ADCP
 
             panel_W_A.Height = panel22.Height-5;
             panel_W_C.Height = panel22.Height-5;
-            //panel_W_A.Width = 23;
-            //panel_W_C.Width = 23;
+            panel_W_A.Width = 60; //was 23. -RMa 2/23/2021
+            panel_W_C.Width = 60; //was 23. -RMa 2/23/2021
             //pictureBox_W_A.Location = new Point(23, 0);
             //pictureBox_W_C.Location = new Point(23, 0);
             pictureBox_W_A.Width = panel22.Width - panel_W_A.Width - 5;
