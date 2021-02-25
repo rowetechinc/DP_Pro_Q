@@ -577,12 +577,11 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("GPS_VTG");
                 GPS_VTGbuffer = defaultGPVTG;
                 GPS_latitude = "0000.000";
                 GPS_longitude = "00000.000";
                 GPS_HDT = "0.0";
-                MessageBox.Show("GPS_VTG");
             }
         }
 
@@ -599,10 +598,9 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("GPS_HDT");
                 GPS_HDTbuffer = defaultGPHDT;
                 GPS_HDT = "0.0";
-                MessageBox.Show("GPS_HDT");
             }
         }
 
@@ -619,9 +617,8 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
-                GPS_ROTbuffer = defaultGPROT;
                 MessageBox.Show("GPS_ROT");
+                GPS_ROTbuffer = defaultGPROT;
             }
         }
 
@@ -1497,7 +1494,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A water velocity");
                     }
                     #endregion
 
@@ -1543,7 +1540,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("B");
+                        MessageBox.Show("B water velocity");
                     }
                     #endregion
 
@@ -1589,7 +1586,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("C");
+                        MessageBox.Show("C water velocity");
                     }
                     #endregion
 
@@ -2203,7 +2200,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("D");
+                MessageBox.Show("D water velocity");
                 return 0;
             }
         }
@@ -10117,7 +10114,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("10");
+                MessageBox.Show("10.1");
             }
         }
 
@@ -10301,7 +10298,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("14");
+                MessageBox.Show("14.1");
             }
 
             #region 更新导航面板
@@ -10519,10 +10516,9 @@ namespace ADCP
                 xx = 5;
 
             }
-            catch //(System.Exception ex)
+            catch (System.Exception ex)
             {
-                //MessageBox.Show("14");
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
 
             #endregion
@@ -10541,7 +10537,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A rightref");
                     RightRef = 0.35;
                 }
                 param.RiverDischarge_A = RightRef;
@@ -10617,11 +10613,10 @@ namespace ADCP
                 dischargeMsg.dRightShoreArea = CalculateShoreArea(dRightShoreAvgDepth, dRightShoreWidth, dRightShoreCoff);
                 yx = 6;
             }
-            catch //(System.Exception ex)
+            catch (System.Exception ex)
             {
                 yx = yx;
-                MessageBox.Show("A9");
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
 
             #endregion
@@ -10653,7 +10648,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A powcurve");
                     fPowerCurveCoeff = 0.1667;
                 }
 
@@ -10670,7 +10665,7 @@ namespace ADCP
                             }
                             catch
                             {
-                                MessageBox.Show("A");
+                                MessageBox.Show("A boatvel");
                                 return false;
                             }
                         }
@@ -10683,7 +10678,7 @@ namespace ADCP
                             }
                             catch
                             {
-                                MessageBox.Show("A");
+                                MessageBox.Show("A gpsvel");
                                 return false;
                             }
                         }
@@ -10701,7 +10696,7 @@ namespace ADCP
                             }
                             catch
                             {
-                                MessageBox.Show("A");
+                                MessageBox.Show("A ggavel");
                                 return false; 
                             }
                         }
@@ -10734,7 +10729,7 @@ namespace ADCP
                             }
                             catch
                             {
-                                MessageBox.Show("A");
+                                MessageBox.Show("A GPSvel");
                                 return false;
                             }
                         }
@@ -10754,7 +10749,7 @@ namespace ADCP
                             }
                             catch
                             {
-                                MessageBox.Show("A");
+                                MessageBox.Show("A GGAvel");
                                 return false;   //LPJ 2016-8-25
                             }
                         }
@@ -10767,7 +10762,7 @@ namespace ADCP
                             }
                             catch
                             {
-                                MessageBox.Show("A");
+                                MessageBox.Show("A Boatvel");
                                 return false;
                             }
                         }
@@ -10805,7 +10800,7 @@ namespace ADCP
                                 }
                                 catch
                                 {
-                                    MessageBox.Show("A");
+                                    MessageBox.Show("A waterdir");
                                 }
                                 //discharge.waterDirection = fWaterDir;
 
@@ -10857,14 +10852,14 @@ namespace ADCP
                                     CalculateEnsembleFlowParam param = new CalculateEnsembleFlowParam();
                                     param.RiverDischarge_dTime = Arr.A_FirstPingSeconds - dischargeMsg.lastSecond;
 
-                                    if (labelTopEstimate.Text == "幂函数") //LPJ 2013-6-22
+                                    if (labelTopEstimate.Text == Resource1.String33)//if (labelTopEstimate.Text == "幂函数") //LPJ 2013-6-22
                                         param.RiverDischargeTopMode = TopFlowMode.PowerFunction;
-                                    else if (labelTopEstimate.Text == "常数")
+                                    else if (labelTopEstimate.Text == Resource1.String224)//else if (labelTopEstimate.Text == "常数")
                                         param.RiverDischargeTopMode = TopFlowMode.Constants;
                                     else
                                         param.RiverDischargeTopMode = TopFlowMode.Slope;
 
-                                    if (labelBottomEstimate.Text == "幂函数")
+                                    if (labelBottomEstimate.Text == Resource1.String33)//if (labelBottomEstimate.Text == "幂函数")
                                         param.RiverDischargeBottomMode = BottomFlowMode.PowerFunction;
                                     else
                                         param.RiverDischargeBottomMode = BottomFlowMode.Constants;
@@ -10969,7 +10964,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A measQ");
             }
             return bValid;  //LPJ 2017-8-9
         }
@@ -11828,7 +11823,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A closing");
                     }
                 }
                 base.OnFormClosing(e);
@@ -11851,7 +11846,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A home");
             }
         }
 
@@ -12037,12 +12032,12 @@ namespace ADCP
                 catch
                 {
                     //current_Accuracy = "-";
-                    MessageBox.Show("A");
+                    MessageBox.Show("A head offset 1");
                 }
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A head offset 2");
             }
             return dHeadingOffset;
         }
@@ -12322,7 +12317,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A stop pinging");
                 }
             }
             //projectPause = true;
@@ -12398,7 +12393,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A stop recording");
             }
 
             if (bStartMeasQ)
@@ -12896,7 +12891,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A pause");
                     }
                 }
                 else
@@ -13575,7 +13570,7 @@ namespace ADCP
                         }
                         catch
                         {
-                            MessageBox.Show("A");
+                            //MessageBox.Show("A gpspaint");
                             radioButtonLatLong.Enabled = false;
                             radioButtonMotoke.Enabled = false;
 
@@ -14486,10 +14481,9 @@ namespace ADCP
                     SailTrackMainBuffer.Dispose();
                 }
             }
-            catch//(Exception ex)
+            catch(Exception ex)
             {
-                MessageBox.Show("A2");
-                //MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
         //int ChangeTimerCounter = 0;
@@ -14561,7 +14555,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        //MessageBox.Show("A100");
                         //this.Cursor = new Cursor(Cursor.Current.Handle);
                     }
                     SailTrackDragStartPoint = e.Location;
@@ -14580,10 +14574,10 @@ namespace ADCP
             {
                 Cursor.Current = new Cursor(Application.StartupPath + "\\Resources\\CursorTouch.cur");
             }
-            catch
+            catch (Exception ee)
             {
-                MessageBox.Show("A");
                 //this.Cursor = new Cursor(Cursor.Current.Handle);
+                //MessageBox.Show("A0 " +  ee.Message + " in DP300_Windows new Bitmap");
             }
             this.GPSdisplayPanel.Focus();
             SailTrackPanelEnterFlag = true;
@@ -14637,7 +14631,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    //MessageBox.Show("A 101");
                     //this.Cursor = new Cursor(Cursor.Current.Handle);
                 }
                 SailTrackTragCursorChangeToTrag = false;
@@ -15220,7 +15214,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A xypos");
                 return;
             }
 
@@ -15361,7 +15355,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A GPS paint");
             }
         }
 
@@ -16863,7 +16857,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A others paint");
                 current_Date = "-";
                 current_Time = "-";
             }
@@ -16966,7 +16960,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A others paint it");
             }
 
             itemTotalTime.SubItems[1].Text = current_TotalTimelabel;
@@ -17062,7 +17056,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A boat speed paint");
                     }
                 }
                 unit = (max - min) / 5.0;
@@ -17118,7 +17112,7 @@ namespace ADCP
                         }
                         catch
                         {
-                            MessageBox.Show("A");
+                            MessageBox.Show("A boat speed paint 2");
                         }
 
                         if (i == 0)
@@ -17145,7 +17139,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A boat speed paint 3");
                 }
 
                 MainBuffer.Render(e.Graphics);
@@ -17213,14 +17207,14 @@ namespace ADCP
                         }
                         catch
                         {
-                            MessageBox.Show("A");
+                            MessageBox.Show("A watdir paint 1");
                         }
                         lastY = startY;
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("Awatdir paint 2");
                 }
                 MainBuffer.Render(e.Graphics);
                 MainBuffer.Dispose();
@@ -17283,7 +17277,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A pitch paint");
                     }
                 }
                 unit = (max - min) / 5.0f;
@@ -17328,7 +17322,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    //MessageBox.Show("A pitch paint 2");
                 }
 
                 MainBuffer.Render(e.Graphics);
@@ -17421,7 +17415,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A roll paint");
                     }
                 }
                 unit = (max - min) / 5.0f;
@@ -17472,7 +17466,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    //MessageBox.Show("A Roll");
                 }
                 MainBuffer.Render(e.Graphics);
                 MainBuffer.Dispose();
@@ -17548,7 +17542,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A boat water paint");
                     min = 0;
                     max = 1;
                 }
@@ -17602,7 +17596,7 @@ namespace ADCP
                             }
                             catch
                             {
-                                MessageBox.Show("A");
+                                MessageBox.Show("A boat water paint 2");
                             }
                             lastY = startY;
                         }
@@ -17610,7 +17604,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A boat water paint 3");
                 }
                 MainBuffer.Render(e.Graphics);
                 MainBuffer.Dispose();
@@ -17937,7 +17931,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A connect port");
                         return false;
                     }
                 }
@@ -18209,7 +18203,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A getQ");
                     conf.PowerCoff = 0.1667f;
                 }
 
@@ -18233,7 +18227,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A getQ xdcr");
                         dTransducerDepth = 0.1f;
                     }
 
@@ -18243,7 +18237,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A ldif");
                         dLeftDis = 0;
                     }
                     try
@@ -18252,7 +18246,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A rdif");
                         dRightDis = 0;
                     }
                    
@@ -18275,7 +18269,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A getQ 2");
                 }
 
                 //conf.LeftBankStyle= comboBoxLeftBankStyle.SelectedIndex;
@@ -18291,7 +18285,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A leftbank");
                     conf.LeftBankPara = 0.35f;
                 }
                
@@ -18309,7 +18303,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A rbank");
                     conf.RightBankPara = 0.35f;
                 }
                
@@ -18553,6 +18547,8 @@ namespace ADCP
 
         private void panelGPSTrack_Paint(object sender, PaintEventArgs e) //LPJ 2013-6-9 绘制航迹图
         {
+            double counter = 0.0;
+            int counteri = 0;
             BufferedGraphicsContext currentContext = BufferedGraphicsManager.Current;//获取当前绘图主缓冲区上下文
             BufferedGraphics MainBuffer;
             MainBuffer = currentContext.Allocate(e.Graphics, panelGPSTrack.DisplayRectangle);
@@ -18568,6 +18564,7 @@ namespace ADCP
                         
                 try
                 {
+                    counter = 2.0;
                     //DrawGPSTrack(g);
                     MainGPSWidth = panelGPSTrack.Width;
                     MainGPSHeight = panelGPSTrack.Height;
@@ -18597,6 +18594,7 @@ namespace ADCP
                     Font font1 = new Font("Arial", 9);
                     if (!playBackMode)
                     {
+                        counter = 3.0;
                         #region
                         if (!bEnglish2Metric)
                         {
@@ -18635,8 +18633,9 @@ namespace ADCP
                         #endregion
                     }  
                     else
-                    { 
+                    {
                         #region 图例  
+                        counter = 4.0;
                         string strTitle = "Track";
                         if (!bEnglish2Metric)
                         {
@@ -18712,13 +18711,14 @@ namespace ADCP
                         }  
                         #endregion
                     }
-                     
+                    counter = 5.0;
                     font1.Dispose();
 
                     using (Pen GreenPen = new Pen(Color.DarkGray, 1))
                     {
                         using (Font font = new Font("Arial", 8))//画中心经纬度及距离标值所用字体
                         {
+                            counter = 6.0;
                             //鼠标在边缘或手动移动时，画面水平移动距离除以单位刻度的商,代表的是画面流过的线条个数
                             int nX = (int)(DragLengthX) / (int)CurrentDisplayUnit;
                             //鼠标在边缘或手动移动时，画面水平移动距离除以单位刻度的余数，代表的是尚未产生最新线条时已经流过的距离
@@ -18780,7 +18780,7 @@ namespace ADCP
                                 //画竖线
                                 g1.DrawLine(GreenPen, fX1, CurrentDisplayTop, fX1, fY2);
                             }
-
+                            counter = 7.0;
                             //绘图区中心线两侧所显示的的线条个数
                             int SideHNum = (int)(MainGPSHeight / CurrentDisplayUnit) / 2;
                             //使初始绘图区中心始终为纵横两条线的交点
@@ -18790,6 +18790,7 @@ namespace ADCP
 
                             bool DrawOrignY = false;
 
+                            counter = 8.0;
                             //画横线，使初始绘图区中心始终为纵横两条线的交点
                             for (int j = 0; j <= AllHNum; j++)
                             {
@@ -18845,6 +18846,7 @@ namespace ADCP
                                 //画横线
                                 g1.DrawLine(GreenPen, CurrentDisplayLeft, fY1, fX2, fY1);
                             }
+                            counter = 9.0;
                             if (DrawOrignX && DrawOrignY)
                             {
                                 Pen n = new Pen(Color.Green, 2);
@@ -18852,6 +18854,7 @@ namespace ADCP
                                 g1.DrawEllipse(n, rg); 
                                 //g1.FillEllipse(Brushes.GreenYellow, OrignX - 3f, OrignY - 3f, 6f, 6f);
                             }
+                            counter = 10.0;
 
                             //LPJ 2013-5-23
                             //g1.FillEllipse(Brushes.Red, OrignX - 8f, OrignY - 8f,
@@ -18890,8 +18893,8 @@ namespace ADCP
                         }
                         GreenPen.Dispose(); //LPJ 2013-7-4
                     }
+                    counter = 11.0;
 
-                       
                     float scaleFactor = MouseWheelScale / scaleMultiple;
                     Matrix matrix = new Matrix();//定义一个做几何变换的对象
 
@@ -18924,6 +18927,7 @@ namespace ADCP
                     PointF VP = new PointF(0, 0);
                     Point saveLastPoint = new Point(0, 0);
 
+                    counter = 13.0;
                     if (GPSdataCount >= 2)
                     {
                         if (!playBackMode) //record mode
@@ -18967,12 +18971,15 @@ namespace ADCP
                             float fLastSecond = 0;    //JZH 2012-06-14 上一个有效的Ensemble时间
 
                             PointF tempPnt = TransToMapPoint(tempP); ; //LPJ 2013-7-4
-                            PointF[] TempPnts = new PointF[BinDataEnsembleNum + 1]; //LPJ 2013-7-10 将航迹线用折线来绘制
+                            int TempPointsCount = BinDataEnsembleNum + 1;
+                            PointF[] TempPnts = new PointF[TempPointsCount]; //LPJ 2013-7-10 将航迹线用折线来绘制
                             int icounts = 0; //LPJ 2013-7-10 
                             Pen bluePen = new Pen(Brushes.Blue, (int)(1.5 * MouseWheelScale)); //LPJ 2013-8-2
+                            counter = 14.0;
 
                             for (int i = GPSdisplayStartPoint; i < GGAsaveCount; i++) //Modified 2011-9-17
                             {
+                                counteri = i;
                                 {
                                     if (i == 0)
                                     {
@@ -19015,6 +19022,7 @@ namespace ADCP
                                     }
                                     else
                                     {
+                                        counter = 14.1;
                                         float fBoatVx, fBoatVy; //LPJ 2013-7-31
                                         float fBoatVx_Prev, fBoatVy_Prev;
                                         fBoatVx = ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VX;
@@ -19042,12 +19050,14 @@ namespace ADCP
                                             fBoatVx_Prev = 0;
                                             fBoatVy_Prev = 0;
                                         }
-
-                                        if( Math.Abs( fBoatVx) < 20 && Math.Abs( fBoatVy) < 20)
+                                        counter = 14.2;
+                                        if ( Math.Abs( fBoatVx) < 20 && Math.Abs( fBoatVy) < 20)
                                         //if (((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VX < 20 && ((Velocity)(EnsemblesInfoToStore.BoatVelocity[i])).VY < 20)
                                         {
+                                            counter = 14.3;
                                             if (GetFirstGoodEnsemble)
                                             {
+                                                counter = 14.4;
                                                 //float LEast = (1.0f) * 0.5f * (float)(((Velocity)EnsemblesInfoToStore.BoatVelocity[PrevGoodEnsemblePos]).VX + ((Velocity)EnsemblesInfoToStore.BoatVelocity[i]).VX) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);   //JZH 2012-06-14
                                                 //float LNorth = (1.0f) * 0.5f * (float)(((Velocity)EnsemblesInfoToStore.BoatVelocity[PrevGoodEnsemblePos]).VY + ((Velocity)EnsemblesInfoToStore.BoatVelocity[i]).VY) * ((float)EnsemblesInfoToStore.RecivedTime[i] - fLastSecond);  //JZH 2012-06-14
 
@@ -19068,33 +19078,37 @@ namespace ADCP
                                                 PrevGoodEnsembleNoOffset = 0;
                                                 PrevGoodEnsemblePos = i;
                                                 fLastSecond = (float)EnsemblesInfoToStore.RecivedTime[i];  //JZH 2012-06-14
-
+                                                counter = 14.5;
                                             }
                                             else
                                             {
+                                                counter = 14.6;
                                                 GetFirstGoodEnsemble = true;
                                                 PrevGoodEnsemblePos = i;
                                                 fLastSecond = (float)EnsemblesInfoToStore.RecivedTime[i];  //JZH 2012-06-14
+                                                counter = 14.7;
                                             }
                                         }
                                         else
                                         {
                                             PrevGoodEnsembleNoOffset++;
-
+                                            counter = 14.8;
                                         }
 
                                     }
+                                    counter = 14.9;
                                     tempP.X = UTMpoint.X;
                                     tempP.Y = UTMpoint.Y;
                                     tempP.Y *= -1;
                                 }
-
+                                counter = 14.11;
                                 tempPnt = TransToMapPoint(tempP); //LPJ 2013-7-10
                                 //PointF VPnt = TransToMapPoint(VP);  //LPJ 2013-7-10
 
                                 if ((i % setAveragePoints) == 0 && i > setAveragePoints)
                                 {
- 
+                                    counter = 14.12;
+
                                     float AVX = AverageVXsave[i];
                                     float AVY = AverageVYsave[i];
 
@@ -19113,19 +19127,30 @@ namespace ADCP
                                         AVX = AverageVXsave_Null[i];
                                         AVY = AverageVXsave_Null[i];
                                     }
-                                        
+                                    counter = 14.13;
                                     VP.Y = tempP.Y - AVY * AverageScale * MouseWheelScale / 8; //LPJ 2013-8-6
                                     VP.X = tempP.X + AVX * AverageScale * MouseWheelScale / 8; //LPJ 2013-8-6
-
+                                    counter = 14.14;
                                     //流速矢量线 //LPJ 2013-6-4
-                                        
+
                                     //Velocity Vector Line
                                     if ((float)EnsemblesInfoToStore.bottomDepth[i] > 0.01f) //LPJ 2013-9-22 当水深有效时，绘制流速矢量线
                                         g1.DrawLine(bluePen, tempPnt, VP); //g1.DrawLine(bluePen, tempPnt, VPnt);
+                                    counter = 14.15;
                                 }
-                                TempPnts[icounts++] = tempPnt; //LPJ 2013-7-10
-                                PtStart = tempP;
+                                counter = 14.16;
+                                if (icounts < TempPointsCount) //TempPnts.Count())
+                                {
+                                    TempPnts[icounts++] = tempPnt; //LPJ 2013-7-10
+                                    PtStart = tempP;
+                                }
+                                else
+                                {
+                                    counter = counter;
+                                }
+                                counter = 14.17;
                             }
+                            counter = 15.0;
                             Pen TrackPen = new Pen(Brushes.Red, 4 * MouseWheelScale);
                             g1.DrawLines(TrackPen, TempPnts); //LPJ 2013-7-10 
                             TrackPen.Dispose(); //LPJ 2013-7-4
@@ -19137,6 +19162,7 @@ namespace ADCP
                             g1.DrawEllipse(n, rg); 
                             //g1.FillEllipse(Brushes.Red, tempPnt.X, tempPnt.Y, 8 * MouseWheelScale, 8 * MouseWheelScale);
                             AutoSizeGPS(tempP);
+                            counter = 16.0;
                         }
                         else //playbackmode  //Modified 2011-11-27, try display every setAveragePoints
                         {
@@ -19174,12 +19200,15 @@ namespace ADCP
                             AutoSizeGPS(tempP);
                             //panelGPSTrack.Refresh();
                         }
+                        counter = 17.0;
                     }
                 }
-                catch //(Exception ex) //LPJ 2013-6-11
+                catch (Exception ex) //LPJ 2013-6-11
                 {
-                    MessageBox.Show("A6");
-                    //MessageBox.Show(ex.Message + " in panelGPSTrack_Paint");
+                    //MessageBox.Show("A6");
+                    counter = counter;// = 14
+                    counteri = counteri;
+                    MessageBox.Show("A6 " + ex.Message + " in panelGPSTrack_Paint");
                 }
 
                 MainBuffer.Render(e.Graphics);
@@ -19448,7 +19477,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A bttrack");
             }
         }
 
@@ -19656,14 +19685,14 @@ namespace ADCP
                             }
                             catch
                             {
-                                MessageBox.Show("A");
+                                MessageBox.Show("A sumpaint");
                             }
                         }
                         #endregion
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A sumpaint 2");
                     }
                 }
             }
@@ -19755,7 +19784,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A sumpaint 3");
                 }
             } 
         }
@@ -19960,7 +19989,7 @@ namespace ADCP
                     }
                     catch
                     { 
-                        MessageBox.Show("A"); 
+                        MessageBox.Show("A xdcrunit"); 
                     }
 
                     try
@@ -19969,7 +19998,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A ldisunit");
                     }
 
                     try
@@ -19978,7 +20007,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A rdisunit");
                     }
 
                     RefreshListViewSummary(0); //LPJ 2013-8-8 
@@ -19997,7 +20026,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A xdcrunit 2");
                     }
 
                     try
@@ -20006,7 +20035,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A ldis2");
                     }
 
                     try
@@ -20015,7 +20044,7 @@ namespace ADCP
                     }
                     catch
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A rdis2");
                     }
 
                     RefreshListViewSummary(1); //LPJ 2013-8-8 
@@ -20200,7 +20229,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A salinty");
                 systSet.dSalinity = 0;
             }
             try
@@ -20209,7 +20238,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A heading");
                 systSet.dHeadingOffset = 0;
             }
             try
@@ -20218,7 +20247,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A xdcrdepth");
                 systSet.dTransducerDepth = 0.1;
             }
 
@@ -20228,7 +20257,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A SOS");
                 systSet.dSpeedOfSound = 1500.0;
             }
 
@@ -20299,7 +20328,7 @@ namespace ADCP
                             }
                             catch 
                             {
-                                MessageBox.Show("A");
+                                MessageBox.Show("A syssetting");
                             }
                             try
                             {
@@ -20323,7 +20352,7 @@ namespace ADCP
                     }
                     catch 
                     {
-                        MessageBox.Show("A");
+                        MessageBox.Show("A syssetting 2");
                     }
                     frmProgressBar.Close();
                 }
@@ -20473,7 +20502,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A edgepow");
                 edgeSetting.dPowerCurveCoeff = 0.1667;
             }
 
@@ -20495,7 +20524,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A edgeldis");
                 edgeSetting.dLeftDis = 0;
             }
 
@@ -20505,7 +20534,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A edge rdis");
                 edgeSetting.dRightDis = 0;
             }
 
@@ -20522,7 +20551,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A leftref");
                 edgeSetting.dLeftRef = 0.35;
             }
 
@@ -20539,7 +20568,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A right ref");
                 edgeSetting.dRightRef = 0.35;
             }
             
@@ -21095,7 +21124,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A gps file");
                 }
 
                 return true;
@@ -21298,7 +21327,7 @@ namespace ADCP
                                     }
                                     catch
                                     {
-                                        MessageBox.Show("A");
+                                        MessageBox.Show("A firmware vers");
                                     }
                                     break;
                                 }
@@ -21483,7 +21512,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A smartpage");
                 }
 
                 LV_Measured_QPaint();  //LPJ 2013-8-22 更新流量汇总栏
@@ -21847,7 +21876,7 @@ namespace ADCP
             }
             catch 
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A settime");
             }
         }
 
@@ -22039,7 +22068,7 @@ namespace ADCP
             catch
             {
                 textBoxST.BackColor = Color.Red;
-                MessageBox.Show("A");
+                MessageBox.Show("A systest");
             }
         }
 
@@ -22105,7 +22134,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A update firmware");
             }
         }
 
@@ -22251,7 +22280,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A DMG");
                     fDistanceMG = 0;
                 }
 
@@ -22422,7 +22451,7 @@ namespace ADCP
                 }
                 catch
                 {
-                    MessageBox.Show("A");
+                    MessageBox.Show("A stopbeamcheck");
                 }
             }
 
@@ -22492,7 +22521,7 @@ namespace ADCP
             }
             catch
             {
-                MessageBox.Show("A");
+                MessageBox.Show("A download");
             }
         }
 
