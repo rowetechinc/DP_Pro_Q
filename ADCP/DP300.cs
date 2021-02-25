@@ -2889,13 +2889,22 @@ namespace ADCP
                         DBRI = DataBuffReadIndex;
                         if (BackScatter.FindEnsemble(EnsBuf, DataBuff))
                         {
+                            /* -RMa 2/24/2021
                             iCurrentEns++; //make profile plots update when new data came in. -RMa 1/25/2021
                             DecodeBackScatterEnsemble(TheBSbeam, BackScatter.Ensemble); //-RMa 01/19/2021
                             //this.BeginInvoke(decodeBSEnsemble, TheBSbeam, BackScatter.Ensemble); //-RMa 01/19/2021
                             BackScatter.EnsembleClass m = new BackScatter.EnsembleClass();
                             m = Clone(BackScatter.Ensemble);
                             ensembles.Add(m);
+                            */
+
+                            //-RMa 2/24/2021
+                            iCurrentEns++; //make profile plots update when new data came in. -RMa 1/25/2021
+                            BackScatter.EnsembleClass m = new BackScatter.EnsembleClass();
+                            DecodeBackScatterEnsemble(TheBSbeam, m); //-RMa 01/19/2021
+                            ensembles.Add(m);
                         }
+                        
                     }
                     #endregion
                 }
@@ -7384,6 +7393,7 @@ namespace ADCP
 
         #region Backscatter open file
         //-RMa 11/23/2020
+        bool playback = false;
         private void openFileBackScatter(string filePath)
         {
             //read from file
@@ -7392,6 +7402,8 @@ namespace ADCP
             iEndEnsemble = 1;
             hScrollBar_BS.Value = 0;
             hScrollBar_BS.LargeChange = 1;
+
+            playback = true; //-RMa 2/24/2021
 
             long nBytesRead;
             //long nBytes;
@@ -7428,9 +7440,10 @@ namespace ADCP
                             DBRI = DataBuffReadIndex;
                             if (BackScatter.FindEnsemble(EnsBuf, DataBuff))
                             {
-                                DecodeBackScatterEnsemble(TheBSbeam, BackScatter.Ensemble);
-                                BackScatter.EnsembleClass m = new BackScatter.EnsembleClass();
-                                m = Clone(BackScatter.Ensemble);
+                                BackScatter.EnsembleClass m = new BackScatter.EnsembleClass(); //worked, doesn't need Clone Ensemble. -RMa 2/24/2021
+                                DecodeBackScatterEnsemble(TheBSbeam, m);    //-RMa 2 / 24 / 2021
+                                //DecodeBackScatterEnsemble(TheBSbeam, BackScatter.Ensemble);  //-RMa 2/24/2021
+                                //m = Clone(BackScatter.Ensemble);  //-RMa 2/24/2021
                                 ensembles.Add(m);
                             }
                         }
@@ -12230,6 +12243,7 @@ namespace ADCP
             hScrollBar_BS.Enabled = false;
 
             timer_BS.Start(); //-RMa
+            playback = false; //-RMa 2/24/2021
         }
 
         private System.Timers.Timer AlarmTimer; //LPJ 2014-6-9 计时器，当无接收数据时报警
@@ -22615,93 +22629,14 @@ namespace ADCP
                 {
                     //iEndEnsemble = ensembles.Count; //ensembles.Count - 1; //-RMa 1/28/2021
                     iEndEnsemble = iCurrentEns; //-RMa 1/28/2021
+                    int ensnum = iEndEnsemble - 1;
+                    if (playback) ensnum = iEndEnsemble;
+
                     if (iEndEnsemble - 1 >= 0)
                     {
-                        BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1];
-                        /*
-                        try
-                        {
-                            try
-                            {
-                                if (InvokeRequired)
-                                {
-                                    BeginInvoke(new Action(() =>
-                                    {
-                                        textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
-                                        #region System information
-                                        string _sn = System.Text.ASCIIEncoding.ASCII.GetString(m1.System_SN, 0, 32);
-                                        string _fw = m1.System_FW_MAJOR.ToString("D2") + "." + m1.System_FW_MINOR.ToString("D2") + "." + m1.System_FW_REVISION.ToString("D2");
-                                        string _lat = m1.System_Latitude.ToString("F7");
-                                        string _lon = m1.System_Longitude.ToString("F7");
-                                        string _deployDepth = m1.System_DeployDepth.ToString("F3");
-
-                                        string _heading = m1.System_Heading.ToString("F2");
-                                        string _pitch = m1.System_Pitch.ToString("F2");
-                                        string _roll = m1.System_Roll.ToString("F2");
-                                        string _salinity = m1.System_Salinity.ToString("F2");
-                                        string _waterTemp = m1.System_Temperature.ToString("F2");
-
-                                        string _seedOfSound = m1.System_SpeedOfSound.ToString("F2");
-                                        string _status = "0x" + m1.System_Status.ToString("X04") + " 0x" + m1.System_Status2.ToString("X04");
-                                        #endregion
-
-                                        //s += "Ens " + m1.System_EnsembleNumber.ToString("0") + " lat = " + _lat;
-                                        //s += "\r\n";
-
-                                        s += "SN: " + System.Text.ASCIIEncoding.ASCII.GetString(m1.System_SN, 0, 32);
-
-                                        s += "\r\n";
-                                        s += "Firmware: " + _fw;
-                                        s += "\r\n";
-
-                                        textBoxExtract.Text = s;
-                                    }));
-                                }
-                                else
-                                {
-                                    textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
-                                    #region System information
-                                    string _sn = System.Text.ASCIIEncoding.ASCII.GetString(m1.System_SN, 0, 32);
-                                    string _fw = m1.System_FW_MAJOR.ToString("D2") + "." + m1.System_FW_MINOR.ToString("D2") + "." + m1.System_FW_REVISION.ToString("D2");
-                                    string _lat = m1.System_Latitude.ToString("F7");
-                                    string _lon = m1.System_Longitude.ToString("F7");
-                                    string _deployDepth = m1.System_DeployDepth.ToString("F3");
-
-                                    string _heading = m1.System_Heading.ToString("F2");
-                                    string _pitch = m1.System_Pitch.ToString("F2");
-                                    string _roll = m1.System_Roll.ToString("F2");
-                                    string _salinity = m1.System_Salinity.ToString("F2");
-                                    string _waterTemp = m1.System_Temperature.ToString("F2");
-
-                                    string _seedOfSound = m1.System_SpeedOfSound.ToString("F2");
-                                    string _status = "0x" + m1.System_Status.ToString("X04") + " 0x" + m1.System_Status2.ToString("X04");
-                                    #endregion
-
-                                    s += "Ens " + m1.System_EnsembleNumber.ToString("0");
-                                    s += "\r\n";
-
-                                    s += "SN: " + _sn;
-
-                                    s += "\r\n";
-                                    s += "Firmware: " + _fw;
-                                    s += "\r\n";
-
-
-                                    textBoxExtract.Text = s;
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                Debug.WriteLine(e);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine(ex);
-                        }
-
-                        */
-                        /*
+                        //BackScatter.EnsembleClass m1 = ensembles[iEndEnsemble - 1]; //-RMa 2/24/2021
+                        BackScatter.EnsembleClass m1 = ensembles[ensnum];
+                        #region system information, Leader and Structure informaton
                         try
                         {
                             BeginInvoke((Action)delegate ()
@@ -22709,14 +22644,17 @@ namespace ADCP
                                 textBoxExtract.Text = getBSbeamInfo(m1);
                                 //textBoxBSsystem.Text = getBSbeamInfo(m1);
                                 textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
+                                textBoxBSdata.Text = BackScatter.GetBsString(m1);
+                                textBoxBSleaders.Text = BackScatter.GetHeaderString(m1) + BackScatter.GetHeaderDataTypesString();
                             });
                         }
                         catch (Exception ex)
                         {
                             Debug.WriteLine(ex);
                         }
-                        */
-                        //
+                        #endregion
+
+                        #region BS profile 10 beam infomation 
                         try
                         {
                             for (int i = 0; i < n; i++)
@@ -22727,15 +22665,11 @@ namespace ADCP
                                     {
                                         BeginInvoke(new Action(() =>
                                         {
-                                            //Debug.WriteLine("++++++" + BackScatter.GetSystemString(m1));
-                                            //textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
                                             tbs[i].Text = BackScatter.GetBsProfileString(i, m1);
                                         }));
                                     }
                                     else
                                     {
-                                        //Debug.WriteLine("++++++" + BackScatter.GetSystemString(m1));
-                                        //textBoxBSsystem.Text = BackScatter.GetSystemString(m1);
                                         tbs[i].Text = BackScatter.GetBsProfileString(i, m1);
                                     }
                                 }
@@ -22749,6 +22683,7 @@ namespace ADCP
                         {
                             Debug.WriteLine(ex);
                         }
+                        #endregion
                     }
                 }
             }
@@ -23329,7 +23264,7 @@ namespace ADCP
                 if (iCurrentEns < ensembles.Count && ensembles.Count > 0)
                 {
 
-                    Debug.WriteLine("BS_playbackTimer_Elapsed: ensembles.Count = {0}  iCurrentEns = {1} ", ensembles.Count, iCurrentEns);
+                    //Debug.WriteLine("BS_playbackTimer_Elapsed: ensembles.Count = {0}  iCurrentEns = {1} ", ensembles.Count, iCurrentEns);
                     if (InvokeRequired)
                     {
                         BeginInvoke(new Action(() =>
