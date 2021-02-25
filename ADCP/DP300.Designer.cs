@@ -622,6 +622,7 @@
             this.tabPageSystemTest = new System.Windows.Forms.TabPage();
             this.textBoxSystemTest = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label21 = new System.Windows.Forms.Label();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -655,6 +656,7 @@
             this.groupBox18.SuspendLayout();
             this.panel22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_W_A)).BeginInit();
+            this.panel_W_A.SuspendLayout();
             this.tabPage35.SuspendLayout();
             this.groupBox29.SuspendLayout();
             this.groupBox30.SuspendLayout();
@@ -1915,6 +1917,7 @@
             // 
             resources.ApplyResources(this.panel_W_A, "panel_W_A");
             this.panel_W_A.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_W_A.Controls.Add(this.label21);
             this.panel_W_A.Name = "panel_W_A";
             this.panel_W_A.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_W_A_Paint);
             // 
@@ -4882,6 +4885,11 @@
             resources.ApplyResources(this.textBoxSystemTest, "textBoxSystemTest");
             this.textBoxSystemTest.Name = "textBoxSystemTest";
             // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
             // DP300_Windows
             // 
             resources.ApplyResources(this, "$this");
@@ -4949,6 +4957,8 @@
             this.groupBox18.PerformLayout();
             this.panel22.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_W_A)).EndInit();
+            this.panel_W_A.ResumeLayout(false);
+            this.panel_W_A.PerformLayout();
             this.tabPage35.ResumeLayout(false);
             this.tabPage35.PerformLayout();
             this.groupBox29.ResumeLayout(false);
@@ -5707,6 +5717,7 @@
         private System.Windows.Forms.TextBox txtUserCommand;
         private System.Windows.Forms.TextBox textBoxExtract;
         private System.Windows.Forms.TextBox textBox_comments;
+        private System.Windows.Forms.Label label21;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }
