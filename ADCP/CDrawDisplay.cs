@@ -729,7 +729,7 @@ namespace ADCP
 
                 sizeF = TextRenderer.MeasureText(g, strFreq, font2, new Size(0, 0), TextFormatFlags.NoPadding);
                 g.FillRectangle(Brushes.White, new Rectangle(rect.X - 40, rect.Y - 15, Convert.ToInt32(sizeF.Width), Convert.ToInt32(sizeF.Height)));
-                g.DrawString(strFreq, font2, Brushes.Black, new Point(rect.X - 40, rect.Y - 15));
+                g.DrawString(strFreq, font2, Brushes.Black, new Point(rect.X - 61, rect.Y - 17));  //-RMa 2/24/2021
                 if (bDrawTitle)
                 {
                     sizeF = TextRenderer.MeasureText(g, strTitle, font, new Size(0, 0), TextFormatFlags.NoPadding);
@@ -1938,15 +1938,15 @@ namespace ADCP
                 Graphics g = e.Graphics;
                 g.FillRectangle(Brushes.White, DisplayRectangle);
 
-                Rectangle rect = new Rectangle(DisplayRectangle.X + 35, DisplayRectangle.Y + 20,
-                     DisplayRectangle.Width - 40, DisplayRectangle.Height - 40);
+                Rectangle rect = new Rectangle(DisplayRectangle.X + 35, DisplayRectangle.Y + 30,
+                     DisplayRectangle.Width - 40, DisplayRectangle.Height - 40);                  //-RMa 2/24/2021
                 paint.DrawMultiLines_Vertical(g, rect, data, fScreen, color, fMaxData, fMinData);
 
                 g.FillRectangle(Brushes.White, new Rectangle(DisplayRectangle.X, rect.Y, rect.X - DisplayRectangle.X, rect.Height));
                 g.FillRectangle(Brushes.White, new Rectangle(rect.X + rect.Width, rect.Y, DisplayRectangle.Width, rect.Height));
 
                 //vertical
-                Font font = new System.Drawing.Font("Arial", 10, FontStyle.Bold);//font
+                Font font = new System.Drawing.Font("Arial", 8, FontStyle.Bold);//font
                 Font font2 = new System.Drawing.Font("Arial Narrow", 8, FontStyle.Bold);//Font3
                 Font font3 = new System.Drawing.Font("Arial Narrow", 8);//Font2
                 //if (DisplayRectangle.Width < 100)
@@ -2064,7 +2064,8 @@ namespace ADCP
                 }
 
                 #region Title
-                g.DrawString(strTitle, font, Brushes.Black, new Point((DisplayRectangle.Width - 40) / 2 + DisplayRectangle.X + 10 - strTitle.Length, DisplayRectangle.Y + DisplayRectangle.Height - 15));
+                //g.DrawString(strTitle, font, Brushes.Black, new Point((DisplayRectangle.Width - 40) / 2 + DisplayRectangle.X + 10 - strTitle.Length, DisplayRectangle.Y + DisplayRectangle.Height - 15)); //-RMa 2/24/2021
+                g.DrawString(strTitle, font, Brushes.Black, new Point((DisplayRectangle.Width - 40) / 2 + DisplayRectangle.X + 10 - strTitle.Length, DisplayRectangle.Y)); //-RMa 2/24/2021
                 #endregion
             }
             catch { }

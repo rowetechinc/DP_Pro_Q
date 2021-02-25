@@ -22630,7 +22630,7 @@ namespace ADCP
                     //iEndEnsemble = ensembles.Count; //ensembles.Count - 1; //-RMa 1/28/2021
                     iEndEnsemble = iCurrentEns; //-RMa 1/28/2021
                     int ensnum = iEndEnsemble - 1;
-                    if (playback) ensnum = iEndEnsemble;
+                    if (playBackMode) ensnum = iEndEnsemble; //playback
 
                     if (iEndEnsemble - 1 >= 0)
                     {
