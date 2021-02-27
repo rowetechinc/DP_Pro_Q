@@ -201,6 +201,7 @@
             this.panel22 = new System.Windows.Forms.Panel();
             this.pictureBox_W_A = new System.Windows.Forms.PictureBox();
             this.panel_W_A = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
             this.vScrollBar_W_A = new System.Windows.Forms.VScrollBar();
             this.tabPage35 = new System.Windows.Forms.TabPage();
             this.groupBox29 = new System.Windows.Forms.GroupBox();
@@ -622,7 +623,6 @@
             this.tabPageSystemTest = new System.Windows.Forms.TabPage();
             this.textBoxSystemTest = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.label21 = new System.Windows.Forms.Label();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -1920,6 +1920,11 @@
             this.panel_W_A.Controls.Add(this.label21);
             this.panel_W_A.Name = "panel_W_A";
             this.panel_W_A.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_W_A_Paint);
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
             // 
             // vScrollBar_W_A
             // 
@@ -4884,11 +4889,6 @@
             // 
             resources.ApplyResources(this.textBoxSystemTest, "textBoxSystemTest");
             this.textBoxSystemTest.Name = "textBoxSystemTest";
-            // 
-            // label21
-            // 
-            resources.ApplyResources(this.label21, "label21");
-            this.label21.Name = "label21";
             // 
             // DP300_Windows
             // 

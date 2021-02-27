@@ -7027,6 +7027,7 @@ namespace ADCP
 
                 MainPanelPaint();
                 TrackPanelPaint();
+                ScaleIncrease(); //refresh Navigation. -RMa 2/26/2021
 
                 #endregion
             }
@@ -7203,7 +7204,7 @@ namespace ADCP
 
                         TrackPanelPaint();
                         MainPanelPaint();
-                        
+                        ScaleIncrease(); //refresh Navigation. -RMa 2/26/2021
                     }
                     #endregion
                 }
@@ -7226,7 +7227,8 @@ namespace ADCP
                     this.BeginInvoke(MainPanel_Refresh); //LPJ 2013-7-2
                     this.BeginInvoke(TrackPanel_Refresh);
                     //if (RiverAuthority == true) RiverPanel.Refresh();   //Modified 2011-10-16 //JZH 2012-01-12
-                 
+                    ScaleIncrease(); //refresh Navigation. -RMa 2/26/2021
+
                     HPRpictureBox.Refresh();
 
                     //tabPage_BoatSpeed.Refresh(); //LPJ 2013-5-18
@@ -7651,10 +7653,8 @@ namespace ADCP
                 this.BeginInvoke(TrackPanel_Refresh);
                 this.BeginInvoke(CalDischargeRefresh); //将流量计算在单独的线程中完成 //LPJ 2013-7-2
                 this.BeginInvoke(RefreshDishargePanel); //刷新流量计算的显示
-            
                 #endregion
             }
-
             //bNewEnsemble = true; //JZH 2012-03-26 
 
             current_EsambleTotaleNum = BinDataEnsembleNum.ToString();
@@ -18602,6 +18602,7 @@ namespace ADCP
                 {
                     MessageBox.Show("A rbank");
                     conf.RightBankPara = 0.35f;
+                    //ScaleIncrease(); //refresh Navigation. -RMa 2/26/2021
                 }
                
                 conf.RightBankPings = dRightShorePings;
@@ -18657,7 +18658,7 @@ namespace ADCP
                 bMessage.endmin = RTIdata[RTIdata.Count - 1].mm;
                 bMessage.endsec = RTIdata[RTIdata.Count - 1].SS;
                 //LPJ 2013-5-31 --end
-
+                ScaleIncrease(); //refresh Navigation. -RMa 2/26/2021
             }
             
         } //
