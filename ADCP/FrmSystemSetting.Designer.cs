@@ -231,7 +231,8 @@
             this.comboBoxHeadingRef.Items.AddRange(new object[] {
             resources.GetString("comboBoxHeadingRef.Items"),
             resources.GetString("comboBoxHeadingRef.Items1"),
-            resources.GetString("comboBoxHeadingRef.Items2")});
+            resources.GetString("comboBoxHeadingRef.Items2"),
+            resources.GetString("comboBoxHeadingRef.Items3")});
             resources.ApplyResources(this.comboBoxHeadingRef, "comboBoxHeadingRef");
             this.comboBoxHeadingRef.Name = "comboBoxHeadingRef";
             this.comboBoxHeadingRef.SelectedIndexChanged += new System.EventHandler(this.comboBoxHeadingRef_SelectedIndexChanged);

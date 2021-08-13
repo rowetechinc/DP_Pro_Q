@@ -117,7 +117,10 @@ namespace ADCP
             try
             {
                 if (_sp.IsOpen)
+                {
                     _sp.Close();
+                    Thread.Sleep(250);
+                }
             }
             catch
             {

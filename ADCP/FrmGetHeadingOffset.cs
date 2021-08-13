@@ -46,8 +46,9 @@ namespace ADCP
                 //发送“CHS 2”命令
                 sp.Write("CHS 2" + '\r');
                 Thread.Sleep(150);
-                
-                sp.Write("C232B " + comboBox_RS232.Text + '\r');
+
+                //sp.Write("C232B " + comboBox_RS232.Text + '\r');
+                sp.Write("C485B " + comboBox_RS232.Text + '\r');
                 Thread.Sleep(150);
 
                 sp.Write("START" + '\r');

@@ -575,6 +575,7 @@ namespace ADCP
             try
             {
                 sp.Close();
+                Thread.Sleep(250);
                 sp.Open();
             }
             catch (Exception ex)
@@ -617,6 +618,10 @@ namespace ADCP
                     }
                     flag++;
                 }
+            }
+            else
+            {
+                OK = false;
             }
             return OK;
         }
@@ -1744,6 +1749,7 @@ namespace ADCP
             try
             {
                 sp.Close();
+                Thread.Sleep(250);
                 sp.Open();
             }
             catch (Exception ex)
@@ -1758,6 +1764,7 @@ namespace ADCP
                 sp.Write("MODERIVER\r");
                 Thread.Sleep(1000);
                 sp.Close();
+                Thread.Sleep(250);
             }
             DownloadCommandSettings();
         }
