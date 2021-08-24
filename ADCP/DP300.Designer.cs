@@ -225,6 +225,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panelFlowPix = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
+            this.textBoxGPS = new System.Windows.Forms.TextBox();
             this.textBoxRE = new System.Windows.Forms.TextBox();
             this.textBoxLE = new System.Windows.Forms.TextBox();
             this.textBoxWT = new System.Windows.Forms.TextBox();
@@ -2119,6 +2120,7 @@
             // panel21
             // 
             this.panel21.BackColor = System.Drawing.Color.Transparent;
+            this.panel21.Controls.Add(this.textBoxGPS);
             this.panel21.Controls.Add(this.textBoxRE);
             this.panel21.Controls.Add(this.textBoxLE);
             this.panel21.Controls.Add(this.textBoxWT);
@@ -2146,18 +2148,26 @@
             resources.ApplyResources(this.panel21, "panel21");
             this.panel21.Name = "panel21";
             // 
+            // textBoxGPS
+            // 
+            resources.ApplyResources(this.textBoxGPS, "textBoxGPS");
+            this.textBoxGPS.Name = "textBoxGPS";
+            // 
             // textBoxRE
             // 
+            this.textBoxRE.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
             resources.ApplyResources(this.textBoxRE, "textBoxRE");
             this.textBoxRE.Name = "textBoxRE";
             // 
             // textBoxLE
             // 
+            this.textBoxLE.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
             resources.ApplyResources(this.textBoxLE, "textBoxLE");
             this.textBoxLE.Name = "textBoxLE";
             // 
             // textBoxWT
             // 
+            this.textBoxWT.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
             resources.ApplyResources(this.textBoxWT, "textBoxWT");
             this.textBoxWT.Name = "textBoxWT";
             // 
@@ -2168,6 +2178,7 @@
             // 
             // textBoxBT
             // 
+            this.textBoxBT.AccessibleRole = System.Windows.Forms.AccessibleRole.IpAddress;
             resources.ApplyResources(this.textBoxBT, "textBoxBT");
             this.textBoxBT.Name = "textBoxBT";
             // 
@@ -5707,6 +5718,7 @@
         private System.Windows.Forms.TextBox txtUserCommand;
         private System.Windows.Forms.TextBox textBoxExtract;
         private System.Windows.Forms.TextBox textBox_comments;
+        private System.Windows.Forms.TextBox textBoxGPS;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }

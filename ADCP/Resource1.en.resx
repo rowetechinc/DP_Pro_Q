@@ -445,37 +445,37 @@
     <value>File is not complete. Playback failure!</value>
   </data>
   <data name="String100" xml:space="preserve">
-    <value>Vessel Speed</value>
+    <value>Boat Speed</value>
   </data>
   <data name="String101" xml:space="preserve">
-    <value>Vessel Course</value>
+    <value>Boat Dir</value>
   </data>
   <data name="String102" xml:space="preserve">
-    <value>Flow Speed</value>
+    <value>Flow Vel</value>
   </data>
   <data name="String103" xml:space="preserve">
-    <value>Water Course</value>
+    <value>Flow Dir</value>
   </data>
   <data name="String104" xml:space="preserve">
     <value>Length</value>
   </data>
   <data name="String105" xml:space="preserve">
-    <value>Distance MG</value>
+    <value>DMG</value>
   </data>
   <data name="String106" xml:space="preserve">
-    <value>Course MG</value>
+    <value>CMG</value>
   </data>
   <data name="String107" xml:space="preserve">
-    <value>River Width</value>
+    <value>Width</value>
   </data>
   <data name="String108" xml:space="preserve">
-    <value>Total Area</value>
+    <value>Area</value>
   </data>
   <data name="String109" xml:space="preserve">
-    <value>Mean Velocity</value>
+    <value>Mean Vel</value>
   </data>
   <data name="String110" xml:space="preserve">
-    <value>Mean Course</value>
+    <value>Mean Dir</value>
   </data>
   <data name="String111" xml:space="preserve">
     <value>Others</value>
@@ -490,13 +490,13 @@
     <value>Total Ensemble</value>
   </data>
   <data name="String115" xml:space="preserve">
-    <value>Current Depth</value>
+    <value>Depth</value>
   </data>
   <data name="String116" xml:space="preserve">
-    <value>Longtitude</value>
+    <value>Long</value>
   </data>
   <data name="String117" xml:space="preserve">
-    <value>Latitude</value>
+    <value>Lat</value>
   </data>
   <data name="String118" xml:space="preserve">
     <value>Heading</value>

@@ -553,7 +553,6 @@
             this.pictureBoxMove.Name = "pictureBoxMove";
             this.helpProvider1.SetShowHelp(this.pictureBoxMove, ((bool)(resources.GetObject("pictureBoxMove.ShowHelp"))));
             this.pictureBoxMove.TabStop = false;
-            //this.pictureBoxMove.Click += new System.EventHandler(this.pictureBoxMove_Click);
             // 
             // pictureBoxStop
             // 
@@ -561,6 +560,7 @@
             this.pictureBoxStop.Name = "pictureBoxStop";
             this.helpProvider1.SetShowHelp(this.pictureBoxStop, ((bool)(resources.GetObject("pictureBoxStop.ShowHelp"))));
             this.pictureBoxStop.TabStop = false;
+            //this.pictureBoxStop.Click += new System.EventHandler(this.pictureBoxStop_Click);
             // 
             // pictureBoxBT
             // 

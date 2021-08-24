@@ -3806,6 +3806,16 @@ namespace ADCP
                                         Latitude1 = -1 * Latitude1;
                                     if ("W" == GPS_EW)
                                         Longitude1 = -1 * Longitude1;
+
+                                    if ((("S" == GPS_NS) || ("N" == GPS_NS)) && (("W" == GPS_EW) || ("E" == GPS_EW)))
+                                    {
+                                        textBoxGPS.BackColor = Color.Green;
+                                    }
+                                    else                                     
+                                    {
+                                        textBoxGPS.BackColor = Color.LightGray;
+                                    }
+
                                     
                                     GPS_latitudeA = degreeN1.ToString() + "°" + minuteN1.ToString() + "'" + secondN1.ToString() + GPS_NS;
                                     GPS_longitudeA = degreeE1.ToString() + "°" + minuteE1.ToString() + "'" + secondE1.ToString() + GPS_EW;
@@ -7093,7 +7103,7 @@ namespace ADCP
                     OpenFileDialog openFile = new OpenFileDialog();
                     openFile.InitialDirectory = PathStr;
                     openFile.Filter = "BIN(*.bin)|*.bin|ENS(*.ENS)|*.ENS|All Document(*.*)|*.*";
-                    openFile.FilterIndex = 1;
+                    openFile.FilterIndex = 2;
                     openFile.Title = "Open File";
 
                     MouseWheelScale = 1;
@@ -9910,6 +9920,8 @@ namespace ADCP
                     if (BinDataEnsembleNum > 0)
                     {
                         leftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
+                        if (double.IsNaN(leftFlow))
+                            leftFlow = 0.0;
 
                         //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
                         dShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
@@ -10001,9 +10013,10 @@ namespace ADCP
                         param.RiverDischargeInstrument.RiverDischargePulseLag = RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                         param.RiverDischargeInstrument.RiverDischargePulseLength = RTIdata[BinDataEnsembleNum - 1].A_CellSize + RTIdata[BinDataEnsembleNum - 1].WP_Lag;
                         rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
-
-                        //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
-                        dShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
+                        if (double.IsNaN(rightFlow))
+                            rightFlow = 0.0;
+                    //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
+                    dShoreVelDir = Calcflow.RiverDischargeCalculate.CalculateShoreVelocity(param);  //JZH 2012-04-06 获取岸边平均流速的方向
                     }
                     else
                     {
@@ -10037,6 +10050,8 @@ namespace ADCP
                     if (!bStartLeftEdge)
                     {
                         rightFlow = Math.Abs(rightFlow) * dShoreCoff * (-1.0);
+                        if (double.IsNaN(rightFlow))
+                            rightFlow = 0.0;
                     }
                     else
                     {
@@ -10468,6 +10483,8 @@ namespace ADCP
                 xx = 11;
                 param.RiverDischargeOrgData = dischargeMsg.left.ToArray();
                 dischargeMsg.leftFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
+                if (double.IsNaN(dischargeMsg.leftFlow))
+                    dischargeMsg.leftFlow = 0.0;
                 xx = 2;
                 dLeftShorePings = dischargeMsg.left.Count(); //LPJ 2016-12-19 左岸呯数
 
@@ -10564,7 +10581,9 @@ namespace ADCP
                 param.RiverDischargeOrgData = dischargeMsg.right.ToArray();
                 yx = 20;
                 dischargeMsg.rightFlow = Calcflow.RiverDischargeCalculate.CalculateShoreFlow(param);
-                yx = 21;
+                if (double.IsNaN(dischargeMsg.rightFlow))
+                    dischargeMsg.rightFlow = 0.0;
+                    yx = 21;
                 dRightShorePings = dischargeMsg.right.Count(); //LPJ 2016-12-19 右岸呯数
                 yx = 22;
                 //JZH 2012-04-08 添加岸边流速方向角计算，用于判断岸边流量的正负值                
@@ -10915,9 +10934,11 @@ namespace ADCP
                                     }
 
                                     EnsembleFlowInfo flow = Calcflow.RiverDischargeCalculate.CalculateEnsembleFlow(param, ve, vn, dHeadingOffset); //LPJ  2013-7-31
+                                    //if (EnsembleFlowInfo.IsNaN(flow))
+                                    //    flow = 0.0;
 
-                                    //EnsembleFlowInfo flow = Calcflow.RiverDischargeCalculate.CalculateEnsembleFlow(param);
-                                    if (flow.Valid)
+                                        //EnsembleFlowInfo flow = Calcflow.RiverDischargeCalculate.CalculateEnsembleFlow(param);
+                                        if (flow.Valid)
                                     {//有效的数据
                                         //JZH 2012-02-05  根据左右岸，判定流量正负
                                         //if (radioButtonLeftToRight.Checked)
@@ -12069,6 +12090,7 @@ namespace ADCP
             textBoxCC.BackColor = Color.LightGray;
             textBoxMB.BackColor = Color.LightGray;
             textBoxST.BackColor = Color.LightGray;
+            textBoxGPS.BackColor = Color.LightGray;
             textBoxBT.BackColor = Color.LightGray;
             textBoxWT.BackColor = Color.LightGray;
             textBoxLE.BackColor = Color.LightGray;

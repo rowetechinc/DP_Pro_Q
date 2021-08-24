@@ -22,8 +22,8 @@ namespace ADCP
 
             this.Text = Resource1.str_About;
             this.labelProductName.Text = Resource1.String249;
-            this.labelVersion.Text = Resource1.String250 + " V4.1T 2017-7";
-            this.labelCopyright.Text = Resource1.String252 + "  " + Resource1.String284 + "  " + "2013-2018";
+            this.labelVersion.Text = Resource1.String250 + " V4.1T 2017-7," + " Assembly Version: " + AssemblyVersion;
+            this.labelCopyright.Text = Resource1.String252 + "  " + Resource1.String284 + "  " + "2013-2021";
             this.labelCompanyName.Text = Resource1.String251;
             this.textBoxDescription.Text = Resource1.str_aboutText4 + "\r\n\r\n" + Resource1.str_Tel + "\r\n\r\n" + Resource1.String303 + "http://www.pan-comm.com";
         }
