@@ -7043,6 +7043,7 @@ namespace ADCP
 
                 MainPanelPaint();
                 TrackPanelPaint();
+                ScaleIncrease(); //refresh Navigation. -RMa 2/26/2021
 
                 #endregion
             }
@@ -7219,7 +7220,7 @@ namespace ADCP
 
                         TrackPanelPaint();
                         MainPanelPaint();
-                        
+                        ScaleIncrease(); //refresh Navigation. -RMa 2/26/2021
                     }
                     #endregion
                 }
@@ -7242,7 +7243,8 @@ namespace ADCP
                     this.BeginInvoke(MainPanel_Refresh); //LPJ 2013-7-2
                     this.BeginInvoke(TrackPanel_Refresh);
                     //if (RiverAuthority == true) RiverPanel.Refresh();   //Modified 2011-10-16 //JZH 2012-01-12
-                 
+                    ScaleIncrease(); //refresh Navigation. -RMa 2/26/2021
+
                     HPRpictureBox.Refresh();
 
                     //tabPage_BoatSpeed.Refresh(); //LPJ 2013-5-18
@@ -7667,10 +7669,8 @@ namespace ADCP
                 this.BeginInvoke(TrackPanel_Refresh);
                 this.BeginInvoke(CalDischargeRefresh); //将流量计算在单独的线程中完成 //LPJ 2013-7-2
                 this.BeginInvoke(RefreshDishargePanel); //刷新流量计算的显示
-            
                 #endregion
             }
-
             //bNewEnsemble = true; //JZH 2012-03-26 
 
             current_EsambleTotaleNum = BinDataEnsembleNum.ToString();
@@ -12835,6 +12835,7 @@ namespace ADCP
         {
             if (tabControlFuTu.SelectedTab == tabPage_WP && tabControl_FuTu_WP.SelectedTab == tabPage32)
             {
+                //label21.Location = new Point(panel22.Location.X, 1); //-RMa 2/25/2021
                 using (Graphics g = e.Graphics)
                 {
                     using (Font ft = new Font("Arial", 8))
@@ -12869,13 +12870,180 @@ namespace ADCP
 
                         //LPJ 2012-9-27 修改——start
                         float uplen = upBlank + insDep;  //find depth. -RMa 2/23/2021
+                        #region change Y label to depth.  -RMa 2/25/2021
+                        float dep = 0;
+                        float maxDep = 0;
+                        if (BinDataEnsembleNum > 0)
+                        {
+                            try
+                            {
+                                dep = (float)EnsemblesInfoToStore.BinSize[0];
+                                maxDep = (float)EnsemblesInfoToStore.bottomDepth[0];
+                                for (int iflag = 0; iflag < BinDataEnsembleNum; iflag++)
+                                {
+                                    if (maxDep < (float)EnsemblesInfoToStore.bottomDepth[iflag])
+                                        maxDep = (float)EnsemblesInfoToStore.bottomDepth[iflag];
+
+                                    if (dep < (float)EnsemblesInfoToStore.BinSize[iflag])
+                                        dep = (float)EnsemblesInfoToStore.BinSize[iflag];
+                                }
+                            }
+                            catch
+                            {
+                                MessageBox.Show("panel_W_A_Paint");
+                            }
+                        }
+                        if (maxDep > 0)  //LPJ 2014-1-8
+                            dep = maxDep;
+
+                        dep += insDep;
+                        if (!bEnglish2Metric)
+                        {
+                            dep = (float)projectUnit.MeterToFeet((double)dep, 1);
+                        }
+                        float step = (float)0.1;
+
+                        switch (dep)
+                        {
+                            case float n when (n <= 0.1):
+                                step = (float)0.005;
+                                break;
+
+                            case float n when (n > 0.1 && n <= 0.2):
+                                step = (float)0.01;
+                                break;
+
+                            case float n when (n > 0.2 && n <= 0.5):
+                                step = (float)0.02;
+                                break;
+
+                            case float n when (n > 0.5 && n <= 1):
+                                step = (float)0.05;
+                                break;
+
+                            case float n when (n > 1 && n <= 2):
+                                step = (float)0.1;
+                                break;
+
+                            case float n when (n > 2 && n <= 5):
+                                step = (float)0.2;
+                                break;
+
+                            case float n when (n > 5 && n <= 10):
+                                step = (float)0.5;
+                                break;
+
+                            case float n when (n > 10 && n <= 20):
+                                step = (float)1.0;
+                                break;
+
+                            case float n when (n > 20 && n <= 50):
+                                step = (float)2.0;
+                                break;
+
+                            case float n when (n > 50 && n <= 100):
+                                step = (float)5.0;
+                                break;
+
+                            case float n when (n > 100 && n <= 200):
+                                step = (float)10.0;
+                                break;
+
+                            case float n when (n > 200 && n <= 500):
+                                step = (float)20.0;
+                                break;
+                        }
+
+                        float watercells = dep / step;
+                        float range = step;
+                        SizeF size;
+                        #endregion
+
+                        if (radioButtonRealTime_WA.Checked)  //实时数据
+                        {
+                            /*
+                            for (int i = 0; i < cells;)
+                            //for (int i = 0; i < 200; i++)    //LPJ 2012-9-27 副图中画了200层，没必要这么多，可修改为只画设置的层数textBinNum的值
+                            {
+                                //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, (float)panel_W_A.Height / cells  * i); //-RMa 2/23/2021
+                                g.DrawString((uplen + i * cellSize).ToString("0.0"), ft, Brushes.Black, 0, (float)panel_W_A.Height / cells * i); //-RMa 2/23/2021
+                                //g.DrawString((i * uplen / watercells).ToString("0.0"), ft, Brushes.Black, 0, (float)panel_W_A.Height / cells * i); //-RMa 2/25/2021
+
+                                //  g.DrawLine(Pens.Black, 0, FuTuHeight_WA * (i + 1), panel_W_A.Width, FuTuHeight_WA * (i + 1));   //副图中的层数的横线，这个可以去掉，只显示数字，或将其改为短线段
+
+                                if (cells > 150)
+                                    i += 8;
+                                else if (cells > 100)
+                                    i += 6;
+                                else if (cells > 50)
+                                    i += 4;
+                                else
+                                    i += 2;
+                            }
+                            */
+
+                            for (int i = 1; i < (int)watercells; i++)
+                            {
+                                float x, y;
+                                PointF pt;
+                                size = g.MeasureString((i * dep / watercells).ToString("0.0"), ft);
+                                x = 20 - size.Width;
+                                y = i * panel_W_A.Height / watercells - size.Height / 2;// + 5;
+                                pt = new PointF(x, y);
+                                g.DrawString((i * dep / watercells).ToString("0.0"), ft, Brushes.Black, pt); //-RMa 2/25/2021
+                                range += step;
+                                if (range >= dep)
+                                    break;
+                            }
+                        }
+                        else  //历史数据，回放的时候还是用的实时数据显示？
+                        {
+                            /*
+                            for (int i = 0; i < cells; i++)
+                            //for (int i = 0; i < 200; i++)   //LPJ 2012-9-27 这里同上
+                            {
+                                // g.DrawString("第", ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i);//LPJ 2012-4-20
+                                g.DrawString(Resource1.String49, ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i);
+                                //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, 15 + FuTuHeight_WA * i + 15); //-RMa 2/23/2021
+                                g.DrawString((uplen + i * cellSize).ToString("0.0"), ft, Brushes.Black, 0, 15 + FuTuHeight_WA * i + 15); //-RMa 2/23/2021
+                                //g.DrawString((i * uplen / watercells).ToString("0.0"), ft, Brushes.Black, 0, 15 + FuTuHeight_WA * i + 15); //-RMa 2/23/2021
+
+                                // g.DrawString("层", ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i + 30);//LPJ 2012-4-20
+                                g.DrawString(Resource1.String50, ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i + 30);
+                                g.DrawLine(Pens.Black, 0, FuTuHeight_WA * (i + 1), panel_W_A.Width, FuTuHeight_WA * (i + 1));
+                            }
+                            */
+
+                            for (int i = 1; i < (int)watercells; i++)
+                            {
+                                float x, y;
+                                PointF pt;
+                                size = g.MeasureString((i * dep / watercells).ToString("0.0"), ft);
+                                x = 20 - size.Width;
+                                y = i * panel_W_A.Height / watercells - size.Height / 2;// + 5;
+                                pt = new PointF(x, y);
+
+                                g.DrawString(Resource1.String49, ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i);
+                                g.DrawString((i * dep / watercells).ToString("0.0"), ft, Brushes.Black, pt); //-RMa 2/25/2021
+                                g.DrawString(Resource1.String50, ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i + 30);
+                                g.DrawLine(Pens.Black, 0, FuTuHeight_WA * (i + 1), panel_W_A.Width, FuTuHeight_WA * (i + 1));
+                                range += step;
+                                if (range >= dep)
+                                    break;
+                            }
+                        }
+
+
+                        /*
                         if (radioButtonRealTime_WA.Checked)  //实时数据
                         {
                             for (int i = 0; i < cells; )
                             //for (int i = 0; i < 200; i++)    //LPJ 2012-9-27 副图中画了200层，没必要这么多，可修改为只画设置的层数textBinNum的值
                             {
                                 //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, (float)panel_W_A.Height / cells  * i); //-RMa 2/23/2021
-                                g.DrawString((uplen + i * cellSize).ToString(), ft, Brushes.Black, 0, (float)panel_W_A.Height / cells * i); //-RMa 2/23/2021
+                                g.DrawString((uplen + i * cellSize).ToString("0.0"), ft, Brushes.Black, 0, (float)panel_W_A.Height / cells * i); //-RMa 2/23/2021
+                                //g.DrawString((i * uplen / watercells).ToString("0.0"), ft, Brushes.Black, 0, (float)panel_W_A.Height / cells * i); //-RMa 2/25/2021
+
                                 //  g.DrawLine(Pens.Black, 0, FuTuHeight_WA * (i + 1), panel_W_A.Width, FuTuHeight_WA * (i + 1));   //副图中的层数的横线，这个可以去掉，只显示数字，或将其改为短线段
 
                                 if (cells > 150)
@@ -12896,12 +13064,15 @@ namespace ADCP
                                 // g.DrawString("第", ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i);//LPJ 2012-4-20
                                 g.DrawString(Resource1.String49, ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i);
                                 //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, 15 + FuTuHeight_WA * i + 15); //-RMa 2/23/2021
-                                g.DrawString((uplen + i * cellSize).ToString(), ft, Brushes.Black, 0, 15 + FuTuHeight_WA * i + 15); //-RMa 2/23/2021
+                                g.DrawString((uplen + i * cellSize).ToString("0.0"), ft, Brushes.Black, 0, 15 + FuTuHeight_WA * i + 15); //-RMa 2/23/2021
+                                //g.DrawString((i * uplen / watercells).ToString("0.0"), ft, Brushes.Black, 0, 15 + FuTuHeight_WA * i + 15); //-RMa 2/23/2021
+
                                 // g.DrawString("层", ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i + 30);//LPJ 2012-4-20
                                 g.DrawString(Resource1.String50, ft, Brushes.Black, 7, 15 + FuTuHeight_WA * i + 30);
                                 g.DrawLine(Pens.Black, 0, FuTuHeight_WA * (i + 1), panel_W_A.Width, FuTuHeight_WA * (i + 1));
                             }
                         }
+                        */
                         //LPJ 2012-9-27 修改——end
                     }
                 }
@@ -12970,6 +13141,7 @@ namespace ADCP
         {
             if (tabControlFuTu.SelectedTab == tabPage_WP && tabControl_FuTu_WP.SelectedTab == tabPage35)
             {
+                //label21.Location = new Point(panel24.Location.X, 1); //-RMa 2/25/2021
                 using (Graphics g = e.Graphics)
                 {
                     using (Font ft = new Font("Arial", 8))
@@ -13005,9 +13177,99 @@ namespace ADCP
 
                         //LPJ 2012-9-27 start
                         float uplen = upBlank + insDep; //-RMa 2/23/2021
-                        //Debug.WriteLine("upBlank = {0}  insDep = {1}  cellSize = {2}", upBlank, insDep, cellSize );
+
+                        #region change Y label to depth.  -RMa 2/25/2021
+                        float dep = 0;
+                        float maxDep = 0;
+                        if (BinDataEnsembleNum > 0)
+                        {
+                            try
+                            {
+                                dep = (float)EnsemblesInfoToStore.BinSize[0];
+                                maxDep = (float)EnsemblesInfoToStore.bottomDepth[0];
+                                for (int iflag = 0; iflag < BinDataEnsembleNum; iflag++)
+                                {
+                                    if (maxDep < (float)EnsemblesInfoToStore.bottomDepth[iflag])
+                                        maxDep = (float)EnsemblesInfoToStore.bottomDepth[iflag];
+
+                                    if (dep < (float)EnsemblesInfoToStore.BinSize[iflag])
+                                        dep = (float)EnsemblesInfoToStore.BinSize[iflag];
+                                }
+                            }
+                            catch
+                            {
+                                MessageBox.Show("panel_W_C_Paint");
+                            }
+                        }
+                        if (maxDep > 0)  
+                            dep = maxDep;
+
+                        dep += insDep;
+                        if (!bEnglish2Metric)
+                        {
+                            dep = (float)projectUnit.MeterToFeet((double)dep, 1);
+                        }
+                        float step = (float)0.1;
+
+                        switch (dep)
+                        {
+                            case float n when (n <= 0.1):
+                                step = (float)0.005;
+                                break;
+
+                            case float n when (n > 0.1 && n <= 0.2):
+                                step = (float)0.01;
+                                break;
+
+                            case float n when (n > 0.2 && n <= 0.5):
+                                step = (float)0.02;
+                                break;
+
+                            case float n when (n > 0.5 && n <= 1):
+                                step = (float)0.05;
+                                break;
+
+                            case float n when (n > 1 && n <= 2):
+                                step = (float)0.1;
+                                break;
+
+                            case float n when (n > 2 && n <= 5):
+                                step = (float)0.2;
+                                break;
+
+                            case float n when (n > 5 && n <= 10):
+                                step = (float)0.5;
+                                break;
+
+                            case float n when (n > 10 && n <= 20):
+                                step = (float)1.0;
+                                break;
+
+                            case float n when (n > 20 && n <= 50):
+                                step = (float)2.0;
+                                break;
+
+                            case float n when (n > 50 && n <= 100):
+                                step = (float)5.0;
+                                break;
+
+                            case float n when (n > 100 && n <= 200):
+                                step = (float)10.0;
+                                break;
+
+                            case float n when (n > 200 && n <= 500):
+                                step = (float)20.0;
+                                break;
+                        }
+
+                        float watercells = dep / step;
+                        float range = step;
+                        SizeF size;
+                        #endregion
+
                         if (radioButtonRealTime_WC.Checked)
                         {
+                            /*
                             for (int i = 0; i < cells; )
                             //for (int i = 0; i < 200; i++)
                             {
@@ -13016,7 +13278,7 @@ namespace ADCP
                                 ////g.DrawLine(Pens.Black, 0, FuTuHeight_WC * (i + 1), panel_W_A.Width, FuTuHeight_WC * (i + 1));
 
                                 //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, (float)panel_W_C.Height / cells * i); //LPJ 2013-9-24 显示深度  //-RMa 2/23/2021
-                                g.DrawString((uplen + i * cellSize).ToString(), ft, Brushes.Black, 0, (float)panel_W_C.Height / cells * i); //LPJ 2013-9-24 显示深度 // change to depth. -RMa 2/23/2021
+                                g.DrawString((uplen + i * cellSize).ToString("0.0"), ft, Brushes.Black, 0, (float)panel_W_C.Height / cells * i); //LPJ 2013-9-24 显示深度 // change to depth. -RMa 2/23/2021
                                 //Debug.WriteLine("upBlank = {0}  insDep = {1}  cellSize = {2}  depth = {3}", upBlank, insDep, cellSize, uplen + i * cellSize);
                                 //g.DrawLine(Pens.Black, 0, (float)panel_W_C.Height / (cells - 1) * (i + 1), 15 - s.Width / 2f, (float)panel_W_C.Height / (cells - 1) * (i + 1));   //副图中的层数的横线，这个可以去掉，只显示数字，或将其改为短线段
                                 if (cells > 150)
@@ -13028,19 +13290,54 @@ namespace ADCP
                                 else
                                     i += 2;
                             }
+                            */
+
+                            for (int i = 1; i < (int)watercells; i++)
+                            {
+                                float x, y;
+                                PointF pt;
+                                size = g.MeasureString((i * dep / watercells).ToString("0.0"), ft);
+                                x = 20 - size.Width;
+                                y = i * panel_W_C.Height / watercells - size.Height / 2;// + 5;
+                                pt = new PointF(x, y);
+                                g.DrawString((i * dep / watercells).ToString("0.0"), ft, Brushes.Black, pt); //-RMa 2/25/2021
+                                range += step;
+                                if (range >= dep)
+                                    break;
+                            }
                         }
                         else
                         {
+                            /*
                             for (int i = 0; i < cells; )
                             //for (int i = 0; i < 200; i++)
                             {
                                 // g.DrawString("第", ft, Brushes.Black, 7, 15 + FuTuHeight_WC * i);//LPJ 2012-4-20
                                 g.DrawString(Resource1.String49, ft, Brushes.Black, 7, 15 + FuTuHeight_WC * i);
                                 //g.DrawString((i + 1).ToString(), ft, Brushes.Black, 15 - s.Width / 2f, 15 + FuTuHeight_WC * i + 15); //-RMa 2/23/2021
-                                g.DrawString((uplen + i * cellSize).ToString(), ft, Brushes.Black, 0, 15 + FuTuHeight_WC * i + 15); //-RMa 2/23/2021
+                                g.DrawString((uplen + i * cellSize).ToString("0.0"), ft, Brushes.Black, 0, 15 + FuTuHeight_WC * i + 15); //-RMa 2/23/2021
                                 // g.DrawString("层", ft, Brushes.Black, 7, 15 + FuTuHeight_WC * i + 30);//LPJ 2012-4-20
                                 g.DrawString(Resource1.String50, ft, Brushes.Black, 7, 15 + FuTuHeight_WC * i + 30);
                                 g.DrawLine(Pens.Black, 0, FuTuHeight_WC * (i + 1), panel_W_C.Width, FuTuHeight_WC * (i + 1));
+                            }
+                            */
+
+                            for (int i = 1; i < (int)watercells; i++)
+                            {
+                                float x, y;
+                                PointF pt;
+                                size = g.MeasureString((i * dep / watercells).ToString("0.0"), ft);
+                                x = 20 - size.Width;
+                                y = i * panel_W_C.Height / watercells - size.Height / 2;// + 5;
+                                pt = new PointF(x, y);
+
+                                g.DrawString(Resource1.String49, ft, Brushes.Black, 7, 15 + FuTuHeight_WC * i);
+                                g.DrawString((i * dep / watercells).ToString("0.0"), ft, Brushes.Black, pt); //-RMa 2/25/2021
+                                g.DrawString(Resource1.String50, ft, Brushes.Black, 7, 15 + FuTuHeight_WC * i + 30);
+                                g.DrawLine(Pens.Black, 0, FuTuHeight_WC * (i + 1), panel_W_C.Width, FuTuHeight_WC * (i + 1));
+                                range += step;
+                                if (range >= dep)
+                                    break;
                             }
                         }
                         //LPJ 2012-9-27 end
@@ -18381,6 +18678,7 @@ namespace ADCP
                 {
                     //MessageBox.Show("A rbank");
                     conf.RightBankPara = 0.35f;
+                    //ScaleIncrease(); //refresh Navigation. -RMa 2/26/2021
                 }
                
                 conf.RightBankPings = dRightShorePings;
@@ -18440,7 +18738,7 @@ namespace ADCP
                 bMessage.endmin = RTIdata[RTIdata.Count - 1].mm;
                 bMessage.endsec = RTIdata[RTIdata.Count - 1].SS;
                 //LPJ 2013-5-31 --end
-
+                ScaleIncrease(); //refresh Navigation. -RMa 2/26/2021
             }
             
         } //
@@ -20140,10 +20438,12 @@ namespace ADCP
             if (!bEnglish2Metric)
             {
                 label3.Text = "(ft)";
+                //label21.Text = "(ft)"; //-RMa 2/25/2021
             }
             else
             {
                 label3.Text = "(m)";
+                //label21.Text = "(m)"; //-RMa 2/25/2021
             }
 
 
@@ -21649,6 +21949,7 @@ namespace ADCP
                     label4.Text = "(ft)";
                     label5.Text = "(ft)";
                     label9.Text = "(ft)";
+                    //label21.Text = "(ft)"; //-RMa 2/25/2021
                 }
                 else
                 {
@@ -21656,6 +21957,7 @@ namespace ADCP
                     label4.Text = "(m)";
                     label5.Text = "(m)";
                     label9.Text = "(m)";
+                   // label21.Text = "(m)"; //-RMa 2/25/2021
                 }
             }
             else
@@ -21800,6 +22102,14 @@ namespace ADCP
             MainPanel.Location = new Point(MPL, 20);
             label3.Location = new Point(MainPanel.Location.X + 15, 1);
 
+            if (tabControlFuTu.SelectedTab == tabPage_WP && tabControl_FuTu_WP.SelectedTab == tabPage32)  //-RMa 2/25/2021
+            {
+                //label21.Location = new Point(panel22.Location.X, 1); 
+            }
+            else if(tabControlFuTu.SelectedTab == tabPage_WP && tabControl_FuTu_WP.SelectedTab == tabPage35)
+            {
+                //label21.Location = new Point(panel24.Location.X, 1);
+            }
             panelGPSTrack.Height = (MainHeight - 35) / 2;
             panelGPSTrack.Width = MainWidth-10;
             panelGPSTrack.Location = new Point(10, 22 + (MainHeight - 35) / 2);

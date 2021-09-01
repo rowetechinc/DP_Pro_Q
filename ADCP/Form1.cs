@@ -1180,26 +1180,29 @@ namespace ADCP
        
         private void toolStripBtnSummary_Click(object sender, EventArgs e)
         {
-            reportList.Clear();
-
-            DischargeSummary.BasicMessage bM;// = new DischargeSummary.BasicMessage();  //LPJ 2016-10-10 汇总信息
-
-            bM = dp300_playback[0].bMessage;  //LPJ 2016-10-10 汇总信息
-            bM.endhour = dp300_playback[dp300_playback.Count - 1].bMessage.endhour;
-            bM.endmin = dp300_playback[dp300_playback.Count - 1].bMessage.endmin;
-            bM.endsec = dp300_playback[dp300_playback.Count - 1].bMessage.endsec;
-
-            for (int i = 0; i < dp300_playback.Count; i++)
+            if (dp300_playback.Count > 0) //-RMa 2/25/2021
             {
-                reportList.Add(dp300_playback[i].report); 
+                reportList.Clear();
+
+                DischargeSummary.BasicMessage bM;// = new DischargeSummary.BasicMessage();  //LPJ 2016-10-10 汇总信息
+
+                bM = dp300_playback[0].bMessage;  //LPJ 2016-10-10 汇总信息
+                bM.endhour = dp300_playback[dp300_playback.Count - 1].bMessage.endhour;
+                bM.endmin = dp300_playback[dp300_playback.Count - 1].bMessage.endmin;
+                bM.endsec = dp300_playback[dp300_playback.Count - 1].bMessage.endsec;
+
+                for (int i = 0; i < dp300_playback.Count; i++)
+                {
+                    reportList.Add(dp300_playback[i].report);
+                }
+                //当点击汇总按钮时，将当前显示的工程文件信息汇总
+                if (reportList.Count > 0)
+                {
+                    FrmShowSummary showSummary = new FrmShowSummary(reportList, bM, dp300_playback[0].bEnglish2Metric); //LPJ 2013-6-19
+                    showSummary.Show();
+                }
+
             }
-            //当点击汇总按钮时，将当前显示的工程文件信息汇总
-            if (reportList.Count > 0)
-            {
-                FrmShowSummary showSummary = new FrmShowSummary(reportList, bM, dp300_playback[0].bEnglish2Metric); //LPJ 2013-6-19
-                showSummary.Show();
-            }
-         
         }
 
         private void toolStripBtnHome_Click(object sender, EventArgs e)
@@ -1293,9 +1296,7 @@ namespace ADCP
 
                     this.FormBorderStyle = FormBorderStyle.None;
                 }
-            }
-           
-           
+            }                    
         }
 
         #region 操作tabControl
