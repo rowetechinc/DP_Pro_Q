@@ -535,23 +535,23 @@ namespace ADCP
         }
         private void comboBox_waterTemperature_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TheTextChanged(sender, e);
+            TheTextChanged(sender, e);
         }
         private void comboBox_TransducerDepth_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TheTextChanged(sender, e);
+            TheTextChanged(sender, e);
         }
         private void comboBox_Salinity_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TheTextChanged(sender, e);
+            TheTextChanged(sender, e);
         }
         private void comboBox_SpeedOfSound_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TheTextChanged(sender, e);
+            TheTextChanged(sender, e);
         }
         private void comboBoxAutoLag_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            TheTextChanged(sender, e);
         }
         private System.Collections.Queue defaultQueue;
         static object lockpack = new object();

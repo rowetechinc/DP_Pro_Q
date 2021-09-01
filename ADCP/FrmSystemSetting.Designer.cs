@@ -547,7 +547,9 @@
             this.comboBoxAutoLag.FormattingEnabled = true;
             this.comboBoxAutoLag.Items.AddRange(new object[] {
             resources.GetString("comboBoxAutoLag.Items"),
-            resources.GetString("comboBoxAutoLag.Items1")});
+            resources.GetString("comboBoxAutoLag.Items1"),
+            resources.GetString("comboBoxAutoLag.Items2"),
+            resources.GetString("comboBoxAutoLag.Items3")});
             resources.ApplyResources(this.comboBoxAutoLag, "comboBoxAutoLag");
             this.comboBoxAutoLag.Name = "comboBoxAutoLag";
             this.comboBoxAutoLag.SelectedIndexChanged += new System.EventHandler(this.comboBoxAutoLag_SelectedIndexChanged);
