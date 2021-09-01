@@ -623,6 +623,7 @@
             this.tabPageSystemTest = new System.Windows.Forms.TabPage();
             this.textBoxSystemTest = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label21 = new System.Windows.Forms.Label();
             this.tabControl4.SuspendLayout();
             this.tabPageSmartPage.SuspendLayout();
             this.panel34.SuspendLayout();
@@ -4410,6 +4411,7 @@
             // 
             // tabPageContour
             // 
+            this.tabPageContour.Controls.Add(this.label21);
             this.tabPageContour.Controls.Add(this.groupBox_playcontrol);
             this.tabPageContour.Controls.Add(this.hScrollBar_BS);
             this.tabPageContour.Controls.Add(this.panel_contour);
@@ -4892,6 +4894,11 @@
             // 
             resources.ApplyResources(this.textBoxSystemTest, "textBoxSystemTest");
             this.textBoxSystemTest.Name = "textBoxSystemTest";
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
             // 
             // DP300_Windows
             // 
@@ -5719,6 +5726,7 @@
         private System.Windows.Forms.TextBox textBoxExtract;
         private System.Windows.Forms.TextBox textBox_comments;
         private System.Windows.Forms.TextBox textBoxGPS;
+        private System.Windows.Forms.Label label21;
         //private DVL_Windows.NoPaintBackGroundPanel GPSdisplayPanel;  //Modified 2011-8-31
     }
 }

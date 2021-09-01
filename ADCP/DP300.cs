@@ -12835,7 +12835,7 @@ namespace ADCP
         {
             if (tabControlFuTu.SelectedTab == tabPage_WP && tabControl_FuTu_WP.SelectedTab == tabPage32)
             {
-                //label21.Location = new Point(panel22.Location.X, 1); //-RMa 2/25/2021
+                label21.Location = new Point(panel22.Location.X, 1); //-RMa 2/25/2021
                 using (Graphics g = e.Graphics)
                 {
                     using (Font ft = new Font("Arial", 8))
@@ -13141,7 +13141,7 @@ namespace ADCP
         {
             if (tabControlFuTu.SelectedTab == tabPage_WP && tabControl_FuTu_WP.SelectedTab == tabPage35)
             {
-                //label21.Location = new Point(panel24.Location.X, 1); //-RMa 2/25/2021
+                label21.Location = new Point(panel24.Location.X, 1); //-RMa 2/25/2021
                 using (Graphics g = e.Graphics)
                 {
                     using (Font ft = new Font("Arial", 8))
@@ -20438,12 +20438,12 @@ namespace ADCP
             if (!bEnglish2Metric)
             {
                 label3.Text = "(ft)";
-                //label21.Text = "(ft)"; //-RMa 2/25/2021
+                label21.Text = "(ft)"; //-RMa 2/25/2021
             }
             else
             {
                 label3.Text = "(m)";
-                //label21.Text = "(m)"; //-RMa 2/25/2021
+                label21.Text = "(m)"; //-RMa 2/25/2021
             }
 
 
@@ -21949,7 +21949,7 @@ namespace ADCP
                     label4.Text = "(ft)";
                     label5.Text = "(ft)";
                     label9.Text = "(ft)";
-                    //label21.Text = "(ft)"; //-RMa 2/25/2021
+                    label21.Text = "(ft)"; //-RMa 2/25/2021
                 }
                 else
                 {
@@ -21957,7 +21957,7 @@ namespace ADCP
                     label4.Text = "(m)";
                     label5.Text = "(m)";
                     label9.Text = "(m)";
-                   // label21.Text = "(m)"; //-RMa 2/25/2021
+                    label21.Text = "(m)"; //-RMa 2/25/2021
                 }
             }
             else
@@ -22104,11 +22104,11 @@ namespace ADCP
 
             if (tabControlFuTu.SelectedTab == tabPage_WP && tabControl_FuTu_WP.SelectedTab == tabPage32)  //-RMa 2/25/2021
             {
-                //label21.Location = new Point(panel22.Location.X, 1); 
+                label21.Location = new Point(panel22.Location.X, 1); 
             }
             else if(tabControlFuTu.SelectedTab == tabPage_WP && tabControl_FuTu_WP.SelectedTab == tabPage35)
             {
-                //label21.Location = new Point(panel24.Location.X, 1);
+                label21.Location = new Point(panel24.Location.X, 1);
             }
             panelGPSTrack.Height = (MainHeight - 35) / 2;
             panelGPSTrack.Width = MainWidth-10;

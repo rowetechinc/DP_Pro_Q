@@ -2918,7 +2918,7 @@
     <value>listView_Summary</value>
   </data>
   <data name="&gt;&gt;listView_Summary.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;listView_Summary.Parent" xml:space="preserve">
     <value>tabPage_Summary</value>
@@ -2966,7 +2966,7 @@
     <value>tabPage_BoatSpeed</value>
   </data>
   <data name="&gt;&gt;tabPage_BoatSpeed.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabPage_BoatSpeed.Parent" xml:space="preserve">
     <value>tabControl11</value>
@@ -2990,7 +2990,7 @@
     <value>tabPage_WaterDirection</value>
   </data>
   <data name="&gt;&gt;tabPage_WaterDirection.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabPage_WaterDirection.Parent" xml:space="preserve">
     <value>tabControl11</value>
@@ -3014,7 +3014,7 @@
     <value>tabPage_BoatWater</value>
   </data>
   <data name="&gt;&gt;tabPage_BoatWater.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabPage_BoatWater.Parent" xml:space="preserve">
     <value>tabControl11</value>
@@ -3038,7 +3038,7 @@
     <value>tabPage_Pitch</value>
   </data>
   <data name="&gt;&gt;tabPage_Pitch.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabPage_Pitch.Parent" xml:space="preserve">
     <value>tabControl11</value>
@@ -3062,7 +3062,7 @@
     <value>tabPage_Roll</value>
   </data>
   <data name="&gt;&gt;tabPage_Roll.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabPage_Roll.Parent" xml:space="preserve">
     <value>tabControl11</value>
@@ -3234,7 +3234,7 @@
     <value>listView_Others</value>
   </data>
   <data name="&gt;&gt;listView_Others.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;listView_Others.Parent" xml:space="preserve">
     <value>tabPage43</value>
@@ -3261,7 +3261,7 @@
     <value>listView_Navigation</value>
   </data>
   <data name="&gt;&gt;listView_Navigation.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;listView_Navigation.Parent" xml:space="preserve">
     <value>tabPage43</value>
@@ -3291,7 +3291,7 @@
     <value>lV_MeasuredQ</value>
   </data>
   <data name="&gt;&gt;lV_MeasuredQ.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lV_MeasuredQ.Parent" xml:space="preserve">
     <value>tabPage43</value>
@@ -3855,7 +3855,7 @@
     <value>tabPage43</value>
   </data>
   <data name="&gt;&gt;tabPage43.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabPage43.Parent" xml:space="preserve">
     <value>tabControlFuTu</value>
@@ -4197,7 +4197,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 16</value>
+    <value>27, 8</value>
   </data>
   <data name="pictureBox_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4221,7 +4221,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_A.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 17</value>
+    <value>29, 9</value>
   </data>
   <data name="panel_W_A.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4245,7 +4245,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_A.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-436, 0</value>
+    <value>-444, 0</value>
   </data>
   <data name="vScrollBar_W_A.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -4587,7 +4587,7 @@
     <value>29, 0</value>
   </data>
   <data name="pictureBox_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 75</value>
+    <value>0, 67</value>
   </data>
   <data name="pictureBox_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4611,7 +4611,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel_W_C.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 81</value>
+    <value>29, 73</value>
   </data>
   <data name="panel_W_C.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4638,7 +4638,7 @@
     <value>NoControl</value>
   </data>
   <data name="vScrollBar_W_C.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-562, 0</value>
+    <value>-570, 0</value>
   </data>
   <data name="vScrollBar_W_C.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 0</value>
@@ -5473,7 +5473,7 @@
     <value>panelGPSTrack</value>
   </data>
   <data name="&gt;&gt;panelGPSTrack.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panelGPSTrack.Parent" xml:space="preserve">
     <value>panel21</value>
@@ -5776,7 +5776,7 @@
     <value>InfoPanel</value>
   </data>
   <data name="&gt;&gt;InfoPanel.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;InfoPanel.Parent" xml:space="preserve">
     <value>panel16</value>
@@ -6004,7 +6004,7 @@
     <value>MainPanel</value>
   </data>
   <data name="&gt;&gt;MainPanel.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;MainPanel.Parent" xml:space="preserve">
     <value>panel21</value>
@@ -6430,7 +6430,7 @@
     <value>HPRDisplayerPanel</value>
   </data>
   <data name="&gt;&gt;HPRDisplayerPanel.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;HPRDisplayerPanel.Parent" xml:space="preserve">
     <value>DP300Displayer</value>
@@ -8424,10 +8424,10 @@
     <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="GPSdepthPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 296</value>
+    <value>0, 288</value>
   </data>
   <data name="GPSdepthPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>456, 171</value>
+    <value>448, 171</value>
   </data>
   <data name="GPSdepthPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -8528,7 +8528,7 @@
     <value>GPSdisplayPanel</value>
   </data>
   <data name="&gt;&gt;GPSdisplayPanel.Type" xml:space="preserve">
-    <value>ADCP.DP300_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DP300_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GPSdisplayPanel.Parent" xml:space="preserve">
     <value>tabPageTrack</value>
@@ -12458,7 +12458,7 @@
     <value>EarthWaterlistView</value>
   </data>
   <data name="&gt;&gt;EarthWaterlistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;EarthWaterlistView.Parent" xml:space="preserve">
     <value>tabPage4</value>
@@ -12539,7 +12539,7 @@
     <value>InstrmtWaterlistView</value>
   </data>
   <data name="&gt;&gt;InstrmtWaterlistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;InstrmtWaterlistView.Parent" xml:space="preserve">
     <value>tabPage6</value>
@@ -12617,7 +12617,7 @@
     <value>BeamWaterlistView</value>
   </data>
   <data name="&gt;&gt;BeamWaterlistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BeamWaterlistView.Parent" xml:space="preserve">
     <value>tabPage5</value>
@@ -12770,7 +12770,7 @@
     <value>EarthGdPnglistView</value>
   </data>
   <data name="&gt;&gt;EarthGdPnglistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;EarthGdPnglistView.Parent" xml:space="preserve">
     <value>tabPage11</value>
@@ -12851,7 +12851,7 @@
     <value>BeamGdPnglistView</value>
   </data>
   <data name="&gt;&gt;BeamGdPnglistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BeamGdPnglistView.Parent" xml:space="preserve">
     <value>tabPage13</value>
@@ -12932,7 +12932,7 @@
     <value>BEGdPngListview</value>
   </data>
   <data name="&gt;&gt;BEGdPngListview.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BEGdPngListview.Parent" xml:space="preserve">
     <value>tabPage12</value>
@@ -13010,7 +13010,7 @@
     <value>BIGPnglistView</value>
   </data>
   <data name="&gt;&gt;BIGPnglistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BIGPnglistView.Parent" xml:space="preserve">
     <value>tabPage14</value>
@@ -13088,7 +13088,7 @@
     <value>BBGPnglistView</value>
   </data>
   <data name="&gt;&gt;BBGPnglistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BBGPnglistView.Parent" xml:space="preserve">
     <value>tabPage15</value>
@@ -13238,7 +13238,7 @@
     <value>WaterCorrelationlistView</value>
   </data>
   <data name="&gt;&gt;WaterCorrelationlistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;WaterCorrelationlistView.Parent" xml:space="preserve">
     <value>tabPage7</value>
@@ -13319,7 +13319,7 @@
     <value>BtmCorrelationlistView</value>
   </data>
   <data name="&gt;&gt;BtmCorrelationlistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtmCorrelationlistView.Parent" xml:space="preserve">
     <value>tabPage8</value>
@@ -13472,7 +13472,7 @@
     <value>WaterAmplitudelistView</value>
   </data>
   <data name="&gt;&gt;WaterAmplitudelistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;WaterAmplitudelistView.Parent" xml:space="preserve">
     <value>tabPage9</value>
@@ -13553,7 +13553,7 @@
     <value>BtmAmplitudelistView</value>
   </data>
   <data name="&gt;&gt;BtmAmplitudelistView.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundListView, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BtmAmplitudelistView.Parent" xml:space="preserve">
     <value>tabPage10</value>
@@ -13697,7 +13697,7 @@
     <value>panelSerialTime</value>
   </data>
   <data name="&gt;&gt;panelSerialTime.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundPanel, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panelSerialTime.Parent" xml:space="preserve">
     <value>tabPageSerialTime</value>
@@ -13721,13 +13721,43 @@
     <value>tabPageSerialTime</value>
   </data>
   <data name="&gt;&gt;tabPageSerialTime.Type" xml:space="preserve">
-    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DVL_Windows+NoPaintBackGroundTabPage, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;tabPageSerialTime.Parent" xml:space="preserve">
     <value>tabControl4</value>
   </data>
   <data name="&gt;&gt;tabPageSerialTime.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 612</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 13</value>
+  </data>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
+    <value>946</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>tabPageContour</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="buttonBS_Pause.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 6.75pt</value>
@@ -14009,7 +14039,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;groupBox_playcontrol.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="hScrollBar_BS.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -14033,7 +14063,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;hScrollBar_BS.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="panel_contour.Location" type="System.Drawing.Point, System.Drawing">
     <value>129, 4</value>
@@ -14048,13 +14078,13 @@
     <value>panel_contour</value>
   </data>
   <data name="&gt;&gt;panel_contour.Type" xml:space="preserve">
-    <value>ADCP.DoubleBufferPanel, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DoubleBufferPanel, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;panel_contour.Parent" xml:space="preserve">
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;panel_contour.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="InfoPanel_BS.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 27</value>
@@ -14069,7 +14099,7 @@
     <value>InfoPanel_BS</value>
   </data>
   <data name="&gt;&gt;InfoPanel_BS.Type" xml:space="preserve">
-    <value>ADCP.DoubleBufferPanel, ADCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>ADCP.DoubleBufferPanel, ADCP, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;InfoPanel_BS.Parent" xml:space="preserve">
     <value>panel_ColorScale</value>
@@ -14378,7 +14408,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;panel_ColorScale.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnPick.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -14405,7 +14435,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;btnPick.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14435,7 +14465,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="checkBox_b9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14465,7 +14495,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;checkBox_b9.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="checkBox_b8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14495,7 +14525,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;checkBox_b8.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="checkBox_b7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14525,7 +14555,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;checkBox_b7.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="checkBox_b6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14555,7 +14585,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;checkBox_b6.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="checkBox_b5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14585,7 +14615,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;checkBox_b5.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="checkBox_b4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14615,7 +14645,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;checkBox_b4.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="checkBox_b3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14645,7 +14675,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;checkBox_b3.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="checkBox_b2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14675,7 +14705,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;checkBox_b2.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="checkBox_b1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14705,7 +14735,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;checkBox_b1.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="checkBox_b0.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -14735,7 +14765,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;checkBox_b0.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="btn_backscatter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -14762,7 +14792,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;btn_backscatter.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="btn_Amp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -14789,7 +14819,7 @@
     <value>tabPageContour</value>
   </data>
   <data name="&gt;&gt;btn_Amp.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="tabPageContour.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
