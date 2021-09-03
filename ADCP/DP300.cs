@@ -1301,7 +1301,7 @@ namespace ADCP
                                 current_EsambleTotaleNum = totalNum.ToString();
                                 #region Decode GPGGA ---start   LPJ 2014-7-10
                                 CDecodeGPS decodeGPS = new CDecodeGPS();
-                                decodeGPS.GPS_GGAdecode(GPS_GGAbuffer, ref gpsTime, ref GPS_longitude, ref GPS_latitude, ref NorthSouth, ref EastWest);
+                                decodeGPS.GPS_GGAdecode(GPS_GGAbuffer, ref gpsTime, ref GPS_longitude, ref GPS_latitude, ref NorthSouth, ref EastWest, ref GPS_Quailty);
                                 defaultGPGGA = GPS_GGAbuffer;
                                 GPS_FloatLatitude = float.Parse(GPS_latitude);
                                 if (NorthSouth == "S")
@@ -3791,7 +3791,8 @@ namespace ADCP
                                     }
 
                                     string UTCtime = "", GPS_Long = "", GPS_Lat = "", GPS_NS = "", GPS_EW = "";
-                                    decodeGPS.GPS_GGAdecode(GPGGAbuffer, ref UTCtime, ref GPS_Long, ref GPS_Lat, ref GPS_NS, ref GPS_EW);
+                                    string GPS_Quailty = "";
+                                    decodeGPS.GPS_GGAdecode(GPGGAbuffer, ref UTCtime, ref GPS_Long, ref GPS_Lat, ref GPS_NS, ref GPS_EW, ref GPS_Quailty);
                                     float fUTCtime = decodeGPS.GPS_Timedecode(UTCtime); //LPJ 2017-5-27 将GPS格式的hhmmss.ss时间转换为以s为单位的时间
 
                                     //将DDMM.mmmm转为DD.dddd的经纬度
@@ -3807,16 +3808,65 @@ namespace ADCP
                                     if ("W" == GPS_EW)
                                         Longitude1 = -1 * Longitude1;
 
-                                    if ((("S" == GPS_NS) || ("N" == GPS_NS)) && (("W" == GPS_EW) || ("E" == GPS_EW)))
+                                    switch(GPS_Quailty)
                                     {
-                                        textBoxGPS.BackColor = Color.Green;
-                                    }
-                                    else                                     
-                                    {
-                                        textBoxGPS.BackColor = Color.LightGray;
-                                    }
+                                        default:
+                                            textBoxGPS.BackColor = Color.LightGray;
+                                            textBoxGPS.Text = "GPS";
+                                            break;
+                                        case "0"://Fix not valid
+                                            textBoxGPS.BackColor = Color.Red;
+                                            textBoxGPS.Text = "GPS";
+                                            break;
+                                        case "1"://GPS fix
+                                            textBoxGPS.BackColor = Color.Magenta;
+                                            textBoxGPS.Text = "GPS";
+                                            break;
+                                        case "2"://Differential GPS fix, OmniSTAR VBS
+                                            textBoxGPS.BackColor = Color.Green;
+                                            textBoxGPS.Text = "Diff";
+                                            break;
+                                        case "4"://Real-Time Kinematic, fixed integers
+                                            textBoxGPS.BackColor = Color.Cyan;
+                                            textBoxGPS.Text = "RTK";
+                                            break;
+                                        case "5"://Real-Time Kinematic, float integers, OmniSTAR XP/HP or Location RTK
+                                            textBoxGPS.BackColor = Color.Blue;
+                                            textBoxGPS.Text = "RTK";
+                                            break;
 
-                                    
+                                    }
+                                    /*  GGA message fields
+                                        Field	Meaning
+                                        0	Message ID $GPGGA
+                                        1	UTC of position fix
+                                        2	Latitude
+                                        3	Direction of latitude:
+                                                  N: North
+                                                  S: South
+                                        4	Longitude
+                                        5	Direction of longitude:
+                                                  E: East
+                                                  W: West
+                                        6	GPS Quality indicator:
+                                                  0: Fix not valid
+                                                  1: GPS fix
+                                                  2: Differential GPS fix, OmniSTAR VBS
+                                                  4: Real-Time Kinematic, fixed integers
+                                                  5: Real-Time Kinematic, float integers, OmniSTAR XP/HP or Location RTK
+                                        7	Number of SVs in use, range from 00 through to 24+
+                                        8	HDOP
+                                        9	Orthometric height (MSL reference)
+                                        10	M: unit of measure for orthometric height is meters
+                                        11	Geoid separation
+                                        12	M: geoid separation measured in meters
+                                        13	Age of differential GPS data record, Type 1 or Type 9. Null field when DGPS is not used.
+                                        14	Reference station ID, range 0000-4095. A null field when any reference station ID is selected and no corrections are received1.
+                                        15	
+                                        The checksum data, always begins with * 
+                                    */
+
+
                                     GPS_latitudeA = degreeN1.ToString() + "°" + minuteN1.ToString() + "'" + secondN1.ToString() + GPS_NS;
                                     GPS_longitudeA = degreeE1.ToString() + "°" + minuteE1.ToString() + "'" + secondE1.ToString() + GPS_EW;
 
@@ -7822,7 +7872,7 @@ namespace ADCP
 
                         #region Decode GPGGA //LPJ 2014-7-10
                         CDecodeGPS decodeGPS = new CDecodeGPS();
-                        decodeGPS.GPS_GGAdecode(GPS_GGAbuffer, ref gpsTime, ref GPS_longitude, ref GPS_latitude, ref NorthSouth, ref EastWest);
+                        decodeGPS.GPS_GGAdecode(GPS_GGAbuffer, ref gpsTime, ref GPS_longitude, ref GPS_latitude, ref NorthSouth, ref EastWest, ref GPS_Quailty);
                         defaultGPGGA = GPS_GGAbuffer;
                         GPS_FloatLatitude = float.Parse(GPS_latitude);
                         if (NorthSouth == "S")
@@ -8478,7 +8528,7 @@ namespace ADCP
                         decodeGPS.GPSNMEA_decode(NMEA_buffer, "GPGGA", ref GPGGAbuffer);
 
 
-                        decodeGPS.GPS_GGAdecode(GPGGAbuffer, ref GPS_Time, ref GPS_Longitude, ref GPS_Latitude, ref GPS_NS, ref GPS_EW);
+                        decodeGPS.GPS_GGAdecode(GPGGAbuffer, ref GPS_Time, ref GPS_Longitude, ref GPS_Latitude, ref GPS_NS, ref GPS_EW, ref GPS_Quailty);
                         fUTCtime = decodeGPS.GPS_Timedecode(GPS_Time); //LPJ 2017-5-27 将GPS格式的hhmmss.ss时间转换为以s为单位的时间
 
                         decodeGPS.TransferEarthCoordinate(double.Parse(GPS_Longitude), ref Long_Degree, ref Long_Min, ref Long_Sec);
@@ -12091,6 +12141,7 @@ namespace ADCP
             textBoxMB.BackColor = Color.LightGray;
             textBoxST.BackColor = Color.LightGray;
             textBoxGPS.BackColor = Color.LightGray;
+            textBoxGPS.Text = "GPS";
             textBoxBT.BackColor = Color.LightGray;
             textBoxWT.BackColor = Color.LightGray;
             textBoxLE.BackColor = Color.LightGray;
@@ -15545,7 +15596,7 @@ namespace ADCP
 
                 #region Decode GPGGA ---start   LPJ 2014-7-10
                 CDecodeGPS decodeGPS = new CDecodeGPS();
-                decodeGPS.GPS_GGAdecode(GGAdata, ref gpsTime, ref GPS_longitude, ref GPS_latitude, ref NorthSouth, ref EastWest);
+                decodeGPS.GPS_GGAdecode(GGAdata, ref gpsTime, ref GPS_longitude, ref GPS_latitude, ref NorthSouth, ref EastWest, ref GPS_Quailty);
                 defaultGPGGA = GPS_GGAbuffer;
                 GPS_FloatLatitude = float.Parse(GPS_latitude);
                 if (NorthSouth == "S")
@@ -16267,6 +16318,7 @@ namespace ADCP
         string GPS_longitude = "00000.000";
         string GPS_latitudeA = "0000.000";
         string GPS_longitudeA = "00000.000";
+        string GPS_Quailty = "";
         float StartLongitude = 0; // = "00000.000"; //Modified 2011-11-12 default to 0,0
         float StartLatitude = 0;
 

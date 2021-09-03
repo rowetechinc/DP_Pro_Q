@@ -73,7 +73,7 @@ namespace ADCP
         //GPS_Time为采集数据时间
         //GPS_Longitude为string类型的经度，GPS_Latitude为string类型的纬度
         //GPS_NS为string类型的South或North，GPS_EW为string类型的West或East
-        public void GPS_GGAdecode(string data,ref string GPS_Time,ref string GPS_Longitude,ref string GPS_Latitude,ref string GPS_NS,ref string GPS_EW)
+        public void GPS_GGAdecode(string data,ref string GPS_Time,ref string GPS_Longitude,ref string GPS_Latitude,ref string GPS_NS,ref string GPS_EW, ref string GPS_Quailty)
         {
             try
             {
@@ -95,17 +95,20 @@ namespace ADCP
                     GPS_NS = gga1[3];
                     GPS_Longitude = gga1[4];
                     GPS_EW = gga1[5];
+                    GPS_Quailty = gga1[6];
                 }
                 else
                 {
                     GPS_Latitude = "0000.000";
                     GPS_Longitude = "00000.000";
+                    GPS_Quailty = "";
                 }
             }
             catch
             {
                 GPS_Latitude = "0000.000";
                 GPS_Longitude = "00000.000";
+                GPS_Quailty = "";
             }
         }
 
