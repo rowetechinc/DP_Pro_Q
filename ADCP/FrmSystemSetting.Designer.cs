@@ -70,7 +70,6 @@
             this.groupBox41 = new System.Windows.Forms.GroupBox();
             this.label28 = new System.Windows.Forms.Label();
             this.textMagVar = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxBTSNR = new System.Windows.Forms.TextBox();
@@ -92,6 +91,7 @@
             this.comboBoxVerticalBeam = new System.Windows.Forms.ComboBox();
             this.BTST_Correlation_text = new System.Windows.Forms.TextBox();
             this.label221 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.buttonSetDefaults = new System.Windows.Forms.Button();
             this.buttonDownloadCommandSettings = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -461,18 +461,12 @@
             // 
             // groupBox41
             // 
-            this.groupBox41.Controls.Add(this.label28);
-            this.groupBox41.Controls.Add(this.textMagVar);
-            this.groupBox41.Controls.Add(this.label27);
             this.groupBox41.Controls.Add(this.label14);
             this.groupBox41.Controls.Add(this.label13);
             this.groupBox41.Controls.Add(this.textBoxBTSNR);
             this.groupBox41.Controls.Add(this.label12);
             this.groupBox41.Controls.Add(this.comboBoxAutoLag);
-            this.groupBox41.Controls.Add(this.label52);
-            this.groupBox41.Controls.Add(this.label9);
             this.groupBox41.Controls.Add(this.label23);
-            this.groupBox41.Controls.Add(this.textHeadingOffset);
             this.groupBox41.Controls.Add(this.comboBoxVesselSpeedRef);
             this.groupBox41.Controls.Add(this.label2);
             this.groupBox41.Controls.Add(this.label22);
@@ -512,11 +506,6 @@
             resources.ApplyResources(this.textMagVar, "textMagVar");
             this.textMagVar.Name = "textMagVar";
             this.textMagVar.TextChanged += new System.EventHandler(this.textMagVar_TextChanged);
-            // 
-            // label27
-            // 
-            resources.ApplyResources(this.label27, "label27");
-            this.label27.Name = "label27";
             // 
             // label14
             // 
@@ -655,6 +644,11 @@
             resources.ApplyResources(this.label221, "label221");
             this.label221.Name = "label221";
             // 
+            // label27
+            // 
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            // 
             // buttonSetDefaults
             // 
             resources.ApplyResources(this.buttonSetDefaults, "buttonSetDefaults");
@@ -698,6 +692,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox2.Controls.Add(this.label26);
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.groupBox9);
@@ -1242,10 +1237,16 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.label28);
             this.groupBox10.Controls.Add(this.comboBoxHeadingRef);
+            this.groupBox10.Controls.Add(this.textMagVar);
             this.groupBox10.Controls.Add(this.label3);
+            this.groupBox10.Controls.Add(this.label27);
             this.groupBox10.Controls.Add(this.comboBox_RS232);
             this.groupBox10.Controls.Add(this.label_RS232);
+            this.groupBox10.Controls.Add(this.label52);
+            this.groupBox10.Controls.Add(this.textHeadingOffset);
+            this.groupBox10.Controls.Add(this.label9);
             resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.TabStop = false;
