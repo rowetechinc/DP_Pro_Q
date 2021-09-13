@@ -20664,6 +20664,8 @@ namespace ADCP
             else
                 systSet.iSpeedRef = 2;
 
+            
+
             try
             {
                 systSet.dSalinity = double.Parse(labelSalinity.Text);  //LPJ 2014-6-16

@@ -26,7 +26,9 @@ namespace ADCP
             InitializeComponent();
             sp = _sp;
             systSet = _systSet;
+            comboBoxVesselSpeedRef.SelectedIndex = systSet.iSpeedRef;
             GetReference(ref systSet);
+
             _systSet = systSet;
         }
 
@@ -53,6 +55,8 @@ namespace ADCP
             DownloadCommandSettings();
 
             CheckText(ref systSet);
+
+            
 
             if (systSet.bEnglishUnit)
             {
@@ -229,7 +233,7 @@ namespace ADCP
             }
             else
             {
-                if (double.Parse(textBoxWPaveragingInterval.Text) > 0 && double.Parse(textBoxWPaveragingInterval.Text) <= 0.5)
+                if (double.Parse(textBoxWPaveragingInterval.Text) > 0 && double.Parse(textBoxWPaveragingInterval.Text) <= 1.0)
                 {
                     textBoxWPaveragingInterval.BackColor = Color.White;
                     systSet.dAveragingInterval = double.Parse(textBoxWPaveragingInterval.Text);
@@ -417,69 +421,53 @@ namespace ADCP
         {
             CheckText(ref systSet);
         }
-
-        
         private void comboBoxHeadingRef_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
-            if (0 == comboBoxHeadingRef.SelectedIndex)
+            switch (comboBoxHeadingRef.SelectedIndex)
             {
-                comboBox_RS232.Enabled = false;
-                label_RS232.Enabled = false;
-                if (1 == comboBoxVesselSpeedRef.SelectedIndex || 3 == comboBoxVesselSpeedRef.SelectedIndex)
-                {
-                    textHeadingOffset.Enabled = true;
-                }
-                else
-                    textHeadingOffset.Enabled = false;
-            }
-            else
-            {
-                if (bPlayBackMode)
-                {
+                default:
+                case 0://None
                     comboBox_RS232.Enabled = false;
-                    label_RS232.Enabled = false;
-                }
-                else
-                {
+                    //label_RS232.Enabled = false;
+                    //textHeadingOffset.Enabled = false;
+                    break;
+                case 1://PNI
+                    comboBox_RS232.Enabled = false;
+                    //label_RS232.Enabled = true;
+                    //textHeadingOffset.Enabled = true;
+                    break;
+                case 2://External GPS
                     comboBox_RS232.Enabled = true;
                     label_RS232.Enabled = true;
-                }
-                textHeadingOffset.Enabled = true;
+                    textHeadingOffset.Enabled = true;
+                    break;
+                case 3://RTI
+                    comboBox_RS232.Enabled = true;
+                    //label_RS232.Enabled = true;
+                    //textHeadingOffset.Enabled = true;
+                    break;
             }
-            */
+            TheTextChanged(sender, e);
         }
         private void comboBoxVesselSpeedRef_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
-            if (1 == comboBoxVesselSpeedRef.SelectedIndex || 3 == comboBoxVesselSpeedRef.SelectedIndex)
-            {
-                textHeadingOffset.Enabled = true;
-            }
-            else
-            {
-                if (1 == comboBoxHeadingRef.SelectedIndex)
-                    textHeadingOffset.Enabled = true;
-                else
-                    textHeadingOffset.Enabled = false;
-            }
-            */
+            TheTextChanged(sender, e);
         }
         private void comboBox_RS232_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TheTextChanged(sender, e);
+            TheTextChanged(sender, e);
         }
         private void comboBoxMeasMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TheTextChanged(sender, e);
+            TheTextChanged(sender, e);
         }
         private void comboBoxVerticalBeam_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TheTextChanged(sender, e);
+            TheTextChanged(sender, e);
         }
         private void comboBoxAutoBinSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //TheTextChanged(sender, e);
+            TheTextChanged(sender, e);
         }
         private void textWaterSalinity_TextChanged(object sender, EventArgs e)
         {
